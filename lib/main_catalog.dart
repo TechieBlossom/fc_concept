@@ -1,8 +1,7 @@
 import 'package:core_design/design.dart';
 import 'package:fc_concept/di/injector.dart';
 import 'package:flutter/material.dart';
-import 'package:utility_di/di.dart';
-import 'package:utility_navigation/navigation.dart';
+import 'package:utility_catalog/catalog.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +20,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    // return MaterialApp.router(
+    //   title: 'Flutter Demo',
+    //   theme: theme,
+    //   routerConfig: di<GoRouter>(),
+    // );
+
+    return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      routerConfig: di<GoRouter>(),
+      home: const CatalogDashboard(),
     );
   }
 }
