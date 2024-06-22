@@ -91,6 +91,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final clubIds = clubs?.map((club) => club.id);
     final nationIds = nations?.map((nation) => nation.id);
     final genderNames = genders?.map((gender) => gender.name);
+    final rarityIds = rarities?.map((rarity) => rarity.id);
 
     try {
       PostgrestFilterBuilder postgresFilterBuilder = supabase
@@ -111,6 +112,10 @@ class PlayerRepositoryImpl extends PlayerRepository {
       if (genderNames != null && genderNames.isNotEmpty) {
         postgresFilterBuilder =
             postgresFilterBuilder.in_(TablePlayer.gender, genderNames.toList());
+      }
+      if (rarityIds != null && rarityIds.isNotEmpty) {
+        postgresFilterBuilder =
+            postgresFilterBuilder.in_(TablePlayer.rarity, rarityIds.toList());
       }
 
       final playersResponse = await postgresFilterBuilder
@@ -161,9 +166,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .from(TablePlayer.tablePlayer)
           .select<Map<String, dynamic>>('*, $_rarityTable')
           .match({
-        TablePlayer.id: playerId,
-        TablePlayer.rarity: versionId,
-      })
+            TablePlayer.id: playerId,
+            TablePlayer.rarity: versionId,
+          })
           .limit(1)
           .single();
 
@@ -186,15 +191,14 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
       final playerRarities = versionsResponse
           .map(
-            (entry) =>
-        (
-        entry[TablePlayer.id] as int,
-        (entry[TableRarity.tableRarity]
-        as Map<String, dynamic>)[TableRarity.id] as int,
-        (entry[TableRarity.tableRarity]
-        as Map<String, dynamic>)[TableRarity.name] as String,
-        ),
-      )
+            (entry) => (
+              entry[TablePlayer.id] as int,
+              (entry[TableRarity.tableRarity]
+                  as Map<String, dynamic>)[TableRarity.id] as int,
+              (entry[TableRarity.tableRarity]
+                  as Map<String, dynamic>)[TableRarity.name] as String,
+            ),
+          )
           .toList();
 
       return Success(data: playerRarities);

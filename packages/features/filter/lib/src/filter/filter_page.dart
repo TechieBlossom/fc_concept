@@ -121,8 +121,21 @@ class FilterPage extends StatelessWidget {
                       Padding(
                         padding: spacingM.bottom,
                         child: NestedFilterItem(
-                          title: 'Rarity',
-                          subtitle: 'Tap to select Rarity(s)',
+                          title: state.rarities != null
+                              ? 'Rarity (Tap to change)'
+                              : 'Rarity',
+                          subtitle: state.rarities != null
+                              ? null
+                              : 'Tap to select Rarity(s)',
+                          selectedPills: state.rarities
+                              ?.map(
+                                (rarity) => PillItem<Rarity>(
+                                  data: rarity,
+                                  text: rarity.name,
+                                  isSelected: true,
+                                ),
+                              )
+                              .toList(),
                           pillGap: spacingM,
                           margin: spacingXL,
                           onTap: () => context.read<FilterBloc>().add(
@@ -161,7 +174,8 @@ class FilterPage extends StatelessWidget {
                   left: 0,
                   child: Container(
                     padding: spacingXL.all + spacingXL.right,
-                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       mainAxisSize: MainAxisSize.min,

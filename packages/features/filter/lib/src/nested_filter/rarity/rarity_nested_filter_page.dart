@@ -1,6 +1,5 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
-import 'package:feature_filter/src/nested_filter/bloc/nested_filter_bloc.dart';
 import 'package:feature_filter/src/nested_filter/rarity/bloc/rarity_nested_filter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,9 +45,11 @@ class RarityNestedFilterPage extends StatelessWidget {
                                 (item) => PillItem<Rarity>(
                                   data: item,
                                   text: item.name,
-                                  isSelected:
-                                      state.selectedRarities?.contains(item) ??
-                                          false,
+                                  isSelected: (state.selectedRarities ??
+                                              rarityNestedFilterPageParams
+                                                  .items)
+                                          ?.contains(item) ??
+                                      false,
                                   onTap: () => context
                                       .read<RarityNestedFilterBloc>()
                                       .add(
@@ -68,7 +69,9 @@ class RarityNestedFilterPage extends StatelessWidget {
                       left: 0,
                       child: Container(
                         padding: spacingXL.all + spacingXL.right,
-                        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .surfaceContainerHighest,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           mainAxisSize: MainAxisSize.min,
@@ -80,8 +83,8 @@ class RarityNestedFilterPage extends StatelessWidget {
                             PrimaryButton(
                               text: 'Done',
                               onPressed: () =>
-                                  context.read<NestedFilterBloc>().add(
-                                        const NestedFilterEvent.done(),
+                                  context.read<RarityNestedFilterBloc>().add(
+                                        const RarityNestedFilterEvent.done(),
                                       ),
                             ),
                           ],

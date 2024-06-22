@@ -1,13 +1,14 @@
-import 'package:core_domain/src/domain/models/result.dart';
-import 'package:core_domain/src/domain/rarity/model/rarity.dart';
+import 'package:core_domain/domain.dart';
 import 'package:core_domain/src/domain/rarity/rarity_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class GetAllRarities {
-  const GetAllRarities(this.clubRepository);
+  const GetAllRarities(this.rarityRepository);
 
-  final RarityRepository clubRepository;
+  final RarityRepository rarityRepository;
 
-  Future<Result<List<Rarity>>> call() async => clubRepository.getAllRarities();
+  Future<Result<List<Rarity>>> call() async => rarityRepository.getAllRarities(
+        rarityIds: rarityColorMap.keys.toList(),
+      );
 }

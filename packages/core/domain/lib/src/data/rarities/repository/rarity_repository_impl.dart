@@ -8,14 +8,15 @@ import 'package:injectable/injectable.dart';
 class RarityRepositoryImpl extends RarityRepository {
   @override
   Future<Result<List<Rarity>>> getAllRarities({
-    int page = 0,
+    required List<int> rarityIds,
   }) async {
     try {
       final raritiesResponse = await supabase
           .from(TableRarity.tableRarity)
           .select<List<Map<String, dynamic>>>()
           .eq(TableRarity.isActive, true)
-          .order(TableRarity.name);
+          .in_(TableRarity.id, rarityIds)
+          .order(TableRarity.name, ascending: true);
 
       final rarities = mapRarities(raritiesResponse);
       return Success(data: rarities);
