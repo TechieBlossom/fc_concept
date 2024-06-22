@@ -26,59 +26,59 @@ class PositionMapper extends EnumMapper<Position> {
   Position decode(dynamic value) {
     switch (value) {
       case 'GK':
-        return Position.GK;
+        return Position.gk;
       case 'LB':
-        return Position.LB;
+        return Position.lb;
       case 'LCB':
-        return Position.LCB;
+        return Position.lcb;
       case 'CB':
-        return Position.CB;
+        return Position.cb;
       case 'RCB':
-        return Position.RCB;
+        return Position.rcb;
       case 'RB':
-        return Position.RB;
+        return Position.rb;
       case 'LWB':
-        return Position.LWB;
+        return Position.lwb;
       case 'LDM':
-        return Position.LDM;
+        return Position.ldm;
       case 'CDM':
-        return Position.CDM;
+        return Position.cdm;
       case 'RDM':
-        return Position.RDM;
+        return Position.rdm;
       case 'RWB':
-        return Position.RWB;
+        return Position.rwb;
       case 'LM':
-        return Position.LM;
+        return Position.lm;
       case 'LCM':
-        return Position.LCM;
+        return Position.lcm;
       case 'CM':
-        return Position.CM;
+        return Position.cm;
       case 'RCM':
-        return Position.RCM;
+        return Position.rcm;
       case 'RM':
-        return Position.RM;
+        return Position.rm;
       case 'LAM':
-        return Position.LAM;
+        return Position.lam;
       case 'CAM':
-        return Position.CAM;
+        return Position.cam;
       case 'RAM':
-        return Position.RAM;
+        return Position.ram;
       case 'LW':
-        return Position.LW;
+        return Position.lw;
       case 'LF':
-        return Position.LF;
+        return Position.lf;
       case 'CF':
-        return Position.CF;
+        return Position.cf;
       case 'RF':
-        return Position.RF;
+        return Position.rf;
       case 'RW':
-        return Position.RW;
+        return Position.rw;
       case 'LS':
-        return Position.LS;
+        return Position.ls;
       case 'ST':
-        return Position.ST;
+        return Position.st;
       case 'RS':
-        return Position.RS;
+        return Position.rs;
       default:
         throw MapperException.unknownEnumValue(value);
     }
@@ -87,59 +87,59 @@ class PositionMapper extends EnumMapper<Position> {
   @override
   dynamic encode(Position self) {
     switch (self) {
-      case Position.GK:
+      case Position.gk:
         return 'GK';
-      case Position.LB:
+      case Position.lb:
         return 'LB';
-      case Position.LCB:
+      case Position.lcb:
         return 'LCB';
-      case Position.CB:
+      case Position.cb:
         return 'CB';
-      case Position.RCB:
+      case Position.rcb:
         return 'RCB';
-      case Position.RB:
+      case Position.rb:
         return 'RB';
-      case Position.LWB:
+      case Position.lwb:
         return 'LWB';
-      case Position.LDM:
+      case Position.ldm:
         return 'LDM';
-      case Position.CDM:
+      case Position.cdm:
         return 'CDM';
-      case Position.RDM:
+      case Position.rdm:
         return 'RDM';
-      case Position.RWB:
+      case Position.rwb:
         return 'RWB';
-      case Position.LM:
+      case Position.lm:
         return 'LM';
-      case Position.LCM:
+      case Position.lcm:
         return 'LCM';
-      case Position.CM:
+      case Position.cm:
         return 'CM';
-      case Position.RCM:
+      case Position.rcm:
         return 'RCM';
-      case Position.RM:
+      case Position.rm:
         return 'RM';
-      case Position.LAM:
+      case Position.lam:
         return 'LAM';
-      case Position.CAM:
+      case Position.cam:
         return 'CAM';
-      case Position.RAM:
+      case Position.ram:
         return 'RAM';
-      case Position.LW:
+      case Position.lw:
         return 'LW';
-      case Position.LF:
+      case Position.lf:
         return 'LF';
-      case Position.CF:
+      case Position.cf:
         return 'CF';
-      case Position.RF:
+      case Position.rf:
         return 'RF';
-      case Position.RW:
+      case Position.rw:
         return 'RW';
-      case Position.LS:
+      case Position.ls:
         return 'LS';
-      case Position.ST:
+      case Position.st:
         return 'ST';
-      case Position.RS:
+      case Position.rs:
         return 'RS';
     }
   }

@@ -14,7 +14,7 @@ class PlayerHeaders extends StatelessWidget {
           id: 19541,
           name: 'Lionel Messi',
           rarity: Rarity(id: 5, name: 'TOTY'),
-          position: Position.CF,
+          position: Position.cf,
           rating: 97,
         ),
         playerVersions: null,
