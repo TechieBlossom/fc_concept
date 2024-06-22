@@ -38,7 +38,7 @@ class RarityNestedFilterPage extends StatelessWidget {
                   children: [
                     SingleChildScrollView(
                       child: Padding(
-                        padding: spacingXL.bottom,
+                        padding: spacingXXXL.bottom + spacingXXXL.bottom,
                         child: FilterGroup(
                           pillItems: state.rarities!
                               .map(

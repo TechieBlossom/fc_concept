@@ -44,7 +44,7 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
           ),
         if (otherItems?.isNotEmpty ?? false)
           Padding(
-            padding: spacingXL.bottom,
+            padding: spacingXXXL.bottom + spacingXXXL.bottom,
             child: FilterGroup(
               title: 'Other',
               pillItems: otherItems!

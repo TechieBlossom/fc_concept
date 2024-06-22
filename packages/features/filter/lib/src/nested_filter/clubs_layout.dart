@@ -25,7 +25,7 @@ class ClubsLayout extends StatelessWidget {
       children: map?.map(
             (entry) {
               return Padding(
-                padding: spacingXL.bottom,
+                padding: spacingXXXL.bottom + spacingXXXL.bottom,
                 child: FilterGroup(
                   title: leagues
                           ?.firstWhere((league) => league.id == entry.key)

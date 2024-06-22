@@ -40,8 +40,13 @@ class _SpacingXL extends Spacing {
   const _SpacingXL() : super(16);
 }
 
+class _SpacingXXXL extends Spacing {
+  const _SpacingXXXL() : super(48);
+}
+
 const spacingXS = _SpacingXS();
 const spacingS = _SpacingS();
 const spacingM = _SpacingM();
 const spacingL = _SpacingL();
 const spacingXL = _SpacingXL();
+const spacingXXXL = _SpacingXXXL();
