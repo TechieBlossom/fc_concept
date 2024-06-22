@@ -1,0 +1,44 @@
+import 'package:core_design/design.dart';
+import 'package:flutter/material.dart';
+
+class ErrorButton extends StatelessWidget {
+  const ErrorButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
+
+  final String text;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        minHeight: 36,
+        maxHeight: 36,
+      ),
+      child: FilledButton(
+        style: ButtonStyle(
+          textStyle: WidgetStateProperty.all<TextStyle?>(
+            Theme.of(context).textTheme.labelMedium,
+          ),
+          foregroundColor: WidgetStateProperty.all<Color>(
+            Theme.of(context).colorScheme.onPrimary,
+          ),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(borderRadius: mediumCorner.all),
+          ),
+          backgroundColor: WidgetStateProperty.all<Color?>(
+            Theme.of(context).colorScheme.error,
+          ),
+          padding: WidgetStateProperty.all<EdgeInsets>(
+            spacingXL.horizontal + spacingM.vertical,
+          ),
+        ),
+        onPressed: onPressed,
+        child: Text(text.toUpperCase()),
+      ),
+    );
+  }
+}

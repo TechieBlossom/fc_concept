@@ -1,0 +1,2 @@
+const tablePlayer = '';
+const columnId = '';

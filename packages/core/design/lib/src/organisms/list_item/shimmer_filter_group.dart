@@ -1,0 +1,45 @@
+import 'package:core_design/design.dart';
+import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+class ShimmerFilterGroup extends StatelessWidget {
+  const ShimmerFilterGroup({
+    super.key,
+    this.margin,
+  });
+
+  final EdgeInsets? margin;
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: const Color(0xFFE3E3E3),
+      highlightColor: const Color(0xFFF4F4F4),
+      child: Padding(
+        padding: spacingXL.horizontal + spacingXL.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: mediumCorner.all,
+                color: const Color(0xffff0000),
+              ),
+              height: 20,
+              width: 100,
+            ),
+            SizedBox(height: spacingM.value),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: mediumCorner.all,
+                color: const Color(0xffff0000),
+              ),
+              height: 75,
+              width: double.infinity,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

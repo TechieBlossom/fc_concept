@@ -1,0 +1,4 @@
+include: package:utility_analysis/analysis_options.yaml
+
+linter:
+  avoid_implementing_value_types

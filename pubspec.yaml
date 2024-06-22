@@ -1,0 +1,47 @@
+name: fc_concept
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: ">=3.22.0"
+
+dependencies:
+  cached_network_image: ^3.3.1
+  core_api_client:
+    path: packages/core/api_client
+  core_design:
+    path: packages/core/design
+  core_domain:
+    path: packages/core/domain
+  cupertino_icons: ^1.0.6
+  feature_compare:
+    path: packages/features/compare
+  feature_drawer:
+    path: packages/features/drawer
+  feature_filter:
+    path: packages/features/filter
+  feature_player:
+    path: packages/features/player
+  flutter:
+    sdk: flutter
+  injectable: 2.3.2
+  melos: ^5.3.0
+  utility_catalog:
+    path: packages/utility/catalog
+  utility_di:
+    path: packages/utility/di
+  utility_navigation:
+    path: packages/utility/navigation
+
+dev_dependencies:
+  build_runner: ^2.4.9
+  flutter_test:
+    sdk: flutter
+  injectable_generator: 2.4.1
+  utility_analysis:
+    path: packages/utility/analysis
+
+flutter:
+  uses-material-design: true
