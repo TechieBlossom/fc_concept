@@ -35,7 +35,7 @@ class PageTitle extends StatelessWidget implements PreferredSize {
       actions: [
         if (action != null)
           SecondaryButton(
-            buttonType: isSmall ? ButtonType.small : ButtonType.normal,
+            buttonType: isSmall ? ButtonSize.small : ButtonSize.normal,
             text: action!,
             onPressed: onAction,
           ),

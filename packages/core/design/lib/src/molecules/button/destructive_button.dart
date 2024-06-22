@@ -1,8 +1,8 @@
 import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 
-class ErrorButton extends StatelessWidget {
-  const ErrorButton({
+class DestructiveButton extends StatelessWidget {
+  const DestructiveButton({
     super.key,
     required this.text,
     required this.onPressed,

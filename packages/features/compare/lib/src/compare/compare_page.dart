@@ -263,7 +263,7 @@ class PlayerPlaceholder extends StatelessWidget {
             ),
             PrimaryButton(
               text: 'Select Player',
-              buttonType: ButtonType.small,
+              buttonType: ButtonSize.small,
               onPressed: onPlayerSelection,
             ),
           ],
@@ -278,7 +278,7 @@ class PlayerPlaceholder extends StatelessWidget {
             SizedBox(height: spacingM.value),
             PrimaryButton(
               text: 'Change Player',
-              buttonType: ButtonType.small,
+              buttonType: ButtonSize.small,
               onPressed: onPlayerSelection,
             ),
             SizedBox(height: spacingM.value),

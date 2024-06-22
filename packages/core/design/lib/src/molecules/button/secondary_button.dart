@@ -6,12 +6,12 @@ class SecondaryButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
-    this.buttonType = ButtonType.normal,
+    this.buttonType = ButtonSize.normal,
   });
 
   final String text;
   final VoidCallback? onPressed;
-  final ButtonType buttonType;
+  final ButtonSize buttonType;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class SecondaryButton extends StatelessWidget {
       style: ButtonStyle(
         textStyle: WidgetStateProperty.all<TextStyle?>(
           switch (buttonType) {
-            ButtonType.normal => Theme.of(context).textTheme.labelMedium,
-            ButtonType.small => Theme.of(context).textTheme.labelSmall,
+            ButtonSize.normal => Theme.of(context).textTheme.labelMedium,
+            ButtonSize.small => Theme.of(context).textTheme.labelSmall,
           },
         ),
         foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
@@ -39,9 +39,9 @@ class SecondaryButton extends StatelessWidget {
         backgroundColor: WidgetStateProperty.all<Color?>(Colors.transparent),
         padding: WidgetStateProperty.all<EdgeInsets>(
           switch (buttonType) {
-            ButtonType.normal =>
+            ButtonSize.normal =>
               spacingXL.horizontal + spacingM.vertical,
-            ButtonType.small =>
+            ButtonSize.small =>
               spacingM.horizontal + spacingXS.vertical,
           },
         ),

@@ -6,26 +6,26 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
-    this.buttonType = ButtonType.normal,
+    this.buttonType = ButtonSize.normal,
   });
 
   final String text;
   final VoidCallback? onPressed;
-  final ButtonType buttonType;
+  final ButtonSize buttonType;
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: buttonType == ButtonType.normal ? 36 : 32,
-        maxHeight: buttonType == ButtonType.normal ? 36 : 32,
+        minHeight: buttonType == ButtonSize.normal ? 36 : 32,
+        maxHeight: buttonType == ButtonSize.normal ? 36 : 32,
       ),
       child: FilledButton(
         style: ButtonStyle(
           textStyle: WidgetStateProperty.all<TextStyle?>(
             switch (buttonType) {
-              ButtonType.normal => Theme.of(context).textTheme.labelMedium,
-              ButtonType.small => Theme.of(context).textTheme.labelSmall,
+              ButtonSize.normal => Theme.of(context).textTheme.labelMedium,
+              ButtonSize.small => Theme.of(context).textTheme.labelSmall,
             },
           ),
           foregroundColor: WidgetStateProperty.all<Color>(
@@ -34,8 +34,8 @@ class PrimaryButton extends StatelessWidget {
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: switch (buttonType) {
-                ButtonType.normal => mediumCorner.all,
-                ButtonType.small => smallCorner.all,
+                ButtonSize.normal => mediumCorner.all,
+                ButtonSize.small => smallCorner.all,
               },
             ),
           ),
@@ -49,8 +49,8 @@ class PrimaryButton extends StatelessWidget {
           }),
           padding: WidgetStateProperty.all<EdgeInsets>(
             switch (buttonType) {
-              ButtonType.normal => spacingXL.horizontal,
-              ButtonType.small => spacingL.horizontal,
+              ButtonSize.normal => spacingXL.horizontal,
+              ButtonSize.small => spacingL.horizontal,
             },
           ),
         ),

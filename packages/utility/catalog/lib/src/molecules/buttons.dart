@@ -20,7 +20,7 @@ class Buttons extends StatelessWidget {
                 ),
                 SizedBox(height: spacingXL.value),
                 PrimaryButton(
-                  buttonType: ButtonType.small,
+                  buttonType: ButtonSize.small,
                   text: 'Select Player',
                   onPressed: () {},
                 ),
@@ -30,7 +30,7 @@ class Buttons extends StatelessWidget {
                 ),
                 SizedBox(height: spacingXL.value),
                 const PrimaryButton(
-                  buttonType: ButtonType.small,
+                  buttonType: ButtonSize.small,
                   text: 'Primary Normal Small Disabled',
                 ),
                 SizedBox(height: spacingXL.value),
@@ -40,7 +40,7 @@ class Buttons extends StatelessWidget {
                 ),
                 SizedBox(height: spacingXL.value),
                 SecondaryButton(
-                  buttonType: ButtonType.small,
+                  buttonType: ButtonSize.small,
                   text: 'Secondary Normal Small',
                   onPressed: () {},
                 ),
@@ -50,11 +50,11 @@ class Buttons extends StatelessWidget {
                 ),
                 SizedBox(height: spacingXL.value),
                 const SecondaryButton(
-                  buttonType: ButtonType.small,
+                  buttonType: ButtonSize.small,
                   text: 'Secondary Normal Small Disabled',
                 ),
                 SizedBox(height: spacingXL.value),
-                ErrorButton(
+                DestructiveButton(
                   text: 'Delete',
                   onPressed: () {},
                 ),
