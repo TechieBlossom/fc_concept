@@ -29,7 +29,10 @@ class Ornaments extends StatelessWidget {
               hasBorder: true,
               ornamentType: OrnamentType.full,
               borderRadius: mediumCorner.all,
-              icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 16,),
+              icon: const Icon(
+                Icons.keyboard_arrow_down_rounded,
+                size: 16,
+              ),
             ),
           ],
         ),

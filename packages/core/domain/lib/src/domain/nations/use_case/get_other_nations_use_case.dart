@@ -9,5 +9,6 @@ class GetOtherNationsUseCase {
 
   final NationRepository nationRepository;
 
-  Future<Result<List<Nation>>> call() async => nationRepository.getOtherNations();
+  Future<Result<List<Nation>>> call() async =>
+      nationRepository.getOtherNations();
 }

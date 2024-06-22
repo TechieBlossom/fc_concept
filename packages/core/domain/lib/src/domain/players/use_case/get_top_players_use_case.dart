@@ -5,7 +5,6 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetTopPlayerUseCase {
-
   const GetTopPlayerUseCase(this._playerRepository);
 
   final PlayerRepository _playerRepository;

@@ -35,4 +35,3 @@ class TapFoot extends FilterEvent with TapFootMappable {
 
 @MappableClass(discriminatorValue: 'apply')
 class Apply extends FilterEvent with ApplyMappable {}
-

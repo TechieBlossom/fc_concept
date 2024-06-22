@@ -9,5 +9,6 @@ class GetOtherLeaguesUseCase {
 
   final LeagueRepository leagueRepository;
 
-  Future<Result<List<League>>> call() async => leagueRepository.getOtherLeagues();
+  Future<Result<List<League>>> call() async =>
+      leagueRepository.getOtherLeagues();
 }

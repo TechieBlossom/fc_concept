@@ -10,7 +10,9 @@ class AtomsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Atoms'),),
+      appBar: AppBar(
+        title: const Text('Atoms'),
+      ),
       body: ListView(
         children: [
           ListTile(

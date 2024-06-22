@@ -4,7 +4,10 @@ part 'rarity.mapper.dart';
 
 @MappableClass()
 class Rarity with RarityMappable {
-  const Rarity({required this.id, required this.name,});
+  const Rarity({
+    required this.id,
+    required this.name,
+  });
 
   final int id;
   final String name;

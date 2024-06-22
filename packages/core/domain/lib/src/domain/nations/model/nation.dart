@@ -9,7 +9,10 @@ class Nation extends NestedFilterLayoutType with NationMappable {
     required int id,
     required String name,
     required this.isTop,
-  }) : super(id: id, name: name,);
+  }) : super(
+          id: id,
+          name: name,
+        );
 
   final bool isTop;
 

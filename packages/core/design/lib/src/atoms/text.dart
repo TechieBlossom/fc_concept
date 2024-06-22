@@ -7,7 +7,7 @@ final digitTextStyle = GoogleFonts.barlowCondensed();
 final textTheme = TextTheme(
   headlineSmall: textStyle.copyWith(
     fontSize: 32,
-    height: 40/32,
+    height: 40 / 32,
     letterSpacing: 0.25,
   ),
   titleMedium: textStyle.copyWith(
@@ -17,28 +17,28 @@ final textTheme = TextTheme(
   ),
   titleSmall: textStyle.copyWith(
     fontSize: 16,
-    height: 20/16,
+    height: 20 / 16,
     letterSpacing: 0.25,
   ),
   labelMedium: textStyle.copyWith(
     fontSize: 14,
     letterSpacing: 0.1,
-    height: 20/14,
+    height: 20 / 14,
     fontWeight: FontWeight.w600,
   ),
   bodyMedium: textStyle.copyWith(
     fontSize: 14,
-    height: 20/14,
+    height: 20 / 14,
     letterSpacing: 0.1,
   ),
   bodySmall: textStyle.copyWith(
     fontSize: 12,
-    height: 20/12,
+    height: 20 / 12,
     letterSpacing: 0.1,
   ),
   labelSmall: textStyle.copyWith(
     fontSize: 12,
-    height: 20/12,
+    height: 20 / 12,
     letterSpacing: 0.1,
     fontWeight: FontWeight.w600,
   ),

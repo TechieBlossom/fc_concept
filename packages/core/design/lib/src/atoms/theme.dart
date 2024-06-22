@@ -57,36 +57,36 @@ extension XBuildContext on BuildContext {
   TextStyle labelSmall() => Theme.of(this).textTheme.labelSmall!;
 
   TextStyle headlineSmallDigit() => digitTextStyle.copyWith(
-    fontSize: 32,
-    height: 40/32,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w600,
-  );
+        fontSize: 32,
+        height: 40 / 32,
+        letterSpacing: 0.25,
+        fontWeight: FontWeight.w600,
+      );
 
   TextStyle titleMediumDigit() => digitTextStyle.copyWith(
-    fontSize: 20,
-    height: 20/20,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w600,
-  );
+        fontSize: 20,
+        height: 20 / 20,
+        letterSpacing: 0.25,
+        fontWeight: FontWeight.w600,
+      );
 
   TextStyle labelMediumDigit() => digitTextStyle.copyWith(
-    fontSize: 14,
-    height: 20/14,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w600,
-  );
+        fontSize: 14,
+        height: 20 / 14,
+        letterSpacing: 0.1,
+        fontWeight: FontWeight.w600,
+      );
 
   TextStyle labelSmallDigit() => digitTextStyle.copyWith(
-    fontSize: 12,
-    height: 20/12,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w600,
-  );
+        fontSize: 12,
+        height: 20 / 12,
+        letterSpacing: 0.1,
+        fontWeight: FontWeight.w600,
+      );
 
   TextStyle bodySmallDigit() => digitTextStyle.copyWith(
-    fontSize: 12,
-    height: 20/12,
-    letterSpacing: 0.1,
-  );
+        fontSize: 12,
+        height: 20 / 12,
+        letterSpacing: 0.1,
+      );
 }

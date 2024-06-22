@@ -1,5 +1,5 @@
-import 'package:core_domain/domain.dart';
 import 'package:core_domain/src/domain/clubs/model/club.dart';
+import 'package:core_domain/src/domain/common/foot.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 import 'package:core_domain/src/domain/common/position.dart';

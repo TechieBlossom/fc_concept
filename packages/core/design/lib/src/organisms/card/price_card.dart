@@ -26,9 +26,7 @@ class PriceCard extends StatelessWidget {
               color: Color(bg).withOpacity(0.7),
             ),
             margin: spacingL.top,
-            padding: spacingL.horizontal +
-                spacingM.bottom +
-                spacingXL.top,
+            padding: spacingL.horizontal + spacingM.bottom + spacingXL.top,
             child: Column(
               children: priceItems
                   .map(

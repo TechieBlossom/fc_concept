@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class PillItem<T> {
-
   const PillItem({
     required this.data,
     required this.text,

@@ -72,12 +72,12 @@ class Cards extends StatelessWidget {
             heading: 'Pace',
             statItems: [
               StatItem(
-                  label: 'Acceleration',
-                  value: '90',
+                label: 'Acceleration',
+                value: '90',
               ),
               StatItem(
-                  label: 'Sprint Speed',
-                  value: '90',
+                label: 'Sprint Speed',
+                value: '90',
               ),
             ],
           ),
@@ -86,28 +86,28 @@ class Cards extends StatelessWidget {
             heading: 'Pace',
             statItems: [
               StatItem(
-                  label: 'Acceleration',
-                  value: '90',
+                label: 'Acceleration',
+                value: '90',
               ),
               StatItem(
-                  label: 'Sprint Speed',
-                  value: '90',
+                label: 'Sprint Speed',
+                value: '90',
               ),
               StatItem(
-                  label: 'Acceleration',
-                  value: '90',
+                label: 'Acceleration',
+                value: '90',
               ),
               StatItem(
-                  label: 'Sprint Speed',
-                  value: '90',
+                label: 'Sprint Speed',
+                value: '90',
               ),
               StatItem(
-                  label: 'Acceleration',
-                  value: '90',
+                label: 'Acceleration',
+                value: '90',
               ),
               StatItem(
-                  label: 'Sprint Speed',
-                  value: '90',
+                label: 'Sprint Speed',
+                value: '90',
               ),
             ],
           ),

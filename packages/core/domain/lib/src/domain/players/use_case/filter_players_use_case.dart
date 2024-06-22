@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class FilterPlayersUseCase {
-
   const FilterPlayersUseCase(this._playerRepository);
 
   final PlayerRepository _playerRepository;
@@ -12,7 +11,7 @@ class FilterPlayersUseCase {
   Future<Result<List<Player>?>> call({
     int page = 0,
     required FilterConfiguration? filterConfiguration,
-}) async {
+  }) async {
     return _playerRepository.filterPlayers(
       page: page,
       leagues: filterConfiguration?.leagues,

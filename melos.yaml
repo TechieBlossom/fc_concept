@@ -1,7 +1,8 @@
 name: eed_app
 
 packages:
-  - /**
+  - /
+  - packages/**
 
 scripts:
   analyze:
@@ -11,3 +12,11 @@ scripts:
   get:
     run: melos exec -c 1 -- flutter pub get
     description: Run `flutter pub get` in all packages.
+
+  fix:
+    description: Run `dart fix` in all packages
+    run: melos exec -c 1 -- dart fix --apply
+
+  format:
+    description: Run `dart format` in all packages
+    run: melos exec -c 1 -- dart format .

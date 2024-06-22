@@ -27,19 +27,17 @@ class StatsCardVertical extends StatelessWidget {
             color: Theme.of(context).colorScheme.tertiaryContainer,
           ),
           margin: spacingL.top,
-          padding: spacingL.horizontal +
-              spacingM.bottom +
-              spacingXL.top,
+          padding: spacingL.horizontal + spacingM.bottom + spacingXL.top,
           child: Column(
             children: statItems
                 .map(
                   (statItem) => Padding(
-                padding: spacingXS.bottom,
-                child: StatH(
-                  statItem: statItem,
-                ),
-              ),
-            )
+                    padding: spacingXS.bottom,
+                    child: StatH(
+                      statItem: statItem,
+                    ),
+                  ),
+                )
                 .toList(),
           ),
         ),

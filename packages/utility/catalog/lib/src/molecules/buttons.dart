@@ -68,7 +68,7 @@ class Buttons extends StatelessWidget {
                 SizedBox(height: spacingXL.value),
                 PullDownButton(
                   onTap: () {},
-                  constrainedWidth: MediaQuery.sizeOf(context).width/2 - 32,
+                  constrainedWidth: MediaQuery.sizeOf(context).width / 2 - 32,
                   label: 'Champions League Women',
                   icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 16),
                   borderRadius: mediumCorner.all,

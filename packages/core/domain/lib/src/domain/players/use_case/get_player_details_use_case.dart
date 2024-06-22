@@ -5,7 +5,6 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetPlayerDetailsUseCase {
-
   const GetPlayerDetailsUseCase(this._playerRepository);
 
   final PlayerRepository _playerRepository;

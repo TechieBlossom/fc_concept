@@ -58,8 +58,7 @@ class PlayerHeader extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(player.name,
-                                style: context.titleMedium()),
+                            Text(player.name, style: context.titleMedium()),
                             SizedBox(height: spacingS.value),
                             Row(
                               children: [

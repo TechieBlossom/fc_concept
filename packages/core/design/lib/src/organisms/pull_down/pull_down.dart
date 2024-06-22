@@ -176,8 +176,7 @@ class _PullDownState extends State<PullDown>
                               );
                             },
                             child: Padding(
-                              padding: spacingM.horizontal +
-                                  spacingXS.vertical,
+                              padding: spacingM.horizontal + spacingXS.vertical,
                               child: Text(
                                 item.$3,
                                 style: context.bodySmall(),

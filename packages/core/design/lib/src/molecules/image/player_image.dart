@@ -15,11 +15,11 @@ class PlayerImage extends StatelessWidget {
   final int playerId;
 
   (double?, double?) get dimensions => switch (size) {
-    PlayerImageSize.small => (53.67, 75),
-    PlayerImageSize.medium => (71.56 ,100),
-    PlayerImageSize.large => (200.36, 280),
-    PlayerImageSize.infiniteWidth => (null, null),
-  };
+        PlayerImageSize.small => (53.67, 75),
+        PlayerImageSize.medium => (71.56, 100),
+        PlayerImageSize.large => (200.36, 280),
+        PlayerImageSize.infiniteWidth => (null, null),
+      };
 
   @override
   Widget build(BuildContext context) {

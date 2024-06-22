@@ -23,7 +23,10 @@ class InfoCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: mediumCorner.all,
-        color: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.7),
+        color: Theme.of(context)
+            .colorScheme
+            .surfaceContainerHighest
+            .withOpacity(0.7),
       ),
       child: Padding(
         padding: spacingM.vertical,

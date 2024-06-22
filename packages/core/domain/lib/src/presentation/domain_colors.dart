@@ -30,79 +30,79 @@ const totyFg = 0xFFE8DC9A;
 const totsBg = 0xFF071F50;
 const totsFg = 0xFFFBEBAB;
 
-const futureStarsIconBg= 0xFFF5F5F6;
+const futureStarsIconBg = 0xFFF5F5F6;
 const futureStarsIconFg = 0xFF69038B;
 
-const futBirthdayIconBg= 0xFF9335FE;
+const futBirthdayIconBg = 0xFF9335FE;
 const futBirthdayIconFg = 0xFFDBDBDB;
 
-const futBirthdayBg= 0xFF9335FE;
+const futBirthdayBg = 0xFF9335FE;
 const futBirthdayFg = 0xFFFFFFFF;
 
-const winterWildcardsIconBg= 0xFFC1C8C1;
+const winterWildcardsIconBg = 0xFFC1C8C1;
 const winterWildcardsIconFg = 0xFF594D2C;
 
-const punditPicksBg= 0xFF09160B;
+const punditPicksBg = 0xFF09160B;
 const punditPicksFg = 0xFFE8BB0A;
 
-const iconsBg= 0xFFDCCC9F;
+const iconsBg = 0xFFDCCC9F;
 const iconsFg = 0xFF5E4E22;
 
-const trailblazersBg= 0xFFFE3433;
+const trailblazersBg = 0xFFFE3433;
 const trailblazersFg = 0xFFFFFFFF;
 
-const premiumSbcBg= 0xFF2F1735;
+const premiumSbcBg = 0xFF2F1735;
 const premiumSbcFg = 0xFFEEEEE4;
 
-const tripleThreatBg= 0xFF181321;
+const tripleThreatBg = 0xFF181321;
 const tripleThreatFg = 0xFFFFFFFF;
 
-const womenCLRttfBg= 0xFF0042C0;
+const womenCLRttfBg = 0xFF0042C0;
 const womenCLRttfFg = 0xFFFFFFFF;
 
-const womenCLRttkBg= 0xFF0043C0;
+const womenCLRttkBg = 0xFF0043C0;
 const womenCLRttkFg = 0xFFFFFFFF;
 
-const thunderstruckBg= 0xFF13121B;
+const thunderstruckBg = 0xFF13121B;
 const thunderstruckFg = 0xFFFFFFFF;
 
-const fcProBg= 0xFF7500C2;
+const fcProBg = 0xFF7500C2;
 const fcProFg = 0xFFFFFFFF;
 
-const radioactiveBg= 0xFFDCE009;
+const radioactiveBg = 0xFFDCE009;
 const radioactiveFg = 0xFF1A210C;
 
-const potmBundesligaBg= 0xFF90050F;
+const potmBundesligaBg = 0xFF90050F;
 const potmBundesligaFg = 0xFFFFFFFF;
 
-const potmPremierLeagueBg= 0xFF45046A;
+const potmPremierLeagueBg = 0xFF45046A;
 const potmPremierLeagueFg = 0xFF25D9F1;
 
-const uelRttfBg= 0xFFF179B0B;
+const uelRttfBg = 0xFFF179B0B;
 const uelRttfFg = 0xFFFFFFFF;
 
-const uclRttfBg= 0xFF0D53B4;
+const uclRttfBg = 0xFF0D53B4;
 const uclRttfFg = 0xFFFFFFFF;
 
-const flashbackSbcBg= 0xFF1E104C;
+const flashbackSbcBg = 0xFF1E104C;
 const flashbackSbcFg = 0xFFF2F2F2;
 
-const sudamericanaBg= 0xFF202020;
+const sudamericanaBg = 0xFF202020;
 const sudamericanaFg = 0xFFD8D8D8;
 
-const libertadoresBg= 0xFF171717;
+const libertadoresBg = 0xFF171717;
 const libertadoresFg = 0xFFD8D8D8;
 
-const futureStarsAcademyBg= 0xFFD399FF;
+const futureStarsAcademyBg = 0xFFD399FF;
 const futureStarsAcademyFg = 0xFF69038B;
 
-const showdownUpgradeBg= 0xFF10100F;
+const showdownUpgradeBg = 0xFF10100F;
 const showdownUpgradeFg = 0xFFE6FF00;
 
-const showdownBg= 0xFF10100F;
+const showdownBg = 0xFF10100F;
 const showdownFg = 0xFFFFFFFF;
 
-const totyHonourableBg= 0xFF00004A;
+const totyHonourableBg = 0xFF00004A;
 const totyHonourableFg = 0xFFEFD668;
 
 const uclTotgsBg = 0xFF06113C;

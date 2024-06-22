@@ -39,10 +39,8 @@ class SecondaryButton extends StatelessWidget {
         backgroundColor: WidgetStateProperty.all<Color?>(Colors.transparent),
         padding: WidgetStateProperty.all<EdgeInsets>(
           switch (buttonType) {
-            ButtonSize.normal =>
-              spacingXL.horizontal + spacingM.vertical,
-            ButtonSize.small =>
-              spacingM.horizontal + spacingXS.vertical,
+            ButtonSize.normal => spacingXL.horizontal + spacingM.vertical,
+            ButtonSize.small => spacingM.horizontal + spacingXS.vertical,
           },
         ),
       ),

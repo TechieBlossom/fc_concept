@@ -9,9 +9,10 @@ class PageTitle extends StatelessWidget implements PreferredSize {
     this.action,
     this.onAction,
     this.onBack,
-  }) : assert((action == null && onAction == null) ||
-            (action != null && onAction != null),);
-
+  }) : assert(
+          (action == null && onAction == null) ||
+              (action != null && onAction != null),
+        );
 
   final String? title;
   final bool isSmall;

@@ -11,11 +11,11 @@ class PullDownButton extends StatelessWidget {
     this.onTap,
     this.constrainedWidth,
   }) : assert(
-  (constrainedWidth != null &&
-      pullDownButtonType == PullDownButtonType.compact) ||
-      (constrainedWidth == null &&
-          pullDownButtonType == PullDownButtonType.full),
-  );
+          (constrainedWidth != null &&
+                  pullDownButtonType == PullDownButtonType.compact) ||
+              (constrainedWidth == null &&
+                  pullDownButtonType == PullDownButtonType.full),
+        );
 
   final String label;
   final BorderRadius? borderRadius;
@@ -29,11 +29,10 @@ class PullDownButton extends StatelessWidget {
     return ConstrainedBox(
       constraints: switch (pullDownButtonType) {
         PullDownButtonType.full => BoxConstraints(),
-        PullDownButtonType.compact =>
-            BoxConstraints(
-              minWidth: constrainedWidth!,
-              maxWidth: constrainedWidth!,
-            ),
+        PullDownButtonType.compact => BoxConstraints(
+            minWidth: constrainedWidth!,
+            maxWidth: constrainedWidth!,
+          ),
       },
       child: InkWell(
         onTap: onTap,
