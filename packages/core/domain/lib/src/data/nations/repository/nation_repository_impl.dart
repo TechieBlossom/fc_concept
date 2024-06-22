@@ -12,7 +12,7 @@ class NationRepositoryImpl extends NationRepository {
     try {
       final nationsResponse = await supabase
           .from(TableNation.tableNation)
-          .select<List<Map<String, dynamic>>>()
+          .select()
           .eq(TableNation.isTop, true)
           .order(TableNation.name);
 
@@ -28,7 +28,7 @@ class NationRepositoryImpl extends NationRepository {
     try {
       final nationsResponse = await supabase
           .from(TableNation.tableNation)
-          .select<List<Map<String, dynamic>>>()
+          .select()
           .eq(TableNation.isTop, false)
           .order(TableNation.name);
 

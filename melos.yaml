@@ -20,3 +20,15 @@ scripts:
   format:
     description: Run `dart format` in all packages
     run: melos exec -c 1 -- dart format .
+
+  outdated:
+    description: Run `flutter pub outdated` in all packages
+    run: melos exec -c 1 -- flutter pub outdated
+
+  upgrade:
+    description: Run `flutter pub upgrade` in all packages
+    run: melos exec -c 1 -- flutter pub upgrade
+
+  upgrade_major_versions:
+    description: Run `flutter pub upgrade` in all packages
+    run: melos exec -c 1 -- flutter pub upgrade --major-versions

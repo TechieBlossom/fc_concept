@@ -12,7 +12,7 @@ class LeagueRepositoryImpl extends LeagueRepository {
     try {
       final leaguesResponse = await supabase
           .from(TableLeague.tableLeague)
-          .select<List<Map<String, dynamic>>>()
+          .select()
           .eq(TableLeague.isTop, true)
           .order(TableLeague.name);
 
@@ -28,7 +28,7 @@ class LeagueRepositoryImpl extends LeagueRepository {
     try {
       final leaguesResponse = await supabase
           .from(TableLeague.tableLeague)
-          .select<List<Map<String, dynamic>>>()
+          .select()
           .eq(TableLeague.isTop, false)
           .order(TableLeague.name);
 

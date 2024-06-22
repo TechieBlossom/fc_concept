@@ -37,7 +37,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     try {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select<List<Map<String, dynamic>>>(_columnsToFetchForList)
+          .select(_columnsToFetchForList)
           .order(TablePlayer.rating)
           .order(TablePlayer.id, ascending: true)
           .range(start, end);
@@ -63,7 +63,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     try {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select<List<Map<String, dynamic>>>(_columnsToFetchForList)
+          .select(_columnsToFetchForList)
           .like(TablePlayer.name, '%$query%')
           .range(start, end);
 
@@ -96,32 +96,31 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final footNames = foots?.map((foot) => foot.name);
 
     try {
-      PostgrestFilterBuilder postgresFilterBuilder = supabase
-          .from(TablePlayer.tablePlayer)
-          .select<List<Map<String, dynamic>>>(_columnsToFetchForList);
+      PostgrestFilterBuilder postgresFilterBuilder =
+          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
       if (leagueIds != null && leagueIds.isNotEmpty) {
-        postgresFilterBuilder =
-            postgresFilterBuilder.in_(TablePlayer.league, leagueIds.toList());
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+            TablePlayer.league, leagueIds.toList());
       }
       if (clubIds != null && clubIds.isNotEmpty) {
         postgresFilterBuilder =
-            postgresFilterBuilder.in_(TablePlayer.club, clubIds.toList());
+            postgresFilterBuilder.inFilter(TablePlayer.club, clubIds.toList());
       }
       if (nationIds != null && nationIds.isNotEmpty) {
-        postgresFilterBuilder =
-            postgresFilterBuilder.in_(TablePlayer.nation, nationIds.toList());
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+            TablePlayer.nation, nationIds.toList());
       }
       if (genderNames != null && genderNames.isNotEmpty) {
-        postgresFilterBuilder =
-            postgresFilterBuilder.in_(TablePlayer.gender, genderNames.toList());
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+            TablePlayer.gender, genderNames.toList());
       }
       if (footNames != null && footNames.isNotEmpty) {
-        postgresFilterBuilder =
-            postgresFilterBuilder.in_(TablePlayer.foot, footNames.toList());
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+            TablePlayer.foot, footNames.toList());
       }
       if (rarityIds != null && rarityIds.isNotEmpty) {
-        postgresFilterBuilder =
-            postgresFilterBuilder.in_(TablePlayer.rarity, rarityIds.toList());
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+            TablePlayer.rarity, rarityIds.toList());
       }
 
       final playersResponse = await postgresFilterBuilder
@@ -150,7 +149,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     try {
       final playerResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select<Map<String, dynamic>>('*, $_rarityTable')
+          .select('*, $_rarityTable')
           .eq(TablePlayer.id, playerId)
           .limit(1)
           .single();
@@ -170,7 +169,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     try {
       final playerResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select<Map<String, dynamic>>('*, $_rarityTable')
+          .select('*, $_rarityTable')
           .match({
             TablePlayer.id: playerId,
             TablePlayer.rarity: versionId,
@@ -192,7 +191,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     try {
       final versionsResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select<List<Map<String, dynamic>>>(_columnsToFetchForVersions)
+          .select(_columnsToFetchForVersions)
           .eq(TablePlayer.name, name);
 
       final playerRarities = versionsResponse

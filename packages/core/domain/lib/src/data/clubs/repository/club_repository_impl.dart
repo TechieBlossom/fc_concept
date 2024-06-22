@@ -13,7 +13,7 @@ class ClubRepositoryImpl extends ClubRepository {
     try {
       final clubsResponse = await supabase
           .from(TableClub.tableClub)
-          .select<List<Map<String, dynamic>>>()
+          .select()
           .or(filters.join(','));
 
       final clubs = mapClubs(clubsResponse);
