@@ -1,5 +1,6 @@
 import 'package:core_design/design.dart';
-import 'package:feature_drawer/src/app_drawer/bloc/app_drawer_bloc.dart';
+import 'package:feature_drawer/src/app_drawer/bloc/app_drawer_bloc.dart'
+    as bloc;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
@@ -11,9 +12,9 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AppDrawerBloc>(
-      create: (_) => di<AppDrawerBloc>(),
-      child: BlocBuilder<AppDrawerBloc, void>(
+    return BlocProvider<bloc.AppDrawerBloc>(
+      create: (_) => di<bloc.AppDrawerBloc>(),
+      child: BlocBuilder<bloc.AppDrawerBloc, void>(
         builder: (context, _) {
           return Drawer(
             backgroundColor: Colors.white,
@@ -87,8 +88,8 @@ class AppDrawer extends StatelessWidget {
                     text: 'Compare',
                     onTap: () {
                       scaffoldKey.currentState?.closeDrawer();
-                      context.read<AppDrawerBloc>().add(
-                            const AppDrawerEvent.compare(),
+                      context.read<bloc.AppDrawerBloc>().add(
+                            bloc.Compare(),
                           );
                     },
                   ),
@@ -122,8 +123,7 @@ class AppDrawer extends StatelessWidget {
                     onTap: () {},
                   ),
                   Padding(
-                    padding: spacingXL.horizontal +
-                        spacingM.vertical,
+                    padding: spacingXL.horizontal + spacingM.vertical,
                     child: Center(
                       child: Text(
                         'App Version 1.0.0',

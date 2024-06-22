@@ -18,4 +18,5 @@ class TablePlayer {
   static const rarity = 'rarity';
   static const color = 'color';
   static const gender = 'gender';
+  static const foot = 'foot';
 }

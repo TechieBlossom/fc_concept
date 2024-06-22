@@ -29,18 +29,18 @@ class _PlayerListPageState extends State<PlayerListPage> {
               margin: spacingXL.top * 3,
               isLoading: state.processState == ProcessState.loading,
               onSearch: (query) => context.read<PlayerListBloc>().add(
-                    PlayerListEvent.search(query: query),
+                    Search(query: query),
                   ),
               onFilterTap: () {
                 context.read<PlayerListBloc>().add(
-                  const PlayerListEvent.filterTap(),
-                );
+                      FilterTap(),
+                    );
               },
               onLeadingTap: () {
                 _scaffoldKey.currentState?.openDrawer();
               },
               onClearTap: () => context.read<PlayerListBloc>().add(
-                    const PlayerListEvent.search(),
+                    Search(query: ''),
                   ),
             ),
             drawer: AppDrawer(scaffoldKey: _scaffoldKey),
@@ -50,7 +50,7 @@ class _PlayerListPageState extends State<PlayerListPage> {
               players: state.players,
               query: state.query,
               nextPage: () => context.read<PlayerListBloc>().add(
-                    const PlayerListEvent.nextPage(),
+                    NextPage(),
                   ),
             ),
           );

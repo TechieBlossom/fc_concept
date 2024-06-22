@@ -1,15 +1,27 @@
 part of 'player_detail_bloc.dart';
 
-@freezed
-class PlayerDetailEvent with _$PlayerDetailEvent {
-  const factory PlayerDetailEvent.initial({
-    required Player player,
-  }) = _InitialPlayerDetailEvent;
+@MappableClass(discriminatorKey: 'playerDetailEvent')
+abstract class PlayerDetailEvent with PlayerDetailEventMappable {}
 
-  const factory PlayerDetailEvent.versionTap({
-    required int playerId,
-    required int versionId,
-  }) = _VersionTapPlayerDetailEvent;
+@MappableClass(discriminatorValue: 'init')
+class Init extends PlayerDetailEvent with InitMappable {
+  Init({
+    required this.player,
+  });
 
-  const factory PlayerDetailEvent.compareTap() = _CompareTapPlayerDetailEvent;
+  final Player player;
 }
+
+@MappableClass(discriminatorValue: 'versionTap')
+class VersionTap extends PlayerDetailEvent with VersionTapMappable {
+  VersionTap({
+    required this.playerId,
+    required this.versionId,
+  });
+
+  final int playerId;
+  final int versionId;
+}
+
+@MappableClass(discriminatorValue: 'compareTap')
+class CompareTap extends PlayerDetailEvent with CompareTapMappable {}

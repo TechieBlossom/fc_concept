@@ -21,12 +21,12 @@ class PlayerSelectionPage extends StatelessWidget {
                 SearchContainer(
                   isLoading: state.processState == ProcessState.loading,
                   onSearch: (query) => context.read<PlayerListBloc>().add(
-                        PlayerListEvent.search(query: query),
+                        Search(query: query),
                       ),
                   onFilterTap: null,
                   onLeadingTap: null,
                   onClearTap: () => context.read<PlayerListBloc>().add(
-                        const PlayerListEvent.search(),
+                        Search(query: ''),
                       ),
                 ),
                 Expanded(
@@ -36,7 +36,7 @@ class PlayerSelectionPage extends StatelessWidget {
                     players: state.players,
                     query: state.query,
                     nextPage: () => context.read<PlayerListBloc>().add(
-                          const PlayerListEvent.nextPage(),
+                          NextPage(),
                         ),
                     resultWithSelection: true,
                   ),

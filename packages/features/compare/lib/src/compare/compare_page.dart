@@ -216,7 +216,7 @@ class PlayerPlaceholders extends StatelessWidget {
           selectedVersion: selectedPlayer1Version,
           onPlayerSelection: () {
             context.read<CompareBloc>().add(
-                  const CompareEvent.selectPlayer(index: 0),
+                  SelectPlayer(index: 0),
                 );
           },
         ),
@@ -227,7 +227,7 @@ class PlayerPlaceholders extends StatelessWidget {
           selectedVersion: selectedPlayer2Version,
           onPlayerSelection: () {
             context.read<CompareBloc>().add(
-                  const CompareEvent.selectPlayer(index: 1),
+                  SelectPlayer(index: 1),
                 );
           },
         ),
@@ -303,7 +303,7 @@ class PlayerPlaceholder extends StatelessWidget {
                     .toList(),
                 onItemTapped: (version) {
                   context.read<CompareBloc>().add(
-                        CompareEvent.selectVersion(
+                        SelectVersion(
                           index: index,
                           playerId: version.$1,
                           versionId: version.$2,

@@ -1,17 +1,31 @@
 part of 'nested_filter_bloc.dart';
 
-@freezed
-class NestedFilterEvent with _$NestedFilterEvent {
-  const factory NestedFilterEvent.initial() = _Initial;
+@MappableClass(discriminatorKey: 'nestedFilterEvent')
+abstract class NestedFilterEvent with NestedFilterEventMappable {}
 
-  const factory NestedFilterEvent.selectClub({
-    required Club club,
-  }) = _SelectClub;
+@MappableClass(discriminatorValue: 'init')
+class Init extends NestedFilterEvent with InitMappable {}
 
-  const factory NestedFilterEvent.selectItem({
-    required NestedFilterLayoutType item,
-  }) = _SelectItem;
+@MappableClass(discriminatorValue: 'selectClub')
+class SelectClub extends NestedFilterEvent with SelectClubMappable {
+  SelectClub({
+    required this.club,
+  });
 
-  const factory NestedFilterEvent.done() = _Done;
-  const factory NestedFilterEvent.back() = _Back;
+  final Club club;
 }
+
+@MappableClass(discriminatorValue: 'selectItem')
+class SelectItem extends NestedFilterEvent with SelectItemMappable {
+  SelectItem({
+    required this.item,
+  });
+
+  final NestedFilterLayoutType item;
+}
+
+@MappableClass(discriminatorValue: 'done')
+class Done extends NestedFilterEvent with DoneMappable {}
+
+@MappableClass(discriminatorValue: 'Back')
+class Back extends NestedFilterEvent with BackMappable {}

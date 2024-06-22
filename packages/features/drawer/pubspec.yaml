@@ -12,6 +12,7 @@ dependencies:
     path: ../../../packages/core/design
   core_domain:
     path: ../../../packages/core/domain
+  dart_mappable: ^4.2.2
   feature_compare:
     path: ../../../packages/features/compare
   feature_player:
@@ -19,14 +20,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
-  freezed_annotation: ^2.4.1
   injectable: ^2.3.2
   utility_di:
     path: ../../../packages/utility/di
 
 dev_dependencies:
   build_runner: ^2.4.9
-  freezed: ^2.4.7
+  dart_mappable_builder: ^4.2.3
   injectable_generator: ^2.4.1
   utility_analysis:
     path: ../../../packages/utility/analysis

@@ -2,6 +2,7 @@ export 'package:core_domain/src/di/injector.dart';
 export 'package:core_domain/src/domain/clubs/model/club.dart';
 export 'package:core_domain/src/domain/clubs/use_case/get_clubs_by_league_use_case.dart';
 export 'package:core_domain/src/domain/common/card_color.dart';
+export 'package:core_domain/src/domain/common/foot.dart';
 export 'package:core_domain/src/domain/common/gender.dart';
 export 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 export 'package:core_domain/src/domain/common/position.dart';

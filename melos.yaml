@@ -5,9 +5,9 @@ packages:
 
 scripts:
   analyze:
-    run: melos exec -c 1 -- fvm flutter analyze .
+    run: melos exec -c 1 -- flutter analyze .
     description: Run `flutter analyze` in all packages.
 
   get:
-    run: melos exec -c 1 -- fvm flutter pub get
+    run: melos exec -c 1 -- flutter pub get
     description: Run `flutter pub get` in all packages.

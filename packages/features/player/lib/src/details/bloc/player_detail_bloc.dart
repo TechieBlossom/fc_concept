@@ -1,14 +1,12 @@
 import 'package:core_domain/domain.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'player_detail_bloc.freezed.dart';
-
+part 'player_detail_bloc.mapper.dart';
 part 'player_detail_event.dart';
-
 part 'player_detail_state.dart';
 
 @injectable
@@ -19,22 +17,18 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     this._getPlayerVersionsUseCase,
     this._getPlayerByVersionUseCase,
     this._playerNavigator,
-  ) : super(
-          PlayerDetailState(player: player),
-        ) {
-    on((PlayerDetailEvent event, emit) async {
-      await event.when(
-        initial: (player) => _initial(player, emit),
-        versionTap: (playerId, versionId) => _versionTap(
-          playerId,
-          versionId,
-          emit,
-        ),
-        compareTap: () => _compareTap(),
-      );
-    });
+  ) : super(PlayerDetailState(player: player)) {
+    on<Init>((event, emit) => _initial(player, emit));
+    on<VersionTap>(
+      (event, emit) => _versionTap(
+        event.playerId,
+        event.versionId,
+        emit,
+      ),
+    );
+    on<CompareTap>((event, emit) => _compareTap());
 
-    add(_InitialPlayerDetailEvent(player: player));
+    add(Init(player: player));
   }
 
   final GetPlayerDetailsUseCase _getPlayerDetailsUseCase;

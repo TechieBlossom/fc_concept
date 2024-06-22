@@ -62,7 +62,7 @@ class FilterPage extends StatelessWidget {
                           pillGap: spacingM,
                           margin: spacingXL,
                           onTap: () => context.read<FilterBloc>().add(
-                                const FilterEvent.tapLeague(),
+                                TapLeague(),
                               ),
                         ),
                       ),
@@ -88,7 +88,7 @@ class FilterPage extends StatelessWidget {
                           margin: spacingXL,
                           onTap: state.leagues != null
                               ? () => context.read<FilterBloc>().add(
-                                    const FilterEvent.tapClub(),
+                                    TapClub(),
                                   )
                               : null,
                         ),
@@ -114,7 +114,7 @@ class FilterPage extends StatelessWidget {
                           pillGap: spacingM,
                           margin: spacingXL,
                           onTap: () => context.read<FilterBloc>().add(
-                                const FilterEvent.tapNation(),
+                                TapNation(),
                               ),
                         ),
                       ),
@@ -139,7 +139,7 @@ class FilterPage extends StatelessWidget {
                           pillGap: spacingM,
                           margin: spacingXL,
                           onTap: () => context.read<FilterBloc>().add(
-                                const FilterEvent.tapRarity(),
+                                TapRarity(),
                               ),
                         ),
                       ),
@@ -155,7 +155,29 @@ class FilterPage extends StatelessWidget {
                                   isSelected:
                                       state.genders?.contains(gender) ?? false,
                                   onTap: () => context.read<FilterBloc>().add(
-                                        FilterEvent.tapGender(gender),
+                                        TapGender(gender: gender),
+                                      ),
+                                ),
+                              )
+                              .toList(),
+                          pillGap: spacingM,
+                          margin: spacingXL,
+                          onTap: () {},
+                        ),
+                      ),
+                      Padding(
+                        padding: spacingM.bottom,
+                        child: NestedFilterItem(
+                          title: 'Preferred Foot',
+                          selectedPills: Foot.values
+                              .map(
+                                (foot) => PillItem<Foot>(
+                                  data: foot,
+                                  text: foot.name,
+                                  isSelected:
+                                      state.foots?.contains(foot) ?? false,
+                                  onTap: () => context.read<FilterBloc>().add(
+                                        TapFoot(foot: foot),
                                       ),
                                 ),
                               )
@@ -187,7 +209,7 @@ class FilterPage extends StatelessWidget {
                         PrimaryButton(
                           text: 'Apply',
                           onPressed: () => context.read<FilterBloc>().add(
-                                const FilterEvent.apply(),
+                                Apply(),
                               ),
                         ),
                       ],

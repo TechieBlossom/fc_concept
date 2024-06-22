@@ -82,6 +82,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     List<Club>? clubs,
     List<Rarity>? rarities,
     List<Gender>? genders,
+    List<Foot>? foots,
     List<Position>? positions,
   }) async {
     final start = page * _itemsPerPage;
@@ -92,6 +93,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final nationIds = nations?.map((nation) => nation.id);
     final genderNames = genders?.map((gender) => gender.name);
     final rarityIds = rarities?.map((rarity) => rarity.id);
+    final footNames = foots?.map((foot) => foot.name);
 
     try {
       PostgrestFilterBuilder postgresFilterBuilder = supabase
@@ -112,6 +114,10 @@ class PlayerRepositoryImpl extends PlayerRepository {
       if (genderNames != null && genderNames.isNotEmpty) {
         postgresFilterBuilder =
             postgresFilterBuilder.in_(TablePlayer.gender, genderNames.toList());
+      }
+      if (footNames != null && footNames.isNotEmpty) {
+        postgresFilterBuilder =
+            postgresFilterBuilder.in_(TablePlayer.foot, footNames.toList());
       }
       if (rarityIds != null && rarityIds.isNotEmpty) {
         postgresFilterBuilder =

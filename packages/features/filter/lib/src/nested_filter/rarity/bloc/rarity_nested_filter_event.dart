@@ -1,12 +1,18 @@
 part of 'rarity_nested_filter_bloc.dart';
 
-@freezed
-class RarityNestedFilterEvent with _$RarityNestedFilterEvent {
-  const factory RarityNestedFilterEvent.initial() = _Initial;
+@MappableClass(discriminatorKey: 'event')
+abstract class RarityNestedFilterEvent with RarityNestedFilterEventMappable {}
 
-  const factory RarityNestedFilterEvent.selectRarity({
-    required Rarity item,
-  }) = _SelectRarity;
+@MappableClass(discriminatorValue: 'init')
+class Init extends RarityNestedFilterEvent with InitMappable {}
 
-  const factory RarityNestedFilterEvent.done() = _Done;
+@MappableClass(discriminatorValue: 'selectRarity')
+class SelectRarity extends RarityNestedFilterEvent with SelectRarityMappable {
+  SelectRarity({required this.item,});
+
+  final Rarity item;
 }
+
+@MappableClass(discriminatorValue: 'done')
+class Done extends RarityNestedFilterEvent with DoneMappable {}
+

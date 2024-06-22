@@ -1,19 +1,33 @@
 part of 'player_list_bloc.dart';
 
-@freezed
-class PlayerListEvent with _$PlayerListEvent {
-  const factory PlayerListEvent.initial() = _Initial;
+@MappableClass(discriminatorKey: 'playerListEvent')
+abstract class PlayerListEvent with PlayerListEventMappable {}
 
-  const factory PlayerListEvent.search({
-    @Default('') String query,
-  }) = _Search;
+@MappableClass(discriminatorValue: 'init')
+class Init extends PlayerListEvent with InitMappable {}
 
-  const factory PlayerListEvent.nextPage() = _NextPage;
+@MappableClass(discriminatorValue: 'search')
+class Search extends PlayerListEvent with SearchMappable {
+  Search({
+    required this.query,
+  });
 
-  const factory PlayerListEvent.playerTap({
-    required Player player,
-    required bool resultWithSelection,
-  }) = _PlayerTap;
-
-  const factory PlayerListEvent.filterTap() = _FilterTap;
+  final String query;
 }
+
+@MappableClass(discriminatorValue: 'nextPage')
+class NextPage extends PlayerListEvent with NextPageMappable {}
+
+@MappableClass(discriminatorValue: ' playerTap')
+class PlayerTap extends PlayerListEvent with PlayerTapMappable {
+  PlayerTap({
+    required this.player,
+    required this.resultWithSelection,
+  });
+
+  final Player player;
+  final bool resultWithSelection;
+}
+
+@MappableClass(discriminatorValue: 'filterTap')
+class FilterTap extends PlayerListEvent with FilterTapMappable {}

@@ -1,17 +1,15 @@
 import 'package:collection/collection.dart';
 import 'package:core_domain/domain.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'nested_filter_bloc.freezed.dart';
-
+part 'nested_filter_bloc.mapper.dart';
 part 'nested_filter_event.dart';
-
 part 'nested_filter_state.dart';
 
 @injectable
@@ -25,17 +23,13 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
     this._getOtherNationsUseCase,
     this._navigator,
   ) : super(NestedFilterState(nestedFilterPageParams: nestedFilterPageParams)) {
-    on<NestedFilterEvent>(
-      (event, emit) => event.when(
-        initial: () => _initial(emit),
-        selectClub: (club) => _selectClub(club, emit),
-        selectItem: (item) => _selectItem(item, emit),
-        done: () => _done(),
-        back: () => _back(),
-      ),
-    );
+    on<Init>((event, emit) => _initial(emit));
+    on<SelectClub>((event, emit) => _selectClub(event.club, emit));
+    on<SelectItem>((event, emit) => _selectItem(event.item, emit));
+    on<Done>((event, emit) => _done());
+    on<Back>((event, emit) => _back());
 
-    add(const NestedFilterEvent.initial());
+    add(Init());
   }
 
   final GetTopLeaguesUseCase _getTopLeaguesUseCase;

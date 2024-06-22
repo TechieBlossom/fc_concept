@@ -1,18 +1,22 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'pagination.freezed.dart';
-part 'pagination.g.dart';
+part 'pagination.mapper.dart';
 
-@Freezed(toJson: false)
-class Pagination with _$Pagination {
-  const factory Pagination({
-    int? currentCount,
-    int? countTotal,
-    int? pageCurrent,
-    int? pageTotal,
-    int? itemsPerPage,
-  }) = _Pagination;
+@MappableClass()
+class Pagination with PaginationMappable {
+  Pagination({
+    this.currentCount,
+    this.countTotal,
+    this.pageCurrent,
+    this.pageTotal,
+    this.itemsPerPage,
+  });
 
-  factory Pagination.fromJson(Map<String, dynamic> json) =>
-      _$PaginationFromJson(json);
+  final int? currentCount;
+  final int? countTotal;
+  final int? pageCurrent;
+  final int? pageTotal;
+  final int? itemsPerPage;
+
+  static const fromMap = PaginationMapper.fromMap;
 }

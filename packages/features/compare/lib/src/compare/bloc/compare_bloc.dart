@@ -1,14 +1,12 @@
 import 'package:core_domain/domain.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'compare_bloc.freezed.dart';
-
+part 'compare_bloc.mapper.dart';
 part 'compare_event.dart';
-
 part 'compare_state.dart';
 
 @injectable
@@ -19,18 +17,21 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
     this._getPlayerDetailsUseCase,
     this._getPlayerVersionsUseCase,
     this._getPlayerByVersionUseCase,
-  ) : super(const CompareState()) {
-    on<CompareEvent>(
-      (event, emit) => event.when(
-        initial: (player) => _initial(player, emit),
-        selectPlayer: (index) => _selectPlayer(index, emit),
-        selectVersion: (index, playerId, versionId, version) =>
-            _selectVersion(index, playerId, versionId, version, emit),
+  ) : super(CompareState()) {
+    on<Init>((event, emit) => _initial(event.player, emit));
+    on<SelectPlayer>((event, emit) => _selectPlayer(event.index, emit));
+    on<SelectVersion>(
+      (event, emit) => _selectVersion(
+        event.index,
+        event.playerId,
+        event.versionId,
+        event.version,
+        emit,
       ),
     );
 
     if (player != null) {
-      add(CompareEvent.initial(player: player));
+      add(Init(player: player));
     }
   }
 
@@ -143,7 +144,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
             ),
           );
         }
-            case Failure(exception: final exception):
+      case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);
         }

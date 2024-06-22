@@ -1,10 +1,12 @@
 part of 'player_detail_bloc.dart';
 
-@freezed
-class PlayerDetailState with _$PlayerDetailState {
-  const factory PlayerDetailState({
-    required Player player,
-    List<(int, int, String)>? playerVersions,
-    int? selectedVersion,
-  }) = _PlayerDetailState;
+@MappableClass()
+class PlayerDetailState with PlayerDetailStateMappable {
+  PlayerDetailState(
+      {required this.player, this.playerVersions, this.selectedVersion,});
+
+
+  final Player player;
+  final List<(int, int, String)>? playerVersions;
+  final int? selectedVersion;
 }

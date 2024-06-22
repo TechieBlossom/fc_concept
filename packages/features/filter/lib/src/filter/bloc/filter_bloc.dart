@@ -1,18 +1,15 @@
 import 'package:collection/collection.dart';
 import 'package:core_domain/domain.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'filter_bloc.freezed.dart';
-
+part 'filter_bloc.mapper.dart';
 part 'filter_event.dart';
-
 part 'filter_state.dart';
 
 @injectable
@@ -27,19 +24,17 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
             nations: existingFilters?.nations,
             positions: existingFilters?.positions,
             genders: existingFilters?.genders,
+            foots: existingFilters?.foots,
             rarities: existingFilters?.rarities,
           ),
         ) {
-    on<FilterEvent>(
-      (event, emit) => event.when(
-        tapLeague: () => _tapLeague(emit),
-        tapClub: () => _tapClub(emit),
-        tapNation: () => _tapNation(emit),
-        tapRarity: () => _tapRarity(emit),
-        tapGender: (gender) => _tapGender(gender, emit),
-        apply: _apply,
-      ),
-    );
+    on<TapLeague>((event, emit) => _tapLeague(emit));
+    on<TapClub>((event, emit) => _tapClub(emit));
+    on<TapNation>((event, emit) => _tapNation(emit));
+    on<TapRarity>((event, emit) => _tapRarity(emit));
+    on<TapGender>((event, emit) => _tapGender(event.gender, emit));
+    on<TapFoot>((event, emit) => _tapFoot(event.foot, emit));
+    on<Apply>((event, emit) => _apply());
   }
 
   final FilterNavigator _navigator;
@@ -134,6 +129,21 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     );
   }
 
+  void _tapFoot(Foot foot, Emitter<FilterState> emit) {
+    final foots = List<Foot>.from(state.genders ?? []);
+    if (foots.contains(foot)) {
+      foots.remove(foot);
+    } else {
+      foots.add(foot);
+    }
+
+    emit(
+      state.copyWith(
+        foots: foots,
+      ),
+    );
+  }
+
   void _apply() {
     final filterConfiguration = FilterConfiguration(
       leagues: state.leagues,
@@ -141,6 +151,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       nations: state.nations,
       positions: state.positions,
       genders: state.genders,
+      foots: state.foots,
       rarities: state.rarities,
     );
     _navigator.closeAny(filterConfiguration);

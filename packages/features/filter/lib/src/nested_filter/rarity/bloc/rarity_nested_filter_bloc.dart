@@ -1,12 +1,12 @@
 import 'package:core_domain/domain.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'rarity_nested_filter_bloc.freezed.dart';
+part 'rarity_nested_filter_bloc.mapper.dart';
 part 'rarity_nested_filter_event.dart';
 part 'rarity_nested_filter_state.dart';
 
@@ -22,15 +22,11 @@ class RarityNestedFilterBloc
             rarityNestedFilterPageParams: rarityNestedFilterPageParams,
           ),
         ) {
-    on<RarityNestedFilterEvent>(
-      (event, emit) => event.when(
-        initial: () => _initial(emit),
-        selectRarity: (rarity) => _selectItem(rarity, emit),
-        done: () => _done(),
-      ),
-    );
+    on<Init>((event, emit) => _initial(emit));
+    on<SelectRarity>((event, emit) => _selectItem(event.item, emit));
+    on<Done>((event, emit) => _done());
 
-    add(const RarityNestedFilterEvent.initial());
+    add(Init());
   }
 
   final GetAllRarities _getAllRarities;

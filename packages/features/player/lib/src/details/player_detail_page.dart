@@ -24,7 +24,7 @@ class PlayerDetailPage extends StatelessWidget {
               action: 'Compare',
               onAction: () {
                 context.read<PlayerDetailBloc>().add(
-                      const PlayerDetailEvent.compareTap(),
+                      CompareTap(),
                     );
               },
             ),
@@ -37,7 +37,7 @@ class PlayerDetailPage extends StatelessWidget {
                     selectedVersion: state.selectedVersion,
                     onVersionTap: (playerId, versionId) =>
                         context.read<PlayerDetailBloc>().add(
-                              PlayerDetailEvent.versionTap(
+                              VersionTap(
                                 playerId: playerId,
                                 versionId: versionId,
                               ),

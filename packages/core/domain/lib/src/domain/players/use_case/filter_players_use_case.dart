@@ -20,6 +20,7 @@ class FilterPlayersUseCase {
       clubs: filterConfiguration?.clubs,
       rarities: filterConfiguration?.rarities,
       genders: filterConfiguration?.genders,
+      foots: filterConfiguration?.foots,
       positions: filterConfiguration?.positions,
     );
   }

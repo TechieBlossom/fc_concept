@@ -1,6 +1,7 @@
 part of 'app_drawer_bloc.dart';
 
-@freezed
-class AppDrawerEvent with _$AppDrawerEvent {
-  const factory AppDrawerEvent.compare() = _Compare;
-}
+@MappableClass(discriminatorKey: 'appDrawerEvent')
+abstract class AppDrawerEvent with AppDrawerEventMappable {}
+
+@MappableClass(discriminatorValue: 'compare')
+class Compare extends AppDrawerEvent with CompareMappable {}

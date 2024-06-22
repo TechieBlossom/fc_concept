@@ -53,7 +53,7 @@ class RarityNestedFilterPage extends StatelessWidget {
                                   onTap: () => context
                                       .read<RarityNestedFilterBloc>()
                                       .add(
-                                        RarityNestedFilterEvent.selectRarity(
+                                        SelectRarity(
                                           item: item,
                                         ),
                                       ),
@@ -84,7 +84,7 @@ class RarityNestedFilterPage extends StatelessWidget {
                               text: 'Done',
                               onPressed: () =>
                                   context.read<RarityNestedFilterBloc>().add(
-                                        const RarityNestedFilterEvent.done(),
+                                        Done(),
                                       ),
                             ),
                           ],

@@ -44,9 +44,7 @@ class NestedFilterPage extends StatelessWidget {
           return Scaffold(
             appBar: PageTitle(
               title: pageTitle,
-              onBack: () => context
-                  .read<NestedFilterBloc>()
-                  .add(const NestedFilterEvent.back()),
+              onBack: () => context.read<NestedFilterBloc>().add(Back()),
             ),
             body: switch (state.processState) {
               ProcessState.success => Stack(
@@ -89,7 +87,9 @@ class NestedFilterPage extends StatelessWidget {
                       left: 0,
                       child: Container(
                         padding: spacingXL.all + spacingXL.right,
-                        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .surfaceContainerHighest,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           mainAxisSize: MainAxisSize.min,
@@ -102,7 +102,7 @@ class NestedFilterPage extends StatelessWidget {
                               text: 'Done',
                               onPressed: () =>
                                   context.read<NestedFilterBloc>().add(
-                                        const NestedFilterEvent.done(),
+                                        Done(),
                                       ),
                             ),
                           ],

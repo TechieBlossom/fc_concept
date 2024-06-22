@@ -1,7 +1,6 @@
 analyzer:
   exclude:
-    - '**/*.g.dart'
-    - '**/*.freezed.dart'
+    - '**/*.mapper.dart'
 
   strong-mode:
     implicit-casts: false

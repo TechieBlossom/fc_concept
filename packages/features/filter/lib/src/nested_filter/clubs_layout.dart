@@ -38,7 +38,7 @@ class ClubsLayout extends StatelessWidget {
                           text: club.name ?? '',
                           isSelected: selectedClubs?.contains(club) ?? false,
                           onTap: () => context.read<NestedFilterBloc>().add(
-                                NestedFilterEvent.selectClub(
+                                SelectClub(
                                   club: club,
                                 ),
                               ),
@@ -49,7 +49,9 @@ class ClubsLayout extends StatelessWidget {
               );
             },
           ).toList() ??
-          [const SizedBox.shrink()],
+          [
+            const SizedBox.shrink(),
+          ],
     );
   }
 }

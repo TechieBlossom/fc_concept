@@ -72,7 +72,7 @@ class _PlayerListState extends State<PlayerList> {
               return PlayerListItem(
                 player: player,
                 onTap: () => context.read<PlayerListBloc>().add(
-                      PlayerListEvent.playerTap(
+                      PlayerTap(
                         player: player,
                         resultWithSelection: widget.resultWithSelection,
                       ),

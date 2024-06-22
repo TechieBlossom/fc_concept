@@ -17,6 +17,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
       ClubMapper.ensureInitialized();
       RarityMapper.ensureInitialized();
       GenderMapper.ensureInitialized();
+      FootMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
     }
     return _instance!;
@@ -42,6 +43,9 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
   static List<Gender>? _$genders(FilterConfiguration v) => v.genders;
   static const Field<FilterConfiguration, List<Gender>> _f$genders =
       Field('genders', _$genders, opt: true);
+  static List<Foot>? _$foots(FilterConfiguration v) => v.foots;
+  static const Field<FilterConfiguration, List<Foot>> _f$foots =
+      Field('foots', _$foots, opt: true);
   static List<Position>? _$positions(FilterConfiguration v) => v.positions;
   static const Field<FilterConfiguration, List<Position>> _f$positions =
       Field('positions', _$positions, opt: true);
@@ -53,6 +57,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
     #clubs: _f$clubs,
     #rarities: _f$rarities,
     #genders: _f$genders,
+    #foots: _f$foots,
     #positions: _f$positions,
   };
 
@@ -63,6 +68,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
         clubs: data.dec(_f$clubs),
         rarities: data.dec(_f$rarities),
         genders: data.dec(_f$genders),
+        foots: data.dec(_f$foots),
         positions: data.dec(_f$positions));
   }
 
@@ -130,6 +136,7 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
   ListCopyWith<$R, Club, ClubCopyWith<$R, Club, Club>>? get clubs;
   ListCopyWith<$R, Rarity, RarityCopyWith<$R, Rarity, Rarity>>? get rarities;
   ListCopyWith<$R, Gender, ObjectCopyWith<$R, Gender, Gender>>? get genders;
+  ListCopyWith<$R, Foot, ObjectCopyWith<$R, Foot, Foot>>? get foots;
   ListCopyWith<$R, Position, ObjectCopyWith<$R, Position, Position>>?
       get positions;
   $R call(
@@ -138,6 +145,7 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
       List<Club>? clubs,
       List<Rarity>? rarities,
       List<Gender>? genders,
+      List<Foot>? foots,
       List<Position>? positions});
   FilterConfigurationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
@@ -190,6 +198,12 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
               (v) => call(genders: v))
           : null;
   @override
+  ListCopyWith<$R, Foot, ObjectCopyWith<$R, Foot, Foot>>? get foots =>
+      $value.foots != null
+          ? ListCopyWith($value.foots!,
+              (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(foots: v))
+          : null;
+  @override
   ListCopyWith<$R, Position, ObjectCopyWith<$R, Position, Position>>?
       get positions => $value.positions != null
           ? ListCopyWith(
@@ -204,6 +218,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           Object? clubs = $none,
           Object? rarities = $none,
           Object? genders = $none,
+          Object? foots = $none,
           Object? positions = $none}) =>
       $apply(FieldCopyWithData({
         if (leagues != $none) #leagues: leagues,
@@ -211,6 +226,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
         if (clubs != $none) #clubs: clubs,
         if (rarities != $none) #rarities: rarities,
         if (genders != $none) #genders: genders,
+        if (foots != $none) #foots: foots,
         if (positions != $none) #positions: positions
       }));
   @override
@@ -220,6 +236,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
       clubs: data.get(#clubs, or: $value.clubs),
       rarities: data.get(#rarities, or: $value.rarities),
       genders: data.get(#genders, or: $value.genders),
+      foots: data.get(#foots, or: $value.foots),
       positions: data.get(#positions, or: $value.positions));
 
   @override

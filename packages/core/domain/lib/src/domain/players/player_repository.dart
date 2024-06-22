@@ -1,3 +1,4 @@
+import 'package:core_domain/domain.dart';
 import 'package:core_domain/src/domain/clubs/model/club.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
@@ -36,6 +37,7 @@ abstract class PlayerRepository {
     List<Club>? clubs,
     List<Rarity>? rarities,
     List<Gender>? genders,
+    List<Foot>? foots,
     List<Position>? positions,
   });
 }

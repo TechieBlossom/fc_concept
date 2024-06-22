@@ -1,4 +1,5 @@
 import 'package:core_domain/src/domain/clubs/model/club.dart';
+import 'package:core_domain/src/domain/common/foot.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 import 'package:core_domain/src/domain/common/position.dart';
@@ -15,6 +16,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.clubs,
     this.rarities,
     this.genders,
+    this.foots,
     this.positions,
   });
 
@@ -23,5 +25,6 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<Club>? clubs;
   final List<Rarity>? rarities;
   final List<Gender>? genders;
+  final List<Foot>? foots;
   final List<Position>? positions;
 }

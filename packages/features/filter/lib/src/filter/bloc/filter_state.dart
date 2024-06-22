@@ -1,13 +1,22 @@
 part of 'filter_bloc.dart';
 
-@freezed
-class FilterState with _$FilterState {
-  const factory FilterState({
-    List<NestedFilterLayoutType>? leagues,
-    List<NestedFilterLayoutType>? nations,
-    List<Club>? clubs,
-    List<Rarity>? rarities,
-    List<Gender>? genders,
-    List<Position>? positions,
-  }) = _FilterState;
+@MappableClass()
+class FilterState with FilterStateMappable {
+  FilterState({
+    required this.leagues,
+    required this.nations,
+    required this.clubs,
+    required this.rarities,
+    required this.genders,
+    required this.foots,
+    required this.positions,
+  });
+
+  final List<NestedFilterLayoutType>? leagues;
+  final List<NestedFilterLayoutType>? nations;
+  final List<Club>? clubs;
+  final List<Rarity>? rarities;
+  final List<Gender>? genders;
+  final List<Foot>? foots;
+  final List<Position>? positions;
 }

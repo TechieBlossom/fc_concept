@@ -1,16 +1,38 @@
 part of 'filter_bloc.dart';
 
-@freezed
-class FilterEvent with _$FilterEvent {
-  const factory FilterEvent.tapLeague() = _TapLeague;
+@MappableClass(discriminatorKey: 'event')
+abstract class FilterEvent with FilterEventMappable {}
 
-  const factory FilterEvent.tapClub() = _TapClub;
+@MappableClass(discriminatorValue: 'tapLeague')
+class TapLeague extends FilterEvent with TapLeagueMappable {}
 
-  const factory FilterEvent.tapNation() = _TapNation;
+@MappableClass(discriminatorValue: 'tapClub')
+class TapClub extends FilterEvent with TapClubMappable {}
 
-  const factory FilterEvent.tapRarity() = _TapRarity;
+@MappableClass(discriminatorValue: 'tapNation')
+class TapNation extends FilterEvent with TapNationMappable {}
 
-  const factory FilterEvent.tapGender(Gender gender) = _SelectGender;
+@MappableClass(discriminatorValue: 'tapRarity')
+class TapRarity extends FilterEvent with TapRarityMappable {}
 
-  const factory FilterEvent.apply() = _Apply;
+@MappableClass(discriminatorValue: 'tapGender')
+class TapGender extends FilterEvent with TapGenderMappable {
+  TapGender({
+    required this.gender,
+  });
+
+  final Gender gender;
 }
+
+@MappableClass(discriminatorValue: 'tapFoot')
+class TapFoot extends FilterEvent with TapFootMappable {
+  TapFoot({
+    required this.foot,
+  });
+
+  final Foot foot;
+}
+
+@MappableClass(discriminatorValue: 'apply')
+class Apply extends FilterEvent with ApplyMappable {}
+
