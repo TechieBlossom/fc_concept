@@ -11,7 +11,7 @@ class AppDrawerBloc extends Bloc<AppDrawerEvent, void> {
   AppDrawerBloc(
     this._compareNavigator,
   ) : super(null) {
-    on<Compare>((event, emit) => _compare);
+    on<Compare>((event, emit) => _compare());
   }
 
   final CompareNavigator _compareNavigator;
