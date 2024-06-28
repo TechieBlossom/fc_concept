@@ -39,7 +39,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
           .order(TablePlayer.rating)
-          .order(TablePlayer.id, ascending: true)
+          .order(TablePlayer.name, ascending: true)
           .range(start, end);
 
       final players = mapPlayers(playersResponse);
@@ -81,6 +81,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     List<NestedFilterLayoutType>? nations,
     List<Club>? clubs,
     List<Rarity>? rarities,
+    List<int>? overallRatings,
     List<Gender>? genders,
     List<Foot>? foots,
     List<Position>? positions,
@@ -100,7 +101,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
           supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
       if (leagueIds != null && leagueIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
-            TablePlayer.league, leagueIds.toList());
+          TablePlayer.league,
+          leagueIds.toList(),
+        );
       }
       if (clubIds != null && clubIds.isNotEmpty) {
         postgresFilterBuilder =
@@ -108,19 +111,34 @@ class PlayerRepositoryImpl extends PlayerRepository {
       }
       if (nationIds != null && nationIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
-            TablePlayer.nation, nationIds.toList());
+          TablePlayer.nation,
+          nationIds.toList(),
+        );
       }
       if (genderNames != null && genderNames.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
-            TablePlayer.gender, genderNames.toList());
+          TablePlayer.gender,
+          genderNames.toList(),
+        );
       }
       if (footNames != null && footNames.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
-            TablePlayer.foot, footNames.toList());
+          TablePlayer.foot,
+          footNames.toList(),
+        );
       }
       if (rarityIds != null && rarityIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
-            TablePlayer.rarity, rarityIds.toList());
+          TablePlayer.rarity,
+          rarityIds.toList(),
+        );
+      }
+
+      if (overallRatings != null && overallRatings.isNotEmpty) {
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+          TablePlayer.rating,
+          overallRatings,
+        );
       }
 
       final playersResponse = await postgresFilterBuilder

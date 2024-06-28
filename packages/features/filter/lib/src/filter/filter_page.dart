@@ -146,6 +146,32 @@ class FilterPage extends StatelessWidget {
                       Padding(
                         padding: spacingM.bottom,
                         child: NestedFilterItem(
+                          title: state.overallRating != null
+                              ? 'Overall Rating (Tap to change)'
+                              : 'Overall Rating',
+                          subtitle: state.overallRating != null
+                              ? null
+                              : 'Tap to select Overall Rating(s)',
+                          selectedPills: state.overallRating
+                              ?.map(
+                                (overallRating) => PillItem<int>(
+                                  data: overallRating,
+                                  text: overallRating.toString(),
+                                  hasDigit: true,
+                                  isSelected: true,
+                                ),
+                              )
+                              .toList(),
+                          pillGap: spacingM,
+                          margin: spacingXL,
+                          onTap: () => context.read<FilterBloc>().add(
+                                TapOverallRating(),
+                              ),
+                        ),
+                      ),
+                      Padding(
+                        padding: spacingM.bottom,
+                        child: NestedFilterItem(
                           title: 'Gender',
                           selectedPills: Gender.values
                               .map(

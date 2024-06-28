@@ -15,7 +15,7 @@ class RarityRepositoryImpl extends RarityRepository {
           .from(TableRarity.tableRarity)
           .select()
           .eq(TableRarity.isActive, true)
-          .eq(TableRarity.id, rarityIds)
+          .inFilter(TableRarity.id, rarityIds)
           .order(TableRarity.name, ascending: true);
 
       final rarities = mapRarities(raritiesResponse);

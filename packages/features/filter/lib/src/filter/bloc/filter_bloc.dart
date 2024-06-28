@@ -5,6 +5,7 @@ import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
+import 'package:feature_filter/src/nested_filter/rating/rating_nested_filter_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -26,12 +27,14 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
             genders: existingFilters?.genders,
             foots: existingFilters?.foots,
             rarities: existingFilters?.rarities,
+            overallRating: existingFilters?.overallRating,
           ),
         ) {
     on<TapLeague>((event, emit) => _tapLeague(emit));
     on<TapClub>((event, emit) => _tapClub(emit));
     on<TapNation>((event, emit) => _tapNation(emit));
     on<TapRarity>((event, emit) => _tapRarity(emit));
+    on<TapOverallRating>((event, emit) => _tapOverallRating(emit));
     on<TapGender>((event, emit) => _tapGender(event.gender, emit));
     on<TapFoot>((event, emit) => _tapFoot(event.foot, emit));
     on<Apply>((event, emit) => _apply());
@@ -114,6 +117,21 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     }
   }
 
+  Future<void> _tapOverallRating(Emitter<FilterState> emit) async {
+    final overallRatings = await _navigator.goToOverallRatingNestedFilter<int>(
+      params: RatingNestedFilterPageParams(
+        items: state.overallRating,
+      ),
+    );
+    if (overallRatings?.isNotEmpty ?? false) {
+      emit(
+        state.copyWith(
+          overallRating: overallRatings,
+        ),
+      );
+    }
+  }
+
   void _tapGender(Gender gender, Emitter<FilterState> emit) {
     final genders = List<Gender>.from(state.genders ?? []);
     if (genders.contains(gender)) {
@@ -153,6 +171,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       genders: state.genders,
       foots: state.foots,
       rarities: state.rarities,
+      overallRating: state.overallRating,
     );
     _navigator.closeAny(filterConfiguration);
   }

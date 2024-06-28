@@ -24,5 +24,5 @@ abstract class FilterRoutes {
   static const pageFilter = '/filter';
   static const pageNestedFilter = '/nested-filter';
   static const pageRarityNestedFilter = '/rarity-nested-filter';
-  static const pageCustomStat = '/custom-stat';
+  static const pageOverallRatingNestedFilter = '/overall-rating-nested-filter';
 }

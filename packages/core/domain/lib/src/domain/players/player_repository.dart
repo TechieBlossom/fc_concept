@@ -36,6 +36,7 @@ abstract class PlayerRepository {
     List<NestedFilterLayoutType>? nations,
     List<Club>? clubs,
     List<Rarity>? rarities,
+    List<int>? overallRatings,
     List<Gender>? genders,
     List<Foot>? foots,
     List<Position>? positions,

@@ -18,6 +18,7 @@ class FilterPlayersUseCase {
       nations: filterConfiguration?.nations,
       clubs: filterConfiguration?.clubs,
       rarities: filterConfiguration?.rarities,
+      overallRatings: filterConfiguration?.overallRating,
       genders: filterConfiguration?.genders,
       foots: filterConfiguration?.foots,
       positions: filterConfiguration?.positions,

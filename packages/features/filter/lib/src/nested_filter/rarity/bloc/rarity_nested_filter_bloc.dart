@@ -7,7 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 part 'rarity_nested_filter_bloc.mapper.dart';
+
 part 'rarity_nested_filter_event.dart';
+
 part 'rarity_nested_filter_state.dart';
 
 @injectable
@@ -37,8 +39,6 @@ class RarityNestedFilterBloc
   ) async {
     final raritiesResult = await _getAllRarities();
     _handleRaritiesResult(raritiesResult, emit);
-
-    emit(state.copyWith(processState: ProcessState.success));
   }
 
   void _selectItem(Rarity item, Emitter<RarityNestedFilterState> emit) {
@@ -61,8 +61,13 @@ class RarityNestedFilterBloc
     Emitter<RarityNestedFilterState> emit,
   ) {
     switch (rarities) {
-      case Success(data: final leagues):
-        emit(state.copyWith(rarities: leagues));
+      case Success(data: final rarities):
+        emit(
+          state.copyWith(
+            rarities: rarities,
+            processState: ProcessState.success,
+          ),
+        );
       case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);

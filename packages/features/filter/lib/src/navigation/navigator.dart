@@ -1,5 +1,6 @@
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
+import 'package:feature_filter/src/nested_filter/rating/rating_nested_filter_page.dart';
 import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
@@ -20,6 +21,14 @@ class FilterNavigator extends Navigator {
   }) =>
       goRouter.push(
         FilterRoutes.pageRarityNestedFilter,
+        extra: params,
+      );
+
+  Future<List<Rarity>?> goToOverallRatingNestedFilter<Rarity>({
+    required RatingNestedFilterPageParams params,
+  }) =>
+      goRouter.push(
+        FilterRoutes.pageOverallRatingNestedFilter,
         extra: params,
       );
 

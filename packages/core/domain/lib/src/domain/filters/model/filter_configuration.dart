@@ -15,6 +15,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.nations,
     this.clubs,
     this.rarities,
+    this.overallRating,
     this.genders,
     this.foots,
     this.positions,
@@ -24,6 +25,7 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<NestedFilterLayoutType>? nations;
   final List<Club>? clubs;
   final List<Rarity>? rarities;
+  final List<int>? overallRating;
   final List<Gender>? genders;
   final List<Foot>? foots;
   final List<Position>? positions;
