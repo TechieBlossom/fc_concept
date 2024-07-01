@@ -20,6 +20,10 @@ abstract class CompareRoutes {
   static const pagePlayerSelection = '/compare-player-selection';
 }
 
+abstract class AuthRoutes {
+  static const pageAuthLogin = '/auth-login';
+}
+
 abstract class FilterRoutes {
   static const pageFilter = '/filter';
   static const pageNestedFilter = '/nested-filter';

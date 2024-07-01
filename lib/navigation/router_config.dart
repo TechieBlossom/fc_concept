@@ -1,3 +1,4 @@
+import 'package:feature_auth/auth.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_filter/filter.dart';
 import 'package:feature_player/player.dart';
@@ -12,5 +13,6 @@ final appRouterConfig = GoRouter(
     ...di<PlayerRoutesConfig>().getRoutes(),
     ...di<CompareRoutesConfig>().getRoutes(),
     ...di<FilterRoutesConfig>().getRoutes(),
+    ...di<AuthRoutesConfig>().getRoutes(),
   ],
 );

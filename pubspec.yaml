@@ -16,6 +16,8 @@ dependencies:
   core_domain:
     path: packages/core/domain
   cupertino_icons: ^1.0.6
+  feature_auth:
+    path: packages/features/auth
   feature_compare:
     path: packages/features/compare
   feature_drawer:
