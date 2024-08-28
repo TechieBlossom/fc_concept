@@ -14,8 +14,8 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<bloc.AppDrawerBloc>(
       create: (_) => di<bloc.AppDrawerBloc>(),
-      child: BlocBuilder<bloc.AppDrawerBloc, void>(
-        builder: (context, _) {
+      child: BlocBuilder<bloc.AppDrawerBloc, bloc.AppDrawerState>(
+        builder: (context, state) {
           return Drawer(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
@@ -46,7 +46,7 @@ class AppDrawer extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                     text: 'Players',
-                    trailing: 21581,
+                    trailing: state.playerCount,
                     isSelected: true,
                     onTap: () {},
                   ),

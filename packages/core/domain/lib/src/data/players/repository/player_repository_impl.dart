@@ -237,4 +237,14 @@ class PlayerRepositoryImpl extends PlayerRepository {
       return Failure(exception: Exception());
     }
   }
+
+  @override
+  Future<int> getPlayerCount() async {
+    final response = await supabase
+        .from(TablePlayer.tablePlayer)
+        .select(TablePlayer.id)
+        .count(CountOption.exact);
+
+    return response.count;
+  }
 }

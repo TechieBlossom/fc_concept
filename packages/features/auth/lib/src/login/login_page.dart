@@ -14,10 +14,11 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Align(
-                child: Text(
-              'Login',
-              style: context.headlineSmall(),
-            )),
+              child: Text(
+                'Login',
+                style: context.headlineSmall(),
+              ),
+            ),
             SizedBox(height: spacingXL.value),
             SupaMagicAuth(
               onSuccess: (response) {
@@ -53,7 +54,8 @@ class LoginPage extends StatelessWidget {
               endIndent: spacingL.value,
             ),
             SupaSocialsAuth(
-              redirectUrl: 'https://ilvbpyniqpybqtgtnuam.supabase.co/auth/v1/callback',
+              redirectUrl:
+                  'https://ilvbpyniqpybqtgtnuam.supabase.co/auth/v1/callback',
               socialButtonVariant: SocialButtonVariant.icon,
               socialProviders: const [
                 OAuthProvider.google,

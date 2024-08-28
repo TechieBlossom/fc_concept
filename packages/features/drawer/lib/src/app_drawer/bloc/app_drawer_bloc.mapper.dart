@@ -13,6 +13,7 @@ class AppDrawerEventMapper extends ClassMapperBase<AppDrawerEvent> {
   static AppDrawerEventMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = AppDrawerEventMapper._());
+      InitMapper.ensureInitialized();
       CompareMapper.ensureInitialized();
     }
     return _instance!;
@@ -53,6 +54,103 @@ abstract class AppDrawerEventCopyWith<$R, $In extends AppDrawerEvent, $Out>
   $R call();
   AppDrawerEventCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
+}
+
+class InitMapper extends SubClassMapperBase<Init> {
+  InitMapper._();
+
+  static InitMapper? _instance;
+  static InitMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = InitMapper._());
+      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'Init';
+
+  @override
+  final MappableFields<Init> fields = const {};
+
+  @override
+  final String discriminatorKey = 'appDrawerEvent';
+  @override
+  final dynamic discriminatorValue = 'init';
+  @override
+  late final ClassMapperBase superMapper =
+      AppDrawerEventMapper.ensureInitialized();
+
+  static Init _instantiate(DecodingData data) {
+    return Init();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static Init fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<Init>(map);
+  }
+
+  static Init fromJson(String json) {
+    return ensureInitialized().decodeJson<Init>(json);
+  }
+}
+
+mixin InitMappable {
+  String toJson() {
+    return InitMapper.ensureInitialized().encodeJson<Init>(this as Init);
+  }
+
+  Map<String, dynamic> toMap() {
+    return InitMapper.ensureInitialized().encodeMap<Init>(this as Init);
+  }
+
+  InitCopyWith<Init, Init, Init> get copyWith =>
+      _InitCopyWithImpl(this as Init, $identity, $identity);
+  @override
+  String toString() {
+    return InitMapper.ensureInitialized().stringifyValue(this as Init);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return InitMapper.ensureInitialized().equalsValue(this as Init, other);
+  }
+
+  @override
+  int get hashCode {
+    return InitMapper.ensureInitialized().hashValue(this as Init);
+  }
+}
+
+extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
+  InitCopyWith<$R, Init, $Out> get $asInit =>
+      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+}
+
+abstract class InitCopyWith<$R, $In extends Init, $Out>
+    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  InitCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
+    implements InitCopyWith<$R, Init, $Out> {
+  _InitCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<Init> $mapper = InitMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  Init $make(CopyWithData data) => Init();
+
+  @override
+  InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+      _InitCopyWithImpl($value, $cast, t);
 }
 
 class CompareMapper extends SubClassMapperBase<Compare> {
@@ -155,4 +253,110 @@ class _CompareCopyWithImpl<$R, $Out>
   @override
   CompareCopyWith<$R2, Compare, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
       _CompareCopyWithImpl($value, $cast, t);
+}
+
+class AppDrawerStateMapper extends ClassMapperBase<AppDrawerState> {
+  AppDrawerStateMapper._();
+
+  static AppDrawerStateMapper? _instance;
+  static AppDrawerStateMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = AppDrawerStateMapper._());
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'AppDrawerState';
+
+  static int? _$playerCount(AppDrawerState v) => v.playerCount;
+  static const Field<AppDrawerState, int> _f$playerCount =
+      Field('playerCount', _$playerCount, opt: true);
+
+  @override
+  final MappableFields<AppDrawerState> fields = const {
+    #playerCount: _f$playerCount,
+  };
+
+  static AppDrawerState _instantiate(DecodingData data) {
+    return AppDrawerState(playerCount: data.dec(_f$playerCount));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static AppDrawerState fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<AppDrawerState>(map);
+  }
+
+  static AppDrawerState fromJson(String json) {
+    return ensureInitialized().decodeJson<AppDrawerState>(json);
+  }
+}
+
+mixin AppDrawerStateMappable {
+  String toJson() {
+    return AppDrawerStateMapper.ensureInitialized()
+        .encodeJson<AppDrawerState>(this as AppDrawerState);
+  }
+
+  Map<String, dynamic> toMap() {
+    return AppDrawerStateMapper.ensureInitialized()
+        .encodeMap<AppDrawerState>(this as AppDrawerState);
+  }
+
+  AppDrawerStateCopyWith<AppDrawerState, AppDrawerState, AppDrawerState>
+      get copyWith => _AppDrawerStateCopyWithImpl(
+          this as AppDrawerState, $identity, $identity);
+  @override
+  String toString() {
+    return AppDrawerStateMapper.ensureInitialized()
+        .stringifyValue(this as AppDrawerState);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return AppDrawerStateMapper.ensureInitialized()
+        .equalsValue(this as AppDrawerState, other);
+  }
+
+  @override
+  int get hashCode {
+    return AppDrawerStateMapper.ensureInitialized()
+        .hashValue(this as AppDrawerState);
+  }
+}
+
+extension AppDrawerStateValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, AppDrawerState, $Out> {
+  AppDrawerStateCopyWith<$R, AppDrawerState, $Out> get $asAppDrawerState =>
+      $base.as((v, t, t2) => _AppDrawerStateCopyWithImpl(v, t, t2));
+}
+
+abstract class AppDrawerStateCopyWith<$R, $In extends AppDrawerState, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
+  $R call({int? playerCount});
+  AppDrawerStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _AppDrawerStateCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, AppDrawerState, $Out>
+    implements AppDrawerStateCopyWith<$R, AppDrawerState, $Out> {
+  _AppDrawerStateCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<AppDrawerState> $mapper =
+      AppDrawerStateMapper.ensureInitialized();
+  @override
+  $R call({Object? playerCount = $none}) => $apply(
+      FieldCopyWithData({if (playerCount != $none) #playerCount: playerCount}));
+  @override
+  AppDrawerState $make(CopyWithData data) => AppDrawerState(
+      playerCount: data.get(#playerCount, or: $value.playerCount));
+
+  @override
+  AppDrawerStateCopyWith<$R2, AppDrawerState, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _AppDrawerStateCopyWithImpl($value, $cast, t);
 }

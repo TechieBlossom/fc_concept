@@ -41,4 +41,6 @@ abstract class PlayerRepository {
     List<Foot>? foots,
     List<Position>? positions,
   });
+
+  Future<int> getPlayerCount();
 }

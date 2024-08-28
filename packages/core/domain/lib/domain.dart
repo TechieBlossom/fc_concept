@@ -17,6 +17,7 @@ export 'package:core_domain/src/domain/nations/use_case/get_top_nations_use_case
 export 'package:core_domain/src/domain/players/model/player.dart';
 export 'package:core_domain/src/domain/players/use_case/filter_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_by_version_use_case.dart';
+export 'package:core_domain/src/domain/players/use_case/get_player_count_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_details_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_versions_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_top_players_use_case.dart';
