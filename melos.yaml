@@ -5,6 +5,11 @@ packages:
   - packages/**
 
 scripts:
+  install:
+    description: Run install script
+    run: |
+      sh scripts/install.sh
+      melos run get
   analyze:
     run: melos exec -c 1 -- flutter analyze .
     description: Run `flutter analyze` in all packages.
