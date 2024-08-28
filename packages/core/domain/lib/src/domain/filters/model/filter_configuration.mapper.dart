@@ -40,6 +40,9 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
   static List<Rarity>? _$rarities(FilterConfiguration v) => v.rarities;
   static const Field<FilterConfiguration, List<Rarity>> _f$rarities =
       Field('rarities', _$rarities, opt: true);
+  static List<int>? _$overallRating(FilterConfiguration v) => v.overallRating;
+  static const Field<FilterConfiguration, List<int>> _f$overallRating =
+      Field('overallRating', _$overallRating, opt: true);
   static List<Gender>? _$genders(FilterConfiguration v) => v.genders;
   static const Field<FilterConfiguration, List<Gender>> _f$genders =
       Field('genders', _$genders, opt: true);
@@ -56,6 +59,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
     #nations: _f$nations,
     #clubs: _f$clubs,
     #rarities: _f$rarities,
+    #overallRating: _f$overallRating,
     #genders: _f$genders,
     #foots: _f$foots,
     #positions: _f$positions,
@@ -67,6 +71,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
         nations: data.dec(_f$nations),
         clubs: data.dec(_f$clubs),
         rarities: data.dec(_f$rarities),
+        overallRating: data.dec(_f$overallRating),
         genders: data.dec(_f$genders),
         foots: data.dec(_f$foots),
         positions: data.dec(_f$positions));
@@ -135,6 +140,7 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
       get nations;
   ListCopyWith<$R, Club, ClubCopyWith<$R, Club, Club>>? get clubs;
   ListCopyWith<$R, Rarity, RarityCopyWith<$R, Rarity, Rarity>>? get rarities;
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get overallRating;
   ListCopyWith<$R, Gender, ObjectCopyWith<$R, Gender, Gender>>? get genders;
   ListCopyWith<$R, Foot, ObjectCopyWith<$R, Foot, Foot>>? get foots;
   ListCopyWith<$R, Position, ObjectCopyWith<$R, Position, Position>>?
@@ -144,6 +150,7 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
       List<NestedFilterLayoutType>? nations,
       List<Club>? clubs,
       List<Rarity>? rarities,
+      List<int>? overallRating,
       List<Gender>? genders,
       List<Foot>? foots,
       List<Position>? positions});
@@ -190,6 +197,14 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
               (v) => call(rarities: v))
           : null;
   @override
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get overallRating =>
+      $value.overallRating != null
+          ? ListCopyWith(
+              $value.overallRating!,
+              (v, t) => ObjectCopyWith(v, $identity, t),
+              (v) => call(overallRating: v))
+          : null;
+  @override
   ListCopyWith<$R, Gender, ObjectCopyWith<$R, Gender, Gender>>? get genders =>
       $value.genders != null
           ? ListCopyWith(
@@ -217,6 +232,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           Object? nations = $none,
           Object? clubs = $none,
           Object? rarities = $none,
+          Object? overallRating = $none,
           Object? genders = $none,
           Object? foots = $none,
           Object? positions = $none}) =>
@@ -225,6 +241,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
         if (nations != $none) #nations: nations,
         if (clubs != $none) #clubs: clubs,
         if (rarities != $none) #rarities: rarities,
+        if (overallRating != $none) #overallRating: overallRating,
         if (genders != $none) #genders: genders,
         if (foots != $none) #foots: foots,
         if (positions != $none) #positions: positions
@@ -235,6 +252,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
       nations: data.get(#nations, or: $value.nations),
       clubs: data.get(#clubs, or: $value.clubs),
       rarities: data.get(#rarities, or: $value.rarities),
+      overallRating: data.get(#overallRating, or: $value.overallRating),
       genders: data.get(#genders, or: $value.genders),
       foots: data.get(#foots, or: $value.foots),
       positions: data.get(#positions, or: $value.positions));

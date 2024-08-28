@@ -95,6 +95,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final genderNames = genders?.map((gender) => gender.name);
     final rarityIds = rarities?.map((rarity) => rarity.id);
     final footNames = foots?.map((foot) => foot.name);
+    final positionNames = positions?.map((position) => position.toValue());
 
     try {
       PostgrestFilterBuilder postgresFilterBuilder =
@@ -138,6 +139,13 @@ class PlayerRepositoryImpl extends PlayerRepository {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
           TablePlayer.rating,
           overallRatings,
+        );
+      }
+
+      if (positionNames != null && positionNames.isNotEmpty) {
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+          TablePlayer.position,
+          positionNames.toList(),
         );
       }
 

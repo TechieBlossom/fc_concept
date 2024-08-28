@@ -10,6 +10,7 @@ class FilterState with FilterStateMappable {
     required this.genders,
     required this.foots,
     required this.positions,
+    required this.positionGroups,
     required this.overallRating,
   });
 
@@ -20,5 +21,6 @@ class FilterState with FilterStateMappable {
   final List<Gender>? genders;
   final List<Foot>? foots;
   final List<Position>? positions;
+  final List<PositionGroup>? positionGroups;
   final List<int>? overallRating;
 }

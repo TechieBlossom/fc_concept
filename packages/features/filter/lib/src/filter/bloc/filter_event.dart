@@ -3,6 +3,9 @@ part of 'filter_bloc.dart';
 @MappableClass(discriminatorKey: 'event')
 abstract class FilterEvent with FilterEventMappable {}
 
+@MappableClass(discriminatorValue: 'init')
+class Init extends FilterEvent with InitMappable {}
+
 @MappableClass(discriminatorValue: 'tapLeague')
 class TapLeague extends FilterEvent with TapLeagueMappable {}
 
@@ -34,6 +37,24 @@ class TapFoot extends FilterEvent with TapFootMappable {
   });
 
   final Foot foot;
+}
+
+@MappableClass(discriminatorValue: 'tapPositionGroup')
+class TapPositionGroup extends FilterEvent with TapPositionGroupMappable {
+  TapPositionGroup({
+    required this.positionGroup,
+  });
+
+  final PositionGroup positionGroup;
+}
+
+@MappableClass(discriminatorValue: 'tapPosition')
+class TapPosition extends FilterEvent with TapPositionMappable {
+  TapPosition({
+    required this.position,
+  });
+
+  final Position position;
 }
 
 @MappableClass(discriminatorValue: 'apply')

@@ -1,6 +1,7 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/filter/bloc/filter_bloc.dart';
+import 'package:feature_filter/src/filter/position/position_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
@@ -213,6 +214,11 @@ class FilterPage extends StatelessWidget {
                           onTap: () {},
                         ),
                       ),
+                      PositionFilter(
+                        positions: state.positions,
+                        positionGroups: state.positionGroups,
+                      ),
+                      SizedBox(height: spacingXXXL.value * 2),
                     ],
                   ),
                 ),
