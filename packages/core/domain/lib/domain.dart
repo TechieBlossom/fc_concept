@@ -20,6 +20,7 @@ export 'package:core_domain/src/domain/players/use_case/get_player_by_version_us
 export 'package:core_domain/src/domain/players/use_case/get_player_count_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_details_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_versions_use_case.dart';
+export 'package:core_domain/src/domain/players/use_case/get_popular_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_top_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart';
 export 'package:core_domain/src/domain/rarity/model/rarity.dart';

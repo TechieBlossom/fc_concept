@@ -19,7 +19,7 @@ class PlayerList extends StatefulWidget {
   final bool isPaginating;
   final List<Player>? players;
   final String query;
-  final VoidCallback nextPage;
+  final VoidCallback? nextPage;
   final bool resultWithSelection;
 
   @override
@@ -46,7 +46,7 @@ class _PlayerListState extends State<PlayerList> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     if (maxScroll - currentScroll <= _scrollThreshold) {
-      widget.nextPage();
+      widget.nextPage?.call();
     }
   }
 

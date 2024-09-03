@@ -12,6 +12,7 @@ import 'package:core_domain/domain.dart' as _i913;
 import 'package:feature_compare/compare.dart' as _i534;
 import 'package:feature_drawer/src/app_drawer/bloc/app_drawer_bloc.dart'
     as _i1007;
+import 'package:feature_player/player.dart' as _i460;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -28,6 +29,7 @@ _i174.GetIt init(
   );
   gh.factory<_i1007.AppDrawerBloc>(() => _i1007.AppDrawerBloc(
         gh<_i534.CompareNavigator>(),
+        gh<_i460.PlayerNavigator>(),
         gh<_i913.GetPlayerCountUseCase>(),
       ));
   return getIt;

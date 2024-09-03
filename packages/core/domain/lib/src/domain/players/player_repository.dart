@@ -12,6 +12,8 @@ abstract class PlayerRepository {
     int page = 0,
   });
 
+  Future<Result<List<Player>?>> popularPlayers();
+
   Future<Result<List<Player>?>> searchPlayers({
     required String query,
     int page = 0,

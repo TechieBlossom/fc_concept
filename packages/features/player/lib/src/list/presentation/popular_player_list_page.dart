@@ -8,20 +8,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
 
-class PlayerListPage extends StatefulWidget {
-  const PlayerListPage({super.key});
+class PopularPlayerListPage extends StatefulWidget {
+  const PopularPlayerListPage({super.key});
 
   @override
-  State<PlayerListPage> createState() => _PlayerListPageState();
+  State<PopularPlayerListPage> createState() => _PopularPlayerListPageState();
 }
 
-class _PlayerListPageState extends State<PlayerListPage> {
+class _PopularPlayerListPageState extends State<PopularPlayerListPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PlayerListBloc>(
-      create: (context) => di<PlayerListBloc>(param: PlayerListType.all),
+      create: (context) => di<PlayerListBloc>(param: PlayerListType.popular),
       child: BlocBuilder<PlayerListBloc, PlayerListState>(
         builder: (context, state) {
           return Scaffold(
@@ -50,9 +50,7 @@ class _PlayerListPageState extends State<PlayerListPage> {
               isPaginating: state.isPaginating,
               players: state.players,
               query: state.query,
-              nextPage: () => context.read<PlayerListBloc>().add(
-                    NextPage(),
-                  ),
+              nextPage: null,
             ),
           );
         },

@@ -16,6 +16,7 @@ final _columnsToFetchForList = [
   TablePlayer.firstName,
   TablePlayer.lastName,
   TablePlayer.rating,
+  TablePlayer.position,
   _rarityTable,
   TablePlayer.color,
 ].join(',');
@@ -41,6 +42,24 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .order(TablePlayer.rating)
           .order(TablePlayer.name, ascending: true)
           .range(start, end);
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.id} ${e.name} ${e.rating}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> popularPlayers() async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .range(0, 50);
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {

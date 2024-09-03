@@ -14,7 +14,9 @@ class AppDrawerEventMapper extends ClassMapperBase<AppDrawerEvent> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = AppDrawerEventMapper._());
       InitMapper.ensureInitialized();
-      CompareMapper.ensureInitialized();
+      CompareTapMapper.ensureInitialized();
+      PlayersTapMapper.ensureInitialized();
+      PopularTapMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -153,106 +155,319 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
       _InitCopyWithImpl($value, $cast, t);
 }
 
-class CompareMapper extends SubClassMapperBase<Compare> {
-  CompareMapper._();
+class CompareTapMapper extends SubClassMapperBase<CompareTap> {
+  CompareTapMapper._();
 
-  static CompareMapper? _instance;
-  static CompareMapper ensureInitialized() {
+  static CompareTapMapper? _instance;
+  static CompareTapMapper ensureInitialized() {
     if (_instance == null) {
-      MapperContainer.globals.use(_instance = CompareMapper._());
+      MapperContainer.globals.use(_instance = CompareTapMapper._());
       AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
 
   @override
-  final String id = 'Compare';
+  final String id = 'CompareTap';
 
   @override
-  final MappableFields<Compare> fields = const {};
+  final MappableFields<CompareTap> fields = const {};
 
   @override
   final String discriminatorKey = 'appDrawerEvent';
   @override
-  final dynamic discriminatorValue = 'compare';
+  final dynamic discriminatorValue = 'compareTap';
   @override
   late final ClassMapperBase superMapper =
       AppDrawerEventMapper.ensureInitialized();
 
-  static Compare _instantiate(DecodingData data) {
-    return Compare();
+  static CompareTap _instantiate(DecodingData data) {
+    return CompareTap();
   }
 
   @override
   final Function instantiate = _instantiate;
 
-  static Compare fromMap(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<Compare>(map);
+  static CompareTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<CompareTap>(map);
   }
 
-  static Compare fromJson(String json) {
-    return ensureInitialized().decodeJson<Compare>(json);
+  static CompareTap fromJson(String json) {
+    return ensureInitialized().decodeJson<CompareTap>(json);
   }
 }
 
-mixin CompareMappable {
+mixin CompareTapMappable {
   String toJson() {
-    return CompareMapper.ensureInitialized()
-        .encodeJson<Compare>(this as Compare);
+    return CompareTapMapper.ensureInitialized()
+        .encodeJson<CompareTap>(this as CompareTap);
   }
 
   Map<String, dynamic> toMap() {
-    return CompareMapper.ensureInitialized()
-        .encodeMap<Compare>(this as Compare);
+    return CompareTapMapper.ensureInitialized()
+        .encodeMap<CompareTap>(this as CompareTap);
   }
 
-  CompareCopyWith<Compare, Compare, Compare> get copyWith =>
-      _CompareCopyWithImpl(this as Compare, $identity, $identity);
+  CompareTapCopyWith<CompareTap, CompareTap, CompareTap> get copyWith =>
+      _CompareTapCopyWithImpl(this as CompareTap, $identity, $identity);
   @override
   String toString() {
-    return CompareMapper.ensureInitialized().stringifyValue(this as Compare);
+    return CompareTapMapper.ensureInitialized()
+        .stringifyValue(this as CompareTap);
   }
 
   @override
   bool operator ==(Object other) {
-    return CompareMapper.ensureInitialized()
-        .equalsValue(this as Compare, other);
+    return CompareTapMapper.ensureInitialized()
+        .equalsValue(this as CompareTap, other);
   }
 
   @override
   int get hashCode {
-    return CompareMapper.ensureInitialized().hashValue(this as Compare);
+    return CompareTapMapper.ensureInitialized().hashValue(this as CompareTap);
   }
 }
 
-extension CompareValueCopy<$R, $Out> on ObjectCopyWith<$R, Compare, $Out> {
-  CompareCopyWith<$R, Compare, $Out> get $asCompare =>
-      $base.as((v, t, t2) => _CompareCopyWithImpl(v, t, t2));
+extension CompareTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, CompareTap, $Out> {
+  CompareTapCopyWith<$R, CompareTap, $Out> get $asCompareTap =>
+      $base.as((v, t, t2) => _CompareTapCopyWithImpl(v, t, t2));
 }
 
-abstract class CompareCopyWith<$R, $In extends Compare, $Out>
+abstract class CompareTapCopyWith<$R, $In extends CompareTap, $Out>
     implements AppDrawerEventCopyWith<$R, $In, $Out> {
   @override
   $R call();
-  CompareCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+  CompareTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
-class _CompareCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, Compare, $Out>
-    implements CompareCopyWith<$R, Compare, $Out> {
-  _CompareCopyWithImpl(super.value, super.then, super.then2);
+class _CompareTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, CompareTap, $Out>
+    implements CompareTapCopyWith<$R, CompareTap, $Out> {
+  _CompareTapCopyWithImpl(super.value, super.then, super.then2);
 
   @override
-  late final ClassMapperBase<Compare> $mapper =
-      CompareMapper.ensureInitialized();
+  late final ClassMapperBase<CompareTap> $mapper =
+      CompareTapMapper.ensureInitialized();
   @override
   $R call() => $apply(FieldCopyWithData({}));
   @override
-  Compare $make(CopyWithData data) => Compare();
+  CompareTap $make(CopyWithData data) => CompareTap();
 
   @override
-  CompareCopyWith<$R2, Compare, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _CompareCopyWithImpl($value, $cast, t);
+  CompareTapCopyWith<$R2, CompareTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _CompareTapCopyWithImpl($value, $cast, t);
+}
+
+class PlayersTapMapper extends SubClassMapperBase<PlayersTap> {
+  PlayersTapMapper._();
+
+  static PlayersTapMapper? _instance;
+  static PlayersTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = PlayersTapMapper._());
+      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'PlayersTap';
+
+  @override
+  final MappableFields<PlayersTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'appDrawerEvent';
+  @override
+  final dynamic discriminatorValue = 'playersTap';
+  @override
+  late final ClassMapperBase superMapper =
+      AppDrawerEventMapper.ensureInitialized();
+
+  static PlayersTap _instantiate(DecodingData data) {
+    return PlayersTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static PlayersTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<PlayersTap>(map);
+  }
+
+  static PlayersTap fromJson(String json) {
+    return ensureInitialized().decodeJson<PlayersTap>(json);
+  }
+}
+
+mixin PlayersTapMappable {
+  String toJson() {
+    return PlayersTapMapper.ensureInitialized()
+        .encodeJson<PlayersTap>(this as PlayersTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return PlayersTapMapper.ensureInitialized()
+        .encodeMap<PlayersTap>(this as PlayersTap);
+  }
+
+  PlayersTapCopyWith<PlayersTap, PlayersTap, PlayersTap> get copyWith =>
+      _PlayersTapCopyWithImpl(this as PlayersTap, $identity, $identity);
+  @override
+  String toString() {
+    return PlayersTapMapper.ensureInitialized()
+        .stringifyValue(this as PlayersTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return PlayersTapMapper.ensureInitialized()
+        .equalsValue(this as PlayersTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return PlayersTapMapper.ensureInitialized().hashValue(this as PlayersTap);
+  }
+}
+
+extension PlayersTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, PlayersTap, $Out> {
+  PlayersTapCopyWith<$R, PlayersTap, $Out> get $asPlayersTap =>
+      $base.as((v, t, t2) => _PlayersTapCopyWithImpl(v, t, t2));
+}
+
+abstract class PlayersTapCopyWith<$R, $In extends PlayersTap, $Out>
+    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  PlayersTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _PlayersTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, PlayersTap, $Out>
+    implements PlayersTapCopyWith<$R, PlayersTap, $Out> {
+  _PlayersTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<PlayersTap> $mapper =
+      PlayersTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  PlayersTap $make(CopyWithData data) => PlayersTap();
+
+  @override
+  PlayersTapCopyWith<$R2, PlayersTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _PlayersTapCopyWithImpl($value, $cast, t);
+}
+
+class PopularTapMapper extends SubClassMapperBase<PopularTap> {
+  PopularTapMapper._();
+
+  static PopularTapMapper? _instance;
+  static PopularTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = PopularTapMapper._());
+      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'PopularTap';
+
+  @override
+  final MappableFields<PopularTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'appDrawerEvent';
+  @override
+  final dynamic discriminatorValue = 'popularTap';
+  @override
+  late final ClassMapperBase superMapper =
+      AppDrawerEventMapper.ensureInitialized();
+
+  static PopularTap _instantiate(DecodingData data) {
+    return PopularTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static PopularTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<PopularTap>(map);
+  }
+
+  static PopularTap fromJson(String json) {
+    return ensureInitialized().decodeJson<PopularTap>(json);
+  }
+}
+
+mixin PopularTapMappable {
+  String toJson() {
+    return PopularTapMapper.ensureInitialized()
+        .encodeJson<PopularTap>(this as PopularTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return PopularTapMapper.ensureInitialized()
+        .encodeMap<PopularTap>(this as PopularTap);
+  }
+
+  PopularTapCopyWith<PopularTap, PopularTap, PopularTap> get copyWith =>
+      _PopularTapCopyWithImpl(this as PopularTap, $identity, $identity);
+  @override
+  String toString() {
+    return PopularTapMapper.ensureInitialized()
+        .stringifyValue(this as PopularTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return PopularTapMapper.ensureInitialized()
+        .equalsValue(this as PopularTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return PopularTapMapper.ensureInitialized().hashValue(this as PopularTap);
+  }
+}
+
+extension PopularTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, PopularTap, $Out> {
+  PopularTapCopyWith<$R, PopularTap, $Out> get $asPopularTap =>
+      $base.as((v, t, t2) => _PopularTapCopyWithImpl(v, t, t2));
+}
+
+abstract class PopularTapCopyWith<$R, $In extends PopularTap, $Out>
+    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  PopularTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _PopularTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, PopularTap, $Out>
+    implements PopularTapCopyWith<$R, PopularTap, $Out> {
+  _PopularTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<PopularTap> $mapper =
+      PopularTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  PopularTap $make(CopyWithData data) => PopularTap();
+
+  @override
+  PopularTapCopyWith<$R2, PopularTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _PopularTapCopyWithImpl($value, $cast, t);
 }
 
 class AppDrawerStateMapper extends ClassMapperBase<AppDrawerState> {

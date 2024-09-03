@@ -114,6 +114,8 @@ class _PlayerListItemState extends State<PlayerListItem>
                   ),
                 ),
               ),
+              PositionBox(position: player.position),
+              SizedBox(width: spacingM.value),
               RatingBox(
                 rating: player.rating,
                 bg: colors.$1,

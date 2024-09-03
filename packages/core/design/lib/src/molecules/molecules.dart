@@ -12,6 +12,7 @@ export 'package:core_design/src/molecules/message/info_message.dart';
 export 'package:core_design/src/molecules/ornament/ornament.dart';
 export 'package:core_design/src/molecules/pill/pill.dart';
 export 'package:core_design/src/molecules/pill/pill_item.dart';
+export 'package:core_design/src/molecules/position_box/position_box.dart';
 export 'package:core_design/src/molecules/price/price.dart';
 export 'package:core_design/src/molecules/price/price_item.dart';
 export 'package:core_design/src/molecules/rarity_box/rarity_box.dart';

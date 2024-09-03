@@ -42,6 +42,8 @@ import 'package:core_domain/src/domain/players/use_case/get_player_details_use_c
     as _i75;
 import 'package:core_domain/src/domain/players/use_case/get_player_versions_use_case.dart'
     as _i77;
+import 'package:core_domain/src/domain/players/use_case/get_popular_players_use_case.dart'
+    as _i885;
 import 'package:core_domain/src/domain/players/use_case/get_top_players_use_case.dart'
     as _i380;
 import 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart'
@@ -94,5 +96,7 @@ _i174.GetIt init(
       () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i380.GetTopPlayerUseCase>(
       () => _i380.GetTopPlayerUseCase(gh<_i294.PlayerRepository>()));
+  gh.factory<_i885.GetPopularPlayerUseCase>(
+      () => _i885.GetPopularPlayerUseCase(gh<_i294.PlayerRepository>()));
   return getIt;
 }

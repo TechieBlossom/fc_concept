@@ -81,10 +81,7 @@ class PlayerHeader extends StatelessWidget {
                         children: [
                           _AnimatedOpacity(
                             isShown: player.position != null,
-                            child: Text(
-                              player.position?.name.toUpperCase() ?? '',
-                              style: context.titleMediumDigit(),
-                            ),
+                            child: PositionBox(position: player.position),
                           ),
                           SizedBox(width: spacingM.value),
                           RatingBox(

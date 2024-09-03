@@ -1,5 +1,6 @@
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:feature_player/src/list/presentation/model/player_list_type.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +8,9 @@ import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'player_list_bloc.mapper.dart';
+
 part 'player_list_event.dart';
+
 part 'player_list_state.dart';
 
 const _duration = Duration(milliseconds: 200);
@@ -19,12 +22,14 @@ EventTransformer<Event> debounce<Event>(Duration duration) {
 @injectable
 class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   PlayerListBloc(
+    @factoryParam PlayerListType playerListType,
     this._getTopPlayerUseCase,
+    this._getPopularPlayerUseCase,
     this._searchPlayersUseCase,
     this._filterPlayersUseCase,
     this._navigator,
   ) : super(PlayerListState()) {
-    on<Init>(_initial);
+    on<Init>((event, emit) => _initial(event, emit, playerListType));
     on<Search>(_search, transformer: debounce(_duration));
     on<NextPage>(_nextPage, transformer: debounce(_duration));
     on<PlayerTap>((event, _) => _playerTap(event));
@@ -34,6 +39,7 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   }
 
   final GetTopPlayerUseCase _getTopPlayerUseCase;
+  final GetPopularPlayerUseCase _getPopularPlayerUseCase;
   final SearchPlayersUseCase _searchPlayersUseCase;
   final FilterPlayersUseCase _filterPlayersUseCase;
   final PlayerNavigator _navigator;
@@ -41,9 +47,13 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   Future<void> _initial(
     Init event,
     Emitter<PlayerListState> emit,
+    PlayerListType playerListType,
   ) async {
     emit(state.copyWith(processState: ProcessState.loading));
-    final response = await _getTopPlayerUseCase();
+    final response = switch (playerListType) {
+      PlayerListType.all => await _getTopPlayerUseCase(),
+      PlayerListType.popular => await _getPopularPlayerUseCase(),
+    };
     switch (response) {
       case Success(data: final players):
         _handleSuccess(emit, players);

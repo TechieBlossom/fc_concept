@@ -12,6 +12,7 @@ abstract class Navigator {
 
 abstract class PlayerRoutes {
   static const pagePlayerList = '/player-list';
+  static const pagePopularPlayerList = '/popular-player-list';
   static const pagePlayerDetail = '/player-detail';
 }
 

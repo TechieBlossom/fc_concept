@@ -6,6 +6,14 @@ import 'package:utility_navigation/navigation.dart';
 class PlayerNavigator extends Navigator {
   const PlayerNavigator(super.goRouter);
 
+  Future<void> goToPlayers() async => goRouter.push(
+        PlayerRoutes.pagePlayerList,
+      );
+
+  Future<void> goToPopularPlayers() async => goRouter.push(
+        PlayerRoutes.pagePopularPlayerList,
+      );
+
   Future<void> goToPlayerDetail(Player player) async => goRouter.push(
         PlayerRoutes.pagePlayerDetail,
         extra: player,

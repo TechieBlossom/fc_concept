@@ -6,5 +6,11 @@ abstract class AppDrawerEvent with AppDrawerEventMappable {}
 @MappableClass(discriminatorValue: 'init')
 class Init extends AppDrawerEvent with InitMappable {}
 
-@MappableClass(discriminatorValue: 'compare')
-class Compare extends AppDrawerEvent with CompareMappable {}
+@MappableClass(discriminatorValue: 'compareTap')
+class CompareTap extends AppDrawerEvent with CompareTapMappable {}
+
+@MappableClass(discriminatorValue: 'playersTap')
+class PlayersTap extends AppDrawerEvent with PlayersTapMappable {}
+
+@MappableClass(discriminatorValue: 'popularTap')
+class PopularTap extends AppDrawerEvent with PopularTapMappable {}

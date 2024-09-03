@@ -45,19 +45,29 @@ class AppDrawer extends StatelessWidget {
                       Icons.person_search_rounded,
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                    text: 'Players',
+                    text: 'All',
                     trailing: state.playerCount,
                     isSelected: true,
-                    onTap: () {},
+                    onTap: () {
+                      scaffoldKey.currentState?.closeDrawer();
+                      context.read<bloc.AppDrawerBloc>().add(
+                        bloc.PlayersTap(),
+                      );
+                    },
                   ),
-                  _DrawerItem(
-                    leading: Icon(
-                      Icons.star_rounded,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    text: 'Popular',
-                    onTap: () {},
-                  ),
+                  // _DrawerItem(
+                  //   leading: Icon(
+                  //     Icons.star_rounded,
+                  //     color: Theme.of(context).colorScheme.primary,
+                  //   ),
+                  //   text: 'Popular',
+                  //   onTap: () {
+                  //     scaffoldKey.currentState?.closeDrawer();
+                  //     context.read<bloc.AppDrawerBloc>().add(
+                  //       bloc.PopularTap(),
+                  //     );
+                  //   },
+                  // ),
                   _DrawerItem(
                     leading: Icon(
                       Icons.bookmark_rounded,
@@ -89,7 +99,7 @@ class AppDrawer extends StatelessWidget {
                     onTap: () {
                       scaffoldKey.currentState?.closeDrawer();
                       context.read<bloc.AppDrawerBloc>().add(
-                            bloc.Compare(),
+                            bloc.CompareTap(),
                           );
                     },
                   ),
