@@ -1,4 +1,5 @@
 export 'package:core_design/src/organisms/bottom_button_layout/bottom_button_layout.dart';
+export 'package:core_design/src/organisms/bottom_button_layout/shimmer_bottom_button_layout.dart';
 export 'package:core_design/src/organisms/card/collapsible_card.dart';
 export 'package:core_design/src/organisms/card/info_card.dart';
 export 'package:core_design/src/organisms/card/price_card.dart';

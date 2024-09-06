@@ -1,13 +1,15 @@
-import 'package:core_design/src/atoms/atoms.dart';
+import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 
 class BottomButtonLayout extends StatelessWidget {
   const BottomButtonLayout({
     super.key,
     required this.buttons,
+    this.isLoading = false,
   });
 
   final List<Widget> buttons;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,9 @@ class BottomButtonLayout extends StatelessWidget {
       }
       widgets.add(widget);
     });
+    if (isLoading) {
+      return ShimmerBottomButtonLayout();
+    }
     return Positioned(
       bottom: 0,
       right: 0,

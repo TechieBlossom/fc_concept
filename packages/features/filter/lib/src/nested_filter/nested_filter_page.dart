@@ -46,6 +46,21 @@ class NestedFilterPage extends StatelessWidget {
               title: pageTitle,
               onBack: () => context.read<NestedFilterBloc>().add(Back()),
             ),
+            bottomNavigationBar: BottomButtonLayout(
+              isLoading: state.processState == ProcessState.loading,
+              buttons: [
+                SecondaryButton(
+                  text: 'Clear',
+                  onPressed: () {},
+                ),
+                PrimaryButton(
+                  text: 'Done',
+                  onPressed: () => context.read<NestedFilterBloc>().add(
+                        Done(),
+                      ),
+                ),
+              ],
+            ),
             body: switch (state.processState) {
               ProcessState.success => Stack(
                   fit: StackFit.expand,
@@ -79,34 +94,6 @@ class NestedFilterPage extends StatelessWidget {
                                   nestedFilterPageParams.items,
                             ),
                         ],
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      left: 0,
-                      child: Container(
-                        padding: spacingXL.all + spacingXL.right,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .surfaceContainerHighest,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SecondaryButton(
-                              text: 'Clear',
-                              onPressed: () {},
-                            ),
-                            PrimaryButton(
-                              text: 'Done',
-                              onPressed: () =>
-                                  context.read<NestedFilterBloc>().add(
-                                        Done(),
-                                      ),
-                            ),
-                          ],
-                        ),
                       ),
                     ),
                   ],
