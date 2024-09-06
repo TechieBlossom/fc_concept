@@ -26,7 +26,8 @@ class NationMapper extends SubClassMapperBase<Nation> {
   static String _$name(Nation v) => v.name;
   static const Field<Nation, String> _f$name = Field('name', _$name);
   static bool _$isTop(Nation v) => v.isTop;
-  static const Field<Nation, bool> _f$isTop = Field('isTop', _$isTop);
+  static const Field<Nation, bool> _f$isTop =
+      Field('isTop', _$isTop, opt: true, def: false);
 
   @override
   final MappableFields<Nation> fields = const {

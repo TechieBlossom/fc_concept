@@ -16,7 +16,7 @@ class RarityBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: spacingM.horizontal + spacingXS.vertical,
+      padding: spacingM.horizontal + spacingS.vertical,
       decoration: BoxDecoration(
         borderRadius: smallCorner.all,
         color: Color(bg),

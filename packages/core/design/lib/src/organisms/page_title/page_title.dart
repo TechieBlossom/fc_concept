@@ -24,10 +24,12 @@ class PageTitle extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       surfaceTintColor: Theme.of(context).colorScheme.onPrimary,
-      centerTitle: false,
-      leading: BackButton(
-        onPressed: onBack,
-      ),
+      centerTitle: onBack == null && onAction == null,
+      leading: onBack != null
+          ? BackButton(
+              onPressed: onBack,
+            )
+          : null,
       title: title != null ? Text(title!) : null,
       titleTextStyle: isSmall
           ? Theme.of(context).textTheme.titleSmall
@@ -35,10 +37,13 @@ class PageTitle extends StatelessWidget implements PreferredSize {
       titleSpacing: 0,
       actions: [
         if (action != null)
-          SecondaryButton(
-            buttonType: isSmall ? ButtonSize.small : ButtonSize.normal,
-            text: action!,
-            onPressed: onAction,
+          Padding(
+            padding: spacingXL.right,
+            child: SecondaryButton(
+              buttonType: isSmall ? ButtonSize.small : ButtonSize.normal,
+              text: action!,
+              onPressed: onAction,
+            ),
           ),
       ],
     );

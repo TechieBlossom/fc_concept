@@ -23,8 +23,6 @@ class PlayerSelectionPage extends StatelessWidget {
                   onSearch: (query) => context.read<PlayerListBloc>().add(
                         Search(query: query),
                       ),
-                  onFilterTap: null,
-                  onLeadingTap: null,
                   onClearTap: () => context.read<PlayerListBloc>().add(
                         Search(query: ''),
                       ),

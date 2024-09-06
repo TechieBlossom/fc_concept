@@ -26,33 +26,49 @@ class _PlayerListPageState extends State<PlayerListPage> {
         builder: (context, state) {
           return Scaffold(
             key: _scaffoldKey,
-            appBar: SearchContainer(
-              margin: spacingXL.top * 3,
-              isLoading: state.processState == ProcessState.loading,
-              onSearch: (query) => context.read<PlayerListBloc>().add(
-                    Search(query: query),
-                  ),
-              onFilterTap: () {
-                context.read<PlayerListBloc>().add(
-                      FilterTap(),
-                    );
-              },
-              onLeadingTap: () {
-                _scaffoldKey.currentState?.openDrawer();
-              },
-              onClearTap: () => context.read<PlayerListBloc>().add(
-                    Search(query: ''),
-                  ),
-            ),
+            appBar: const PageTitle(title: 'All Players'),
             drawer: AppDrawer(scaffoldKey: _scaffoldKey),
-            body: PlayerList(
-              processState: state.processState,
-              isPaginating: state.isPaginating,
-              players: state.players,
-              query: state.query,
-              nextPage: () => context.read<PlayerListBloc>().add(
-                    NextPage(),
+            bottomNavigationBar: BottomButtonLayout(
+              buttons: [
+                SecondaryButton.icon(
+                  leading: const Icon(Icons.sort_rounded),
+                  text: 'Sort',
+                  onPressed: () {},
+                ),
+                SecondaryButton.icon(
+                  leading: const Icon(Icons.filter_alt_rounded),
+                  text: 'Filter',
+                  onPressed: () {
+                    context.read<PlayerListBloc>().add(
+                          FilterTap(),
+                        );
+                  },
+                ),
+              ],
+            ),
+            body: Column(
+              children: [
+                SearchContainer(
+                  isLoading: state.processState == ProcessState.loading,
+                  onSearch: (query) => context.read<PlayerListBloc>().add(
+                        Search(query: query),
+                      ),
+                  onClearTap: () => context.read<PlayerListBloc>().add(
+                        Search(query: ''),
+                      ),
+                ),
+                Expanded(
+                  child: PlayerList(
+                    processState: state.processState,
+                    isPaginating: state.isPaginating,
+                    players: state.players,
+                    query: state.query,
+                    nextPage: () => context.read<PlayerListBloc>().add(
+                          NextPage(),
+                        ),
                   ),
+                ),
+              ],
             ),
           );
         },

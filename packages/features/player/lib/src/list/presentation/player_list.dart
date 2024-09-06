@@ -28,7 +28,7 @@ class PlayerList extends StatefulWidget {
 
 class _PlayerListState extends State<PlayerList> {
   final _scrollController = ScrollController();
-  final _scrollThreshold = 400.0;
+  final _scrollThreshold = 350.0;
 
   @override
   void initState() {
@@ -84,7 +84,7 @@ class _PlayerListState extends State<PlayerList> {
             return const SizedBox.shrink();
           },
           separatorBuilder: (context, index) {
-            return SizedBox(height: spacingM.value);
+            return SizedBox(height: spacingXL.value);
           },
         );
       case ProcessState.loading:

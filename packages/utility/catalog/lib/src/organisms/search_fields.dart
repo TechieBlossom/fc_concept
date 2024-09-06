@@ -12,16 +12,12 @@ class SearchFields extends StatelessWidget {
         children: [
           SizedBox(height: spacingXL.value),
           SearchContainer(
-            onLeadingTap: () {},
-            onFilterTap: () {},
             onSearch: (query) {},
             onClearTap: () {},
           ),
           SizedBox(height: spacingXL.value),
           SearchContainer(
             initialValue: 'Messi',
-            onLeadingTap: () {},
-            onFilterTap: () {},
             onSearch: (query) {},
             onClearTap: () {},
           ),
@@ -29,8 +25,6 @@ class SearchFields extends StatelessWidget {
           SearchContainer(
             initialValue: 'Messi',
             isLoading: true,
-            onLeadingTap: () {},
-            onFilterTap: () {},
             onSearch: (query) {},
             onClearTap: () {},
           ),

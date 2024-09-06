@@ -8,7 +8,7 @@ class Nation extends NestedFilterLayoutType with NationMappable {
   Nation({
     required int id,
     required String name,
-    required this.isTop,
+    this.isTop = false,
   }) : super(
           id: id,
           name: name,

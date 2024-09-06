@@ -106,9 +106,26 @@ class _PlayerListItemState extends State<PlayerListItem>
                       SizedBox(height: spacingS.value),
                       Text(
                         player.rarity.name,
-                        style: context.labelSmall().copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
+                        style: context.labelSmall(),
+                      ),
+                      SizedBox(height: spacingS.value),
+                      Row(
+                        children: [
+                          LogoLabel(
+                            id: player.club?.id,
+                            label: player.club?.name,
+                            type: LogoEntity.club,
+                          ),
+                          Padding(
+                            padding: spacingS.horizontal,
+                            child: Text('|'),
+                          ),
+                          LogoLabel(
+                            id: player.nation?.id,
+                            label: player.nation?.name,
+                            type: LogoEntity.nation,
+                          ),
+                        ],
                       ),
                     ],
                   ),

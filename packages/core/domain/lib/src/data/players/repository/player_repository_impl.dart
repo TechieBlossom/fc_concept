@@ -1,5 +1,7 @@
 import 'package:core_api_client/api_client.dart';
 import 'package:core_domain/domain.dart';
+import 'package:core_domain/src/data/clubs/table_club.dart';
+import 'package:core_domain/src/data/nations/table_nation.dart';
 import 'package:core_domain/src/data/players/table_player.dart';
 import 'package:core_domain/src/data/rarities/table_rarity.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
@@ -9,6 +11,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 const _itemsPerPage = 10;
 const _rarityTable = '${TableRarity.tableRarity}!inner(id, name)';
+const _clubTable = '${TableClub.tableClub}!inner(id, name, league)';
+const _nationTable = '${TableNation.tableNation}!inner(id, name)';
 final _columnsToFetchForList = [
   TablePlayer.id,
   TablePlayer.name,
@@ -18,6 +22,8 @@ final _columnsToFetchForList = [
   TablePlayer.rating,
   TablePlayer.position,
   _rarityTable,
+  _clubTable,
+  _nationTable,
   TablePlayer.color,
 ].join(',');
 

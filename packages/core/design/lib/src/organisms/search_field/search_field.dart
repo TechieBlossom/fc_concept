@@ -6,8 +6,6 @@ class SearchField extends StatefulWidget {
   const SearchField({
     super.key,
     required this.onSearch,
-    required this.onFilterTap,
-    required this.onLeadingTap,
     required this.onClearTap,
     this.isLoading = false,
     this.initialValue = '',
@@ -16,8 +14,6 @@ class SearchField extends StatefulWidget {
   final String initialValue;
   final bool isLoading;
   final void Function(String) onSearch;
-  final VoidCallback? onFilterTap;
-  final VoidCallback? onLeadingTap;
   final VoidCallback onClearTap;
 
   @override
@@ -67,37 +63,20 @@ class _SearchFieldState extends State<SearchField> {
                 .labelMedium()
                 .copyWith(color: Theme.of(context).colorScheme.primary),
             decoration: InputDecoration(
-              contentPadding: spacingL.top + spacingXS.top,
+              contentPadding: spacingL.top + spacingXS.top + spacingL.left,
               border: InputBorder.none,
-              prefixIcon: widget.onLeadingTap != null
-                  ? IconButton(
-                      onPressed: widget.onLeadingTap,
-                      icon: Icon(Icons.menu_rounded),
-                    )
-                  : null,
-              suffixIcon: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  AnimatedOpacity(
-                    duration: const Duration(milliseconds: 300),
-                    opacity: showClearIcon ? 1 : 0,
-                    child: IconButton(
-                      onPressed: () {
-                        _controller.clear();
-                        widget.onClearTap();
-                      },
-                      icon: Icon(Icons.backspace_outlined),
-                    ),
-                  ),
-                  if (widget.onFilterTap != null)
-                    IconButton(
-                      onPressed: widget.onFilterTap,
-                      icon: Icon(Icons.filter_alt_rounded),
-                    ),
-                ],
+              suffixIcon: AnimatedOpacity(
+                duration: const Duration(milliseconds: 300),
+                opacity: showClearIcon ? 1 : 0,
+                child: IconButton(
+                  onPressed: () {
+                    _controller.clear();
+                    widget.onClearTap();
+                  },
+                  icon: Icon(Icons.backspace_outlined),
+                ),
               ),
-              hintText: 'Search',
+              hintText: 'Search by player name',
               hintStyle: context
                   .labelMedium()
                   .copyWith(color: Theme.of(context).colorScheme.secondary),

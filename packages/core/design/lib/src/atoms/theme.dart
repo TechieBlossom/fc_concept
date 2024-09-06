@@ -44,6 +44,8 @@ final theme = ThemeData(
 extension XBuildContext on BuildContext {
   TextStyle headlineSmall() => Theme.of(this).textTheme.headlineSmall!;
 
+  TextStyle titleLarge() => Theme.of(this).textTheme.titleLarge!;
+
   TextStyle titleMedium() => Theme.of(this).textTheme.titleMedium!;
 
   TextStyle titleSmall() => Theme.of(this).textTheme.titleSmall!;
@@ -64,8 +66,8 @@ extension XBuildContext on BuildContext {
       );
 
   TextStyle titleMediumDigit() => digitTextStyle.copyWith(
-        fontSize: 20,
-        height: 20 / 20,
+        fontSize: 18,
+        height: 18 / 18,
         letterSpacing: 0.25,
         fontWeight: FontWeight.w600,
       );
@@ -79,9 +81,9 @@ extension XBuildContext on BuildContext {
 
   TextStyle labelSmallDigit() => digitTextStyle.copyWith(
         fontSize: 12,
-        height: 20 / 12,
+        height: 12 / 12,
         letterSpacing: 0.1,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w400,
       );
 
   TextStyle bodySmallDigit() => digitTextStyle.copyWith(

@@ -1,7 +1,7 @@
 import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 
-const _length = 7;
+const _length = 10;
 
 class LoadingList extends StatelessWidget {
   const LoadingList({

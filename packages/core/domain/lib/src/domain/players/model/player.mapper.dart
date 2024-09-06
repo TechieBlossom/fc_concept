@@ -14,6 +14,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PlayerMapper._());
       RarityMapper.ensureInitialized();
+      ClubMapper.ensureInitialized();
+      NationMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
       FootMapper.ensureInitialized();
       WorkRateMapper.ensureInitialized();
@@ -44,6 +46,12 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static Rarity _$rarity(Player v) => v.rarity;
   static const Field<Player, Rarity> _f$rarity =
       Field('rarity', _$rarity, key: 'table_rarity');
+  static Club? _$club(Player v) => v.club;
+  static const Field<Player, Club> _f$club =
+      Field('club', _$club, key: 'table_club', opt: true);
+  static Nation? _$nation(Player v) => v.nation;
+  static const Field<Player, Nation> _f$nation =
+      Field('nation', _$nation, key: 'table_nation', opt: true);
   static int? _$height(Player v) => v.height;
   static const Field<Player, int> _f$height =
       Field('height', _$height, opt: true);
@@ -102,6 +110,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #lastName: _f$lastName,
     #rating: _f$rating,
     #rarity: _f$rarity,
+    #club: _f$club,
+    #nation: _f$nation,
     #height: _f$height,
     #weight: _f$weight,
     #age: _f$age,
@@ -130,6 +140,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
         lastName: data.dec(_f$lastName),
         rating: data.dec(_f$rating),
         rarity: data.dec(_f$rarity),
+        club: data.dec(_f$club),
+        nation: data.dec(_f$nation),
         height: data.dec(_f$height),
         weight: data.dec(_f$weight),
         age: data.dec(_f$age),
@@ -196,6 +208,8 @@ extension PlayerValueCopy<$R, $Out> on ObjectCopyWith<$R, Player, $Out> {
 abstract class PlayerCopyWith<$R, $In extends Player, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   RarityCopyWith<$R, Rarity, Rarity> get rarity;
+  ClubCopyWith<$R, Club, Club>? get club;
+  NationCopyWith<$R, Nation, Nation>? get nation;
   $R call(
       {int? id,
       String? name,
@@ -204,6 +218,8 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       String? lastName,
       int? rating,
       Rarity? rarity,
+      Club? club,
+      Nation? nation,
       int? height,
       int? weight,
       int? age,
@@ -234,6 +250,12 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
   RarityCopyWith<$R, Rarity, Rarity> get rarity =>
       $value.rarity.copyWith.$chain((v) => call(rarity: v));
   @override
+  ClubCopyWith<$R, Club, Club>? get club =>
+      $value.club?.copyWith.$chain((v) => call(club: v));
+  @override
+  NationCopyWith<$R, Nation, Nation>? get nation =>
+      $value.nation?.copyWith.$chain((v) => call(nation: v));
+  @override
   $R call(
           {int? id,
           String? name,
@@ -242,6 +264,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? lastName = $none,
           int? rating,
           Rarity? rarity,
+          Object? club = $none,
+          Object? nation = $none,
           Object? height = $none,
           Object? weight = $none,
           Object? age = $none,
@@ -267,6 +291,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (lastName != $none) #lastName: lastName,
         if (rating != null) #rating: rating,
         if (rarity != null) #rarity: rarity,
+        if (club != $none) #club: club,
+        if (nation != $none) #nation: nation,
         if (height != $none) #height: height,
         if (weight != $none) #weight: weight,
         if (age != $none) #age: age,
@@ -294,6 +320,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       lastName: data.get(#lastName, or: $value.lastName),
       rating: data.get(#rating, or: $value.rating),
       rarity: data.get(#rarity, or: $value.rarity),
+      club: data.get(#club, or: $value.club),
+      nation: data.get(#nation, or: $value.nation),
       height: data.get(#height, or: $value.height),
       weight: data.get(#weight, or: $value.weight),
       age: data.get(#age, or: $value.age),

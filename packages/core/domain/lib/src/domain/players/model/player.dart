@@ -1,8 +1,10 @@
+import 'package:core_domain/src/domain/clubs/model/club.dart';
 import 'package:core_domain/src/domain/common/card_color.dart';
 import 'package:core_domain/src/domain/common/foot.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/position.dart';
 import 'package:core_domain/src/domain/common/work_rate.dart';
+import 'package:core_domain/src/domain/nations/model/nation.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -18,6 +20,8 @@ class Player with PlayerMappable {
     this.lastName,
     required this.rating,
     required this.rarity,
+    this.club,
+    this.nation,
     this.height,
     this.weight,
     this.age,
@@ -45,6 +49,10 @@ class Player with PlayerMappable {
   final int rating;
   @MappableField(key: 'table_rarity')
   final Rarity rarity;
+  @MappableField(key: 'table_club')
+  final Club? club;
+  @MappableField(key: 'table_nation')
+  final Nation? nation;
   final int? height;
   final int? weight;
   final int? age;

@@ -5,8 +5,6 @@ class SearchContainer extends StatelessWidget implements PreferredSize {
   const SearchContainer({
     super.key,
     required this.onSearch,
-    required this.onFilterTap,
-    required this.onLeadingTap,
     required this.onClearTap,
     this.margin,
     this.isLoading = false,
@@ -16,8 +14,6 @@ class SearchContainer extends StatelessWidget implements PreferredSize {
   final String initialValue;
   final bool isLoading;
   final void Function(String) onSearch;
-  final VoidCallback? onFilterTap;
-  final VoidCallback? onLeadingTap;
   final VoidCallback onClearTap;
   final EdgeInsets? margin;
 
@@ -35,8 +31,6 @@ class SearchContainer extends StatelessWidget implements PreferredSize {
         initialValue: initialValue,
         isLoading: isLoading,
         onSearch: onSearch,
-        onFilterTap: onFilterTap,
-        onLeadingTap: onLeadingTap,
         onClearTap: onClearTap,
       ),
     );
