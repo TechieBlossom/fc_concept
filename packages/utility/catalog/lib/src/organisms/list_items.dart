@@ -11,15 +11,15 @@ class ListItems extends StatelessWidget {
       appBar: const PageTitle(title: 'Nested Filter Items'),
       body: ListView(
         children: [
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           NestedFilterItem(
             title: 'Nation',
             subtitle: 'Tap to Select Nation(s)',
-            margin: spacingXL,
-            pillGap: spacingM,
+            margin: AppSpacing.space4,
+            pillGap: AppSpacing.space3,
             onTap: () {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           NestedFilterItem(
             title: 'League (Tap to change)',
             selectedPills: const [
@@ -32,18 +32,18 @@ class ListItems extends StatelessWidget {
               PillItem(data: 'League()', text: 'La Liga', isSelected: true),
               PillItem(data: 'League()', text: 'Ligue 1', isSelected: true),
             ],
-            margin: spacingXL,
-            pillGap: spacingM,
+            margin: AppSpacing.space4,
+            pillGap: AppSpacing.space3,
             onTap: () {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           const NestedFilterItem(
             title: 'Club',
             subtitle: 'Tap to Selected League(s)',
-            margin: spacingXL,
-            pillGap: spacingM,
+            margin: AppSpacing.space5,
+            pillGap: AppSpacing.space3,
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           FilterGroup(
             title: 'Top',
             pillItems: [
@@ -79,7 +79,7 @@ class ListItems extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           FilterGroup(
             title: 'Others',
             pillItems: [
@@ -133,7 +133,7 @@ class ListItems extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PlayerListItem(
             player: const Player(
               id: 19541,
@@ -146,7 +146,7 @@ class ListItems extends StatelessWidget {
             onFavoriteToggle: () {},
             isFavorite: true,
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PlayerListItem(
             player: const Player(
               id: 19541,
@@ -161,9 +161,9 @@ class ListItems extends StatelessWidget {
             onTap: () {},
             onFavoriteToggle: () {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           const ShimmerListItem(),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           SavedFilterItem(
             title: 'Pacey Forward',
             subtitle: 'Rating: 98-95',

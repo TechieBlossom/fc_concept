@@ -26,7 +26,7 @@ class Info extends StatelessWidget {
             if (icon != null) icon!,
           ],
         ),
-        SizedBox(height: spacingS.value),
+        SizedBox(height: AppSpacing.space2),
         Text(
           label,
           style: context.typography.bodySmall,

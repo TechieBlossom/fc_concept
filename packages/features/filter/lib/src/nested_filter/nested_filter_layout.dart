@@ -23,7 +23,9 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
       children: [
         if (topItems?.isNotEmpty ?? false)
           Padding(
-            padding: spacingXL.bottom,
+            padding: const EdgeInsets.only(
+              bottom: AppSpacing.space5,
+            ),
             child: FilterGroup(
               title: 'Top',
               pillItems: topItems!
@@ -44,7 +46,9 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
           ),
         if (otherItems?.isNotEmpty ?? false)
           Padding(
-            padding: spacingXXXL.bottom + spacingXXXL.bottom,
+            padding: const EdgeInsets.only(
+              bottom: AppSpacing.space8,
+            ),
             child: FilterGroup(
               title: 'Other',
               pillItems: otherItems!

@@ -10,22 +10,22 @@ class PageTitles extends StatelessWidget {
       appBar: const PageTitle(title: 'Page Title'),
       body: ListView(
         children: [
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           const PageTitle(title: 'Only Title'),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PageTitle(
             title: 'With Action',
             action: 'Compare',
             onAction: () {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PageTitle(
             action: 'Compare',
             onAction: () {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           const PageTitle(),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PageTitle(
             isSmall: true,
             title: 'Small',

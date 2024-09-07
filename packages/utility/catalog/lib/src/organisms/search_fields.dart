@@ -10,18 +10,18 @@ class SearchFields extends StatelessWidget {
       appBar: const PageTitle(title: 'Search Fields'),
       body: ListView(
         children: [
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           SearchContainer(
             onSearch: (query) {},
             onClearTap: () {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           SearchContainer(
             initialValue: 'Messi',
             onSearch: (query) {},
             onClearTap: () {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           SearchContainer(
             initialValue: 'Messi',
             isLoading: true,

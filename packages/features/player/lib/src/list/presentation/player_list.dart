@@ -84,7 +84,7 @@ class _PlayerListState extends State<PlayerList> {
             return const SizedBox.shrink();
           },
           separatorBuilder: (context, index) {
-            return SizedBox(height: spacingXL.value);
+            return const SizedBox(height: AppSpacing.space5);
           },
         );
       case ProcessState.loading:

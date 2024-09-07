@@ -9,11 +9,13 @@ class Prices extends StatelessWidget {
     return Scaffold(
       appBar: const PageTitle(title: 'Price'),
       body: Padding(
-        padding: spacingXL.horizontal,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             Price(
               priceItem: PriceItem(
                 label: 'Last: ',
@@ -22,7 +24,7 @@ class Prices extends StatelessWidget {
                 formatter: currencyFormatter,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Price(
               priceItem: PriceItem(
                 label: 'PRP:',

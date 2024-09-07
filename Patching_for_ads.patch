@@ -37,7 +37,7 @@ diff --git a/packages/features/player/lib/src/list/presentation/player_list.dart
 +            if (index != 0 && index % 10 == 0) {
 +              return const AppBannerAd();
 +            }
-             return SizedBox(height: spacingM.value);
+             return SizedBox(height: AppSpacing.space3);
            },
          );
 Index: lib/main.dart

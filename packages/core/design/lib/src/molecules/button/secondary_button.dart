@@ -46,14 +46,18 @@ class SecondaryButton extends StatelessWidget {
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
-          borderRadius: mediumCorner.all,
+          borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
         ),
       ),
       backgroundColor: WidgetStateProperty.all<Color?>(Colors.transparent),
       padding: WidgetStateProperty.all<EdgeInsets>(
         switch (buttonType) {
-          ButtonSize.normal => spacingM.vertical,
-          ButtonSize.small => spacingXS.vertical,
+          ButtonSize.normal => const EdgeInsets.symmetric(
+              vertical: AppSpacing.space3,
+            ),
+          ButtonSize.small => const EdgeInsets.symmetric(
+              vertical: AppSpacing.space2,
+            ),
         },
       ),
     );

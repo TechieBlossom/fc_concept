@@ -49,21 +49,28 @@ class _SearchFieldState extends State<SearchField> {
       children: [
         Container(
           decoration: BoxDecoration(
-            borderRadius: mediumCorner.all,
+            borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
             color: context.colors.backgroundTertiary,
           ),
-          margin: spacingXL.horizontal + spacingM.vertical,
-          padding: spacingM.horizontal,
+          margin: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.space5,
+            vertical: AppSpacing.space3,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.space3,
+          ),
           child: TextFormField(
             cursorHeight: 20,
             controller: _controller,
             onChanged: widget.onSearch,
             textCapitalization: TextCapitalization.words,
-            style: context.typography
-                .labelMedium
+            style: context.typography.labelMedium
                 .copyWith(color: context.colors.contentSecondary),
             decoration: InputDecoration(
-              contentPadding: spacingL.top + spacingXS.top + spacingL.left,
+              contentPadding: const EdgeInsets.only(
+                top: AppSpacing.space4 + AppSpacing.space1,
+                left: AppSpacing.space4,
+              ),
               border: InputBorder.none,
               suffixIcon: AnimatedOpacity(
                 duration: const Duration(milliseconds: 300),
@@ -77,18 +84,17 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
               hintText: 'Search by player name',
-              hintStyle: context.typography
-                  .labelMedium
+              hintStyle: context.typography.labelMedium
                   .copyWith(color: context.colors.contentTertiary),
               hintFadeDuration: const Duration(milliseconds: 100),
             ),
           ),
         ),
         Positioned(
-          height: spacingM.value,
-          bottom: spacingM.value,
-          left: spacingXL.value,
-          right: spacingXL.value,
+          height: AppSpacing.space3,
+          bottom: AppSpacing.space3,
+          left: AppSpacing.space5,
+          right: AppSpacing.space5,
           child: AnimatedOpacity(
             opacity: widget.isLoading ? 1 : 0,
             duration: const Duration(milliseconds: 300),

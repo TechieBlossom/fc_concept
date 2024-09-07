@@ -27,7 +27,7 @@ class _PopularPlayerListPageState extends State<PopularPlayerListPage> {
           return Scaffold(
             key: _scaffoldKey,
             appBar: SearchContainer(
-              margin: spacingXL.top * 3,
+              margin: const EdgeInsets.only(top: AppSpacing.space7),
               isLoading: state.processState == ProcessState.loading,
               onSearch: (query) => context.read<PlayerListBloc>().add(
                     Search(query: query),

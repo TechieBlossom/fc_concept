@@ -6,12 +6,12 @@ class RatingBoxes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PageTitle(title: 'Rating Box'),
+    return const Scaffold(
+      appBar: PageTitle(title: 'Rating Box'),
       body: Wrap(
-        runSpacing: spacingXL.value,
-        spacing: spacingXL.value,
-        children: const [
+        runSpacing: AppSpacing.space5,
+        spacing: AppSpacing.space5,
+        children: [
           RatingBox(
             rating: 97,
             fg: 0xFFE8DC9A,

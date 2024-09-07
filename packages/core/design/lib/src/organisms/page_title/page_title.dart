@@ -39,7 +39,7 @@ class PageTitle extends StatelessWidget implements PreferredSize {
       actions: [
         if (action != null)
           Padding(
-            padding: spacingXL.right,
+            padding: const EdgeInsets.only(right: AppSpacing.space5),
             child: SecondaryButton(
               buttonType: isSmall ? ButtonSize.small : ButtonSize.normal,
               text: action!,

@@ -16,10 +16,13 @@ class ShimmerListItem extends StatelessWidget {
       baseColor: const Color(0xFFE3E3E3),
       highlightColor: const Color(0xFFF4F4F4),
       child: Padding(
-        padding: spacingXL.horizontal + spacingM.vertical,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+          vertical: AppSpacing.space3,
+        ),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: mediumCorner.all,
+            borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
             color: const Color(0xffff0000),
           ),
           height: 75,

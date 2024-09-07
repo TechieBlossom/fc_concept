@@ -9,11 +9,13 @@ class Pills extends StatelessWidget {
     return Scaffold(
       appBar: const PageTitle(title: 'Pill'),
       body: Padding(
-        padding: spacingXL.horizontal,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             Pill(
               pillItem: PillItem<String>(
                 data: 'League()',
@@ -22,7 +24,7 @@ class Pills extends StatelessWidget {
                 onTap: () {},
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Pill(
               pillItem: PillItem<String>(
                 data: 'League()',
@@ -30,7 +32,7 @@ class Pills extends StatelessWidget {
                 isSelected: true,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Pill(
               pillItem: PillItem<String>(
                 data: 'League()',
@@ -39,7 +41,7 @@ class Pills extends StatelessWidget {
                 iconData: Icons.star_outline_rounded,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Pill(
               pillItem: PillItem<String>(
                 data: 'League()',
@@ -48,7 +50,7 @@ class Pills extends StatelessWidget {
                 iconData: Icons.star_outline_rounded,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Pill(
               pillItem: PillItem<String>(
                 data: 'League()',
@@ -57,7 +59,7 @@ class Pills extends StatelessWidget {
                 hasDigit: true,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Pill(
               pillItem: PillItem<String>(
                 data: 'League()',
@@ -66,7 +68,7 @@ class Pills extends StatelessWidget {
                 hasDigit: true,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Pill(
               pillItem: PillItem<String>(
                 data: 'League()',
@@ -76,7 +78,7 @@ class Pills extends StatelessWidget {
                 iconData: Icons.star_outline_rounded,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Pill(
               pillItem: PillItem<String>(
                 data: 'League()',

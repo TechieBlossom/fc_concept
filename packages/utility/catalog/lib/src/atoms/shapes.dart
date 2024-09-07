@@ -19,7 +19,7 @@ class ShapesContent extends StatelessWidget {
         children: [
           ...radii.map(
             (radius) => Container(
-              margin: spacingM.all,
+              margin: const EdgeInsets.all(AppSpacing.space3),
               decoration: BoxDecoration(
                 border: Border.all(),
                 borderRadius: radius.all,

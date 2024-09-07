@@ -9,26 +9,29 @@ class Ornaments extends StatelessWidget {
     return Scaffold(
       appBar: const PageTitle(title: 'Ornament'),
       body: Padding(
-        padding: spacingXL.horizontal,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Ornament(label: 'Prices'),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Ornament(label: 'Prices', hasBorder: true),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             Ornament(
               label: 'SHOOTING',
               hasBorder: true,
-              borderRadius: mediumCorner.all - mediumCorner.bottomLeft,
+              borderRadius: BorderRadius.circular(AppCornerRadius.radius2) -
+                  mediumCorner.bottomLeft,
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             Ornament(
               label: 'SHOOTING',
               hasBorder: true,
               ornamentType: OrnamentType.full,
-              borderRadius: mediumCorner.all,
+              borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
               icon: const Icon(
                 Icons.keyboard_arrow_down_rounded,
                 size: 16,

@@ -10,7 +10,7 @@ class PullDowns extends StatelessWidget {
       appBar: const PageTitle(title: 'Pull Downs'),
       body: Column(
         children: [
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PullDown(
             constrainedWidth: 164,
             heading: 'Champions League',
@@ -25,7 +25,7 @@ class PullDowns extends StatelessWidget {
             ],
             onItemTapped: (versionId) {},
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PullDown(
             pullDownButtonType: PullDownButtonType.full,
             heading: 'Champions League',

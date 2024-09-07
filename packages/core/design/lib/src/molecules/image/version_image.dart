@@ -20,7 +20,7 @@ class VersionImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: smallCorner.all,
+      borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
       onTap: onTap,
       child: Container(
         constraints: BoxConstraints(
@@ -30,10 +30,10 @@ class VersionImage extends StatelessWidget {
           maxWidth: 40,
         ),
         decoration: BoxDecoration(
-          borderRadius: smallCorner.all,
+          borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
           border: isHighlighted ? Border.all() : null,
         ),
-        padding: spacingS.all,
+        padding: const EdgeInsets.all(AppSpacing.space2),
         child: CachedNetworkImage(
           height: 48,
           width: 34.23,

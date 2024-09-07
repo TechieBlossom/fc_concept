@@ -9,11 +9,13 @@ class Compares extends StatelessWidget {
     return Scaffold(
       appBar: const PageTitle(title: 'Compare'),
       body: Padding(
-        padding: spacingXL.horizontal,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             Compare(
               compareItem: CompareItem(
                 label: 'Last Price',
@@ -24,7 +26,7 @@ class Compares extends StatelessWidget {
                 formatter: currencyFormatter,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Compare(
               compareItem: CompareItem(
                 label: 'Age',
@@ -33,7 +35,7 @@ class Compares extends StatelessWidget {
                 hasDigit: true,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Compare(
               compareItem: CompareItem(
                 label: 'Height',
@@ -42,7 +44,7 @@ class Compares extends StatelessWidget {
                 hasDigit: true,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Compare(
               compareItem: CompareItem(
                 label: 'Work Rate',
@@ -51,7 +53,7 @@ class Compares extends StatelessWidget {
                 hasDigit: true,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Compare(
               compareItem: CompareItem(
                 label: 'PRP',
@@ -60,7 +62,7 @@ class Compares extends StatelessWidget {
                 hasDigit: true,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            const SizedBox(height: AppSpacing.space5),
             const Compare(
               compareItem: CompareItem(
                 label: 'Skills',

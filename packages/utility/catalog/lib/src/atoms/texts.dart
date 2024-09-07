@@ -13,7 +13,7 @@ class TextsContent extends StatelessWidget {
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: ListView(
-          padding: spacingM.all,
+          padding: const EdgeInsets.all(AppSpacing.space3),
           children: [
             Text(
               'Headline Small',

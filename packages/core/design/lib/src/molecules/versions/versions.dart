@@ -23,7 +23,9 @@ class Versions extends StatelessWidget {
               final playerId = id.$1;
               final versionId = id.$2;
               return Padding(
-                padding: spacingS.horizontal,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.space2,
+                ),
                 child: VersionImage(
                   id: versionId,
                   isHighlighted: selectedVersion == versionId,

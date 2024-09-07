@@ -11,67 +11,69 @@ class Buttons extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: spacingXL.horizontal,
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space5,
+            ),
             child: Column(
               children: [
                 PrimaryButton(
                   text: 'Apply',
                   onPressed: () {},
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 PrimaryButton(
                   buttonType: ButtonSize.small,
                   text: 'Select Player',
                   onPressed: () {},
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 const PrimaryButton(
                   text: 'Primary Normal Disabled',
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 const PrimaryButton(
                   buttonType: ButtonSize.small,
                   text: 'Primary Normal Small Disabled',
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 SecondaryButton(
                   text: 'Secondary Normal',
                   onPressed: () {},
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 SecondaryButton(
                   buttonType: ButtonSize.small,
                   text: 'Secondary Normal Small',
                   onPressed: () {},
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 const SecondaryButton(
                   text: 'Secondary Normal Disabled',
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 const SecondaryButton(
                   buttonType: ButtonSize.small,
                   text: 'Secondary Normal Small Disabled',
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 DestructiveButton(
                   text: 'Delete',
                   onPressed: () {},
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 PullDownButton(
                   pullDownButtonType: PullDownButtonType.full,
                   label: 'Champions League',
                   icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 16),
-                  borderRadius: mediumCorner.all,
+                  borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
                 ),
-                SizedBox(height: spacingXL.value),
+                const SizedBox(height: AppSpacing.space5),
                 PullDownButton(
                   onTap: () {},
                   constrainedWidth: MediaQuery.sizeOf(context).width / 2 - 32,
                   label: 'Champions League Women',
                   icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 16),
-                  borderRadius: mediumCorner.all,
+                  borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
                 ),
               ],
             ),

@@ -22,16 +22,16 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Glass.lessBlur(
-      borderRadius: mediumCorner.all,
+      borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: mediumCorner.all,
-          color: context.colors
-              .backgroundTertiary
-              .withOpacity(0.1),
+          borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+          color: context.colors.backgroundTertiary.withOpacity(0.1),
         ),
         child: Padding(
-          padding: spacingM.vertical,
+          padding: const EdgeInsets.symmetric(
+            vertical: AppSpacing.space3,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

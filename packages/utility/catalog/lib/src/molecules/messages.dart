@@ -6,17 +6,19 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PageTitle(title: 'Messages'),
+    return const Scaffold(
+      appBar: PageTitle(title: 'Messages'),
       body: Padding(
-        padding: spacingXL.horizontal,
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: spacingXL.value),
-            const InfoMessage(message: 'No Players with name'),
-            SizedBox(height: spacingXL.value),
-            const InfoMessage(
+            SizedBox(height: AppSpacing.space5),
+            InfoMessage(message: 'No Players with name'),
+            SizedBox(height: AppSpacing.space5),
+            InfoMessage(
               message: 'No Players with name',
               highlightMessage: 'Messi Anthem',
             ),

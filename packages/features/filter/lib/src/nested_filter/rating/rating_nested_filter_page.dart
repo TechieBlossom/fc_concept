@@ -53,7 +53,9 @@ class RatingNestedFilterPage extends StatelessWidget {
                   children: [
                     SingleChildScrollView(
                       child: Padding(
-                        padding: spacingXXXL.bottom + spacingXXXL.bottom,
+                        padding: const EdgeInsets.only(
+                          bottom: AppSpacing.space8,
+                        ),
                         child: FilterGroup(
                           pillItems: state.ratings!
                               .map(

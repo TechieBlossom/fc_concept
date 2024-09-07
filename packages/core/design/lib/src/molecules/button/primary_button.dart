@@ -28,14 +28,15 @@ class PrimaryButton extends StatelessWidget {
               ButtonSize.small => Theme.of(context).textTheme.labelSmall,
             },
           ),
-          foregroundColor: WidgetStateProperty.all<Color>(
-            context.colors.backgroundPrimary
-          ),
+          foregroundColor:
+              WidgetStateProperty.all<Color>(context.colors.backgroundPrimary),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: switch (buttonType) {
-                ButtonSize.normal => mediumCorner.all,
-                ButtonSize.small => smallCorner.all,
+                ButtonSize.normal =>
+                  BorderRadius.circular(AppCornerRadius.radius2),
+                ButtonSize.small =>
+                  BorderRadius.circular(AppCornerRadius.radius1),
               },
             ),
           ),
@@ -49,8 +50,12 @@ class PrimaryButton extends StatelessWidget {
           }),
           padding: WidgetStateProperty.all<EdgeInsets>(
             switch (buttonType) {
-              ButtonSize.normal => spacingXL.horizontal,
-              ButtonSize.small => spacingL.horizontal,
+              ButtonSize.normal => const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.space5,
+                ),
+              ButtonSize.small => const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.space4,
+                ),
             },
           ),
         ),

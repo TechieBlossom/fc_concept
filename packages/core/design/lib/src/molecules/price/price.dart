@@ -23,8 +23,8 @@ class Price extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = context.typography.labelSmallDigit.copyWith(
-          color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
-        );
+      color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
+    );
     return Row(
       children: [
         ConstrainedBox(
@@ -36,9 +36,8 @@ class Price extends StatelessWidget {
             priceItem.label,
             textAlign: TextAlign.start,
             style: context.typography.bodySmall.copyWith(
-                  color: color ??
-                      Theme.of(context).colorScheme.onTertiaryContainer,
-                ),
+              color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
+            ),
           ),
         ),
         Text(
@@ -46,7 +45,7 @@ class Price extends StatelessWidget {
           style: textStyle,
         ),
         if (priceItem.icon != null) ...[
-          SizedBox(width: spacingXS.value),
+          SizedBox(width: AppSpacing.space1),
           Icon(
             priceItem.icon,
             size: 16,

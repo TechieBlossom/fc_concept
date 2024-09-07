@@ -10,7 +10,7 @@ class Cards extends StatelessWidget {
       appBar: const PageTitle(title: 'Cards'),
       body: ListView(
         children: [
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           const CollapsibleCard(
             heading: 'Info',
             compareItems: [
@@ -50,7 +50,7 @@ class Cards extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           PriceCard(
             bg: 0xFFFFFFFF,
             fg: 0xFF000000,
@@ -67,7 +67,7 @@ class Cards extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           StatsCardVertical(
             heading: 'Pace',
             statItems: [
@@ -81,7 +81,7 @@ class Cards extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           StatsCardVertical(
             heading: 'Pace',
             statItems: [
@@ -111,7 +111,7 @@ class Cards extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           const InfoCard(
             age: 35,
             height: 195,
@@ -119,7 +119,7 @@ class Cards extends StatelessWidget {
             weakFoot: 4,
             workRate: 'MED/MED',
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           const StatCard(
             paceRating: 91,
             shootRating: 96,

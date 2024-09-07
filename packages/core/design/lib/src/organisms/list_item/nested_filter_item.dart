@@ -20,8 +20,8 @@ class NestedFilterItem extends StatelessWidget {
   final String? subtitle;
   final List<PillItem>? selectedPills;
   final VoidCallback? onTap;
-  final Spacing pillGap;
-  final Spacing margin;
+  final double pillGap;
+  final double margin;
 
   bool get _isDisabled => onTap == null;
 
@@ -33,7 +33,9 @@ class NestedFilterItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: spacingS.vertical,
+        padding: const EdgeInsets.symmetric(
+          vertical: AppSpacing.space2,
+        ),
         constraints: BoxConstraints(
           minHeight: 62,
           maxHeight: 62,
@@ -45,22 +47,25 @@ class NestedFilterItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: margin.left + spacingS.bottom,
+                    padding: EdgeInsets.only(
+                      left: margin,
+                      bottom: AppSpacing.space2,
+                    ),
                     child: Text(
                       title,
                       style: context.typography.labelSmall.copyWith(
-                            color: textColor,
-                          ),
+                        color: textColor,
+                      ),
                     ),
                   ),
                   if (selectedPills == null && subtitle != null)
                     Padding(
-                      padding: margin.horizontal,
+                      padding: EdgeInsets.symmetric(horizontal: margin),
                       child: Text(
                         subtitle!,
                         style: context.typography.bodySmall.copyWith(
-                              color: textColor,
-                            ),
+                          color: textColor,
+                        ),
                       ),
                     ),
                   if (selectedPills != null)
@@ -73,11 +78,11 @@ class NestedFilterItem extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: spacingS.value,
+              height: AppSpacing.space2,
             ),
             if (selectedPills == null)
               Padding(
-                padding: margin.right,
+                padding: EdgeInsets.only(right: margin),
                 child: Icon(
                   Icons.chevron_right_rounded,
                   size: 16,
@@ -99,8 +104,8 @@ class _Options extends StatelessWidget {
   });
 
   final List<PillItem> pills;
-  final Spacing pillGap;
-  final Spacing margin;
+  final double pillGap;
+  final double margin;
 
   @override
   Widget build(BuildContext context) {
@@ -115,8 +120,12 @@ class _Options extends StatelessWidget {
         itemCount: pills.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: (index == 0 ? margin.left : pillGap.left) +
-                (index == (pills.length - 1) ? pillGap.right : EdgeInsets.zero),
+            padding: (index == 0
+                    ? EdgeInsets.only(left: margin)
+                    : EdgeInsets.only(left: pillGap)) +
+                (index == (pills.length - 1)
+                    ? EdgeInsets.only(right: pillGap)
+                    : EdgeInsets.zero),
             child: Pill(pillItem: pills[index]),
           );
         },

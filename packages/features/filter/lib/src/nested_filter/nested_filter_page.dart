@@ -68,7 +68,7 @@ class NestedFilterPage extends StatelessWidget {
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          SizedBox(height: spacingM.value),
+                          const SizedBox(height: AppSpacing.space3),
                           if (nestedFilterPageParams.nestedFilterType ==
                               NestedFilterType.league)
                             NestedFilterLayout(

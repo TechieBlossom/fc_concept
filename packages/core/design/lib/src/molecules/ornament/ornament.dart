@@ -25,18 +25,17 @@ class Ornament extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final foregroundColor = foreground != null
-        ? Color(foreground!)
-        : context.colors.gold2;
-    final backgroundColor = background != null
-        ? Color(background!)
-        : context.colors.gold;
+    final foregroundColor =
+        foreground != null ? Color(foreground!) : context.colors.gold2;
+    final backgroundColor =
+        background != null ? Color(background!) : context.colors.gold;
     final textColor = foreground != null
         ? Color(foreground!)
         : context.colors.contentSecondary;
     return InkWell(
       onTap: onTap,
-      borderRadius: borderRadius ?? infiniteCorner.all,
+      borderRadius:
+          borderRadius ?? BorderRadius.circular(AppCornerRadius.round),
       radius: infiniteCorner.value,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
@@ -45,7 +44,8 @@ class Ornament extends StatelessWidget {
           OrnamentType.compact => 24,
         },
         decoration: BoxDecoration(
-          borderRadius: borderRadius ?? infiniteCorner.all,
+          borderRadius:
+              borderRadius ?? BorderRadius.circular(AppCornerRadius.round),
           border: hasBorder
               ? Border.all(
                   width: 0.5,
@@ -55,7 +55,10 @@ class Ornament extends StatelessWidget {
           color: backgroundColor,
         ),
         child: Padding(
-          padding: spacingXL.horizontal + spacingXS.vertical,
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.space5,
+            vertical: AppSpacing.space2,
+          ),
           child: Row(
             mainAxisSize: switch (ornamentType) {
               OrnamentType.compact => MainAxisSize.min,
@@ -69,8 +72,8 @@ class Ornament extends StatelessWidget {
               Text(
                 label.toUpperCase(),
                 style: context.typography.labelSmall.copyWith(
-                      color: textColor,
-                    ),
+                  color: textColor,
+                ),
               ),
               if (icon != null) icon!,
             ],

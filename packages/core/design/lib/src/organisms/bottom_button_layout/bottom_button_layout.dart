@@ -20,8 +20,8 @@ class BottomButtonLayout extends StatelessWidget {
       if (index != 0) {
         widgets.add(
           SizedBox(
-            height: spacingXL.value + spacingM.value,
-            width: spacingXXXL.value,
+            height: AppSpacing.space5 + AppSpacing.space3,
+            width: AppSpacing.space7,
           ),
         );
       }
@@ -31,7 +31,12 @@ class BottomButtonLayout extends StatelessWidget {
       return ShimmerBottomButtonLayout();
     }
     return Container(
-      padding: spacingM.all + spacingXL.bottom,
+      padding: const EdgeInsets.only(
+        left: AppSpacing.space5,
+        right: AppSpacing.space5,
+        top: AppSpacing.space5,
+        bottom: AppSpacing.space7,
+      ),
       color: context.colors.backgroundTertiary,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

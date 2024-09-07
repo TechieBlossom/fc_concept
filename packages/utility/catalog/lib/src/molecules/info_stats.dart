@@ -6,18 +6,20 @@ class InfoStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PageTitle(title: 'Info & Stats'),
+    return const Scaffold(
+      appBar: PageTitle(title: 'Info & Stats'),
       body: Padding(
-        padding: spacingXL.horizontal,
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: spacingXL.value),
-            const Info(label: 'AGE', value: '35'),
-            SizedBox(height: spacingXL.value),
-            const Stat(label: 'PAC', rating: 90),
-            SizedBox(height: spacingXL.value),
+            SizedBox(height: AppSpacing.space5),
+            Info(label: 'AGE', value: '35'),
+            SizedBox(height: AppSpacing.space5),
+            Stat(label: 'PAC', rating: 90),
+            SizedBox(height: AppSpacing.space5),
             // const StatH(label: 'Acceleration', rating: 90),
           ],
         ),

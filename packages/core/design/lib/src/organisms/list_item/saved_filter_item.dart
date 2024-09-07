@@ -18,7 +18,10 @@ class SavedFilterItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: spacingXL.horizontal + spacingM.vertical,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+          vertical: AppSpacing.space3,
+        ),
         child: Row(
           children: [
             Expanded(
@@ -29,7 +32,7 @@ class SavedFilterItem extends StatelessWidget {
                     title,
                     style: context.typography.titleMedium,
                   ),
-                  SizedBox(height: spacingM.value),
+                  SizedBox(height: AppSpacing.space3),
                   Text(
                     title,
                     style: context.typography.bodySmall,
@@ -37,7 +40,7 @@ class SavedFilterItem extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: spacingM.value),
+            SizedBox(width: AppSpacing.space3),
             Icon(
               Icons.chevron_right_rounded,
               size: 16,

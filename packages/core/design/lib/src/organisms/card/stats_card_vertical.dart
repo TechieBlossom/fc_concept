@@ -23,16 +23,25 @@ class StatsCardVertical extends StatelessWidget {
               width: 0.5,
               color: context.colors.gold2,
             ),
-            borderRadius: mediumCorner.all,
+            borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
             color: context.colors.backgroundFour,
           ),
-          margin: spacingL.top,
-          padding: spacingL.horizontal + spacingM.bottom + spacingXL.top,
+          margin: const EdgeInsets.only(
+            top: AppSpacing.space4,
+          ),
+          padding: const EdgeInsets.only(
+            left: AppSpacing.space4,
+            right: AppSpacing.space4,
+            top: AppSpacing.space5,
+            bottom: AppSpacing.space3,
+          ),
           child: Column(
             children: statItems
                 .map(
                   (statItem) => Padding(
-                    padding: spacingXS.bottom,
+                    padding: const EdgeInsets.only(
+                      bottom: AppSpacing.space1,
+                    ),
                     child: StatH(
                       statItem: statItem,
                     ),

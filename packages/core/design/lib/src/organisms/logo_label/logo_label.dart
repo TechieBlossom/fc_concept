@@ -30,7 +30,7 @@ class LogoLabel extends StatelessWidget {
             LogoEntity.nation => NationImage(nationId: id!),
             LogoEntity.club => ClubImage(clubId: id!),
           },
-          SizedBox(width: spacingS.value),
+          SizedBox(width: AppSpacing.space2),
         ],
         if (label != null)
           Text(

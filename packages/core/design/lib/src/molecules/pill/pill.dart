@@ -30,16 +30,18 @@ class Pill extends StatelessWidget {
             }
           : null,
       radius: mediumCorner.value,
-      borderRadius: mediumCorner.all,
+      borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         constraints: BoxConstraints(
           minHeight: 28,
           maxHeight: 28,
         ),
-        padding: spacingXL.horizontal,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.space5,
+        ),
         decoration: BoxDecoration(
-          borderRadius: mediumCorner.all,
+          borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
           border: Border.all(
             color: context.colors.backgroundSecondary,
           ),
@@ -56,7 +58,7 @@ class Pill extends StatelessWidget {
               style: textStyle.copyWith(color: color),
             ),
             if (pillItem.iconData != null) ...[
-              SizedBox(width: spacingXS.value),
+              SizedBox(width: AppSpacing.space1),
               Icon(pillItem.iconData, size: 16, color: color),
             ],
           ],

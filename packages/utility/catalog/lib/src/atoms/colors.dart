@@ -32,7 +32,7 @@ class ColorsContent extends StatelessWidget {
         children: [
           ...colors.map(
             (color) => Container(
-              margin: spacingM.all,
+              margin: const EdgeInsets.all(AppSpacing.space3),
               decoration: BoxDecoration(
                 color: color,
                 border: Border.all(),

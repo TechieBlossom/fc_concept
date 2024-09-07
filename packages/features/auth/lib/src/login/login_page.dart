@@ -19,14 +19,16 @@ class LoginPage extends StatelessWidget {
                 style: context.typography.headlineSmall,
               ),
             ),
-            SizedBox(height: spacingXL.value),
+            SizedBox(height: AppSpacing.space5),
             SupaMagicAuth(
               onSuccess: (response) {
                 print(response);
               },
             ),
             Padding(
-              padding: spacingXL.horizontal,
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.space5,
+              ),
               child: SupaEmailAuth(
                 onSignInComplete: (response) {
                   print(response);
@@ -50,8 +52,8 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             Divider(
-              indent: spacingL.value,
-              endIndent: spacingL.value,
+              indent: AppSpacing.space4,
+              endIndent: AppSpacing.space4,
             ),
             SupaSocialsAuth(
               redirectUrl:

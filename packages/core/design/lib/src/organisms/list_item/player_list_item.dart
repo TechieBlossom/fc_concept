@@ -75,8 +75,7 @@ class _PlayerListItemState extends State<PlayerListItem>
                           widget.onFavoriteToggle!();
                         }
                       },
-                      backgroundColor:
-                          context.colors.backgroundFour,
+                      backgroundColor: context.colors.backgroundFour,
                       foregroundColor: context.colors.contentSecondary,
                       icon: widget.isFavorite
                           ? Icons.bookmark_remove
@@ -88,11 +87,13 @@ class _PlayerListItemState extends State<PlayerListItem>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: spacingXL.value),
+              SizedBox(width: AppSpacing.space5),
               PlayerImage(playerId: player.id),
               Expanded(
                 child: Padding(
-                  padding: spacingM.horizontal,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.space3,
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,15 +101,15 @@ class _PlayerListItemState extends State<PlayerListItem>
                       Text(
                         player.name,
                         style: context.typography.titleMedium.copyWith(
-                              color: context.colors.contentSecondary,
-                            ),
+                          color: context.colors.contentSecondary,
+                        ),
                       ),
-                      SizedBox(height: spacingS.value),
+                      SizedBox(height: AppSpacing.space2),
                       Text(
                         player.rarity.name,
                         style: context.typography.labelSmall,
                       ),
-                      SizedBox(height: spacingS.value),
+                      SizedBox(height: AppSpacing.space2),
                       Row(
                         children: [
                           LogoLabel(
@@ -117,7 +118,9 @@ class _PlayerListItemState extends State<PlayerListItem>
                             type: LogoEntity.club,
                           ),
                           Padding(
-                            padding: spacingS.horizontal,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.space2,
+                            ),
                             child: Text('|'),
                           ),
                           LogoLabel(
@@ -132,13 +135,13 @@ class _PlayerListItemState extends State<PlayerListItem>
                 ),
               ),
               PositionBox(position: player.position),
-              SizedBox(width: spacingM.value),
+              SizedBox(width: AppSpacing.space3),
               RatingBox(
                 rating: player.rating,
                 bg: colors.$1,
                 fg: colors.$2,
               ),
-              SizedBox(width: spacingXL.value),
+              SizedBox(width: AppSpacing.space5),
             ],
           ),
         ),

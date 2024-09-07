@@ -79,14 +79,17 @@ class _CollapsibleCardState extends State<CollapsibleCard>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, _) => Container(
-        margin: widget.margin ?? spacingM.horizontal,
+        margin: widget.margin ??
+            const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space3,
+            ),
         child: Column(
           children: [
             Ornament(
               ornamentType: OrnamentType.full,
               label: widget.heading,
               borderRadius: isCollapsedAnimation.value > 0.5
-                  ? mediumCorner.all
+                  ? BorderRadius.circular(AppCornerRadius.radius2)
                   : mediumCorner.top,
               icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 16),
               onTap: runAnimation,
@@ -104,12 +107,17 @@ class _CollapsibleCardState extends State<CollapsibleCard>
               child: Opacity(
                 opacity: opacityAnimation.value,
                 child: Padding(
-                  padding: spacingM.top + spacingS.bottom,
+                  padding: const EdgeInsets.only(
+                    top: AppSpacing.space3,
+                    bottom: AppSpacing.space2,
+                  ),
                   child: Column(
                     children: widget.compareItems
                         .map(
                           (compareItem) => Padding(
-                            padding: spacingS.bottom,
+                            padding: const EdgeInsets.only(
+                              bottom: AppSpacing.space2,
+                            ),
                             child: Compare(
                               compareItem: compareItem,
                             ),

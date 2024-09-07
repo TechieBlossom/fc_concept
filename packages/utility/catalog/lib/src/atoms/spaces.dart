@@ -7,11 +7,13 @@ class SpacesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const spaces = [
-      spacingXS,
-      spacingS,
-      spacingM,
-      spacingL,
-      spacingXL,
+      AppSpacing.space1,
+      AppSpacing.space2,
+      AppSpacing.space3,
+      AppSpacing.space4,
+      AppSpacing.space5,
+      AppSpacing.space6,
+      AppSpacing.space7,
     ];
     return Scaffold(
       appBar: AppBar(
@@ -21,13 +23,15 @@ class SpacesContent extends StatelessWidget {
         children: [
           ...spaces.map(
             (space) => Container(
-              margin: spacingXL.horizontal,
+              margin: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.space5,
+              ),
               decoration: BoxDecoration(
                 border: Border.all(
                   strokeAlign: BorderSide.strokeAlignOutside,
                 ),
               ),
-              width: space.value,
+              width: space,
               height: 80,
             ),
           ),

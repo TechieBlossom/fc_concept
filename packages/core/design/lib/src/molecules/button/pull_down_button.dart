@@ -36,7 +36,8 @@ class PullDownButton extends StatelessWidget {
       },
       child: InkWell(
         onTap: onTap,
-        borderRadius: borderRadius ?? infiniteCorner.all,
+        borderRadius:
+            borderRadius ?? BorderRadius.circular(AppCornerRadius.round),
         radius: infiniteCorner.value,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
@@ -45,17 +46,20 @@ class PullDownButton extends StatelessWidget {
             PullDownButtonType.compact => 28,
           },
           decoration: BoxDecoration(
-            borderRadius: borderRadius ?? infiniteCorner.all,
+            borderRadius:
+                borderRadius ?? BorderRadius.circular(AppCornerRadius.round),
             border: Border.all(
               width: 1,
               color: context.colors.contentSecondary,
             ),
           ),
           child: Padding(
-            padding: spacingM.horizontal +
-                (pullDownButtonType == PullDownButtonType.compact
-                    ? spacingXS.vertical
-                    : spacingM.vertical),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacing.space3,
+              vertical: pullDownButtonType == PullDownButtonType.compact
+                  ? AppSpacing.space2
+                  : AppSpacing.space3,
+            ),
             child: Row(
               mainAxisSize: switch (pullDownButtonType) {
                 PullDownButtonType.compact => MainAxisSize.min,
@@ -68,7 +72,9 @@ class PullDownButton extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: spacingS.right,
+                    padding: const EdgeInsets.only(
+                      right: AppSpacing.space2,
+                    ),
                     child: Text(
                       label,
                       maxLines: 1,

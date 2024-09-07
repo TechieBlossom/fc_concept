@@ -27,13 +27,20 @@ class DestructiveButton extends StatelessWidget {
             context.colors.backgroundPrimary,
           ),
           shape: WidgetStateProperty.all(
-            RoundedRectangleBorder(borderRadius: mediumCorner.all),
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                AppCornerRadius.radius2,
+              ),
+            ),
           ),
           backgroundColor: WidgetStateProperty.all<Color?>(
             Theme.of(context).colorScheme.error,
           ),
           padding: WidgetStateProperty.all<EdgeInsets>(
-            spacingXL.horizontal + spacingM.vertical,
+            const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space5,
+              vertical: AppSpacing.space3,
+            ),
           ),
         ),
         onPressed: onPressed,

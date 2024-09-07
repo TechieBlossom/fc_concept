@@ -18,21 +18,28 @@ class PositionFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: spacingM.bottom,
+      padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: spacingXL.left + spacingS.bottom,
+            padding: const EdgeInsets.only(
+              left: AppSpacing.space5,
+              bottom: AppSpacing.space2,
+            ),
             child: Text(
               'Position',
               style: context.typography.labelSmall.copyWith(
-                    color: context.colors.contentSecondary,
-                  ),
+                color: context.colors.contentSecondary,
+              ),
             ),
           ),
           Padding(
-            padding: spacingXL.horizontal + spacingM.bottom,
+            padding: const EdgeInsets.only(
+              left: AppSpacing.space5,
+              right: AppSpacing.space5,
+              bottom: AppSpacing.space4,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: PositionGroup.values
@@ -54,14 +61,16 @@ class PositionFilter extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: spacingXL.horizontal,
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space5,
+            ),
             child: GridView(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
-                mainAxisSpacing: spacingM.value,
-                crossAxisSpacing: spacingM.value,
+                mainAxisSpacing: AppSpacing.space3,
+                crossAxisSpacing: AppSpacing.space3,
                 childAspectRatio: 90 / 30,
               ),
               children: [

@@ -1,52 +1,40 @@
-import 'package:flutter/widgets.dart';
+abstract class AppCornerRadius {
+  const AppCornerRadius._();
 
-sealed class Spacing {
-  const Spacing(this.value);
+  /// Radius: `4.0`
+  static const double radius1 = 4.0;
 
-  final double value;
+  /// Radius: `8.0`
+  static const double radius2 = 8.0;
 
-  EdgeInsets get all => EdgeInsets.all(value);
-
-  EdgeInsets get horizontal => EdgeInsets.symmetric(horizontal: value);
-
-  EdgeInsets get vertical => EdgeInsets.symmetric(vertical: value);
-
-  EdgeInsets get top => EdgeInsets.only(top: value);
-
-  EdgeInsets get right => EdgeInsets.only(right: value);
-
-  EdgeInsets get bottom => EdgeInsets.only(bottom: value);
-
-  EdgeInsets get left => EdgeInsets.only(left: value);
+  /// Radius: `100.0`
+  static const double round = 100.0;
 }
 
-class _SpacingXS extends Spacing {
-  const _SpacingXS() : super(2);
-}
+abstract class AppSpacing {
+  const AppSpacing._();
 
-class _SpacingS extends Spacing {
-  const _SpacingS() : super(4);
-}
+  /// Space: `2.0`
+  static const space1 = 2.0;
 
-class _SpacingM extends Spacing {
-  const _SpacingM() : super(8);
-}
+  /// Space: `4.0`
+  static const space2 = 4.0;
 
-class _SpacingL extends Spacing {
-  const _SpacingL() : super(12);
-}
+  /// Space: `8.0`
+  static const space3 = 8.0;
 
-class _SpacingXL extends Spacing {
-  const _SpacingXL() : super(16);
-}
+  /// Space: `12.0`
+  static const space4 = 12.0;
 
-class _SpacingXXXL extends Spacing {
-  const _SpacingXXXL() : super(48);
-}
+  /// Space: `16.0`
+  static const space5 = 16.0;
 
-const spacingXS = _SpacingXS();
-const spacingS = _SpacingS();
-const spacingM = _SpacingM();
-const spacingL = _SpacingL();
-const spacingXL = _SpacingXL();
-const spacingXXXL = _SpacingXXXL();
+  /// Space: `24.0`
+  static const space6 = 24.0;
+
+  /// Space: `48.0`
+  static const space7 = 48.0;
+
+  /// Space: `96.0`
+  static const space8 = 96.0;
+}

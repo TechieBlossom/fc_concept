@@ -20,11 +20,13 @@ class AppDrawer extends StatelessWidget {
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
             child: Padding(
-              padding: spacingL.horizontal,
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.space4,
+              ),
               child: ListView(
                 children: [
-                  SizedBox(
-                    height: spacingXL.value,
+                  const SizedBox(
+                    height: AppSpacing.space5,
                   ),
                   const _Header(text: 'FC Concept', isSmall: false),
                   _DrawerItem(
@@ -35,9 +37,9 @@ class AppDrawer extends StatelessWidget {
                     ),
                     onTap: () {},
                   ),
-                  Divider(
-                    indent: spacingL.value,
-                    endIndent: spacingL.value,
+                  const Divider(
+                    indent: AppSpacing.space4,
+                    endIndent: AppSpacing.space4,
                   ),
                   const _Header(text: 'PLAYERS'),
                   _DrawerItem(
@@ -51,8 +53,8 @@ class AppDrawer extends StatelessWidget {
                     onTap: () {
                       scaffoldKey.currentState?.closeDrawer();
                       context.read<bloc.AppDrawerBloc>().add(
-                        bloc.PlayersTap(),
-                      );
+                            bloc.PlayersTap(),
+                          );
                     },
                   ),
                   // _DrawerItem(
@@ -77,9 +79,9 @@ class AppDrawer extends StatelessWidget {
                     trailing: 50,
                     onTap: () {},
                   ),
-                  Divider(
-                    indent: spacingL.value,
-                    endIndent: spacingL.value,
+                  const Divider(
+                    indent: AppSpacing.space4,
+                    endIndent: AppSpacing.space4,
                   ),
                   _DrawerItem(
                     leading: Icon(
@@ -103,9 +105,9 @@ class AppDrawer extends StatelessWidget {
                           );
                     },
                   ),
-                  Divider(
-                    indent: spacingL.value,
-                    endIndent: spacingL.value,
+                  const Divider(
+                    indent: AppSpacing.space4,
+                    endIndent: AppSpacing.space4,
                   ),
                   const _Header(text: 'ABOUT'),
                   _DrawerItem(
@@ -133,7 +135,10 @@ class AppDrawer extends StatelessWidget {
                     onTap: () {},
                   ),
                   Padding(
-                    padding: spacingXL.horizontal + spacingM.vertical,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.space5,
+                      vertical: AppSpacing.space3,
+                    ),
                     child: Center(
                       child: Text(
                         'App Version 1.0.0',
@@ -163,13 +168,13 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: spacingXL.all,
+      padding: const EdgeInsets.all(AppSpacing.space5),
       child: Text(
         text,
         style: isSmall
             ? context.typography.labelSmall.copyWith(
-                  color: context.colors.contentTertiary,
-                )
+                color: context.colors.contentTertiary,
+              )
             : context.typography.headlineSmall,
       ),
     );
@@ -195,7 +200,11 @@ class _DrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      shape: RoundedRectangleBorder(borderRadius: mediumCorner.all),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppCornerRadius.radius2,
+        ),
+      ),
       selectedTileColor: context.colors.backgroundTertiary,
       selected: isSelected,
       leading: leading,

@@ -29,7 +29,9 @@ class RatingBox extends StatelessWidget {
             ),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: isSmall ? smallCorner.all : mediumCorner.all,
+                borderRadius: isSmall
+                    ? BorderRadius.circular(AppCornerRadius.radius1)
+                    : BorderRadius.circular(AppCornerRadius.radius2),
                 color: Color(bg),
                 border: Border.all(
                   color: Color(fg),
@@ -39,8 +41,8 @@ class RatingBox extends StatelessWidget {
                 child: Text(
                   rating.toString(),
                   style: context.typography.titleMediumDigit.copyWith(
-                        color: Color(fg),
-                      ),
+                    color: Color(fg),
+                  ),
                 ),
               ),
             ),

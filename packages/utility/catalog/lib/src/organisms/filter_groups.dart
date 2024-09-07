@@ -10,7 +10,7 @@ class FilterGroups extends StatelessWidget {
       appBar: const PageTitle(title: 'Filter Groups'),
       body: Column(
         children: [
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           FilterGroup(
             title: 'Top',
             pillItems: [
@@ -46,7 +46,7 @@ class FilterGroups extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: spacingXL.value),
+          const SizedBox(height: AppSpacing.space5),
           FilterGroup(
             title: 'Others',
             pillItems: [

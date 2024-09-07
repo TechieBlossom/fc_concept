@@ -22,16 +22,25 @@ class PriceCard extends StatelessWidget {
         IntrinsicWidth(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: mediumCorner.all,
+              borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
               color: Color(bg).withOpacity(0.7),
             ),
-            margin: spacingL.top,
-            padding: spacingL.horizontal + spacingM.bottom + spacingXL.top,
+            margin: const EdgeInsets.only(
+              top: AppSpacing.space4,
+            ),
+            padding: const EdgeInsets.only(
+              left: AppSpacing.space4,
+              right: AppSpacing.space4,
+              top: AppSpacing.space5,
+              bottom: AppSpacing.space3,
+            ),
             child: Column(
               children: priceItems
                   .map(
                     (priceItem) => Padding(
-                      padding: spacingXS.bottom,
+                      padding: const EdgeInsets.only(
+                        bottom: AppSpacing.space1,
+                      ),
                       child: Price(
                         priceItem: priceItem,
                         color: Color(fg),

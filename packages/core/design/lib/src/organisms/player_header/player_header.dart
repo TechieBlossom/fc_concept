@@ -38,19 +38,23 @@ class PlayerHeader extends StatelessWidget {
           ),
           Positioned(
             right: 0,
-            top: spacingL.value + spacingL.value,
+            top: AppSpacing.space4 + AppSpacing.space4,
             child: PlayerImage(
               playerId: player.id,
               size: PlayerImageSize.large,
             ),
           ),
           Padding(
-            padding: spacingXL.horizontal,
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space5,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: spacingXL.vertical,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpacing.space5,
+                  ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -62,7 +66,7 @@ class PlayerHeader extends StatelessWidget {
                               player.name,
                               style: context.typography.titleLarge,
                             ),
-                            SizedBox(height: spacingS.value),
+                            SizedBox(height: AppSpacing.space2),
                             Row(
                               children: [
                                 RarityBox(
@@ -70,7 +74,7 @@ class PlayerHeader extends StatelessWidget {
                                   bg: colors.$1,
                                   fg: colors.$2,
                                 ),
-                                SizedBox(width: spacingS.value),
+                                SizedBox(width: AppSpacing.space2),
                                 Icon(
                                   Icons.add,
                                   color: context.colors.contentSecondary,
@@ -86,7 +90,7 @@ class PlayerHeader extends StatelessWidget {
                             isShown: player.position != null,
                             child: PositionBox(position: player.position),
                           ),
-                          SizedBox(width: spacingM.value),
+                          SizedBox(width: AppSpacing.space3),
                           RatingBox(
                             rating: player.rating,
                             bg: colors.$1,
@@ -98,7 +102,9 @@ class PlayerHeader extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: spacingM.vertical,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpacing.space3,
+                  ),
                   child: _AnimatedOpacity(
                     isShown: true,
                     child: PriceCard(
@@ -143,7 +149,9 @@ class PlayerHeader extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: spacingM.vertical,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpacing.space3,
+                  ),
                   child: _AnimatedOpacity(
                     isShown: player.age != null,
                     child: InfoCard(

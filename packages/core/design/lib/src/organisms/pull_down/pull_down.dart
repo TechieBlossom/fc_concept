@@ -121,7 +121,10 @@ class _PullDownState extends State<PullDown>
       key: widget.key,
       animation: _controller,
       builder: (context, _) => Container(
-        margin: widget.margin ?? spacingM.horizontal,
+        margin: widget.margin ??
+            const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space3,
+            ),
         child: Column(
           children: [
             PullDownButton(
@@ -129,7 +132,7 @@ class _PullDownState extends State<PullDown>
               pullDownButtonType: widget.pullDownButtonType,
               label: widget.heading,
               borderRadius: isCollapsedAnimation.value > 0.5
-                  ? mediumCorner.all
+                  ? BorderRadius.circular(AppCornerRadius.radius2)
                   : mediumCorner.top,
               icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 16),
               onTap: runAnimation,
@@ -158,7 +161,9 @@ class _PullDownState extends State<PullDown>
               child: Opacity(
                 opacity: opacityAnimation.value,
                 child: Padding(
-                  padding: spacingS.vertical,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpacing.space2,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: widget.items
@@ -176,7 +181,10 @@ class _PullDownState extends State<PullDown>
                               );
                             },
                             child: Padding(
-                              padding: spacingM.horizontal + spacingXS.vertical,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.space3,
+                                vertical: AppSpacing.space2,
+                              ),
                               child: Text(
                                 item.$3,
                                 style: context.typography.bodySmall,

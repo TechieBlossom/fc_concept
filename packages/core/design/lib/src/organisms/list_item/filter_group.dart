@@ -16,7 +16,9 @@ class FilterGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final indices = Iterable.generate(pillItems.length);
     return Padding(
-      padding: spacingXL.horizontal,
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.space5,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -24,13 +26,13 @@ class FilterGroup extends StatelessWidget {
             Text(
               title!,
               style: context.typography.labelSmall.copyWith(
-                    color: context.colors.contentSecondary,
-                  ),
+                color: context.colors.contentSecondary,
+              ),
             ),
-          SizedBox(height: spacingS.value),
+          SizedBox(height: AppSpacing.space2),
           Wrap(
-            runSpacing: spacingM.value,
-            spacing: spacingM.value,
+            runSpacing: AppSpacing.space3,
+            spacing: AppSpacing.space3,
             children: indices
                 .map((index) => Pill(pillItem: pillItems[index]))
                 .toList(),

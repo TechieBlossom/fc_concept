@@ -44,17 +44,17 @@ class FilterPage extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title: 'Sort Options',
                       subtitle: 'Tap to select Sort By and Sort Order',
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: () {},
                     ),
                   ),
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title: state.leagues != null
                           ? 'League (Tap to change)'
@@ -71,15 +71,15 @@ class FilterPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: () => context.read<FilterBloc>().add(
                             TapLeague(),
                           ),
                     ),
                   ),
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title:
                           state.clubs != null ? 'Club (Tap to change)' : 'Club',
@@ -94,8 +94,8 @@ class FilterPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: state.leagues != null
                           ? () => context.read<FilterBloc>().add(
                                 TapClub(),
@@ -104,7 +104,7 @@ class FilterPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title: state.nations != null
                           ? 'Nation (Tap to change)'
@@ -121,15 +121,15 @@ class FilterPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: () => context.read<FilterBloc>().add(
                             TapNation(),
                           ),
                     ),
                   ),
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title: state.rarities != null
                           ? 'Rarity (Tap to change)'
@@ -146,15 +146,15 @@ class FilterPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: () => context.read<FilterBloc>().add(
                             TapRarity(),
                           ),
                     ),
                   ),
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title: state.overallRating != null
                           ? 'Overall Rating (Tap to change)'
@@ -172,15 +172,15 @@ class FilterPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: () => context.read<FilterBloc>().add(
                             TapOverallRating(),
                           ),
                     ),
                   ),
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title: 'Gender',
                       selectedPills: Gender.values
@@ -196,13 +196,13 @@ class FilterPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: () {},
                     ),
                   ),
                   Padding(
-                    padding: spacingM.bottom,
+                    padding: const EdgeInsets.only(bottom: AppSpacing.space3),
                     child: NestedFilterItem(
                       title: 'Preferred Foot',
                       selectedPills: Foot.values
@@ -217,8 +217,8 @@ class FilterPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      pillGap: spacingM,
-                      margin: spacingXL,
+                      pillGap: AppSpacing.space3,
+                      margin: AppSpacing.space5,
                       onTap: () {},
                     ),
                   ),
@@ -226,7 +226,7 @@ class FilterPage extends StatelessWidget {
                     positions: state.positions,
                     positionGroups: state.positionGroups,
                   ),
-                  SizedBox(height: spacingXXXL.value * 2),
+                  const SizedBox(height: AppSpacing.space8),
                 ],
               ),
             ),

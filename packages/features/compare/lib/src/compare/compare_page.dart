@@ -33,8 +33,7 @@ class ComparePage extends StatelessWidget {
                   left: 0,
                   width: MediaQuery.sizeOf(context).width / 2,
                   child: ColoredBox(
-                    color:
-                        context.colors.backgroundTertiary,
+                    color: context.colors.backgroundTertiary,
                   ),
                 ),
                 SingleChildScrollView(
@@ -102,7 +101,7 @@ class ComparePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: spacingM.value),
+                        const SizedBox(height: AppSpacing.space3),
                         CollapsibleCard(
                           heading: 'Pace',
                           compareItems: [
@@ -114,7 +113,7 @@ class ComparePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: spacingM.value),
+                        const SizedBox(height: AppSpacing.space3),
                         CollapsibleCard(
                           heading: 'Shooting',
                           compareItems: [
@@ -126,7 +125,7 @@ class ComparePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: spacingM.value),
+                        const SizedBox(height: AppSpacing.space3),
                         CollapsibleCard(
                           heading: 'Passing',
                           compareItems: [
@@ -138,7 +137,7 @@ class ComparePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: spacingM.value),
+                        const SizedBox(height: AppSpacing.space3),
                         CollapsibleCard(
                           heading: 'Dribbling',
                           compareItems: [
@@ -150,7 +149,7 @@ class ComparePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: spacingM.value),
+                        const SizedBox(height: AppSpacing.space3),
                         CollapsibleCard(
                           heading: 'Defending',
                           compareItems: [
@@ -162,7 +161,7 @@ class ComparePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: spacingM.value),
+                        const SizedBox(height: AppSpacing.space3),
                         CollapsibleCard(
                           heading: 'Physicality',
                           compareItems: [
@@ -276,19 +275,19 @@ class PlayerPlaceholder extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: spacingM.value),
+            const SizedBox(height: AppSpacing.space3),
             PrimaryButton(
               text: 'Change Player',
               buttonType: ButtonSize.small,
               onPressed: onPlayerSelection,
             ),
-            SizedBox(height: spacingM.value),
+            const SizedBox(height: AppSpacing.space3),
             Text(
               player!.name,
               style: context.typography.bodyMedium,
             ),
             if (versions != null) ...[
-              SizedBox(height: spacingM.value),
+              const SizedBox(height: AppSpacing.space3),
               PullDown(
                 key: ValueKey(player?.id),
                 constrainedWidth: 164,
@@ -314,7 +313,7 @@ class PlayerPlaceholder extends StatelessWidget {
                 },
               ),
             ],
-            SizedBox(height: spacingM.value),
+            const SizedBox(height: AppSpacing.space3),
             PlayerImage(
               playerId: player!.id,
               size: PlayerImageSize.medium,
@@ -328,17 +327,17 @@ class PlayerPlaceholder extends StatelessWidget {
                     bg: colors.$1,
                     fg: colors.$2,
                   ),
-                  SizedBox(width: spacingM.value),
+                  const SizedBox(width: AppSpacing.space3),
                   Text(
                     player?.position?.name ?? '',
                     style: context.typography.titleMediumDigit.copyWith(
-                          color: context.colors.contentSecondary,
-                        ),
+                      color: context.colors.contentSecondary,
+                    ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: spacingM.value),
+            const SizedBox(height: AppSpacing.space3),
           ],
         ),
       );
