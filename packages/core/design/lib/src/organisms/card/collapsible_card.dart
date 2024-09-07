@@ -96,10 +96,10 @@ class _CollapsibleCardState extends State<CollapsibleCard>
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 0.5,
-                  color: Theme.of(context).colorScheme.outlineVariant,
+                  color: context.colors.gold2,
                 ),
                 borderRadius: mediumCorner.bottom,
-                color: Theme.of(context).colorScheme.tertiaryContainer,
+                color: context.colors.backgroundFour,
               ),
               child: Opacity(
                 opacity: opacityAnimation.value,

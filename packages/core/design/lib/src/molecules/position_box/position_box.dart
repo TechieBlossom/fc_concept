@@ -14,7 +14,7 @@ class PositionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       position?.name.toUpperCase() ?? '',
-      style: context.titleMediumDigit(),
+      style: context.typography.titleMediumDigit,
     );
   }
 }

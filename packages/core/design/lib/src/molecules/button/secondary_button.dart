@@ -38,11 +38,11 @@ class SecondaryButton extends StatelessWidget {
       ),
       foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
         if (states.contains(WidgetState.pressed)) {
-          return Theme.of(context).colorScheme.secondary;
+          return context.colors.contentTertiary;
         } else if (states.contains(WidgetState.disabled)) {
-          return Theme.of(context).colorScheme.secondary;
+          return context.colors.contentTertiary;
         }
-        return Theme.of(context).colorScheme.primary;
+        return context.colors.contentSecondary;
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(

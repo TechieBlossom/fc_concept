@@ -34,7 +34,7 @@ class ComparePage extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width / 2,
                   child: ColoredBox(
                     color:
-                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                        context.colors.backgroundTertiary,
                   ),
                 ),
                 SingleChildScrollView(
@@ -285,7 +285,7 @@ class PlayerPlaceholder extends StatelessWidget {
             SizedBox(height: spacingM.value),
             Text(
               player!.name,
-              style: context.bodyMedium(),
+              style: context.typography.bodyMedium,
             ),
             if (versions != null) ...[
               SizedBox(height: spacingM.value),
@@ -331,8 +331,8 @@ class PlayerPlaceholder extends StatelessWidget {
                   SizedBox(width: spacingM.value),
                   Text(
                     player?.position?.name ?? '',
-                    style: context.titleMediumDigit().copyWith(
-                          color: Theme.of(context).colorScheme.primary,
+                    style: context.typography.titleMediumDigit.copyWith(
+                          color: context.colors.contentSecondary,
                         ),
                   ),
                 ],

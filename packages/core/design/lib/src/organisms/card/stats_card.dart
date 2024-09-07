@@ -28,9 +28,9 @@ class StatCard extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: mediumCorner.all,
-          color: Theme.of(context)
-              .colorScheme
-              .surfaceContainerHighest
+          color: context
+              .colors
+              .backgroundTertiary
               .withOpacity(0.2),
         ),
         child: Padding(

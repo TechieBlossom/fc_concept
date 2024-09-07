@@ -48,7 +48,7 @@ class PullDownButton extends StatelessWidget {
             borderRadius: borderRadius ?? infiniteCorner.all,
             border: Border.all(
               width: 1,
-              color: Theme.of(context).colorScheme.primary,
+              color: context.colors.contentSecondary,
             ),
           ),
           child: Padding(
@@ -73,7 +73,7 @@ class PullDownButton extends StatelessWidget {
                       label,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: context.labelSmall(),
+                      style: context.typography.labelSmall,
                     ),
                   ),
                 ),

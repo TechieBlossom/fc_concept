@@ -76,8 +76,8 @@ class _PlayerListItemState extends State<PlayerListItem>
                         }
                       },
                       backgroundColor:
-                          Theme.of(context).colorScheme.tertiaryContainer,
-                      foregroundColor: Theme.of(context).colorScheme.primary,
+                          context.colors.backgroundFour,
+                      foregroundColor: context.colors.contentSecondary,
                       icon: widget.isFavorite
                           ? Icons.bookmark_remove
                           : Icons.bookmark_add_outlined,
@@ -99,14 +99,14 @@ class _PlayerListItemState extends State<PlayerListItem>
                     children: [
                       Text(
                         player.name,
-                        style: context.titleMedium().copyWith(
-                              color: Theme.of(context).colorScheme.primary,
+                        style: context.typography.titleMedium.copyWith(
+                              color: context.colors.contentSecondary,
                             ),
                       ),
                       SizedBox(height: spacingS.value),
                       Text(
                         player.rarity.name,
-                        style: context.labelSmall(),
+                        style: context.typography.labelSmall,
                       ),
                       SizedBox(height: spacingS.value),
                       Row(

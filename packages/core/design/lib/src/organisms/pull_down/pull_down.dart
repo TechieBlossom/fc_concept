@@ -142,15 +142,15 @@ class _PullDownState extends State<PullDown>
                   top: BorderSide.none,
                   bottom: BorderSide(
                     width: 1,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: context.colors.contentSecondary,
                   ),
                   left: BorderSide(
                     width: 1,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: context.colors.contentSecondary,
                   ),
                   right: BorderSide(
                     width: 1,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: context.colors.contentSecondary,
                   ),
                 ),
                 borderRadius: mediumCorner.bottom,
@@ -179,7 +179,7 @@ class _PullDownState extends State<PullDown>
                               padding: spacingM.horizontal + spacingXS.vertical,
                               child: Text(
                                 item.$3,
-                                style: context.bodySmall(),
+                                style: context.typography.bodySmall,
                               ),
                             ),
                           ),

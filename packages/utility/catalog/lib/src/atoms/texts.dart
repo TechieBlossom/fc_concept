@@ -17,47 +17,47 @@ class TextsContent extends StatelessWidget {
           children: [
             Text(
               'Headline Small',
-              style: context.headlineSmall(),
+              style: context.typography.headlineSmall,
             ),
             Text(
               'Headline Small Digit',
-              style: context.headlineSmallDigit(),
+              style: context.typography.headlineSmallDigit,
             ),
             Text(
               'Title Medium',
-              style: context.titleMedium(),
+              style: context.typography.titleMedium,
             ),
             Text(
               'Title Medium Digit',
-              style: context.titleMediumDigit(),
+              style: context.typography.titleMediumDigit,
             ),
             Text(
               'Title Small',
-              style: context.titleSmall(),
+              style: context.typography.titleSmall,
             ),
             Text(
               'Label Medium',
-              style: context.labelMedium(),
+              style: context.typography.labelMedium,
             ),
             Text(
               'Label Medium Digit',
-              style: context.labelMediumDigit(),
+              style: context.typography.labelMediumDigit,
             ),
             Text(
               'Body Medium',
-              style: context.bodyMedium(),
+              style: context.typography.bodyMedium,
             ),
             Text(
               'Body Small',
-              style: context.bodySmall(),
+              style: context.typography.bodySmall,
             ),
             Text(
               'Label Small',
-              style: context.labelSmall(),
+              style: context.typography.labelSmall,
             ),
             Text(
               'Label Small Digit',
-              style: context.labelSmallDigit(),
+              style: context.typography.labelSmallDigit,
             ),
           ],
         ),

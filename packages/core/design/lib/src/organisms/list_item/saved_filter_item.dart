@@ -27,12 +27,12 @@ class SavedFilterItem extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: context.titleMedium(),
+                    style: context.typography.titleMedium,
                   ),
                   SizedBox(height: spacingM.value),
                   Text(
                     title,
-                    style: context.bodySmall(),
+                    style: context.typography.bodySmall,
                   ),
                 ],
               ),
@@ -41,7 +41,7 @@ class SavedFilterItem extends StatelessWidget {
             Icon(
               Icons.chevron_right_rounded,
               size: 16,
-              color: Theme.of(context).colorScheme.primary,
+              color: context.colors.contentSecondary,
             ),
           ],
         ),

@@ -30,19 +30,14 @@ class BottomButtonLayout extends StatelessWidget {
     if (isLoading) {
       return ShimmerBottomButtonLayout();
     }
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      left: 0,
-      child: Container(
-        padding: spacingM.all + spacingXL.bottom,
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: widgets,
-        ),
+    return Container(
+      padding: spacingM.all + spacingXL.bottom,
+      color: context.colors.backgroundTertiary,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: widgets,
       ),
     );
   }

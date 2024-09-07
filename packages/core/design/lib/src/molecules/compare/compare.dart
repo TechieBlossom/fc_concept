@@ -26,7 +26,7 @@ class Compare extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle =
-        compareItem.hasDigit ? context.labelSmallDigit() : context.labelSmall();
+        compareItem.hasDigit ? context.typography.labelSmallDigit : context.typography.labelSmall;
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +54,7 @@ class Compare extends StatelessWidget {
           child: Text(
             compareItem.label,
             textAlign: TextAlign.center,
-            style: context.bodySmall(),
+            style: context.typography.bodySmall,
           ),
         ),
         Expanded(

@@ -38,7 +38,7 @@ class RatingBox extends StatelessWidget {
               child: Center(
                 child: Text(
                   rating.toString(),
-                  style: context.titleMediumDigit().copyWith(
+                  style: context.typography.titleMediumDigit.copyWith(
                         color: Color(fg),
                       ),
                 ),

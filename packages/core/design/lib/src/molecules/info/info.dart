@@ -21,7 +21,7 @@ class Info extends StatelessWidget {
           children: [
             Text(
               value.toUpperCase(),
-              style: context.labelMediumDigit(),
+              style: context.typography.labelMediumDigit,
             ),
             if (icon != null) icon!,
           ],
@@ -29,7 +29,7 @@ class Info extends StatelessWidget {
         SizedBox(height: spacingS.value),
         Text(
           label,
-          style: context.bodySmall(),
+          style: context.typography.bodySmall,
         ),
       ],
     );

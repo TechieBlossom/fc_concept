@@ -29,7 +29,7 @@ class PrimaryButton extends StatelessWidget {
             },
           ),
           foregroundColor: WidgetStateProperty.all<Color>(
-            Theme.of(context).colorScheme.onPrimary,
+            context.colors.backgroundPrimary
           ),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
@@ -41,11 +41,11 @@ class PrimaryButton extends StatelessWidget {
           ),
           backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
             if (states.contains(WidgetState.pressed)) {
-              return Theme.of(context).colorScheme.secondary;
+              return context.colors.contentTertiary;
             } else if (states.contains(WidgetState.disabled)) {
-              return Theme.of(context).colorScheme.secondary;
+              return context.colors.contentTertiary;
             }
-            return Theme.of(context).colorScheme.primary;
+            return context.colors.contentSecondary;
           }),
           padding: WidgetStateProperty.all<EdgeInsets>(
             switch (buttonType) {

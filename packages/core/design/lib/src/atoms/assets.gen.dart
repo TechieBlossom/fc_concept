@@ -22,11 +22,15 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/login_bg.png
+  AssetGenImage get loginBg =>
+      const AssetGenImage('assets/images/login_bg.png');
+
   /// File path: assets/images/messi.png
   AssetGenImage get messi => const AssetGenImage('assets/images/messi.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [messi];
+  List<AssetGenImage> get values => [loginBg, messi];
 }
 
 class AppAssets {
@@ -39,11 +43,18 @@ class AppAssets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
 
   static const String package = 'core_design';
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,

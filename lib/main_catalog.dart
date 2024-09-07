@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: theme,
+      theme: AppTheme.themeData(context, Brightness.light),
+      darkTheme: AppTheme.themeData(context, Brightness.dark),
       home: const CatalogDashboard(),
     );
   }

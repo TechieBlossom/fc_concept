@@ -21,10 +21,10 @@ class StatsCardVertical extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 0.5,
-              color: Theme.of(context).colorScheme.outlineVariant,
+              color: context.colors.gold2,
             ),
             borderRadius: mediumCorner.all,
-            color: Theme.of(context).colorScheme.tertiaryContainer,
+            color: context.colors.backgroundFour,
           ),
           margin: spacingL.top,
           padding: spacingL.horizontal + spacingM.bottom + spacingXL.top,

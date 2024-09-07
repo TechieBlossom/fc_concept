@@ -23,8 +23,8 @@ class FilterGroup extends StatelessWidget {
           if (title != null)
             Text(
               title!,
-              style: context.labelSmall().copyWith(
-                    color: Theme.of(context).colorScheme.primary,
+              style: context.typography.labelSmall.copyWith(
+                    color: context.colors.contentSecondary,
                   ),
             ),
           SizedBox(height: spacingS.value),

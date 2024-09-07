@@ -31,12 +31,12 @@ class Stat extends StatelessWidget {
       children: [
         Text(
           label.toUpperCase(),
-          style: context.bodySmall(),
+          style: context.typography.bodySmall,
         ),
         SizedBox(height: spacingS.value),
         Text(
           rating.toString(),
-          style: context.titleMediumDigit().copyWith(
+          style: context.typography.titleMediumDigit.copyWith(
                 color: ratingColor,
               ),
         ),

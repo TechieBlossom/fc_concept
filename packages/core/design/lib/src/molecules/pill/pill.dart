@@ -12,16 +12,16 @@ class Pill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = pillItem.isSelected
-        ? Theme.of(context).colorScheme.onSecondaryContainer
-        : Theme.of(context).colorScheme.primary;
+        ? context.colors.backgroundPrimary
+        : context.colors.contentSecondary;
     final textStyle = pillItem.isSelected
         ? switch (pillItem.hasDigit) {
-            true => context.labelSmallDigit(),
-            false => context.labelSmall(),
+            true => context.typography.labelSmallDigit,
+            false => context.typography.labelSmall,
           }
         : switch (pillItem.hasDigit) {
-            true => context.bodySmallDigit(),
-            false => context.bodySmall(),
+            true => context.typography.bodySmallDigit,
+            false => context.typography.bodySmall,
           };
     return InkWell(
       onTap: (pillItem.onTap != null)
@@ -41,10 +41,10 @@ class Pill extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: mediumCorner.all,
           border: Border.all(
-            color: Theme.of(context).colorScheme.secondaryContainer,
+            color: context.colors.backgroundSecondary,
           ),
           color: pillItem.isSelected
-              ? Theme.of(context).colorScheme.secondaryContainer
+              ? context.colors.backgroundSecondary
               : Colors.transparent,
         ),
         child: Row(
@@ -53,9 +53,7 @@ class Pill extends StatelessWidget {
           children: [
             Text(
               pillItem.text.toUpperCase(),
-              style: pillItem.isSelected
-                  ? textStyle.copyWith(color: color)
-                  : textStyle.copyWith(color: color),
+              style: textStyle.copyWith(color: color),
             ),
             if (pillItem.iconData != null) ...[
               SizedBox(width: spacingXS.value),

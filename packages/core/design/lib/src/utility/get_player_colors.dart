@@ -1,9 +1,10 @@
+import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
 (int bg, int fg) getPlayerColors(BuildContext context, Player player) {
-  final defaultBg = Theme.of(context).colorScheme.primary.value;
-  final defaultFg = Theme.of(context).colorScheme.surfaceContainerHighest.value;
+  final defaultBg = context.colors.contentSecondary.value;
+  final defaultFg = context.colors.backgroundTertiary.value;
   (int bg, int fg) colors;
   try {
     if (player.rarity.id == 0) {

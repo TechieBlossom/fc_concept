@@ -1,4 +1,4 @@
-import 'package:core_design/design.dart';
+import 'package:core_design/src/atoms/atoms.dart';
 import 'package:flutter/material.dart';
 
 class DestructiveButton extends StatelessWidget {
@@ -24,7 +24,7 @@ class DestructiveButton extends StatelessWidget {
             Theme.of(context).textTheme.labelMedium,
           ),
           foregroundColor: WidgetStateProperty.all<Color>(
-            Theme.of(context).colorScheme.onPrimary,
+            context.colors.backgroundPrimary,
           ),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: mediumCorner.all),

@@ -28,8 +28,8 @@ class NestedFilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = _isDisabled
-        ? Theme.of(context).colorScheme.secondary
-        : Theme.of(context).colorScheme.primary;
+        ? context.colors.contentTertiary
+        : context.colors.contentSecondary;
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -48,7 +48,7 @@ class NestedFilterItem extends StatelessWidget {
                     padding: margin.left + spacingS.bottom,
                     child: Text(
                       title,
-                      style: context.labelSmall().copyWith(
+                      style: context.typography.labelSmall.copyWith(
                             color: textColor,
                           ),
                     ),
@@ -58,7 +58,7 @@ class NestedFilterItem extends StatelessWidget {
                       padding: margin.horizontal,
                       child: Text(
                         subtitle!,
-                        style: context.bodySmall().copyWith(
+                        style: context.typography.bodySmall.copyWith(
                               color: textColor,
                             ),
                       ),

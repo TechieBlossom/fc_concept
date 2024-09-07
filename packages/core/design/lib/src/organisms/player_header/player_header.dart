@@ -58,7 +58,10 @@ class PlayerHeader extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(player.name, style: context.titleLarge()),
+                            Text(
+                              player.name,
+                              style: context.typography.titleLarge,
+                            ),
                             SizedBox(height: spacingS.value),
                             Row(
                               children: [
@@ -70,7 +73,7 @@ class PlayerHeader extends StatelessWidget {
                                 SizedBox(width: spacingS.value),
                                 Icon(
                                   Icons.add,
-                                  color: Theme.of(context).colorScheme.primary,
+                                  color: context.colors.contentSecondary,
                                 ),
                               ],
                             ),

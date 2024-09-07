@@ -31,7 +31,7 @@ class AppDrawer extends StatelessWidget {
                     text: 'Login/Register',
                     leading: Icon(
                       Icons.login_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     onTap: () {},
                   ),
@@ -43,7 +43,7 @@ class AppDrawer extends StatelessWidget {
                   _DrawerItem(
                     leading: Icon(
                       Icons.person_search_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     text: 'All',
                     trailing: state.playerCount,
@@ -58,7 +58,7 @@ class AppDrawer extends StatelessWidget {
                   // _DrawerItem(
                   //   leading: Icon(
                   //     Icons.star_rounded,
-                  //     color: Theme.of(context).colorScheme.primary,
+                  //     color: context.colors.contentSecondary,
                   //   ),
                   //   text: 'Popular',
                   //   onTap: () {
@@ -71,7 +71,7 @@ class AppDrawer extends StatelessWidget {
                   _DrawerItem(
                     leading: Icon(
                       Icons.bookmark_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     text: 'Favorites',
                     trailing: 50,
@@ -84,7 +84,7 @@ class AppDrawer extends StatelessWidget {
                   _DrawerItem(
                     leading: Icon(
                       Icons.filter_alt_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     text: 'Saved Filters',
                     trailing: 2,
@@ -93,7 +93,7 @@ class AppDrawer extends StatelessWidget {
                   _DrawerItem(
                     leading: Icon(
                       Icons.compare_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     text: 'Compare',
                     onTap: () {
@@ -111,7 +111,7 @@ class AppDrawer extends StatelessWidget {
                   _DrawerItem(
                     leading: Icon(
                       Icons.security_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     text: 'Privacy Policy',
                     onTap: () {},
@@ -119,7 +119,7 @@ class AppDrawer extends StatelessWidget {
                   _DrawerItem(
                     leading: Icon(
                       Icons.settings_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     text: 'Settings',
                     onTap: () {},
@@ -127,7 +127,7 @@ class AppDrawer extends StatelessWidget {
                   _DrawerItem(
                     leading: Icon(
                       Icons.logout_rounded,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: context.colors.contentSecondary,
                     ),
                     text: 'Log Out',
                     onTap: () {},
@@ -137,7 +137,7 @@ class AppDrawer extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'App Version 1.0.0',
-                        style: context.bodySmall(),
+                        style: context.typography.bodySmall,
                       ),
                     ),
                   ),
@@ -167,10 +167,10 @@ class _Header extends StatelessWidget {
       child: Text(
         text,
         style: isSmall
-            ? context.labelSmall().copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
+            ? context.typography.labelSmall.copyWith(
+                  color: context.colors.contentTertiary,
                 )
-            : context.headlineSmall(),
+            : context.typography.headlineSmall,
       ),
     );
   }
@@ -196,17 +196,17 @@ class _DrawerItem extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       shape: RoundedRectangleBorder(borderRadius: mediumCorner.all),
-      selectedTileColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+      selectedTileColor: context.colors.backgroundTertiary,
       selected: isSelected,
       leading: leading,
       title: Text(
         text,
-        style: context.labelMedium(),
+        style: context.typography.labelMedium,
       ),
       trailing: trailing != null
           ? Text(
               currencyFormatter.format(trailing),
-              style: context.labelMediumDigit(),
+              style: context.typography.labelMediumDigit,
             )
           : const SizedBox.shrink(),
     );

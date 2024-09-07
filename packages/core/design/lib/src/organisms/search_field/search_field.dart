@@ -50,7 +50,7 @@ class _SearchFieldState extends State<SearchField> {
         Container(
           decoration: BoxDecoration(
             borderRadius: mediumCorner.all,
-            color: Theme.of(context).colorScheme.surfaceContainerHighest,
+            color: context.colors.backgroundTertiary,
           ),
           margin: spacingXL.horizontal + spacingM.vertical,
           padding: spacingM.horizontal,
@@ -59,9 +59,9 @@ class _SearchFieldState extends State<SearchField> {
             controller: _controller,
             onChanged: widget.onSearch,
             textCapitalization: TextCapitalization.words,
-            style: context
-                .labelMedium()
-                .copyWith(color: Theme.of(context).colorScheme.primary),
+            style: context.typography
+                .labelMedium
+                .copyWith(color: context.colors.contentSecondary),
             decoration: InputDecoration(
               contentPadding: spacingL.top + spacingXS.top + spacingL.left,
               border: InputBorder.none,
@@ -77,9 +77,9 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
               hintText: 'Search by player name',
-              hintStyle: context
-                  .labelMedium()
-                  .copyWith(color: Theme.of(context).colorScheme.secondary),
+              hintStyle: context.typography
+                  .labelMedium
+                  .copyWith(color: context.colors.contentTertiary),
               hintFadeDuration: const Duration(milliseconds: 100),
             ),
           ),

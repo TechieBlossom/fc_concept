@@ -26,8 +26,8 @@ class PositionFilter extends StatelessWidget {
             padding: spacingXL.left + spacingS.bottom,
             child: Text(
               'Position',
-              style: context.labelSmall().copyWith(
-                    color: Theme.of(context).colorScheme.primary,
+              style: context.typography.labelSmall.copyWith(
+                    color: context.colors.contentSecondary,
                   ),
             ),
           ),

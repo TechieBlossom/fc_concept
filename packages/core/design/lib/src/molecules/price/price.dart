@@ -22,7 +22,7 @@ class Price extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = context.labelSmallDigit().copyWith(
+    final textStyle = context.typography.labelSmallDigit.copyWith(
           color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
         );
     return Row(
@@ -35,7 +35,7 @@ class Price extends StatelessWidget {
           child: Text(
             priceItem.label,
             textAlign: TextAlign.start,
-            style: context.bodySmall().copyWith(
+            style: context.typography.bodySmall.copyWith(
                   color: color ??
                       Theme.of(context).colorScheme.onTertiaryContainer,
                 ),

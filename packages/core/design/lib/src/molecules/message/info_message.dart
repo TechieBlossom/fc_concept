@@ -1,4 +1,4 @@
-import 'package:core_design/src/atoms/theme.dart';
+import 'package:core_design/src/atoms/atoms.dart';
 import 'package:flutter/material.dart';
 
 class InfoMessage extends StatelessWidget {
@@ -21,13 +21,13 @@ class InfoMessage extends StatelessWidget {
         Text(
           message,
           textAlign: TextAlign.center,
-          style: context.bodyMedium(),
+          style: context.typography.bodyMedium,
         ),
         if (highlightMessage != null)
           Text(
             highlightMessage!,
             textAlign: TextAlign.center,
-            style: context.labelMedium(),
+            style: context.typography.labelMedium,
           )
       ],
     );

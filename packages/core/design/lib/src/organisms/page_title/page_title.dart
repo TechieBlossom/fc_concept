@@ -23,7 +23,8 @@ class PageTitle extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      surfaceTintColor: Theme.of(context).colorScheme.onPrimary,
+      surfaceTintColor: context.colors.backgroundPrimary,
+      backgroundColor: context.colors.backgroundPrimary,
       centerTitle: onBack == null && onAction == null,
       leading: onBack != null
           ? BackButton(

@@ -27,7 +27,7 @@ class RarityBox extends StatelessWidget {
       ),
       child: Text(
         rarity,
-        style: context.labelSmall().copyWith(color: Color(fg)),
+        style: context.typography.labelSmall.copyWith(color: Color(fg)),
       ),
     );
   }

@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
             Align(
               child: Text(
                 'Login',
-                style: context.headlineSmall(),
+                style: context.typography.headlineSmall,
               ),
             ),
             SizedBox(height: spacingXL.value),

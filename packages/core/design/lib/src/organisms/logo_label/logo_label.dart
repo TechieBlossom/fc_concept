@@ -35,7 +35,7 @@ class LogoLabel extends StatelessWidget {
         if (label != null)
           Text(
             label!,
-            style: context.labelSmall(),
+            style: context.typography.labelSmall,
           ),
       ],
     );

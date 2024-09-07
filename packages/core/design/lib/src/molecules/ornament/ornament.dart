@@ -27,13 +27,13 @@ class Ornament extends StatelessWidget {
   Widget build(BuildContext context) {
     final foregroundColor = foreground != null
         ? Color(foreground!)
-        : Theme.of(context).colorScheme.outlineVariant;
+        : context.colors.gold2;
     final backgroundColor = background != null
         ? Color(background!)
-        : Theme.of(context).colorScheme.tertiary;
+        : context.colors.gold;
     final textColor = foreground != null
         ? Color(foreground!)
-        : Theme.of(context).colorScheme.primary;
+        : context.colors.contentSecondary;
     return InkWell(
       onTap: onTap,
       borderRadius: borderRadius ?? infiniteCorner.all,
@@ -68,7 +68,7 @@ class Ornament extends StatelessWidget {
             children: [
               Text(
                 label.toUpperCase(),
-                style: context.labelSmall().copyWith(
+                style: context.typography.labelSmall.copyWith(
                       color: textColor,
                     ),
               ),
