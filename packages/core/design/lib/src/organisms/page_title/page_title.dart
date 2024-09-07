@@ -33,8 +33,8 @@ class PageTitle extends StatelessWidget implements PreferredSize {
           : null,
       title: title != null ? Text(title!) : null,
       titleTextStyle: isSmall
-          ? Theme.of(context).textTheme.titleSmall
-          : Theme.of(context).textTheme.titleMedium,
+          ? context.typography.titleSmall
+          : context.typography.titleMedium,
       titleSpacing: 0,
       actions: [
         if (action != null)

@@ -205,7 +205,7 @@ class _DrawerItem extends StatelessWidget {
           AppCornerRadius.radius2,
         ),
       ),
-      selectedTileColor: context.colors.backgroundTertiary,
+      selectedTileColor: context.colors.backgroundTertiary70,
       selected: isSelected,
       leading: leading,
       title: Text(

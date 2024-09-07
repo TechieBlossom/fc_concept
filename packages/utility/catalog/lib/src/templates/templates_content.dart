@@ -13,7 +13,7 @@ class TemplatesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Loading Page',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,

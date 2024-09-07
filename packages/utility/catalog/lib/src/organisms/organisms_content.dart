@@ -1,3 +1,4 @@
+import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_catalog/src/organisms/cards.dart';
 import 'package:utility_catalog/src/organisms/list_items.dart';
@@ -18,7 +19,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'PageTitle',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -30,7 +31,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Cards',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -42,7 +43,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'List Items',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -54,7 +55,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Pull Downs',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -66,7 +67,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Search Fields',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -78,7 +79,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Player Headers',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,

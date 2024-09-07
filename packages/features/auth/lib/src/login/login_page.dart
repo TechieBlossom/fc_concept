@@ -1,79 +1,81 @@
 import 'package:core_design/design.dart';
+import 'package:feature_auth/src/login/login_form.dart';
 import 'package:flutter/material.dart';
-import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Align(
-              child: Text(
-                'Login',
-                style: context.typography.headlineSmall,
-              ),
+    return Material(
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: AppAssets.images.loginBg.image(
+              fit: BoxFit.fitWidth,
             ),
-            SizedBox(height: AppSpacing.space5),
-            SupaMagicAuth(
-              onSuccess: (response) {
-                print(response);
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.space5,
-              ),
-              child: SupaEmailAuth(
-                onSignInComplete: (response) {
-                  print(response);
-                },
-                onSignUpComplete: (response) {
-                  print(response);
-                },
-                metadataFields: [
-                  MetaDataField(
-                    prefixIcon: const Icon(Icons.person),
-                    label: 'Username',
-                    key: 'username',
-                    validator: (val) {
-                      if (val == null || val.isEmpty) {
-                        return 'Please enter something';
-                      }
-                      return null;
-                    },
+          ),
+          Positioned(
+            top: 128,
+            left: 16,
+            right: 16,
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(AppSpacing.space5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      AppCornerRadius.radius3,
+                    ),
+                    color: context.colors.backgroundPrimary,
                   ),
-                ],
-              ),
-            ),
-            Divider(
-              indent: AppSpacing.space4,
-              endIndent: AppSpacing.space4,
-            ),
-            SupaSocialsAuth(
-              redirectUrl:
-                  'https://ilvbpyniqpybqtgtnuam.supabase.co/auth/v1/callback',
-              socialButtonVariant: SocialButtonVariant.icon,
-              socialProviders: const [
-                OAuthProvider.google,
-                OAuthProvider.facebook,
-                OAuthProvider.twitch,
-                OAuthProvider.twitter,
+                  child: Column(
+                    children: [
+                      AppAssets.images.appLogo.image(
+                        width: 200,
+                        height: 200,
+                      ),
+                      Text(
+                        'Sign in to your account',
+                        style: context.typography.titleMedium,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(
+                          top: AppSpacing.space5,
+                        ),
+                        child: LoginForm(),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: AppSpacing.space7),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.space2,
+                        ),
+                        child: Text(
+                          'Not a member?',
+                          style: context.typography.labelMedium.copyWith(
+                            color: context.colors.backgroundTertiary,
+                          ),
+                        ),
+                      ),
+                      LinkButton(
+                        reverseTheme: true,
+                        text: 'Create an account',
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
               ],
-              onSuccess: (Session response) {
-                print(response);
-              },
-              onError: (error) {
-                print(error);
-              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

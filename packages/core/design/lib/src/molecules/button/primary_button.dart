@@ -24,8 +24,8 @@ class PrimaryButton extends StatelessWidget {
         style: ButtonStyle(
           textStyle: WidgetStateProperty.all<TextStyle?>(
             switch (buttonType) {
-              ButtonSize.normal => Theme.of(context).textTheme.labelMedium,
-              ButtonSize.small => Theme.of(context).textTheme.labelSmall,
+              ButtonSize.normal => context.typography.labelMedium,
+              ButtonSize.small => context.typography.labelSmall,
             },
           ),
           foregroundColor:

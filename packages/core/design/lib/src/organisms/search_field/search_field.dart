@@ -50,7 +50,7 @@ class _SearchFieldState extends State<SearchField> {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
-            color: context.colors.backgroundTertiary,
+            color: context.colors.backgroundTertiary70,
           ),
           margin: const EdgeInsets.symmetric(
             horizontal: AppSpacing.space5,

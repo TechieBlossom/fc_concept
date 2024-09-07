@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 (int bg, int fg) getPlayerColors(BuildContext context, Player player) {
   final defaultBg = context.colors.contentSecondary.value;
-  final defaultFg = context.colors.backgroundTertiary.value;
+  final defaultFg = context.colors.backgroundTertiary70.value;
   (int bg, int fg) colors;
   try {
     if (player.rarity.id == 0) {

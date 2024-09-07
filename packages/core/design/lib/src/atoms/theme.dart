@@ -42,7 +42,7 @@ abstract class AppTheme {
         surfaceTintColor: appColors.backgroundPrimary,
       ),
       dividerTheme: DividerThemeData(
-        color: appColors.backgroundTertiary,
+        color: appColors.backgroundTertiary70,
       ),
     );
   }

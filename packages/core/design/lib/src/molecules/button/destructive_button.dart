@@ -21,7 +21,7 @@ class DestructiveButton extends StatelessWidget {
       child: FilledButton(
         style: ButtonStyle(
           textStyle: WidgetStateProperty.all<TextStyle?>(
-            Theme.of(context).textTheme.labelMedium,
+            context.typography.labelMedium,
           ),
           foregroundColor: WidgetStateProperty.all<Color>(
             context.colors.backgroundPrimary,

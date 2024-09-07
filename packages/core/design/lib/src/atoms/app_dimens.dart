@@ -7,6 +7,9 @@ abstract class AppCornerRadius {
   /// Radius: `8.0`
   static const double radius2 = 8.0;
 
+  /// Radius: `16.0`
+  static const double radius3 = 16.0;
+
   /// Radius: `100.0`
   static const double round = 100.0;
 }

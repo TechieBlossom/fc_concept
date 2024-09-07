@@ -5,6 +5,7 @@ export 'package:core_design/src/organisms/card/info_card.dart';
 export 'package:core_design/src/organisms/card/price_card.dart';
 export 'package:core_design/src/organisms/card/stats_card.dart';
 export 'package:core_design/src/organisms/card/stats_card_vertical.dart';
+export 'package:core_design/src/organisms/input/input_field.dart';
 export 'package:core_design/src/organisms/list_item/filter_group.dart';
 export 'package:core_design/src/organisms/list_item/nested_filter_item.dart';
 export 'package:core_design/src/organisms/list_item/player_list_item.dart';

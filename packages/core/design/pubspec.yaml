@@ -29,18 +29,7 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/icons/
     - assets/images/
-
-#  fonts:
-#    - family: Raleway
-#      fonts:
-#        - asset: assets/fonts/Raleway/Raleway-Light.ttf
-#          weight: 400
-#        - asset: assets/fonts/Raleway/Raleway-Regular.ttf
-#          weight: 500
-#        - asset: assets/fonts/Raleway/Raleway-SemiBold.ttf
-#          weight: 600
 
 flutter_gen:
   output: lib/src/atoms

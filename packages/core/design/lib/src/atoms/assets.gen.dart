@@ -9,18 +9,12 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsIconsGen {
-  const $AssetsIconsGen();
-
-  /// File path: assets/icons/versus.png
-  AssetGenImage get versus => const AssetGenImage('assets/icons/versus.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [versus];
-}
-
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/app_logo.png
+  AssetGenImage get appLogo =>
+      const AssetGenImage('assets/images/app_logo.png');
 
   /// File path: assets/images/login_bg.png
   AssetGenImage get loginBg =>
@@ -30,7 +24,7 @@ class $AssetsImagesGen {
   AssetGenImage get messi => const AssetGenImage('assets/images/messi.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [loginBg, messi];
+  List<AssetGenImage> get values => [appLogo, loginBg, messi];
 }
 
 class AppAssets {
@@ -38,7 +32,6 @@ class AppAssets {
 
   static const String package = 'core_design';
 
-  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 

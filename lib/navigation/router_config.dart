@@ -7,7 +7,7 @@ import 'package:utility_di/di.dart';
 import 'package:utility_navigation/navigation.dart';
 
 final appRouterConfig = GoRouter(
-  initialLocation: PlayerRoutes.pagePlayerList,
+  initialLocation: AuthRoutes.pageAuthLogin,
   navigatorKey: di<GlobalKey<NavigatorState>>(),
   routes: [
     ...di<PlayerRoutesConfig>().getRoutes(),

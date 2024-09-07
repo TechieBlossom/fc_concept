@@ -1,3 +1,4 @@
+import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_catalog/src/molecules/buttons.dart';
 import 'package:utility_catalog/src/molecules/compares.dart';
@@ -20,7 +21,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Button',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -32,7 +33,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'RatingBox',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -44,7 +45,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'RarityBox',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -56,7 +57,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Ornament',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -68,7 +69,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Pill',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -80,7 +81,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Compare',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -92,7 +93,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Price',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,
@@ -104,7 +105,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Messages',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.typography.titleMedium,
             ),
             onTap: () => Navigator.push(
               context,

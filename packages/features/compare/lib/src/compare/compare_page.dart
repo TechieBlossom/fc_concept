@@ -33,7 +33,7 @@ class ComparePage extends StatelessWidget {
                   left: 0,
                   width: MediaQuery.sizeOf(context).width / 2,
                   child: ColoredBox(
-                    color: context.colors.backgroundTertiary,
+                    color: context.colors.backgroundTertiary70,
                   ),
                 ),
                 SingleChildScrollView(
