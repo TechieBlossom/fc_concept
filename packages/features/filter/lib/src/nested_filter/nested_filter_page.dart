@@ -5,7 +5,6 @@ import 'package:feature_filter/src/nested_filter/clubs_layout.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_layout.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
 
 class NestedFilterPageParams {

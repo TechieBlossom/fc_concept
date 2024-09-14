@@ -1,22 +1,23 @@
 import 'package:core_domain/src/domain/auth/auth_repository.dart';
-import 'package:core_domain/src/domain/auth/model/register_request_model.dart';
+import 'package:core_domain/src/domain/auth/model/login_request_model.dart';
 import 'package:core_domain/src/domain/models/result.dart';
 import 'package:injectable/injectable.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 @injectable
-class RegisterUserUseCase {
-  const RegisterUserUseCase(this._authRepository);
+class LoginUserUseCase {
+  const LoginUserUseCase(this._authRepository);
 
   final AuthRepository _authRepository;
 
-  Future<Result<void>> call({
-    required RegisterRequestModel registerRequestModel,
+  Future<Result<Session?>> call({
+    required LoginRequestModel loginRequestModel,
   }) async {
     try {
-      final response = _authRepository.signUpUser(
-        registerRequestModel: registerRequestModel,
+      final session = await _authRepository.signInUser(
+        loginRequestModel: loginRequestModel,
       );
-      return Success(data: response);
+      return Success(data: session);
     } catch (e, _) {
       return Failure(exception: e as Exception);
     }

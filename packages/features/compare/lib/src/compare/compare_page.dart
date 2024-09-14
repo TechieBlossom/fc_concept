@@ -3,7 +3,6 @@ import 'package:core_domain/domain.dart';
 import 'package:feature_compare/src/assets/assets.gen.dart';
 import 'package:feature_compare/src/compare/bloc/compare_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
 
 class ComparePage extends StatelessWidget {

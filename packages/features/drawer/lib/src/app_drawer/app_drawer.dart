@@ -132,7 +132,9 @@ class AppDrawer extends StatelessWidget {
                       color: context.colors.contentSecondary,
                     ),
                     text: 'Log Out',
-                    onTap: () {},
+                    onTap: () {
+                      context.read<bloc.AppDrawerBloc>().add(bloc.LogoutTap());
+                    },
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(

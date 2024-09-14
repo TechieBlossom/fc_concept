@@ -28,3 +28,4 @@ export 'package:core_domain/src/domain/rarity/model/rarity_colors_map.dart';
 export 'package:core_domain/src/domain/rarity/use_case/get_all_rarities.dart';
 export 'package:core_domain/src/presentation/domain_colors.dart';
 export 'package:core_domain/src/presentation/process_state.dart';
+export 'package:flutter_bloc/flutter_bloc.dart';

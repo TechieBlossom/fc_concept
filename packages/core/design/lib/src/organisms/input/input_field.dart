@@ -8,7 +8,7 @@ enum InputFieldOrder {
 }
 
 enum FieldType {
-  text,
+  words,
   email,
   password,
 }
@@ -19,11 +19,18 @@ class InputField extends StatefulWidget {
     required this.order,
     required this.fieldType,
     required this.hint,
+    this.onChanged,
   });
 
   final InputFieldOrder order;
   final FieldType fieldType;
   final String hint;
+  final void Function(String)? onChanged;
+
+  TextCapitalization get textCapitalization => switch (fieldType) {
+        FieldType.words => TextCapitalization.words,
+        FieldType.email || FieldType.password => TextCapitalization.none,
+      };
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -101,8 +108,9 @@ class _InputFieldState extends State<InputField> {
       ),
       child: TextFormField(
         cursorHeight: 20,
-        controller: _controller,
-        textCapitalization: TextCapitalization.words,
+        controller: _controller..text = widget.hint,
+        onChanged: widget.onChanged,
+        textCapitalization: widget.textCapitalization,
         style: context.typography.labelMedium.copyWith(
           color: context.colors.contentSecondary,
         ),

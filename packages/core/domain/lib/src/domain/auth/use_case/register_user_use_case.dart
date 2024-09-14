@@ -1,21 +1,24 @@
+import 'package:core_domain/src/domain/auth/auth_repository.dart';
+import 'package:core_domain/src/domain/auth/model/register_request_model.dart';
 import 'package:core_domain/src/domain/models/result.dart';
-import 'package:core_domain/src/domain/players/model/player.dart';
-import 'package:core_domain/src/domain/players/player_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetPlayerByVersionUseCase {
-  const GetPlayerByVersionUseCase(this._playerRepository);
+class RegisterUserUseCase {
+  const RegisterUserUseCase(this._authRepository);
 
-  final PlayerRepository _playerRepository;
+  final AuthRepository _authRepository;
 
-  Future<Result<Player>> call({
-    required int playerId,
-    required int versionId,
+  Future<Result<void>> call({
+    required RegisterRequestModel registerRequestModel,
   }) async {
-    return _playerRepository.getPlayerByVersion(
-      playerId: playerId,
-      versionId: versionId,
-    );
+    try {
+      final response = _authRepository.signUpUser(
+        registerRequestModel: registerRequestModel,
+      );
+      return Success(data: response);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
   }
 }

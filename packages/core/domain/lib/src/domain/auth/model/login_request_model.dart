@@ -1,14 +1,9 @@
-import 'package:dart_mappable/dart_mappable.dart';
-
-
-class RegisterRequestModel {
-  RegisterRequestModel({
-    required this.name,
+class LoginRequestModel {
+  LoginRequestModel({
     required this.password,
     required this.email,
   });
 
-  final String name;
   final String email;
   final String password;
 }

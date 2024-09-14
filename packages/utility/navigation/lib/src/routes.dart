@@ -23,6 +23,7 @@ abstract class CompareRoutes {
 
 abstract class AuthRoutes {
   static const pageAuthLogin = '/auth-login';
+  static const pageAuthRegister = '/auth-register';
 }
 
 abstract class FilterRoutes {

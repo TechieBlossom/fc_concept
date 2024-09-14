@@ -17,6 +17,7 @@ class AppDrawerEventMapper extends ClassMapperBase<AppDrawerEvent> {
       CompareTapMapper.ensureInitialized();
       PlayersTapMapper.ensureInitialized();
       PopularTapMapper.ensureInitialized();
+      LogoutTapMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -468,6 +469,110 @@ class _PopularTapCopyWithImpl<$R, $Out>
   PopularTapCopyWith<$R2, PopularTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
       _PopularTapCopyWithImpl($value, $cast, t);
+}
+
+class LogoutTapMapper extends SubClassMapperBase<LogoutTap> {
+  LogoutTapMapper._();
+
+  static LogoutTapMapper? _instance;
+  static LogoutTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = LogoutTapMapper._());
+      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'LogoutTap';
+
+  @override
+  final MappableFields<LogoutTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'appDrawerEvent';
+  @override
+  final dynamic discriminatorValue = 'logoutTap';
+  @override
+  late final ClassMapperBase superMapper =
+      AppDrawerEventMapper.ensureInitialized();
+
+  static LogoutTap _instantiate(DecodingData data) {
+    return LogoutTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static LogoutTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<LogoutTap>(map);
+  }
+
+  static LogoutTap fromJson(String json) {
+    return ensureInitialized().decodeJson<LogoutTap>(json);
+  }
+}
+
+mixin LogoutTapMappable {
+  String toJson() {
+    return LogoutTapMapper.ensureInitialized()
+        .encodeJson<LogoutTap>(this as LogoutTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return LogoutTapMapper.ensureInitialized()
+        .encodeMap<LogoutTap>(this as LogoutTap);
+  }
+
+  LogoutTapCopyWith<LogoutTap, LogoutTap, LogoutTap> get copyWith =>
+      _LogoutTapCopyWithImpl(this as LogoutTap, $identity, $identity);
+  @override
+  String toString() {
+    return LogoutTapMapper.ensureInitialized()
+        .stringifyValue(this as LogoutTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return LogoutTapMapper.ensureInitialized()
+        .equalsValue(this as LogoutTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return LogoutTapMapper.ensureInitialized().hashValue(this as LogoutTap);
+  }
+}
+
+extension LogoutTapValueCopy<$R, $Out> on ObjectCopyWith<$R, LogoutTap, $Out> {
+  LogoutTapCopyWith<$R, LogoutTap, $Out> get $asLogoutTap =>
+      $base.as((v, t, t2) => _LogoutTapCopyWithImpl(v, t, t2));
+}
+
+abstract class LogoutTapCopyWith<$R, $In extends LogoutTap, $Out>
+    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  LogoutTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _LogoutTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, LogoutTap, $Out>
+    implements LogoutTapCopyWith<$R, LogoutTap, $Out> {
+  _LogoutTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<LogoutTap> $mapper =
+      LogoutTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  LogoutTap $make(CopyWithData data) => LogoutTap();
+
+  @override
+  LogoutTapCopyWith<$R2, LogoutTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _LogoutTapCopyWithImpl($value, $cast, t);
 }
 
 class AppDrawerStateMapper extends ClassMapperBase<AppDrawerState> {

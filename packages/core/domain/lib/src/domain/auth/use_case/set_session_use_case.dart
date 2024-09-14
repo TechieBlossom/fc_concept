@@ -1,14 +1,13 @@
 import 'package:core_api_client/api_client.dart';
 import 'package:core_domain/src/domain/auth/auth_repository.dart';
 import 'package:injectable/injectable.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 @injectable
-class GetSessionUseCase {
-  GetSessionUseCase(this.authRepository);
+class SetSessionUseCase {
+  SetSessionUseCase(this.authRepository);
 
   final AuthRepository authRepository;
 
-  Session? call() => supabase.auth.currentSession;
-
+  Future<void> call(String refreshToken) async =>
+      supabase.auth.setSession(refreshToken);
 }

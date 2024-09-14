@@ -3,7 +3,6 @@ import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/filter/bloc/filter_bloc.dart';
 import 'package:feature_filter/src/filter/position/position_group.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PositionFilter extends StatelessWidget {
   const PositionFilter({

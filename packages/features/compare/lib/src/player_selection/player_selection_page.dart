@@ -2,7 +2,6 @@ import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_player/player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
 
 class PlayerSelectionPage extends StatelessWidget {

@@ -5,7 +5,6 @@ import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart'
 import 'package:feature_player/src/list/presentation/model/player_list_type.dart';
 import 'package:feature_player/src/list/presentation/player_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
 
 class PopularPlayerListPage extends StatefulWidget {

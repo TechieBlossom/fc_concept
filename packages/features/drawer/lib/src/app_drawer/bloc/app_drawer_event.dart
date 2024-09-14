@@ -14,3 +14,6 @@ class PlayersTap extends AppDrawerEvent with PlayersTapMappable {}
 
 @MappableClass(discriminatorValue: 'popularTap')
 class PopularTap extends AppDrawerEvent with PopularTapMappable {}
+
+@MappableClass(discriminatorValue: 'logoutTap')
+class LogoutTap extends AppDrawerEvent with LogoutTapMappable {}

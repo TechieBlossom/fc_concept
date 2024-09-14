@@ -3,7 +3,6 @@ import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_player/src/list/presentation/model/player_list_type.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 

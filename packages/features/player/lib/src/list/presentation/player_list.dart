@@ -2,7 +2,6 @@ import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PlayerList extends StatefulWidget {
   const PlayerList({
