@@ -1,28 +1,36 @@
 import 'package:core_design/design.dart';
+import 'package:feature_auth/src/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+  const LoginForm({
+    super.key,
+    required this.state,
+  });
+
+  final LoginState state;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        const InputField(
+        InputField(
           order: InputFieldOrder.top,
-          fieldType: FieldType.text,
-          hint: 'Name',
-        ),
-        const InputField(
-          order: InputFieldOrder.middle,
           fieldType: FieldType.email,
-          hint: 'Email',
+          hint: 'sharma.prateek1712@gmail.com',
+          onChanged: (value) => context.read<LoginBloc>().add(
+                EmailUpdate(value),
+              ),
         ),
-        const InputField(
+        InputField(
           order: InputFieldOrder.bottom,
           fieldType: FieldType.password,
-          hint: 'Password',
+          hint: 'Ganesha1712!@#',
+          onChanged: (value) => context.read<LoginBloc>().add(
+                PasswordUpdate(value),
+              ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.space5),
@@ -33,7 +41,11 @@ class LoginForm extends StatelessWidget {
         ),
         PrimaryButton(
           text: 'Sign In',
-          onPressed: () {},
+          onPressed: state.isSignButtonEnabled
+              ? () {
+                  context.read<LoginBloc>().add(const SignInTap());
+                }
+              : null,
         ),
       ],
     );
