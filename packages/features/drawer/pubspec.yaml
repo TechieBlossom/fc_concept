@@ -13,6 +13,8 @@ dependencies:
   core_domain:
     path: ../../../packages/core/domain
   dart_mappable: ^4.2.2
+  feature_auth:
+    path: ../../../packages/features/auth
   feature_compare:
     path: ../../../packages/features/compare
   feature_player:

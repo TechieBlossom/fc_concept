@@ -12,12 +12,12 @@ part 'auth_state_event.dart';
 part 'auth_state_state.dart';
 
 @injectable
-class AuthStateBloc extends Bloc<AuthStateEvent, void> {
+class AuthStateBloc extends Bloc<AuthStateEvent, AuthStateState> {
   AuthStateBloc(
     this._observeAuthStateUseCase,
     this._navigator,
   ) : super(const AuthStateState()) {
-    on<Init>((_, emit) async => _onInit());
+    on<Init>((_, emit) async => _onInit(emit));
     on<SignedIn>((_, __) async => _onSignedIn());
     on<SignedOut>((_, __) async => _onSignedOut());
 
@@ -29,17 +29,23 @@ class AuthStateBloc extends Bloc<AuthStateEvent, void> {
 
   StreamSubscription<AuthState>? _authStateSubscription;
 
-  Future<void> _onInit() async {
-    _observeAuthState();
+  Future<void> _onInit(Emitter<AuthStateState> emit) async {
+    _observeAuthState(emit);
   }
 
-  void _observeAuthState() {
+  void _observeAuthState(Emitter<AuthStateState> emit) {
     _authStateSubscription = _observeAuthStateUseCase().listen(
       (data) async {
         final session = data.session;
+        final event = data.event;
         if (session != null) {
-          add(SignedIn());
-        } else {
+          if (event != AuthChangeEvent.tokenRefreshed) {
+            emit(state.copyWith(session: session));
+            add(SignedIn());
+          }
+        }
+
+        if (event == AuthChangeEvent.signedOut) {
           add(SignedOut());
         }
       },

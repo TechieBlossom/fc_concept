@@ -4,8 +4,8 @@ abstract class RoutesConfig {
   List<GoRoute> getRoutes();
 }
 
-abstract class Navigator {
-  const Navigator(this.goRouter);
+abstract class AppNavigator {
+  const AppNavigator(this.goRouter);
 
   final GoRouter goRouter;
 }

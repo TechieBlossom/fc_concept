@@ -14,6 +14,7 @@ class AppDrawerEventMapper extends ClassMapperBase<AppDrawerEvent> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = AppDrawerEventMapper._());
       InitMapper.ensureInitialized();
+      SignInTapMapper.ensureInitialized();
       CompareTapMapper.ensureInitialized();
       PlayersTapMapper.ensureInitialized();
       PopularTapMapper.ensureInitialized();
@@ -154,6 +155,110 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
       _InitCopyWithImpl($value, $cast, t);
+}
+
+class SignInTapMapper extends SubClassMapperBase<SignInTap> {
+  SignInTapMapper._();
+
+  static SignInTapMapper? _instance;
+  static SignInTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = SignInTapMapper._());
+      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'SignInTap';
+
+  @override
+  final MappableFields<SignInTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'appDrawerEvent';
+  @override
+  final dynamic discriminatorValue = 'signInTap';
+  @override
+  late final ClassMapperBase superMapper =
+      AppDrawerEventMapper.ensureInitialized();
+
+  static SignInTap _instantiate(DecodingData data) {
+    return SignInTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static SignInTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<SignInTap>(map);
+  }
+
+  static SignInTap fromJson(String json) {
+    return ensureInitialized().decodeJson<SignInTap>(json);
+  }
+}
+
+mixin SignInTapMappable {
+  String toJson() {
+    return SignInTapMapper.ensureInitialized()
+        .encodeJson<SignInTap>(this as SignInTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return SignInTapMapper.ensureInitialized()
+        .encodeMap<SignInTap>(this as SignInTap);
+  }
+
+  SignInTapCopyWith<SignInTap, SignInTap, SignInTap> get copyWith =>
+      _SignInTapCopyWithImpl(this as SignInTap, $identity, $identity);
+  @override
+  String toString() {
+    return SignInTapMapper.ensureInitialized()
+        .stringifyValue(this as SignInTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return SignInTapMapper.ensureInitialized()
+        .equalsValue(this as SignInTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return SignInTapMapper.ensureInitialized().hashValue(this as SignInTap);
+  }
+}
+
+extension SignInTapValueCopy<$R, $Out> on ObjectCopyWith<$R, SignInTap, $Out> {
+  SignInTapCopyWith<$R, SignInTap, $Out> get $asSignInTap =>
+      $base.as((v, t, t2) => _SignInTapCopyWithImpl(v, t, t2));
+}
+
+abstract class SignInTapCopyWith<$R, $In extends SignInTap, $Out>
+    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  SignInTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _SignInTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, SignInTap, $Out>
+    implements SignInTapCopyWith<$R, SignInTap, $Out> {
+  _SignInTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<SignInTap> $mapper =
+      SignInTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  SignInTap $make(CopyWithData data) => SignInTap();
+
+  @override
+  SignInTapCopyWith<$R2, SignInTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _SignInTapCopyWithImpl($value, $cast, t);
 }
 
 class CompareTapMapper extends SubClassMapperBase<CompareTap> {

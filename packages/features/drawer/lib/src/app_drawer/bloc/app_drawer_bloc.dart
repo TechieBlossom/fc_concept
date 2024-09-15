@@ -1,6 +1,7 @@
 import 'package:core_domain/auth.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:feature_auth/auth.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_player/player.dart';
 import 'package:injectable/injectable.dart';
@@ -12,12 +13,14 @@ part 'app_drawer_state.dart';
 @injectable
 class AppDrawerBloc extends Bloc<AppDrawerEvent, AppDrawerState> {
   AppDrawerBloc(
+    this._authNavigator,
     this._compareNavigator,
     this._playerNavigator,
     this._getPlayerCountUseCase,
     this._signOutUserUseCase,
   ) : super(AppDrawerState()) {
     on<Init>((event, emit) => _init(emit));
+    on<SignInTap>((event, emit) => _signInTap());
     on<PlayersTap>((event, emit) => _playerTap());
     on<PopularTap>((event, emit) => _popularTap());
     on<CompareTap>((event, emit) => _compareTap());
@@ -26,6 +29,7 @@ class AppDrawerBloc extends Bloc<AppDrawerEvent, AppDrawerState> {
     add(Init());
   }
 
+  final AuthNavigator _authNavigator;
   final CompareNavigator _compareNavigator;
   final PlayerNavigator _playerNavigator;
   final GetPlayerCountUseCase _getPlayerCountUseCase;
@@ -34,6 +38,10 @@ class AppDrawerBloc extends Bloc<AppDrawerEvent, AppDrawerState> {
   Future<void> _init(Emitter<AppDrawerState> emit) async {
     final playerCount = await _getPlayerCountUseCase();
     emit(state.copyWith(playerCount: playerCount));
+  }
+
+  Future<void> _signInTap() async {
+    await _authNavigator.goToLogin();
   }
 
   Future<void> _compareTap() async {

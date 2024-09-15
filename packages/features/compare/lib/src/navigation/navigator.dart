@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
 @lazySingleton
-class CompareNavigator extends Navigator {
+class CompareNavigator extends AppNavigator {
   const CompareNavigator(super.goRouter);
 
   Future<void> goToComparePage(Player? player) async => goRouter.push(

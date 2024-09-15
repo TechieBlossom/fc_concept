@@ -1,3 +1,4 @@
+import 'package:fc_concept/navigation/auth_guard_observer.dart';
 import 'package:feature_auth/auth.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_filter/filter.dart';
@@ -8,9 +9,9 @@ import 'package:utility_navigation/navigation.dart';
 
 final appRouterConfig = GoRouter(
   observers: [
-
+    di<AuthGuardObserver>(),
   ],
-  initialLocation: AuthRoutes.pageAuthLogin,
+  initialLocation: PlayerRoutes.pagePlayerList,
   navigatorKey: di<GlobalKey<NavigatorState>>(),
   routes: [
     ...di<PlayerRoutesConfig>().getRoutes(),

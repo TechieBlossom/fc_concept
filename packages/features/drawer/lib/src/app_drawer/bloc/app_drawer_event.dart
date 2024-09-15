@@ -6,6 +6,9 @@ abstract class AppDrawerEvent with AppDrawerEventMappable {}
 @MappableClass(discriminatorValue: 'init')
 class Init extends AppDrawerEvent with InitMappable {}
 
+@MappableClass(discriminatorValue: 'signInTap')
+class SignInTap extends AppDrawerEvent with SignInTapMappable {}
+
 @MappableClass(discriminatorValue: 'compareTap')
 class CompareTap extends AppDrawerEvent with CompareTapMappable {}
 

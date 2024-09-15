@@ -35,7 +35,12 @@ class AppDrawer extends StatelessWidget {
                       Icons.login_rounded,
                       color: context.colors.contentSecondary,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      scaffoldKey.currentState?.closeDrawer();
+                      context.read<bloc.AppDrawerBloc>().add(
+                            bloc.SignInTap(),
+                          );
+                    },
                   ),
                   const Divider(
                     indent: AppSpacing.space4,

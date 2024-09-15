@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
 @lazySingleton
-class AuthNavigator extends Navigator {
+class AuthNavigator extends AppNavigator {
   const AuthNavigator(super.goRouter);
 
   Future<void> goToRegister({

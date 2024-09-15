@@ -14,15 +14,15 @@ Future<void> initializeDi(String environment) async {
   return initializeDiContainers(
       environment: environment,
       const [
+        appDi,
+        authDi,
         apiClientDi,
         domainDi,
         navigationDi,
-        authDi,
         drawerDi,
         playerDi,
         filterDi,
         compareDi,
-        appDi,
       ],
     );
 }

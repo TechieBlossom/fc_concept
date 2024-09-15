@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
 @lazySingleton
-class FilterNavigator extends Navigator {
+class FilterNavigator extends AppNavigator {
   const FilterNavigator(super.goRouter);
 
   Future<List<T>?> goToNestedFilter<T>({

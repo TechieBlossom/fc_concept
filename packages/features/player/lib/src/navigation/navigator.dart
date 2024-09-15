@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
 @lazySingleton
-class PlayerNavigator extends Navigator {
+class PlayerNavigator extends AppNavigator {
   const PlayerNavigator(super.goRouter);
 
   Future<void> goToPlayers() async => goRouter.push(

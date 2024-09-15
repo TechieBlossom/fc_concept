@@ -10,6 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:core_domain/auth.dart' as _i643;
 import 'package:core_domain/domain.dart' as _i913;
+import 'package:feature_auth/auth.dart' as _i495;
 import 'package:feature_compare/compare.dart' as _i534;
 import 'package:feature_drawer/src/app_drawer/bloc/app_drawer_bloc.dart'
     as _i1007;
@@ -29,6 +30,7 @@ _i174.GetIt init(
     environmentFilter,
   );
   gh.factory<_i1007.AppDrawerBloc>(() => _i1007.AppDrawerBloc(
+        gh<_i495.AuthNavigator>(),
         gh<_i534.CompareNavigator>(),
         gh<_i460.PlayerNavigator>(),
         gh<_i913.GetPlayerCountUseCase>(),
