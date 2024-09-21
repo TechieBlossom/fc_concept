@@ -1,8 +1,8 @@
 import 'package:core_api_client/api_client.dart';
+import 'package:core_domain/domain.dart';
 import 'package:feature_auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:core_domain/domain.dart';
 import 'package:utility_navigation/navigation.dart';
 
 @injectable
@@ -34,17 +34,17 @@ class AuthGuardObserver extends NavigatorObserver {
   }
 
   Future<void> _onNavigationStackChanged(String? page) async {
-      if (page != null && loggedInRoutes.contains(page)) {
-        if (supabase.auth.currentSession == null) {
-          final context = _rootNavigatorKey.currentContext;
-          if (context != null) {
-            // TODO: Inform user that this specific screen cannot be opened for non-logged in user
-            /// The dialog can have sign in button, which will take them to sign in screen
-            /// Once signed in, user lands on last screen if possible or home screen
-            context.read<AuthStateBloc>().add(SignedOut());
-          }
+    if (page != null && loggedInRoutes.contains(page)) {
+      if (supabase.auth.currentSession == null) {
+        final context = _rootNavigatorKey.currentContext;
+        if (context != null) {
+          // TODO: Inform user that this specific screen cannot be opened for non-logged in user
+          /// The dialog can have sign in button, which will take them to sign in screen
+          /// Once signed in, user lands on last screen if possible or home screen
+          context.read<AuthStateBloc>().add(SignedOut());
         }
       }
+    }
   }
 }
 

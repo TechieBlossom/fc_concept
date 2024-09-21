@@ -8,7 +8,9 @@ class Init extends AuthStateEvent with InitMappable {}
 
 @MappableClass(discriminatorValue: 'signedIn')
 class SignedIn extends AuthStateEvent with SignedInMappable {
-  SignedIn();
+  SignedIn(this.session);
+
+  final Session? session;
 }
 
 @MappableClass(discriminatorValue: 'signedOut')

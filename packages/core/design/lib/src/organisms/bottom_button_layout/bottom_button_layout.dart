@@ -1,4 +1,5 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/molecules/glass/glass.dart';
 import 'package:flutter/material.dart';
 
 class BottomButtonLayout extends StatelessWidget {
@@ -30,19 +31,21 @@ class BottomButtonLayout extends StatelessWidget {
     if (isLoading) {
       return ShimmerBottomButtonLayout();
     }
-    return Container(
-      padding: const EdgeInsets.only(
-        left: AppSpacing.space5,
-        right: AppSpacing.space5,
-        top: AppSpacing.space5,
-        bottom: AppSpacing.space7,
-      ),
-      color: context.colors.backgroundTertiary70,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: widgets,
+    return Glass.lessBlur(
+      child: Container(
+        padding: EdgeInsets.only(
+          left: AppSpacing.space5,
+          right: AppSpacing.space5,
+          top: AppSpacing.space3,
+          bottom: MediaQuery.of(context).padding.bottom,
+        ),
+        color: context.colors.backgroundTertiary70.withOpacity(0.2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: widgets,
+        ),
       ),
     );
   }

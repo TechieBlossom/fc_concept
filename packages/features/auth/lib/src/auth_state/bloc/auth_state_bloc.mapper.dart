@@ -169,8 +169,14 @@ class SignedInMapper extends SubClassMapperBase<SignedIn> {
   @override
   final String id = 'SignedIn';
 
+  static Session? _$session(SignedIn v) => v.session;
+  static const Field<SignedIn, Session> _f$session =
+      Field('session', _$session);
+
   @override
-  final MappableFields<SignedIn> fields = const {};
+  final MappableFields<SignedIn> fields = const {
+    #session: _f$session,
+  };
 
   @override
   final String discriminatorKey = 'event';
@@ -181,7 +187,7 @@ class SignedInMapper extends SubClassMapperBase<SignedIn> {
       AuthStateEventMapper.ensureInitialized();
 
   static SignedIn _instantiate(DecodingData data) {
-    return SignedIn();
+    return SignedIn(data.dec(_f$session));
   }
 
   @override
@@ -234,7 +240,7 @@ extension SignedInValueCopy<$R, $Out> on ObjectCopyWith<$R, SignedIn, $Out> {
 abstract class SignedInCopyWith<$R, $In extends SignedIn, $Out>
     implements AuthStateEventCopyWith<$R, $In, $Out> {
   @override
-  $R call();
+  $R call({Session? session});
   SignedInCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -247,9 +253,11 @@ class _SignedInCopyWithImpl<$R, $Out>
   late final ClassMapperBase<SignedIn> $mapper =
       SignedInMapper.ensureInitialized();
   @override
-  $R call() => $apply(FieldCopyWithData({}));
+  $R call({Object? session = $none}) =>
+      $apply(FieldCopyWithData({if (session != $none) #session: session}));
   @override
-  SignedIn $make(CopyWithData data) => SignedIn();
+  SignedIn $make(CopyWithData data) =>
+      SignedIn(data.get(#session, or: $value.session));
 
   @override
   SignedInCopyWith<$R2, SignedIn, $Out2> $chain<$R2, $Out2>(
@@ -375,17 +383,11 @@ class AuthStateStateMapper extends ClassMapperBase<AuthStateState> {
   @override
   final String id = 'AuthStateState';
 
-  static Session? _$session(AuthStateState v) => v.session;
-  static const Field<AuthStateState, Session> _f$session =
-      Field('session', _$session, opt: true);
-
   @override
-  final MappableFields<AuthStateState> fields = const {
-    #session: _f$session,
-  };
+  final MappableFields<AuthStateState> fields = const {};
 
   static AuthStateState _instantiate(DecodingData data) {
-    return AuthStateState(session: data.dec(_f$session));
+    return AuthStateState();
   }
 
   @override
@@ -441,7 +443,7 @@ extension AuthStateStateValueCopy<$R, $Out>
 
 abstract class AuthStateStateCopyWith<$R, $In extends AuthStateState, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({Session? session});
+  $R call();
   AuthStateStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -455,11 +457,9 @@ class _AuthStateStateCopyWithImpl<$R, $Out>
   late final ClassMapperBase<AuthStateState> $mapper =
       AuthStateStateMapper.ensureInitialized();
   @override
-  $R call({Object? session = $none}) =>
-      $apply(FieldCopyWithData({if (session != $none) #session: session}));
+  $R call() => $apply(FieldCopyWithData({}));
   @override
-  AuthStateState $make(CopyWithData data) =>
-      AuthStateState(session: data.get(#session, or: $value.session));
+  AuthStateState $make(CopyWithData data) => AuthStateState();
 
   @override
   AuthStateStateCopyWith<$R2, AuthStateState, $Out2> $chain<$R2, $Out2>(

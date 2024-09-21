@@ -18,7 +18,7 @@ class AuthStateBloc extends Bloc<AuthStateEvent, AuthStateState> {
     this._navigator,
   ) : super(const AuthStateState()) {
     on<Init>((_, emit) async => _onInit(emit));
-    on<SignedIn>((_, __) async => _onSignedIn());
+    on<SignedIn>((event, emit) async => _onSignedIn(event, emit));
     on<SignedOut>((_, __) async => _onSignedOut());
 
     add(Init());
@@ -40,8 +40,7 @@ class AuthStateBloc extends Bloc<AuthStateEvent, AuthStateState> {
         final event = data.event;
         if (session != null) {
           if (event != AuthChangeEvent.tokenRefreshed) {
-            emit(state.copyWith(session: session));
-            add(SignedIn());
+            add(SignedIn(session));
           }
         }
 
@@ -53,7 +52,7 @@ class AuthStateBloc extends Bloc<AuthStateEvent, AuthStateState> {
     );
   }
 
-  Future<void> _onSignedIn() async {
+  Future<void> _onSignedIn(SignedIn event, Emitter<AuthStateState> emit) async {
     await _navigator.goToHome();
   }
 
