@@ -52,7 +52,7 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
         if (state.nestedFilterPageParams?.items != null) {
           final clubResult = await _getClubsByLeagueUseCase(
             leagueIds: state.nestedFilterPageParams!.items!
-                .map((league) => league.id)
+                .map((league) => league.eaId)
                 .toList(),
           );
           _handleClubResult(clubResult, emit);
@@ -182,7 +182,7 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
   }
 
   Map<int, List<Club>?>? _prepareClubMap(List<Club> clubs) {
-    final map = groupBy<Club, int>(clubs, (club) => club.league!);
+    final map = groupBy<Club, int>(clubs, (club) => club.leagueEaId!);
     return map;
   }
 }

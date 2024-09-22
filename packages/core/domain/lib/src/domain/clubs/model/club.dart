@@ -5,14 +5,24 @@ part 'club.mapper.dart';
 @MappableClass()
 class Club with ClubMappable {
   const Club({
-    required this.id,
+    required this.eaId,
     required this.name,
-    required this.league,
+    required this.leagueEaId,
+    required this.isWomen,
+    required this.isIconClub,
+    required this.pastAndPresentHighlightedPlayerItemEaIds,
+    required this.imagePath,
+    required this.lightImagePath,
   });
 
-  final int? id;
-  final String? name;
-  final int? league;
+  final int eaId;
+  final String name;
+  final int? leagueEaId;
+  final bool? isWomen;
+  final bool? isIconClub;
+  final List<int>? pastAndPresentHighlightedPlayerItemEaIds;
+  final String? imagePath;
+  final String? lightImagePath;
 
   static const fromMap = ClubMapper.fromMap;
 }

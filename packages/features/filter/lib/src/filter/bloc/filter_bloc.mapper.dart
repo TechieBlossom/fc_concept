@@ -1111,6 +1111,7 @@ extension TapPositionValueCopy<$R, $Out>
 
 abstract class TapPositionCopyWith<$R, $In extends TapPosition, $Out>
     implements FilterEventCopyWith<$R, $In, $Out> {
+  PositionCopyWith<$R, Position, Position> get position;
   @override
   $R call({Position? position});
   TapPositionCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -1124,6 +1125,9 @@ class _TapPositionCopyWithImpl<$R, $Out>
   @override
   late final ClassMapperBase<TapPosition> $mapper =
       TapPositionMapper.ensureInitialized();
+  @override
+  PositionCopyWith<$R, Position, Position> get position =>
+      $value.position.copyWith.$chain((v) => call(position: v));
   @override
   $R call({Position? position}) =>
       $apply(FieldCopyWithData({if (position != null) #position: position}));
@@ -1371,7 +1375,7 @@ abstract class FilterStateCopyWith<$R, $In extends FilterState, $Out>
   ListCopyWith<$R, Rarity, RarityCopyWith<$R, Rarity, Rarity>>? get rarities;
   ListCopyWith<$R, Gender, ObjectCopyWith<$R, Gender, Gender>>? get genders;
   ListCopyWith<$R, Foot, ObjectCopyWith<$R, Foot, Foot>>? get foots;
-  ListCopyWith<$R, Position, ObjectCopyWith<$R, Position, Position>>?
+  ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>?
       get positions;
   ListCopyWith<$R, PositionGroup,
       ObjectCopyWith<$R, PositionGroup, PositionGroup>>? get positionGroups;
@@ -1442,11 +1446,9 @@ class _FilterStateCopyWithImpl<$R, $Out>
               (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(foots: v))
           : null;
   @override
-  ListCopyWith<$R, Position, ObjectCopyWith<$R, Position, Position>>?
+  ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>?
       get positions => $value.positions != null
-          ? ListCopyWith(
-              $value.positions!,
-              (v, t) => ObjectCopyWith(v, $identity, t),
+          ? ListCopyWith($value.positions!, (v, t) => v.copyWith.$chain(t),
               (v) => call(positions: v))
           : null;
   @override

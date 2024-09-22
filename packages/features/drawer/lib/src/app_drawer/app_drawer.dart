@@ -149,7 +149,9 @@ class AppDrawer extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'App Version 1.0.0',
-                        style: context.typography.bodySmall,
+                        style: context.typography.bodySmall.copyWith(
+                          color: context.colors.contentTertiary,
+                        ),
                       ),
                     ),
                   ),
@@ -182,7 +184,9 @@ class _Header extends StatelessWidget {
             ? context.typography.labelSmall.copyWith(
                 color: context.colors.contentTertiary,
               )
-            : context.typography.headlineSmall,
+            : context.typography.headlineSmall.copyWith(
+                color: context.colors.contentPrimary,
+              ),
       ),
     );
   }
@@ -217,12 +221,16 @@ class _DrawerItem extends StatelessWidget {
       leading: leading,
       title: Text(
         text,
-        style: context.typography.labelMedium,
+        style: context.typography.labelMedium.copyWith(
+          color: context.colors.contentSecondary,
+        ),
       ),
       trailing: trailing != null
           ? Text(
               currencyFormatter.format(trailing),
-              style: context.typography.labelMediumDigit,
+              style: context.typography.labelMediumDigit.copyWith(
+                color: context.colors.contentSecondary,
+              ),
             )
           : const SizedBox.shrink(),
     );

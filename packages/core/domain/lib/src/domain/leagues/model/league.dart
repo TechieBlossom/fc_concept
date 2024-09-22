@@ -1,4 +1,3 @@
-import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -7,17 +6,17 @@ part 'league.mapper.dart';
 @MappableClass(discriminatorValue: 'league')
 class League extends NestedFilterLayoutType with LeagueMappable {
   League({
-    required int id,
+    required int eaId,
     required String name,
-    required this.nationId,
-    required this.gender,
+    this.imagePath,
+    this.imageLightPath,
   }) : super(
-          id: id,
+          eaId: eaId,
           name: name,
         );
 
-  final int? nationId;
-  final Gender? gender;
+  final String? imagePath;
+  final String? imageLightPath;
 
   static const fromMap = LeagueMapper.fromMap;
 }

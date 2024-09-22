@@ -1,10 +1,10 @@
+import 'package:core_domain/src/data/clubs/table_club.dart';
+import 'package:core_domain/src/data/nations/table_nation.dart';
+import 'package:core_domain/src/data/positions/table_position.dart';
+import 'package:core_domain/src/data/rarities/table_rarity.dart';
 import 'package:core_domain/src/domain/clubs/model/club.dart';
-import 'package:core_domain/src/domain/common/card_color.dart';
-import 'package:core_domain/src/domain/common/foot.dart';
-import 'package:core_domain/src/domain/common/gender.dart';
-import 'package:core_domain/src/domain/common/position.dart';
-import 'package:core_domain/src/domain/common/work_rate.dart';
 import 'package:core_domain/src/domain/nations/model/nation.dart';
+import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -14,62 +14,57 @@ part 'player.mapper.dart';
 class Player with PlayerMappable {
   const Player({
     required this.id,
-    required this.name,
     this.commonName,
     this.firstName,
     this.lastName,
-    required this.rating,
+    required this.overall,
     required this.rarity,
+    required this.imagePath,
     this.club,
     this.nation,
     this.height,
     this.weight,
-    this.age,
     this.position,
     this.skillMoves,
     this.weakFoot,
     this.foot,
-    this.attackWorkRate,
-    this.defenseWorkRate,
-    this.pace,
-    this.shooting,
-    this.passing,
-    this.dribbling,
-    this.defending,
-    this.physicality,
     this.gender,
-    this.color,
+    this.rolesPlus,
+    this.facePace,
+    this.faceShooting,
+    this.facePassing,
+    this.faceDribbling,
+    this.faceDefending,
+    this.facePhysicality,
   });
 
   final int id;
-  final String name;
   final String? commonName;
   final String? firstName;
   final String? lastName;
-  final int rating;
-  @MappableField(key: 'table_rarity')
+  final int overall;
+  @MappableField(key: TableRarity.tableRarity)
   final Rarity rarity;
-  @MappableField(key: 'table_club')
+  final String imagePath;
+  @MappableField(key: TableClub.tableClub)
   final Club? club;
-  @MappableField(key: 'table_nation')
+  @MappableField(key: TableNation.tableNation)
   final Nation? nation;
   final int? height;
   final int? weight;
-  final int? age;
+  @MappableField(key: TablePosition.tablePosition)
   final Position? position;
+  final List<int>? rolesPlus;
   final int? skillMoves;
   final int? weakFoot;
-  final Foot? foot;
-  final WorkRate? attackWorkRate;
-  final WorkRate? defenseWorkRate;
-  final int? pace;
-  final int? shooting;
-  final int? passing;
-  final int? dribbling;
-  final int? defending;
-  final int? physicality;
-  final Gender? gender;
-  final CardColor? color;
+  final int? foot;
+  final int? facePace;
+  final int? faceShooting;
+  final int? facePassing;
+  final int? faceDribbling;
+  final int? faceDefending;
+  final int? facePhysicality;
+  final int? gender;
 
   static const fromJson = PlayerMapper.fromMap;
 }

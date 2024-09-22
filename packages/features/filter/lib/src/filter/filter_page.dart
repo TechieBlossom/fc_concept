@@ -88,7 +88,7 @@ class FilterPage extends StatelessWidget {
                           ?.map(
                             (club) => PillItem<Club>(
                               data: club,
-                              text: club.name ?? '',
+                              text: club.name,
                               isSelected: true,
                             ),
                           )

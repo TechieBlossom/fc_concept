@@ -136,11 +136,24 @@ class ListItems extends StatelessWidget {
           const SizedBox(height: AppSpacing.space5),
           PlayerListItem(
             player: const Player(
-              id: 19541,
-              name: 'Lionel Messi',
-              rarity: Rarity(id: 168, name: 'Centurions Icon'),
-              rating: 97,
-              color: CardColor.gold,
+              id: 158023,
+              commonName: 'Lionel Messi',
+              imagePath:
+                  '2025/player-item/25-277643.4fff4733fda8f20c8b0ac109322e43b6056ea634e249826ced756e398346e8bc.webp',
+              rarity: Rarity(
+                eaId: 3,
+                name: 'Team of the Week',
+                dominantColor: '0f0d0d',
+                imagePath:
+                    '2025/rarities-level-3-large/3.29a7b4842c7f0cdb1429aa756fb57da655d429e154d0e012158367bb3ba2546a.png',
+                compactImagePath:
+                    '2025/rarities-level-3-small/3.469ff66072d586f88e1927b844bfa16fd16b37aa71e555f5b649779d768127c5.png',
+                isSpecial: true,
+                isBrightColorScheme: false,
+                textColor: ["d98b68", "e0e0e0", "f6db7b"],
+                numberOfPlayers: 23,
+              ),
+              overall: 97,
             ),
             onTap: () {},
             onFavoriteToggle: () {},
@@ -149,14 +162,24 @@ class ListItems extends StatelessWidget {
           const SizedBox(height: AppSpacing.space5),
           PlayerListItem(
             player: const Player(
-              id: 19541,
-              name: 'Lionel Messi',
+              id: 158023,
+              commonName: 'Lionel Messi',
+              imagePath:
+                  '2025/player-item/25-277643.4fff4733fda8f20c8b0ac109322e43b6056ea634e249826ced756e398346e8bc.webp',
               rarity: Rarity(
-                id: 5,
-                name: 'TOTY',
+                eaId: 12,
+                name: 'Icon',
+                dominantColor: 'dbdbdb',
+                imagePath:
+                    '2025/rarities-level-0-large/12.1a05046655dc9b106809c4f788f3b1ab9bdb065c05d2d7e1fb7cf6a0031e990b.png',
+                compactImagePath:
+                    '2025/rarities-level-0-small/12.5518fe64a8844e57884532987ec94e29143ea1b164cedcd3bed75cf01b8504a6.png',
+                isSpecial: true,
+                isBrightColorScheme: false,
+                textColor: ["594d2c", "594d2c", "594d2c"],
+                numberOfPlayers: 110,
               ),
-              rating: 97,
-              color: CardColor.gold,
+              overall: 97,
             ),
             onTap: () {},
             onFavoriteToggle: () {},

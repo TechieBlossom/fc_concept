@@ -42,12 +42,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     on<TapGender>((event, emit) => _tapGender(event.gender, emit));
     on<TapFoot>((event, emit) => _tapFoot(event.foot, emit));
     on<TapPosition>((event, emit) => _tapPosition(event.position, emit));
-    on<TapPositionGroup>(
-      (event, emit) => _tapPositionGroup(
-        event.positionGroup,
-        emit,
-      ),
-    );
+    // on<TapPositionGroup>(
+    //   (event, emit) => _tapPositionGroup(
+    //     event.positionGroup,
+    //     emit,
+    //   ),
+    // );
     on<Apply>((event, emit) => _apply());
 
     add(Init());
@@ -58,38 +58,38 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   void _init(Emitter<FilterState> emit) {
     final positions = state.positions ?? [];
     final positionGroups = List<PositionGroup>.empty(growable: true);
-    if (positions.contains(Position.lw) &&
-        positions.contains(Position.rw) &&
-        positions.contains(Position.lf) &&
-        positions.contains(Position.rf) &&
-        positions.contains(Position.st) &&
-        positions.contains(Position.cf) &&
-        positions.contains(Position.ls) &&
-        positions.contains(Position.rs)) {
-      positionGroups.add(PositionGroup.attackers);
-    }
-    if (positions.contains(Position.cm) &&
-        positions.contains(Position.cam) &&
-        positions.contains(Position.cdm) &&
-        positions.contains(Position.ldm) &&
-        positions.contains(Position.rdm) &&
-        positions.contains(Position.lam) &&
-        positions.contains(Position.ram) &&
-        positions.contains(Position.lm) &&
-        positions.contains(Position.rm) &&
-        positions.contains(Position.lcm) &&
-        positions.contains(Position.rcm)) {
-      positionGroups.add(PositionGroup.midfielders);
-    }
-    if (positions.contains(Position.lcb) &&
-        positions.contains(Position.rcb) &&
-        positions.contains(Position.lb) &&
-        positions.contains(Position.rb) &&
-        positions.contains(Position.lwb) &&
-        positions.contains(Position.rwb) &&
-        positions.contains(Position.cb)) {
-      positionGroups.add(PositionGroup.defenders);
-    }
+    // if (positions.contains(Position.lw) &&
+    //     positions.contains(Position.rw) &&
+    //     positions.contains(Position.lf) &&
+    //     positions.contains(Position.rf) &&
+    //     positions.contains(Position.st) &&
+    //     positions.contains(Position.cf) &&
+    //     positions.contains(Position.ls) &&
+    //     positions.contains(Position.rs)) {
+    //   positionGroups.add(PositionGroup.attackers);
+    // }
+    // if (positions.contains(Position.cm) &&
+    //     positions.contains(Position.cam) &&
+    //     positions.contains(Position.cdm) &&
+    //     positions.contains(Position.ldm) &&
+    //     positions.contains(Position.rdm) &&
+    //     positions.contains(Position.lam) &&
+    //     positions.contains(Position.ram) &&
+    //     positions.contains(Position.lm) &&
+    //     positions.contains(Position.rm) &&
+    //     positions.contains(Position.lcm) &&
+    //     positions.contains(Position.rcm)) {
+    //   positionGroups.add(PositionGroup.midfielders);
+    // }
+    // if (positions.contains(Position.lcb) &&
+    //     positions.contains(Position.rcb) &&
+    //     positions.contains(Position.lb) &&
+    //     positions.contains(Position.rb) &&
+    //     positions.contains(Position.lwb) &&
+    //     positions.contains(Position.rwb) &&
+    //     positions.contains(Position.cb)) {
+    //   positionGroups.add(PositionGroup.defenders);
+    // }
 
     emit(state.copyWith(positionGroups: positionGroups));
   }
@@ -109,7 +109,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       final newClubs = List<Club>.empty(growable: true);
       leagues?.forEach((league) {
         newClubs.addAll(
-          state.clubs?.takeWhile((club) => club.league == league.id) ?? [],
+          state.clubs?.takeWhile((club) => club.leagueEaId == league.eaId) ?? [],
         );
       });
       emit(
@@ -232,68 +232,68 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     );
   }
 
-  void _tapPositionGroup(
-    PositionGroup positionGroup,
-    Emitter<FilterState> emit,
-  ) {
-    final positions = List<Position>.from(state.positions ?? []);
-    final positionGroups = List<PositionGroup>.from(state.positionGroups ?? []);
-    final positionsFromGroup = switch (positionGroup) {
-      PositionGroup.attackers => [
-          Position.lw,
-          Position.rw,
-          Position.lf,
-          Position.rf,
-          Position.st,
-          Position.cf,
-          Position.ls,
-          Position.rs,
-        ],
-      PositionGroup.midfielders => [
-          Position.cm,
-          Position.cam,
-          Position.cdm,
-          Position.ldm,
-          Position.rdm,
-          Position.lam,
-          Position.ram,
-          Position.lm,
-          Position.rm,
-          Position.lcm,
-          Position.rcm,
-        ],
-      PositionGroup.defenders => [
-          Position.lcb,
-          Position.rcb,
-          Position.lb,
-          Position.rb,
-          Position.lwb,
-          Position.rwb,
-          Position.cb,
-        ],
-    };
-
-    for (var i = 0; i < positionsFromGroup.length; i++) {
-      if (positions.contains(positionsFromGroup[i])) {
-        positions.remove(positionsFromGroup[i]);
-      } else {
-        positions.add(positionsFromGroup[i]);
-      }
-    }
-
-    if (positionGroups.contains(positionGroup)) {
-      positionGroups.remove(positionGroup);
-    } else {
-      positionGroups.add(positionGroup);
-    }
-
-    emit(
-      state.copyWith(
-        positions: positions,
-        positionGroups: positionGroups,
-      ),
-    );
-  }
+  // void _tapPositionGroup(
+  //   PositionGroup positionGroup,
+  //   Emitter<FilterState> emit,
+  // ) {
+  //   final positions = List<Position>.from(state.positions ?? []);
+  //   final positionGroups = List<PositionGroup>.from(state.positionGroups ?? []);
+  //   final positionsFromGroup = switch (positionGroup) {
+  //     PositionGroup.attackers => [
+  //         Position.lw,
+  //         Position.rw,
+  //         Position.lf,
+  //         Position.rf,
+  //         Position.st,
+  //         Position.cf,
+  //         Position.ls,
+  //         Position.rs,
+  //       ],
+  //     PositionGroup.midfielders => [
+  //         Position.cm,
+  //         Position.cam,
+  //         Position.cdm,
+  //         Position.ldm,
+  //         Position.rdm,
+  //         Position.lam,
+  //         Position.ram,
+  //         Position.lm,
+  //         Position.rm,
+  //         Position.lcm,
+  //         Position.rcm,
+  //       ],
+  //     PositionGroup.defenders => [
+  //         Position.lcb,
+  //         Position.rcb,
+  //         Position.lb,
+  //         Position.rb,
+  //         Position.lwb,
+  //         Position.rwb,
+  //         Position.cb,
+  //       ],
+  //   };
+  //
+  //   for (var i = 0; i < positionsFromGroup.length; i++) {
+  //     if (positions.contains(positionsFromGroup[i])) {
+  //       positions.remove(positionsFromGroup[i]);
+  //     } else {
+  //       positions.add(positionsFromGroup[i]);
+  //     }
+  //   }
+  //
+  //   if (positionGroups.contains(positionGroup)) {
+  //     positionGroups.remove(positionGroup);
+  //   } else {
+  //     positionGroups.add(positionGroup);
+  //   }
+  //
+  //   emit(
+  //     state.copyWith(
+  //       positions: positions,
+  //       positionGroups: positionGroups,
+  //     ),
+  //   );
+  // }
 
   void _apply() {
     final filterConfiguration = FilterConfiguration(

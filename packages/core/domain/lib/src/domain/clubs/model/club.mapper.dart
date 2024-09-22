@@ -20,25 +20,55 @@ class ClubMapper extends ClassMapperBase<Club> {
   @override
   final String id = 'Club';
 
-  static int? _$id(Club v) => v.id;
-  static const Field<Club, int> _f$id = Field('id', _$id);
-  static String? _$name(Club v) => v.name;
+  static int _$eaId(Club v) => v.eaId;
+  static const Field<Club, int> _f$eaId = Field('eaId', _$eaId);
+  static String _$name(Club v) => v.name;
   static const Field<Club, String> _f$name = Field('name', _$name);
-  static int? _$league(Club v) => v.league;
-  static const Field<Club, int> _f$league = Field('league', _$league);
+  static int? _$leagueEaId(Club v) => v.leagueEaId;
+  static const Field<Club, int> _f$leagueEaId =
+      Field('leagueEaId', _$leagueEaId);
+  static bool? _$isWomen(Club v) => v.isWomen;
+  static const Field<Club, bool> _f$isWomen = Field('isWomen', _$isWomen);
+  static bool? _$isIconClub(Club v) => v.isIconClub;
+  static const Field<Club, bool> _f$isIconClub =
+      Field('isIconClub', _$isIconClub);
+  static List<int>? _$pastAndPresentHighlightedPlayerItemEaIds(Club v) =>
+      v.pastAndPresentHighlightedPlayerItemEaIds;
+  static const Field<Club, List<int>>
+      _f$pastAndPresentHighlightedPlayerItemEaIds = Field(
+          'pastAndPresentHighlightedPlayerItemEaIds',
+          _$pastAndPresentHighlightedPlayerItemEaIds);
+  static String? _$imagePath(Club v) => v.imagePath;
+  static const Field<Club, String> _f$imagePath =
+      Field('imagePath', _$imagePath);
+  static String? _$lightImagePath(Club v) => v.lightImagePath;
+  static const Field<Club, String> _f$lightImagePath =
+      Field('lightImagePath', _$lightImagePath);
 
   @override
   final MappableFields<Club> fields = const {
-    #id: _f$id,
+    #eaId: _f$eaId,
     #name: _f$name,
-    #league: _f$league,
+    #leagueEaId: _f$leagueEaId,
+    #isWomen: _f$isWomen,
+    #isIconClub: _f$isIconClub,
+    #pastAndPresentHighlightedPlayerItemEaIds:
+        _f$pastAndPresentHighlightedPlayerItemEaIds,
+    #imagePath: _f$imagePath,
+    #lightImagePath: _f$lightImagePath,
   };
 
   static Club _instantiate(DecodingData data) {
     return Club(
-        id: data.dec(_f$id),
+        eaId: data.dec(_f$eaId),
         name: data.dec(_f$name),
-        league: data.dec(_f$league));
+        leagueEaId: data.dec(_f$leagueEaId),
+        isWomen: data.dec(_f$isWomen),
+        isIconClub: data.dec(_f$isIconClub),
+        pastAndPresentHighlightedPlayerItemEaIds:
+            data.dec(_f$pastAndPresentHighlightedPlayerItemEaIds),
+        imagePath: data.dec(_f$imagePath),
+        lightImagePath: data.dec(_f$lightImagePath));
   }
 
   @override
@@ -87,7 +117,17 @@ extension ClubValueCopy<$R, $Out> on ObjectCopyWith<$R, Club, $Out> {
 
 abstract class ClubCopyWith<$R, $In extends Club, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({int? id, String? name, int? league});
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>?
+      get pastAndPresentHighlightedPlayerItemEaIds;
+  $R call(
+      {int? eaId,
+      String? name,
+      int? leagueEaId,
+      bool? isWomen,
+      bool? isIconClub,
+      List<int>? pastAndPresentHighlightedPlayerItemEaIds,
+      String? imagePath,
+      String? lightImagePath});
   ClubCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -98,17 +138,48 @@ class _ClubCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Club, $Out>
   @override
   late final ClassMapperBase<Club> $mapper = ClubMapper.ensureInitialized();
   @override
-  $R call({Object? id = $none, Object? name = $none, Object? league = $none}) =>
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>?
+      get pastAndPresentHighlightedPlayerItemEaIds =>
+          $value.pastAndPresentHighlightedPlayerItemEaIds != null
+              ? ListCopyWith(
+                  $value.pastAndPresentHighlightedPlayerItemEaIds!,
+                  (v, t) => ObjectCopyWith(v, $identity, t),
+                  (v) => call(pastAndPresentHighlightedPlayerItemEaIds: v))
+              : null;
+  @override
+  $R call(
+          {int? eaId,
+          String? name,
+          Object? leagueEaId = $none,
+          Object? isWomen = $none,
+          Object? isIconClub = $none,
+          Object? pastAndPresentHighlightedPlayerItemEaIds = $none,
+          Object? imagePath = $none,
+          Object? lightImagePath = $none}) =>
       $apply(FieldCopyWithData({
-        if (id != $none) #id: id,
-        if (name != $none) #name: name,
-        if (league != $none) #league: league
+        if (eaId != null) #eaId: eaId,
+        if (name != null) #name: name,
+        if (leagueEaId != $none) #leagueEaId: leagueEaId,
+        if (isWomen != $none) #isWomen: isWomen,
+        if (isIconClub != $none) #isIconClub: isIconClub,
+        if (pastAndPresentHighlightedPlayerItemEaIds != $none)
+          #pastAndPresentHighlightedPlayerItemEaIds:
+              pastAndPresentHighlightedPlayerItemEaIds,
+        if (imagePath != $none) #imagePath: imagePath,
+        if (lightImagePath != $none) #lightImagePath: lightImagePath
       }));
   @override
   Club $make(CopyWithData data) => Club(
-      id: data.get(#id, or: $value.id),
+      eaId: data.get(#eaId, or: $value.eaId),
       name: data.get(#name, or: $value.name),
-      league: data.get(#league, or: $value.league));
+      leagueEaId: data.get(#leagueEaId, or: $value.leagueEaId),
+      isWomen: data.get(#isWomen, or: $value.isWomen),
+      isIconClub: data.get(#isIconClub, or: $value.isIconClub),
+      pastAndPresentHighlightedPlayerItemEaIds: data.get(
+          #pastAndPresentHighlightedPlayerItemEaIds,
+          or: $value.pastAndPresentHighlightedPlayerItemEaIds),
+      imagePath: data.get(#imagePath, or: $value.imagePath),
+      lightImagePath: data.get(#lightImagePath, or: $value.lightImagePath));
 
   @override
   ClubCopyWith<$R2, Club, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

@@ -31,7 +31,7 @@ class PlayerHeader extends StatelessWidget {
             child: Opacity(
               opacity: 0.1,
               child: PlayerImage(
-                playerId: player.id,
+                imagePath: player.imagePath,
                 size: PlayerImageSize.infiniteWidth,
               ),
             ),
@@ -40,7 +40,7 @@ class PlayerHeader extends StatelessWidget {
             right: 0,
             top: AppSpacing.space4 + AppSpacing.space4,
             child: PlayerImage(
-              playerId: player.id,
+              imagePath: player.imagePath,
               size: PlayerImageSize.large,
             ),
           ),
@@ -63,7 +63,7 @@ class PlayerHeader extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              player.name,
+                              player.commonName ?? '',
                               style: context.typography.titleLarge,
                             ),
                             SizedBox(height: AppSpacing.space2),
@@ -92,7 +92,7 @@ class PlayerHeader extends StatelessWidget {
                           ),
                           SizedBox(width: AppSpacing.space3),
                           RatingBox(
-                            rating: player.rating,
+                            rating: player.overall,
                             bg: colors.$1,
                             fg: colors.$2,
                           ),
@@ -138,33 +138,34 @@ class PlayerHeader extends StatelessWidget {
                   ),
                 ),
                 _AnimatedOpacity(
-                  isShown: player.pace != null,
+                  isShown: player.facePace != null,
                   child: StatCard(
-                    paceRating: player.pace ?? 0,
-                    shootRating: player.shooting ?? 0,
-                    passRating: player.passing ?? 0,
-                    dribbleRating: player.dribbling ?? 0,
-                    defendRating: player.defending ?? 0,
-                    physicalRating: player.physicality ?? 0,
+                    paceRating: player.facePace ?? 0,
+                    shootRating: player.faceShooting ?? 0,
+                    passRating: player.facePassing ?? 0,
+                    dribbleRating: player.faceDribbling ?? 0,
+                    defendRating: player.faceDefending ?? 0,
+                    physicalRating: player.facePhysicality ?? 0,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: AppSpacing.space3,
-                  ),
-                  child: _AnimatedOpacity(
-                    isShown: player.age != null,
-                    child: InfoCard(
-                      age: player.age ?? 0,
-                      height: player.height ?? 0,
-                      skills: player.skillMoves ?? 0,
-                      weakFoot: player.weakFoot ?? 0,
-                      workRate:
-                          '${player.attackWorkRate?.name.toUpperCase() ?? ''}'
-                          '/${player.defenseWorkRate?.name.toUpperCase() ?? ''}',
-                    ),
-                  ),
-                ),
+                //TODO Fix this
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(
+                //     vertical: AppSpacing.space3,
+                //   ),
+                //   child: _AnimatedOpacity(
+                //     isShown: player.age != null,
+                //     child: InfoCard(
+                //       age: player.age ?? 0,
+                //       height: player.height ?? 0,
+                //       skills: player.skillMoves ?? 0,
+                //       weakFoot: player.weakFoot ?? 0,
+                //       workRate:
+                //           '${player.attackWorkRate?.name.toUpperCase() ?? ''}'
+                //           '/${player.defenseWorkRate?.name.toUpperCase() ?? ''}',
+                //     ),
+                //   ),
+                // ),
                 Align(
                   alignment: Alignment.center,
                   child: ConstrainedBox(

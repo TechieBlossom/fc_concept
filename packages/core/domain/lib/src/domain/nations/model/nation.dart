@@ -6,15 +6,15 @@ part 'nation.mapper.dart';
 @MappableClass(discriminatorValue: 'nation')
 class Nation extends NestedFilterLayoutType with NationMappable {
   Nation({
-    required int id,
+    required int eaId,
     required String name,
-    this.isTop = false,
+    this.imagePath,
   }) : super(
-          id: id,
+          eaId: eaId,
           name: name,
         );
 
-  final bool isTop;
+  final String? imagePath;
 
   static const fromMap = NationMapper.fromMap;
 }

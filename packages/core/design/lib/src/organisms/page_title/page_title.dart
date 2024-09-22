@@ -9,6 +9,8 @@ class PageTitle extends StatelessWidget implements PreferredSize {
     this.action,
     this.onAction,
     this.onBack,
+    this.leading,
+    this.autoImplyLeading = false,
   }) : assert(
           (action == null && onAction == null) ||
               (action != null && onAction != null),
@@ -19,6 +21,8 @@ class PageTitle extends StatelessWidget implements PreferredSize {
   final String? action;
   final VoidCallback? onAction;
   final VoidCallback? onBack;
+  final Widget? leading;
+  final bool autoImplyLeading;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +30,13 @@ class PageTitle extends StatelessWidget implements PreferredSize {
       surfaceTintColor: context.colors.backgroundPrimary,
       backgroundColor: context.colors.backgroundPrimary,
       centerTitle: onBack == null && onAction == null,
-      leading: onBack != null
-          ? BackButton(
-              onPressed: onBack,
-            )
-          : null,
+      leading: leading ??
+          (autoImplyLeading
+              ? BackButton(
+                  onPressed: onBack,
+                  color: context.colors.contentPrimary,
+                )
+              : null),
       title: title != null ? Text(title!) : null,
       titleTextStyle: isSmall
           ? context.typography.titleSmall

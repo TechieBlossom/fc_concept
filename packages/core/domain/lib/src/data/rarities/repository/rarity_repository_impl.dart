@@ -14,8 +14,7 @@ class RarityRepositoryImpl extends RarityRepository {
       final raritiesResponse = await supabase
           .from(TableRarity.tableRarity)
           .select()
-          .eq(TableRarity.isActive, true)
-          .inFilter(TableRarity.id, rarityIds)
+          .inFilter(TableRarity.eaId, rarityIds)
           .order(TableRarity.name, ascending: true);
 
       final rarities = mapRarities(raritiesResponse);

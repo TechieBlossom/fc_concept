@@ -39,7 +39,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     final playerResult = await _getPlayerDetailsUseCase(playerId: player.id);
     _handlePlayerDetailsResult(playerResult, emit);
     final playerRaritiesResult =
-        await _getPlayerVersionsUseCase(name: player.name);
+        await _getPlayerVersionsUseCase(name: player.commonName!);
     _handleVersionsResult(playerRaritiesResult, emit);
   }
 
@@ -87,7 +87,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
         emit(
           state.copyWith(
             playerVersions: versions,
-            selectedVersion: state.player.rarity.id,
+            selectedVersion: state.player.rarity.eaId,
           ),
         );
       case Failure(exception: final exception):

@@ -20,6 +20,7 @@ class PlayerDetailPage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             appBar: PageTitle(
+              autoImplyLeading: true,
               action: 'Compare',
               onAction: () {
                 context.read<PlayerDetailBloc>().add(

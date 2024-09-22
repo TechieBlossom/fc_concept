@@ -1,30 +1,51 @@
 import 'package:core_api_client/api_client.dart';
-import 'package:core_domain/domain.dart';
 import 'package:core_domain/src/data/clubs/table_club.dart';
 import 'package:core_domain/src/data/nations/table_nation.dart';
 import 'package:core_domain/src/data/players/table_player.dart';
+import 'package:core_domain/src/data/positions/table_position.dart';
 import 'package:core_domain/src/data/rarities/table_rarity.dart';
+import 'package:core_domain/src/domain/clubs/model/club.dart';
+import 'package:core_domain/src/domain/common/foot.dart';
+import 'package:core_domain/src/domain/common/gender.dart';
+import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
+import 'package:core_domain/src/domain/models/result.dart';
+import 'package:core_domain/src/domain/players/model/player.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
+import 'package:core_domain/src/domain/positions/model/position.dart';
+import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 const _itemsPerPage = 10;
-const _rarityTable = '${TableRarity.tableRarity}!inner(id, name)';
-const _clubTable = '${TableClub.tableClub}!inner(id, name, league)';
-const _nationTable = '${TableNation.tableNation}!inner(id, name)';
+const _rarityTable =
+    '${TableRarity.tableRarity}!inner(${TableRarity.eaId}, ${TableRarity.name}, '
+    '${TableRarity.dominantColor}, ${TableRarity.textColor}, '
+    '${TableRarity.isSpecial}, ${TableRarity.imagePath}, '
+    '${TableRarity.compactImagePath})';
+const _clubTable = '${TableClub.tableClub}!inner(${TableClub.eaId}, '
+    '${TableClub.name}, ${TableClub.leagueEaId}, ${TableClub.isWomen},'
+    '${TableClub.isIconClub}, ${TableClub.pastAndPresentHighlightedPlayerItemEaIds},'
+    '${TableClub.imagePath}, ${TableClub.lightImagePath})';
+const _nationTable = '${TableNation.tableNation}!inner(${TableNation.eaId}, '
+    '${TableNation.name}, ${TableNation.imagePath})';
+const _positionTable =
+    '${TablePosition.tablePosition}!inner(${TablePosition.eaId}, '
+    '${TablePosition.label}, ${TablePosition.shortLabel}, '
+    '${TablePosition.positionTypeId}, ${TablePosition.positionTypeName})';
+
 final _columnsToFetchForList = [
   TablePlayer.id,
-  TablePlayer.name,
   TablePlayer.commonName,
   TablePlayer.firstName,
   TablePlayer.lastName,
-  TablePlayer.rating,
+  TablePlayer.overall,
   TablePlayer.position,
+  TablePlayer.imagePath,
   _rarityTable,
   _clubTable,
   _nationTable,
-  TablePlayer.color,
+  _positionTable,
 ].join(',');
 
 final _columnsToFetchForVersions = [
@@ -45,13 +66,13 @@ class PlayerRepositoryImpl extends PlayerRepository {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
-          .order(TablePlayer.rating)
-          .order(TablePlayer.name, ascending: true)
+          .order(TablePlayer.overall)
+          .order(TablePlayer.commonName, ascending: true)
           .range(start, end);
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
-        print(players.map((e) => '${e.id} ${e.name} ${e.rating}'));
+        print(players.map((e) => '${e.id} ${e.commonName} ${e.overall}'));
       }
       return Success(data: players);
     } catch (e, _) {
@@ -69,7 +90,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
-        print(players.map((e) => '${e.id} ${e.name} ${e.rating}'));
+        print(players.map((e) => '${e.id} ${e.commonName} ${e.overall}'));
       }
       return Success(data: players);
     } catch (e, _) {
@@ -89,7 +110,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
-          .like(TablePlayer.name, '%$query%')
+          .like(TablePlayer.commonName, '%$query%')
           .range(start, end);
 
       final players = mapPlayers(playersResponse);
@@ -114,13 +135,13 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final start = page * _itemsPerPage;
     final end = ((page + 1) * _itemsPerPage) - 1;
 
-    final leagueIds = leagues?.map((league) => league.id);
-    final clubIds = clubs?.map((club) => club.id);
-    final nationIds = nations?.map((nation) => nation.id);
+    final leagueIds = leagues?.map((league) => league.eaId);
+    final clubIds = clubs?.map((club) => club.eaId);
+    final nationIds = nations?.map((nation) => nation.eaId);
     final genderNames = genders?.map((gender) => gender.name);
-    final rarityIds = rarities?.map((rarity) => rarity.id);
+    final rarityIds = rarities?.map((rarity) => rarity.eaId);
     final footNames = foots?.map((foot) => foot.name);
-    final positionNames = positions?.map((position) => position.toValue());
+    final positionNames = positions?.map((position) => position.eaId);
 
     try {
       PostgrestFilterBuilder postgresFilterBuilder =
@@ -162,7 +183,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
       if (overallRatings != null && overallRatings.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
-          TablePlayer.rating,
+          TablePlayer.overall,
           overallRatings,
         );
       }
@@ -175,13 +196,13 @@ class PlayerRepositoryImpl extends PlayerRepository {
       }
 
       final playersResponse = await postgresFilterBuilder
-          .order(TablePlayer.rating)
-          .order(TablePlayer.name, ascending: true)
+          .order(TablePlayer.overall)
+          .order(TablePlayer.commonName, ascending: true)
           .range(start, end);
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
-        print(players.map((e) => '${e.id} ${e.name} ${e.rating}'));
+        print(players.map((e) => '${e.id} ${e.commonName} ${e.overall}'));
       }
       return Success(data: players);
     } catch (e, _) {
@@ -243,14 +264,14 @@ class PlayerRepositoryImpl extends PlayerRepository {
       final versionsResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForVersions)
-          .eq(TablePlayer.name, name);
+          .eq(TablePlayer.commonName, name);
 
       final playerRarities = versionsResponse
           .map(
             (entry) => (
               entry[TablePlayer.id] as int,
               (entry[TableRarity.tableRarity]
-                  as Map<String, dynamic>)[TableRarity.id] as int,
+                  as Map<String, dynamic>)[TableRarity.eaId] as int,
               (entry[TableRarity.tableRarity]
                   as Map<String, dynamic>)[TableRarity.name] as String,
             ),

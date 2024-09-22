@@ -143,7 +143,7 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get overallRating;
   ListCopyWith<$R, Gender, ObjectCopyWith<$R, Gender, Gender>>? get genders;
   ListCopyWith<$R, Foot, ObjectCopyWith<$R, Foot, Foot>>? get foots;
-  ListCopyWith<$R, Position, ObjectCopyWith<$R, Position, Position>>?
+  ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>?
       get positions;
   $R call(
       {List<NestedFilterLayoutType>? leagues,
@@ -219,11 +219,9 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
               (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(foots: v))
           : null;
   @override
-  ListCopyWith<$R, Position, ObjectCopyWith<$R, Position, Position>>?
+  ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>?
       get positions => $value.positions != null
-          ? ListCopyWith(
-              $value.positions!,
-              (v, t) => ObjectCopyWith(v, $identity, t),
+          ? ListCopyWith($value.positions!, (v, t) => v.copyWith.$chain(t),
               (v) => call(positions: v))
           : null;
   @override

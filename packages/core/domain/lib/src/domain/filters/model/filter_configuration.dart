@@ -2,7 +2,7 @@ import 'package:core_domain/src/domain/clubs/model/club.dart';
 import 'package:core_domain/src/domain/common/foot.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
-import 'package:core_domain/src/domain/common/position.dart';
+import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 

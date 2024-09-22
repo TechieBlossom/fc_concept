@@ -5,7 +5,6 @@ export 'package:core_domain/src/domain/common/card_color.dart';
 export 'package:core_domain/src/domain/common/foot.dart';
 export 'package:core_domain/src/domain/common/gender.dart';
 export 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
-export 'package:core_domain/src/domain/common/position.dart';
 export 'package:core_domain/src/domain/filters/model/filter_configuration.dart';
 export 'package:core_domain/src/domain/leagues/model/league.dart';
 export 'package:core_domain/src/domain/leagues/use_case/get_other_leagues_use_case.dart';
@@ -23,6 +22,7 @@ export 'package:core_domain/src/domain/players/use_case/get_player_versions_use_
 export 'package:core_domain/src/domain/players/use_case/get_popular_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_top_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart';
+export 'package:core_domain/src/domain/positions/model/position.dart';
 export 'package:core_domain/src/domain/rarity/model/rarity.dart';
 export 'package:core_domain/src/domain/rarity/model/rarity_colors_map.dart';
 export 'package:core_domain/src/domain/rarity/use_case/get_all_rarities.dart';

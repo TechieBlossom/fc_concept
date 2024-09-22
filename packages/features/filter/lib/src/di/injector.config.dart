@@ -8,79 +8,80 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:core_domain/domain.dart' as _i8;
-import 'package:feature_filter/src/filter/bloc/filter_bloc.dart' as _i9;
-import 'package:feature_filter/src/navigation/navigator.dart' as _i4;
-import 'package:feature_filter/src/navigation/routes.dart' as _i3;
+import 'package:core_domain/domain.dart' as _i913;
+import 'package:feature_filter/src/filter/bloc/filter_bloc.dart' as _i841;
+import 'package:feature_filter/src/navigation/navigator.dart' as _i176;
+import 'package:feature_filter/src/navigation/routes.dart' as _i730;
 import 'package:feature_filter/src/nested_filter/bloc/nested_filter_bloc.dart'
-    as _i6;
+    as _i195;
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart'
-    as _i7;
+    as _i18;
 import 'package:feature_filter/src/nested_filter/rarity/bloc/rarity_nested_filter_bloc.dart'
-    as _i10;
+    as _i716;
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart'
-    as _i11;
+    as _i465;
 import 'package:feature_filter/src/nested_filter/rating/bloc/rating_nested_filter_bloc.dart'
-    as _i12;
+    as _i595;
 import 'package:feature_filter/src/nested_filter/rating/rating_nested_filter_page.dart'
-    as _i13;
-import 'package:get_it/get_it.dart' as _i1;
-import 'package:injectable/injectable.dart' as _i2;
-import 'package:utility_navigation/navigation.dart' as _i5;
+    as _i659;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+import 'package:utility_navigation/navigation.dart' as _i177;
 
 // initializes the registration of main-scope dependencies inside of GetIt
-_i1.GetIt init(
-  _i1.GetIt getIt, {
+_i174.GetIt init(
+  _i174.GetIt getIt, {
   String? environment,
-  _i2.EnvironmentFilter? environmentFilter,
+  _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i2.GetItHelper(
+  final gh = _i526.GetItHelper(
     getIt,
     environment,
     environmentFilter,
   );
-  gh.lazySingleton<_i3.FilterRoutesConfig>(() => _i3.FilterRoutesConfig());
-  gh.lazySingleton<_i4.FilterNavigator>(
-      () => _i4.FilterNavigator(gh<_i5.GoRouter>()));
-  gh.factoryParam<_i6.NestedFilterBloc, _i7.NestedFilterPageParams, dynamic>((
+  gh.lazySingleton<_i730.FilterRoutesConfig>(() => _i730.FilterRoutesConfig());
+  gh.lazySingleton<_i176.FilterNavigator>(
+      () => _i176.FilterNavigator(gh<_i177.GoRouter>()));
+  gh.factoryParam<_i195.NestedFilterBloc, _i18.NestedFilterPageParams, dynamic>(
+      (
     nestedFilterPageParams,
     _,
   ) =>
-      _i6.NestedFilterBloc(
-        nestedFilterPageParams,
-        gh<_i8.GetTopLeaguesUseCase>(),
-        gh<_i8.GetOtherLeaguesUseCase>(),
-        gh<_i8.GetClubsByLeagueUseCase>(),
-        gh<_i8.GetTopNationsUseCase>(),
-        gh<_i8.GetOtherNationsUseCase>(),
-        gh<_i4.FilterNavigator>(),
-      ));
-  gh.factoryParam<_i9.FilterBloc, _i8.FilterConfiguration?, dynamic>((
+          _i195.NestedFilterBloc(
+            nestedFilterPageParams,
+            gh<_i913.GetTopLeaguesUseCase>(),
+            gh<_i913.GetOtherLeaguesUseCase>(),
+            gh<_i913.GetClubsByLeagueUseCase>(),
+            gh<_i913.GetTopNationsUseCase>(),
+            gh<_i913.GetOtherNationsUseCase>(),
+            gh<_i176.FilterNavigator>(),
+          ));
+  gh.factoryParam<_i841.FilterBloc, _i913.FilterConfiguration?, dynamic>((
     existingFilters,
     _,
   ) =>
-      _i9.FilterBloc(
+      _i841.FilterBloc(
         existingFilters,
-        gh<_i4.FilterNavigator>(),
+        gh<_i176.FilterNavigator>(),
       ));
-  gh.factoryParam<_i10.RarityNestedFilterBloc,
-      _i11.RarityNestedFilterPageParams, dynamic>((
+  gh.factoryParam<_i716.RarityNestedFilterBloc,
+      _i465.RarityNestedFilterPageParams, dynamic>((
     rarityNestedFilterPageParams,
     _,
   ) =>
-      _i10.RarityNestedFilterBloc(
+      _i716.RarityNestedFilterBloc(
         rarityNestedFilterPageParams,
-        gh<_i8.GetAllRarities>(),
-        gh<_i4.FilterNavigator>(),
+        gh<_i913.GetAllRarities>(),
+        gh<_i176.FilterNavigator>(),
       ));
-  gh.factoryParam<_i12.RatingNestedFilterBloc,
-      _i13.RatingNestedFilterPageParams, dynamic>((
+  gh.factoryParam<_i595.RatingNestedFilterBloc,
+      _i659.RatingNestedFilterPageParams, dynamic>((
     ratingNestedFilterPageParams,
     _,
   ) =>
-      _i12.RatingNestedFilterBloc(
+      _i595.RatingNestedFilterBloc(
         ratingNestedFilterPageParams,
-        gh<_i4.FilterNavigator>(),
+        gh<_i176.FilterNavigator>(),
       ));
   return getIt;
 }

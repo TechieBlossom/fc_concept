@@ -594,6 +594,7 @@ class NestedFilterStateMapper extends ClassMapperBase<NestedFilterState> {
   static NestedFilterStateMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = NestedFilterStateMapper._());
+      ProcessStateMapper.ensureInitialized();
       LeagueMapper.ensureInitialized();
       NestedFilterLayoutTypeMapper.ensureInitialized();
       NationMapper.ensureInitialized();

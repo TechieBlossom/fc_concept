@@ -7,13 +7,14 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: NationRepository)
 class NationRepositoryImpl extends NationRepository {
+
   @override
   Future<Result<List<Nation>>> getTopNations() async {
     try {
       final nationsResponse = await supabase
           .from(TableNation.tableNation)
           .select()
-          .eq(TableNation.isTop, true)
+          // .eq(TableNation.isTop, true)
           .order(TableNation.name);
 
       final nations = mapNations(nationsResponse);
@@ -29,7 +30,6 @@ class NationRepositoryImpl extends NationRepository {
       final nationsResponse = await supabase
           .from(TableNation.tableNation)
           .select()
-          .eq(TableNation.isTop, false)
           .order(TableNation.name);
 
       final nations = mapNations(nationsResponse);

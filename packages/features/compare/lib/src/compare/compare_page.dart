@@ -50,12 +50,12 @@ class ComparePage extends StatelessWidget {
                         CollapsibleCard(
                           heading: 'Info',
                           compareItems: [
-                            CompareItem(
-                              label: 'Age',
-                              first: player1?.age?.toString() ?? '-',
-                              second: player2?.age?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
+                            // CompareItem(
+                            //   label: 'Age',
+                            //   first: player1?.age?.toString() ?? '-',
+                            //   second: player2?.age?.toString() ?? '-',
+                            //   hasDigit: true,
+                            // ),
                             CompareItem(
                               label: 'Height',
                               first: player1?.height != null
@@ -82,22 +82,22 @@ class ComparePage extends StatelessWidget {
                             ),
                             CompareItem(
                               label: 'Preferred Foot',
-                              first: player1?.foot?.name.toUpperCase() ?? '-',
-                              second: player2?.foot?.name.toUpperCase() ?? '-',
+                              first: player1?.foot?.toString() ?? '-',
+                              second: player2?.foot?.toString() ?? '-',
                               hasDigit: true,
                             ),
-                            CompareItem(
-                              label: 'Work rate',
-                              first: (player1?.attackWorkRate != null &&
-                                      player1?.defenseWorkRate != null)
-                                  ? '${player1?.attackWorkRate?.name.toUpperCase()}/${player1?.defenseWorkRate?.name.toUpperCase()}'
-                                  : '-',
-                              second: (player2?.attackWorkRate != null &&
-                                      player2?.defenseWorkRate != null)
-                                  ? '${player2?.attackWorkRate?.name.toUpperCase()}/${player2?.defenseWorkRate?.name.toUpperCase()}'
-                                  : '-',
-                              hasDigit: true,
-                            ),
+                            // CompareItem(
+                            //   label: 'Work rate',
+                            //   first: (player1?.attackWorkRate != null &&
+                            //           player1?.defenseWorkRate != null)
+                            //       ? '${player1?.attackWorkRate?.name.toUpperCase()}/${player1?.defenseWorkRate?.name.toUpperCase()}'
+                            //       : '-',
+                            //   second: (player2?.attackWorkRate != null &&
+                            //           player2?.defenseWorkRate != null)
+                            //       ? '${player2?.attackWorkRate?.name.toUpperCase()}/${player2?.defenseWorkRate?.name.toUpperCase()}'
+                            //       : '-',
+                            //   hasDigit: true,
+                            // ),
                           ],
                         ),
                         const SizedBox(height: AppSpacing.space3),
@@ -106,8 +106,8 @@ class ComparePage extends StatelessWidget {
                           compareItems: [
                             CompareItem(
                               label: 'Overall',
-                              first: player1?.pace?.toString() ?? '-',
-                              second: player2?.pace?.toString() ?? '-',
+                              first: player1?.facePace?.toString() ?? '-',
+                              second: player2?.facePace?.toString() ?? '-',
                               hasDigit: true,
                             ),
                           ],
@@ -118,8 +118,8 @@ class ComparePage extends StatelessWidget {
                           compareItems: [
                             CompareItem(
                               label: 'Overall',
-                              first: player1?.shooting?.toString() ?? '-',
-                              second: player2?.shooting?.toString() ?? '-',
+                              first: player1?.faceShooting?.toString() ?? '-',
+                              second: player2?.faceShooting?.toString() ?? '-',
                               hasDigit: true,
                             ),
                           ],
@@ -130,8 +130,8 @@ class ComparePage extends StatelessWidget {
                           compareItems: [
                             CompareItem(
                               label: 'Overall',
-                              first: player1?.passing?.toString() ?? '-',
-                              second: player2?.passing?.toString() ?? '-',
+                              first: player1?.facePassing?.toString() ?? '-',
+                              second: player2?.facePassing?.toString() ?? '-',
                               hasDigit: true,
                             ),
                           ],
@@ -142,8 +142,8 @@ class ComparePage extends StatelessWidget {
                           compareItems: [
                             CompareItem(
                               label: 'Overall',
-                              first: player1?.dribbling?.toString() ?? '-',
-                              second: player2?.dribbling?.toString() ?? '-',
+                              first: player1?.faceDribbling?.toString() ?? '-',
+                              second: player2?.faceDribbling?.toString() ?? '-',
                               hasDigit: true,
                             ),
                           ],
@@ -154,8 +154,8 @@ class ComparePage extends StatelessWidget {
                           compareItems: [
                             CompareItem(
                               label: 'Overall',
-                              first: player1?.defending?.toString() ?? '-',
-                              second: player2?.defending?.toString() ?? '-',
+                              first: player1?.faceDefending?.toString() ?? '-',
+                              second: player2?.faceDefending?.toString() ?? '-',
                               hasDigit: true,
                             ),
                           ],
@@ -166,8 +166,8 @@ class ComparePage extends StatelessWidget {
                           compareItems: [
                             CompareItem(
                               label: 'Overall',
-                              first: player1?.physicality?.toString() ?? '-',
-                              second: player2?.physicality?.toString() ?? '-',
+                              first: player1?.facePhysicality?.toString() ?? '-',
+                              second: player2?.facePhysicality?.toString() ?? '-',
                               hasDigit: true,
                             ),
                           ],
@@ -282,7 +282,7 @@ class PlayerPlaceholder extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.space3),
             Text(
-              player!.name,
+              player!.commonName ?? '',
               style: context.typography.bodyMedium,
             ),
             if (versions != null) ...[
@@ -314,7 +314,7 @@ class PlayerPlaceholder extends StatelessWidget {
             ],
             const SizedBox(height: AppSpacing.space3),
             PlayerImage(
-              playerId: player!.id,
+              imagePath: player!.imagePath,
               size: PlayerImageSize.medium,
             ),
             Align(
@@ -322,13 +322,13 @@ class PlayerPlaceholder extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RatingBox(
-                    rating: player?.rating,
+                    rating: player?.overall,
                     bg: colors.$1,
                     fg: colors.$2,
                   ),
                   const SizedBox(width: AppSpacing.space3),
                   Text(
-                    player?.position?.name ?? '',
+                    player?.position?.shortLabel ?? '',
                     style: context.typography.titleMediumDigit.copyWith(
                       color: context.colors.contentSecondary,
                     ),

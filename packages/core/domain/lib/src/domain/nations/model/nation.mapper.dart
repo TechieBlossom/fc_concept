@@ -21,19 +21,19 @@ class NationMapper extends SubClassMapperBase<Nation> {
   @override
   final String id = 'Nation';
 
-  static int _$id(Nation v) => v.id;
-  static const Field<Nation, int> _f$id = Field('id', _$id);
+  static int _$eaId(Nation v) => v.eaId;
+  static const Field<Nation, int> _f$eaId = Field('eaId', _$eaId);
   static String _$name(Nation v) => v.name;
   static const Field<Nation, String> _f$name = Field('name', _$name);
-  static bool _$isTop(Nation v) => v.isTop;
-  static const Field<Nation, bool> _f$isTop =
-      Field('isTop', _$isTop, opt: true, def: false);
+  static String? _$imagePath(Nation v) => v.imagePath;
+  static const Field<Nation, String> _f$imagePath =
+      Field('imagePath', _$imagePath, opt: true);
 
   @override
   final MappableFields<Nation> fields = const {
-    #id: _f$id,
+    #eaId: _f$eaId,
     #name: _f$name,
-    #isTop: _f$isTop,
+    #imagePath: _f$imagePath,
   };
 
   @override
@@ -46,9 +46,9 @@ class NationMapper extends SubClassMapperBase<Nation> {
 
   static Nation _instantiate(DecodingData data) {
     return Nation(
-        id: data.dec(_f$id),
+        eaId: data.dec(_f$eaId),
         name: data.dec(_f$name),
-        isTop: data.dec(_f$isTop));
+        imagePath: data.dec(_f$imagePath));
   }
 
   @override
@@ -98,7 +98,7 @@ extension NationValueCopy<$R, $Out> on ObjectCopyWith<$R, Nation, $Out> {
 abstract class NationCopyWith<$R, $In extends Nation, $Out>
     implements NestedFilterLayoutTypeCopyWith<$R, $In, $Out> {
   @override
-  $R call({int? id, String? name, bool? isTop});
+  $R call({int? eaId, String? name, String? imagePath});
   NationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -109,16 +109,17 @@ class _NationCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Nation, $Out>
   @override
   late final ClassMapperBase<Nation> $mapper = NationMapper.ensureInitialized();
   @override
-  $R call({int? id, String? name, bool? isTop}) => $apply(FieldCopyWithData({
-        if (id != null) #id: id,
+  $R call({int? eaId, String? name, Object? imagePath = $none}) =>
+      $apply(FieldCopyWithData({
+        if (eaId != null) #eaId: eaId,
         if (name != null) #name: name,
-        if (isTop != null) #isTop: isTop
+        if (imagePath != $none) #imagePath: imagePath
       }));
   @override
   Nation $make(CopyWithData data) => Nation(
-      id: data.get(#id, or: $value.id),
+      eaId: data.get(#eaId, or: $value.eaId),
       name: data.get(#name, or: $value.name),
-      isTop: data.get(#isTop, or: $value.isTop));
+      imagePath: data.get(#imagePath, or: $value.imagePath));
 
   @override
   NationCopyWith<$R2, Nation, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

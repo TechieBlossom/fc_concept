@@ -21,15 +21,16 @@ class NestedFilterLayoutTypeMapper
   @override
   final String id = 'NestedFilterLayoutType';
 
-  static int _$id(NestedFilterLayoutType v) => v.id;
-  static const Field<NestedFilterLayoutType, int> _f$id = Field('id', _$id);
+  static int _$eaId(NestedFilterLayoutType v) => v.eaId;
+  static const Field<NestedFilterLayoutType, int> _f$eaId =
+      Field('eaId', _$eaId);
   static String _$name(NestedFilterLayoutType v) => v.name;
   static const Field<NestedFilterLayoutType, String> _f$name =
       Field('name', _$name);
 
   @override
   final MappableFields<NestedFilterLayoutType> fields = const {
-    #id: _f$id,
+    #eaId: _f$eaId,
     #name: _f$name,
   };
 
@@ -60,7 +61,7 @@ abstract class NestedFilterLayoutTypeCopyWith<
     $R,
     $In extends NestedFilterLayoutType,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
-  $R call({int? id, String? name});
+  $R call({int? eaId, String? name});
   NestedFilterLayoutTypeCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }

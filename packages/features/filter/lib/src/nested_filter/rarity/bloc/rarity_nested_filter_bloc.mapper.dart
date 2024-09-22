@@ -385,6 +385,7 @@ class RarityNestedFilterStateMapper
     if (_instance == null) {
       MapperContainer.globals
           .use(_instance = RarityNestedFilterStateMapper._());
+      ProcessStateMapper.ensureInitialized();
       RarityMapper.ensureInitialized();
     }
     return _instance!;

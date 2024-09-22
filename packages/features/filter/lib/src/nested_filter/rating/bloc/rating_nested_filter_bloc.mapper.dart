@@ -380,6 +380,7 @@ class RatingNestedFilterStateMapper
     if (_instance == null) {
       MapperContainer.globals
           .use(_instance = RatingNestedFilterStateMapper._());
+      ProcessStateMapper.ensureInitialized();
     }
     return _instance!;
   }

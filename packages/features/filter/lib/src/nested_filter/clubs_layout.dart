@@ -29,14 +29,14 @@ class ClubsLayout extends StatelessWidget {
                 ),
                 child: FilterGroup(
                   title: leagues
-                          ?.firstWhere((league) => league.id == entry.key)
+                          ?.firstWhere((league) => league.eaId == entry.key)
                           .name ??
                       '',
                   pillItems: entry.value!
                       .map(
                         (club) => PillItem<Club>(
                           data: club,
-                          text: club.name ?? '',
+                          text: club.name,
                           isSelected: selectedClubs?.contains(club) ?? false,
                           onTap: () => context.read<NestedFilterBloc>().add(
                                 SelectClub(

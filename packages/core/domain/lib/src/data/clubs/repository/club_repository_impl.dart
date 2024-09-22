@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 class ClubRepositoryImpl extends ClubRepository {
   @override
   Future<Result<List<Club>>> getClubsByLeagues(List<int> leagueIds) async {
-    final filters = leagueIds.map((id) => '${TableClub.leagueId}.eq.$id');
+    final filters = leagueIds.map((id) => '${TableClub.leagueEaId}.eq.$id');
     try {
       final clubsResponse = await supabase
           .from(TableClub.tableClub)

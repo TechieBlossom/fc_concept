@@ -41,7 +41,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
 
   Future<void> _initial(Player player, Emitter<CompareState> emit) async {
     emit(state.copyWith(player1: player));
-    final versions = await _getPlayerVersionsUseCase(name: player.name);
+    final versions = await _getPlayerVersionsUseCase(name: player.commonName!);
     _handleVersionsResult(player, versions, 0, emit);
   }
 
@@ -58,7 +58,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
     }
 
     if (player != null) {
-      final versions = await _getPlayerVersionsUseCase(name: player.name);
+      final versions = await _getPlayerVersionsUseCase(name: player.commonName!);
       _handleVersionsResult(player, versions, index, emit);
     }
   }
@@ -91,7 +91,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
             state.copyWith(
               player1: player,
               selectedPlayer1Version: (
-                versionId ?? player.rarity.id,
+                versionId ?? player.rarity.eaId,
                 version ?? player.rarity.name,
               ),
             ),
@@ -101,7 +101,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
             state.copyWith(
               player2: player,
               selectedPlayer2Version: (
-                versionId ?? player.rarity.id,
+                versionId ?? player.rarity.eaId,
                 version ?? player.rarity.name,
               ),
             ),
@@ -127,7 +127,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
             state.copyWith(
               player1Versions: versions,
               selectedPlayer1Version: (
-                player.rarity.id,
+                player.rarity.eaId,
                 player.rarity.name,
               ),
             ),
@@ -137,7 +137,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
             state.copyWith(
               player2Versions: versions,
               selectedPlayer2Version: (
-                player.rarity.id,
+                player.rarity.eaId,
                 player.rarity.name,
               ),
             ),

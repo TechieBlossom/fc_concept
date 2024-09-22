@@ -17,10 +17,6 @@ class PlayerMapper extends ClassMapperBase<Player> {
       ClubMapper.ensureInitialized();
       NationMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
-      FootMapper.ensureInitialized();
-      WorkRateMapper.ensureInitialized();
-      GenderMapper.ensureInitialized();
-      CardColorMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -30,8 +26,6 @@ class PlayerMapper extends ClassMapperBase<Player> {
 
   static int _$id(Player v) => v.id;
   static const Field<Player, int> _f$id = Field('id', _$id);
-  static String _$name(Player v) => v.name;
-  static const Field<Player, String> _f$name = Field('name', _$name);
   static String? _$commonName(Player v) => v.commonName;
   static const Field<Player, String> _f$commonName =
       Field('commonName', _$commonName, opt: true);
@@ -41,124 +35,114 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static String? _$lastName(Player v) => v.lastName;
   static const Field<Player, String> _f$lastName =
       Field('lastName', _$lastName, opt: true);
-  static int _$rating(Player v) => v.rating;
-  static const Field<Player, int> _f$rating = Field('rating', _$rating);
+  static int _$overall(Player v) => v.overall;
+  static const Field<Player, int> _f$overall = Field('overall', _$overall);
   static Rarity _$rarity(Player v) => v.rarity;
   static const Field<Player, Rarity> _f$rarity =
-      Field('rarity', _$rarity, key: 'table_rarity');
+      Field('rarity', _$rarity, key: 'table_core_rarity');
+  static String _$imagePath(Player v) => v.imagePath;
+  static const Field<Player, String> _f$imagePath =
+      Field('imagePath', _$imagePath);
   static Club? _$club(Player v) => v.club;
   static const Field<Player, Club> _f$club =
-      Field('club', _$club, key: 'table_club', opt: true);
+      Field('club', _$club, key: 'table_core_club', opt: true);
   static Nation? _$nation(Player v) => v.nation;
   static const Field<Player, Nation> _f$nation =
-      Field('nation', _$nation, key: 'table_nation', opt: true);
+      Field('nation', _$nation, key: 'table_core_nation', opt: true);
   static int? _$height(Player v) => v.height;
   static const Field<Player, int> _f$height =
       Field('height', _$height, opt: true);
   static int? _$weight(Player v) => v.weight;
   static const Field<Player, int> _f$weight =
       Field('weight', _$weight, opt: true);
-  static int? _$age(Player v) => v.age;
-  static const Field<Player, int> _f$age = Field('age', _$age, opt: true);
   static Position? _$position(Player v) => v.position;
   static const Field<Player, Position> _f$position =
-      Field('position', _$position, opt: true);
+      Field('position', _$position, key: 'table_core_position', opt: true);
   static int? _$skillMoves(Player v) => v.skillMoves;
   static const Field<Player, int> _f$skillMoves =
       Field('skillMoves', _$skillMoves, opt: true);
   static int? _$weakFoot(Player v) => v.weakFoot;
   static const Field<Player, int> _f$weakFoot =
       Field('weakFoot', _$weakFoot, opt: true);
-  static Foot? _$foot(Player v) => v.foot;
-  static const Field<Player, Foot> _f$foot = Field('foot', _$foot, opt: true);
-  static WorkRate? _$attackWorkRate(Player v) => v.attackWorkRate;
-  static const Field<Player, WorkRate> _f$attackWorkRate =
-      Field('attackWorkRate', _$attackWorkRate, opt: true);
-  static WorkRate? _$defenseWorkRate(Player v) => v.defenseWorkRate;
-  static const Field<Player, WorkRate> _f$defenseWorkRate =
-      Field('defenseWorkRate', _$defenseWorkRate, opt: true);
-  static int? _$pace(Player v) => v.pace;
-  static const Field<Player, int> _f$pace = Field('pace', _$pace, opt: true);
-  static int? _$shooting(Player v) => v.shooting;
-  static const Field<Player, int> _f$shooting =
-      Field('shooting', _$shooting, opt: true);
-  static int? _$passing(Player v) => v.passing;
-  static const Field<Player, int> _f$passing =
-      Field('passing', _$passing, opt: true);
-  static int? _$dribbling(Player v) => v.dribbling;
-  static const Field<Player, int> _f$dribbling =
-      Field('dribbling', _$dribbling, opt: true);
-  static int? _$defending(Player v) => v.defending;
-  static const Field<Player, int> _f$defending =
-      Field('defending', _$defending, opt: true);
-  static int? _$physicality(Player v) => v.physicality;
-  static const Field<Player, int> _f$physicality =
-      Field('physicality', _$physicality, opt: true);
-  static Gender? _$gender(Player v) => v.gender;
-  static const Field<Player, Gender> _f$gender =
+  static int? _$foot(Player v) => v.foot;
+  static const Field<Player, int> _f$foot = Field('foot', _$foot, opt: true);
+  static int? _$gender(Player v) => v.gender;
+  static const Field<Player, int> _f$gender =
       Field('gender', _$gender, opt: true);
-  static CardColor? _$color(Player v) => v.color;
-  static const Field<Player, CardColor> _f$color =
-      Field('color', _$color, opt: true);
+  static List<int>? _$rolesPlus(Player v) => v.rolesPlus;
+  static const Field<Player, List<int>> _f$rolesPlus =
+      Field('rolesPlus', _$rolesPlus, opt: true);
+  static int? _$facePace(Player v) => v.facePace;
+  static const Field<Player, int> _f$facePace =
+      Field('facePace', _$facePace, opt: true);
+  static int? _$faceShooting(Player v) => v.faceShooting;
+  static const Field<Player, int> _f$faceShooting =
+      Field('faceShooting', _$faceShooting, opt: true);
+  static int? _$facePassing(Player v) => v.facePassing;
+  static const Field<Player, int> _f$facePassing =
+      Field('facePassing', _$facePassing, opt: true);
+  static int? _$faceDribbling(Player v) => v.faceDribbling;
+  static const Field<Player, int> _f$faceDribbling =
+      Field('faceDribbling', _$faceDribbling, opt: true);
+  static int? _$faceDefending(Player v) => v.faceDefending;
+  static const Field<Player, int> _f$faceDefending =
+      Field('faceDefending', _$faceDefending, opt: true);
+  static int? _$facePhysicality(Player v) => v.facePhysicality;
+  static const Field<Player, int> _f$facePhysicality =
+      Field('facePhysicality', _$facePhysicality, opt: true);
 
   @override
   final MappableFields<Player> fields = const {
     #id: _f$id,
-    #name: _f$name,
     #commonName: _f$commonName,
     #firstName: _f$firstName,
     #lastName: _f$lastName,
-    #rating: _f$rating,
+    #overall: _f$overall,
     #rarity: _f$rarity,
+    #imagePath: _f$imagePath,
     #club: _f$club,
     #nation: _f$nation,
     #height: _f$height,
     #weight: _f$weight,
-    #age: _f$age,
     #position: _f$position,
     #skillMoves: _f$skillMoves,
     #weakFoot: _f$weakFoot,
     #foot: _f$foot,
-    #attackWorkRate: _f$attackWorkRate,
-    #defenseWorkRate: _f$defenseWorkRate,
-    #pace: _f$pace,
-    #shooting: _f$shooting,
-    #passing: _f$passing,
-    #dribbling: _f$dribbling,
-    #defending: _f$defending,
-    #physicality: _f$physicality,
     #gender: _f$gender,
-    #color: _f$color,
+    #rolesPlus: _f$rolesPlus,
+    #facePace: _f$facePace,
+    #faceShooting: _f$faceShooting,
+    #facePassing: _f$facePassing,
+    #faceDribbling: _f$faceDribbling,
+    #faceDefending: _f$faceDefending,
+    #facePhysicality: _f$facePhysicality,
   };
 
   static Player _instantiate(DecodingData data) {
     return Player(
         id: data.dec(_f$id),
-        name: data.dec(_f$name),
         commonName: data.dec(_f$commonName),
         firstName: data.dec(_f$firstName),
         lastName: data.dec(_f$lastName),
-        rating: data.dec(_f$rating),
+        overall: data.dec(_f$overall),
         rarity: data.dec(_f$rarity),
+        imagePath: data.dec(_f$imagePath),
         club: data.dec(_f$club),
         nation: data.dec(_f$nation),
         height: data.dec(_f$height),
         weight: data.dec(_f$weight),
-        age: data.dec(_f$age),
         position: data.dec(_f$position),
         skillMoves: data.dec(_f$skillMoves),
         weakFoot: data.dec(_f$weakFoot),
         foot: data.dec(_f$foot),
-        attackWorkRate: data.dec(_f$attackWorkRate),
-        defenseWorkRate: data.dec(_f$defenseWorkRate),
-        pace: data.dec(_f$pace),
-        shooting: data.dec(_f$shooting),
-        passing: data.dec(_f$passing),
-        dribbling: data.dec(_f$dribbling),
-        defending: data.dec(_f$defending),
-        physicality: data.dec(_f$physicality),
         gender: data.dec(_f$gender),
-        color: data.dec(_f$color));
+        rolesPlus: data.dec(_f$rolesPlus),
+        facePace: data.dec(_f$facePace),
+        faceShooting: data.dec(_f$faceShooting),
+        facePassing: data.dec(_f$facePassing),
+        faceDribbling: data.dec(_f$faceDribbling),
+        faceDefending: data.dec(_f$faceDefending),
+        facePhysicality: data.dec(_f$facePhysicality));
   }
 
   @override
@@ -210,33 +194,32 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
   RarityCopyWith<$R, Rarity, Rarity> get rarity;
   ClubCopyWith<$R, Club, Club>? get club;
   NationCopyWith<$R, Nation, Nation>? get nation;
+  PositionCopyWith<$R, Position, Position>? get position;
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlus;
   $R call(
       {int? id,
-      String? name,
       String? commonName,
       String? firstName,
       String? lastName,
-      int? rating,
+      int? overall,
       Rarity? rarity,
+      String? imagePath,
       Club? club,
       Nation? nation,
       int? height,
       int? weight,
-      int? age,
       Position? position,
       int? skillMoves,
       int? weakFoot,
-      Foot? foot,
-      WorkRate? attackWorkRate,
-      WorkRate? defenseWorkRate,
-      int? pace,
-      int? shooting,
-      int? passing,
-      int? dribbling,
-      int? defending,
-      int? physicality,
-      Gender? gender,
-      CardColor? color});
+      int? foot,
+      int? gender,
+      List<int>? rolesPlus,
+      int? facePace,
+      int? faceShooting,
+      int? facePassing,
+      int? faceDribbling,
+      int? faceDefending,
+      int? facePhysicality});
   PlayerCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -256,89 +239,91 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
   NationCopyWith<$R, Nation, Nation>? get nation =>
       $value.nation?.copyWith.$chain((v) => call(nation: v));
   @override
+  PositionCopyWith<$R, Position, Position>? get position =>
+      $value.position?.copyWith.$chain((v) => call(position: v));
+  @override
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlus =>
+      $value.rolesPlus != null
+          ? ListCopyWith(
+              $value.rolesPlus!,
+              (v, t) => ObjectCopyWith(v, $identity, t),
+              (v) => call(rolesPlus: v))
+          : null;
+  @override
   $R call(
           {int? id,
-          String? name,
           Object? commonName = $none,
           Object? firstName = $none,
           Object? lastName = $none,
-          int? rating,
+          int? overall,
           Rarity? rarity,
+          String? imagePath,
           Object? club = $none,
           Object? nation = $none,
           Object? height = $none,
           Object? weight = $none,
-          Object? age = $none,
           Object? position = $none,
           Object? skillMoves = $none,
           Object? weakFoot = $none,
           Object? foot = $none,
-          Object? attackWorkRate = $none,
-          Object? defenseWorkRate = $none,
-          Object? pace = $none,
-          Object? shooting = $none,
-          Object? passing = $none,
-          Object? dribbling = $none,
-          Object? defending = $none,
-          Object? physicality = $none,
           Object? gender = $none,
-          Object? color = $none}) =>
+          Object? rolesPlus = $none,
+          Object? facePace = $none,
+          Object? faceShooting = $none,
+          Object? facePassing = $none,
+          Object? faceDribbling = $none,
+          Object? faceDefending = $none,
+          Object? facePhysicality = $none}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
-        if (name != null) #name: name,
         if (commonName != $none) #commonName: commonName,
         if (firstName != $none) #firstName: firstName,
         if (lastName != $none) #lastName: lastName,
-        if (rating != null) #rating: rating,
+        if (overall != null) #overall: overall,
         if (rarity != null) #rarity: rarity,
+        if (imagePath != null) #imagePath: imagePath,
         if (club != $none) #club: club,
         if (nation != $none) #nation: nation,
         if (height != $none) #height: height,
         if (weight != $none) #weight: weight,
-        if (age != $none) #age: age,
         if (position != $none) #position: position,
         if (skillMoves != $none) #skillMoves: skillMoves,
         if (weakFoot != $none) #weakFoot: weakFoot,
         if (foot != $none) #foot: foot,
-        if (attackWorkRate != $none) #attackWorkRate: attackWorkRate,
-        if (defenseWorkRate != $none) #defenseWorkRate: defenseWorkRate,
-        if (pace != $none) #pace: pace,
-        if (shooting != $none) #shooting: shooting,
-        if (passing != $none) #passing: passing,
-        if (dribbling != $none) #dribbling: dribbling,
-        if (defending != $none) #defending: defending,
-        if (physicality != $none) #physicality: physicality,
         if (gender != $none) #gender: gender,
-        if (color != $none) #color: color
+        if (rolesPlus != $none) #rolesPlus: rolesPlus,
+        if (facePace != $none) #facePace: facePace,
+        if (faceShooting != $none) #faceShooting: faceShooting,
+        if (facePassing != $none) #facePassing: facePassing,
+        if (faceDribbling != $none) #faceDribbling: faceDribbling,
+        if (faceDefending != $none) #faceDefending: faceDefending,
+        if (facePhysicality != $none) #facePhysicality: facePhysicality
       }));
   @override
   Player $make(CopyWithData data) => Player(
       id: data.get(#id, or: $value.id),
-      name: data.get(#name, or: $value.name),
       commonName: data.get(#commonName, or: $value.commonName),
       firstName: data.get(#firstName, or: $value.firstName),
       lastName: data.get(#lastName, or: $value.lastName),
-      rating: data.get(#rating, or: $value.rating),
+      overall: data.get(#overall, or: $value.overall),
       rarity: data.get(#rarity, or: $value.rarity),
+      imagePath: data.get(#imagePath, or: $value.imagePath),
       club: data.get(#club, or: $value.club),
       nation: data.get(#nation, or: $value.nation),
       height: data.get(#height, or: $value.height),
       weight: data.get(#weight, or: $value.weight),
-      age: data.get(#age, or: $value.age),
       position: data.get(#position, or: $value.position),
       skillMoves: data.get(#skillMoves, or: $value.skillMoves),
       weakFoot: data.get(#weakFoot, or: $value.weakFoot),
       foot: data.get(#foot, or: $value.foot),
-      attackWorkRate: data.get(#attackWorkRate, or: $value.attackWorkRate),
-      defenseWorkRate: data.get(#defenseWorkRate, or: $value.defenseWorkRate),
-      pace: data.get(#pace, or: $value.pace),
-      shooting: data.get(#shooting, or: $value.shooting),
-      passing: data.get(#passing, or: $value.passing),
-      dribbling: data.get(#dribbling, or: $value.dribbling),
-      defending: data.get(#defending, or: $value.defending),
-      physicality: data.get(#physicality, or: $value.physicality),
       gender: data.get(#gender, or: $value.gender),
-      color: data.get(#color, or: $value.color));
+      rolesPlus: data.get(#rolesPlus, or: $value.rolesPlus),
+      facePace: data.get(#facePace, or: $value.facePace),
+      faceShooting: data.get(#faceShooting, or: $value.faceShooting),
+      facePassing: data.get(#facePassing, or: $value.facePassing),
+      faceDribbling: data.get(#faceDribbling, or: $value.faceDribbling),
+      faceDefending: data.get(#faceDefending, or: $value.faceDefending),
+      facePhysicality: data.get(#facePhysicality, or: $value.facePhysicality));
 
   @override
   PlayerCopyWith<$R2, Player, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

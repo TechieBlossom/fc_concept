@@ -1,0 +1,76 @@
+import 'package:core_domain/src/domain/clubs/model/club.dart';
+import 'package:core_domain/src/domain/common/card_color.dart';
+import 'package:core_domain/src/domain/common/foot.dart';
+import 'package:core_domain/src/domain/common/gender.dart';
+import 'package:core_domain/src/domain/common/work_rate.dart';
+import 'package:core_domain/src/domain/nations/model/nation.dart';
+import 'package:core_domain/src/domain/positions/model/position.dart';
+import 'package:core_domain/src/domain/rarity/model/rarity.dart';
+import 'package:dart_mappable/dart_mappable.dart';
+
+part 'player_old.mapper.dart';
+
+@Deprecated('Use Player instead')
+@MappableClass()
+class PlayerOld with PlayerOldMappable {
+  const PlayerOld({
+    required this.id,
+    required this.name,
+    this.commonName,
+    this.firstName,
+    this.lastName,
+    required this.rating,
+    required this.rarity,
+    this.club,
+    this.nation,
+    this.height,
+    this.weight,
+    this.age,
+    this.position,
+    this.skillMoves,
+    this.weakFoot,
+    this.foot,
+    this.attackWorkRate,
+    this.defenseWorkRate,
+    this.pace,
+    this.shooting,
+    this.passing,
+    this.dribbling,
+    this.defending,
+    this.physicality,
+    this.gender,
+    this.color,
+  });
+
+  final int id;
+  final String name;
+  final String? commonName;
+  final String? firstName;
+  final String? lastName;
+  final int rating;
+  @MappableField(key: 'table_rarity')
+  final Rarity rarity;
+  @MappableField(key: 'table_club')
+  final Club? club;
+  @MappableField(key: 'table_nation')
+  final Nation? nation;
+  final int? height;
+  final int? weight;
+  final int? age;
+  final Position? position;
+  final int? skillMoves;
+  final int? weakFoot;
+  final Foot? foot;
+  final WorkRate? attackWorkRate;
+  final WorkRate? defenseWorkRate;
+  final int? pace;
+  final int? shooting;
+  final int? passing;
+  final int? dribbling;
+  final int? defending;
+  final int? physicality;
+  final Gender? gender;
+  final CardColor? color;
+
+  static const fromJson = PlayerOldMapper.fromMap;
+}

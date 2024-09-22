@@ -29,11 +29,18 @@ class FeatureAssets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
 
   static const String package = 'feature_compare';
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,

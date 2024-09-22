@@ -1,10 +1,9 @@
 class TableLeague {
   TableLeague._();
 
-  static const tableLeague = 'table_league';
-  static const id = 'id';
+  static const tableLeague = 'table_core_league';
+  static const eaId = 'eaId';
   static const name = 'name';
-  static const nationId = 'nationId';
-  static const gender = 'gender';
-  static const isTop = 'isTop';
+  static const imagePath = 'imagePath';
+  static const imageLightPath = 'imageLightPath';
 }

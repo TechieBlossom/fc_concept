@@ -88,7 +88,7 @@ class _PlayerListItemState extends State<PlayerListItem>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(width: AppSpacing.space5),
-              PlayerImage(playerId: player.id),
+              PlayerImage(imagePath: player.imagePath),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -99,7 +99,7 @@ class _PlayerListItemState extends State<PlayerListItem>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        player.name,
+                        player.commonName ?? '',
                         style: context.typography.titleMedium.copyWith(
                           color: context.colors.contentSecondary,
                         ),
@@ -113,7 +113,7 @@ class _PlayerListItemState extends State<PlayerListItem>
                       Row(
                         children: [
                           LogoLabel(
-                            id: player.club?.id,
+                            id: player.club?.eaId,
                             label: player.club?.name,
                             type: LogoEntity.club,
                           ),
@@ -124,7 +124,7 @@ class _PlayerListItemState extends State<PlayerListItem>
                             child: Text('|'),
                           ),
                           LogoLabel(
-                            id: player.nation?.id,
+                            id: player.nation?.eaId,
                             label: player.nation?.name,
                             type: LogoEntity.nation,
                           ),
@@ -137,7 +137,7 @@ class _PlayerListItemState extends State<PlayerListItem>
               PositionBox(position: player.position),
               SizedBox(width: AppSpacing.space3),
               RatingBox(
-                rating: player.rating,
+                rating: player.overall,
                 bg: colors.$1,
                 fg: colors.$2,
               ),

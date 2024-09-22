@@ -1,18 +1,17 @@
-import 'package:core_api_client/api_client.dart';
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 
-const _futApiPath = 'https://futdb.app/api/players';
+const _apiBasePath = 'https://game-assets.fut.gg/';
 
 class PlayerImage extends StatelessWidget {
   const PlayerImage({
     super.key,
-    required this.playerId,
+    required this.imagePath,
     this.size = PlayerImageSize.small,
   });
 
   final PlayerImageSize size;
-  final int playerId;
+  final String imagePath;
 
   (double?, double?) get dimensions => switch (size) {
         PlayerImageSize.small => (53.67, 75),
@@ -27,11 +26,10 @@ class PlayerImage extends StatelessWidget {
       width: dimensions.$1,
       height: dimensions.$2,
       fit: BoxFit.fitWidth,
-      imageUrl: '$_futApiPath/$playerId/image',
+      imageUrl: '$_apiBasePath$imagePath',
       fadeInDuration: const Duration(milliseconds: 500),
       httpHeaders: {
         'contentType': 'image/png',
-        'X-AUTH-TOKEN': futApiKey,
       },
     );
   }

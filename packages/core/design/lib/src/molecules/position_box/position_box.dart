@@ -1,5 +1,5 @@
 import 'package:core_design/src/atoms/atoms.dart';
-import 'package:core_domain/src/domain/common/position.dart';
+import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
 class PositionBox extends StatelessWidget {
@@ -13,7 +13,7 @@ class PositionBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      position?.name.toUpperCase() ?? '',
+      position?.shortLabel.toUpperCase() ?? '',
       style: context.typography.titleMediumDigit,
     );
   }

@@ -1,6 +1,5 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
-import 'package:feature_filter/src/filter/bloc/filter_bloc.dart';
 import 'package:feature_filter/src/filter/position/position_group.dart';
 import 'package:flutter/material.dart';
 
@@ -33,65 +32,65 @@ class PositionFilter extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: AppSpacing.space5,
-              right: AppSpacing.space5,
-              bottom: AppSpacing.space4,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: PositionGroup.values
-                  .map(
-                    (group) => Pill(
-                      pillItem: PillItem<PositionGroup>(
-                        data: group,
-                        text: group.name,
-                        isSelected: positionGroups?.contains(group) ?? false,
-                        onTap: () {
-                          context.read<FilterBloc>().add(
-                                TapPositionGroup(positionGroup: group),
-                              );
-                        },
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.space5,
-            ),
-            child: GridView(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                mainAxisSpacing: AppSpacing.space3,
-                crossAxisSpacing: AppSpacing.space3,
-                childAspectRatio: 90 / 30,
-              ),
-              children: [
-                ...Position.values
-                    .map(
-                      (position) => Pill(
-                        pillItem: PillItem<Position>(
-                          data: position,
-                          text: position.name,
-                          isSelected: positions?.contains(position) ?? false,
-                          onTap: () {
-                            context.read<FilterBloc>().add(
-                                  TapPosition(position: position),
-                                );
-                          },
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(
+          //     left: AppSpacing.space5,
+          //     right: AppSpacing.space5,
+          //     bottom: AppSpacing.space4,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: PositionGroup.values
+          //         .map(
+          //           (group) => Pill(
+          //             pillItem: PillItem<PositionGroup>(
+          //               data: group,
+          //               text: group.name,
+          //               isSelected: positionGroups?.contains(group) ?? false,
+          //               onTap: () {
+          //                 context.read<FilterBloc>().add(
+          //                       TapPositionGroup(positionGroup: group),
+          //                     );
+          //               },
+          //             ),
+          //           ),
+          //         )
+          //         .toList(),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(
+          //     horizontal: AppSpacing.space5,
+          //   ),
+          //   child: GridView(
+          //     physics: const NeverScrollableScrollPhysics(),
+          //     shrinkWrap: true,
+          //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          //       crossAxisCount: 4,
+          //       mainAxisSpacing: AppSpacing.space3,
+          //       crossAxisSpacing: AppSpacing.space3,
+          //       childAspectRatio: 90 / 30,
+          //     ),
+          //     children: [
+          //       ...Position.values
+          //           .map(
+          //             (position) => Pill(
+          //               pillItem: PillItem<Position>(
+          //                 data: position,
+          //                 text: position.name,
+          //                 isSelected: positions?.contains(position) ?? false,
+          //                 onTap: () {
+          //                   context.read<FilterBloc>().add(
+          //                         TapPosition(position: position),
+          //                       );
+          //                 },
+          //               ),
+          //             ),
+          //           )
+          //           .toList(),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

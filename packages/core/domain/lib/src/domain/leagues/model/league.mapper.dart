@@ -14,7 +14,6 @@ class LeagueMapper extends SubClassMapperBase<League> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = LeagueMapper._());
       NestedFilterLayoutTypeMapper.ensureInitialized().addSubMapper(_instance!);
-      GenderMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -22,21 +21,23 @@ class LeagueMapper extends SubClassMapperBase<League> {
   @override
   final String id = 'League';
 
-  static int _$id(League v) => v.id;
-  static const Field<League, int> _f$id = Field('id', _$id);
+  static int _$eaId(League v) => v.eaId;
+  static const Field<League, int> _f$eaId = Field('eaId', _$eaId);
   static String _$name(League v) => v.name;
   static const Field<League, String> _f$name = Field('name', _$name);
-  static int? _$nationId(League v) => v.nationId;
-  static const Field<League, int> _f$nationId = Field('nationId', _$nationId);
-  static Gender? _$gender(League v) => v.gender;
-  static const Field<League, Gender> _f$gender = Field('gender', _$gender);
+  static String? _$imagePath(League v) => v.imagePath;
+  static const Field<League, String> _f$imagePath =
+      Field('imagePath', _$imagePath, opt: true);
+  static String? _$imageLightPath(League v) => v.imageLightPath;
+  static const Field<League, String> _f$imageLightPath =
+      Field('imageLightPath', _$imageLightPath, opt: true);
 
   @override
   final MappableFields<League> fields = const {
-    #id: _f$id,
+    #eaId: _f$eaId,
     #name: _f$name,
-    #nationId: _f$nationId,
-    #gender: _f$gender,
+    #imagePath: _f$imagePath,
+    #imageLightPath: _f$imageLightPath,
   };
 
   @override
@@ -49,10 +50,10 @@ class LeagueMapper extends SubClassMapperBase<League> {
 
   static League _instantiate(DecodingData data) {
     return League(
-        id: data.dec(_f$id),
+        eaId: data.dec(_f$eaId),
         name: data.dec(_f$name),
-        nationId: data.dec(_f$nationId),
-        gender: data.dec(_f$gender));
+        imagePath: data.dec(_f$imagePath),
+        imageLightPath: data.dec(_f$imageLightPath));
   }
 
   @override
@@ -102,7 +103,7 @@ extension LeagueValueCopy<$R, $Out> on ObjectCopyWith<$R, League, $Out> {
 abstract class LeagueCopyWith<$R, $In extends League, $Out>
     implements NestedFilterLayoutTypeCopyWith<$R, $In, $Out> {
   @override
-  $R call({int? id, String? name, int? nationId, Gender? gender});
+  $R call({int? eaId, String? name, String? imagePath, String? imageLightPath});
   LeagueCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -114,22 +115,22 @@ class _LeagueCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, League, $Out>
   late final ClassMapperBase<League> $mapper = LeagueMapper.ensureInitialized();
   @override
   $R call(
-          {int? id,
+          {int? eaId,
           String? name,
-          Object? nationId = $none,
-          Object? gender = $none}) =>
+          Object? imagePath = $none,
+          Object? imageLightPath = $none}) =>
       $apply(FieldCopyWithData({
-        if (id != null) #id: id,
+        if (eaId != null) #eaId: eaId,
         if (name != null) #name: name,
-        if (nationId != $none) #nationId: nationId,
-        if (gender != $none) #gender: gender
+        if (imagePath != $none) #imagePath: imagePath,
+        if (imageLightPath != $none) #imageLightPath: imageLightPath
       }));
   @override
   League $make(CopyWithData data) => League(
-      id: data.get(#id, or: $value.id),
+      eaId: data.get(#eaId, or: $value.eaId),
       name: data.get(#name, or: $value.name),
-      nationId: data.get(#nationId, or: $value.nationId),
-      gender: data.get(#gender, or: $value.gender));
+      imagePath: data.get(#imagePath, or: $value.imagePath),
+      imageLightPath: data.get(#imageLightPath, or: $value.imageLightPath));
 
   @override
   LeagueCopyWith<$R2, League, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
