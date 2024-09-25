@@ -49,7 +49,7 @@ class LoginPage extends StatelessWidget {
                             ),
                             Text(
                               'Sign in to your account',
-                              style: context.typography.titleMedium,
+                              style: context.typography.headline,
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
@@ -71,7 +71,7 @@ class LoginPage extends StatelessWidget {
                               ),
                               child: Text(
                                 'Not a member?',
-                                style: context.typography.labelMedium.copyWith(
+                                style: context.typography.body1.copyWith(
                                   color: context.colors.backgroundTertiary,
                                 ),
                               ),

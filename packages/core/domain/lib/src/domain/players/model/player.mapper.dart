@@ -16,6 +16,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
       RarityMapper.ensureInitialized();
       ClubMapper.ensureInitialized();
       NationMapper.ensureInitialized();
+      LeagueMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
     }
     return _instance!;
@@ -49,12 +50,18 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static Nation? _$nation(Player v) => v.nation;
   static const Field<Player, Nation> _f$nation =
       Field('nation', _$nation, key: 'table_core_nation', opt: true);
+  static League? _$league(Player v) => v.league;
+  static const Field<Player, League> _f$league =
+      Field('league', _$league, key: 'table_core_league', opt: true);
   static int? _$height(Player v) => v.height;
   static const Field<Player, int> _f$height =
       Field('height', _$height, opt: true);
   static int? _$weight(Player v) => v.weight;
   static const Field<Player, int> _f$weight =
       Field('weight', _$weight, opt: true);
+  static DateTime? _$dateOfBirth(Player v) => v.dateOfBirth;
+  static const Field<Player, DateTime> _f$dateOfBirth =
+      Field('dateOfBirth', _$dateOfBirth, opt: true);
   static Position? _$position(Player v) => v.position;
   static const Field<Player, Position> _f$position =
       Field('position', _$position, key: 'table_core_position', opt: true);
@@ -102,8 +109,10 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #imagePath: _f$imagePath,
     #club: _f$club,
     #nation: _f$nation,
+    #league: _f$league,
     #height: _f$height,
     #weight: _f$weight,
+    #dateOfBirth: _f$dateOfBirth,
     #position: _f$position,
     #skillMoves: _f$skillMoves,
     #weakFoot: _f$weakFoot,
@@ -129,8 +138,10 @@ class PlayerMapper extends ClassMapperBase<Player> {
         imagePath: data.dec(_f$imagePath),
         club: data.dec(_f$club),
         nation: data.dec(_f$nation),
+        league: data.dec(_f$league),
         height: data.dec(_f$height),
         weight: data.dec(_f$weight),
+        dateOfBirth: data.dec(_f$dateOfBirth),
         position: data.dec(_f$position),
         skillMoves: data.dec(_f$skillMoves),
         weakFoot: data.dec(_f$weakFoot),
@@ -194,6 +205,7 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
   RarityCopyWith<$R, Rarity, Rarity> get rarity;
   ClubCopyWith<$R, Club, Club>? get club;
   NationCopyWith<$R, Nation, Nation>? get nation;
+  LeagueCopyWith<$R, League, League>? get league;
   PositionCopyWith<$R, Position, Position>? get position;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlus;
   $R call(
@@ -206,8 +218,10 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       String? imagePath,
       Club? club,
       Nation? nation,
+      League? league,
       int? height,
       int? weight,
+      DateTime? dateOfBirth,
       Position? position,
       int? skillMoves,
       int? weakFoot,
@@ -239,6 +253,9 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
   NationCopyWith<$R, Nation, Nation>? get nation =>
       $value.nation?.copyWith.$chain((v) => call(nation: v));
   @override
+  LeagueCopyWith<$R, League, League>? get league =>
+      $value.league?.copyWith.$chain((v) => call(league: v));
+  @override
   PositionCopyWith<$R, Position, Position>? get position =>
       $value.position?.copyWith.$chain((v) => call(position: v));
   @override
@@ -260,8 +277,10 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           String? imagePath,
           Object? club = $none,
           Object? nation = $none,
+          Object? league = $none,
           Object? height = $none,
           Object? weight = $none,
+          Object? dateOfBirth = $none,
           Object? position = $none,
           Object? skillMoves = $none,
           Object? weakFoot = $none,
@@ -284,8 +303,10 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (imagePath != null) #imagePath: imagePath,
         if (club != $none) #club: club,
         if (nation != $none) #nation: nation,
+        if (league != $none) #league: league,
         if (height != $none) #height: height,
         if (weight != $none) #weight: weight,
+        if (dateOfBirth != $none) #dateOfBirth: dateOfBirth,
         if (position != $none) #position: position,
         if (skillMoves != $none) #skillMoves: skillMoves,
         if (weakFoot != $none) #weakFoot: weakFoot,
@@ -310,8 +331,10 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       imagePath: data.get(#imagePath, or: $value.imagePath),
       club: data.get(#club, or: $value.club),
       nation: data.get(#nation, or: $value.nation),
+      league: data.get(#league, or: $value.league),
       height: data.get(#height, or: $value.height),
       weight: data.get(#weight, or: $value.weight),
+      dateOfBirth: data.get(#dateOfBirth, or: $value.dateOfBirth),
       position: data.get(#position, or: $value.position),
       skillMoves: data.get(#skillMoves, or: $value.skillMoves),
       weakFoot: data.get(#weakFoot, or: $value.weakFoot),

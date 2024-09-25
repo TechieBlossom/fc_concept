@@ -25,7 +25,7 @@ class FilterGroup extends StatelessWidget {
           if (title != null)
             Text(
               title!,
-              style: context.typography.labelSmall.copyWith(
+              style: context.typography.body3.copyWith(
                 color: context.colors.contentSecondary,
               ),
             ),

@@ -111,7 +111,7 @@ class _InputFieldState extends State<InputField> {
         controller: _controller..text = widget.hint,
         onChanged: widget.onChanged,
         textCapitalization: widget.textCapitalization,
-        style: context.typography.labelMedium.copyWith(
+        style: context.typography.body3.copyWith(
           color: context.colors.contentSecondary,
         ),
         decoration: InputDecoration(
@@ -120,7 +120,7 @@ class _InputFieldState extends State<InputField> {
           ),
           border: InputBorder.none,
           hintText: widget.hint,
-          hintStyle: context.typography.labelMedium.copyWith(
+          hintStyle: context.typography.body3.copyWith(
             color: context.colors.contentTertiary,
           ),
           hintFadeDuration: const Duration(milliseconds: 100),

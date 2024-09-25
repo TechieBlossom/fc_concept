@@ -64,7 +64,7 @@ class _SearchFieldState extends State<SearchField> {
             controller: _controller,
             onChanged: widget.onSearch,
             textCapitalization: TextCapitalization.words,
-            style: context.typography.labelMedium
+            style: context.typography.body1
                 .copyWith(color: context.colors.contentSecondary),
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.only(
@@ -84,7 +84,7 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
               hintText: 'Search by player name',
-              hintStyle: context.typography.labelMedium
+              hintStyle: context.typography.body1
                   .copyWith(color: context.colors.contentTertiary),
               hintFadeDuration: const Duration(milliseconds: 100),
             ),

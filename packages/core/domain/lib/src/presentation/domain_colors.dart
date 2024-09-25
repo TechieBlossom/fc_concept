@@ -219,8 +219,12 @@ const golazoHeroFg = 0xFFFFFDFC;
 const uefaHeroesBg = 0xFF030357;
 const uefaHeroesFg = 0xFFFFFFFF;
 
-const rating1 = Color(0xFFC92A2A);
-const rating2 = Color(0xFFD95C0F);
-const rating3 = Color(0xFFE6B600);
-const rating4 = Color(0xFF66A80F);
-const rating5 = Color(0xFF0C8539);
+const lightRating4 = Color(0xFFE7FAE2);
+const lightRating3 = Color(0xFFF3FDE8);
+const lightRating2 = Color(0xFFFFF6EC);
+const lightRating1 = Color(0xFFFFEBEB);
+
+const rating1 = Color(0xFFFF0000);
+const rating2 = Color(0xFFCC6F04);
+const rating3 = Color(0xFF5B9E0F);
+const rating4 = Color(0xFF216512);

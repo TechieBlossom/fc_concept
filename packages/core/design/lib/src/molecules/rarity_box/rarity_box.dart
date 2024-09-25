@@ -25,12 +25,12 @@ class RarityBox extends StatelessWidget {
         color: Color(bg),
         border: Border.all(
           color: Color(fg),
-          strokeAlign: BorderSide.strokeAlignOutside,
+          strokeAlign: BorderSide.strokeAlignInside,
         ),
       ),
       child: Text(
         rarity,
-        style: context.typography.labelSmall.copyWith(color: Color(fg)),
+        style: context.typography.body4.copyWith(color: Color(fg)),
       ),
     );
   }

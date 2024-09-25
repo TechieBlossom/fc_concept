@@ -15,12 +15,12 @@ class StatH extends StatelessWidget {
           child: Text(
             statItem.label,
             textAlign: TextAlign.start,
-            style: context.typography.bodySmall,
+            style: context.typography.body4,
           ),
         ),
         Text(
           statItem.value,
-          style: context.typography.labelSmallDigit,
+          style: context.typography.caption2,
         ),
       ],
     );

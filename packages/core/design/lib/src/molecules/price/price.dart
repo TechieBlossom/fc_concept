@@ -22,22 +22,16 @@ class Price extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = context.typography.labelSmallDigit.copyWith(
+    final textStyle = context.typography.body5.copyWith(
       color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
     );
     return Row(
       children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: 30,
-            maxWidth: 30,
-          ),
-          child: Text(
-            priceItem.label,
-            textAlign: TextAlign.start,
-            style: context.typography.bodySmall.copyWith(
-              color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
-            ),
+        Text(
+          priceItem.label,
+          textAlign: TextAlign.start,
+          style: context.typography.body4.copyWith(
+            color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
           ),
         ),
         Text(

@@ -2,184 +2,162 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final textStyle = GoogleFonts.raleway();
-final digitTextStyle = GoogleFonts.barlowCondensed();
+final digitTextStyle = GoogleFonts.barlowSemiCondensed();
 
-TextStyle _headlineSmall({Color? color}) => textStyle.copyWith(
+TextStyle _largeTitle({Color? color}) => textStyle.copyWith(
       fontSize: 32,
       height: 40 / 32,
-      letterSpacing: 0.25,
+      letterSpacing: 0,
       color: color,
     );
 
-TextStyle _titleLarge({Color? color}) => textStyle.copyWith(
+TextStyle _title3({Color? color}) => textStyle.copyWith(
       fontSize: 20,
       height: 20 / 20,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 0.25,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 0,
       color: color,
     );
 
-TextStyle _titleMedium({Color? color}) => textStyle.copyWith(
-      fontSize: 18,
-      height: 18 / 18,
+TextStyle _headline({Color? color}) => textStyle.copyWith(
+      fontSize: 17,
+      height: 17 / 17,
       fontWeight: FontWeight.w600,
-      letterSpacing: 0.25,
+      letterSpacing: 0,
       color: color,
     );
 
-TextStyle _titleSmall({Color? color}) => textStyle.copyWith(
+TextStyle _body1({Color? color}) => textStyle.copyWith(
       fontSize: 16,
-      height: 20 / 16,
-      letterSpacing: 0.25,
+      letterSpacing: 0,
+      height: 16 / 16,
+      fontWeight: FontWeight.w700,
       color: color,
     );
 
-TextStyle _labelMedium({Color? color}) => textStyle.copyWith(
+TextStyle _body2({Color? color}) => digitTextStyle.copyWith(
+      fontSize: 16,
+      height: 16 / 16,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+
+TextStyle _body3({Color? color}) => textStyle.copyWith(
       fontSize: 14,
-      letterSpacing: 0.1,
-      height: 20 / 14,
+      height: 14 / 14,
+      letterSpacing: 0,
       fontWeight: FontWeight.w600,
       color: color,
     );
 
-TextStyle _bodyMedium({Color? color}) => textStyle.copyWith(
-      fontSize: 14,
-      height: 20 / 14,
-      letterSpacing: 0.1,
-      color: color,
-    );
-
-TextStyle _bodySmall({Color? color}) => textStyle.copyWith(
-      fontSize: 12,
-      height: 20 / 12,
-      letterSpacing: 0.1,
-      color: color,
-    );
-
-TextStyle _labelSmall({Color? color}) => textStyle.copyWith(
-      fontSize: 12,
-      height: 12 / 12,
-      letterSpacing: 0.1,
-      fontWeight: FontWeight.w500,
-      color: color,
-    );
-
-TextStyle _headlineSmallDigit({Color? color}) => digitTextStyle.copyWith(
-      fontSize: 32,
-      height: 40 / 32,
-      letterSpacing: 0.25,
-      fontWeight: FontWeight.w600,
-      color: color,
-    );
-
-TextStyle _titleMediumDigit({Color? color}) => digitTextStyle.copyWith(
-      fontSize: 18,
-      height: 18 / 18,
-      letterSpacing: 0.25,
-      fontWeight: FontWeight.w600,
-      color: color,
-    );
-
-TextStyle _labelMediumDigit({Color? color}) => digitTextStyle.copyWith(
-      fontSize: 14,
-      height: 20 / 14,
-      letterSpacing: 0.1,
-      fontWeight: FontWeight.w600,
-      color: color,
-    );
-
-TextStyle _labelSmallDigit({Color? color}) => digitTextStyle.copyWith(
-      fontSize: 12,
-      height: 12 / 12,
-      letterSpacing: 0.1,
+TextStyle _body4({Color? color}) => textStyle.copyWith(
+      fontSize: 13,
+      height: 13 / 13,
+      letterSpacing: 0,
       fontWeight: FontWeight.w400,
       color: color,
     );
 
-TextStyle _bodySmallDigit({Color? color}) => digitTextStyle.copyWith(
+TextStyle _body5({Color? color}) => digitTextStyle.copyWith(
+      fontSize: 13,
+      height: 13 / 13,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
+
+TextStyle _subHead({Color? color}) => textStyle.copyWith(
+  fontSize: 13,
+  height: 13 / 13,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w600,
+  color: color,
+);
+
+TextStyle _caption1({Color? color}) => textStyle.copyWith(
       fontSize: 12,
-      height: 20 / 12,
-      letterSpacing: 0.1,
+      height: 12 / 12,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+
+TextStyle _caption2({Color? color}) => digitTextStyle.copyWith(
+      fontSize: 12,
+      height: 12 / 12,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w600,
       color: color,
     );
 
 class AppTypography extends ThemeExtension<AppTypography> {
   const AppTypography({
-    required this.headlineSmall,
-    required this.titleLarge,
-    required this.titleMedium,
-    required this.titleSmall,
-    required this.labelMedium,
-    required this.bodyMedium,
-    required this.bodySmall,
-    required this.labelSmall,
-    required this.headlineSmallDigit,
-    required this.titleMediumDigit,
-    required this.labelMediumDigit,
-    required this.labelSmallDigit,
-    required this.bodySmallDigit,
+    required this.largeTitle,
+    required this.title3,
+    required this.headline,
+    required this.body1,
+    required this.body2,
+    required this.body3,
+    required this.body4,
+    required this.body5,
+    required this.subHead,
+    required this.caption1,
+    required this.caption2,
   });
 
-  final TextStyle headlineSmall;
-  final TextStyle titleLarge;
-  final TextStyle titleMedium;
-  final TextStyle titleSmall;
-  final TextStyle labelMedium;
-  final TextStyle bodyMedium;
-  final TextStyle bodySmall;
-  final TextStyle labelSmall;
-  final TextStyle headlineSmallDigit;
-  final TextStyle titleMediumDigit;
-  final TextStyle labelMediumDigit;
-  final TextStyle labelSmallDigit;
-  final TextStyle bodySmallDigit;
+  final TextStyle largeTitle;
+  final TextStyle title3;
+  final TextStyle headline;
+  final TextStyle body1;
+  final TextStyle body2;
+  final TextStyle body3;
+  final TextStyle body4;
+  final TextStyle body5;
+  final TextStyle subHead;
+  final TextStyle caption1;
+  final TextStyle caption2;
 
   factory AppTypography.base() => AppTypography(
-        headlineSmall: _headlineSmall(),
-        titleLarge: _titleLarge(),
-        titleMedium: _titleMedium(),
-        titleSmall: _titleSmall(),
-        labelMedium: _labelMedium(),
-        bodyMedium: _bodyMedium(),
-        bodySmall: _bodySmall(),
-        labelSmall: _labelSmall(),
-        headlineSmallDigit: _headlineSmallDigit(),
-        titleMediumDigit: _titleMediumDigit(),
-        labelMediumDigit: _labelMediumDigit(),
-        labelSmallDigit: _labelSmallDigit(),
-        bodySmallDigit: _bodySmallDigit(),
+        largeTitle: _largeTitle(),
+        title3: _title3(),
+        headline: _headline(),
+        body1: _body1(),
+        body2: _body2(),
+        body3: _body3(),
+        body4: _body4(),
+        body5: _body5(),
+        subHead: _subHead(),
+        caption1: _caption1(),
+        caption2: _caption2(),
       );
 
   @override
   ThemeExtension<AppTypography> copyWith({
-    TextStyle? headlineSmall,
-    TextStyle? titleLarge,
-    TextStyle? titleMedium,
-    TextStyle? titleSmall,
-    TextStyle? labelMedium,
-    TextStyle? bodyMedium,
-    TextStyle? bodySmall,
-    TextStyle? labelSmall,
-    TextStyle? headlineSmallDigit,
-    TextStyle? titleMediumDigit,
-    TextStyle? labelMediumDigit,
-    TextStyle? labelSmallDigit,
-    TextStyle? bodySmallDigit,
+    TextStyle? largeTitle,
+    TextStyle? title3,
+    TextStyle? headline,
+    TextStyle? body1,
+    TextStyle? body2,
+    TextStyle? body3,
+    TextStyle? body4,
+    TextStyle? body5,
+    TextStyle? subHead,
+    TextStyle? caption1,
+    TextStyle? caption2,
   }) {
     return AppTypography(
-      headlineSmall: headlineSmall ?? this.headlineSmall,
-      titleLarge: titleLarge ?? this.titleLarge,
-      titleMedium: titleMedium ?? this.titleMedium,
-      titleSmall: titleSmall ?? this.titleSmall,
-      labelMedium: labelMedium ?? this.labelMedium,
-      bodyMedium: bodyMedium ?? this.bodyMedium,
-      bodySmall: bodySmall ?? this.bodySmall,
-      labelSmall: labelSmall ?? this.labelSmall,
-      headlineSmallDigit: headlineSmallDigit ?? this.headlineSmallDigit,
-      titleMediumDigit: titleMediumDigit ?? this.titleMediumDigit,
-      labelMediumDigit: labelMediumDigit ?? this.labelMediumDigit,
-      labelSmallDigit: labelSmallDigit ?? this.labelSmallDigit,
-      bodySmallDigit: bodySmallDigit ?? this.bodySmallDigit,
+      largeTitle: largeTitle ?? this.largeTitle,
+      title3: title3 ?? this.title3,
+      headline: headline ?? this.headline,
+      body1: body1 ?? this.body1,
+      body2: body2 ?? this.body2,
+      body3: body3 ?? this.body3,
+      body4: body4 ?? this.body4,
+      body5: body5 ?? this.body5,
+      subHead: body5 ?? this.subHead,
+      caption1: caption1 ?? this.caption1,
+      caption2: caption2 ?? this.caption2,
     );
   }
 
@@ -193,23 +171,17 @@ class AppTypography extends ThemeExtension<AppTypography> {
     }
 
     return AppTypography(
-      headlineSmall: TextStyle.lerp(headlineSmall, other.headlineSmall, t)!,
-      titleLarge: TextStyle.lerp(titleLarge, other.titleLarge, t)!,
-      titleMedium: TextStyle.lerp(titleMedium, other.titleMedium, t)!,
-      titleSmall: TextStyle.lerp(titleSmall, other.titleSmall, t)!,
-      labelMedium: TextStyle.lerp(labelMedium, other.labelMedium, t)!,
-      bodyMedium: TextStyle.lerp(bodyMedium, other.bodyMedium, t)!,
-      bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t)!,
-      labelSmall: TextStyle.lerp(labelSmall, other.labelSmall, t)!,
-      headlineSmallDigit:
-          TextStyle.lerp(headlineSmallDigit, other.headlineSmallDigit, t)!,
-      titleMediumDigit:
-          TextStyle.lerp(titleMediumDigit, other.titleMediumDigit, t)!,
-      labelMediumDigit:
-          TextStyle.lerp(labelMediumDigit, other.labelMediumDigit, t)!,
-      labelSmallDigit:
-          TextStyle.lerp(labelSmallDigit, other.labelSmallDigit, t)!,
-      bodySmallDigit: TextStyle.lerp(bodySmallDigit, other.bodySmallDigit, t)!,
+      largeTitle: TextStyle.lerp(largeTitle, other.largeTitle, t)!,
+      title3: TextStyle.lerp(title3, other.title3, t)!,
+      headline: TextStyle.lerp(headline, other.headline, t)!,
+      body1: TextStyle.lerp(body1, other.body1, t)!,
+      body2: TextStyle.lerp(body2, other.body2, t)!,
+      body3: TextStyle.lerp(body3, other.body3, t)!,
+      body4: TextStyle.lerp(body4, other.body4, t)!,
+      body5: TextStyle.lerp(body5, other.body5, t)!,
+      subHead: TextStyle.lerp(subHead, other.subHead, t)!,
+      caption2: TextStyle.lerp(caption2, other.caption2, t)!,
+      caption1: TextStyle.lerp(caption1, other.caption1, t)!,
     );
   }
 }

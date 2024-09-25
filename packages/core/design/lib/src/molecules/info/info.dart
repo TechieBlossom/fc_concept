@@ -17,19 +17,19 @@ class Info extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Text(
+          label,
+          style: context.typography.body5,
+        ),
+        const SizedBox(height: AppSpacing.space2),
         Row(
           children: [
             Text(
-              value.toUpperCase(),
-              style: context.typography.labelMediumDigit,
+              value,
+              style: context.typography.caption2,
             ),
             if (icon != null) icon!,
           ],
-        ),
-        SizedBox(height: AppSpacing.space2),
-        Text(
-          label,
-          style: context.typography.bodySmall,
         ),
       ],
     );

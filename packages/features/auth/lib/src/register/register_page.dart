@@ -52,7 +52,7 @@ class RegisterPage extends StatelessWidget {
                             ),
                             Text(
                               'Create an account',
-                              style: context.typography.titleMedium,
+                              style: context.typography.headline,
                             ),
                             Padding(
                               padding:
@@ -78,7 +78,7 @@ class RegisterPage extends StatelessWidget {
                                   'By registering, you agree to our',
                                   textAlign: TextAlign.right,
                                   style:
-                                      context.typography.labelMedium.copyWith(
+                                      context.typography.body1.copyWith(
                                     color: context.colors.backgroundTertiary,
                                   ),
                                 ),

@@ -71,7 +71,7 @@ class Ornament extends StatelessWidget {
             children: [
               Text(
                 label.toUpperCase(),
-                style: context.typography.labelSmall.copyWith(
+                style: context.typography.subHead.copyWith(
                   color: textColor,
                 ),
               ),

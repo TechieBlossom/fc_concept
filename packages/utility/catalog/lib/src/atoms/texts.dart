@@ -16,48 +16,44 @@ class TextsContent extends StatelessWidget {
           padding: const EdgeInsets.all(AppSpacing.space3),
           children: [
             Text(
-              'Headline Small',
-              style: context.typography.headlineSmall,
+              'Large Title',
+              style: context.typography.largeTitle,
             ),
             Text(
-              'Headline Small Digit',
-              style: context.typography.headlineSmallDigit,
+              'Title 3',
+              style: context.typography.title3,
             ),
             Text(
-              'Title Medium',
-              style: context.typography.titleMedium,
+              'Headline',
+              style: context.typography.headline,
             ),
             Text(
-              'Title Medium Digit',
-              style: context.typography.titleMediumDigit,
+              'Body 1',
+              style: context.typography.body1,
             ),
             Text(
-              'Title Small',
-              style: context.typography.titleSmall,
+              'Body 2',
+              style: context.typography.body2,
             ),
             Text(
-              'Label Medium',
-              style: context.typography.labelMedium,
+              'Body 3',
+              style: context.typography.body3,
             ),
             Text(
-              'Label Medium Digit',
-              style: context.typography.labelMediumDigit,
+              'Body 4',
+              style: context.typography.body4,
             ),
             Text(
-              'Body Medium',
-              style: context.typography.bodyMedium,
+              'Body 5',
+              style: context.typography.body5,
             ),
             Text(
-              'Body Small',
-              style: context.typography.bodySmall,
+              'Caption 1',
+              style: context.typography.caption1,
             ),
             Text(
-              'Label Small',
-              style: context.typography.labelSmall,
-            ),
-            Text(
-              'Label Small Digit',
-              style: context.typography.labelSmallDigit,
+              'Caption 2',
+              style: context.typography.caption2,
             ),
           ],
         ),

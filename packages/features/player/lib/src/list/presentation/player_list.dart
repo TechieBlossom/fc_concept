@@ -3,6 +3,8 @@ import 'package:core_domain/domain.dart';
 import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart';
 import 'package:flutter/material.dart';
 
+const _nextPageShimmers = 3;
+
 class PlayerList extends StatefulWidget {
   const PlayerList({
     super.key,
@@ -27,7 +29,7 @@ class PlayerList extends StatefulWidget {
 
 class _PlayerListState extends State<PlayerList> {
   final _scrollController = ScrollController();
-  final _scrollThreshold = 350.0;
+  final _scrollThreshold = 150.0;
 
   @override
   void initState() {
@@ -55,14 +57,14 @@ class _PlayerListState extends State<PlayerList> {
       case ProcessState.success:
         final playersLength = widget.players?.length ?? 0;
         final itemCount =
-            widget.isPaginating ? playersLength + 1 : playersLength;
+            widget.isPaginating ? playersLength + _nextPageShimmers : playersLength;
         return ListView.separated(
           controller: _scrollController,
           physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           itemCount: itemCount,
           itemBuilder: (context, index) {
-            if (index == itemCount - 1 && widget.isPaginating) {
+            if (index >= itemCount - _nextPageShimmers && widget.isPaginating) {
               return const ShimmerListItem();
             }
 
@@ -83,7 +85,7 @@ class _PlayerListState extends State<PlayerList> {
             return const SizedBox.shrink();
           },
           separatorBuilder: (context, index) {
-            return const SizedBox(height: AppSpacing.space5);
+            return const SizedBox(height: 0);
           },
         );
       case ProcessState.loading:

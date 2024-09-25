@@ -31,16 +31,13 @@ class RatingBox extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: isSmall
                     ? BorderRadius.circular(AppCornerRadius.radius1)
-                    : BorderRadius.circular(AppCornerRadius.radius2),
+                    : BorderRadius.circular(AppCornerRadius.radius1),
                 color: Color(bg),
-                border: Border.all(
-                  color: Color(fg),
-                ),
               ),
               child: Center(
                 child: Text(
                   rating.toString(),
-                  style: context.typography.titleMediumDigit.copyWith(
+                  style: context.typography.body2.copyWith(
                     color: Color(fg),
                   ),
                 ),

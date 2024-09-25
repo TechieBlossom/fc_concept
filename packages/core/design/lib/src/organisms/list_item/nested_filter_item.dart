@@ -53,7 +53,7 @@ class NestedFilterItem extends StatelessWidget {
                     ),
                     child: Text(
                       title,
-                      style: context.typography.labelSmall.copyWith(
+                      style: context.typography.body3.copyWith(
                         color: textColor,
                       ),
                     ),
@@ -63,7 +63,7 @@ class NestedFilterItem extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: margin),
                       child: Text(
                         subtitle!,
-                        style: context.typography.bodySmall.copyWith(
+                        style: context.typography.body4.copyWith(
                           color: textColor,
                         ),
                       ),

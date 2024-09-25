@@ -16,12 +16,12 @@ class Pill extends StatelessWidget {
         : context.colors.contentSecondary;
     final textStyle = pillItem.isSelected
         ? switch (pillItem.hasDigit) {
-            true => context.typography.labelSmallDigit,
-            false => context.typography.labelSmall,
+            true => context.typography.caption2,
+            false => context.typography.caption1,
           }
         : switch (pillItem.hasDigit) {
-            true => context.typography.bodySmallDigit,
-            false => context.typography.bodySmall,
+            true => context.typography.body5,
+            false => context.typography.body4,
           };
     return InkWell(
       onTap: (pillItem.onTap != null)
@@ -33,10 +33,6 @@ class Pill extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        constraints: BoxConstraints(
-          minHeight: 28,
-          maxHeight: 28,
-        ),
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.space5,
         ),

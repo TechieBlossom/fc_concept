@@ -27,7 +27,7 @@ class PositionFilter extends StatelessWidget {
             ),
             child: Text(
               'Position',
-              style: context.typography.labelSmall.copyWith(
+              style: context.typography.caption1.copyWith(
                 color: context.colors.contentSecondary,
               ),
             ),

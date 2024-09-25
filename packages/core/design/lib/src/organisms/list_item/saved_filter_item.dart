@@ -30,12 +30,12 @@ class SavedFilterItem extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: context.typography.titleMedium,
+                    style: context.typography.body3,
                   ),
                   SizedBox(height: AppSpacing.space3),
                   Text(
                     title,
-                    style: context.typography.bodySmall,
+                    style: context.typography.caption1,
                   ),
                 ],
               ),

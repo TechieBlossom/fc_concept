@@ -12,7 +12,7 @@ part 'player_list_event.dart';
 
 part 'player_list_state.dart';
 
-const _duration = Duration(milliseconds: 200);
+const _duration = Duration(milliseconds: 50);
 
 EventTransformer<Event> debounce<Event>(Duration duration) {
   return (events, mapper) => events.debounce(duration).switchMap(mapper);

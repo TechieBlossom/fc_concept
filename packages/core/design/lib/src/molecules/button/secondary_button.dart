@@ -32,8 +32,8 @@ class SecondaryButton extends StatelessWidget {
     final style = ButtonStyle(
       textStyle: WidgetStateProperty.all<TextStyle?>(
         switch (buttonType) {
-          ButtonSize.normal => context.typography.labelMedium,
-          ButtonSize.small => context.typography.labelSmall,
+          ButtonSize.normal => context.typography.body3,
+          ButtonSize.small => context.typography.body4,
         },
       ),
       foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
@@ -46,7 +46,7 @@ class SecondaryButton extends StatelessWidget {
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+          borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
         ),
       ),
       backgroundColor: WidgetStateProperty.all<Color?>(Colors.transparent),

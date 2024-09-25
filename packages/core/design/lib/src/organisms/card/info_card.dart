@@ -6,18 +6,20 @@ import 'package:flutter/material.dart';
 class InfoCard extends StatelessWidget {
   const InfoCard({
     super.key,
-    required this.age,
-    required this.height,
+    required this.foot,
     required this.skills,
     required this.weakFoot,
-    required this.workRate,
+    required this.weight,
+    required this.height,
+    required this.age,
   });
 
-  final int age;
-  final int height;
-  final int skills;
-  final int weakFoot;
-  final String workRate;
+  final String? foot;
+  final String? skills;
+  final String? weakFoot;
+  final String? weight;
+  final String? height;
+  final String? age;
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +35,36 @@ class InfoCard extends StatelessWidget {
             vertical: AppSpacing.space3,
           ),
           child: Row(
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Info(label: 'AGE', value: age.toString()),
-              Info(label: 'HEIGHT', value: '$height CM'),
-              Info(
-                label: 'SKILLS',
-                value: skills.toString(),
-                icon: const Icon(Icons.star_rounded),
-              ),
-              Info(
-                label: 'WEAK FOOT',
-                value: weakFoot.toString(),
-                icon: const Icon(Icons.star_rounded),
-              ),
-              Info(label: 'WORK RATE', value: workRate),
+              if (foot != null)
+                Info(
+                  label: 'Foot',
+                  value: foot!,
+                ),
+              if (skills != null)
+                Info(
+                  label: 'Skills',
+                  value: skills!,
+                  icon: Icon(
+                    Icons.star_rounded,
+                    size: AppSpacing.space4,
+                  ),
+                ),
+              if (weakFoot != null)
+                Info(
+                  label: 'W. Foot',
+                  value: weakFoot!,
+                  icon: Icon(
+                    Icons.star_rounded,
+                    size: AppSpacing.space4,
+                  ),
+                ),
+              if (age != null) Info(label: 'Age', value: age!),
+              if (weight != null) Info(label: 'Weight', value: weight!),
+              if (height != null) Info(label: 'Height', value: height!),
             ],
           ),
         ),

@@ -27,7 +27,6 @@ class PageTitles extends StatelessWidget {
           const PageTitle(),
           const SizedBox(height: AppSpacing.space5),
           PageTitle(
-            isSmall: true,
             title: 'Small',
             action: 'Compare',
             onAction: () {},

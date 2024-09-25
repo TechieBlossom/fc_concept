@@ -13,13 +13,11 @@ class Stat extends StatelessWidget {
   final int rating;
 
   Color get ratingColor {
-    if (rating >= 81) {
-      return rating5;
-    } else if (rating >= 71) {
+    if (rating >= 80) {
       return rating4;
-    } else if (rating >= 61) {
+    } else if (rating >= 71) {
       return rating3;
-    } else if (rating >= 51) {
+    } else if (rating >= 61) {
       return rating2;
     }
     return rating1;
@@ -31,12 +29,12 @@ class Stat extends StatelessWidget {
       children: [
         Text(
           label.toUpperCase(),
-          style: context.typography.bodySmall,
+          style: context.typography.caption2,
         ),
         SizedBox(height: AppSpacing.space2),
         Text(
           rating.toString(),
-          style: context.typography.titleMediumDigit.copyWith(
+          style: context.typography.body5.copyWith(
             color: ratingColor,
           ),
         ),

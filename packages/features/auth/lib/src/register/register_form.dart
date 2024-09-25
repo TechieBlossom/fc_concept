@@ -56,7 +56,7 @@ class RegisterForm extends StatelessWidget {
               ),
               child: Text(
                 'Already an user?',
-                style: context.typography.labelMedium.copyWith(),
+                style: context.typography.body1.copyWith(),
               ),
             ),
             LinkButton(

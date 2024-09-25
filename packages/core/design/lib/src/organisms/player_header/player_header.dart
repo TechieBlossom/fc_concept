@@ -64,7 +64,7 @@ class PlayerHeader extends StatelessWidget {
                           children: [
                             Text(
                               player.commonName ?? '',
-                              style: context.typography.titleLarge,
+                              style: context.typography.title3,
                             ),
                             SizedBox(height: AppSpacing.space2),
                             Row(
@@ -88,11 +88,15 @@ class PlayerHeader extends StatelessWidget {
                         children: [
                           _AnimatedOpacity(
                             isShown: player.position != null,
-                            child: PositionBox(position: player.position),
+                            child: PositionBox(
+                              position: player.position,
+                              isSmall: true,
+                            ),
                           ),
                           SizedBox(width: AppSpacing.space3),
                           RatingBox(
                             rating: player.overall,
+                            isSmall: true,
                             bg: colors.$1,
                             fg: colors.$2,
                           ),
@@ -148,24 +152,22 @@ class PlayerHeader extends StatelessWidget {
                     physicalRating: player.facePhysicality ?? 0,
                   ),
                 ),
-                //TODO Fix this
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(
-                //     vertical: AppSpacing.space3,
-                //   ),
-                //   child: _AnimatedOpacity(
-                //     isShown: player.age != null,
-                //     child: InfoCard(
-                //       age: player.age ?? 0,
-                //       height: player.height ?? 0,
-                //       skills: player.skillMoves ?? 0,
-                //       weakFoot: player.weakFoot ?? 0,
-                //       workRate:
-                //           '${player.attackWorkRate?.name.toUpperCase() ?? ''}'
-                //           '/${player.defenseWorkRate?.name.toUpperCase() ?? ''}',
-                //     ),
-                //   ),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpacing.space3,
+                  ),
+                  child: _AnimatedOpacity(
+                    isShown: player.age != null,
+                    child: InfoCard(
+                      age: player.age.toString(),
+                      height: player.heightInString(),
+                      weight: player.weightInString(),
+                      skills: player.skillMoves.toString(),
+                      weakFoot: player.weakFoot.toString(),
+                      foot: player.footInString(),
+                    ),
+                  ),
+                ),
                 Align(
                   alignment: Alignment.center,
                   child: ConstrainedBox(

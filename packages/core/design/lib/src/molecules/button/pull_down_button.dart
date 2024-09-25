@@ -79,7 +79,7 @@ class PullDownButton extends StatelessWidget {
                       label,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: context.typography.labelSmall,
+                      style: context.typography.caption1,
                     ),
                   ),
                 ),

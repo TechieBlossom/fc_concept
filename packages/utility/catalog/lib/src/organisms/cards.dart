@@ -113,11 +113,12 @@ class Cards extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.space5),
           const InfoCard(
-            age: 35,
-            height: 195,
-            skills: 5,
-            weakFoot: 4,
-            workRate: 'MED/MED',
+            age: '35',
+            height: '195cm (6\'5")',
+            weight: '75kg (150lbs)',
+            skills: '5',
+            weakFoot: '4',
+            foot: 'Right',
           ),
           const SizedBox(height: AppSpacing.space5),
           const StatCard(

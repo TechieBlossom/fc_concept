@@ -12,14 +12,22 @@ class StatCard extends StatelessWidget {
     required this.dribbleRating,
     required this.defendRating,
     required this.physicalRating,
+    this.isGK = false,
   });
 
+  /// Speed for GK
   final int paceRating;
+  /// Kicking for GK
   final int shootRating;
+  /// Handling for GK
   final int passRating;
+  /// Reflexes for GK
   final int dribbleRating;
+  /// Positioning for GK
   final int defendRating;
+  /// Diving for GK
   final int physicalRating;
+  final bool isGK;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +45,21 @@ class StatCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Stat(label: 'PAC', rating: paceRating),
-              Stat(label: 'SHO', rating: shootRating),
-              Stat(label: 'PAS', rating: passRating),
-              Stat(label: 'DRI', rating: dribbleRating),
-              Stat(label: 'DEF', rating: defendRating),
-              Stat(label: 'PHY', rating: physicalRating),
+              if (isGK) ...[
+                Stat(label: 'DIV', rating: physicalRating),
+                Stat(label: 'HAN', rating: passRating),
+                Stat(label: 'KIC', rating: shootRating),
+                Stat(label: 'REF', rating: dribbleRating),
+                Stat(label: 'SPD', rating: paceRating),
+                Stat(label: 'POS', rating: defendRating),
+              ] else ...[
+                Stat(label: 'PAC', rating: paceRating),
+                Stat(label: 'SHO', rating: shootRating),
+                Stat(label: 'PAS', rating: passRating),
+                Stat(label: 'DRI', rating: dribbleRating),
+                Stat(label: 'DEF', rating: defendRating),
+                Stat(label: 'PHY', rating: physicalRating),
+              ]
             ],
           ),
         ),

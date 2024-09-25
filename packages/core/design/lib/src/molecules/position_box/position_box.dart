@@ -6,15 +6,23 @@ class PositionBox extends StatelessWidget {
   const PositionBox({
     super.key,
     required this.position,
+    this.isSmall = false,
   });
 
   final Position? position;
+  final bool isSmall;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       position?.shortLabel.toUpperCase() ?? '',
-      style: context.typography.titleMediumDigit,
+      style: isSmall
+          ? context.typography.body2.copyWith(
+              color: context.colors.contentPrimary,
+            )
+          : context.typography.headline.copyWith(
+              color: context.colors.contentPrimary,
+            ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:core_api_client/api_client.dart';
 import 'package:core_domain/src/data/clubs/table_club.dart';
+import 'package:core_domain/src/data/leagues/table_league.dart';
 import 'package:core_domain/src/data/nations/table_nation.dart';
 import 'package:core_domain/src/data/players/table_player.dart';
 import 'package:core_domain/src/data/positions/table_position.dart';
@@ -27,6 +28,8 @@ const _clubTable = '${TableClub.tableClub}!inner(${TableClub.eaId}, '
     '${TableClub.name}, ${TableClub.leagueEaId}, ${TableClub.isWomen},'
     '${TableClub.isIconClub}, ${TableClub.pastAndPresentHighlightedPlayerItemEaIds},'
     '${TableClub.imagePath}, ${TableClub.lightImagePath})';
+const _leagueTable = '${TableLeague.tableLeague}!inner(${TableLeague.eaId}, '
+    '${TableLeague.name}, ${TableLeague.imagePath}, ${TableLeague.imageLightPath})';
 const _nationTable = '${TableNation.tableNation}!inner(${TableNation.eaId}, '
     '${TableNation.name}, ${TableNation.imagePath})';
 const _positionTable =
@@ -44,6 +47,7 @@ final _columnsToFetchForList = [
   TablePlayer.imagePath,
   _rarityTable,
   _clubTable,
+  _leagueTable,
   _nationTable,
   _positionTable,
 ].join(',');
@@ -61,6 +65,8 @@ class PlayerRepositoryImpl extends PlayerRepository {
   }) async {
     final start = page * _itemsPerPage;
     final end = ((page + 1) * _itemsPerPage) - 1;
+
+    await Future.delayed(const Duration(seconds: 2));
 
     try {
       final playersResponse = await supabase
@@ -221,7 +227,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     try {
       final playerResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select('*, $_rarityTable')
+          .select('*, $_rarityTable, $_clubTable, $_leagueTable, $_nationTable, $_positionTable')
           .eq(TablePlayer.id, playerId)
           .limit(1)
           .single();

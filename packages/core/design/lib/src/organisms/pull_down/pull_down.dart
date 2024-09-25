@@ -187,7 +187,7 @@ class _PullDownState extends State<PullDown>
                               ),
                               child: Text(
                                 item.$3,
-                                style: context.typography.bodySmall,
+                                style: context.typography.body4,
                               ),
                             ),
                           ),

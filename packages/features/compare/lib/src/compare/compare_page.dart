@@ -283,7 +283,7 @@ class PlayerPlaceholder extends StatelessWidget {
             const SizedBox(height: AppSpacing.space3),
             Text(
               player!.commonName ?? '',
-              style: context.typography.bodyMedium,
+              style: context.typography.body3,
             ),
             if (versions != null) ...[
               const SizedBox(height: AppSpacing.space3),
@@ -327,12 +327,7 @@ class PlayerPlaceholder extends StatelessWidget {
                     fg: colors.$2,
                   ),
                   const SizedBox(width: AppSpacing.space3),
-                  Text(
-                    player?.position?.shortLabel ?? '',
-                    style: context.typography.titleMediumDigit.copyWith(
-                      color: context.colors.contentSecondary,
-                    ),
-                  ),
+                  PositionBox(position: player?.position),
                 ],
               ),
             ),

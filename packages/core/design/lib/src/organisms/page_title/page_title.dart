@@ -5,7 +5,6 @@ class PageTitle extends StatelessWidget implements PreferredSize {
   const PageTitle({
     super.key,
     this.title,
-    this.isSmall = false,
     this.action,
     this.onAction,
     this.onBack,
@@ -17,7 +16,6 @@ class PageTitle extends StatelessWidget implements PreferredSize {
         );
 
   final String? title;
-  final bool isSmall;
   final String? action;
   final VoidCallback? onAction;
   final VoidCallback? onBack;
@@ -38,16 +36,14 @@ class PageTitle extends StatelessWidget implements PreferredSize {
                 )
               : null),
       title: title != null ? Text(title!) : null,
-      titleTextStyle: isSmall
-          ? context.typography.titleSmall
-          : context.typography.titleMedium,
+      titleTextStyle: context.typography.headline,
       titleSpacing: 0,
       actions: [
         if (action != null)
           Padding(
-            padding: const EdgeInsets.only(right: AppSpacing.space5),
+            padding: const EdgeInsets.only(right: AppSpacing.space3),
             child: SecondaryButton(
-              buttonType: isSmall ? ButtonSize.small : ButtonSize.normal,
+              buttonType: ButtonSize.small,
               text: action!,
               onPressed: onAction,
             ),

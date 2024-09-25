@@ -19,7 +19,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'PageTitle',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -31,7 +31,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Cards',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -43,7 +43,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'List Items',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -55,7 +55,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Pull Downs',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -67,7 +67,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Search Fields',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -79,7 +79,7 @@ class OrganismsContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Player Headers',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,

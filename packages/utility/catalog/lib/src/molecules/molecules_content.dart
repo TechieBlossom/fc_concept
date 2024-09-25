@@ -21,7 +21,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Button',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -33,7 +33,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'RatingBox',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -45,7 +45,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'RarityBox',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -57,7 +57,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Ornament',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -69,7 +69,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Pill',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -81,7 +81,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Compare',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -93,7 +93,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Price',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,
@@ -105,7 +105,7 @@ class MoleculesContent extends StatelessWidget {
           ListTile(
             title: Text(
               'Messages',
-              style: context.typography.titleMedium,
+              style: context.typography.headline,
             ),
             onTap: () => Navigator.push(
               context,

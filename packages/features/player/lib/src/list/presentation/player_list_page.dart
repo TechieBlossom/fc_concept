@@ -25,7 +25,18 @@ class _PlayerListPageState extends State<PlayerListPage> {
         builder: (context, state) {
           return Scaffold(
             key: _scaffoldKey,
-            appBar: const PageTitle(title: 'All Players'),
+            appBar: SearchContainer(
+              margin: const EdgeInsets.only(
+                top: AppSpacing.space7 + AppSpacing.space3,
+              ),
+              isLoading: state.processState == ProcessState.loading,
+              onSearch: (query) => context.read<PlayerListBloc>().add(
+                Search(query: query),
+              ),
+              onClearTap: () => context.read<PlayerListBloc>().add(
+                Search(query: ''),
+              ),
+            ),
             drawer: AppDrawer(scaffoldKey: _scaffoldKey),
             bottomNavigationBar: BottomButtonLayout(
               buttons: [
@@ -45,29 +56,14 @@ class _PlayerListPageState extends State<PlayerListPage> {
                 ),
               ],
             ),
-            body: Column(
-              children: [
-                SearchContainer(
-                  isLoading: state.processState == ProcessState.loading,
-                  onSearch: (query) => context.read<PlayerListBloc>().add(
-                        Search(query: query),
-                      ),
-                  onClearTap: () => context.read<PlayerListBloc>().add(
-                        Search(query: ''),
-                      ),
-                ),
-                Expanded(
-                  child: PlayerList(
-                    processState: state.processState,
-                    isPaginating: state.isPaginating,
-                    players: state.players,
-                    query: state.query,
-                    nextPage: () => context.read<PlayerListBloc>().add(
-                          NextPage(),
-                        ),
+            body: PlayerList(
+              processState: state.processState,
+              isPaginating: state.isPaginating,
+              players: state.players,
+              query: state.query,
+              nextPage: () => context.read<PlayerListBloc>().add(
+                    NextPage(),
                   ),
-                ),
-              ],
             ),
           );
         },

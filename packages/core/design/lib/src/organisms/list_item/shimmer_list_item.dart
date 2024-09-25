@@ -18,7 +18,7 @@ class ShimmerListItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.space5,
-          vertical: AppSpacing.space3,
+          vertical: AppSpacing.space2,
         ),
         child: Container(
           decoration: BoxDecoration(

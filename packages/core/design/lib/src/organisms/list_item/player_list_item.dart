@@ -1,4 +1,5 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/molecules/image/league_image.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -100,44 +101,40 @@ class _PlayerListItemState extends State<PlayerListItem>
                     children: [
                       Text(
                         player.commonName ?? '',
-                        style: context.typography.titleMedium.copyWith(
+                        style: context.typography.body3.copyWith(
                           color: context.colors.contentSecondary,
                         ),
                       ),
                       SizedBox(height: AppSpacing.space2),
                       Text(
                         player.rarity.name,
-                        style: context.typography.labelSmall,
+                        style: context.typography.caption1,
                       ),
                       SizedBox(height: AppSpacing.space2),
                       Row(
                         children: [
                           LogoLabel(
-                            id: player.club?.eaId,
+                            imagePath: player.club?.imagePath,
                             label: player.club?.name,
                             type: LogoEntity.club,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: AppSpacing.space2,
-                            ),
-                            child: Text('|'),
-                          ),
                           LogoLabel(
-                            id: player.nation?.eaId,
+                            imagePath: player.nation?.imagePath,
                             label: player.nation?.name,
                             type: LogoEntity.nation,
                           ),
+                          LeagueImage(league: player.league!),
                         ],
                       ),
                     ],
                   ),
                 ),
               ),
-              PositionBox(position: player.position),
+              PositionBox(position: player.position, isSmall: true),
               SizedBox(width: AppSpacing.space3),
               RatingBox(
                 rating: player.overall,
+                isSmall: true,
                 bg: colors.$1,
                 fg: colors.$2,
               ),

@@ -21,10 +21,10 @@ class LinkButton extends StatelessWidget {
       splashFactory: NoSplash.splashFactory,
       textStyle: WidgetStateProperty.all<TextStyle?>(
         switch (buttonType) {
-          ButtonSize.normal => context.typography.labelMedium.copyWith(
+          ButtonSize.normal => context.typography.body1.copyWith(
               decoration: TextDecoration.underline,
             ),
-          ButtonSize.small => context.typography.labelSmall.copyWith(
+          ButtonSize.small => context.typography.caption1.copyWith(
               decoration: TextDecoration.underline,
             ),
         },
