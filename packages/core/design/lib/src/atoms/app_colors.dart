@@ -4,7 +4,7 @@ abstract class _LightColors {
   // Keep these, remove above
   static const backgroundPrimary = Color(0xFFFFFFFF);
   static const backgroundSecondary = Color(0xFF707070);
-  static const backgroundTertiary = Color(0xB3F4F4F4);
+  static const backgroundTertiary = Color(0xFFF4F4F4);
   static const backgroundTertiary70 = Color(0xB3F4F4F4);
   static const backgroundFour = Color(0x17C0A203);
   static const contentSecondary = Color(0xFF2B2B2B);

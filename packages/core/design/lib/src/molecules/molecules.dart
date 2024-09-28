@@ -1,3 +1,6 @@
+export 'package:core_design/src/molecules/attribute/attribute.dart';
+export 'package:core_design/src/molecules/attribute/attribute_bar.dart';
+export 'package:core_design/src/molecules/attribute/attribute_item.dart';
 export 'package:core_design/src/molecules/button/button_size.dart';
 export 'package:core_design/src/molecules/button/destructive_button.dart';
 export 'package:core_design/src/molecules/button/link_button.dart';
@@ -18,7 +21,5 @@ export 'package:core_design/src/molecules/price/price.dart';
 export 'package:core_design/src/molecules/price/price_item.dart';
 export 'package:core_design/src/molecules/rarity_box/rarity_box.dart';
 export 'package:core_design/src/molecules/rating_box/rating_box.dart';
-export 'package:core_design/src/molecules/stat/stat.dart';
-export 'package:core_design/src/molecules/stat/stat_h.dart';
-export 'package:core_design/src/molecules/stat/stat_item.dart';
+export 'package:core_design/src/molecules/space/space.dart';
 export 'package:core_design/src/molecules/versions/versions.dart';

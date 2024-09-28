@@ -30,6 +30,7 @@ class PlayerDetailPage extends StatelessWidget {
             ),
             body: SingleChildScrollView(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   PlayerHeader(
                     player: state.player,
@@ -43,6 +44,11 @@ class PlayerDetailPage extends StatelessWidget {
                               ),
                             ),
                   ),
+                  if (state.player.attributeAcceleration != null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space4),
+                      child: AttributesLayout(player: state.player),
+                    ),
                 ],
               ),
             ),

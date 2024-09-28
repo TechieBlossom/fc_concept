@@ -1,0 +1,20 @@
+name: utility_extensions
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: "3.24.1"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  utility_di:
+    path: ../../../packages/utility/di
+
+dev_dependencies:
+  utility_analysis:
+    path: ../../../packages/utility/analysis
+
+flutter:

@@ -1,3 +1,4 @@
+export 'package:core_design/src/organisms/attributes_layout/attributes_layout.dart';
 export 'package:core_design/src/organisms/bottom_button_layout/bottom_button_layout.dart';
 export 'package:core_design/src/organisms/bottom_button_layout/shimmer_bottom_button_layout.dart';
 export 'package:core_design/src/organisms/card/collapsible_card.dart';

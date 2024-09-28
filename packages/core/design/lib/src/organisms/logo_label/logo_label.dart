@@ -1,6 +1,5 @@
 import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/image/club_image.dart';
-import 'package:core_design/src/molecules/image/league_image.dart';
 import 'package:core_design/src/molecules/image/nation_image.dart';
 import 'package:flutter/material.dart';
 

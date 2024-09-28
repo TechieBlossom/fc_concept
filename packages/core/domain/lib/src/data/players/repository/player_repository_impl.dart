@@ -45,6 +45,7 @@ final _columnsToFetchForList = [
   TablePlayer.overall,
   TablePlayer.position,
   TablePlayer.imagePath,
+  TablePlayer.createdAt,
   _rarityTable,
   _clubTable,
   _leagueTable,
@@ -66,13 +67,12 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final start = page * _itemsPerPage;
     final end = ((page + 1) * _itemsPerPage) - 1;
 
-    await Future.delayed(const Duration(seconds: 2));
-
     try {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
-          .order(TablePlayer.overall)
+          .order(TablePlayer.createdAt)
+          .order(TablePlayer.overall, ascending: false)
           .order(TablePlayer.commonName, ascending: true)
           .range(start, end);
 

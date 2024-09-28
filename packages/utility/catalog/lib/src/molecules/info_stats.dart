@@ -18,7 +18,12 @@ class InfoStats extends StatelessWidget {
             SizedBox(height: AppSpacing.space5),
             Info(label: 'AGE', value: '35'),
             SizedBox(height: AppSpacing.space5),
-            Stat(label: 'PAC', rating: 90),
+            Attribute(
+              attributeItem: AttributeItem(
+                attribute: 'PAC',
+                rating: 90,
+              ),
+            ),
             SizedBox(height: AppSpacing.space5),
             // const StatH(label: 'Acceleration', rating: 90),
           ],

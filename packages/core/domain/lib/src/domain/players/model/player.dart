@@ -40,6 +40,47 @@ class Player with PlayerMappable {
     this.faceDribbling,
     this.faceDefending,
     this.facePhysicality,
+    this.gkFaceDiving,
+    this.gkFaceHandling,
+    this.gkFaceKicking,
+    this.gkFaceReflexes,
+    this.gkFaceSpeed,
+    this.gkFacePositioning,
+    this.attributeAcceleration,
+    this.attributeSprintSpeed,
+    this.attributeAgility,
+    this.attributeBalance,
+    this.attributeJumping,
+    this.attributeStamina,
+    this.attributeStrength,
+    this.attributeReactions,
+    this.attributeAggression,
+    this.attributeComposure,
+    this.attributeInterceptions,
+    this.attributePositioning,
+    this.attributeVision,
+    this.attributeBallControl,
+    this.attributeCrossing,
+    this.attributeDribbling,
+    this.attributeFinishing,
+    this.attributeFkAccuracy,
+    this.attributeHeadingAccuracy,
+    this.attributeLongPassing,
+    this.attributeShortPassing,
+    this.attributeShotPower,
+    this.attributeLongShots,
+    this.attributeDefensiveAwareness,
+    this.attributeStandingTackle,
+    this.attributeSlidingTackle,
+    this.attributeVolleys,
+    this.attributeCurve,
+    this.attributePenalties,
+    this.attributeGkDiving,
+    this.attributeGkHandling,
+    this.attributeGkKicking,
+    this.attributeGkReflexes,
+    this.attributeGkPositioning,
+    this.hasPrice = false,
   });
 
   final int id;
@@ -64,14 +105,57 @@ class Player with PlayerMappable {
   final int? skillMoves;
   final int? weakFoot;
   final int? foot;
+  final int? gender;
+  final DateTime? dateOfBirth;
   final int? facePace;
   final int? faceShooting;
   final int? facePassing;
   final int? faceDribbling;
   final int? faceDefending;
   final int? facePhysicality;
-  final int? gender;
-  final DateTime? dateOfBirth;
+  final int? gkFaceDiving;
+  final int? gkFaceHandling;
+  final int? gkFaceKicking;
+  final int? gkFaceReflexes;
+  final int? gkFaceSpeed;
+  final int? gkFacePositioning;
+
+  final int? attributeAcceleration;
+  final int? attributeSprintSpeed;
+  final int? attributeAgility;
+  final int? attributeBalance;
+  final int? attributeJumping;
+  final int? attributeStamina;
+  final int? attributeStrength;
+  final int? attributeReactions;
+  final int? attributeAggression;
+  final int? attributeComposure;
+  final int? attributeInterceptions;
+  final int? attributePositioning;
+  final int? attributeVision;
+  final int? attributeBallControl;
+  final int? attributeCrossing;
+  final int? attributeDribbling;
+  final int? attributeFinishing;
+  final int? attributeFkAccuracy;
+  final int? attributeHeadingAccuracy;
+  final int? attributeLongPassing;
+  final int? attributeShortPassing;
+  final int? attributeShotPower;
+  final int? attributeLongShots;
+  final int? attributeStandingTackle;
+  final int? attributeDefensiveAwareness;
+  final int? attributeSlidingTackle;
+  final int? attributeVolleys;
+  final int? attributeCurve;
+  final int? attributePenalties;
+  final int? attributeGkDiving;
+  final int? attributeGkHandling;
+  final int? attributeGkKicking;
+  final int? attributeGkReflexes;
+  final int? attributeGkPositioning;
+
+  final bool hasPrice;
 
   static const fromJson = PlayerMapper.fromMap;
 

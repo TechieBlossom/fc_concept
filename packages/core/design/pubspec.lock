@@ -486,6 +486,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.4"
+  intersperse:
+    dependency: "direct main"
+    description:
+      name: intersperse
+      sha256: "2f8a905c96f6cbba978644a3d5b31b8d86ddc44917662df7d27a61f3df66a576"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   intl:
     dependency: "direct main"
     description:
@@ -1062,6 +1070,13 @@ packages:
     dependency: transitive
     description:
       path: "../../utility/di"
+      relative: true
+    source: path
+    version: "0.0.1"
+  utility_extensions:
+    dependency: "direct main"
+    description:
+      path: "../../utility/extensions"
       relative: true
     source: path
     version: "0.0.1"

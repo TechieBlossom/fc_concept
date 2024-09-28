@@ -68,46 +68,46 @@ class Cards extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppSpacing.space5),
-          StatsCardVertical(
+          const StatsCardVertical(
             heading: 'Pace',
             statItems: [
-              StatItem(
-                label: 'Acceleration',
-                value: '90',
+              AttributeItem(
+                attribute: 'Acceleration',
+                rating: 90,
               ),
-              StatItem(
-                label: 'Sprint Speed',
-                value: '90',
+              AttributeItem(
+                attribute: 'Sprint Speed',
+                rating: 90,
               ),
             ],
           ),
           const SizedBox(height: AppSpacing.space5),
-          StatsCardVertical(
+          const StatsCardVertical(
             heading: 'Pace',
             statItems: [
-              StatItem(
-                label: 'Acceleration',
-                value: '90',
+              AttributeItem(
+                attribute: 'Acceleration',
+                rating: 90,
               ),
-              StatItem(
-                label: 'Sprint Speed',
-                value: '90',
+              AttributeItem(
+                attribute: 'Sprint Speed',
+                rating: 90,
               ),
-              StatItem(
-                label: 'Acceleration',
-                value: '90',
+              AttributeItem(
+                attribute: 'Acceleration',
+                rating: 90,
               ),
-              StatItem(
-                label: 'Sprint Speed',
-                value: '90',
+              AttributeItem(
+                attribute: 'Sprint Speed',
+                rating: 90,
               ),
-              StatItem(
-                label: 'Acceleration',
-                value: '90',
+              AttributeItem(
+                attribute: 'Acceleration',
+                rating: 90,
               ),
-              StatItem(
-                label: 'Sprint Speed',
-                value: '90',
+              AttributeItem(
+                attribute: 'Sprint Speed',
+                rating: 90,
               ),
             ],
           ),
@@ -121,7 +121,7 @@ class Cards extends StatelessWidget {
             foot: 'Right',
           ),
           const SizedBox(height: AppSpacing.space5),
-          const StatCard(
+          const AttributesCard(
             paceRating: 91,
             shootRating: 96,
             passRating: 97,

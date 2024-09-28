@@ -22,4 +22,5 @@ class TablePlayer {
   static const nation = 'nationEaId';
   static const rarity = 'rarityEaId';
   static const gender = 'gender';
+  static const createdAt = 'createdAt';
 }

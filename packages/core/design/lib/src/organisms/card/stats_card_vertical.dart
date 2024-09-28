@@ -9,7 +9,7 @@ class StatsCardVertical extends StatelessWidget {
     required this.heading,
   });
 
-  final List<StatItem> statItems;
+  final List<AttributeItem> statItems;
   final String heading;
 
   @override
@@ -42,8 +42,8 @@ class StatsCardVertical extends StatelessWidget {
                     padding: const EdgeInsets.only(
                       bottom: AppSpacing.space1,
                     ),
-                    child: StatH(
-                      statItem: statItem,
+                    child: AttributeBar(
+                      attributeItem: statItem,
                     ),
                   ),
                 )

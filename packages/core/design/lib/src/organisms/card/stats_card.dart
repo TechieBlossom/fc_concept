@@ -1,10 +1,11 @@
 import 'package:core_design/src/atoms/atoms.dart';
+import 'package:core_design/src/molecules/attribute/attribute.dart';
+import 'package:core_design/src/molecules/attribute/attribute_item.dart';
 import 'package:core_design/src/molecules/glass/glass.dart';
-import 'package:core_design/src/molecules/stat/stat.dart';
 import 'package:flutter/material.dart';
 
-class StatCard extends StatelessWidget {
-  const StatCard({
+class AttributesCard extends StatelessWidget {
+  const AttributesCard({
     super.key,
     required this.paceRating,
     required this.shootRating,
@@ -17,14 +18,19 @@ class StatCard extends StatelessWidget {
 
   /// Speed for GK
   final int paceRating;
+
   /// Kicking for GK
   final int shootRating;
+
   /// Handling for GK
   final int passRating;
+
   /// Reflexes for GK
   final int dribbleRating;
+
   /// Positioning for GK
   final int defendRating;
+
   /// Diving for GK
   final int physicalRating;
   final bool isGK;
@@ -46,19 +52,55 @@ class StatCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               if (isGK) ...[
-                Stat(label: 'DIV', rating: physicalRating),
-                Stat(label: 'HAN', rating: passRating),
-                Stat(label: 'KIC', rating: shootRating),
-                Stat(label: 'REF', rating: dribbleRating),
-                Stat(label: 'SPD', rating: paceRating),
-                Stat(label: 'POS', rating: defendRating),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'DIV', rating: physicalRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'HAN', rating: passRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'KIC', rating: shootRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'REF', rating: dribbleRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'SPD', rating: paceRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'POS', rating: defendRating),
+                ),
               ] else ...[
-                Stat(label: 'PAC', rating: paceRating),
-                Stat(label: 'SHO', rating: shootRating),
-                Stat(label: 'PAS', rating: passRating),
-                Stat(label: 'DRI', rating: dribbleRating),
-                Stat(label: 'DEF', rating: defendRating),
-                Stat(label: 'PHY', rating: physicalRating),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'PAC', rating: paceRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'SHO', rating: shootRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'PAS', rating: passRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'DRI', rating: dribbleRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'DEF', rating: defendRating),
+                ),
+                Attribute(
+                  attributeItem:
+                      AttributeItem(attribute: 'PHY', rating: physicalRating),
+                ),
               ]
             ],
           ),

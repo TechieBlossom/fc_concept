@@ -97,6 +97,132 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static int? _$facePhysicality(Player v) => v.facePhysicality;
   static const Field<Player, int> _f$facePhysicality =
       Field('facePhysicality', _$facePhysicality, opt: true);
+  static int? _$gkFaceDiving(Player v) => v.gkFaceDiving;
+  static const Field<Player, int> _f$gkFaceDiving =
+      Field('gkFaceDiving', _$gkFaceDiving, opt: true);
+  static int? _$gkFaceHandling(Player v) => v.gkFaceHandling;
+  static const Field<Player, int> _f$gkFaceHandling =
+      Field('gkFaceHandling', _$gkFaceHandling, opt: true);
+  static int? _$gkFaceKicking(Player v) => v.gkFaceKicking;
+  static const Field<Player, int> _f$gkFaceKicking =
+      Field('gkFaceKicking', _$gkFaceKicking, opt: true);
+  static int? _$gkFaceReflexes(Player v) => v.gkFaceReflexes;
+  static const Field<Player, int> _f$gkFaceReflexes =
+      Field('gkFaceReflexes', _$gkFaceReflexes, opt: true);
+  static int? _$gkFaceSpeed(Player v) => v.gkFaceSpeed;
+  static const Field<Player, int> _f$gkFaceSpeed =
+      Field('gkFaceSpeed', _$gkFaceSpeed, opt: true);
+  static int? _$gkFacePositioning(Player v) => v.gkFacePositioning;
+  static const Field<Player, int> _f$gkFacePositioning =
+      Field('gkFacePositioning', _$gkFacePositioning, opt: true);
+  static int? _$attributeAcceleration(Player v) => v.attributeAcceleration;
+  static const Field<Player, int> _f$attributeAcceleration =
+      Field('attributeAcceleration', _$attributeAcceleration, opt: true);
+  static int? _$attributeSprintSpeed(Player v) => v.attributeSprintSpeed;
+  static const Field<Player, int> _f$attributeSprintSpeed =
+      Field('attributeSprintSpeed', _$attributeSprintSpeed, opt: true);
+  static int? _$attributeAgility(Player v) => v.attributeAgility;
+  static const Field<Player, int> _f$attributeAgility =
+      Field('attributeAgility', _$attributeAgility, opt: true);
+  static int? _$attributeBalance(Player v) => v.attributeBalance;
+  static const Field<Player, int> _f$attributeBalance =
+      Field('attributeBalance', _$attributeBalance, opt: true);
+  static int? _$attributeJumping(Player v) => v.attributeJumping;
+  static const Field<Player, int> _f$attributeJumping =
+      Field('attributeJumping', _$attributeJumping, opt: true);
+  static int? _$attributeStamina(Player v) => v.attributeStamina;
+  static const Field<Player, int> _f$attributeStamina =
+      Field('attributeStamina', _$attributeStamina, opt: true);
+  static int? _$attributeStrength(Player v) => v.attributeStrength;
+  static const Field<Player, int> _f$attributeStrength =
+      Field('attributeStrength', _$attributeStrength, opt: true);
+  static int? _$attributeReactions(Player v) => v.attributeReactions;
+  static const Field<Player, int> _f$attributeReactions =
+      Field('attributeReactions', _$attributeReactions, opt: true);
+  static int? _$attributeAggression(Player v) => v.attributeAggression;
+  static const Field<Player, int> _f$attributeAggression =
+      Field('attributeAggression', _$attributeAggression, opt: true);
+  static int? _$attributeComposure(Player v) => v.attributeComposure;
+  static const Field<Player, int> _f$attributeComposure =
+      Field('attributeComposure', _$attributeComposure, opt: true);
+  static int? _$attributeInterceptions(Player v) => v.attributeInterceptions;
+  static const Field<Player, int> _f$attributeInterceptions =
+      Field('attributeInterceptions', _$attributeInterceptions, opt: true);
+  static int? _$attributePositioning(Player v) => v.attributePositioning;
+  static const Field<Player, int> _f$attributePositioning =
+      Field('attributePositioning', _$attributePositioning, opt: true);
+  static int? _$attributeVision(Player v) => v.attributeVision;
+  static const Field<Player, int> _f$attributeVision =
+      Field('attributeVision', _$attributeVision, opt: true);
+  static int? _$attributeBallControl(Player v) => v.attributeBallControl;
+  static const Field<Player, int> _f$attributeBallControl =
+      Field('attributeBallControl', _$attributeBallControl, opt: true);
+  static int? _$attributeCrossing(Player v) => v.attributeCrossing;
+  static const Field<Player, int> _f$attributeCrossing =
+      Field('attributeCrossing', _$attributeCrossing, opt: true);
+  static int? _$attributeDribbling(Player v) => v.attributeDribbling;
+  static const Field<Player, int> _f$attributeDribbling =
+      Field('attributeDribbling', _$attributeDribbling, opt: true);
+  static int? _$attributeFinishing(Player v) => v.attributeFinishing;
+  static const Field<Player, int> _f$attributeFinishing =
+      Field('attributeFinishing', _$attributeFinishing, opt: true);
+  static int? _$attributeFkAccuracy(Player v) => v.attributeFkAccuracy;
+  static const Field<Player, int> _f$attributeFkAccuracy =
+      Field('attributeFkAccuracy', _$attributeFkAccuracy, opt: true);
+  static int? _$attributeHeadingAccuracy(Player v) =>
+      v.attributeHeadingAccuracy;
+  static const Field<Player, int> _f$attributeHeadingAccuracy =
+      Field('attributeHeadingAccuracy', _$attributeHeadingAccuracy, opt: true);
+  static int? _$attributeLongPassing(Player v) => v.attributeLongPassing;
+  static const Field<Player, int> _f$attributeLongPassing =
+      Field('attributeLongPassing', _$attributeLongPassing, opt: true);
+  static int? _$attributeShortPassing(Player v) => v.attributeShortPassing;
+  static const Field<Player, int> _f$attributeShortPassing =
+      Field('attributeShortPassing', _$attributeShortPassing, opt: true);
+  static int? _$attributeShotPower(Player v) => v.attributeShotPower;
+  static const Field<Player, int> _f$attributeShotPower =
+      Field('attributeShotPower', _$attributeShotPower, opt: true);
+  static int? _$attributeLongShots(Player v) => v.attributeLongShots;
+  static const Field<Player, int> _f$attributeLongShots =
+      Field('attributeLongShots', _$attributeLongShots, opt: true);
+  static int? _$attributeDefensiveAwareness(Player v) =>
+      v.attributeDefensiveAwareness;
+  static const Field<Player, int> _f$attributeDefensiveAwareness = Field(
+      'attributeDefensiveAwareness', _$attributeDefensiveAwareness,
+      opt: true);
+  static int? _$attributeStandingTackle(Player v) => v.attributeStandingTackle;
+  static const Field<Player, int> _f$attributeStandingTackle =
+      Field('attributeStandingTackle', _$attributeStandingTackle, opt: true);
+  static int? _$attributeSlidingTackle(Player v) => v.attributeSlidingTackle;
+  static const Field<Player, int> _f$attributeSlidingTackle =
+      Field('attributeSlidingTackle', _$attributeSlidingTackle, opt: true);
+  static int? _$attributeVolleys(Player v) => v.attributeVolleys;
+  static const Field<Player, int> _f$attributeVolleys =
+      Field('attributeVolleys', _$attributeVolleys, opt: true);
+  static int? _$attributeCurve(Player v) => v.attributeCurve;
+  static const Field<Player, int> _f$attributeCurve =
+      Field('attributeCurve', _$attributeCurve, opt: true);
+  static int? _$attributePenalties(Player v) => v.attributePenalties;
+  static const Field<Player, int> _f$attributePenalties =
+      Field('attributePenalties', _$attributePenalties, opt: true);
+  static int? _$attributeGkDiving(Player v) => v.attributeGkDiving;
+  static const Field<Player, int> _f$attributeGkDiving =
+      Field('attributeGkDiving', _$attributeGkDiving, opt: true);
+  static int? _$attributeGkHandling(Player v) => v.attributeGkHandling;
+  static const Field<Player, int> _f$attributeGkHandling =
+      Field('attributeGkHandling', _$attributeGkHandling, opt: true);
+  static int? _$attributeGkKicking(Player v) => v.attributeGkKicking;
+  static const Field<Player, int> _f$attributeGkKicking =
+      Field('attributeGkKicking', _$attributeGkKicking, opt: true);
+  static int? _$attributeGkReflexes(Player v) => v.attributeGkReflexes;
+  static const Field<Player, int> _f$attributeGkReflexes =
+      Field('attributeGkReflexes', _$attributeGkReflexes, opt: true);
+  static int? _$attributeGkPositioning(Player v) => v.attributeGkPositioning;
+  static const Field<Player, int> _f$attributeGkPositioning =
+      Field('attributeGkPositioning', _$attributeGkPositioning, opt: true);
+  static bool _$hasPrice(Player v) => v.hasPrice;
+  static const Field<Player, bool> _f$hasPrice =
+      Field('hasPrice', _$hasPrice, opt: true, def: false);
 
   @override
   final MappableFields<Player> fields = const {
@@ -125,6 +251,47 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #faceDribbling: _f$faceDribbling,
     #faceDefending: _f$faceDefending,
     #facePhysicality: _f$facePhysicality,
+    #gkFaceDiving: _f$gkFaceDiving,
+    #gkFaceHandling: _f$gkFaceHandling,
+    #gkFaceKicking: _f$gkFaceKicking,
+    #gkFaceReflexes: _f$gkFaceReflexes,
+    #gkFaceSpeed: _f$gkFaceSpeed,
+    #gkFacePositioning: _f$gkFacePositioning,
+    #attributeAcceleration: _f$attributeAcceleration,
+    #attributeSprintSpeed: _f$attributeSprintSpeed,
+    #attributeAgility: _f$attributeAgility,
+    #attributeBalance: _f$attributeBalance,
+    #attributeJumping: _f$attributeJumping,
+    #attributeStamina: _f$attributeStamina,
+    #attributeStrength: _f$attributeStrength,
+    #attributeReactions: _f$attributeReactions,
+    #attributeAggression: _f$attributeAggression,
+    #attributeComposure: _f$attributeComposure,
+    #attributeInterceptions: _f$attributeInterceptions,
+    #attributePositioning: _f$attributePositioning,
+    #attributeVision: _f$attributeVision,
+    #attributeBallControl: _f$attributeBallControl,
+    #attributeCrossing: _f$attributeCrossing,
+    #attributeDribbling: _f$attributeDribbling,
+    #attributeFinishing: _f$attributeFinishing,
+    #attributeFkAccuracy: _f$attributeFkAccuracy,
+    #attributeHeadingAccuracy: _f$attributeHeadingAccuracy,
+    #attributeLongPassing: _f$attributeLongPassing,
+    #attributeShortPassing: _f$attributeShortPassing,
+    #attributeShotPower: _f$attributeShotPower,
+    #attributeLongShots: _f$attributeLongShots,
+    #attributeDefensiveAwareness: _f$attributeDefensiveAwareness,
+    #attributeStandingTackle: _f$attributeStandingTackle,
+    #attributeSlidingTackle: _f$attributeSlidingTackle,
+    #attributeVolleys: _f$attributeVolleys,
+    #attributeCurve: _f$attributeCurve,
+    #attributePenalties: _f$attributePenalties,
+    #attributeGkDiving: _f$attributeGkDiving,
+    #attributeGkHandling: _f$attributeGkHandling,
+    #attributeGkKicking: _f$attributeGkKicking,
+    #attributeGkReflexes: _f$attributeGkReflexes,
+    #attributeGkPositioning: _f$attributeGkPositioning,
+    #hasPrice: _f$hasPrice,
   };
 
   static Player _instantiate(DecodingData data) {
@@ -153,7 +320,48 @@ class PlayerMapper extends ClassMapperBase<Player> {
         facePassing: data.dec(_f$facePassing),
         faceDribbling: data.dec(_f$faceDribbling),
         faceDefending: data.dec(_f$faceDefending),
-        facePhysicality: data.dec(_f$facePhysicality));
+        facePhysicality: data.dec(_f$facePhysicality),
+        gkFaceDiving: data.dec(_f$gkFaceDiving),
+        gkFaceHandling: data.dec(_f$gkFaceHandling),
+        gkFaceKicking: data.dec(_f$gkFaceKicking),
+        gkFaceReflexes: data.dec(_f$gkFaceReflexes),
+        gkFaceSpeed: data.dec(_f$gkFaceSpeed),
+        gkFacePositioning: data.dec(_f$gkFacePositioning),
+        attributeAcceleration: data.dec(_f$attributeAcceleration),
+        attributeSprintSpeed: data.dec(_f$attributeSprintSpeed),
+        attributeAgility: data.dec(_f$attributeAgility),
+        attributeBalance: data.dec(_f$attributeBalance),
+        attributeJumping: data.dec(_f$attributeJumping),
+        attributeStamina: data.dec(_f$attributeStamina),
+        attributeStrength: data.dec(_f$attributeStrength),
+        attributeReactions: data.dec(_f$attributeReactions),
+        attributeAggression: data.dec(_f$attributeAggression),
+        attributeComposure: data.dec(_f$attributeComposure),
+        attributeInterceptions: data.dec(_f$attributeInterceptions),
+        attributePositioning: data.dec(_f$attributePositioning),
+        attributeVision: data.dec(_f$attributeVision),
+        attributeBallControl: data.dec(_f$attributeBallControl),
+        attributeCrossing: data.dec(_f$attributeCrossing),
+        attributeDribbling: data.dec(_f$attributeDribbling),
+        attributeFinishing: data.dec(_f$attributeFinishing),
+        attributeFkAccuracy: data.dec(_f$attributeFkAccuracy),
+        attributeHeadingAccuracy: data.dec(_f$attributeHeadingAccuracy),
+        attributeLongPassing: data.dec(_f$attributeLongPassing),
+        attributeShortPassing: data.dec(_f$attributeShortPassing),
+        attributeShotPower: data.dec(_f$attributeShotPower),
+        attributeLongShots: data.dec(_f$attributeLongShots),
+        attributeDefensiveAwareness: data.dec(_f$attributeDefensiveAwareness),
+        attributeStandingTackle: data.dec(_f$attributeStandingTackle),
+        attributeSlidingTackle: data.dec(_f$attributeSlidingTackle),
+        attributeVolleys: data.dec(_f$attributeVolleys),
+        attributeCurve: data.dec(_f$attributeCurve),
+        attributePenalties: data.dec(_f$attributePenalties),
+        attributeGkDiving: data.dec(_f$attributeGkDiving),
+        attributeGkHandling: data.dec(_f$attributeGkHandling),
+        attributeGkKicking: data.dec(_f$attributeGkKicking),
+        attributeGkReflexes: data.dec(_f$attributeGkReflexes),
+        attributeGkPositioning: data.dec(_f$attributeGkPositioning),
+        hasPrice: data.dec(_f$hasPrice));
   }
 
   @override
@@ -233,7 +441,48 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       int? facePassing,
       int? faceDribbling,
       int? faceDefending,
-      int? facePhysicality});
+      int? facePhysicality,
+      int? gkFaceDiving,
+      int? gkFaceHandling,
+      int? gkFaceKicking,
+      int? gkFaceReflexes,
+      int? gkFaceSpeed,
+      int? gkFacePositioning,
+      int? attributeAcceleration,
+      int? attributeSprintSpeed,
+      int? attributeAgility,
+      int? attributeBalance,
+      int? attributeJumping,
+      int? attributeStamina,
+      int? attributeStrength,
+      int? attributeReactions,
+      int? attributeAggression,
+      int? attributeComposure,
+      int? attributeInterceptions,
+      int? attributePositioning,
+      int? attributeVision,
+      int? attributeBallControl,
+      int? attributeCrossing,
+      int? attributeDribbling,
+      int? attributeFinishing,
+      int? attributeFkAccuracy,
+      int? attributeHeadingAccuracy,
+      int? attributeLongPassing,
+      int? attributeShortPassing,
+      int? attributeShotPower,
+      int? attributeLongShots,
+      int? attributeDefensiveAwareness,
+      int? attributeStandingTackle,
+      int? attributeSlidingTackle,
+      int? attributeVolleys,
+      int? attributeCurve,
+      int? attributePenalties,
+      int? attributeGkDiving,
+      int? attributeGkHandling,
+      int? attributeGkKicking,
+      int? attributeGkReflexes,
+      int? attributeGkPositioning,
+      bool? hasPrice});
   PlayerCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -292,7 +541,48 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? facePassing = $none,
           Object? faceDribbling = $none,
           Object? faceDefending = $none,
-          Object? facePhysicality = $none}) =>
+          Object? facePhysicality = $none,
+          Object? gkFaceDiving = $none,
+          Object? gkFaceHandling = $none,
+          Object? gkFaceKicking = $none,
+          Object? gkFaceReflexes = $none,
+          Object? gkFaceSpeed = $none,
+          Object? gkFacePositioning = $none,
+          Object? attributeAcceleration = $none,
+          Object? attributeSprintSpeed = $none,
+          Object? attributeAgility = $none,
+          Object? attributeBalance = $none,
+          Object? attributeJumping = $none,
+          Object? attributeStamina = $none,
+          Object? attributeStrength = $none,
+          Object? attributeReactions = $none,
+          Object? attributeAggression = $none,
+          Object? attributeComposure = $none,
+          Object? attributeInterceptions = $none,
+          Object? attributePositioning = $none,
+          Object? attributeVision = $none,
+          Object? attributeBallControl = $none,
+          Object? attributeCrossing = $none,
+          Object? attributeDribbling = $none,
+          Object? attributeFinishing = $none,
+          Object? attributeFkAccuracy = $none,
+          Object? attributeHeadingAccuracy = $none,
+          Object? attributeLongPassing = $none,
+          Object? attributeShortPassing = $none,
+          Object? attributeShotPower = $none,
+          Object? attributeLongShots = $none,
+          Object? attributeDefensiveAwareness = $none,
+          Object? attributeStandingTackle = $none,
+          Object? attributeSlidingTackle = $none,
+          Object? attributeVolleys = $none,
+          Object? attributeCurve = $none,
+          Object? attributePenalties = $none,
+          Object? attributeGkDiving = $none,
+          Object? attributeGkHandling = $none,
+          Object? attributeGkKicking = $none,
+          Object? attributeGkReflexes = $none,
+          Object? attributeGkPositioning = $none,
+          bool? hasPrice}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
         if (commonName != $none) #commonName: commonName,
@@ -318,7 +608,72 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (facePassing != $none) #facePassing: facePassing,
         if (faceDribbling != $none) #faceDribbling: faceDribbling,
         if (faceDefending != $none) #faceDefending: faceDefending,
-        if (facePhysicality != $none) #facePhysicality: facePhysicality
+        if (facePhysicality != $none) #facePhysicality: facePhysicality,
+        if (gkFaceDiving != $none) #gkFaceDiving: gkFaceDiving,
+        if (gkFaceHandling != $none) #gkFaceHandling: gkFaceHandling,
+        if (gkFaceKicking != $none) #gkFaceKicking: gkFaceKicking,
+        if (gkFaceReflexes != $none) #gkFaceReflexes: gkFaceReflexes,
+        if (gkFaceSpeed != $none) #gkFaceSpeed: gkFaceSpeed,
+        if (gkFacePositioning != $none) #gkFacePositioning: gkFacePositioning,
+        if (attributeAcceleration != $none)
+          #attributeAcceleration: attributeAcceleration,
+        if (attributeSprintSpeed != $none)
+          #attributeSprintSpeed: attributeSprintSpeed,
+        if (attributeAgility != $none) #attributeAgility: attributeAgility,
+        if (attributeBalance != $none) #attributeBalance: attributeBalance,
+        if (attributeJumping != $none) #attributeJumping: attributeJumping,
+        if (attributeStamina != $none) #attributeStamina: attributeStamina,
+        if (attributeStrength != $none) #attributeStrength: attributeStrength,
+        if (attributeReactions != $none)
+          #attributeReactions: attributeReactions,
+        if (attributeAggression != $none)
+          #attributeAggression: attributeAggression,
+        if (attributeComposure != $none)
+          #attributeComposure: attributeComposure,
+        if (attributeInterceptions != $none)
+          #attributeInterceptions: attributeInterceptions,
+        if (attributePositioning != $none)
+          #attributePositioning: attributePositioning,
+        if (attributeVision != $none) #attributeVision: attributeVision,
+        if (attributeBallControl != $none)
+          #attributeBallControl: attributeBallControl,
+        if (attributeCrossing != $none) #attributeCrossing: attributeCrossing,
+        if (attributeDribbling != $none)
+          #attributeDribbling: attributeDribbling,
+        if (attributeFinishing != $none)
+          #attributeFinishing: attributeFinishing,
+        if (attributeFkAccuracy != $none)
+          #attributeFkAccuracy: attributeFkAccuracy,
+        if (attributeHeadingAccuracy != $none)
+          #attributeHeadingAccuracy: attributeHeadingAccuracy,
+        if (attributeLongPassing != $none)
+          #attributeLongPassing: attributeLongPassing,
+        if (attributeShortPassing != $none)
+          #attributeShortPassing: attributeShortPassing,
+        if (attributeShotPower != $none)
+          #attributeShotPower: attributeShotPower,
+        if (attributeLongShots != $none)
+          #attributeLongShots: attributeLongShots,
+        if (attributeDefensiveAwareness != $none)
+          #attributeDefensiveAwareness: attributeDefensiveAwareness,
+        if (attributeStandingTackle != $none)
+          #attributeStandingTackle: attributeStandingTackle,
+        if (attributeSlidingTackle != $none)
+          #attributeSlidingTackle: attributeSlidingTackle,
+        if (attributeVolleys != $none) #attributeVolleys: attributeVolleys,
+        if (attributeCurve != $none) #attributeCurve: attributeCurve,
+        if (attributePenalties != $none)
+          #attributePenalties: attributePenalties,
+        if (attributeGkDiving != $none) #attributeGkDiving: attributeGkDiving,
+        if (attributeGkHandling != $none)
+          #attributeGkHandling: attributeGkHandling,
+        if (attributeGkKicking != $none)
+          #attributeGkKicking: attributeGkKicking,
+        if (attributeGkReflexes != $none)
+          #attributeGkReflexes: attributeGkReflexes,
+        if (attributeGkPositioning != $none)
+          #attributeGkPositioning: attributeGkPositioning,
+        if (hasPrice != null) #hasPrice: hasPrice
       }));
   @override
   Player $make(CopyWithData data) => Player(
@@ -346,7 +701,76 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       facePassing: data.get(#facePassing, or: $value.facePassing),
       faceDribbling: data.get(#faceDribbling, or: $value.faceDribbling),
       faceDefending: data.get(#faceDefending, or: $value.faceDefending),
-      facePhysicality: data.get(#facePhysicality, or: $value.facePhysicality));
+      facePhysicality: data.get(#facePhysicality, or: $value.facePhysicality),
+      gkFaceDiving: data.get(#gkFaceDiving, or: $value.gkFaceDiving),
+      gkFaceHandling: data.get(#gkFaceHandling, or: $value.gkFaceHandling),
+      gkFaceKicking: data.get(#gkFaceKicking, or: $value.gkFaceKicking),
+      gkFaceReflexes: data.get(#gkFaceReflexes, or: $value.gkFaceReflexes),
+      gkFaceSpeed: data.get(#gkFaceSpeed, or: $value.gkFaceSpeed),
+      gkFacePositioning:
+          data.get(#gkFacePositioning, or: $value.gkFacePositioning),
+      attributeAcceleration:
+          data.get(#attributeAcceleration, or: $value.attributeAcceleration),
+      attributeSprintSpeed:
+          data.get(#attributeSprintSpeed, or: $value.attributeSprintSpeed),
+      attributeAgility:
+          data.get(#attributeAgility, or: $value.attributeAgility),
+      attributeBalance:
+          data.get(#attributeBalance, or: $value.attributeBalance),
+      attributeJumping:
+          data.get(#attributeJumping, or: $value.attributeJumping),
+      attributeStamina:
+          data.get(#attributeStamina, or: $value.attributeStamina),
+      attributeStrength:
+          data.get(#attributeStrength, or: $value.attributeStrength),
+      attributeReactions:
+          data.get(#attributeReactions, or: $value.attributeReactions),
+      attributeAggression:
+          data.get(#attributeAggression, or: $value.attributeAggression),
+      attributeComposure:
+          data.get(#attributeComposure, or: $value.attributeComposure),
+      attributeInterceptions:
+          data.get(#attributeInterceptions, or: $value.attributeInterceptions),
+      attributePositioning:
+          data.get(#attributePositioning, or: $value.attributePositioning),
+      attributeVision: data.get(#attributeVision, or: $value.attributeVision),
+      attributeBallControl:
+          data.get(#attributeBallControl, or: $value.attributeBallControl),
+      attributeCrossing:
+          data.get(#attributeCrossing, or: $value.attributeCrossing),
+      attributeDribbling:
+          data.get(#attributeDribbling, or: $value.attributeDribbling),
+      attributeFinishing:
+          data.get(#attributeFinishing, or: $value.attributeFinishing),
+      attributeFkAccuracy:
+          data.get(#attributeFkAccuracy, or: $value.attributeFkAccuracy),
+      attributeHeadingAccuracy: data.get(#attributeHeadingAccuracy,
+          or: $value.attributeHeadingAccuracy),
+      attributeLongPassing:
+          data.get(#attributeLongPassing, or: $value.attributeLongPassing),
+      attributeShortPassing:
+          data.get(#attributeShortPassing, or: $value.attributeShortPassing),
+      attributeShotPower:
+          data.get(#attributeShotPower, or: $value.attributeShotPower),
+      attributeLongShots:
+          data.get(#attributeLongShots, or: $value.attributeLongShots),
+      attributeDefensiveAwareness: data.get(#attributeDefensiveAwareness,
+          or: $value.attributeDefensiveAwareness),
+      attributeStandingTackle: data.get(#attributeStandingTackle,
+          or: $value.attributeStandingTackle),
+      attributeSlidingTackle:
+          data.get(#attributeSlidingTackle, or: $value.attributeSlidingTackle),
+      attributeVolleys:
+          data.get(#attributeVolleys, or: $value.attributeVolleys),
+      attributeCurve: data.get(#attributeCurve, or: $value.attributeCurve),
+      attributePenalties:
+          data.get(#attributePenalties, or: $value.attributePenalties),
+      attributeGkDiving: data.get(#attributeGkDiving, or: $value.attributeGkDiving),
+      attributeGkHandling: data.get(#attributeGkHandling, or: $value.attributeGkHandling),
+      attributeGkKicking: data.get(#attributeGkKicking, or: $value.attributeGkKicking),
+      attributeGkReflexes: data.get(#attributeGkReflexes, or: $value.attributeGkReflexes),
+      attributeGkPositioning: data.get(#attributeGkPositioning, or: $value.attributeGkPositioning),
+      hasPrice: data.get(#hasPrice, or: $value.hasPrice));
 
   @override
   PlayerCopyWith<$R2, Player, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

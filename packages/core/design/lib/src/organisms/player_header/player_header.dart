@@ -21,8 +21,8 @@ class PlayerHeader extends StatelessWidget {
     final colors = getPlayerColors(context, player);
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: 420,
-        maxHeight: 450,
+        minHeight: 280,
+        maxHeight: 380,
       ),
       child: Stack(
         children: [
@@ -38,7 +38,6 @@ class PlayerHeader extends StatelessWidget {
           ),
           Positioned(
             right: 0,
-            top: AppSpacing.space4 + AppSpacing.space4,
             child: PlayerImage(
               imagePath: player.imagePath,
               size: PlayerImageSize.large,
@@ -143,7 +142,7 @@ class PlayerHeader extends StatelessWidget {
                 ),
                 _AnimatedOpacity(
                   isShown: player.facePace != null,
-                  child: StatCard(
+                  child: AttributesCard(
                     paceRating: player.facePace ?? 0,
                     shootRating: player.faceShooting ?? 0,
                     passRating: player.facePassing ?? 0,
