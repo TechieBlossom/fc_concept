@@ -325,7 +325,7 @@ class _FaceAttribute extends StatelessWidget {
             child: Text(
               attributeItem.attribute,
               textAlign: TextAlign.start,
-              style: context.typography.caption1,
+              style: context.typography.subHead,
             ),
           ),
           Text(
