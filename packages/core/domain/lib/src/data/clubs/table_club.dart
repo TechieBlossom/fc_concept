@@ -7,7 +7,8 @@ class TableClub {
   static const leagueEaId = 'leagueEaId';
   static const isWomen = 'isWomen';
   static const isIconClub = 'isIconClub';
-  static const pastAndPresentHighlightedPlayerItemEaIds = 'pastAndPresentHighlightedPlayerItemEaIds';
+  static const pastAndPresentHighlightedPlayerItemEaIds =
+      'pastAndPresentHighlightedPlayerItemEaIds';
   static const imagePath = 'imagePath';
   static const lightImagePath = 'lightImagePath';
 }

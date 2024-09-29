@@ -5,7 +5,6 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetPlayerPriceUseCase {
-
   GetPlayerPriceUseCase(this._priceRepository);
 
   final PriceRepository _priceRepository;

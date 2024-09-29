@@ -26,8 +26,6 @@ dependencies:
     path: packages/features/filter
   feature_player:
     path: packages/features/player
-  feature_role:
-    path: packages/features/role
   flutter:
     sdk: flutter
   injectable: ^2.3.2

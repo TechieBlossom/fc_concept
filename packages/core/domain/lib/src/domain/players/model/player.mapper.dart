@@ -79,6 +79,13 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static int? _$gender(Player v) => v.gender;
   static const Field<Player, int> _f$gender =
       Field('gender', _$gender, opt: true);
+  static List<int>? _$playStyles(Player v) => v.playStyles;
+  static const Field<Player, List<int>> _f$playStyles =
+      Field('playStyles', _$playStyles, key: 'playstyles', opt: true);
+  static List<int>? _$playStylesPlus(Player v) => v.playStylesPlus;
+  static const Field<Player, List<int>> _f$playStylesPlus = Field(
+      'playStylesPlus', _$playStylesPlus,
+      key: 'playstylesPlus', opt: true);
   static List<int>? _$rolesPlus(Player v) => v.rolesPlus;
   static const Field<Player, List<int>> _f$rolesPlus =
       Field('rolesPlus', _$rolesPlus, opt: true);
@@ -251,6 +258,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #weakFoot: _f$weakFoot,
     #foot: _f$foot,
     #gender: _f$gender,
+    #playStyles: _f$playStyles,
+    #playStylesPlus: _f$playStylesPlus,
     #rolesPlus: _f$rolesPlus,
     #rolesPlusPlus: _f$rolesPlusPlus,
     #facePace: _f$facePace,
@@ -323,6 +332,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
         weakFoot: data.dec(_f$weakFoot),
         foot: data.dec(_f$foot),
         gender: data.dec(_f$gender),
+        playStyles: data.dec(_f$playStyles),
+        playStylesPlus: data.dec(_f$playStylesPlus),
         rolesPlus: data.dec(_f$rolesPlus),
         rolesPlusPlus: data.dec(_f$rolesPlusPlus),
         facePace: data.dec(_f$facePace),
@@ -425,6 +436,8 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
   NationCopyWith<$R, Nation, Nation>? get nation;
   LeagueCopyWith<$R, League, League>? get league;
   PositionCopyWith<$R, Position, Position>? get position;
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStyles;
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStylesPlus;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlus;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlusPlus;
   $R call(
@@ -447,6 +460,8 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       int? weakFoot,
       int? foot,
       int? gender,
+      List<int>? playStyles,
+      List<int>? playStylesPlus,
       List<int>? rolesPlus,
       List<int>? rolesPlusPlus,
       int? facePace,
@@ -521,6 +536,22 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
   PositionCopyWith<$R, Position, Position>? get position =>
       $value.position?.copyWith.$chain((v) => call(position: v));
   @override
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStyles =>
+      $value.playStyles != null
+          ? ListCopyWith(
+              $value.playStyles!,
+              (v, t) => ObjectCopyWith(v, $identity, t),
+              (v) => call(playStyles: v))
+          : null;
+  @override
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStylesPlus =>
+      $value.playStylesPlus != null
+          ? ListCopyWith(
+              $value.playStylesPlus!,
+              (v, t) => ObjectCopyWith(v, $identity, t),
+              (v) => call(playStylesPlus: v))
+          : null;
+  @override
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlus =>
       $value.rolesPlus != null
           ? ListCopyWith(
@@ -557,6 +588,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? weakFoot = $none,
           Object? foot = $none,
           Object? gender = $none,
+          Object? playStyles = $none,
+          Object? playStylesPlus = $none,
           Object? rolesPlus = $none,
           Object? rolesPlusPlus = $none,
           Object? facePace = $none,
@@ -626,6 +659,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (weakFoot != $none) #weakFoot: weakFoot,
         if (foot != $none) #foot: foot,
         if (gender != $none) #gender: gender,
+        if (playStyles != $none) #playStyles: playStyles,
+        if (playStylesPlus != $none) #playStylesPlus: playStylesPlus,
         if (rolesPlus != $none) #rolesPlus: rolesPlus,
         if (rolesPlusPlus != $none) #rolesPlusPlus: rolesPlusPlus,
         if (facePace != $none) #facePace: facePace,
@@ -721,6 +756,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       weakFoot: data.get(#weakFoot, or: $value.weakFoot),
       foot: data.get(#foot, or: $value.foot),
       gender: data.get(#gender, or: $value.gender),
+      playStyles: data.get(#playStyles, or: $value.playStyles),
+      playStylesPlus: data.get(#playStylesPlus, or: $value.playStylesPlus),
       rolesPlus: data.get(#rolesPlus, or: $value.rolesPlus),
       rolesPlusPlus: data.get(#rolesPlusPlus, or: $value.rolesPlusPlus),
       facePace: data.get(#facePace, or: $value.facePace),

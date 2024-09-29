@@ -11,5 +11,4 @@ class ObserveAuthStateUseCase {
   Stream<AuthState> call() {
     return _authRepository.observeAuthState();
   }
-
 }

@@ -1,7 +1,6 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_player/src/details/bloc/player_detail_bloc.dart';
-import 'package:feature_role/role.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
 
@@ -15,12 +14,14 @@ class PlayerDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final roles = context.read<RolesBloc>().state.roles;
+    final roles = context.read<MetadataBloc>().state.roles;
+    final playStyles = context.read<MetadataBloc>().state.playStyles;
     return BlocProvider<PlayerDetailBloc>(
       create: (_) => di<PlayerDetailBloc>(
         param: PlayerDetailBlocParams(
           player: player,
           roles: roles,
+          playStyles: playStyles,
         ),
       ),
       child: BlocBuilder<PlayerDetailBloc, PlayerDetailState>(
@@ -57,9 +58,21 @@ class PlayerDetailPage extends StatelessWidget {
                       padding: const EdgeInsetsDirectional.only(
                         start: AppSpacing.space4,
                         end: AppSpacing.space4,
-                        bottom: AppSpacing.space6,
+                        bottom: AppSpacing.space4,
                       ),
                       child: RoleLayout(roles: state.playerRoles!),
+                    ),
+                  if (state.playerPlayStyles?.isNotEmpty ?? false)
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(
+                        start: AppSpacing.space4,
+                        end: AppSpacing.space4,
+                        bottom: AppSpacing.space6,
+                      ),
+                      child: PlayStylesLayout(
+                        playStyles: state.playerPlayStyles!,
+                        playStylesPlus: state.playerPlayStylesPlus!,
+                      ),
                     ),
                   if (state.player.attributeAcceleration != null)
                     Padding(

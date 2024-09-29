@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:core_api_client/api_client.dart' as _i327;
+import 'package:core_domain/domain.dart' as _i913;
 import 'package:core_domain/src/data/auth/repository/auth_repository_impl.dart'
     as _i937;
 import 'package:core_domain/src/data/clubs/repository/club_repository_impl.dart'
@@ -19,6 +20,8 @@ import 'package:core_domain/src/data/nations/repository/nation_repository_impl.d
     as _i245;
 import 'package:core_domain/src/data/players/repository/player_repository_impl.dart'
     as _i281;
+import 'package:core_domain/src/data/playstyles/repository/play_style_repository_impl.dart'
+    as _i926;
 import 'package:core_domain/src/data/price/repository/price_repository_impl.dart'
     as _i463;
 import 'package:core_domain/src/data/rarities/repository/rarity_repository_impl.dart'
@@ -51,6 +54,12 @@ import 'package:core_domain/src/domain/nations/use_case/get_other_nations_use_ca
     as _i847;
 import 'package:core_domain/src/domain/nations/use_case/get_top_nations_use_case.dart'
     as _i491;
+import 'package:core_domain/src/domain/play_styles/play_style_repository.dart'
+    as _i73;
+import 'package:core_domain/src/domain/play_styles/use_case/get_all_play_styles_use_case.dart'
+    as _i781;
+import 'package:core_domain/src/domain/play_styles/use_case/get_play_styles_by_ids_use_case.dart'
+    as _i1017;
 import 'package:core_domain/src/domain/players/player_repository.dart' as _i294;
 import 'package:core_domain/src/domain/players/use_case/filter_players_use_case.dart'
     as _i120;
@@ -79,6 +88,8 @@ import 'package:core_domain/src/domain/roles/use_case/get_all_roles_use_case.dar
     as _i651;
 import 'package:core_domain/src/domain/roles/use_case/get_roles_by_ids_use_case.dart'
     as _i1000;
+import 'package:core_domain/src/presentation/metadata/metadata_bloc.dart'
+    as _i809;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -95,10 +106,15 @@ _i174.GetIt init(
   );
   gh.factory<_i1000.GetRolesByIdsUseCase>(
       () => const _i1000.GetRolesByIdsUseCase());
+  gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
+      () => const _i1017.GetPlayStylesByIdsUseCase());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
+  gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
   gh.factory<_i526.PriceRepository>(
       () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
+  gh.factory<_i781.GetAllPlayStylesUseCase>(
+      () => _i781.GetAllPlayStylesUseCase(gh<_i73.PlayStyleRepository>()));
   gh.factory<_i52.RarityRepository>(() => _i176.RarityRepositoryImpl());
   gh.factory<_i172.AuthRepository>(() => _i937.AuthRepositoryImpl());
   gh.factory<_i907.RoleRepository>(() => _i33.RoleRepositoryImpl());
@@ -126,6 +142,10 @@ _i174.GetIt init(
       () => _i847.GetOtherNationsUseCase(gh<_i829.NationRepository>()));
   gh.factory<_i1054.GetAllRarities>(
       () => _i1054.GetAllRarities(gh<_i52.RarityRepository>()));
+  gh.lazySingleton<_i809.MetadataBloc>(() => _i809.MetadataBloc(
+        gh<_i913.GetAllRolesUseCase>(),
+        gh<_i913.GetAllPlayStylesUseCase>(),
+      ));
   gh.factory<_i646.GetSessionUseCase>(
       () => _i646.GetSessionUseCase(gh<_i172.AuthRepository>()));
   gh.factory<_i728.SetSessionUseCase>(

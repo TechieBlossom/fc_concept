@@ -166,8 +166,10 @@ class ComparePage extends StatelessWidget {
                           compareItems: [
                             CompareItem(
                               label: 'Overall',
-                              first: player1?.facePhysicality?.toString() ?? '-',
-                              second: player2?.facePhysicality?.toString() ?? '-',
+                              first:
+                                  player1?.facePhysicality?.toString() ?? '-',
+                              second:
+                                  player2?.facePhysicality?.toString() ?? '-',
                               hasDigit: true,
                             ),
                           ],

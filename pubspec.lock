@@ -353,13 +353,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  feature_role:
-    dependency: "direct main"
-    description:
-      path: "packages/features/role"
-      relative: true
-    source: path
-    version: "0.0.1"
   ffi:
     dependency: transitive
     description:

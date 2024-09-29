@@ -14,12 +14,14 @@ class SearchFields extends StatelessWidget {
           SearchContainer(
             onSearch: (query) {},
             onClearTap: () {},
+            onLeadingTap: () {},
           ),
           const SizedBox(height: AppSpacing.space5),
           SearchContainer(
             initialValue: 'Messi',
             onSearch: (query) {},
             onClearTap: () {},
+            onLeadingTap: () {},
           ),
           const SizedBox(height: AppSpacing.space5),
           SearchContainer(
@@ -27,6 +29,7 @@ class SearchFields extends StatelessWidget {
             isLoading: true,
             onSearch: (query) {},
             onClearTap: () {},
+            onLeadingTap: () {},
           ),
         ],
       ),

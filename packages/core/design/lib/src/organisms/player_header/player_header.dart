@@ -1,8 +1,6 @@
 import 'package:core_design/design.dart';
-import 'package:core_design/src/organisms/attributes_layout/attributes_layout.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:intersperse/intersperse.dart';
 
 class PlayerHeader extends StatelessWidget {
   const PlayerHeader({
@@ -25,8 +23,8 @@ class PlayerHeader extends StatelessWidget {
     final colors = getPlayerColors(context, player);
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: 230,
-        maxHeight: 330,
+        minHeight: 190,
+        maxHeight: 290,
       ),
       child: Stack(
         children: [
@@ -42,6 +40,7 @@ class PlayerHeader extends StatelessWidget {
           ),
           Positioned(
             right: 0,
+            bottom: AppSpacing.space6,
             child: PlayerImage(
               imagePath: player.imagePath,
               size: PlayerImageSize.large,
@@ -54,59 +53,50 @@ class PlayerHeader extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: AppSpacing.space5,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              player.commonName ?? '',
-                              style: context.typography.title3,
-                            ),
-                            SizedBox(height: AppSpacing.space2),
-                            Row(
-                              children: [
-                                RarityBox(
-                                  rarity: player.rarity.name,
-                                  bg: colors.$1,
-                                  fg: colors.$2,
-                                ),
-                                SizedBox(width: AppSpacing.space2),
-                                Icon(
-                                  Icons.add,
-                                  color: context.colors.contentSecondary,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _AnimatedOpacity(
-                            isShown: player.position != null,
-                            child: PositionBox(
-                              position: player.position,
-                              isSmall: true,
-                            ),
+                          Text(
+                            player.commonName ?? '',
+                            style: context.typography.title3,
                           ),
-                          SizedBox(width: AppSpacing.space3),
-                          RatingBox(
-                            rating: player.overall,
-                            isSmall: true,
-                            bg: colors.$1,
-                            fg: colors.$2,
+                          SizedBox(height: AppSpacing.space2),
+                          Row(
+                            children: [
+                              RarityBox(
+                                rarity: player.rarity.name,
+                                bg: colors.$1,
+                                fg: colors.$2,
+                              ),
+                              SizedBox(width: AppSpacing.space2),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Row(
+                      children: [
+                        _AnimatedOpacity(
+                          isShown: player.position != null,
+                          child: PositionBox(
+                            position: player.position,
+                            isSmall: true,
+                          ),
+                        ),
+                        SizedBox(width: AppSpacing.space3),
+                        RatingBox(
+                          rating: player.overall,
+                          isSmall: true,
+                          bg: colors.$1,
+                          fg: colors.$2,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -114,32 +104,34 @@ class PlayerHeader extends StatelessWidget {
                   ),
                   child: _AnimatedOpacity(
                     isShown: playerPrice != null,
-                    child: (playerPrice != null) ? PriceCard(
-                      bg: colors.$1,
-                      fg: colors.$2,
-                      priceItems: [
-                        PriceItem(
-                          label: 'Current: ',
-                          price: playerPrice!.currentPrice.price,
-                          formatter: currencyFormatter,
-                        ),
-                        PriceItem(
-                          label: 'Lowest: ',
-                          price: playerPrice!.momentum.lowestBin,
-                          formatter: currencyFormatter,
-                        ),
-                        PriceItem(
-                          label: 'Highest: ',
-                          price: playerPrice!.momentum.highestBin,
-                          formatter: currencyFormatter,
-                        ),
-                        PriceItem(
-                          label: 'Discard: ',
-                          price: playerPrice!.overview.discardValue,
-                          formatter: currencyFormatter,
-                        ),
-                      ],
-                    ) : const SizedBox(height: 116),
+                    child: (playerPrice != null)
+                        ? PriceCard(
+                            bg: colors.$1,
+                            fg: colors.$2,
+                            priceItems: [
+                              PriceItem(
+                                label: 'Current: ',
+                                price: playerPrice!.currentPrice.price,
+                                formatter: currencyFormatter,
+                              ),
+                              PriceItem(
+                                label: 'Lowest: ',
+                                price: playerPrice!.momentum.lowestBin,
+                                formatter: currencyFormatter,
+                              ),
+                              PriceItem(
+                                label: 'Highest: ',
+                                price: playerPrice!.momentum.highestBin,
+                                formatter: currencyFormatter,
+                              ),
+                              PriceItem(
+                                label: 'Discard: ',
+                                price: playerPrice!.overview.discardValue,
+                                formatter: currencyFormatter,
+                              ),
+                            ],
+                          )
+                        : const SizedBox(height: 116),
                   ),
                 ),
                 _AnimatedOpacity(

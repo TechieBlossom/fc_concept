@@ -1,6 +1,7 @@
 import 'package:core_domain/src/data/clubs/table_club.dart';
 import 'package:core_domain/src/data/leagues/table_league.dart';
 import 'package:core_domain/src/data/nations/table_nation.dart';
+import 'package:core_domain/src/data/players/table_player.dart';
 import 'package:core_domain/src/data/positions/table_position.dart';
 import 'package:core_domain/src/data/rarities/table_rarity.dart';
 import 'package:core_domain/src/domain/clubs/model/club.dart';
@@ -34,6 +35,8 @@ class Player with PlayerMappable {
     this.weakFoot,
     this.foot,
     this.gender,
+    this.playStyles,
+    this.playStylesPlus,
     this.rolesPlus,
     this.rolesPlusPlus,
     this.facePace,
@@ -104,6 +107,10 @@ class Player with PlayerMappable {
   final int? weight;
   @MappableField(key: TablePosition.tablePosition)
   final Position? position;
+  @MappableField(key: TablePlayer.playStyles)
+  final List<int>? playStyles;
+  @MappableField(key: TablePlayer.playStylesPlus)
+  final List<int>? playStylesPlus;
   final List<int>? rolesPlus;
   final List<int>? rolesPlusPlus;
   final int? skillMoves;

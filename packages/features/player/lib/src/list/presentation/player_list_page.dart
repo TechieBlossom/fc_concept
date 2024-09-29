@@ -31,11 +31,14 @@ class _PlayerListPageState extends State<PlayerListPage> {
               ),
               isLoading: state.processState == ProcessState.loading,
               onSearch: (query) => context.read<PlayerListBloc>().add(
-                Search(query: query),
-              ),
+                    Search(query: query),
+                  ),
               onClearTap: () => context.read<PlayerListBloc>().add(
-                Search(query: ''),
-              ),
+                    Search(query: ''),
+                  ),
+              onLeadingTap: () {
+                _scaffoldKey.currentState?.openDrawer();
+              },
             ),
             drawer: AppDrawer(scaffoldKey: _scaffoldKey),
             bottomNavigationBar: BottomButtonLayout(

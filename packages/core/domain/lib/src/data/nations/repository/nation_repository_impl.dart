@@ -7,7 +7,6 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: NationRepository)
 class NationRepositoryImpl extends NationRepository {
-
   @override
   Future<Result<List<Nation>>> getTopNations() async {
     try {

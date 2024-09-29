@@ -7,19 +7,19 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'player_detail_bloc.mapper.dart';
-
 part 'player_detail_event.dart';
-
 part 'player_detail_state.dart';
 
 class PlayerDetailBlocParams {
   const PlayerDetailBlocParams({
     required this.player,
     required this.roles,
+    required this.playStyles,
   });
 
   final Player player;
   final List<Role> roles;
+  final List<PlayStyle> playStyles;
 }
 
 @injectable
@@ -30,9 +30,16 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     this._getPlayerVersionsUseCase,
     this._getPlayerByVersionUseCase,
     this._getRolesByIdsUseCase,
+    this._getPlayStylesByIdsUseCase,
     this._getPlayerPriceUseCase,
     this._playerNavigator,
-  ) : super(PlayerDetailState(player: params.player, allRoles: params.roles)) {
+  ) : super(
+          PlayerDetailState(
+            player: params.player,
+            allRoles: params.roles,
+            allPlayStyles: params.playStyles,
+          ),
+        ) {
     on<Init>((event, emit) => _initial(params.player, emit));
     on<VersionTap>(
       (event, emit) => _versionTap(
@@ -42,6 +49,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
       ),
     );
     on<LoadRoles>((_, emit) => _loadRoles(emit));
+    on<LoadPlayStyles>((_, emit) => _loadPlayStyles(emit));
     on<LoadVersions>((_, emit) => _loadVersions(emit));
     on<LoadPrice>((_, emit) => _loadPrice(emit));
     on<CompareTap>((_, emit) => _compareTap());
@@ -53,6 +61,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   final GetPlayerVersionsUseCase _getPlayerVersionsUseCase;
   final GetPlayerByVersionUseCase _getPlayerByVersionUseCase;
   final GetRolesByIdsUseCase _getRolesByIdsUseCase;
+  final GetPlayStylesByIdsUseCase _getPlayStylesByIdsUseCase;
   final GetPlayerPriceUseCase _getPlayerPriceUseCase;
   final PlayerNavigator _playerNavigator;
 
@@ -82,11 +91,32 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     final roles = _getRolesByIdsUseCase(
       allRoles: state.allRoles,
       eaIds: [
-        ...(state.player.rolesPlus ?? []),
         ...(state.player.rolesPlusPlus ?? []),
+        ...(state.player.rolesPlus ?? []),
       ],
     );
     emit(state.copyWith(playerRoles: roles));
+  }
+
+  void _loadPlayStyles(Emitter<PlayerDetailState> emit) {
+    final playStylesPlus = _getPlayStylesByIdsUseCase(
+      allPlayStyles: state.allPlayStyles,
+      eaIds: [
+        ...(state.player.playStylesPlus ?? []),
+      ],
+    );
+    final playStyles = _getPlayStylesByIdsUseCase(
+      allPlayStyles: state.allPlayStyles,
+      eaIds: [
+        ...(state.player.playStyles ?? []),
+      ],
+    );
+    emit(
+      state.copyWith(
+        playerPlayStylesPlus: playStylesPlus,
+        playerPlayStyles: playStyles,
+      ),
+    );
   }
 
   // TODO: Load versions can be optimised.
@@ -126,8 +156,11 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
       case Success(data: final player):
         emit(state.copyWith(player: player));
         add(LoadRoles());
+        add(LoadPlayStyles());
         add(LoadVersions());
-        add(LoadPrice());
+        if (player.hasPrice) {
+          add(LoadPrice());
+        }
       case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);

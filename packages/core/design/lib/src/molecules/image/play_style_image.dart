@@ -1,0 +1,29 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:core_design/src/atoms/app_colors.dart';
+import 'package:core_domain/domain.dart';
+import 'package:flutter/material.dart';
+
+const _apiBasePath = 'https://game-assets.fut.gg/';
+
+class PlayStyleImage extends StatelessWidget {
+  const PlayStyleImage({
+    super.key,
+    required this.playStyle,
+    this.isPlus = false,
+  });
+
+  final PlayStyle playStyle;
+  final bool isPlus;
+
+  @override
+  Widget build(BuildContext context) {
+    return CachedNetworkImage(
+      color: isPlus ? context.colors.gold : context.colors.contentPrimary,
+      width: 24,
+      fit: BoxFit.fitWidth,
+      imageUrl: '$_apiBasePath${playStyle.imagePath}',
+      placeholderFadeInDuration: const Duration(milliseconds: 500),
+      fadeInDuration: const Duration(milliseconds: 500),
+    );
+  }
+}

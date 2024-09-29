@@ -18,14 +18,16 @@ class PriceWidget extends StatelessWidget {
       color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
     );
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           priceItem.label,
           textAlign: TextAlign.start,
-          style: context.typography.caption1.copyWith(
+          style: context.typography.subHead.copyWith(
             color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
           ),
         ),
+        SizedBox(width: AppSpacing.space2),
         Text(
           priceItem.formatter!.format(priceItem.price),
           style: textStyle,

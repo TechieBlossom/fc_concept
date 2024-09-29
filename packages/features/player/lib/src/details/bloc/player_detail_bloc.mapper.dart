@@ -16,6 +16,7 @@ class PlayerDetailEventMapper extends ClassMapperBase<PlayerDetailEvent> {
       InitMapper.ensureInitialized();
       VersionTapMapper.ensureInitialized();
       LoadRolesMapper.ensureInitialized();
+      LoadPlayStylesMapper.ensureInitialized();
       LoadVersionsMapper.ensureInitialized();
       LoadPriceMapper.ensureInitialized();
       CompareTapMapper.ensureInitialized();
@@ -394,6 +395,114 @@ class _LoadRolesCopyWithImpl<$R, $Out>
       _LoadRolesCopyWithImpl($value, $cast, t);
 }
 
+class LoadPlayStylesMapper extends SubClassMapperBase<LoadPlayStyles> {
+  LoadPlayStylesMapper._();
+
+  static LoadPlayStylesMapper? _instance;
+  static LoadPlayStylesMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = LoadPlayStylesMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'LoadPlayStyles';
+
+  @override
+  final MappableFields<LoadPlayStyles> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'loadPlayStyles';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static LoadPlayStyles _instantiate(DecodingData data) {
+    return LoadPlayStyles();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static LoadPlayStyles fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<LoadPlayStyles>(map);
+  }
+
+  static LoadPlayStyles fromJson(String json) {
+    return ensureInitialized().decodeJson<LoadPlayStyles>(json);
+  }
+}
+
+mixin LoadPlayStylesMappable {
+  String toJson() {
+    return LoadPlayStylesMapper.ensureInitialized()
+        .encodeJson<LoadPlayStyles>(this as LoadPlayStyles);
+  }
+
+  Map<String, dynamic> toMap() {
+    return LoadPlayStylesMapper.ensureInitialized()
+        .encodeMap<LoadPlayStyles>(this as LoadPlayStyles);
+  }
+
+  LoadPlayStylesCopyWith<LoadPlayStyles, LoadPlayStyles, LoadPlayStyles>
+      get copyWith => _LoadPlayStylesCopyWithImpl(
+          this as LoadPlayStyles, $identity, $identity);
+  @override
+  String toString() {
+    return LoadPlayStylesMapper.ensureInitialized()
+        .stringifyValue(this as LoadPlayStyles);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return LoadPlayStylesMapper.ensureInitialized()
+        .equalsValue(this as LoadPlayStyles, other);
+  }
+
+  @override
+  int get hashCode {
+    return LoadPlayStylesMapper.ensureInitialized()
+        .hashValue(this as LoadPlayStyles);
+  }
+}
+
+extension LoadPlayStylesValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, LoadPlayStyles, $Out> {
+  LoadPlayStylesCopyWith<$R, LoadPlayStyles, $Out> get $asLoadPlayStyles =>
+      $base.as((v, t, t2) => _LoadPlayStylesCopyWithImpl(v, t, t2));
+}
+
+abstract class LoadPlayStylesCopyWith<$R, $In extends LoadPlayStyles, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  LoadPlayStylesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _LoadPlayStylesCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, LoadPlayStyles, $Out>
+    implements LoadPlayStylesCopyWith<$R, LoadPlayStyles, $Out> {
+  _LoadPlayStylesCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<LoadPlayStyles> $mapper =
+      LoadPlayStylesMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  LoadPlayStyles $make(CopyWithData data) => LoadPlayStyles();
+
+  @override
+  LoadPlayStylesCopyWith<$R2, LoadPlayStyles, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _LoadPlayStylesCopyWithImpl($value, $cast, t);
+}
+
 class LoadVersionsMapper extends SubClassMapperBase<LoadVersions> {
   LoadVersionsMapper._();
 
@@ -718,6 +827,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
       MapperContainer.globals.use(_instance = PlayerDetailStateMapper._());
       PlayerMapper.ensureInitialized();
       RoleMapper.ensureInitialized();
+      PlayStyleMapper.ensureInitialized();
       _t$_R0Mapper.ensureInitialized();
       PlayerPriceMapper.ensureInitialized();
     }
@@ -733,6 +843,10 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static List<Role> _$allRoles(PlayerDetailState v) => v.allRoles;
   static const Field<PlayerDetailState, List<Role>> _f$allRoles =
       Field('allRoles', _$allRoles);
+  static List<PlayStyle> _$allPlayStyles(PlayerDetailState v) =>
+      v.allPlayStyles;
+  static const Field<PlayerDetailState, List<PlayStyle>> _f$allPlayStyles =
+      Field('allPlayStyles', _$allPlayStyles);
   static List<_t$_R0<int, int, String>>? _$playerVersions(
           PlayerDetailState v) =>
       v.playerVersions;
@@ -744,6 +858,15 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static List<Role>? _$playerRoles(PlayerDetailState v) => v.playerRoles;
   static const Field<PlayerDetailState, List<Role>> _f$playerRoles =
       Field('playerRoles', _$playerRoles, opt: true);
+  static List<PlayStyle>? _$playerPlayStyles(PlayerDetailState v) =>
+      v.playerPlayStyles;
+  static const Field<PlayerDetailState, List<PlayStyle>> _f$playerPlayStyles =
+      Field('playerPlayStyles', _$playerPlayStyles, opt: true);
+  static List<PlayStyle>? _$playerPlayStylesPlus(PlayerDetailState v) =>
+      v.playerPlayStylesPlus;
+  static const Field<PlayerDetailState, List<PlayStyle>>
+      _f$playerPlayStylesPlus =
+      Field('playerPlayStylesPlus', _$playerPlayStylesPlus, opt: true);
   static PlayerPrice? _$playerPrice(PlayerDetailState v) => v.playerPrice;
   static const Field<PlayerDetailState, PlayerPrice> _f$playerPrice =
       Field('playerPrice', _$playerPrice, opt: true);
@@ -752,9 +875,12 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   final MappableFields<PlayerDetailState> fields = const {
     #player: _f$player,
     #allRoles: _f$allRoles,
+    #allPlayStyles: _f$allPlayStyles,
     #playerVersions: _f$playerVersions,
     #selectedVersion: _f$selectedVersion,
     #playerRoles: _f$playerRoles,
+    #playerPlayStyles: _f$playerPlayStyles,
+    #playerPlayStylesPlus: _f$playerPlayStylesPlus,
     #playerPrice: _f$playerPrice,
   };
 
@@ -762,9 +888,12 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
     return PlayerDetailState(
         player: data.dec(_f$player),
         allRoles: data.dec(_f$allRoles),
+        allPlayStyles: data.dec(_f$allPlayStyles),
         playerVersions: data.dec(_f$playerVersions),
         selectedVersion: data.dec(_f$selectedVersion),
         playerRoles: data.dec(_f$playerRoles),
+        playerPlayStyles: data.dec(_f$playerPlayStyles),
+        playerPlayStylesPlus: data.dec(_f$playerPlayStylesPlus),
         playerPrice: data.dec(_f$playerPrice));
   }
 
@@ -825,19 +954,28 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
   PlayerCopyWith<$R, Player, Player> get player;
   ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>> get allRoles;
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>
+      get allPlayStyles;
   ListCopyWith<
       $R,
       _t$_R0<int, int, String>,
       ObjectCopyWith<$R, _t$_R0<int, int, String>,
           _t$_R0<int, int, String>>>? get playerVersions;
   ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get playerRoles;
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
+      get playerPlayStyles;
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
+      get playerPlayStylesPlus;
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice;
   $R call(
       {Player? player,
       List<Role>? allRoles,
+      List<PlayStyle>? allPlayStyles,
       List<_t$_R0<int, int, String>>? playerVersions,
       int? selectedVersion,
       List<Role>? playerRoles,
+      List<PlayStyle>? playerPlayStyles,
+      List<PlayStyle>? playerPlayStylesPlus,
       PlayerPrice? playerPrice});
   PlayerDetailStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
@@ -859,6 +997,10 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
       ListCopyWith($value.allRoles, (v, t) => v.copyWith.$chain(t),
           (v) => call(allRoles: v));
   @override
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>
+      get allPlayStyles => ListCopyWith($value.allPlayStyles,
+          (v, t) => v.copyWith.$chain(t), (v) => call(allPlayStyles: v));
+  @override
   ListCopyWith<
       $R,
       _t$_R0<int, int, String>,
@@ -877,31 +1019,57 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
               (v) => call(playerRoles: v))
           : null;
   @override
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
+      get playerPlayStyles => $value.playerPlayStyles != null
+          ? ListCopyWith($value.playerPlayStyles!,
+              (v, t) => v.copyWith.$chain(t), (v) => call(playerPlayStyles: v))
+          : null;
+  @override
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
+      get playerPlayStylesPlus => $value.playerPlayStylesPlus != null
+          ? ListCopyWith(
+              $value.playerPlayStylesPlus!,
+              (v, t) => v.copyWith.$chain(t),
+              (v) => call(playerPlayStylesPlus: v))
+          : null;
+  @override
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice =>
       $value.playerPrice?.copyWith.$chain((v) => call(playerPrice: v));
   @override
   $R call(
           {Player? player,
           List<Role>? allRoles,
+          List<PlayStyle>? allPlayStyles,
           Object? playerVersions = $none,
           Object? selectedVersion = $none,
           Object? playerRoles = $none,
+          Object? playerPlayStyles = $none,
+          Object? playerPlayStylesPlus = $none,
           Object? playerPrice = $none}) =>
       $apply(FieldCopyWithData({
         if (player != null) #player: player,
         if (allRoles != null) #allRoles: allRoles,
+        if (allPlayStyles != null) #allPlayStyles: allPlayStyles,
         if (playerVersions != $none) #playerVersions: playerVersions,
         if (selectedVersion != $none) #selectedVersion: selectedVersion,
         if (playerRoles != $none) #playerRoles: playerRoles,
+        if (playerPlayStyles != $none) #playerPlayStyles: playerPlayStyles,
+        if (playerPlayStylesPlus != $none)
+          #playerPlayStylesPlus: playerPlayStylesPlus,
         if (playerPrice != $none) #playerPrice: playerPrice
       }));
   @override
   PlayerDetailState $make(CopyWithData data) => PlayerDetailState(
       player: data.get(#player, or: $value.player),
       allRoles: data.get(#allRoles, or: $value.allRoles),
+      allPlayStyles: data.get(#allPlayStyles, or: $value.allPlayStyles),
       playerVersions: data.get(#playerVersions, or: $value.playerVersions),
       selectedVersion: data.get(#selectedVersion, or: $value.selectedVersion),
       playerRoles: data.get(#playerRoles, or: $value.playerRoles),
+      playerPlayStyles:
+          data.get(#playerPlayStyles, or: $value.playerPlayStyles),
+      playerPlayStylesPlus:
+          data.get(#playerPlayStylesPlus, or: $value.playerPlayStylesPlus),
       playerPrice: data.get(#playerPrice, or: $value.playerPrice));
 
   @override

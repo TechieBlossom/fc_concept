@@ -46,6 +46,7 @@ _i174.GetIt init(
         gh<_i913.GetPlayerVersionsUseCase>(),
         gh<_i913.GetPlayerByVersionUseCase>(),
         gh<_i913.GetRolesByIdsUseCase>(),
+        gh<_i913.GetPlayStylesByIdsUseCase>(),
         gh<_i913.GetPlayerPriceUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));

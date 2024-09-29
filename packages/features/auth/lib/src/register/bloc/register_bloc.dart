@@ -55,9 +55,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   void _onNameUpdate(
-      NameUpdate event,
-      Emitter<RegisterState> emit,
-      ) {
+    NameUpdate event,
+    Emitter<RegisterState> emit,
+  ) {
     final disableSignInButton = event.name.isEmpty ||
         (state.email?.isEmpty ?? true) ||
         (state.password?.isEmpty ?? true);

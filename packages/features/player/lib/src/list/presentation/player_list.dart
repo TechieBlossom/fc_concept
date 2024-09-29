@@ -56,8 +56,9 @@ class _PlayerListState extends State<PlayerList> {
     switch (widget.processState) {
       case ProcessState.success:
         final playersLength = widget.players?.length ?? 0;
-        final itemCount =
-            widget.isPaginating ? playersLength + _nextPageShimmers : playersLength;
+        final itemCount = widget.isPaginating
+            ? playersLength + _nextPageShimmers
+            : playersLength;
         return ListView.separated(
           controller: _scrollController,
           physics: const BouncingScrollPhysics(),

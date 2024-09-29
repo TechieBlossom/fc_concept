@@ -10,5 +10,4 @@ class GetSessionUseCase {
   final AuthRepository authRepository;
 
   Session? call() => supabase.auth.currentSession;
-
 }

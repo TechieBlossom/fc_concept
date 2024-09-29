@@ -109,7 +109,8 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       final newClubs = List<Club>.empty(growable: true);
       leagues?.forEach((league) {
         newClubs.addAll(
-          state.clubs?.takeWhile((club) => club.leagueEaId == league.eaId) ?? [],
+          state.clubs?.takeWhile((club) => club.leagueEaId == league.eaId) ??
+              [],
         );
       });
       emit(

@@ -26,6 +26,9 @@ class VersionTap extends PlayerDetailEvent with VersionTapMappable {
 @MappableClass(discriminatorValue: 'loadRoles')
 class LoadRoles extends PlayerDetailEvent with LoadRolesMappable {}
 
+@MappableClass(discriminatorValue: 'loadPlayStyles')
+class LoadPlayStyles extends PlayerDetailEvent with LoadPlayStylesMappable {}
+
 @MappableClass(discriminatorValue: 'loadVersions')
 class LoadVersions extends PlayerDetailEvent with LoadVersionsMappable {}
 

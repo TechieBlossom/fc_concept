@@ -316,7 +316,7 @@ class _FaceAttribute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space2),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space1),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -328,10 +328,21 @@ class _FaceAttribute extends StatelessWidget {
               style: context.typography.subHead,
             ),
           ),
-          Text(
-            attributeItem.rating.toString(),
-            style: context.typography.body5.copyWith(
-              color: attributeItem.ratingColor,
+          Container(
+            padding: EdgeInsets.all(AppSpacing.space1),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
+              color: attributeItem.lightRatingColor,
+              border: Border.all(
+                color: attributeItem.ratingColor,
+                width: 1,
+              ),
+            ),
+            child: Text(
+              attributeItem.rating.toString(),
+              style: context.typography.body5.copyWith(
+                color: attributeItem.ratingColor,
+              ),
             ),
           ),
         ],

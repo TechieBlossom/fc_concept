@@ -34,6 +34,9 @@ class _PopularPlayerListPageState extends State<PopularPlayerListPage> {
               onClearTap: () => context.read<PlayerListBloc>().add(
                     Search(query: ''),
                   ),
+              onLeadingTap: () {
+                _scaffoldKey.currentState?.openDrawer();
+              },
             ),
             drawer: AppDrawer(scaffoldKey: _scaffoldKey),
             body: PlayerList(

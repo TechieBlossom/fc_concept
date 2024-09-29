@@ -6,7 +6,6 @@ import 'package:feature_compare/compare.dart';
 import 'package:feature_drawer/drawer.dart';
 import 'package:feature_filter/filter.dart';
 import 'package:feature_player/player.dart';
-import 'package:feature_role/role.dart';
 import 'package:utility_di/di.dart';
 import 'package:utility_navigation/navigation.dart';
 
@@ -18,7 +17,6 @@ Future<void> initializeDi(String environment) async {
         appDi,
         authDi,
         apiClientDi,
-        roleDi,
         domainDi,
         navigationDi,
         drawerDi,

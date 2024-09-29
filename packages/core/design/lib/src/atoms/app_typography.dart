@@ -68,12 +68,12 @@ TextStyle _body5({Color? color}) => digitTextStyle.copyWith(
     );
 
 TextStyle _subHead({Color? color}) => textStyle.copyWith(
-  fontSize: 13,
-  height: 13 / 13,
-  letterSpacing: 0.5,
-  fontWeight: FontWeight.w600,
-  color: color,
-);
+      fontSize: 13,
+      height: 13 / 13,
+      letterSpacing: 0.5,
+      fontWeight: FontWeight.w600,
+      color: color,
+    );
 
 TextStyle _caption1({Color? color}) => textStyle.copyWith(
       fontSize: 12,

@@ -10,7 +10,10 @@ class RoleRepositoryImpl extends RoleRepository {
   @override
   Future<Result<List<Role>>> getAllRoles() async {
     try {
-      final rolesResponse = await supabase.from(TableRole.tableRole).select();
+      final rolesResponse = await supabase
+          .from(TableRole.tableRole)
+          .select()
+          .order(TableRole.eaId, ascending: false);
 
       final roles = mapRoles(rolesResponse);
       return Success(data: roles);

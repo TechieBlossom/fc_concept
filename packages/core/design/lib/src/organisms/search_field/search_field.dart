@@ -7,12 +7,14 @@ class SearchField extends StatefulWidget {
     super.key,
     required this.onSearch,
     required this.onClearTap,
+    required this.onLeadingTap,
     this.isLoading = false,
     this.initialValue = '',
   });
 
   final String initialValue;
   final bool isLoading;
+  final VoidCallback? onLeadingTap;
   final void Function(String) onSearch;
   final VoidCallback onClearTap;
 
@@ -72,6 +74,12 @@ class _SearchFieldState extends State<SearchField> {
                 left: AppSpacing.space4,
               ),
               border: InputBorder.none,
+              prefixIcon: widget.onLeadingTap != null
+                  ? IconButton(
+                      onPressed: widget.onLeadingTap,
+                      icon: Icon(Icons.menu_rounded),
+                    )
+                  : null,
               suffixIcon: AnimatedOpacity(
                 duration: const Duration(milliseconds: 300),
                 opacity: showClearIcon ? 1 : 0,
