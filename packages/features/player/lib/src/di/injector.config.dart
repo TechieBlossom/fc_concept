@@ -35,15 +35,18 @@ _i174.GetIt init(
   gh.lazySingleton<_i445.PlayerRoutesConfig>(() => _i445.PlayerRoutesConfig());
   gh.lazySingleton<_i777.PlayerNavigator>(
       () => _i777.PlayerNavigator(gh<_i177.GoRouter>()));
-  gh.factoryParam<_i1047.PlayerDetailBloc, _i913.Player, dynamic>((
-    player,
+  gh.factoryParam<_i1047.PlayerDetailBloc, _i1047.PlayerDetailBlocParams,
+      dynamic>((
+    params,
     _,
   ) =>
       _i1047.PlayerDetailBloc(
-        player,
+        params,
         gh<_i913.GetPlayerDetailsUseCase>(),
         gh<_i913.GetPlayerVersionsUseCase>(),
         gh<_i913.GetPlayerByVersionUseCase>(),
+        gh<_i913.GetRolesByIdsUseCase>(),
+        gh<_i913.GetPlayerPriceUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));
   gh.factoryParam<_i388.PlayerListBloc, _i388.PlayerListType, dynamic>((

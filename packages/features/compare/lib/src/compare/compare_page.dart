@@ -288,7 +288,7 @@ class PlayerPlaceholder extends StatelessWidget {
             if (versions != null) ...[
               const SizedBox(height: AppSpacing.space3),
               PullDown(
-                key: ValueKey(player?.id),
+                key: ValueKey(player?.eaId),
                 constrainedWidth: 164,
                 heading: selectedVersion!.$2,
                 items: versions!

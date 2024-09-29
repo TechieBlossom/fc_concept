@@ -38,7 +38,8 @@ const _positionTable =
     '${TablePosition.positionTypeId}, ${TablePosition.positionTypeName})';
 
 final _columnsToFetchForList = [
-  TablePlayer.id,
+  TablePlayer.eaId,
+  TablePlayer.basePlayerEaId,
   TablePlayer.commonName,
   TablePlayer.firstName,
   TablePlayer.lastName,
@@ -54,7 +55,7 @@ final _columnsToFetchForList = [
 ].join(',');
 
 final _columnsToFetchForVersions = [
-  TablePlayer.id,
+  TablePlayer.eaId,
   _rarityTable,
 ].join(',');
 
@@ -78,7 +79,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
-        print(players.map((e) => '${e.id} ${e.commonName} ${e.overall}'));
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
       }
       return Success(data: players);
     } catch (e, _) {
@@ -96,7 +97,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
-        print(players.map((e) => '${e.id} ${e.commonName} ${e.overall}'));
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
       }
       return Success(data: players);
     } catch (e, _) {
@@ -208,7 +209,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
-        print(players.map((e) => '${e.id} ${e.commonName} ${e.overall}'));
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
       }
       return Success(data: players);
     } catch (e, _) {
@@ -227,8 +228,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
     try {
       final playerResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select('*, $_rarityTable, $_clubTable, $_leagueTable, $_nationTable, $_positionTable')
-          .eq(TablePlayer.id, playerId)
+          .select('*, $_rarityTable, $_clubTable, $_leagueTable, '
+              '$_nationTable, $_positionTable')
+          .eq(TablePlayer.eaId, playerId)
           .limit(1)
           .single();
 
@@ -249,7 +251,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .from(TablePlayer.tablePlayer)
           .select('*, $_rarityTable')
           .match({
-            TablePlayer.id: playerId,
+            TablePlayer.eaId: playerId,
             TablePlayer.rarity: versionId,
           })
           .limit(1)
@@ -275,7 +277,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
       final playerRarities = versionsResponse
           .map(
             (entry) => (
-              entry[TablePlayer.id] as int,
+              entry[TablePlayer.eaId] as int,
               (entry[TableRarity.tableRarity]
                   as Map<String, dynamic>)[TableRarity.eaId] as int,
               (entry[TableRarity.tableRarity]

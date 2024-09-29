@@ -15,7 +15,8 @@ part 'player.mapper.dart';
 @MappableClass()
 class Player with PlayerMappable {
   const Player({
-    required this.id,
+    required this.eaId,
+    required this.basePlayerEaId,
     this.commonName,
     this.firstName,
     this.lastName,
@@ -34,6 +35,7 @@ class Player with PlayerMappable {
     this.foot,
     this.gender,
     this.rolesPlus,
+    this.rolesPlusPlus,
     this.facePace,
     this.faceShooting,
     this.facePassing,
@@ -83,7 +85,8 @@ class Player with PlayerMappable {
     this.hasPrice = false,
   });
 
-  final int id;
+  final int eaId;
+  final int basePlayerEaId;
   final String? commonName;
   final String? firstName;
   final String? lastName;
@@ -102,6 +105,7 @@ class Player with PlayerMappable {
   @MappableField(key: TablePosition.tablePosition)
   final Position? position;
   final List<int>? rolesPlus;
+  final List<int>? rolesPlusPlus;
   final int? skillMoves;
   final int? weakFoot;
   final int? foot;

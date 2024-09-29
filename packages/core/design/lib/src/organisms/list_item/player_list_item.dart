@@ -52,7 +52,7 @@ class _PlayerListItemState extends State<PlayerListItem>
         ),
         child: Slidable(
           controller: _controller,
-          key: LabeledGlobalKey(player.id.toString()),
+          key: LabeledGlobalKey(player.eaId.toString()),
           endActionPane: (widget.onFavoriteToggle != null)
               ? ActionPane(
                   dismissible: widget.isFavorite

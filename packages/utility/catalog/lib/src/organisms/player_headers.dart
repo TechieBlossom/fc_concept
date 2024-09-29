@@ -11,17 +11,19 @@ class PlayerHeaders extends StatelessWidget {
       appBar: const PageTitle(title: 'Player Header'),
       body: PlayerHeader(
         player: const Player(
-          id: 158023,
+          eaId: 158023,
+          basePlayerEaId: 158023,
           commonName: 'Lionel Messi',
-          imagePath: '2025/player-item/25-277643.4fff4733fda8f20c8b0ac109322e43b6056ea634e249826ced756e398346e8bc.webp',
+          imagePath:
+              '2025/player-item/25-277643.4fff4733fda8f20c8b0ac109322e43b6056ea634e249826ced756e398346e8bc.webp',
           rarity: Rarity(
             eaId: 12,
             name: 'Icon',
             dominantColor: 'dbdbdb',
             imagePath:
-            '2025/rarities-level-0-large/12.1a05046655dc9b106809c4f788f3b1ab9bdb065c05d2d7e1fb7cf6a0031e990b.png',
+                '2025/rarities-level-0-large/12.1a05046655dc9b106809c4f788f3b1ab9bdb065c05d2d7e1fb7cf6a0031e990b.png',
             compactImagePath:
-            '2025/rarities-level-0-small/12.5518fe64a8844e57884532987ec94e29143ea1b164cedcd3bed75cf01b8504a6.png',
+                '2025/rarities-level-0-small/12.5518fe64a8844e57884532987ec94e29143ea1b164cedcd3bed75cf01b8504a6.png',
             isSpecial: true,
             isBrightColorScheme: false,
             textColor: ["594d2c", "594d2c", "594d2c"],
@@ -39,6 +41,7 @@ class PlayerHeaders extends StatelessWidget {
         playerVersions: null,
         onVersionTap: (_, __) {},
         selectedVersion: null,
+        playerPrice: null,
       ),
     );
   }

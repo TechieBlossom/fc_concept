@@ -16,15 +16,16 @@ class $AssetsImagesGen {
   AssetGenImage get appLogo =>
       const AssetGenImage('assets/images/app_logo.png');
 
+  /// File path: assets/images/fut_coin.webp
+  AssetGenImage get futCoin =>
+      const AssetGenImage('assets/images/fut_coin.webp');
+
   /// File path: assets/images/login_bg.png
   AssetGenImage get loginBg =>
       const AssetGenImage('assets/images/login_bg.png');
 
-  /// File path: assets/images/messi.png
-  AssetGenImage get messi => const AssetGenImage('assets/images/messi.png');
-
   /// List of all assets
-  List<AssetGenImage> get values => [appLogo, loginBg, messi];
+  List<AssetGenImage> get values => [appLogo, futCoin, loginBg];
 }
 
 class AppAssets {

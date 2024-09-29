@@ -8,27 +8,8 @@ abstract class DioModule {
   @lazySingleton
   Dio get dio => Dio(
         BaseOptions(
-          baseUrl: 'https://futdb.app',
+          baseUrl: 'https://www.fut.gg/api',
           contentType: Headers.jsonContentType,
         ),
-      )..interceptors.addAll(
-          [
-            di<ApiKeyInterceptor>(),
-            LogInterceptor(),
-          ],
-        );
-
-  @Named('dioForImage')
-  @lazySingleton
-  Dio get dioForImage => Dio(
-        BaseOptions(
-          baseUrl: 'https://futdb.app',
-          contentType: 'image/png',
-        ),
-      )..interceptors.addAll(
-          [
-            di<ApiKeyInterceptor>(),
-            LogInterceptor(),
-          ],
-        );
+      )..interceptors.addAll([LogInterceptor()]);
 }

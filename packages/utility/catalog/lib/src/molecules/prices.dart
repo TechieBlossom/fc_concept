@@ -16,19 +16,18 @@ class Prices extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: AppSpacing.space5),
-            Price(
+            PriceWidget(
               priceItem: PriceItem(
                 label: 'Last: ',
-                price: '10000000',
-                icon: Icons.animation_rounded,
+                price: 10000000,
                 formatter: currencyFormatter,
               ),
             ),
             const SizedBox(height: AppSpacing.space5),
-            const Price(
+            const PriceWidget(
               priceItem: PriceItem(
-                label: 'PRP:',
-                price: '50%',
+                label: 'Discard:',
+                price: 10000,
               ),
             ),
           ],

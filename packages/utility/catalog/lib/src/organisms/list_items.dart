@@ -136,7 +136,8 @@ class ListItems extends StatelessWidget {
           const SizedBox(height: AppSpacing.space5),
           PlayerListItem(
             player: const Player(
-              id: 158023,
+              eaId: 158023,
+              basePlayerEaId: 158023,
               commonName: 'Lionel Messi',
               imagePath:
                   '2025/player-item/25-277643.4fff4733fda8f20c8b0ac109322e43b6056ea634e249826ced756e398346e8bc.webp',
@@ -162,7 +163,8 @@ class ListItems extends StatelessWidget {
           const SizedBox(height: AppSpacing.space5),
           PlayerListItem(
             player: const Player(
-              id: 158023,
+              eaId: 158023,
+              basePlayerEaId: 158023,
               commonName: 'Lionel Messi',
               imagePath:
                   '2025/player-item/25-277643.4fff4733fda8f20c8b0ac109322e43b6056ea634e249826ced756e398346e8bc.webp',

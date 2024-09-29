@@ -57,13 +57,12 @@ class Cards extends StatelessWidget {
             priceItems: [
               PriceItem(
                 label: 'Last: ',
-                price: '10000000',
-                icon: Icons.animation_rounded,
+                price: 10000000,
                 formatter: currencyFormatter,
               ),
               const PriceItem(
-                label: 'PRP:',
-                price: '50%',
+                label: 'Discard:',
+                price: 101020,
               ),
             ],
           ),

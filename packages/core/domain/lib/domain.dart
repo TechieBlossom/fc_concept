@@ -23,9 +23,14 @@ export 'package:core_domain/src/domain/players/use_case/get_popular_players_use_
 export 'package:core_domain/src/domain/players/use_case/get_top_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart';
 export 'package:core_domain/src/domain/positions/model/position.dart';
+export 'package:core_domain/src/domain/price/model/player_price.dart';
+export 'package:core_domain/src/domain/price/use_case/get_player_price_use_case.dart';
 export 'package:core_domain/src/domain/rarity/model/rarity.dart';
 export 'package:core_domain/src/domain/rarity/model/rarity_colors_map.dart';
 export 'package:core_domain/src/domain/rarity/use_case/get_all_rarities.dart';
+export 'package:core_domain/src/domain/roles/model/role.dart';
+export 'package:core_domain/src/domain/roles/use_case/get_all_roles_use_case.dart';
+export 'package:core_domain/src/domain/roles/use_case/get_roles_by_ids_use_case.dart';
 export 'package:core_domain/src/presentation/domain_colors.dart';
 export 'package:core_domain/src/presentation/process_state.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';

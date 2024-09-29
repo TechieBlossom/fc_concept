@@ -602,6 +602,7 @@ class PlayerListStateMapper extends ClassMapperBase<PlayerListState> {
   static PlayerListStateMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PlayerListStateMapper._());
+      ProcessStateMapper.ensureInitialized();
       PlayerMapper.ensureInitialized();
       FilterConfigurationMapper.ensureInitialized();
     }

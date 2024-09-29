@@ -25,8 +25,11 @@ class PlayerMapper extends ClassMapperBase<Player> {
   @override
   final String id = 'Player';
 
-  static int _$id(Player v) => v.id;
-  static const Field<Player, int> _f$id = Field('id', _$id);
+  static int _$eaId(Player v) => v.eaId;
+  static const Field<Player, int> _f$eaId = Field('eaId', _$eaId);
+  static int _$basePlayerEaId(Player v) => v.basePlayerEaId;
+  static const Field<Player, int> _f$basePlayerEaId =
+      Field('basePlayerEaId', _$basePlayerEaId);
   static String? _$commonName(Player v) => v.commonName;
   static const Field<Player, String> _f$commonName =
       Field('commonName', _$commonName, opt: true);
@@ -79,6 +82,9 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static List<int>? _$rolesPlus(Player v) => v.rolesPlus;
   static const Field<Player, List<int>> _f$rolesPlus =
       Field('rolesPlus', _$rolesPlus, opt: true);
+  static List<int>? _$rolesPlusPlus(Player v) => v.rolesPlusPlus;
+  static const Field<Player, List<int>> _f$rolesPlusPlus =
+      Field('rolesPlusPlus', _$rolesPlusPlus, opt: true);
   static int? _$facePace(Player v) => v.facePace;
   static const Field<Player, int> _f$facePace =
       Field('facePace', _$facePace, opt: true);
@@ -226,7 +232,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
 
   @override
   final MappableFields<Player> fields = const {
-    #id: _f$id,
+    #eaId: _f$eaId,
+    #basePlayerEaId: _f$basePlayerEaId,
     #commonName: _f$commonName,
     #firstName: _f$firstName,
     #lastName: _f$lastName,
@@ -245,6 +252,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #foot: _f$foot,
     #gender: _f$gender,
     #rolesPlus: _f$rolesPlus,
+    #rolesPlusPlus: _f$rolesPlusPlus,
     #facePace: _f$facePace,
     #faceShooting: _f$faceShooting,
     #facePassing: _f$facePassing,
@@ -296,7 +304,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
 
   static Player _instantiate(DecodingData data) {
     return Player(
-        id: data.dec(_f$id),
+        eaId: data.dec(_f$eaId),
+        basePlayerEaId: data.dec(_f$basePlayerEaId),
         commonName: data.dec(_f$commonName),
         firstName: data.dec(_f$firstName),
         lastName: data.dec(_f$lastName),
@@ -315,6 +324,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
         foot: data.dec(_f$foot),
         gender: data.dec(_f$gender),
         rolesPlus: data.dec(_f$rolesPlus),
+        rolesPlusPlus: data.dec(_f$rolesPlusPlus),
         facePace: data.dec(_f$facePace),
         faceShooting: data.dec(_f$faceShooting),
         facePassing: data.dec(_f$facePassing),
@@ -416,8 +426,10 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
   LeagueCopyWith<$R, League, League>? get league;
   PositionCopyWith<$R, Position, Position>? get position;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlus;
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlusPlus;
   $R call(
-      {int? id,
+      {int? eaId,
+      int? basePlayerEaId,
       String? commonName,
       String? firstName,
       String? lastName,
@@ -436,6 +448,7 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       int? foot,
       int? gender,
       List<int>? rolesPlus,
+      List<int>? rolesPlusPlus,
       int? facePace,
       int? faceShooting,
       int? facePassing,
@@ -516,8 +529,17 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
               (v) => call(rolesPlus: v))
           : null;
   @override
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlusPlus =>
+      $value.rolesPlusPlus != null
+          ? ListCopyWith(
+              $value.rolesPlusPlus!,
+              (v, t) => ObjectCopyWith(v, $identity, t),
+              (v) => call(rolesPlusPlus: v))
+          : null;
+  @override
   $R call(
-          {int? id,
+          {int? eaId,
+          int? basePlayerEaId,
           Object? commonName = $none,
           Object? firstName = $none,
           Object? lastName = $none,
@@ -536,6 +558,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? foot = $none,
           Object? gender = $none,
           Object? rolesPlus = $none,
+          Object? rolesPlusPlus = $none,
           Object? facePace = $none,
           Object? faceShooting = $none,
           Object? facePassing = $none,
@@ -584,7 +607,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? attributeGkPositioning = $none,
           bool? hasPrice}) =>
       $apply(FieldCopyWithData({
-        if (id != null) #id: id,
+        if (eaId != null) #eaId: eaId,
+        if (basePlayerEaId != null) #basePlayerEaId: basePlayerEaId,
         if (commonName != $none) #commonName: commonName,
         if (firstName != $none) #firstName: firstName,
         if (lastName != $none) #lastName: lastName,
@@ -603,6 +627,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (foot != $none) #foot: foot,
         if (gender != $none) #gender: gender,
         if (rolesPlus != $none) #rolesPlus: rolesPlus,
+        if (rolesPlusPlus != $none) #rolesPlusPlus: rolesPlusPlus,
         if (facePace != $none) #facePace: facePace,
         if (faceShooting != $none) #faceShooting: faceShooting,
         if (facePassing != $none) #facePassing: facePassing,
@@ -677,7 +702,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       }));
   @override
   Player $make(CopyWithData data) => Player(
-      id: data.get(#id, or: $value.id),
+      eaId: data.get(#eaId, or: $value.eaId),
+      basePlayerEaId: data.get(#basePlayerEaId, or: $value.basePlayerEaId),
       commonName: data.get(#commonName, or: $value.commonName),
       firstName: data.get(#firstName, or: $value.firstName),
       lastName: data.get(#lastName, or: $value.lastName),
@@ -696,6 +722,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       foot: data.get(#foot, or: $value.foot),
       gender: data.get(#gender, or: $value.gender),
       rolesPlus: data.get(#rolesPlus, or: $value.rolesPlus),
+      rolesPlusPlus: data.get(#rolesPlusPlus, or: $value.rolesPlusPlus),
       facePace: data.get(#facePace, or: $value.facePace),
       faceShooting: data.get(#faceShooting, or: $value.faceShooting),
       facePassing: data.get(#facePassing, or: $value.facePassing),

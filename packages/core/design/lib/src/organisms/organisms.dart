@@ -17,4 +17,5 @@ export 'package:core_design/src/organisms/logo_label/logo_label.dart';
 export 'package:core_design/src/organisms/page_title/page_title.dart';
 export 'package:core_design/src/organisms/player_header/player_header.dart';
 export 'package:core_design/src/organisms/pull_down/pull_down.dart';
+export 'package:core_design/src/organisms/role_layout/role_layout.dart';
 export 'package:core_design/src/organisms/search_field/search_container.dart';

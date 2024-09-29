@@ -21,6 +21,7 @@ class PriceCard extends StatelessWidget {
         // 12 as the ornament height is 24 for compact, so half will be outside
         IntrinsicWidth(
           child: Container(
+            height: 104,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
               color: Color(bg).withOpacity(0.7),
@@ -31,7 +32,7 @@ class PriceCard extends StatelessWidget {
             padding: const EdgeInsets.only(
               left: AppSpacing.space4,
               right: AppSpacing.space4,
-              top: AppSpacing.space5,
+              top: AppSpacing.space6,
               bottom: AppSpacing.space3,
             ),
             child: Column(
@@ -39,9 +40,9 @@ class PriceCard extends StatelessWidget {
                   .map(
                     (priceItem) => Padding(
                       padding: const EdgeInsets.only(
-                        bottom: AppSpacing.space1,
+                        bottom: AppSpacing.space2,
                       ),
-                      child: Price(
+                      child: PriceWidget(
                         priceItem: priceItem,
                         color: Color(fg),
                       ),

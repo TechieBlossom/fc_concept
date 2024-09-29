@@ -1,6 +1,8 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/organisms/attributes_layout/attributes_layout.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:intersperse/intersperse.dart';
 
 class PlayerHeader extends StatelessWidget {
   const PlayerHeader({
@@ -9,20 +11,22 @@ class PlayerHeader extends StatelessWidget {
     required this.playerVersions,
     required this.selectedVersion,
     required this.onVersionTap,
+    required this.playerPrice,
   });
 
   final Player player;
   final List<(int, int, String)>? playerVersions;
   final int? selectedVersion;
   final void Function(int, int) onVersionTap;
+  final PlayerPrice? playerPrice;
 
   @override
   Widget build(BuildContext context) {
     final colors = getPlayerColors(context, player);
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: 280,
-        maxHeight: 380,
+        minHeight: 230,
+        maxHeight: 330,
       ),
       child: Stack(
         children: [
@@ -109,35 +113,33 @@ class PlayerHeader extends StatelessWidget {
                     vertical: AppSpacing.space3,
                   ),
                   child: _AnimatedOpacity(
-                    isShown: true,
-                    child: PriceCard(
+                    isShown: playerPrice != null,
+                    child: (playerPrice != null) ? PriceCard(
                       bg: colors.$1,
                       fg: colors.$2,
                       priceItems: [
                         PriceItem(
-                          label: 'Last: ',
-                          price: '10000000',
-                          icon: Icons.animation_rounded,
+                          label: 'Current: ',
+                          price: playerPrice!.currentPrice.price,
                           formatter: currencyFormatter,
                         ),
                         PriceItem(
-                          label: 'Min: ',
-                          price: '9000000',
-                          icon: Icons.animation_rounded,
+                          label: 'Lowest: ',
+                          price: playerPrice!.momentum.lowestBin,
                           formatter: currencyFormatter,
                         ),
                         PriceItem(
-                          label: 'Max: ',
-                          price: '12000000',
-                          icon: Icons.animation_rounded,
+                          label: 'Highest: ',
+                          price: playerPrice!.momentum.highestBin,
                           formatter: currencyFormatter,
                         ),
-                        const PriceItem(
-                          label: 'PRP:',
-                          price: '50%',
+                        PriceItem(
+                          label: 'Discard: ',
+                          price: playerPrice!.overview.discardValue,
+                          formatter: currencyFormatter,
                         ),
                       ],
-                    ),
+                    ) : const SizedBox(height: 116),
                   ),
                 ),
                 _AnimatedOpacity(
@@ -167,23 +169,23 @@ class PlayerHeader extends StatelessWidget {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.center,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 48,
-                      maxHeight: 48,
-                    ),
-                    child: _AnimatedOpacity(
-                      isShown: playerVersions != null,
-                      child: Versions(
-                        ids: playerVersions,
-                        selectedVersion: selectedVersion,
-                        onItemTap: onVersionTap,
-                      ),
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.center,
+                //   child: ConstrainedBox(
+                //     constraints: BoxConstraints(
+                //       minHeight: 48,
+                //       maxHeight: 48,
+                //     ),
+                //     child: _AnimatedOpacity(
+                //       isShown: playerVersions != null,
+                //       child: Versions(
+                //         ids: playerVersions,
+                //         selectedVersion: selectedVersion,
+                //         onItemTap: onVersionTap,
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

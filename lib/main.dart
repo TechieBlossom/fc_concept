@@ -2,6 +2,7 @@ import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:fc_concept/di/injector.dart';
 import 'package:feature_auth/auth.dart';
+import 'package:feature_role/role.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
 import 'package:utility_navigation/navigation.dart';
@@ -32,6 +33,16 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.themeData(context, Brightness.light),
             darkTheme: AppTheme.themeData(context, Brightness.dark),
             routerConfig: di<GoRouter>(),
+            builder: (context, child) {
+              return BlocProvider<RolesBloc>(
+                create: (_) => di<RolesBloc>(),
+                child: BlocBuilder<RolesBloc, RolesState>(
+                  builder: (context, state) {
+                    return child!;
+                  },
+                ),
+              );
+            },
           );
         },
       ),

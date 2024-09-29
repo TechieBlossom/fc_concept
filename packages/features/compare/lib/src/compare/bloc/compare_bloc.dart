@@ -53,7 +53,7 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
       } else if (index == 1) {
         emit(state.copyWith(player2: player));
       }
-      final playerResult = await _getPlayerDetailsUseCase(playerId: player.id);
+      final playerResult = await _getPlayerDetailsUseCase(playerId: player.eaId);
       _handlePlayerDetailsResult(index, playerResult, null, null, emit);
     }
 

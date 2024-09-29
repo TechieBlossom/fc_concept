@@ -23,5 +23,14 @@ class VersionTap extends PlayerDetailEvent with VersionTapMappable {
   final int versionId;
 }
 
+@MappableClass(discriminatorValue: 'loadRoles')
+class LoadRoles extends PlayerDetailEvent with LoadRolesMappable {}
+
+@MappableClass(discriminatorValue: 'loadVersions')
+class LoadVersions extends PlayerDetailEvent with LoadVersionsMappable {}
+
+@MappableClass(discriminatorValue: 'loadPrice')
+class LoadPrice extends PlayerDetailEvent with LoadPriceMappable {}
+
 @MappableClass(discriminatorValue: 'compareTap')
 class CompareTap extends PlayerDetailEvent with CompareTapMappable {}

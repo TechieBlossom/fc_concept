@@ -15,6 +15,9 @@ class PlayerDetailEventMapper extends ClassMapperBase<PlayerDetailEvent> {
       MapperContainer.globals.use(_instance = PlayerDetailEventMapper._());
       InitMapper.ensureInitialized();
       VersionTapMapper.ensureInitialized();
+      LoadRolesMapper.ensureInitialized();
+      LoadVersionsMapper.ensureInitialized();
+      LoadPriceMapper.ensureInitialized();
       CompareTapMapper.ensureInitialized();
     }
     return _instance!;
@@ -287,6 +290,320 @@ class _VersionTapCopyWithImpl<$R, $Out>
       _VersionTapCopyWithImpl($value, $cast, t);
 }
 
+class LoadRolesMapper extends SubClassMapperBase<LoadRoles> {
+  LoadRolesMapper._();
+
+  static LoadRolesMapper? _instance;
+  static LoadRolesMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = LoadRolesMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'LoadRoles';
+
+  @override
+  final MappableFields<LoadRoles> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'loadRoles';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static LoadRoles _instantiate(DecodingData data) {
+    return LoadRoles();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static LoadRoles fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<LoadRoles>(map);
+  }
+
+  static LoadRoles fromJson(String json) {
+    return ensureInitialized().decodeJson<LoadRoles>(json);
+  }
+}
+
+mixin LoadRolesMappable {
+  String toJson() {
+    return LoadRolesMapper.ensureInitialized()
+        .encodeJson<LoadRoles>(this as LoadRoles);
+  }
+
+  Map<String, dynamic> toMap() {
+    return LoadRolesMapper.ensureInitialized()
+        .encodeMap<LoadRoles>(this as LoadRoles);
+  }
+
+  LoadRolesCopyWith<LoadRoles, LoadRoles, LoadRoles> get copyWith =>
+      _LoadRolesCopyWithImpl(this as LoadRoles, $identity, $identity);
+  @override
+  String toString() {
+    return LoadRolesMapper.ensureInitialized()
+        .stringifyValue(this as LoadRoles);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return LoadRolesMapper.ensureInitialized()
+        .equalsValue(this as LoadRoles, other);
+  }
+
+  @override
+  int get hashCode {
+    return LoadRolesMapper.ensureInitialized().hashValue(this as LoadRoles);
+  }
+}
+
+extension LoadRolesValueCopy<$R, $Out> on ObjectCopyWith<$R, LoadRoles, $Out> {
+  LoadRolesCopyWith<$R, LoadRoles, $Out> get $asLoadRoles =>
+      $base.as((v, t, t2) => _LoadRolesCopyWithImpl(v, t, t2));
+}
+
+abstract class LoadRolesCopyWith<$R, $In extends LoadRoles, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  LoadRolesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _LoadRolesCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, LoadRoles, $Out>
+    implements LoadRolesCopyWith<$R, LoadRoles, $Out> {
+  _LoadRolesCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<LoadRoles> $mapper =
+      LoadRolesMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  LoadRoles $make(CopyWithData data) => LoadRoles();
+
+  @override
+  LoadRolesCopyWith<$R2, LoadRoles, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _LoadRolesCopyWithImpl($value, $cast, t);
+}
+
+class LoadVersionsMapper extends SubClassMapperBase<LoadVersions> {
+  LoadVersionsMapper._();
+
+  static LoadVersionsMapper? _instance;
+  static LoadVersionsMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = LoadVersionsMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'LoadVersions';
+
+  @override
+  final MappableFields<LoadVersions> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'loadVersions';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static LoadVersions _instantiate(DecodingData data) {
+    return LoadVersions();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static LoadVersions fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<LoadVersions>(map);
+  }
+
+  static LoadVersions fromJson(String json) {
+    return ensureInitialized().decodeJson<LoadVersions>(json);
+  }
+}
+
+mixin LoadVersionsMappable {
+  String toJson() {
+    return LoadVersionsMapper.ensureInitialized()
+        .encodeJson<LoadVersions>(this as LoadVersions);
+  }
+
+  Map<String, dynamic> toMap() {
+    return LoadVersionsMapper.ensureInitialized()
+        .encodeMap<LoadVersions>(this as LoadVersions);
+  }
+
+  LoadVersionsCopyWith<LoadVersions, LoadVersions, LoadVersions> get copyWith =>
+      _LoadVersionsCopyWithImpl(this as LoadVersions, $identity, $identity);
+  @override
+  String toString() {
+    return LoadVersionsMapper.ensureInitialized()
+        .stringifyValue(this as LoadVersions);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return LoadVersionsMapper.ensureInitialized()
+        .equalsValue(this as LoadVersions, other);
+  }
+
+  @override
+  int get hashCode {
+    return LoadVersionsMapper.ensureInitialized()
+        .hashValue(this as LoadVersions);
+  }
+}
+
+extension LoadVersionsValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, LoadVersions, $Out> {
+  LoadVersionsCopyWith<$R, LoadVersions, $Out> get $asLoadVersions =>
+      $base.as((v, t, t2) => _LoadVersionsCopyWithImpl(v, t, t2));
+}
+
+abstract class LoadVersionsCopyWith<$R, $In extends LoadVersions, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  LoadVersionsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _LoadVersionsCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, LoadVersions, $Out>
+    implements LoadVersionsCopyWith<$R, LoadVersions, $Out> {
+  _LoadVersionsCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<LoadVersions> $mapper =
+      LoadVersionsMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  LoadVersions $make(CopyWithData data) => LoadVersions();
+
+  @override
+  LoadVersionsCopyWith<$R2, LoadVersions, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _LoadVersionsCopyWithImpl($value, $cast, t);
+}
+
+class LoadPriceMapper extends SubClassMapperBase<LoadPrice> {
+  LoadPriceMapper._();
+
+  static LoadPriceMapper? _instance;
+  static LoadPriceMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = LoadPriceMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'LoadPrice';
+
+  @override
+  final MappableFields<LoadPrice> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'loadPrice';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static LoadPrice _instantiate(DecodingData data) {
+    return LoadPrice();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static LoadPrice fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<LoadPrice>(map);
+  }
+
+  static LoadPrice fromJson(String json) {
+    return ensureInitialized().decodeJson<LoadPrice>(json);
+  }
+}
+
+mixin LoadPriceMappable {
+  String toJson() {
+    return LoadPriceMapper.ensureInitialized()
+        .encodeJson<LoadPrice>(this as LoadPrice);
+  }
+
+  Map<String, dynamic> toMap() {
+    return LoadPriceMapper.ensureInitialized()
+        .encodeMap<LoadPrice>(this as LoadPrice);
+  }
+
+  LoadPriceCopyWith<LoadPrice, LoadPrice, LoadPrice> get copyWith =>
+      _LoadPriceCopyWithImpl(this as LoadPrice, $identity, $identity);
+  @override
+  String toString() {
+    return LoadPriceMapper.ensureInitialized()
+        .stringifyValue(this as LoadPrice);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return LoadPriceMapper.ensureInitialized()
+        .equalsValue(this as LoadPrice, other);
+  }
+
+  @override
+  int get hashCode {
+    return LoadPriceMapper.ensureInitialized().hashValue(this as LoadPrice);
+  }
+}
+
+extension LoadPriceValueCopy<$R, $Out> on ObjectCopyWith<$R, LoadPrice, $Out> {
+  LoadPriceCopyWith<$R, LoadPrice, $Out> get $asLoadPrice =>
+      $base.as((v, t, t2) => _LoadPriceCopyWithImpl(v, t, t2));
+}
+
+abstract class LoadPriceCopyWith<$R, $In extends LoadPrice, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  LoadPriceCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _LoadPriceCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, LoadPrice, $Out>
+    implements LoadPriceCopyWith<$R, LoadPrice, $Out> {
+  _LoadPriceCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<LoadPrice> $mapper =
+      LoadPriceMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  LoadPrice $make(CopyWithData data) => LoadPrice();
+
+  @override
+  LoadPriceCopyWith<$R2, LoadPrice, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _LoadPriceCopyWithImpl($value, $cast, t);
+}
+
 class CompareTapMapper extends SubClassMapperBase<CompareTap> {
   CompareTapMapper._();
 
@@ -400,7 +717,9 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PlayerDetailStateMapper._());
       PlayerMapper.ensureInitialized();
+      RoleMapper.ensureInitialized();
       _t$_R0Mapper.ensureInitialized();
+      PlayerPriceMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -411,6 +730,9 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static Player _$player(PlayerDetailState v) => v.player;
   static const Field<PlayerDetailState, Player> _f$player =
       Field('player', _$player);
+  static List<Role> _$allRoles(PlayerDetailState v) => v.allRoles;
+  static const Field<PlayerDetailState, List<Role>> _f$allRoles =
+      Field('allRoles', _$allRoles);
   static List<_t$_R0<int, int, String>>? _$playerVersions(
           PlayerDetailState v) =>
       v.playerVersions;
@@ -419,19 +741,31 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static int? _$selectedVersion(PlayerDetailState v) => v.selectedVersion;
   static const Field<PlayerDetailState, int> _f$selectedVersion =
       Field('selectedVersion', _$selectedVersion, opt: true);
+  static List<Role>? _$playerRoles(PlayerDetailState v) => v.playerRoles;
+  static const Field<PlayerDetailState, List<Role>> _f$playerRoles =
+      Field('playerRoles', _$playerRoles, opt: true);
+  static PlayerPrice? _$playerPrice(PlayerDetailState v) => v.playerPrice;
+  static const Field<PlayerDetailState, PlayerPrice> _f$playerPrice =
+      Field('playerPrice', _$playerPrice, opt: true);
 
   @override
   final MappableFields<PlayerDetailState> fields = const {
     #player: _f$player,
+    #allRoles: _f$allRoles,
     #playerVersions: _f$playerVersions,
     #selectedVersion: _f$selectedVersion,
+    #playerRoles: _f$playerRoles,
+    #playerPrice: _f$playerPrice,
   };
 
   static PlayerDetailState _instantiate(DecodingData data) {
     return PlayerDetailState(
         player: data.dec(_f$player),
+        allRoles: data.dec(_f$allRoles),
         playerVersions: data.dec(_f$playerVersions),
-        selectedVersion: data.dec(_f$selectedVersion));
+        selectedVersion: data.dec(_f$selectedVersion),
+        playerRoles: data.dec(_f$playerRoles),
+        playerPrice: data.dec(_f$playerPrice));
   }
 
   @override
@@ -490,15 +824,21 @@ extension PlayerDetailStateValueCopy<$R, $Out>
 abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
   PlayerCopyWith<$R, Player, Player> get player;
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>> get allRoles;
   ListCopyWith<
       $R,
       _t$_R0<int, int, String>,
       ObjectCopyWith<$R, _t$_R0<int, int, String>,
           _t$_R0<int, int, String>>>? get playerVersions;
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get playerRoles;
+  PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice;
   $R call(
       {Player? player,
+      List<Role>? allRoles,
       List<_t$_R0<int, int, String>>? playerVersions,
-      int? selectedVersion});
+      int? selectedVersion,
+      List<Role>? playerRoles,
+      PlayerPrice? playerPrice});
   PlayerDetailStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -515,6 +855,10 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   PlayerCopyWith<$R, Player, Player> get player =>
       $value.player.copyWith.$chain((v) => call(player: v));
   @override
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>> get allRoles =>
+      ListCopyWith($value.allRoles, (v, t) => v.copyWith.$chain(t),
+          (v) => call(allRoles: v));
+  @override
   ListCopyWith<
       $R,
       _t$_R0<int, int, String>,
@@ -527,20 +871,38 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
               (v) => call(playerVersions: v))
           : null;
   @override
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get playerRoles =>
+      $value.playerRoles != null
+          ? ListCopyWith($value.playerRoles!, (v, t) => v.copyWith.$chain(t),
+              (v) => call(playerRoles: v))
+          : null;
+  @override
+  PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice =>
+      $value.playerPrice?.copyWith.$chain((v) => call(playerPrice: v));
+  @override
   $R call(
           {Player? player,
+          List<Role>? allRoles,
           Object? playerVersions = $none,
-          Object? selectedVersion = $none}) =>
+          Object? selectedVersion = $none,
+          Object? playerRoles = $none,
+          Object? playerPrice = $none}) =>
       $apply(FieldCopyWithData({
         if (player != null) #player: player,
+        if (allRoles != null) #allRoles: allRoles,
         if (playerVersions != $none) #playerVersions: playerVersions,
-        if (selectedVersion != $none) #selectedVersion: selectedVersion
+        if (selectedVersion != $none) #selectedVersion: selectedVersion,
+        if (playerRoles != $none) #playerRoles: playerRoles,
+        if (playerPrice != $none) #playerPrice: playerPrice
       }));
   @override
   PlayerDetailState $make(CopyWithData data) => PlayerDetailState(
       player: data.get(#player, or: $value.player),
+      allRoles: data.get(#allRoles, or: $value.allRoles),
       playerVersions: data.get(#playerVersions, or: $value.playerVersions),
-      selectedVersion: data.get(#selectedVersion, or: $value.selectedVersion));
+      selectedVersion: data.get(#selectedVersion, or: $value.selectedVersion),
+      playerRoles: data.get(#playerRoles, or: $value.playerRoles),
+      playerPrice: data.get(#playerPrice, or: $value.playerPrice));
 
   @override
   PlayerDetailStateCopyWith<$R2, PlayerDetailState, $Out2> $chain<$R2, $Out2>(

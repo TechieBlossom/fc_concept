@@ -2,8 +2,8 @@ import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/price/price_item.dart';
 import 'package:flutter/material.dart';
 
-class Price extends StatelessWidget {
-  const Price({
+class PriceWidget extends StatelessWidget {
+  const PriceWidget({
     super.key,
     required this.priceItem,
     this.color,
@@ -11,14 +11,6 @@ class Price extends StatelessWidget {
 
   final PriceItem priceItem;
   final Color? color;
-
-  String _printable(String text) {
-    if (priceItem.formatter != null) {
-      return priceItem.formatter!.format(double.parse(text));
-    }
-
-    return text;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +22,19 @@ class Price extends StatelessWidget {
         Text(
           priceItem.label,
           textAlign: TextAlign.start,
-          style: context.typography.body4.copyWith(
+          style: context.typography.caption1.copyWith(
             color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
           ),
         ),
         Text(
-          _printable(priceItem.price),
+          priceItem.formatter!.format(priceItem.price),
           style: textStyle,
         ),
-        if (priceItem.icon != null) ...[
-          SizedBox(width: AppSpacing.space1),
-          Icon(
-            priceItem.icon,
-            size: 16,
-            color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
-          ),
-        ],
+        SizedBox(width: AppSpacing.space1),
+        AppAssets.images.futCoin.image(
+          width: AppSpacing.space4,
+          height: AppSpacing.space4,
+        ),
       ],
     );
   }
