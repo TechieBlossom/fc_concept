@@ -1,6 +1,8 @@
 import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 
+const _height = 28.0;
+
 class Pill extends StatelessWidget {
   const Pill({
     super.key,
@@ -16,12 +18,12 @@ class Pill extends StatelessWidget {
         : context.colors.contentSecondary;
     final textStyle = pillItem.isSelected
         ? switch (pillItem.hasDigit) {
-            true => context.typography.caption2,
+            true => context.typography.body5,
             false => context.typography.caption1,
           }
         : switch (pillItem.hasDigit) {
             true => context.typography.body5,
-            false => context.typography.body4,
+            false => context.typography.caption1,
           };
     return InkWell(
       onTap: (pillItem.onTap != null)
@@ -32,12 +34,13 @@ class Pill extends StatelessWidget {
       radius: mediumCorner.value,
       borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
       child: AnimatedContainer(
+        height: _height,
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.space5,
+          horizontal: AppSpacing.space3,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+          borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
           border: Border.all(
             color: context.colors.backgroundSecondary,
           ),

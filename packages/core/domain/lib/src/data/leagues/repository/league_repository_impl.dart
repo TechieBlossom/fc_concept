@@ -13,8 +13,8 @@ class LeagueRepositoryImpl extends LeagueRepository {
       final leaguesResponse = await supabase
           .from(TableLeague.tableLeague)
           .select()
-          // .eq(TableLeague.isTop, true)
-          .order(TableLeague.name);
+          .eq(TableLeague.isTop, true)
+          .order(TableLeague.name, ascending: true);
 
       final leagues = mapLeagues(leaguesResponse);
       return Success(data: leagues);
@@ -29,7 +29,8 @@ class LeagueRepositoryImpl extends LeagueRepository {
       final leaguesResponse = await supabase
           .from(TableLeague.tableLeague)
           .select()
-          .order(TableLeague.name);
+          .eq(TableLeague.isTop, false)
+          .order(TableLeague.name, ascending: true);
 
       final leagues = mapLeagues(leaguesResponse);
       return Success(data: leagues);

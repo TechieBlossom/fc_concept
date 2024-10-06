@@ -329,7 +329,12 @@ class _FaceAttribute extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(AppSpacing.space1),
+            padding: EdgeInsetsDirectional.only(
+              start: AppSpacing.space1,
+              end: AppSpacing.space1,
+              top: 1,
+              bottom: 2.5,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
               color: attributeItem.lightRatingColor,

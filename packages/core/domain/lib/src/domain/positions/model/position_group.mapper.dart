@@ -25,12 +25,12 @@ class PositionGroupMapper extends EnumMapper<PositionGroup> {
   @override
   PositionGroup decode(dynamic value) {
     switch (value) {
-      case 'Attackers':
-        return PositionGroup.attackers;
-      case 'Midfielders':
-        return PositionGroup.midfielders;
-      case 'Defenders':
-        return PositionGroup.defenders;
+      case 'Attack':
+        return PositionGroup.attack;
+      case 'Midfielder':
+        return PositionGroup.midfielder;
+      case 'Defence':
+        return PositionGroup.defence;
       default:
         throw MapperException.unknownEnumValue(value);
     }
@@ -39,12 +39,12 @@ class PositionGroupMapper extends EnumMapper<PositionGroup> {
   @override
   dynamic encode(PositionGroup self) {
     switch (self) {
-      case PositionGroup.attackers:
-        return 'Attackers';
-      case PositionGroup.midfielders:
-        return 'Midfielders';
-      case PositionGroup.defenders:
-        return 'Defenders';
+      case PositionGroup.attack:
+        return 'Attack';
+      case PositionGroup.midfielder:
+        return 'Midfielder';
+      case PositionGroup.defence:
+        return 'Defence';
     }
   }
 }

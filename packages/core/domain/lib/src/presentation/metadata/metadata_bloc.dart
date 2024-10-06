@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:core_domain/domain.dart';
+import 'package:core_domain/src/domain/positions/use_case/get_all_positions_use_case.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +17,7 @@ class MetadataBloc extends Bloc<MetadataEvent, MetadataState> {
   MetadataBloc(
     this._getAllRolesUseCase,
     this._getAllPlayStylesUseCase,
+    this._getAllPositionsUseCase,
   ) : super(MetadataState()) {
     on<Init>((event, emit) => _onInit(emit));
 
@@ -24,15 +26,18 @@ class MetadataBloc extends Bloc<MetadataEvent, MetadataState> {
 
   final GetAllRolesUseCase _getAllRolesUseCase;
   final GetAllPlayStylesUseCase _getAllPlayStylesUseCase;
+  final GetAllPositionsUseCase _getAllPositionsUseCase;
 
   Future<void> _onInit(Emitter<MetadataState> emit) async {
     final responses = await Future.wait([
       _getAllRolesUseCase(),
       _getAllPlayStylesUseCase(),
+      _getAllPositionsUseCase(),
     ]);
 
     var allRoles = <Role>[];
     var allPlayStyles = <PlayStyle>[];
+    var allPositions = <Position>[];
 
     final rolesResult = responses[0] as Result<List<Role>>;
     switch (rolesResult) {
@@ -54,6 +59,22 @@ class MetadataBloc extends Bloc<MetadataEvent, MetadataState> {
         }
     }
 
-    emit(state.copyWith(roles: allRoles, playStyles: allPlayStyles));
+    final positionsResult = responses[2] as Result<List<Position>>;
+    switch (positionsResult) {
+      case Success(data: final positions):
+        allPositions = positions;
+      case Failure(exception: final exception):
+        if (kDebugMode) {
+          print(exception);
+        }
+    }
+
+    emit(
+      state.copyWith(
+        roles: allRoles,
+        playStyles: allPlayStyles,
+        positions: allPositions,
+      ),
+    );
   }
 }

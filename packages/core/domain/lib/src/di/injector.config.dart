@@ -22,6 +22,8 @@ import 'package:core_domain/src/data/players/repository/player_repository_impl.d
     as _i281;
 import 'package:core_domain/src/data/playstyles/repository/play_style_repository_impl.dart'
     as _i926;
+import 'package:core_domain/src/data/positions/repository/position_repository_impl.dart'
+    as _i684;
 import 'package:core_domain/src/data/price/repository/price_repository_impl.dart'
     as _i463;
 import 'package:core_domain/src/data/rarities/repository/rarity_repository_impl.dart'
@@ -77,6 +79,12 @@ import 'package:core_domain/src/domain/players/use_case/get_top_players_use_case
     as _i380;
 import 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart'
     as _i354;
+import 'package:core_domain/src/domain/positions/position_repository.dart'
+    as _i1070;
+import 'package:core_domain/src/domain/positions/use_case/get_all_positions_use_case.dart'
+    as _i437;
+import 'package:core_domain/src/domain/positions/use_case/get_positions_from_position_group.dart'
+    as _i264;
 import 'package:core_domain/src/domain/price/price_repository.dart' as _i526;
 import 'package:core_domain/src/domain/price/use_case/get_player_price_use_case.dart'
     as _i282;
@@ -108,11 +116,16 @@ _i174.GetIt init(
       () => const _i1000.GetRolesByIdsUseCase());
   gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
       () => const _i1017.GetPlayStylesByIdsUseCase());
+  gh.lazySingleton<_i264.GetPositionsFromPositionGroup>(
+      () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
   gh.factory<_i526.PriceRepository>(
       () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
+  gh.factory<_i1070.PositionRepository>(() => _i684.PositionRepositoryImpl());
+  gh.factory<_i437.GetAllPositionsUseCase>(
+      () => _i437.GetAllPositionsUseCase(gh<_i1070.PositionRepository>()));
   gh.factory<_i781.GetAllPlayStylesUseCase>(
       () => _i781.GetAllPlayStylesUseCase(gh<_i73.PlayStyleRepository>()));
   gh.factory<_i52.RarityRepository>(() => _i176.RarityRepositoryImpl());
@@ -142,10 +155,6 @@ _i174.GetIt init(
       () => _i847.GetOtherNationsUseCase(gh<_i829.NationRepository>()));
   gh.factory<_i1054.GetAllRarities>(
       () => _i1054.GetAllRarities(gh<_i52.RarityRepository>()));
-  gh.lazySingleton<_i809.MetadataBloc>(() => _i809.MetadataBloc(
-        gh<_i913.GetAllRolesUseCase>(),
-        gh<_i913.GetAllPlayStylesUseCase>(),
-      ));
   gh.factory<_i646.GetSessionUseCase>(
       () => _i646.GetSessionUseCase(gh<_i172.AuthRepository>()));
   gh.factory<_i728.SetSessionUseCase>(
@@ -168,5 +177,10 @@ _i174.GetIt init(
       () => _i885.GetPopularPlayerUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i380.GetTopPlayerUseCase>(
       () => _i380.GetTopPlayerUseCase(gh<_i294.PlayerRepository>()));
+  gh.lazySingleton<_i809.MetadataBloc>(() => _i809.MetadataBloc(
+        gh<_i913.GetAllRolesUseCase>(),
+        gh<_i913.GetAllPlayStylesUseCase>(),
+        gh<_i437.GetAllPositionsUseCase>(),
+      ));
   return getIt;
 }

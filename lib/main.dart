@@ -10,10 +10,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDi('dev');
 
-  // final getClubs = di<GetClubsUseCase>();
-  // final getLeagues = di<GetLeaguesUseCase>();
-  // final getNations = di<GetNationsUseCase>();
-  // final nations = await getNations(page: 1);
   runApp(const MyApp());
 }
 
@@ -28,7 +24,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<AuthStateBloc, void>(
         builder: (context, state) {
           return MaterialApp.router(
-            title: 'Flutter Demo',
+            title: 'FC Concept App',
             theme: AppTheme.themeData(context, Brightness.light),
             darkTheme: AppTheme.themeData(context, Brightness.dark),
             routerConfig: di<GoRouter>(),

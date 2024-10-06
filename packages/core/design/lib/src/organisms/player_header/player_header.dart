@@ -23,8 +23,8 @@ class PlayerHeader extends StatelessWidget {
     final colors = getPlayerColors(context, player);
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: 190,
-        maxHeight: 290,
+        minHeight: 192,
+        maxHeight: 292,
       ),
       child: Stack(
         children: [

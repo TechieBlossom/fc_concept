@@ -72,6 +72,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
+          .order(TablePlayer.createdAt, ascending: false)
           .order(TablePlayer.overall, ascending: false)
           .order(TablePlayer.commonName, ascending: true)
           .range(start, end);
@@ -144,10 +145,10 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final leagueIds = leagues?.map((league) => league.eaId);
     final clubIds = clubs?.map((club) => club.eaId);
     final nationIds = nations?.map((nation) => nation.eaId);
-    final genderNames = genders?.map((gender) => gender.name);
+    final genderIds = genders?.map((gender) => gender.value);
     final rarityIds = rarities?.map((rarity) => rarity.eaId);
-    final footNames = foots?.map((foot) => foot.name);
-    final positionNames = positions?.map((position) => position.eaId);
+    final footIds = foots?.map((foot) => foot.value);
+    final positionIds = positions?.map((position) => position.eaId);
 
     try {
       PostgrestFilterBuilder postgresFilterBuilder =
@@ -168,16 +169,16 @@ class PlayerRepositoryImpl extends PlayerRepository {
           nationIds.toList(),
         );
       }
-      if (genderNames != null && genderNames.isNotEmpty) {
+      if (genderIds != null && genderIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
           TablePlayer.gender,
-          genderNames.toList(),
+          genderIds.toList(),
         );
       }
-      if (footNames != null && footNames.isNotEmpty) {
+      if (footIds != null && footIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
           TablePlayer.foot,
-          footNames.toList(),
+          footIds.toList(),
         );
       }
       if (rarityIds != null && rarityIds.isNotEmpty) {
@@ -186,18 +187,18 @@ class PlayerRepositoryImpl extends PlayerRepository {
           rarityIds.toList(),
         );
       }
-
-      if (overallRatings != null && overallRatings.isNotEmpty) {
-        postgresFilterBuilder = postgresFilterBuilder.inFilter(
-          TablePlayer.overall,
-          overallRatings,
-        );
-      }
-
-      if (positionNames != null && positionNames.isNotEmpty) {
+      //
+      // if (overallRatings != null && overallRatings.isNotEmpty) {
+      //   postgresFilterBuilder = postgresFilterBuilder.inFilter(
+      //     TablePlayer.overall,
+      //     overallRatings,
+      //   );
+      // }
+      //
+      if (positionIds != null && positionIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
           TablePlayer.position,
-          positionNames.toList(),
+          positionIds.toList(),
         );
       }
 

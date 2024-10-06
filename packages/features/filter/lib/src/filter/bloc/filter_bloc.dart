@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:feature_filter/src/filter/position/position_group.dart';
+import 'package:core_domain/src/domain/positions/model/position_group.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';
@@ -20,13 +20,14 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   FilterBloc(
     @factoryParam FilterConfiguration? existingFilters,
     this._navigator,
+    this._getPositionsFromPositionGroup,
   ) : super(
           FilterState(
             leagues: existingFilters?.leagues,
             clubs: existingFilters?.clubs,
             nations: existingFilters?.nations,
             positions: existingFilters?.positions,
-            positionGroups: null,
+            positionGroups: existingFilters?.positionGroups,
             genders: existingFilters?.genders,
             foots: existingFilters?.foots,
             rarities: existingFilters?.rarities,
@@ -42,56 +43,22 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     on<TapGender>((event, emit) => _tapGender(event.gender, emit));
     on<TapFoot>((event, emit) => _tapFoot(event.foot, emit));
     on<TapPosition>((event, emit) => _tapPosition(event.position, emit));
-    // on<TapPositionGroup>(
-    //   (event, emit) => _tapPositionGroup(
-    //     event.positionGroup,
-    //     emit,
-    //   ),
-    // );
+    on<TapPositionGroup>(
+      (event, emit) => _tapPositionGroup(
+        event,
+        emit,
+      ),
+    );
     on<Apply>((event, emit) => _apply());
 
     add(Init());
   }
 
   final FilterNavigator _navigator;
+  final GetPositionsFromPositionGroup _getPositionsFromPositionGroup;
 
   void _init(Emitter<FilterState> emit) {
-    final positions = state.positions ?? [];
-    final positionGroups = List<PositionGroup>.empty(growable: true);
-    // if (positions.contains(Position.lw) &&
-    //     positions.contains(Position.rw) &&
-    //     positions.contains(Position.lf) &&
-    //     positions.contains(Position.rf) &&
-    //     positions.contains(Position.st) &&
-    //     positions.contains(Position.cf) &&
-    //     positions.contains(Position.ls) &&
-    //     positions.contains(Position.rs)) {
-    //   positionGroups.add(PositionGroup.attackers);
-    // }
-    // if (positions.contains(Position.cm) &&
-    //     positions.contains(Position.cam) &&
-    //     positions.contains(Position.cdm) &&
-    //     positions.contains(Position.ldm) &&
-    //     positions.contains(Position.rdm) &&
-    //     positions.contains(Position.lam) &&
-    //     positions.contains(Position.ram) &&
-    //     positions.contains(Position.lm) &&
-    //     positions.contains(Position.rm) &&
-    //     positions.contains(Position.lcm) &&
-    //     positions.contains(Position.rcm)) {
-    //   positionGroups.add(PositionGroup.midfielders);
-    // }
-    // if (positions.contains(Position.lcb) &&
-    //     positions.contains(Position.rcb) &&
-    //     positions.contains(Position.lb) &&
-    //     positions.contains(Position.rb) &&
-    //     positions.contains(Position.lwb) &&
-    //     positions.contains(Position.rwb) &&
-    //     positions.contains(Position.cb)) {
-    //   positionGroups.add(PositionGroup.defenders);
-    // }
 
-    emit(state.copyWith(positionGroups: positionGroups));
   }
 
   Future<void> _tapLeague(Emitter<FilterState> emit) async {
@@ -104,7 +71,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     // 1. Checking if previous leagues are not same as new leagues,
     // if yes then there is no need to update filters as nothing really changed
     // 2. Remove clubs if there league is removed or in other words, only keep
-    // clubs for which leagues is still present that
+    // clubs for which leagues is still present
     if (!(state.leagues?.equals(leagues ?? []) ?? false)) {
       final newClubs = List<Club>.empty(growable: true);
       leagues?.forEach((league) {
@@ -130,7 +97,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         clubs: state.clubs,
       ),
     );
-    if (clubs?.isNotEmpty ?? false) {
+    if (!(state.clubs?.equals(clubs ?? []) ?? false)) {
       emit(
         state.copyWith(
           clubs: clubs,
@@ -146,7 +113,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         items: state.nations,
       ),
     );
-    if (nations?.isNotEmpty ?? false) {
+    if (!(state.nations?.equals(nations ?? []) ?? false)) {
       emit(
         state.copyWith(
           nations: nations,
@@ -233,68 +200,38 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     );
   }
 
-  // void _tapPositionGroup(
-  //   PositionGroup positionGroup,
-  //   Emitter<FilterState> emit,
-  // ) {
-  //   final positions = List<Position>.from(state.positions ?? []);
-  //   final positionGroups = List<PositionGroup>.from(state.positionGroups ?? []);
-  //   final positionsFromGroup = switch (positionGroup) {
-  //     PositionGroup.attackers => [
-  //         Position.lw,
-  //         Position.rw,
-  //         Position.lf,
-  //         Position.rf,
-  //         Position.st,
-  //         Position.cf,
-  //         Position.ls,
-  //         Position.rs,
-  //       ],
-  //     PositionGroup.midfielders => [
-  //         Position.cm,
-  //         Position.cam,
-  //         Position.cdm,
-  //         Position.ldm,
-  //         Position.rdm,
-  //         Position.lam,
-  //         Position.ram,
-  //         Position.lm,
-  //         Position.rm,
-  //         Position.lcm,
-  //         Position.rcm,
-  //       ],
-  //     PositionGroup.defenders => [
-  //         Position.lcb,
-  //         Position.rcb,
-  //         Position.lb,
-  //         Position.rb,
-  //         Position.lwb,
-  //         Position.rwb,
-  //         Position.cb,
-  //       ],
-  //   };
-  //
-  //   for (var i = 0; i < positionsFromGroup.length; i++) {
-  //     if (positions.contains(positionsFromGroup[i])) {
-  //       positions.remove(positionsFromGroup[i]);
-  //     } else {
-  //       positions.add(positionsFromGroup[i]);
-  //     }
-  //   }
-  //
-  //   if (positionGroups.contains(positionGroup)) {
-  //     positionGroups.remove(positionGroup);
-  //   } else {
-  //     positionGroups.add(positionGroup);
-  //   }
-  //
-  //   emit(
-  //     state.copyWith(
-  //       positions: positions,
-  //       positionGroups: positionGroups,
-  //     ),
-  //   );
-  // }
+  void _tapPositionGroup(
+    TapPositionGroup event,
+    Emitter<FilterState> emit,
+  ) {
+    final positions = List<Position>.from(state.positions ?? []);
+    final positionGroups = List<PositionGroup>.from(state.positionGroups ?? []);
+    final positionsFromGroup = _getPositionsFromPositionGroup(
+      event.allPositions,
+      event.positionGroup,
+    );
+
+    for (var i = 0; i < positionsFromGroup.length; i++) {
+      if (positions.contains(positionsFromGroup[i])) {
+        positions.remove(positionsFromGroup[i]);
+      } else {
+        positions.add(positionsFromGroup[i]);
+      }
+    }
+
+    if (positionGroups.contains(event.positionGroup)) {
+      positionGroups.remove(event.positionGroup);
+    } else {
+      positionGroups.add(event.positionGroup);
+    }
+
+    emit(
+      state.copyWith(
+        positions: positions,
+        positionGroups: positionGroups,
+      ),
+    );
+  }
 
   void _apply() {
     final filterConfiguration = FilterConfiguration(
@@ -302,6 +239,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       clubs: state.clubs,
       nations: state.nations,
       positions: state.positions,
+      positionGroups: state.positionGroups,
       genders: state.genders,
       foots: state.foots,
       rarities: state.rarities,

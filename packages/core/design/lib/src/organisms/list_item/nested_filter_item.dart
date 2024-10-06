@@ -33,9 +33,6 @@ class NestedFilterItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: AppSpacing.space2,
-        ),
         constraints: BoxConstraints(
           minHeight: 62,
           maxHeight: 62,
@@ -44,6 +41,7 @@ class NestedFilterItem extends StatelessWidget {
           children: [
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(

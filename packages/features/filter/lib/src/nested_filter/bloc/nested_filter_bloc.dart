@@ -8,7 +8,9 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'nested_filter_bloc.mapper.dart';
+
 part 'nested_filter_event.dart';
+
 part 'nested_filter_state.dart';
 
 @injectable
@@ -100,16 +102,13 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
     final selectedClubs = state.selectedClubs;
     switch (state.nestedFilterPageParams?.nestedFilterType) {
       case NestedFilterType.league:
+      case NestedFilterType.nation:
         _navigator.closeAny<List<NestedFilterLayoutType>?>(
           (selectedItems?.isEmpty ?? true) ? null : selectedItems,
         );
       case NestedFilterType.club:
         _navigator.closeAny<List<Club>?>(
           (selectedClubs?.isEmpty ?? true) ? null : selectedClubs,
-        );
-      case NestedFilterType.nation:
-        _navigator.closeAny<List<NestedFilterLayoutType>?>(
-          (selectedItems?.isEmpty ?? true) ? null : selectedItems,
         );
       case null:
       // TODO: Handle this case.

@@ -42,6 +42,15 @@ _i174.GetIt init(
   gh.lazySingleton<_i730.FilterRoutesConfig>(() => _i730.FilterRoutesConfig());
   gh.lazySingleton<_i176.FilterNavigator>(
       () => _i176.FilterNavigator(gh<_i177.GoRouter>()));
+  gh.factoryParam<_i841.FilterBloc, _i913.FilterConfiguration?, dynamic>((
+    existingFilters,
+    _,
+  ) =>
+      _i841.FilterBloc(
+        existingFilters,
+        gh<_i176.FilterNavigator>(),
+        gh<_i913.GetPositionsFromPositionGroup>(),
+      ));
   gh.factoryParam<_i195.NestedFilterBloc, _i18.NestedFilterPageParams, dynamic>(
       (
     nestedFilterPageParams,
@@ -56,14 +65,6 @@ _i174.GetIt init(
             gh<_i913.GetOtherNationsUseCase>(),
             gh<_i176.FilterNavigator>(),
           ));
-  gh.factoryParam<_i841.FilterBloc, _i913.FilterConfiguration?, dynamic>((
-    existingFilters,
-    _,
-  ) =>
-      _i841.FilterBloc(
-        existingFilters,
-        gh<_i176.FilterNavigator>(),
-      ));
   gh.factoryParam<_i716.RarityNestedFilterBloc,
       _i465.RarityNestedFilterPageParams, dynamic>((
     rarityNestedFilterPageParams,

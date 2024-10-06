@@ -42,9 +42,11 @@ class TapFoot extends FilterEvent with TapFootMappable {
 @MappableClass(discriminatorValue: 'tapPositionGroup')
 class TapPositionGroup extends FilterEvent with TapPositionGroupMappable {
   TapPositionGroup({
+    required this.allPositions,
     required this.positionGroup,
   });
 
+  final List<Position> allPositions;
   final PositionGroup positionGroup;
 }
 

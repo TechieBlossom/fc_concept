@@ -20,11 +20,13 @@ class PriceWidget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          priceItem.label,
-          textAlign: TextAlign.start,
-          style: context.typography.subHead.copyWith(
-            color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
+        Expanded(
+          child: Text(
+            priceItem.label,
+            textAlign: TextAlign.start,
+            style: context.typography.subHead.copyWith(
+              color: color ?? Theme.of(context).colorScheme.onTertiaryContainer,
+            ),
           ),
         ),
         SizedBox(width: AppSpacing.space2),

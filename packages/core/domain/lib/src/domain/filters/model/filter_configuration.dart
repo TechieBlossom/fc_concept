@@ -3,6 +3,7 @@ import 'package:core_domain/src/domain/common/foot.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
+import 'package:core_domain/src/domain/positions/model/position_group.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -19,6 +20,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.genders,
     this.foots,
     this.positions,
+    this.positionGroups,
   });
 
   final List<NestedFilterLayoutType>? leagues;
@@ -29,4 +31,5 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<Gender>? genders;
   final List<Foot>? foots;
   final List<Position>? positions;
+  final List<PositionGroup>? positionGroups;
 }

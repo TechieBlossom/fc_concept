@@ -4,7 +4,7 @@ part 'position_group.mapper.dart';
 
 @MappableEnum(caseStyle: CaseStyle.pascalCase)
 enum PositionGroup {
-  attackers,
-  midfielders,
-  defenders,
+  attack,
+  midfielder,
+  defence,
 }

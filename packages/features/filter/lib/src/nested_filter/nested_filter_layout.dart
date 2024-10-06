@@ -34,9 +34,7 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
                       text: item.name,
                       isSelected: selectedItems?.contains(item) ?? false,
                       onTap: () => context.read<NestedFilterBloc>().add(
-                            SelectItem(
-                              item: item,
-                            ),
+                            SelectItem(item: item),
                           ),
                     ),
                   )

@@ -13,8 +13,8 @@ class NationRepositoryImpl extends NationRepository {
       final nationsResponse = await supabase
           .from(TableNation.tableNation)
           .select()
-          // .eq(TableNation.isTop, true)
-          .order(TableNation.name);
+          .eq(TableNation.isTop, true)
+          .order(TableNation.name, ascending: true);
 
       final nations = mapNations(nationsResponse);
       return Success(data: nations);
@@ -29,7 +29,8 @@ class NationRepositoryImpl extends NationRepository {
       final nationsResponse = await supabase
           .from(TableNation.tableNation)
           .select()
-          .order(TableNation.name);
+          .eq(TableNation.isTop, false)
+          .order(TableNation.name, ascending: true);
 
       final nations = mapNations(nationsResponse);
       return Success(data: nations);

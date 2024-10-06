@@ -4,6 +4,10 @@ part 'foot.mapper.dart';
 
 @MappableEnum()
 enum Foot {
-  left,
-  right,
+  right(1),
+  left(2);
+
+  const Foot(this.value);
+
+  final int value;
 }

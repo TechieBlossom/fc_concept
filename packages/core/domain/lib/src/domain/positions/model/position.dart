@@ -18,5 +18,5 @@ class Position with PositionMappable {
   final String positionTypeId;
   final String positionTypeName;
 
-  static const fromJson = PositionMapper.fromJson;
+  static const fromMap = PositionMapper.fromMap;
 }
