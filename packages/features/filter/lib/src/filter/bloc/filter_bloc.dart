@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:core_domain/src/domain/positions/model/position_group.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';

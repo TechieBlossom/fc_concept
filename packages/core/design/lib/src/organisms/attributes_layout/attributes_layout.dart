@@ -1,7 +1,6 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:intersperse/intersperse.dart';
 import 'package:utility_extensions/extensions.dart';
 
 class AttributesLayout extends StatelessWidget {

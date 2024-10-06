@@ -1,7 +1,6 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/filter/bloc/filter_bloc.dart';
-import 'package:core_domain/src/domain/positions/model/position_group.dart';
 import 'package:flutter/material.dart';
 
 class PositionFilter extends StatelessWidget {
