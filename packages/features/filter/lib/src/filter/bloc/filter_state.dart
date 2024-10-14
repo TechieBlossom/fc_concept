@@ -11,7 +11,7 @@ class FilterState with FilterStateMappable {
     required this.foots,
     required this.positions,
     required this.positionGroups,
-    required this.overallRating,
+    required this.overallRatingRange,
   });
 
   final List<NestedFilterLayoutType>? leagues;
@@ -22,5 +22,5 @@ class FilterState with FilterStateMappable {
   final List<Foot>? foots;
   final List<Position>? positions;
   final List<PositionGroup>? positionGroups;
-  final List<int>? overallRating;
+  final RangeValues overallRatingRange;
 }

@@ -6,6 +6,7 @@ import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/positions/model/position_group.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:flutter/material.dart';
 
 part 'filter_configuration.mapper.dart';
 
@@ -16,7 +17,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.nations,
     this.clubs,
     this.rarities,
-    this.overallRating,
+    this.overallRatingRange,
     this.genders,
     this.foots,
     this.positions,
@@ -27,7 +28,7 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<NestedFilterLayoutType>? nations;
   final List<Club>? clubs;
   final List<Rarity>? rarities;
-  final List<int>? overallRating;
+  final RangeValues? overallRatingRange;
   final List<Gender>? genders;
   final List<Foot>? foots;
   final List<Position>? positions;

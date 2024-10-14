@@ -15,6 +15,7 @@ class SearchFields extends StatelessWidget {
             onSearch: (query) {},
             onClearTap: () {},
             onLeadingTap: () {},
+            onFilterTap: () {},
           ),
           const SizedBox(height: AppSpacing.space5),
           SearchContainer(
@@ -22,6 +23,7 @@ class SearchFields extends StatelessWidget {
             onSearch: (query) {},
             onClearTap: () {},
             onLeadingTap: () {},
+            onFilterTap: () {},
           ),
           const SizedBox(height: AppSpacing.space5),
           SearchContainer(
@@ -30,6 +32,7 @@ class SearchFields extends StatelessWidget {
             onSearch: (query) {},
             onClearTap: () {},
             onLeadingTap: () {},
+            onFilterTap: () {},
           ),
         ],
       ),

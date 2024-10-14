@@ -10,26 +10,16 @@ import 'package:utility_navigation/navigation.dart';
 class PlayerRoutesConfig extends RoutesConfig {
   @override
   List<GoRoute> getRoutes() => [
-        GoRoute(
-          path: PlayerRoutes.pagePlayerList,
-          pageBuilder: (context, state) => MaterialPage(
-            key: state.pageKey,
-            name: state.fullPath,
-            arguments: state.pathParameters,
-            restorationId: state.pageKey.value,
-            child: const PlayerListPage(),
-          ),
-        ),
-        GoRoute(
-          path: PlayerRoutes.pagePopularPlayerList,
-          pageBuilder: (context, state) => MaterialPage(
-            key: state.pageKey,
-            name: state.fullPath,
-            arguments: state.pathParameters,
-            restorationId: state.pageKey.value,
-            child: const PopularPlayerListPage(),
-          ),
-        ),
+        // GoRoute(
+        //   path: PlayerRoutes.pagePopularPlayerList,
+        //   pageBuilder: (context, state) => MaterialPage(
+        //     key: state.pageKey,
+        //     name: state.fullPath,
+        //     arguments: state.pathParameters,
+        //     restorationId: state.pageKey.value,
+        //     child: const PopularPlayerListPage(),
+        //   ),
+        // ),
         GoRoute(
           path: PlayerRoutes.pagePlayerDetail,
           pageBuilder: (context, state) => MaterialPage(

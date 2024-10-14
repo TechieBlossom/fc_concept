@@ -39,26 +39,11 @@ class _PlayerListPageState extends State<PlayerListPage> {
               onLeadingTap: () {
                 _scaffoldKey.currentState?.openDrawer();
               },
+              onFilterTap: () => context.read<PlayerListBloc>().add(
+                    FilterTap(),
+                  ),
             ),
             drawer: AppDrawer(scaffoldKey: _scaffoldKey),
-            bottomNavigationBar: BottomButtonLayout(
-              buttons: [
-                SecondaryButton.icon(
-                  leading: const Icon(Icons.sort_rounded),
-                  text: 'Sort',
-                  onPressed: () {},
-                ),
-                SecondaryButton.icon(
-                  leading: const Icon(Icons.filter_alt_rounded),
-                  text: 'Filter',
-                  onPressed: () {
-                    context.read<PlayerListBloc>().add(
-                          FilterTap(),
-                        );
-                  },
-                ),
-              ],
-            ),
             body: PlayerList(
               processState: state.processState,
               isPaginating: state.isPaginating,

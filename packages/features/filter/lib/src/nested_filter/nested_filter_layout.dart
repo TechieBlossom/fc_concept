@@ -16,6 +16,12 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
   final List<T>? otherItems;
   final List<T>? selectedItems;
 
+  // bool get isNation => T.runtimeType == Nation;
+  //
+  // bool get isLeague => T.runtimeType == League;
+  //
+  // bool get isClub => T.runtimeType == Club;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,13 +31,18 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
             padding: const EdgeInsets.only(
               bottom: AppSpacing.space5,
             ),
-            child: FilterGroup(
+            child: FilterGroup<T>(
               title: 'Top',
               pillItems: topItems!
                   .map(
                     (item) => PillItem<T>(
                       data: item,
                       text: item.name,
+                      image: item.runtimeType == Nation
+                          ? NationImage(nation: item as Nation)
+                          : item.runtimeType == League
+                              ? LeagueImage(league: item as League)
+                              : null,
                       isSelected: selectedItems?.contains(item) ?? false,
                       onTap: () => context.read<NestedFilterBloc>().add(
                             SelectItem(item: item),
@@ -53,6 +64,11 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
                     (item) => PillItem<T>(
                       data: item,
                       text: item.name,
+                      image: item.runtimeType == Nation
+                          ? NationImage(nation: item as Nation)
+                          : item.runtimeType == League
+                              ? LeagueImage(league: item as League)
+                              : null,
                       isSelected: selectedItems?.contains(item) ?? false,
                       onTap: () => context.read<NestedFilterBloc>().add(
                             SelectItem(

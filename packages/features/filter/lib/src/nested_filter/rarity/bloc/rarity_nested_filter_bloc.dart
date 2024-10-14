@@ -52,7 +52,9 @@ class RarityNestedFilterBloc
   }
 
   void _done() {
-    _navigator.closeAny<List<Rarity>?>(state.selectedRarities);
+    _navigator.closeAny<List<Rarity>?>(
+      (state.selectedRarities?.isEmpty ?? true) ? null : state.selectedRarities,
+    );
   }
 
   void _handleRaritiesResult(

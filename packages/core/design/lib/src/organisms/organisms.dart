@@ -1,4 +1,5 @@
 export 'package:core_design/src/organisms/attributes_layout/attributes_layout.dart';
+export 'package:core_design/src/organisms/attributes_layout/gk_attributes_layout.dart';
 export 'package:core_design/src/organisms/bottom_button_layout/bottom_button_layout.dart';
 export 'package:core_design/src/organisms/bottom_button_layout/shimmer_bottom_button_layout.dart';
 export 'package:core_design/src/organisms/card/collapsible_card.dart';
@@ -13,7 +14,6 @@ export 'package:core_design/src/organisms/list_item/player_list_item.dart';
 export 'package:core_design/src/organisms/list_item/saved_filter_item.dart';
 export 'package:core_design/src/organisms/list_item/shimmer_filter_group.dart';
 export 'package:core_design/src/organisms/list_item/shimmer_list_item.dart';
-export 'package:core_design/src/organisms/logo_label/logo_label.dart';
 export 'package:core_design/src/organisms/page_title/page_title.dart';
 export 'package:core_design/src/organisms/play_style_layout/play_styles_layout.dart';
 export 'package:core_design/src/organisms/player_header/player_header.dart';

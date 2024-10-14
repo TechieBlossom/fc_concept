@@ -6,6 +6,7 @@ import 'package:core_domain/src/domain/models/result.dart';
 import 'package:core_domain/src/domain/players/model/player.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
+import 'package:flutter/material.dart';
 
 abstract class PlayerRepository {
   Future<Result<List<Player>?>> topPlayers({
@@ -38,7 +39,7 @@ abstract class PlayerRepository {
     List<NestedFilterLayoutType>? nations,
     List<Club>? clubs,
     List<Rarity>? rarities,
-    List<int>? overallRatings,
+    RangeValues? overallRatingRange,
     List<Gender>? genders,
     List<Foot>? foots,
     List<Position>? positions,

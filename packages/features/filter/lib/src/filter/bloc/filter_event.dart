@@ -18,8 +18,14 @@ class TapNation extends FilterEvent with TapNationMappable {}
 @MappableClass(discriminatorValue: 'tapRarity')
 class TapRarity extends FilterEvent with TapRarityMappable {}
 
-@MappableClass(discriminatorValue: 'tapOverallRating')
-class TapOverallRating extends FilterEvent with TapOverallRatingMappable {}
+@MappableClass(discriminatorValue: 'changeOverallRating')
+class ChangeOverallRating extends FilterEvent with ChangeOverallRatingMappable {
+  ChangeOverallRating({
+    required this.overallRatingRange,
+  });
+
+  final RangeValues overallRatingRange;
+}
 
 @MappableClass(discriminatorValue: 'tapGender')
 class TapGender extends FilterEvent with TapGenderMappable {

@@ -20,8 +20,8 @@ class PlayerDetailPage extends StatelessWidget {
       create: (_) => di<PlayerDetailBloc>(
         param: PlayerDetailBlocParams(
           player: player,
-          roles: roles,
-          playStyles: playStyles,
+          allRoles: roles,
+          allPlayStyles: playStyles,
         ),
       ),
       child: BlocBuilder<PlayerDetailBloc, PlayerDetailState>(
@@ -75,12 +75,20 @@ class PlayerDetailPage extends StatelessWidget {
                       ),
                     ),
                   if (state.player.attributeAcceleration != null)
-                    Padding(
-                      padding: const EdgeInsetsDirectional.symmetric(
-                        horizontal: AppSpacing.space4,
+                    if (state.player.position?.shortLabel == 'GK')
+                      Padding(
+                        padding: const EdgeInsetsDirectional.symmetric(
+                          horizontal: AppSpacing.space4,
+                        ),
+                        child: GkAttributesLayout(player: state.player),
+                      )
+                    else
+                      Padding(
+                        padding: const EdgeInsetsDirectional.symmetric(
+                          horizontal: AppSpacing.space4,
+                        ),
+                        child: AttributesLayout(player: state.player),
                       ),
-                      child: AttributesLayout(player: state.player),
-                    ),
                 ],
               ),
             ),

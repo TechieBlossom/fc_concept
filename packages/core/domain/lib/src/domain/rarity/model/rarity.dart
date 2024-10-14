@@ -30,5 +30,5 @@ class Rarity with RarityMappable {
   final List<String>? shadowColor;
   final int numberOfPlayers;
 
-  static const fromJson = RarityMapper.fromMap;
+  static const fromMap = RarityMapper.fromMap;
 }

@@ -1,5 +1,7 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/molecules/image/club_image.dart';
 import 'package:core_design/src/molecules/image/league_image.dart';
+import 'package:core_design/src/molecules/image/nation_image.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -113,17 +115,22 @@ class _PlayerListItemState extends State<PlayerListItem>
                       SizedBox(height: AppSpacing.space2),
                       Row(
                         children: [
-                          LogoLabel(
-                            imagePath: player.club?.imagePath,
-                            label: player.club?.name,
-                            type: LogoEntity.club,
-                          ),
-                          LogoLabel(
-                            imagePath: player.nation?.imagePath,
-                            label: player.nation?.name,
-                            type: LogoEntity.nation,
-                          ),
-                          LeagueImage(league: player.league!),
+                          if (player.club != null) ...[
+                            ClubImage(club: player.club!),
+                            const Space(
+                              space: AppSpacing.space2,
+                              orientation: Axis.horizontal,
+                            ),
+                          ],
+                          if (player.nation != null) ...[
+                            NationImage(nation: player.nation!),
+                            const Space(
+                              space: AppSpacing.space2,
+                              orientation: Axis.horizontal,
+                            ),
+                          ],
+                          if (player.league?.name != 'Icons')
+                            LeagueImage(league: player.league!),
                         ],
                       ),
                     ],

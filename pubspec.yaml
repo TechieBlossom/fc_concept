@@ -20,6 +20,8 @@ dependencies:
     path: packages/features/auth
   feature_compare:
     path: packages/features/compare
+  feature_dashboard:
+    path: packages/features/dashboard
   feature_drawer:
     path: packages/features/drawer
   feature_filter:

@@ -37,6 +37,9 @@ class _PopularPlayerListPageState extends State<PopularPlayerListPage> {
               onLeadingTap: () {
                 _scaffoldKey.currentState?.openDrawer();
               },
+              onFilterTap: () => context.read<PlayerListBloc>().add(
+                    FilterTap(),
+                  ),
             ),
             drawer: AppDrawer(scaffoldKey: _scaffoldKey),
             body: PlayerList(

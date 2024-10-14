@@ -7,6 +7,7 @@ class SearchField extends StatefulWidget {
     super.key,
     required this.onSearch,
     required this.onClearTap,
+    required this.onFilterTap,
     required this.onLeadingTap,
     this.isLoading = false,
     this.initialValue = '',
@@ -14,6 +15,7 @@ class SearchField extends StatefulWidget {
 
   final String initialValue;
   final bool isLoading;
+  final VoidCallback? onFilterTap;
   final VoidCallback? onLeadingTap;
   final void Function(String) onSearch;
   final VoidCallback onClearTap;
@@ -80,16 +82,27 @@ class _SearchFieldState extends State<SearchField> {
                       icon: Icon(Icons.menu_rounded),
                     )
                   : null,
-              suffixIcon: AnimatedOpacity(
-                duration: const Duration(milliseconds: 300),
-                opacity: showClearIcon ? 1 : 0,
-                child: IconButton(
-                  onPressed: () {
-                    _controller.clear();
-                    widget.onClearTap();
-                  },
-                  icon: Icon(Icons.backspace_outlined),
-                ),
+              suffixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 300),
+                    opacity: showClearIcon ? 1 : 0,
+                    child: IconButton(
+                      onPressed: () {
+                        _controller.clear();
+                        widget.onClearTap();
+                      },
+                      icon: Icon(Icons.backspace_outlined),
+                    ),
+                  ),
+                  if (widget.onFilterTap != null)
+                    IconButton(
+                      onPressed: widget.onFilterTap,
+                      icon: Icon(Icons.filter_alt_rounded),
+                    ),
+                ],
               ),
               hintText: 'Search by player name',
               hintStyle: context.typography.body1

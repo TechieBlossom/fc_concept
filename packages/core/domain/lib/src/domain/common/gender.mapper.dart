@@ -25,9 +25,9 @@ class GenderMapper extends EnumMapper<Gender> {
   @override
   Gender decode(dynamic value) {
     switch (value) {
-      case 'male':
+      case 'Male':
         return Gender.male;
-      case 'female':
+      case 'Female':
         return Gender.female;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -38,9 +38,9 @@ class GenderMapper extends EnumMapper<Gender> {
   dynamic encode(Gender self) {
     switch (self) {
       case Gender.male:
-        return 'male';
+        return 'Male';
       case Gender.female:
-        return 'female';
+        return 'Female';
     }
   }
 }

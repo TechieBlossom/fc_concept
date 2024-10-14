@@ -15,6 +15,7 @@ import 'package:core_domain/src/domain/players/player_repository.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -72,9 +73,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
-          .order(TablePlayer.createdAt, ascending: false)
           .order(TablePlayer.overall, ascending: false)
           .order(TablePlayer.commonName, ascending: true)
+          .order(TablePlayer.createdAt, ascending: false)
           .range(start, end);
 
       final players = mapPlayers(playersResponse);
@@ -118,6 +119,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
           .like(TablePlayer.commonName, '%$query%')
+          .order(TablePlayer.overall, ascending: false)
+          .order(TablePlayer.commonName, ascending: true)
+          .order(TablePlayer.createdAt, ascending: false)
           .range(start, end);
 
       final players = mapPlayers(playersResponse);
@@ -134,7 +138,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     List<NestedFilterLayoutType>? nations,
     List<Club>? clubs,
     List<Rarity>? rarities,
-    List<int>? overallRatings,
+    RangeValues? overallRatingRange,
     List<Gender>? genders,
     List<Foot>? foots,
     List<Position>? positions,
@@ -187,14 +191,28 @@ class PlayerRepositoryImpl extends PlayerRepository {
           rarityIds.toList(),
         );
       }
-      //
-      // if (overallRatings != null && overallRatings.isNotEmpty) {
-      //   postgresFilterBuilder = postgresFilterBuilder.inFilter(
-      //     TablePlayer.overall,
-      //     overallRatings,
-      //   );
-      // }
-      //
+
+      if (overallRatingRange != null) {
+        if (overallRatingRange.start.round() == 1 &&
+            overallRatingRange.end.round() == 99) {
+        } else if (overallRatingRange.start == overallRatingRange.end) {
+          postgresFilterBuilder = postgresFilterBuilder.eq(
+            TablePlayer.overall,
+            overallRatingRange.start.round(),
+          );
+        } else {
+          postgresFilterBuilder = postgresFilterBuilder
+              .gte(
+                TablePlayer.overall,
+                overallRatingRange.start.round(),
+              )
+              .lte(
+                TablePlayer.overall,
+                overallRatingRange.end.round(),
+              );
+        }
+      }
+
       if (positionIds != null && positionIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
           TablePlayer.position,
@@ -203,8 +221,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
       }
 
       final playersResponse = await postgresFilterBuilder
-          .order(TablePlayer.overall)
+          .order(TablePlayer.overall, ascending: false)
           .order(TablePlayer.commonName, ascending: true)
+          .order(TablePlayer.createdAt, ascending: false)
           .range(start, end);
 
       final players = mapPlayers(playersResponse);

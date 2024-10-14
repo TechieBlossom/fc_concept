@@ -18,8 +18,8 @@ class PlayStyleImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      color: isPlus ? context.colors.gold : context.colors.contentPrimary,
-      width: 24,
+      color: isPlus ? context.colors.gold2 : context.colors.contentPrimary,
+      width: 32,
       fit: BoxFit.fitWidth,
       imageUrl: '$_apiBasePath${playStyle.imagePath}',
       placeholderFadeInDuration: const Duration(milliseconds: 500),

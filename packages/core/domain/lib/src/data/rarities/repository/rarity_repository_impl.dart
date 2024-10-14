@@ -14,7 +14,6 @@ class RarityRepositoryImpl extends RarityRepository {
       final raritiesResponse = await supabase
           .from(TableRarity.tableRarity)
           .select()
-          .inFilter(TableRarity.eaId, rarityIds)
           .order(TableRarity.name, ascending: true);
 
       final rarities = mapRarities(raritiesResponse);
@@ -25,5 +24,5 @@ class RarityRepositoryImpl extends RarityRepository {
   }
 
   List<Rarity> mapRarities(List<Map<String, dynamic>> raritiesResponse) =>
-      raritiesResponse.map((json) => Rarity.fromJson(json)).toList();
+      raritiesResponse.map((json) => Rarity.fromMap(json)).toList();
 }

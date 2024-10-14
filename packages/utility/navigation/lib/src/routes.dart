@@ -1,13 +1,17 @@
 import 'package:go_router/go_router.dart';
 
 abstract class RoutesConfig {
-  List<GoRoute> getRoutes();
+  List<RouteBase> getRoutes();
 }
 
 abstract class AppNavigator {
   const AppNavigator(this.goRouter);
 
   final GoRouter goRouter;
+}
+
+abstract class DashboardRoutes {
+  static const pageDashboard = '/dashboard';
 }
 
 abstract class PlayerRoutes {

@@ -37,6 +37,7 @@ class ClubsLayout extends StatelessWidget {
                         (club) => PillItem<Club>(
                           data: club,
                           text: club.name,
+                          image: ClubImage(club: club),
                           isSelected: selectedClubs?.contains(club) ?? false,
                           onTap: () => context.read<NestedFilterBloc>().add(
                                 SelectClub(

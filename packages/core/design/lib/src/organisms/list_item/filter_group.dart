@@ -2,7 +2,7 @@ import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/molecules.dart';
 import 'package:flutter/material.dart';
 
-class FilterGroup extends StatelessWidget {
+class FilterGroup<T> extends StatelessWidget {
   const FilterGroup({
     super.key,
     this.title,
@@ -10,7 +10,7 @@ class FilterGroup extends StatelessWidget {
   });
 
   final String? title;
-  final List<PillItem> pillItems;
+  final List<PillItem<T>> pillItems;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class FilterGroup extends StatelessWidget {
             runSpacing: AppSpacing.space3,
             spacing: AppSpacing.space3,
             children: indices
-                .map((index) => Pill(pillItem: pillItems[index]))
+                .map((index) => Pill<T>(pillItem: pillItems[index]))
                 .toList(),
           ),
         ],

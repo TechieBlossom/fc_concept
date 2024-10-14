@@ -18,7 +18,7 @@ class FilterEventMapper extends ClassMapperBase<FilterEvent> {
       TapClubMapper.ensureInitialized();
       TapNationMapper.ensureInitialized();
       TapRarityMapper.ensureInitialized();
-      TapOverallRatingMapper.ensureInitialized();
+      ChangeOverallRatingMapper.ensureInitialized();
       TapGenderMapper.ensureInitialized();
       TapFootMapper.ensureInitialized();
       TapPositionGroupMapper.ensureInitialized();
@@ -574,113 +574,127 @@ class _TapRarityCopyWithImpl<$R, $Out>
       _TapRarityCopyWithImpl($value, $cast, t);
 }
 
-class TapOverallRatingMapper extends SubClassMapperBase<TapOverallRating> {
-  TapOverallRatingMapper._();
+class ChangeOverallRatingMapper
+    extends SubClassMapperBase<ChangeOverallRating> {
+  ChangeOverallRatingMapper._();
 
-  static TapOverallRatingMapper? _instance;
-  static TapOverallRatingMapper ensureInitialized() {
+  static ChangeOverallRatingMapper? _instance;
+  static ChangeOverallRatingMapper ensureInitialized() {
     if (_instance == null) {
-      MapperContainer.globals.use(_instance = TapOverallRatingMapper._());
+      MapperContainer.globals.use(_instance = ChangeOverallRatingMapper._());
       FilterEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
 
   @override
-  final String id = 'TapOverallRating';
+  final String id = 'ChangeOverallRating';
+
+  static RangeValues _$overallRatingRange(ChangeOverallRating v) =>
+      v.overallRatingRange;
+  static const Field<ChangeOverallRating, RangeValues> _f$overallRatingRange =
+      Field('overallRatingRange', _$overallRatingRange);
 
   @override
-  final MappableFields<TapOverallRating> fields = const {};
+  final MappableFields<ChangeOverallRating> fields = const {
+    #overallRatingRange: _f$overallRatingRange,
+  };
 
   @override
   final String discriminatorKey = 'event';
   @override
-  final dynamic discriminatorValue = 'tapOverallRating';
+  final dynamic discriminatorValue = 'changeOverallRating';
   @override
   late final ClassMapperBase superMapper =
       FilterEventMapper.ensureInitialized();
 
-  static TapOverallRating _instantiate(DecodingData data) {
-    return TapOverallRating();
+  static ChangeOverallRating _instantiate(DecodingData data) {
+    return ChangeOverallRating(
+        overallRatingRange: data.dec(_f$overallRatingRange));
   }
 
   @override
   final Function instantiate = _instantiate;
 
-  static TapOverallRating fromMap(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<TapOverallRating>(map);
+  static ChangeOverallRating fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<ChangeOverallRating>(map);
   }
 
-  static TapOverallRating fromJson(String json) {
-    return ensureInitialized().decodeJson<TapOverallRating>(json);
+  static ChangeOverallRating fromJson(String json) {
+    return ensureInitialized().decodeJson<ChangeOverallRating>(json);
   }
 }
 
-mixin TapOverallRatingMappable {
+mixin ChangeOverallRatingMappable {
   String toJson() {
-    return TapOverallRatingMapper.ensureInitialized()
-        .encodeJson<TapOverallRating>(this as TapOverallRating);
+    return ChangeOverallRatingMapper.ensureInitialized()
+        .encodeJson<ChangeOverallRating>(this as ChangeOverallRating);
   }
 
   Map<String, dynamic> toMap() {
-    return TapOverallRatingMapper.ensureInitialized()
-        .encodeMap<TapOverallRating>(this as TapOverallRating);
+    return ChangeOverallRatingMapper.ensureInitialized()
+        .encodeMap<ChangeOverallRating>(this as ChangeOverallRating);
   }
 
-  TapOverallRatingCopyWith<TapOverallRating, TapOverallRating, TapOverallRating>
-      get copyWith => _TapOverallRatingCopyWithImpl(
-          this as TapOverallRating, $identity, $identity);
+  ChangeOverallRatingCopyWith<ChangeOverallRating, ChangeOverallRating,
+          ChangeOverallRating>
+      get copyWith => _ChangeOverallRatingCopyWithImpl(
+          this as ChangeOverallRating, $identity, $identity);
   @override
   String toString() {
-    return TapOverallRatingMapper.ensureInitialized()
-        .stringifyValue(this as TapOverallRating);
+    return ChangeOverallRatingMapper.ensureInitialized()
+        .stringifyValue(this as ChangeOverallRating);
   }
 
   @override
   bool operator ==(Object other) {
-    return TapOverallRatingMapper.ensureInitialized()
-        .equalsValue(this as TapOverallRating, other);
+    return ChangeOverallRatingMapper.ensureInitialized()
+        .equalsValue(this as ChangeOverallRating, other);
   }
 
   @override
   int get hashCode {
-    return TapOverallRatingMapper.ensureInitialized()
-        .hashValue(this as TapOverallRating);
+    return ChangeOverallRatingMapper.ensureInitialized()
+        .hashValue(this as ChangeOverallRating);
   }
 }
 
-extension TapOverallRatingValueCopy<$R, $Out>
-    on ObjectCopyWith<$R, TapOverallRating, $Out> {
-  TapOverallRatingCopyWith<$R, TapOverallRating, $Out>
-      get $asTapOverallRating =>
-          $base.as((v, t, t2) => _TapOverallRatingCopyWithImpl(v, t, t2));
+extension ChangeOverallRatingValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, ChangeOverallRating, $Out> {
+  ChangeOverallRatingCopyWith<$R, ChangeOverallRating, $Out>
+      get $asChangeOverallRating =>
+          $base.as((v, t, t2) => _ChangeOverallRatingCopyWithImpl(v, t, t2));
 }
 
-abstract class TapOverallRatingCopyWith<$R, $In extends TapOverallRating, $Out>
-    implements FilterEventCopyWith<$R, $In, $Out> {
+abstract class ChangeOverallRatingCopyWith<$R, $In extends ChangeOverallRating,
+    $Out> implements FilterEventCopyWith<$R, $In, $Out> {
   @override
-  $R call();
-  TapOverallRatingCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+  $R call({RangeValues? overallRatingRange});
+  ChangeOverallRatingCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
 
-class _TapOverallRatingCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, TapOverallRating, $Out>
-    implements TapOverallRatingCopyWith<$R, TapOverallRating, $Out> {
-  _TapOverallRatingCopyWithImpl(super.value, super.then, super.then2);
+class _ChangeOverallRatingCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, ChangeOverallRating, $Out>
+    implements ChangeOverallRatingCopyWith<$R, ChangeOverallRating, $Out> {
+  _ChangeOverallRatingCopyWithImpl(super.value, super.then, super.then2);
 
   @override
-  late final ClassMapperBase<TapOverallRating> $mapper =
-      TapOverallRatingMapper.ensureInitialized();
+  late final ClassMapperBase<ChangeOverallRating> $mapper =
+      ChangeOverallRatingMapper.ensureInitialized();
   @override
-  $R call() => $apply(FieldCopyWithData({}));
+  $R call({RangeValues? overallRatingRange}) => $apply(FieldCopyWithData({
+        if (overallRatingRange != null) #overallRatingRange: overallRatingRange
+      }));
   @override
-  TapOverallRating $make(CopyWithData data) => TapOverallRating();
+  ChangeOverallRating $make(CopyWithData data) => ChangeOverallRating(
+      overallRatingRange:
+          data.get(#overallRatingRange, or: $value.overallRatingRange));
 
   @override
-  TapOverallRatingCopyWith<$R2, TapOverallRating, $Out2> $chain<$R2, $Out2>(
-          Then<$Out2, $R2> t) =>
-      _TapOverallRatingCopyWithImpl($value, $cast, t);
+  ChangeOverallRatingCopyWith<$R2, ChangeOverallRating, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _ChangeOverallRatingCopyWithImpl($value, $cast, t);
 }
 
 class TapGenderMapper extends SubClassMapperBase<TapGender> {
@@ -1301,9 +1315,10 @@ class FilterStateMapper extends ClassMapperBase<FilterState> {
       v.positionGroups;
   static const Field<FilterState, List<PositionGroup>> _f$positionGroups =
       Field('positionGroups', _$positionGroups);
-  static List<int>? _$overallRating(FilterState v) => v.overallRating;
-  static const Field<FilterState, List<int>> _f$overallRating =
-      Field('overallRating', _$overallRating);
+  static RangeValues _$overallRatingRange(FilterState v) =>
+      v.overallRatingRange;
+  static const Field<FilterState, RangeValues> _f$overallRatingRange =
+      Field('overallRatingRange', _$overallRatingRange);
 
   @override
   final MappableFields<FilterState> fields = const {
@@ -1315,7 +1330,7 @@ class FilterStateMapper extends ClassMapperBase<FilterState> {
     #foots: _f$foots,
     #positions: _f$positions,
     #positionGroups: _f$positionGroups,
-    #overallRating: _f$overallRating,
+    #overallRatingRange: _f$overallRatingRange,
   };
 
   static FilterState _instantiate(DecodingData data) {
@@ -1328,7 +1343,7 @@ class FilterStateMapper extends ClassMapperBase<FilterState> {
         foots: data.dec(_f$foots),
         positions: data.dec(_f$positions),
         positionGroups: data.dec(_f$positionGroups),
-        overallRating: data.dec(_f$overallRating));
+        overallRatingRange: data.dec(_f$overallRatingRange));
   }
 
   @override
@@ -1396,7 +1411,6 @@ abstract class FilterStateCopyWith<$R, $In extends FilterState, $Out>
       get positions;
   ListCopyWith<$R, PositionGroup,
       ObjectCopyWith<$R, PositionGroup, PositionGroup>>? get positionGroups;
-  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get overallRating;
   $R call(
       {List<NestedFilterLayoutType>? leagues,
       List<NestedFilterLayoutType>? nations,
@@ -1406,7 +1420,7 @@ abstract class FilterStateCopyWith<$R, $In extends FilterState, $Out>
       List<Foot>? foots,
       List<Position>? positions,
       List<PositionGroup>? positionGroups,
-      List<int>? overallRating});
+      RangeValues? overallRatingRange});
   FilterStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -1478,14 +1492,6 @@ class _FilterStateCopyWithImpl<$R, $Out>
               (v) => call(positionGroups: v))
           : null;
   @override
-  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get overallRating =>
-      $value.overallRating != null
-          ? ListCopyWith(
-              $value.overallRating!,
-              (v, t) => ObjectCopyWith(v, $identity, t),
-              (v) => call(overallRating: v))
-          : null;
-  @override
   $R call(
           {Object? leagues = $none,
           Object? nations = $none,
@@ -1495,7 +1501,7 @@ class _FilterStateCopyWithImpl<$R, $Out>
           Object? foots = $none,
           Object? positions = $none,
           Object? positionGroups = $none,
-          Object? overallRating = $none}) =>
+          RangeValues? overallRatingRange}) =>
       $apply(FieldCopyWithData({
         if (leagues != $none) #leagues: leagues,
         if (nations != $none) #nations: nations,
@@ -1505,7 +1511,7 @@ class _FilterStateCopyWithImpl<$R, $Out>
         if (foots != $none) #foots: foots,
         if (positions != $none) #positions: positions,
         if (positionGroups != $none) #positionGroups: positionGroups,
-        if (overallRating != $none) #overallRating: overallRating
+        if (overallRatingRange != null) #overallRatingRange: overallRatingRange
       }));
   @override
   FilterState $make(CopyWithData data) => FilterState(
@@ -1517,7 +1523,8 @@ class _FilterStateCopyWithImpl<$R, $Out>
       foots: data.get(#foots, or: $value.foots),
       positions: data.get(#positions, or: $value.positions),
       positionGroups: data.get(#positionGroups, or: $value.positionGroups),
-      overallRating: data.get(#overallRating, or: $value.overallRating));
+      overallRatingRange:
+          data.get(#overallRatingRange, or: $value.overallRatingRange));
 
   @override
   FilterStateCopyWith<$R2, FilterState, $Out2> $chain<$R2, $Out2>(

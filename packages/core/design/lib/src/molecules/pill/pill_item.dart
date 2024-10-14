@@ -5,9 +5,10 @@ class PillItem<T> {
     required this.data,
     required this.text,
     required this.isSelected,
-    this.onTap,
     this.hasDigit = false,
     this.iconData,
+    this.image,
+    this.onTap,
   });
 
   final T data;
@@ -15,5 +16,6 @@ class PillItem<T> {
   final bool isSelected;
   final bool hasDigit;
   final IconData? iconData;
+  final Widget? image;
   final VoidCallback? onTap;
 }

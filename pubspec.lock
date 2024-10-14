@@ -332,6 +332,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  feature_dashboard:
+    dependency: "direct main"
+    description:
+      path: "packages/features/dashboard"
+      relative: true
+    source: path
+    version: "0.0.1"
   feature_drawer:
     dependency: "direct main"
     description:

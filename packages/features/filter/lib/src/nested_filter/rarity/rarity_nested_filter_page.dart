@@ -61,6 +61,7 @@ class RarityNestedFilterPage extends StatelessWidget {
                                 (item) => PillItem<Rarity>(
                                   data: item,
                                   text: item.name,
+                                  image: RarityImage(rarity: item),
                                   isSelected: (state.selectedRarities ??
                                               rarityNestedFilterPageParams
                                                   .items)

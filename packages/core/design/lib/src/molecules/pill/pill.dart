@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 const _height = 28.0;
 
-class Pill extends StatelessWidget {
+class Pill<T> extends StatelessWidget {
   const Pill({
     super.key,
     required this.pillItem,
   });
 
-  final PillItem pillItem;
+  final PillItem<T> pillItem;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +52,12 @@ class Pill extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            if (pillItem.image != null) ...[
+              pillItem.image!,
+              SizedBox(width: AppSpacing.space2),
+            ],
             Text(
-              pillItem.text.toUpperCase(),
+              pillItem.text,
               style: textStyle.copyWith(color: color),
             ),
             if (pillItem.iconData != null) ...[

@@ -13,19 +13,19 @@ part 'player_detail_state.dart';
 class PlayerDetailBlocParams {
   const PlayerDetailBlocParams({
     required this.player,
-    required this.roles,
-    required this.playStyles,
+    required this.allRoles,
+    required this.allPlayStyles,
   });
 
   final Player player;
-  final List<Role> roles;
-  final List<PlayStyle> playStyles;
+  final List<Role> allRoles;
+  final List<PlayStyle> allPlayStyles;
 }
 
 @injectable
 class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   PlayerDetailBloc(
-    @factoryParam PlayerDetailBlocParams params,
+    @factoryParam this.params,
     this._getPlayerDetailsUseCase,
     this._getPlayerVersionsUseCase,
     this._getPlayerByVersionUseCase,
@@ -33,13 +33,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     this._getPlayStylesByIdsUseCase,
     this._getPlayerPriceUseCase,
     this._playerNavigator,
-  ) : super(
-          PlayerDetailState(
-            player: params.player,
-            allRoles: params.roles,
-            allPlayStyles: params.playStyles,
-          ),
-        ) {
+  ) : super(PlayerDetailState(player: params.player)) {
     on<Init>((event, emit) => _initial(params.player, emit));
     on<VersionTap>(
       (event, emit) => _versionTap(
@@ -48,8 +42,8 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
         emit,
       ),
     );
-    on<LoadRoles>((_, emit) => _loadRoles(emit));
-    on<LoadPlayStyles>((_, emit) => _loadPlayStyles(emit));
+    on<LoadRoles>((event, emit) => _loadRoles(event, emit));
+    on<LoadPlayStyles>((event, emit) => _loadPlayStyles(event, emit));
     on<LoadVersions>((_, emit) => _loadVersions(emit));
     on<LoadPrice>((_, emit) => _loadPrice(emit));
     on<CompareTap>((_, emit) => _compareTap());
@@ -57,6 +51,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     add(Init(player: params.player));
   }
 
+  final PlayerDetailBlocParams params;
   final GetPlayerDetailsUseCase _getPlayerDetailsUseCase;
   final GetPlayerVersionsUseCase _getPlayerVersionsUseCase;
   final GetPlayerByVersionUseCase _getPlayerByVersionUseCase;
@@ -87,9 +82,9 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     _handlePlayerDetailsResult(playerResult, emit);
   }
 
-  void _loadRoles(Emitter<PlayerDetailState> emit) {
+  void _loadRoles(LoadRoles event, Emitter<PlayerDetailState> emit) {
     final roles = _getRolesByIdsUseCase(
-      allRoles: state.allRoles,
+      allRoles: params.allRoles,
       eaIds: [
         ...(state.player.rolesPlusPlus ?? []),
         ...(state.player.rolesPlus ?? []),
@@ -98,15 +93,15 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     emit(state.copyWith(playerRoles: roles));
   }
 
-  void _loadPlayStyles(Emitter<PlayerDetailState> emit) {
+  void _loadPlayStyles(LoadPlayStyles event, Emitter<PlayerDetailState> emit) {
     final playStylesPlus = _getPlayStylesByIdsUseCase(
-      allPlayStyles: state.allPlayStyles,
+      allPlayStyles: params.allPlayStyles,
       eaIds: [
         ...(state.player.playStylesPlus ?? []),
       ],
     );
     final playStyles = _getPlayStylesByIdsUseCase(
-      allPlayStyles: state.allPlayStyles,
+      allPlayStyles: params.allPlayStyles,
       eaIds: [
         ...(state.player.playStyles ?? []),
       ],

@@ -1,4 +1,5 @@
 import 'package:fc_concept/navigation/auth_guard_observer.dart';
+import 'package:fc_concept/navigation/routes_config.dart';
 import 'package:feature_auth/auth.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_filter/filter.dart';
@@ -18,5 +19,6 @@ final appRouterConfig = GoRouter(
     ...di<CompareRoutesConfig>().getRoutes(),
     ...di<FilterRoutesConfig>().getRoutes(),
     ...di<AuthRoutesConfig>().getRoutes(),
+    ...di<AppRoutesConfig>().getRoutes(),
   ],
 );

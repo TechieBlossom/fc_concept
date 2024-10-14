@@ -1,4 +1,4 @@
-import 'package:core_domain/domain.dart';
+import 'package:core_design/src/utility/x_int.dart';
 import 'package:flutter/material.dart';
 
 class AttributeItem {
@@ -12,17 +12,7 @@ class AttributeItem {
 }
 
 extension XAttributeItem on AttributeItem {
-  Color get ratingColor => switch (this.rating) {
-        >= 80 => rating4,
-        >= 71 => rating3,
-        >= 61 => rating2,
-        _ => rating1
-      };
+  Color get ratingColor => this.rating.color;
 
-  Color get lightRatingColor => switch (this.rating) {
-        >= 80 => lightRating4,
-        >= 71 => lightRating3,
-        >= 61 => lightRating2,
-        _ => lightRating1
-      };
+  Color get lightRatingColor => this.rating.lightColor;
 }

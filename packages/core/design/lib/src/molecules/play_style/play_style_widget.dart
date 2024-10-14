@@ -25,10 +25,12 @@ class PlayStyleWidget extends StatelessWidget {
           padding: const EdgeInsets.all(AppSpacing.space2),
           decoration: BoxDecoration(
             gradient: isPlus
-                ? LinearGradient(colors: [
-                    context.colors.gold2,
-                    context.colors.gold,
-                  ])
+                ? LinearGradient(
+                    colors: [
+                      context.colors.gold2,
+                      context.colors.gold,
+                    ],
+                  )
                 : null,
             // color: !isPlus ? context.colors.contentTertiary : null,
             borderRadius: BorderRadius.all(

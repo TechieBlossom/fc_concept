@@ -136,7 +136,15 @@ class PlayerHeader extends StatelessWidget {
                 ),
                 _AnimatedOpacity(
                   isShown: player.facePace != null,
-                  child: AttributesCard(
+                  child: player.position?.shortLabel == 'GK' ? AttributesCard(
+                    paceRating: player.gkFaceSpeed ?? 0,
+                    shootRating: player.gkFaceKicking ?? 0,
+                    passRating: player.gkFaceHandling ?? 0,
+                    dribbleRating: player.gkFaceReflexes ?? 0,
+                    defendRating: player.gkFacePositioning ?? 0,
+                    physicalRating: player.gkFaceDiving ?? 0,
+                    isGK: true,
+                  ) : AttributesCard(
                     paceRating: player.facePace ?? 0,
                     shootRating: player.faceShooting ?? 0,
                     passRating: player.facePassing ?? 0,
