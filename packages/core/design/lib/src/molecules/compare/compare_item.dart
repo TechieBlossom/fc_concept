@@ -5,7 +5,7 @@ class CompareItem {
   final String label;
   final String? first;
   final String? second;
-  final IconData? icon;
+  final Widget? trailing;
   final bool hasDigit;
   final NumberFormat? formatter;
 
@@ -13,7 +13,7 @@ class CompareItem {
     required this.label,
     required this.first,
     required this.second,
-    this.icon,
+    this.trailing,
     this.hasDigit = false,
     this.formatter,
   });

@@ -11,46 +11,6 @@ class Cards extends StatelessWidget {
       body: ListView(
         children: [
           const SizedBox(height: AppSpacing.space5),
-          const CollapsibleCard(
-            heading: 'Info',
-            compareItems: [
-              CompareItem(
-                label: 'Age',
-                first: '35',
-                second: '32',
-                hasDigit: true,
-              ),
-              CompareItem(
-                label: 'Skills',
-                first: '5',
-                second: '4',
-                hasDigit: true,
-                icon: Icons.star_rounded,
-              ),
-              CompareItem(
-                label: 'Skills',
-                first: '5',
-                second: '4',
-                hasDigit: true,
-                icon: Icons.star_rounded,
-              ),
-              CompareItem(
-                label: 'Skills',
-                first: '5',
-                second: '4',
-                hasDigit: true,
-                icon: Icons.star_rounded,
-              ),
-              CompareItem(
-                label: 'Skills',
-                first: '5',
-                second: '4',
-                hasDigit: true,
-                icon: Icons.star_rounded,
-              ),
-            ],
-          ),
-          const SizedBox(height: AppSpacing.space5),
           PriceCard(
             bg: 0xFFFFFFFF,
             fg: 0xFF000000,

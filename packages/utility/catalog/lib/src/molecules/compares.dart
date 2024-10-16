@@ -16,18 +16,18 @@ class Compares extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: AppSpacing.space5),
-            Compare(
+            CompareListItem(
               compareItem: CompareItem(
                 label: 'Last Price',
                 first: '10000000',
                 second: '900000',
                 hasDigit: true,
-                icon: Icons.animation_rounded,
+                trailing: const Icon(Icons.animation_rounded),
                 formatter: currencyFormatter,
               ),
             ),
             const SizedBox(height: AppSpacing.space5),
-            const Compare(
+            const CompareListItem(
               compareItem: CompareItem(
                 label: 'Age',
                 first: '35',
@@ -36,7 +36,7 @@ class Compares extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.space5),
-            const Compare(
+            const CompareListItem(
               compareItem: CompareItem(
                 label: 'Height',
                 first: '195 CM',
@@ -45,7 +45,7 @@ class Compares extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.space5),
-            const Compare(
+            const CompareListItem(
               compareItem: CompareItem(
                 label: 'Work Rate',
                 first: 'HIGH/MED',
@@ -54,7 +54,7 @@ class Compares extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.space5),
-            const Compare(
+            const CompareListItem(
               compareItem: CompareItem(
                 label: 'PRP',
                 first: '50%',
@@ -63,13 +63,13 @@ class Compares extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.space5),
-            const Compare(
+            const CompareListItem(
               compareItem: CompareItem(
                 label: 'Skills',
                 first: '4',
                 second: '5',
                 hasDigit: true,
-                icon: Icons.star_rounded,
+                trailing: Icon(Icons.star_rounded),
               ),
             ),
           ],

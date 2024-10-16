@@ -13,6 +13,24 @@ class ComparePage extends StatelessWidget {
 
   final Player? player;
 
+  List<CompareItem> firstSectionItems(Player? player1, Player? player2) {
+    if (player1 == null || player2 == null) {
+      return [];
+    }
+    return [
+      CompareItem(
+        label: 'Name',
+        first: player1.commonName,
+        second: player2.commonName,
+      ),
+      CompareItem(
+        label: 'Revision',
+        first: player1.rarity.name,
+        second: player2.rarity.name,
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CompareBloc>(
@@ -22,163 +40,35 @@ class ComparePage extends StatelessWidget {
           final player1 = state.player1 ?? player;
           final player2 = state.player2;
           return Scaffold(
-            appBar: const PageTitle(title: 'Compare'),
-            body: Stack(
-              fit: StackFit.expand,
-              children: [
-                Positioned(
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  width: MediaQuery.sizeOf(context).width / 2,
-                  child: ColoredBox(
-                    color: context.colors.backgroundTertiary70,
-                  ),
-                ),
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      PlayerPlaceholders(
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    PlayerPlaceholders(
+                      player1: player1,
+                      player2: player2,
+                      player1Versions: state.player1Versions,
+                      player2Versions: state.player2Versions,
+                      selectedPlayer1Version: state.selectedPlayer1Version,
+                      selectedPlayer2Version: state.selectedPlayer2Version,
+                    ),
+                    if (player1 != null || player2 != null) ...[
+                      ...firstSectionItems(player1, player2).map(
+                        (item) => CompareListItem(
+                          compareItem: item,
+                        ),
+                      ),
+                    ],
+                    const Space(space: AppSpacing.space5),
+                    if (player1 != null && player2 != null) ...[
+                      CompareAttributesLayout(
                         player1: player1,
                         player2: player2,
-                        player1Versions: state.player1Versions,
-                        player2Versions: state.player2Versions,
-                        selectedPlayer1Version: state.selectedPlayer1Version,
-                        selectedPlayer2Version: state.selectedPlayer2Version,
                       ),
-                      if (player1 != null || player2 != null) ...[
-                        CollapsibleCard(
-                          heading: 'Info',
-                          compareItems: [
-                            // CompareItem(
-                            //   label: 'Age',
-                            //   first: player1?.age?.toString() ?? '-',
-                            //   second: player2?.age?.toString() ?? '-',
-                            //   hasDigit: true,
-                            // ),
-                            CompareItem(
-                              label: 'Height',
-                              first: player1?.height != null
-                                  ? '${player1!.height} CM'
-                                  : '-',
-                              second: player2?.height != null
-                                  ? '${player2!.height} CM'
-                                  : '-',
-                              hasDigit: true,
-                            ),
-                            CompareItem(
-                              label: 'Skills',
-                              first: player1?.skillMoves?.toString() ?? '-',
-                              second: player2?.skillMoves?.toString() ?? '-',
-                              icon: Icons.star_rounded,
-                              hasDigit: true,
-                            ),
-                            CompareItem(
-                              label: 'Weak Foot',
-                              first: player1?.weakFoot?.toString() ?? '-',
-                              second: player2?.weakFoot?.toString() ?? '-',
-                              icon: Icons.star_rounded,
-                              hasDigit: true,
-                            ),
-                            CompareItem(
-                              label: 'Preferred Foot',
-                              first: player1?.foot?.toString() ?? '-',
-                              second: player2?.foot?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
-                            // CompareItem(
-                            //   label: 'Work rate',
-                            //   first: (player1?.attackWorkRate != null &&
-                            //           player1?.defenseWorkRate != null)
-                            //       ? '${player1?.attackWorkRate?.name.toUpperCase()}/${player1?.defenseWorkRate?.name.toUpperCase()}'
-                            //       : '-',
-                            //   second: (player2?.attackWorkRate != null &&
-                            //           player2?.defenseWorkRate != null)
-                            //       ? '${player2?.attackWorkRate?.name.toUpperCase()}/${player2?.defenseWorkRate?.name.toUpperCase()}'
-                            //       : '-',
-                            //   hasDigit: true,
-                            // ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSpacing.space3),
-                        CollapsibleCard(
-                          heading: 'Pace',
-                          compareItems: [
-                            CompareItem(
-                              label: 'Overall',
-                              first: player1?.facePace?.toString() ?? '-',
-                              second: player2?.facePace?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSpacing.space3),
-                        CollapsibleCard(
-                          heading: 'Shooting',
-                          compareItems: [
-                            CompareItem(
-                              label: 'Overall',
-                              first: player1?.faceShooting?.toString() ?? '-',
-                              second: player2?.faceShooting?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSpacing.space3),
-                        CollapsibleCard(
-                          heading: 'Passing',
-                          compareItems: [
-                            CompareItem(
-                              label: 'Overall',
-                              first: player1?.facePassing?.toString() ?? '-',
-                              second: player2?.facePassing?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSpacing.space3),
-                        CollapsibleCard(
-                          heading: 'Dribbling',
-                          compareItems: [
-                            CompareItem(
-                              label: 'Overall',
-                              first: player1?.faceDribbling?.toString() ?? '-',
-                              second: player2?.faceDribbling?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSpacing.space3),
-                        CollapsibleCard(
-                          heading: 'Defending',
-                          compareItems: [
-                            CompareItem(
-                              label: 'Overall',
-                              first: player1?.faceDefending?.toString() ?? '-',
-                              second: player2?.faceDefending?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSpacing.space3),
-                        CollapsibleCard(
-                          heading: 'Physicality',
-                          compareItems: [
-                            CompareItem(
-                              label: 'Overall',
-                              first:
-                                  player1?.facePhysicality?.toString() ?? '-',
-                              second:
-                                  player2?.facePhysicality?.toString() ?? '-',
-                              hasDigit: true,
-                            ),
-                          ],
-                        ),
-                      ],
                     ],
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           );
         },

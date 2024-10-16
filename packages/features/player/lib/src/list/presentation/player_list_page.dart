@@ -2,7 +2,6 @@ import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_drawer/drawer.dart';
 import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart';
-import 'package:feature_player/src/list/presentation/model/player_list_type.dart';
 import 'package:feature_player/src/list/presentation/player_list.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
@@ -20,7 +19,7 @@ class _PlayerListPageState extends State<PlayerListPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PlayerListBloc>(
-      create: (context) => di<PlayerListBloc>(param: PlayerListType.all),
+      create: (context) => di<PlayerListBloc>(),
       child: BlocBuilder<PlayerListBloc, PlayerListState>(
         builder: (context, state) {
           return Scaffold(

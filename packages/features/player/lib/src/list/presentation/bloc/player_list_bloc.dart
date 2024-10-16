@@ -1,6 +1,5 @@
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:feature_player/src/list/presentation/model/player_list_type.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,14 +20,12 @@ EventTransformer<Event> debounce<Event>(Duration duration) {
 @injectable
 class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   PlayerListBloc(
-    @factoryParam PlayerListType playerListType,
     this._getTopPlayerUseCase,
-    this._getPopularPlayerUseCase,
     this._searchPlayersUseCase,
     this._filterPlayersUseCase,
     this._navigator,
   ) : super(PlayerListState()) {
-    on<Init>((event, emit) => _initial(event, emit, playerListType));
+    on<Init>((event, emit) => _initial(event, emit));
     on<Search>(_search, transformer: debounce(_duration));
     on<NextPage>(_nextPage, transformer: debounce(_duration));
     on<PlayerTap>((event, _) => _playerTap(event));
@@ -38,7 +35,6 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   }
 
   final GetTopPlayerUseCase _getTopPlayerUseCase;
-  final GetPopularPlayerUseCase _getPopularPlayerUseCase;
   final SearchPlayersUseCase _searchPlayersUseCase;
   final FilterPlayersUseCase _filterPlayersUseCase;
   final PlayerNavigator _navigator;
@@ -46,13 +42,9 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   Future<void> _initial(
     Init event,
     Emitter<PlayerListState> emit,
-    PlayerListType playerListType,
   ) async {
     emit(state.copyWith(processState: ProcessState.loading));
-    final response = switch (playerListType) {
-      PlayerListType.all => await _getTopPlayerUseCase(),
-      PlayerListType.popular => await _getPopularPlayerUseCase(),
-    };
+    final response = await _getTopPlayerUseCase();
     switch (response) {
       case Success(data: final players):
         _handleSuccess(emit, players);
