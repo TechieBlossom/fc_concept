@@ -3,6 +3,7 @@ import 'package:core_domain/domain.dart';
 import 'package:fc_concept/di/injection.dart';
 import 'package:feature_auth/auth.dart';
 import 'package:feature_compare/compare.dart';
+import 'package:feature_dashboard/dashboard.dart';
 import 'package:feature_drawer/drawer.dart';
 import 'package:feature_filter/filter.dart';
 import 'package:feature_player/player.dart';
@@ -20,6 +21,7 @@ Future<void> initializeDi(String environment) async {
         domainDi,
         navigationDi,
         drawerDi,
+        dashboardDi,
         playerDi,
         filterDi,
         compareDi,

@@ -12,7 +12,7 @@ final appRouterConfig = GoRouter(
   observers: [
     di<AuthGuardObserver>(),
   ],
-  initialLocation: PlayerRoutes.pagePlayerList,
+  initialLocation: DashboardRoutes.pageDashboard,
   navigatorKey: di<GlobalKey<NavigatorState>>(),
   routes: [
     ...di<PlayerRoutesConfig>().getRoutes(),

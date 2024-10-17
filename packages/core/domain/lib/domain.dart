@@ -6,6 +6,8 @@ export 'package:core_domain/src/domain/common/foot.dart';
 export 'package:core_domain/src/domain/common/gender.dart';
 export 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 export 'package:core_domain/src/domain/filters/model/filter_configuration.dart';
+export 'package:core_domain/src/domain/index/model/index_data.dart';
+export 'package:core_domain/src/domain/index/use_case/get_index_data_use_case.dart';
 export 'package:core_domain/src/domain/leagues/model/league.dart';
 export 'package:core_domain/src/domain/leagues/use_case/get_other_leagues_use_case.dart';
 export 'package:core_domain/src/domain/leagues/use_case/get_top_leagues_use_case.dart';

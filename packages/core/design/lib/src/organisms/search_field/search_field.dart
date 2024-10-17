@@ -5,10 +5,11 @@ import 'package:shimmer/shimmer.dart';
 class SearchField extends StatefulWidget {
   const SearchField({
     super.key,
-    required this.onSearch,
-    required this.onClearTap,
-    required this.onFilterTap,
-    required this.onLeadingTap,
+    this.onSearch,
+    this.onClearTap,
+    this.onFilterTap,
+    this.onLeadingTap,
+    this.onTap,
     this.isLoading = false,
     this.initialValue = '',
   });
@@ -17,8 +18,9 @@ class SearchField extends StatefulWidget {
   final bool isLoading;
   final VoidCallback? onFilterTap;
   final VoidCallback? onLeadingTap;
-  final void Function(String) onSearch;
-  final VoidCallback onClearTap;
+  final void Function(String)? onSearch;
+  final VoidCallback? onClearTap;
+  final VoidCallback? onTap;
 
   @override
   State<SearchField> createState() => _SearchFieldState();
@@ -49,93 +51,96 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
-            color: context.colors.backgroundTertiary70,
-          ),
-          margin: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.space5,
-            vertical: AppSpacing.space3,
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.space3,
-          ),
-          child: TextFormField(
-            cursorHeight: 20,
-            controller: _controller,
-            onChanged: widget.onSearch,
-            textCapitalization: TextCapitalization.words,
-            style: context.typography.body1
-                .copyWith(color: context.colors.contentSecondary),
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.only(
-                top: AppSpacing.space4 + AppSpacing.space1,
-                left: AppSpacing.space4,
-              ),
-              border: InputBorder.none,
-              prefixIcon: widget.onLeadingTap != null
-                  ? IconButton(
-                      onPressed: widget.onLeadingTap,
-                      icon: Icon(Icons.menu_rounded),
-                    )
-                  : null,
-              suffixIcon: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  AnimatedOpacity(
-                    duration: const Duration(milliseconds: 300),
-                    opacity: showClearIcon ? 1 : 0,
-                    child: IconButton(
-                      onPressed: () {
-                        _controller.clear();
-                        widget.onClearTap();
-                      },
-                      icon: Icon(Icons.backspace_outlined),
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+              color: context.colors.backgroundTertiary70,
+            ),
+            margin: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space5,
+              vertical: AppSpacing.space3,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space3,
+            ),
+            child: TextFormField(
+              cursorHeight: 20,
+              controller: _controller,
+              onChanged: widget.onSearch,
+              textCapitalization: TextCapitalization.words,
+              style: context.typography.body1
+                  .copyWith(color: context.colors.contentSecondary),
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.only(
+                  top: AppSpacing.space4 + AppSpacing.space1,
+                  left: AppSpacing.space4,
+                ),
+                border: InputBorder.none,
+                prefixIcon: widget.onLeadingTap != null
+                    ? IconButton(
+                        onPressed: widget.onLeadingTap,
+                        icon: Icon(Icons.menu_rounded),
+                      )
+                    : null,
+                suffixIcon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    AnimatedOpacity(
+                      duration: const Duration(milliseconds: 300),
+                      opacity: showClearIcon ? 1 : 0,
+                      child: IconButton(
+                        onPressed: () {
+                          _controller.clear();
+                          widget.onClearTap?.call();
+                        },
+                        icon: Icon(Icons.backspace_outlined),
+                      ),
                     ),
-                  ),
-                  if (widget.onFilterTap != null)
-                    IconButton(
-                      onPressed: widget.onFilterTap,
-                      icon: Icon(Icons.filter_alt_rounded),
-                    ),
-                ],
+                    if (widget.onFilterTap != null)
+                      IconButton(
+                        onPressed: widget.onFilterTap,
+                        icon: Icon(Icons.filter_alt_rounded),
+                      ),
+                  ],
+                ),
+                hintText: 'Search by player name',
+                hintStyle: context.typography.body1
+                    .copyWith(color: context.colors.contentTertiary),
+                hintFadeDuration: const Duration(milliseconds: 100),
               ),
-              hintText: 'Search by player name',
-              hintStyle: context.typography.body1
-                  .copyWith(color: context.colors.contentTertiary),
-              hintFadeDuration: const Duration(milliseconds: 100),
             ),
           ),
-        ),
-        Positioned(
-          height: AppSpacing.space3,
-          bottom: AppSpacing.space3,
-          left: AppSpacing.space5,
-          right: AppSpacing.space5,
-          child: AnimatedOpacity(
-            opacity: widget.isLoading ? 1 : 0,
-            duration: const Duration(milliseconds: 300),
-            child: Shimmer.fromColors(
-              baseColor: const Color(0xFFD5E6FF),
-              highlightColor: const Color(0xFFACECD8),
-              child: SizedBox(
-                height: 8,
-                width: double.infinity,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: mediumCorner.bottom,
-                    color: Colors.red,
+          Positioned(
+            height: AppSpacing.space3,
+            bottom: AppSpacing.space3,
+            left: AppSpacing.space5,
+            right: AppSpacing.space5,
+            child: AnimatedOpacity(
+              opacity: widget.isLoading ? 1 : 0,
+              duration: const Duration(milliseconds: 300),
+              child: Shimmer.fromColors(
+                baseColor: const Color(0xFFD5E6FF),
+                highlightColor: const Color(0xFFACECD8),
+                child: SizedBox(
+                  height: 8,
+                  width: double.infinity,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: mediumCorner.bottom,
+                      color: Colors.red,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

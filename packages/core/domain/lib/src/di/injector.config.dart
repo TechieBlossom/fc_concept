@@ -14,6 +14,8 @@ import 'package:core_domain/src/data/auth/repository/auth_repository_impl.dart'
     as _i937;
 import 'package:core_domain/src/data/clubs/repository/club_repository_impl.dart'
     as _i767;
+import 'package:core_domain/src/data/index/repository/index_repository_impl.dart'
+    as _i747;
 import 'package:core_domain/src/data/leagues/repository/league_repository_impl.dart'
     as _i274;
 import 'package:core_domain/src/data/nations/repository/nation_repository_impl.dart'
@@ -46,6 +48,9 @@ import 'package:core_domain/src/domain/auth/use_case/sign_out_user_use_case.dart
 import 'package:core_domain/src/domain/clubs/club_repository.dart' as _i177;
 import 'package:core_domain/src/domain/clubs/use_case/get_clubs_by_league_use_case.dart'
     as _i1022;
+import 'package:core_domain/src/domain/index/index_repository.dart' as _i140;
+import 'package:core_domain/src/domain/index/use_case/get_index_data_use_case.dart'
+    as _i883;
 import 'package:core_domain/src/domain/leagues/league_repository.dart' as _i191;
 import 'package:core_domain/src/domain/leagues/use_case/get_other_leagues_use_case.dart'
     as _i739;
@@ -120,6 +125,7 @@ _i174.GetIt init(
       () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
+  gh.factory<_i140.IndexRepository>(() => _i747.IndexRepositoryImpl());
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
   gh.factory<_i526.PriceRepository>(
       () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
@@ -149,6 +155,8 @@ _i174.GetIt init(
       () => _i651.GetAllRolesUseCase(gh<_i907.RoleRepository>()));
   gh.factory<_i1022.GetClubsByLeagueUseCase>(
       () => _i1022.GetClubsByLeagueUseCase(gh<_i177.ClubRepository>()));
+  gh.factory<_i883.GetIndexDataUseCase>(
+      () => _i883.GetIndexDataUseCase(gh<_i140.IndexRepository>()));
   gh.factory<_i491.GetTopNationsUseCase>(
       () => _i491.GetTopNationsUseCase(gh<_i829.NationRepository>()));
   gh.factory<_i847.GetOtherNationsUseCase>(

@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 class SearchContainer extends StatelessWidget implements PreferredSize {
   const SearchContainer({
     super.key,
-    required this.onSearch,
-    required this.onFilterTap,
-    required this.onLeadingTap,
-    required this.onClearTap,
+    this.onSearch,
+    this.onFilterTap,
+    this.onLeadingTap,
+    this.onClearTap,
+    this.onTap,
     this.margin,
     this.isLoading = false,
     this.initialValue = '',
@@ -17,8 +18,9 @@ class SearchContainer extends StatelessWidget implements PreferredSize {
   final bool isLoading;
   final VoidCallback? onFilterTap;
   final VoidCallback? onLeadingTap;
-  final void Function(String) onSearch;
-  final VoidCallback onClearTap;
+  final void Function(String)? onSearch;
+  final VoidCallback? onClearTap;
+  final VoidCallback? onTap;
   final EdgeInsets? margin;
 
   @override
@@ -38,6 +40,7 @@ class SearchContainer extends StatelessWidget implements PreferredSize {
         onClearTap: onClearTap,
         onFilterTap: onFilterTap,
         onLeadingTap: onLeadingTap,
+        onTap: onTap,
       ),
     );
   }
