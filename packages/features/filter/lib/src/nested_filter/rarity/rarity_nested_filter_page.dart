@@ -26,7 +26,7 @@ class RarityNestedFilterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<RarityNestedFilterBloc>(
       create: (_) =>
-          di<RarityNestedFilterBloc>(param: rarityNestedFilterPageParams),
+          di<RarityNestedFilterBloc>(param1: rarityNestedFilterPageParams),
       child: BlocBuilder<RarityNestedFilterBloc, RarityNestedFilterState>(
         builder: (context, state) {
           return Scaffold(

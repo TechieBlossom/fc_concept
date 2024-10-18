@@ -391,36 +391,36 @@ class RoleNestedFilterStateMapper
   static ProcessState _$processState(RoleNestedFilterState v) => v.processState;
   static const Field<RoleNestedFilterState, ProcessState> _f$processState =
       Field('processState', _$processState,
-          opt: true, def: ProcessState.loading);
-  static RoleNestedFilterPageParams? _$rarityNestedFilterPageParams(
+          opt: true, def: ProcessState.success);
+  static RoleNestedFilterPageParams? _$roleNestedFilterPageParams(
           RoleNestedFilterState v) =>
-      v.rarityNestedFilterPageParams;
+      v.roleNestedFilterPageParams;
   static const Field<RoleNestedFilterState, RoleNestedFilterPageParams>
-      _f$rarityNestedFilterPageParams = Field(
-          'rarityNestedFilterPageParams', _$rarityNestedFilterPageParams,
+      _f$roleNestedFilterPageParams = Field(
+          'roleNestedFilterPageParams', _$roleNestedFilterPageParams,
           opt: true);
   static List<Role>? _$roles(RoleNestedFilterState v) => v.roles;
   static const Field<RoleNestedFilterState, List<Role>> _f$roles =
       Field('roles', _$roles, opt: true);
-  static List<Role>? _$selectedRarities(RoleNestedFilterState v) =>
-      v.selectedRarities;
-  static const Field<RoleNestedFilterState, List<Role>> _f$selectedRarities =
-      Field('selectedRarities', _$selectedRarities, opt: true);
+  static List<Role>? _$selectedRoles(RoleNestedFilterState v) =>
+      v.selectedRoles;
+  static const Field<RoleNestedFilterState, List<Role>> _f$selectedRoles =
+      Field('selectedRoles', _$selectedRoles, opt: true);
 
   @override
   final MappableFields<RoleNestedFilterState> fields = const {
     #processState: _f$processState,
-    #rarityNestedFilterPageParams: _f$rarityNestedFilterPageParams,
+    #roleNestedFilterPageParams: _f$roleNestedFilterPageParams,
     #roles: _f$roles,
-    #selectedRarities: _f$selectedRarities,
+    #selectedRoles: _f$selectedRoles,
   };
 
   static RoleNestedFilterState _instantiate(DecodingData data) {
     return RoleNestedFilterState(
         processState: data.dec(_f$processState),
-        rarityNestedFilterPageParams: data.dec(_f$rarityNestedFilterPageParams),
+        roleNestedFilterPageParams: data.dec(_f$roleNestedFilterPageParams),
         roles: data.dec(_f$roles),
-        selectedRarities: data.dec(_f$selectedRarities));
+        selectedRoles: data.dec(_f$selectedRoles));
   }
 
   @override
@@ -481,12 +481,12 @@ abstract class RoleNestedFilterStateCopyWith<
     $In extends RoleNestedFilterState,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get roles;
-  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get selectedRarities;
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get selectedRoles;
   $R call(
       {ProcessState? processState,
-      RoleNestedFilterPageParams? rarityNestedFilterPageParams,
+      RoleNestedFilterPageParams? roleNestedFilterPageParams,
       List<Role>? roles,
-      List<Role>? selectedRarities});
+      List<Role>? selectedRoles});
   RoleNestedFilterStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -506,32 +506,31 @@ class _RoleNestedFilterStateCopyWithImpl<$R, $Out>
               (v) => call(roles: v))
           : null;
   @override
-  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get selectedRarities =>
-      $value.selectedRarities != null
-          ? ListCopyWith($value.selectedRarities!,
-              (v, t) => v.copyWith.$chain(t), (v) => call(selectedRarities: v))
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get selectedRoles =>
+      $value.selectedRoles != null
+          ? ListCopyWith($value.selectedRoles!, (v, t) => v.copyWith.$chain(t),
+              (v) => call(selectedRoles: v))
           : null;
   @override
   $R call(
           {ProcessState? processState,
-          Object? rarityNestedFilterPageParams = $none,
+          Object? roleNestedFilterPageParams = $none,
           Object? roles = $none,
-          Object? selectedRarities = $none}) =>
+          Object? selectedRoles = $none}) =>
       $apply(FieldCopyWithData({
         if (processState != null) #processState: processState,
-        if (rarityNestedFilterPageParams != $none)
-          #rarityNestedFilterPageParams: rarityNestedFilterPageParams,
+        if (roleNestedFilterPageParams != $none)
+          #roleNestedFilterPageParams: roleNestedFilterPageParams,
         if (roles != $none) #roles: roles,
-        if (selectedRarities != $none) #selectedRarities: selectedRarities
+        if (selectedRoles != $none) #selectedRoles: selectedRoles
       }));
   @override
   RoleNestedFilterState $make(CopyWithData data) => RoleNestedFilterState(
       processState: data.get(#processState, or: $value.processState),
-      rarityNestedFilterPageParams: data.get(#rarityNestedFilterPageParams,
-          or: $value.rarityNestedFilterPageParams),
+      roleNestedFilterPageParams: data.get(#roleNestedFilterPageParams,
+          or: $value.roleNestedFilterPageParams),
       roles: data.get(#roles, or: $value.roles),
-      selectedRarities:
-          data.get(#selectedRarities, or: $value.selectedRarities));
+      selectedRoles: data.get(#selectedRoles, or: $value.selectedRoles));
 
   @override
   RoleNestedFilterStateCopyWith<$R2, RoleNestedFilterState, $Out2>

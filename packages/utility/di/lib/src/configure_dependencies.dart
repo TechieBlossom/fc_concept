@@ -4,8 +4,12 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:utility_di/src/get_it.dart';
 
-T di<T extends Object>({dynamic param, String? instanceName}) =>
-    getIt<T>(param1: param, instanceName: instanceName);
+T di<T extends Object>({
+  dynamic param1,
+  dynamic param2,
+  String? instanceName,
+}) =>
+    getIt<T>(param1: param1, param2: param2, instanceName: instanceName);
 
 typedef DiContainerInitializer = FutureOr<void> Function(
   GetIt getIt, {

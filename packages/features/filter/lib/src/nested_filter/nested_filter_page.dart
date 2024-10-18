@@ -37,7 +37,7 @@ class NestedFilterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<NestedFilterBloc>(
-      create: (_) => di<NestedFilterBloc>(param: nestedFilterPageParams),
+      create: (_) => di<NestedFilterBloc>(param1: nestedFilterPageParams),
       child: BlocBuilder<NestedFilterBloc, NestedFilterState>(
         builder: (context, state) {
           return Scaffold(

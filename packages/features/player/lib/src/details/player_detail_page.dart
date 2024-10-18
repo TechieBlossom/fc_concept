@@ -18,7 +18,7 @@ class PlayerDetailPage extends StatelessWidget {
     final playStyles = context.read<MetadataBloc>().state.playStyles;
     return BlocProvider<PlayerDetailBloc>(
       create: (_) => di<PlayerDetailBloc>(
-        param: PlayerDetailBlocParams(
+        param1: PlayerDetailBlocParams(
           player: player,
           allRoles: roles,
           allPlayStyles: playStyles,

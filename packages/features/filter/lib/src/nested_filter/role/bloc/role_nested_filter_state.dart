@@ -3,14 +3,14 @@ part of 'role_nested_filter_bloc.dart';
 @MappableClass()
 class RoleNestedFilterState with RoleNestedFilterStateMappable {
   RoleNestedFilterState({
-    this.processState = ProcessState.loading,
-    this.rarityNestedFilterPageParams,
+    this.processState = ProcessState.success,
+    this.roleNestedFilterPageParams,
     this.roles,
-    this.selectedRarities,
+    this.selectedRoles,
   });
 
   final ProcessState processState;
-  final RoleNestedFilterPageParams? rarityNestedFilterPageParams;
+  final RoleNestedFilterPageParams? roleNestedFilterPageParams;
   final List<Role>? roles;
-  final List<Role>? selectedRarities;
+  final List<Role>? selectedRoles;
 }

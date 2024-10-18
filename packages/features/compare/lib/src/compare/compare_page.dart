@@ -34,7 +34,7 @@ class ComparePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CompareBloc>(
-      create: (_) => di<CompareBloc>(param: player),
+      create: (_) => di<CompareBloc>(param1: player),
       child: BlocBuilder<CompareBloc, CompareState>(
         builder: (context, state) {
           final player1 = state.player1 ?? player;

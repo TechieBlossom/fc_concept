@@ -25,7 +25,7 @@ class FilterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<FilterBloc>(
-      create: (_) => di<FilterBloc>(param: existingFilters),
+      create: (_) => di<FilterBloc>(param1: existingFilters),
       child: BlocBuilder<FilterBloc, FilterState>(
         builder: (context, state) {
           return Scaffold(

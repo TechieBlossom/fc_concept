@@ -24,9 +24,12 @@ class RoleNestedFilterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final allRoles = context.read<MetadataBloc>().state.roles;
     return BlocProvider<RoleNestedFilterBloc>(
-      create: (_) =>
-          di<RoleNestedFilterBloc>(param: roleNestedFilterPageParams),
+      create: (_) => di<RoleNestedFilterBloc>(
+        param1: roleNestedFilterPageParams,
+        param2: allRoles,
+      ),
       child: BlocBuilder<RoleNestedFilterBloc, RoleNestedFilterState>(
         builder: (context, state) {
           return Scaffold(
@@ -61,18 +64,16 @@ class RoleNestedFilterPage extends StatelessWidget {
                                 (item) => PillItem<Role>(
                                   data: item,
                                   text: '${item.name} | ${item.positionName}',
-                                  isSelected: (state.selectedRarities ??
-                                              roleNestedFilterPageParams
-                                                  .items)
+                                  isSelected: (state.selectedRoles ??
+                                              roleNestedFilterPageParams.items)
                                           ?.contains(item) ??
                                       false,
-                                  onTap: () => context
-                                      .read<RoleNestedFilterBloc>()
-                                      .add(
-                                        SelectRole(
-                                          item: item,
-                                        ),
-                                      ),
+                                  onTap: () =>
+                                      context.read<RoleNestedFilterBloc>().add(
+                                            SelectRole(
+                                              item: item,
+                                            ),
+                                          ),
                                 ),
                               )
                               .toList(),

@@ -52,13 +52,13 @@ _i174.GetIt init(
         gh<_i913.GetPositionsFromPositionGroup>(),
       ));
   gh.factoryParam<_i543.RoleNestedFilterBloc, _i792.RoleNestedFilterPageParams,
-      dynamic>((
-    rarityNestedFilterPageParams,
-    _,
+      List<_i913.Role>>((
+    roleNestedFilterPageParams,
+    allRoles,
   ) =>
       _i543.RoleNestedFilterBloc(
-        rarityNestedFilterPageParams,
-        gh<_i913.GetAllRolesUseCase>(),
+        roleNestedFilterPageParams,
+        allRoles,
         gh<_i176.FilterNavigator>(),
       ));
   gh.factoryParam<_i195.NestedFilterBloc, _i18.NestedFilterPageParams, dynamic>(
