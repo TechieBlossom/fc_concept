@@ -20,6 +20,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
       FootMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
       PositionGroupMapper.ensureInitialized();
+      RoleMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -58,6 +59,9 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
       v.positionGroups;
   static const Field<FilterConfiguration, List<PositionGroup>>
       _f$positionGroups = Field('positionGroups', _$positionGroups, opt: true);
+  static List<Role>? _$roles(FilterConfiguration v) => v.roles;
+  static const Field<FilterConfiguration, List<Role>> _f$roles =
+      Field('roles', _$roles, opt: true);
 
   @override
   final MappableFields<FilterConfiguration> fields = const {
@@ -70,6 +74,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
     #foots: _f$foots,
     #positions: _f$positions,
     #positionGroups: _f$positionGroups,
+    #roles: _f$roles,
   };
 
   static FilterConfiguration _instantiate(DecodingData data) {
@@ -82,7 +87,8 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
         genders: data.dec(_f$genders),
         foots: data.dec(_f$foots),
         positions: data.dec(_f$positions),
-        positionGroups: data.dec(_f$positionGroups));
+        positionGroups: data.dec(_f$positionGroups),
+        roles: data.dec(_f$roles));
   }
 
   @override
@@ -154,6 +160,7 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
       get positions;
   ListCopyWith<$R, PositionGroup,
       ObjectCopyWith<$R, PositionGroup, PositionGroup>>? get positionGroups;
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get roles;
   $R call(
       {List<NestedFilterLayoutType>? leagues,
       List<NestedFilterLayoutType>? nations,
@@ -163,7 +170,8 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
       List<Gender>? genders,
       List<Foot>? foots,
       List<Position>? positions,
-      List<PositionGroup>? positionGroups});
+      List<PositionGroup>? positionGroups,
+      List<Role>? roles});
   FilterConfigurationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -236,6 +244,12 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
               (v) => call(positionGroups: v))
           : null;
   @override
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get roles =>
+      $value.roles != null
+          ? ListCopyWith($value.roles!, (v, t) => v.copyWith.$chain(t),
+              (v) => call(roles: v))
+          : null;
+  @override
   $R call(
           {Object? leagues = $none,
           Object? nations = $none,
@@ -245,7 +259,8 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           Object? genders = $none,
           Object? foots = $none,
           Object? positions = $none,
-          Object? positionGroups = $none}) =>
+          Object? positionGroups = $none,
+          Object? roles = $none}) =>
       $apply(FieldCopyWithData({
         if (leagues != $none) #leagues: leagues,
         if (nations != $none) #nations: nations,
@@ -256,7 +271,8 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
         if (genders != $none) #genders: genders,
         if (foots != $none) #foots: foots,
         if (positions != $none) #positions: positions,
-        if (positionGroups != $none) #positionGroups: positionGroups
+        if (positionGroups != $none) #positionGroups: positionGroups,
+        if (roles != $none) #roles: roles
       }));
   @override
   FilterConfiguration $make(CopyWithData data) => FilterConfiguration(
@@ -269,7 +285,8 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
       genders: data.get(#genders, or: $value.genders),
       foots: data.get(#foots, or: $value.foots),
       positions: data.get(#positions, or: $value.positions),
-      positionGroups: data.get(#positionGroups, or: $value.positionGroups));
+      positionGroups: data.get(#positionGroups, or: $value.positionGroups),
+      roles: data.get(#roles, or: $value.roles));
 
   @override
   FilterConfigurationCopyWith<$R2, FilterConfiguration, $Out2>

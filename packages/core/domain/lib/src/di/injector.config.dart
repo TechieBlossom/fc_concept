@@ -15,7 +15,7 @@ import 'package:core_domain/src/data/auth/repository/auth_repository_impl.dart'
 import 'package:core_domain/src/data/clubs/repository/club_repository_impl.dart'
     as _i767;
 import 'package:core_domain/src/data/index/repository/index_repository_impl.dart'
-    as _i747;
+    as _i1034;
 import 'package:core_domain/src/data/leagues/repository/league_repository_impl.dart'
     as _i274;
 import 'package:core_domain/src/data/nations/repository/nation_repository_impl.dart'
@@ -125,13 +125,13 @@ _i174.GetIt init(
       () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
-  gh.factory<_i140.IndexRepository>(() => _i747.IndexRepositoryImpl());
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
   gh.factory<_i526.PriceRepository>(
       () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
   gh.factory<_i1070.PositionRepository>(() => _i684.PositionRepositoryImpl());
   gh.factory<_i437.GetAllPositionsUseCase>(
       () => _i437.GetAllPositionsUseCase(gh<_i1070.PositionRepository>()));
+  gh.factory<_i140.IndexRepository>(() => _i1034.IndexRepositoryImpl());
   gh.factory<_i781.GetAllPlayStylesUseCase>(
       () => _i781.GetAllPlayStylesUseCase(gh<_i73.PlayStyleRepository>()));
   gh.factory<_i52.RarityRepository>(() => _i176.RarityRepositoryImpl());

@@ -2,7 +2,7 @@ import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/filter/filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
-import 'package:feature_filter/src/nested_filter/rating/rating_nested_filter_page.dart';
+import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
@@ -49,15 +49,15 @@ class FilterRoutesConfig extends RoutesConfig {
           ),
         ),
         GoRoute(
-          path: FilterRoutes.pageOverallRatingNestedFilter,
+          path: FilterRoutes.pageRoleNestedFilter,
           pageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,
             name: state.fullPath,
             arguments: state.pathParameters,
             restorationId: state.pageKey.value,
-            child: RatingNestedFilterPage(
-              ratingNestedFilterPageParams:
-                  state.extra! as RatingNestedFilterPageParams,
+            child: RoleNestedFilterPage(
+              roleNestedFilterPageParams:
+                  state.extra! as RoleNestedFilterPageParams,
             ),
           ),
         ),

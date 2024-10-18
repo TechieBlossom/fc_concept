@@ -1,6 +1,7 @@
+import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
-import 'package:feature_filter/src/nested_filter/rating/rating_nested_filter_page.dart';
+import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.dart';
 import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
@@ -24,11 +25,11 @@ class FilterNavigator extends AppNavigator {
         extra: params,
       );
 
-  Future<List<Rarity>?> goToOverallRatingNestedFilter<Rarity>({
-    required RatingNestedFilterPageParams params,
+  Future<List<Role>?> goToRoleNestedFilter<Rarity>({
+    required RoleNestedFilterPageParams params,
   }) =>
       goRouter.push(
-        FilterRoutes.pageOverallRatingNestedFilter,
+        FilterRoutes.pageRoleNestedFilter,
         extra: params,
       );
 

@@ -5,6 +5,7 @@ import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/positions/model/position_group.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
+import 'package:core_domain/src/domain/roles/model/role.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.foots,
     this.positions,
     this.positionGroups,
+    this.roles,
   });
 
   final List<NestedFilterLayoutType>? leagues;
@@ -33,4 +35,5 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<Foot>? foots;
   final List<Position>? positions;
   final List<PositionGroup>? positionGroups;
+  final List<Role>? roles;
 }

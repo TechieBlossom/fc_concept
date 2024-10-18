@@ -20,10 +20,10 @@ import 'package:feature_filter/src/nested_filter/rarity/bloc/rarity_nested_filte
     as _i716;
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart'
     as _i465;
-import 'package:feature_filter/src/nested_filter/rating/bloc/rating_nested_filter_bloc.dart'
-    as _i595;
-import 'package:feature_filter/src/nested_filter/rating/rating_nested_filter_page.dart'
-    as _i659;
+import 'package:feature_filter/src/nested_filter/role/bloc/role_nested_filter_bloc.dart'
+    as _i543;
+import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.dart'
+    as _i792;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:utility_navigation/navigation.dart' as _i177;
@@ -51,6 +51,16 @@ _i174.GetIt init(
         gh<_i176.FilterNavigator>(),
         gh<_i913.GetPositionsFromPositionGroup>(),
       ));
+  gh.factoryParam<_i543.RoleNestedFilterBloc, _i792.RoleNestedFilterPageParams,
+      dynamic>((
+    rarityNestedFilterPageParams,
+    _,
+  ) =>
+      _i543.RoleNestedFilterBloc(
+        rarityNestedFilterPageParams,
+        gh<_i913.GetAllRolesUseCase>(),
+        gh<_i176.FilterNavigator>(),
+      ));
   gh.factoryParam<_i195.NestedFilterBloc, _i18.NestedFilterPageParams, dynamic>(
       (
     nestedFilterPageParams,
@@ -73,15 +83,6 @@ _i174.GetIt init(
       _i716.RarityNestedFilterBloc(
         rarityNestedFilterPageParams,
         gh<_i913.GetAllRarities>(),
-        gh<_i176.FilterNavigator>(),
-      ));
-  gh.factoryParam<_i595.RatingNestedFilterBloc,
-      _i659.RatingNestedFilterPageParams, dynamic>((
-    ratingNestedFilterPageParams,
-    _,
-  ) =>
-      _i595.RatingNestedFilterBloc(
-        ratingNestedFilterPageParams,
         gh<_i176.FilterNavigator>(),
       ));
   return getIt;

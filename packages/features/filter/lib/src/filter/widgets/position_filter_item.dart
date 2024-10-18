@@ -3,8 +3,8 @@ import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/filter/bloc/filter_bloc.dart';
 import 'package:flutter/material.dart';
 
-class PositionFilter extends StatelessWidget {
-  const PositionFilter({
+class PositionFilterItem extends StatelessWidget {
+  const PositionFilterItem({
     super.key,
     required this.positions,
     required this.positionGroups,
@@ -47,7 +47,7 @@ class PositionFilter extends StatelessWidget {
                       child: Pill(
                         pillItem: PillItem<PositionGroup>(
                           data: group,
-                          text: group.name,
+                          text: group.toValue(),
                           isSelected: positionGroups?.contains(group) ?? false,
                           onTap: () {
                             context.read<FilterBloc>().add(

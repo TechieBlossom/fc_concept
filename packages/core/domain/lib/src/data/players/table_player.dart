@@ -21,6 +21,8 @@ class TablePlayer {
   static const club = 'clubEaId';
   static const nation = 'nationEaId';
   static const rarity = 'rarityEaId';
+  static const rolesPlus = 'rolesPlus';
+  static const rolesPlusPlus = 'rolesPlusPlus';
   static const gender = 'gender';
   static const createdAt = 'createdAt';
   static const playStyles = 'playstyles';

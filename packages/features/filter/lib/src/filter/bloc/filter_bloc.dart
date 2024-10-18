@@ -5,13 +5,12 @@ import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
+import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 part 'filter_bloc.mapper.dart';
-
 part 'filter_event.dart';
-
 part 'filter_state.dart';
 
 @injectable
@@ -30,6 +29,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
             genders: existingFilters?.genders,
             foots: existingFilters?.foots,
             rarities: existingFilters?.rarities,
+            roles: existingFilters?.roles,
             overallRatingRange: existingFilters?.overallRatingRange ??
                 const RangeValues(47, 99),
           ),
@@ -49,6 +49,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         emit,
       ),
     );
+    on<TapRole>((event, emit) => _tapRoles(emit));
     on<Apply>((event, emit) => _apply());
 
     add(Init());
@@ -130,6 +131,21 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       emit(
         state.copyWith(
           rarities: rarities,
+        ),
+      );
+    }
+  }
+
+  Future<void> _tapRoles(Emitter<FilterState> emit) async {
+    final roles = await _navigator.goToRoleNestedFilter<Rarity>(
+      params: RoleNestedFilterPageParams(
+        items: state.roles,
+      ),
+    );
+    if (!(state.roles?.equals(roles ?? []) ?? false)) {
+      emit(
+        state.copyWith(
+          roles: roles,
         ),
       );
     }
@@ -232,6 +248,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       genders: state.genders,
       foots: state.foots,
       rarities: state.rarities,
+      roles: state.roles,
       overallRatingRange: state.overallRatingRange,
     );
     _navigator.closeAny(filterConfiguration);

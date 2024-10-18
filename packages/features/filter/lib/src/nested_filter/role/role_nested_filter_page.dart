@@ -1,33 +1,33 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
-import 'package:feature_filter/src/nested_filter/rating/bloc/rating_nested_filter_bloc.dart';
+import 'package:feature_filter/src/nested_filter/role/bloc/role_nested_filter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
 
-const String pageTitle = 'Select Rating(s)';
+const String pageTitle = 'Select Role(s)';
 
-class RatingNestedFilterPageParams {
-  RatingNestedFilterPageParams({
+class RoleNestedFilterPageParams {
+  RoleNestedFilterPageParams({
     this.items,
   });
 
-  final List<int>? items;
+  final List<Role>? items;
 }
 
-class RatingNestedFilterPage extends StatelessWidget {
-  const RatingNestedFilterPage({
+class RoleNestedFilterPage extends StatelessWidget {
+  const RoleNestedFilterPage({
     super.key,
-    required this.ratingNestedFilterPageParams,
+    required this.roleNestedFilterPageParams,
   });
 
-  final RatingNestedFilterPageParams ratingNestedFilterPageParams;
+  final RoleNestedFilterPageParams roleNestedFilterPageParams;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RatingNestedFilterBloc>(
+    return BlocProvider<RoleNestedFilterBloc>(
       create: (_) =>
-          di<RatingNestedFilterBloc>(param: ratingNestedFilterPageParams),
-      child: BlocBuilder<RatingNestedFilterBloc, RatingNestedFilterState>(
+          di<RoleNestedFilterBloc>(param: roleNestedFilterPageParams),
+      child: BlocBuilder<RoleNestedFilterBloc, RoleNestedFilterState>(
         builder: (context, state) {
           return Scaffold(
             appBar: const PageTitle(title: pageTitle),
@@ -40,7 +40,7 @@ class RatingNestedFilterPage extends StatelessWidget {
                 ),
                 PrimaryButton(
                   text: 'Done',
-                  onPressed: () => context.read<RatingNestedFilterBloc>().add(
+                  onPressed: () => context.read<RoleNestedFilterBloc>().add(
                         Done(),
                       ),
                 ),
@@ -56,21 +56,20 @@ class RatingNestedFilterPage extends StatelessWidget {
                           bottom: AppSpacing.space8,
                         ),
                         child: FilterGroup(
-                          pillItems: state.ratings!
+                          pillItems: state.roles!
                               .map(
-                                (item) => PillItem<int>(
+                                (item) => PillItem<Role>(
                                   data: item,
-                                  text: item.toString(),
-                                  hasDigit: true,
-                                  isSelected: (state.selectedRatings ??
-                                              ratingNestedFilterPageParams
+                                  text: '${item.name} | ${item.positionName}',
+                                  isSelected: (state.selectedRarities ??
+                                              roleNestedFilterPageParams
                                                   .items)
                                           ?.contains(item) ??
                                       false,
                                   onTap: () => context
-                                      .read<RatingNestedFilterBloc>()
+                                      .read<RoleNestedFilterBloc>()
                                       .add(
-                                        SelectRating(
+                                        SelectRole(
                                           item: item,
                                         ),
                                       ),

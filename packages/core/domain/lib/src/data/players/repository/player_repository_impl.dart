@@ -14,6 +14,7 @@ import 'package:core_domain/src/domain/players/model/player.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
+import 'package:core_domain/src/domain/roles/model/role.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -142,6 +143,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     List<Gender>? genders,
     List<Foot>? foots,
     List<Position>? positions,
+    List<Role>? roles,
   }) async {
     final start = page * _itemsPerPage;
     final end = ((page + 1) * _itemsPerPage) - 1;
@@ -153,6 +155,10 @@ class PlayerRepositoryImpl extends PlayerRepository {
     final rarityIds = rarities?.map((rarity) => rarity.eaId);
     final footIds = foots?.map((foot) => foot.value);
     final positionIds = positions?.map((position) => position.eaId);
+    final rolePlusIds =
+        roles?.where((role) => role.isPlus).map((role) => role.eaId);
+    final rolePlusPlusIds =
+        roles?.where((role) => role.isPlusPlus).map((role) => role.eaId);
 
     try {
       PostgrestFilterBuilder postgresFilterBuilder =
@@ -189,6 +195,20 @@ class PlayerRepositoryImpl extends PlayerRepository {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
           TablePlayer.rarity,
           rarityIds.toList(),
+        );
+      }
+
+      if (rolePlusIds != null && rolePlusIds.isNotEmpty) {
+        postgresFilterBuilder = postgresFilterBuilder.contains(
+          TablePlayer.rolesPlus,
+          rolePlusIds.toList(),
+        );
+      }
+
+      if (rolePlusPlusIds != null && rolePlusPlusIds.isNotEmpty) {
+        postgresFilterBuilder = postgresFilterBuilder.contains(
+          TablePlayer.rolesPlusPlus,
+          rolePlusPlusIds.toList(),
         );
       }
 

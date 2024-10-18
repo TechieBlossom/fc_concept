@@ -6,6 +6,7 @@ import 'package:core_domain/src/domain/models/result.dart';
 import 'package:core_domain/src/domain/players/model/player.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
+import 'package:core_domain/src/domain/roles/model/role.dart';
 import 'package:flutter/material.dart';
 
 abstract class PlayerRepository {
@@ -43,6 +44,7 @@ abstract class PlayerRepository {
     List<Gender>? genders,
     List<Foot>? foots,
     List<Position>? positions,
+    List<Role>? roles,
   });
 
   Future<int> getPlayerCount();
