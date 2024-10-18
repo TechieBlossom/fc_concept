@@ -16,6 +16,10 @@ import 'package:feature_filter/src/nested_filter/bloc/nested_filter_bloc.dart'
     as _i195;
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart'
     as _i18;
+import 'package:feature_filter/src/nested_filter/play_style/bloc/play_style_nested_filter_bloc.dart'
+    as _i949;
+import 'package:feature_filter/src/nested_filter/play_style/play_style_nested_filter_page.dart'
+    as _i137;
 import 'package:feature_filter/src/nested_filter/rarity/bloc/rarity_nested_filter_bloc.dart'
     as _i716;
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart'
@@ -59,6 +63,16 @@ _i174.GetIt init(
       _i543.RoleNestedFilterBloc(
         roleNestedFilterPageParams,
         allRoles,
+        gh<_i176.FilterNavigator>(),
+      ));
+  gh.factoryParam<_i949.PlayStyleNestedFilterBloc,
+      _i137.PlayStyleNestedFilterPageParams, List<_i913.PlayStyle>>((
+    playStyleNestedFilterPageParams,
+    allPlayStyles,
+  ) =>
+      _i949.PlayStyleNestedFilterBloc(
+        playStyleNestedFilterPageParams,
+        allPlayStyles,
         gh<_i176.FilterNavigator>(),
       ));
   gh.factoryParam<_i195.NestedFilterBloc, _i18.NestedFilterPageParams, dynamic>(

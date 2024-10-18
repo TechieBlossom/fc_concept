@@ -4,13 +4,16 @@ import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_type.dart';
+import 'package:feature_filter/src/nested_filter/play_style/play_style_nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 part 'filter_bloc.mapper.dart';
+
 part 'filter_event.dart';
+
 part 'filter_state.dart';
 
 @injectable
@@ -30,6 +33,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
             foots: existingFilters?.foots,
             rarities: existingFilters?.rarities,
             roles: existingFilters?.roles,
+            playStyles: existingFilters?.playStyles,
             overallRatingRange: existingFilters?.overallRatingRange ??
                 const RangeValues(47, 99),
           ),
@@ -50,6 +54,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       ),
     );
     on<TapRole>((event, emit) => _tapRoles(emit));
+    on<TapPlayStyle>((event, emit) => _tapPlayStyle(emit));
     on<Apply>((event, emit) => _apply());
 
     add(Init());
@@ -146,6 +151,21 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       emit(
         state.copyWith(
           roles: roles,
+        ),
+      );
+    }
+  }
+
+  Future<void> _tapPlayStyle(Emitter<FilterState> emit) async {
+    final playStyles = await _navigator.goToPlayStyleNestedFilter<PlayStyle>(
+      params: PlayStyleNestedFilterPageParams(
+        items: state.playStyles,
+      ),
+    );
+    if (!(state.playStyles?.equals(playStyles ?? []) ?? false)) {
+      emit(
+        state.copyWith(
+          playStyles: playStyles,
         ),
       );
     }
@@ -249,6 +269,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       foots: state.foots,
       rarities: state.rarities,
       roles: state.roles,
+      playStyles: state.playStyles,
       overallRatingRange: state.overallRatingRange,
     );
     _navigator.closeAny(filterConfiguration);

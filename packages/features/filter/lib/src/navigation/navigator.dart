@@ -1,5 +1,6 @@
 import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
+import 'package:feature_filter/src/nested_filter/play_style/play_style_nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.dart';
 import 'package:injectable/injectable.dart';
@@ -30,6 +31,14 @@ class FilterNavigator extends AppNavigator {
   }) =>
       goRouter.push(
         FilterRoutes.pageRoleNestedFilter,
+        extra: params,
+      );
+
+  Future<List<PlayStyle>?> goToPlayStyleNestedFilter<Rarity>({
+    required PlayStyleNestedFilterPageParams params,
+  }) =>
+      goRouter.push(
+        FilterRoutes.pagePlayStyleNestedFilter,
         extra: params,
       );
 

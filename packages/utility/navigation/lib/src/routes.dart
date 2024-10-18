@@ -35,4 +35,5 @@ abstract class FilterRoutes {
   static const pageNestedFilter = '/nested-filter';
   static const pageRarityNestedFilter = '/rarity-nested-filter';
   static const pageRoleNestedFilter = '/role-nested-filter';
+  static const pagePlayStyleNestedFilter = '/play-style-nested-filter';
 }

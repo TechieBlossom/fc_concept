@@ -1,3 +1,4 @@
+import 'package:core_domain/domain.dart';
 import 'package:core_domain/src/domain/clubs/model/club.dart';
 import 'package:core_domain/src/domain/common/foot.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
@@ -45,6 +46,7 @@ abstract class PlayerRepository {
     List<Foot>? foots,
     List<Position>? positions,
     List<Role>? roles,
+    List<PlayStyle>? playStyles,
   });
 
   Future<int> getPlayerCount();

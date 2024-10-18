@@ -12,6 +12,7 @@ class FilterState with FilterStateMappable {
     required this.positions,
     required this.positionGroups,
     required this.roles,
+    required this.playStyles,
     required this.overallRatingRange,
   });
 
@@ -24,5 +25,6 @@ class FilterState with FilterStateMappable {
   final List<Position>? positions;
   final List<PositionGroup>? positionGroups;
   final List<Role>? roles;
+  final List<PlayStyle>? playStyles;
   final RangeValues overallRatingRange;
 }

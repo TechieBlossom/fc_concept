@@ -16,23 +16,24 @@ class ClubFilterItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
-        title: state.leagues != null ? 'League (Tap to change)' : 'League',
-        subtitle: state.leagues != null ? null : 'Tap to select League(s)',
-        selectedPills: state.leagues
+        title: state.clubs != null ? 'Club (Tap to change)' : 'Club',
+        subtitle: state.clubs != null ? null : 'Tap to select Club(s)',
+        selectedPills: state.clubs
             ?.map(
-              (league) => PillItem<NestedFilterLayoutType>(
-                data: league,
-                text: league.name,
-                image: LeagueImage(league: league as League),
+              (club) => PillItem<Club>(
+                data: club,
+                text: club.name,
                 isSelected: true,
               ),
             )
             .toList(),
         pillGap: AppSpacing.space3,
         margin: AppSpacing.space5,
-        onTap: () => context.read<FilterBloc>().add(
-              TapLeague(),
-            ),
+        onTap: state.leagues != null
+            ? () => context.read<FilterBloc>().add(
+                  TapClub(),
+                )
+            : null,
       ),
     );
   }

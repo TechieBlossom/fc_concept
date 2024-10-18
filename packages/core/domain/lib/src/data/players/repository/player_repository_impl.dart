@@ -10,6 +10,7 @@ import 'package:core_domain/src/domain/common/foot.dart';
 import 'package:core_domain/src/domain/common/gender.dart';
 import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
 import 'package:core_domain/src/domain/models/result.dart';
+import 'package:core_domain/src/domain/play_styles/model/play_style.dart';
 import 'package:core_domain/src/domain/players/model/player.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
@@ -144,6 +145,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
     List<Foot>? foots,
     List<Position>? positions,
     List<Role>? roles,
+    List<PlayStyle>? playStyles,
   }) async {
     final start = page * _itemsPerPage;
     final end = ((page + 1) * _itemsPerPage) - 1;
@@ -159,6 +161,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
         roles?.where((role) => role.isPlus).map((role) => role.eaId);
     final rolePlusPlusIds =
         roles?.where((role) => role.isPlusPlus).map((role) => role.eaId);
+    final playStyleIds = playStyles?.map((playStyle) => playStyle.eaId);
 
     try {
       PostgrestFilterBuilder postgresFilterBuilder =
@@ -210,6 +213,12 @@ class PlayerRepositoryImpl extends PlayerRepository {
           TablePlayer.rolesPlusPlus,
           rolePlusPlusIds.toList(),
         );
+      }
+
+      if (playStyleIds != null && playStyleIds.isNotEmpty) {
+        postgresFilterBuilder = postgresFilterBuilder
+            .or('${TablePlayer.playStylesPlus}.ov.{${playStyleIds.join(',')}},'
+                '${TablePlayer.playStyles}.ov.{${playStyleIds.join(',')}}');
       }
 
       if (overallRatingRange != null) {

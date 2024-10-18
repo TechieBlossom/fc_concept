@@ -1,6 +1,7 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/filter/bloc/filter_bloc.dart';
+import 'package:feature_filter/src/filter/widgets/playstyle_filter_item.dart';
 import 'package:feature_filter/src/filter/widgets/position_filter_item.dart';
 import 'package:feature_filter/src/filter/widgets/club_filter_item.dart';
 import 'package:feature_filter/src/filter/widgets/foot_filter_item.dart';
@@ -64,6 +65,7 @@ class FilterPage extends StatelessWidget {
                     positionGroups: state.positionGroups,
                   ),
                   RolesFilterItem(state: state),
+                  PlayStylesFilterItem(state: state),
                 ],
               ),
             ),

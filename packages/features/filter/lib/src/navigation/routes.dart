@@ -1,6 +1,7 @@
 import 'package:core_domain/domain.dart';
 import 'package:feature_filter/src/filter/filter_page.dart';
 import 'package:feature_filter/src/nested_filter/nested_filter_page.dart';
+import 'package:feature_filter/src/nested_filter/play_style/play_style_nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/rarity/rarity_nested_filter_page.dart';
 import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,19 @@ class FilterRoutesConfig extends RoutesConfig {
             child: RoleNestedFilterPage(
               roleNestedFilterPageParams:
                   state.extra! as RoleNestedFilterPageParams,
+            ),
+          ),
+        ),
+        GoRoute(
+          path: FilterRoutes.pagePlayStyleNestedFilter,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.fullPath,
+            arguments: state.pathParameters,
+            restorationId: state.pageKey.value,
+            child: PlayStyleNestedFilterPage(
+              playStyleNestedFilterPageParams:
+                  state.extra! as PlayStyleNestedFilterPageParams,
             ),
           ),
         ),

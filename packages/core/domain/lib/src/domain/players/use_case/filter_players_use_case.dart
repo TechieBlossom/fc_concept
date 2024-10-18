@@ -25,6 +25,7 @@ class FilterPlayersUseCase {
       foots: filterConfiguration?.foots,
       positions: filterConfiguration?.positions,
       roles: filterConfiguration?.roles,
+      playStyles: filterConfiguration?.playStyles,
     );
   }
 }
