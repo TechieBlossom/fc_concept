@@ -20,7 +20,7 @@ class Prices extends StatelessWidget {
               priceItem: PriceItem(
                 label: 'Last: ',
                 price: 10000000,
-                formatter: currencyFormatter,
+                formatter: AppFormatter.currencyFormat,
               ),
             ),
             const SizedBox(height: AppSpacing.space5),

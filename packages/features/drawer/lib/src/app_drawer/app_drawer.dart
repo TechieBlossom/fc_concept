@@ -227,7 +227,7 @@ class _DrawerItem extends StatelessWidget {
       ),
       trailing: trailing != null
           ? Text(
-              currencyFormatter.format(trailing),
+              AppFormatter.formatCurrency(trailing!),
               style: context.typography.body2.copyWith(
                 color: context.colors.contentSecondary,
               ),

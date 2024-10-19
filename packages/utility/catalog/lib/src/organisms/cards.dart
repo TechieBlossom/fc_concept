@@ -18,7 +18,7 @@ class Cards extends StatelessWidget {
               PriceItem(
                 label: 'Last: ',
                 price: 10000000,
-                formatter: currencyFormatter,
+                formatter: AppFormatter.currencyFormat,
               ),
               const PriceItem(
                 label: 'Discard:',

@@ -91,11 +91,12 @@ class PlayerRepositoryImpl extends PlayerRepository {
   }
 
   @override
-  Future<Result<List<Player>?>> popularPlayers() async {
+  Future<Result<List<Player>?>> recentPlayers() async {
     try {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
+          .order(TablePlayer.createdAt, ascending: false)
           .range(0, 50);
 
       final players = mapPlayers(playersResponse);

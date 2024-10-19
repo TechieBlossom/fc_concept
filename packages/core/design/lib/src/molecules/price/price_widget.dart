@@ -1,3 +1,4 @@
+import 'package:core_design/design.dart';
 import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/price/price_item.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class PriceWidget extends StatelessWidget {
         ),
         SizedBox(width: AppSpacing.space2),
         Text(
-          priceItem.formatter!.format(priceItem.price),
+          AppFormatter.formatCurrency(priceItem.price),
           style: textStyle,
         ),
         SizedBox(width: AppSpacing.space1),

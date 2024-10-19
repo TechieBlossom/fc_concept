@@ -33,10 +33,25 @@ class IndexBox extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
           border: BorderDirectional(
             start: BorderSide(
-              color: isIncreased ? rating4 : rating1,
-              width: 4,
+              color: isIncreased ? rating3 : rating2,
+              width: 2,
               strokeAlign: BorderSide.strokeAlignInside,
             ),
+            // bottom: BorderSide(
+            //   color: isIncreased ? rating4 : rating1,
+            //   width: 2,
+            //   strokeAlign: BorderSide.strokeAlignInside,
+            // ),
+            // top: BorderSide(
+            //   color: isIncreased ? rating4 : rating1,
+            //   width: 2,
+            //   strokeAlign: BorderSide.strokeAlignInside,
+            // ),
+            // end: BorderSide(
+            //   color: isIncreased ? rating4 : rating1,
+            //   width: 2,
+            //   strokeAlign: BorderSide.strokeAlignInside,
+            // ),
           ),
         ),
         child: Row(
@@ -53,18 +68,41 @@ class IndexBox extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: AppSpacing.space3),
-                  Text(
-                    current.toInt().toString(),
-                    style: context.typography.body2.copyWith(
-                      color: context.colors.contentPrimary,
-                    ),
+                  Row(
+                    children: [
+                      AppAssets.images.futCoin.image(width: AppSpacing.space5),
+                      const Space(
+                        space: AppSpacing.space1,
+                        orientation: Axis.horizontal,
+                      ),
+                      Text(
+                        AppFormatter.formatCurrency(current.toInt()),
+                        style: context.typography.body2.copyWith(
+                          color: context.colors.contentPrimary,
+                        ),
+                      ),
+                      const Space(
+                        space: AppSpacing.space3,
+                        orientation: Axis.horizontal,
+                      ),
+                      Text(
+                        isIncreased
+                            ? AppFormatter.formatPositiveValue((current - previous).toInt())
+                            : AppFormatter.formatNegativeValue((current - previous).toInt()),
+                        style: context.typography.caption2.copyWith(
+                          color: isIncreased ? rating3 : rating2,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             Icon(
-              isIncreased ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded,
-              color: isIncreased ? rating4 : rating1,
+              isIncreased
+                  ? Icons.arrow_upward_rounded
+                  : Icons.arrow_downward_rounded,
+              color: isIncreased ? rating3 : rating2,
             ),
           ],
         ),

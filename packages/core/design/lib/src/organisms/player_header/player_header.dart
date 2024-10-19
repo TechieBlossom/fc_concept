@@ -112,22 +112,18 @@ class PlayerHeader extends StatelessWidget {
                               PriceItem(
                                 label: 'Current: ',
                                 price: playerPrice!.currentPrice.price,
-                                formatter: currencyFormatter,
                               ),
                               PriceItem(
                                 label: 'Lowest: ',
                                 price: playerPrice!.momentum.lowestBin,
-                                formatter: currencyFormatter,
                               ),
                               PriceItem(
                                 label: 'Highest: ',
                                 price: playerPrice!.momentum.highestBin,
-                                formatter: currencyFormatter,
                               ),
                               PriceItem(
                                 label: 'Discard: ',
                                 price: playerPrice!.overview.discardValue,
-                                formatter: currencyFormatter,
                               ),
                             ],
                           )

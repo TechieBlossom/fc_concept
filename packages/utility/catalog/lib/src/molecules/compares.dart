@@ -23,7 +23,7 @@ class Compares extends StatelessWidget {
                 second: '900000',
                 hasDigit: true,
                 trailing: const Icon(Icons.animation_rounded),
-                formatter: currencyFormatter,
+                formatter: AppFormatter.currencyFormat,
               ),
             ),
             const SizedBox(height: AppSpacing.space5),

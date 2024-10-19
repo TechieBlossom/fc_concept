@@ -10,6 +10,6 @@ class GetPopularPlayerUseCase {
   final PlayerRepository _playerRepository;
 
   Future<Result<List<Player>?>> call() async {
-    return _playerRepository.popularPlayers();
+    return _playerRepository.recentPlayers();
   }
 }
