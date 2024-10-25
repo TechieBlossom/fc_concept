@@ -1,5 +1,7 @@
 import 'package:core_api_client/api_client.dart';
+import 'package:core_domain/src/data/price/table_player_price.dart';
 import 'package:core_domain/src/domain/models/result.dart';
+import 'package:core_domain/src/domain/price/model/player_old_price.dart';
 import 'package:core_domain/src/domain/price/model/player_price.dart';
 import 'package:core_domain/src/domain/price/price_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -28,5 +30,28 @@ class PriceRepositoryImpl extends PriceRepository {
       (response.data as Map<String, dynamic>)['data'],
     );
     return Success(data: player);
+  }
+
+  @override
+  Future<Result<List<PlayerOldPrice>>> getOldPlayerPrice(
+    List<int> eaIds,
+  ) async {
+    try {
+      final pricesResponse = await supabase
+          .from(TablePlayerPrice.tablePlayerPrice)
+          .select()
+          .inFilter(TablePlayerPrice.eaId, eaIds);
+
+      final prices = mapPrices(pricesResponse);
+      return Success(data: prices);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  List<PlayerOldPrice> mapPrices(List<Map<String, dynamic>> pricesResponse) {
+    return pricesResponse
+        .map((priceJson) => PlayerOldPrice.fromMap(priceJson))
+        .toList();
   }
 }

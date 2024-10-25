@@ -50,6 +50,9 @@ final _columnsToFetchForList = [
   TablePlayer.position,
   TablePlayer.imagePath,
   TablePlayer.createdAt,
+  TablePlayer.isSbcItem,
+  TablePlayer.isObjectiveItem,
+  TablePlayer.createdAt,
   _rarityTable,
   _clubTable,
   _leagueTable,
@@ -97,7 +100,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
           .order(TablePlayer.createdAt, ascending: false)
-          .range(0, 50);
+          .limit(30);
 
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
@@ -108,6 +111,108 @@ class PlayerRepositoryImpl extends PlayerRepository {
       return Failure(exception: e as Exception);
     }
   }
+
+  @override
+  Future<Result<List<Player>?>> sbcPlayers() async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .eq(TablePlayer.isSbcItem, true)
+          .order(TablePlayer.createdAt, ascending: false);
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> topForwards() async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .inFilter(TablePlayer.position, [23, 25, 27])
+          .order(TablePlayer.overall, ascending: false)
+          .limit(30);
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> topDefence() async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .inFilter(TablePlayer.position, [3, 5, 7])
+          .order(TablePlayer.overall, ascending: false)
+          .limit(30);
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> topMidfielders() async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .inFilter(TablePlayer.position, [10, 12, 14, 16, 18])
+          .order(TablePlayer.overall, ascending: false)
+          .limit(30);
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> topGoalKeepers() async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .inFilter(TablePlayer.position, [0])
+          .gte(TablePlayer.overall, 87)
+          .order(TablePlayer.overall, ascending: false)
+          .limit(30);
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  // TODO: Create Team of the Week based player list
 
   @override
   Future<Result<List<Player>?>> searchPlayers({

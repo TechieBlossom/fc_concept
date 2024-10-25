@@ -1,6 +1,9 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_dashboard/src/dashboard/bloc/dashboard_bloc.dart';
+import 'package:feature_dashboard/src/dashboard/widgets/indices.dart';
+import 'package:feature_dashboard/src/dashboard/widgets/players_grid.dart';
+import 'package:feature_dashboard/src/dashboard/widgets/position_group_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
 
@@ -14,91 +17,63 @@ class DashboardPage extends StatelessWidget {
       child: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: SearchContainer(
-              margin: const EdgeInsets.only(
-                top: AppSpacing.space7 + AppSpacing.space3,
-              ),
-              onTap: () {},
+            // appBar: SearchContainer(
+            //   margin: const EdgeInsets.only(
+            //     top: AppSpacing.space7 + AppSpacing.space3,
+            //   ),
+            //   onTap: () => context.read<DashboardBloc>().add(SearchTap()),
+            // ),
+            appBar: AppBar(
+              centerTitle: false,
+              title: const Text('FC Concept'),
+              // actions: [
+              //   IconButton(
+              //     icon: const Icon(Icons.search_rounded),
+              //     onPressed: () =>
+              //         context.read<DashboardBloc>().add(SearchTap()),
+              //   ),
+              // ],
             ),
-            body: (state.indexes?.isEmpty ?? true)
-                ? const SizedBox.shrink()
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: AppSpacing.space5,
-                          right: AppSpacing.space5,
-                          top: AppSpacing.space5,
-                          bottom: AppSpacing.space3,
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Indices(state: state),
+                  const SizedBox(height: AppSpacing.space6),
+                  PlayersGrid(
+                    isLoading: state.processState == ProcessState.loading,
+                    players: state.recentPlayers,
+                    heading: 'Recent Players',
+                    onTap: (player) => context.read<DashboardBloc>().add(
+                          PlayerTap(player: player),
                         ),
-                        child: Text(
-                          'INDEXES',
-                          style: context.typography.body2.copyWith(
-                            color: context.colors.contentTertiary,
-                          ),
-                        ),
-                      ),
-                      ...<Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: AppSpacing.space5,
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              IndexBox(
-                                type: IndexType.forwards,
-                                current: state.indexes![0].forwards,
-                                previous: state.indexes![1].forwards,
-                              ),
-                              IndexBox(
-                                type: IndexType.midfielders,
-                                current: state.indexes![0].midfielders,
-                                previous: state.indexes![1].midfielders,
-                              ),
-                            ]
-                                .intersperse(
-                                  const Space(
-                                    space: AppSpacing.space4,
-                                    orientation: Axis.horizontal,
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: AppSpacing.space5,
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              IndexBox(
-                                type: IndexType.defenders,
-                                current: state.indexes![0].defenders,
-                                previous: state.indexes![1].defenders,
-                              ),
-                              IndexBox(
-                                type: IndexType.goalkeepers,
-                                current: state.indexes![0].goalkeepers,
-                                previous: state.indexes![1].goalkeepers,
-                              ),
-                            ]
-                                .intersperse(
-                                  const Space(
-                                    space: AppSpacing.space4,
-                                    orientation: Axis.horizontal,
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        )
-                      ]
-                          .intersperse(
-                            const Space(space: AppSpacing.space4),
-                          )
-                          .toList(),
-                    ],
                   ),
+                  const SizedBox(height: AppSpacing.space6),
+                  PlayersGrid(
+                    isLoading: state.processState == ProcessState.loading,
+                    players: switch (state.positionGroup) {
+                      PositionGroup.attack => state.attackPlayers,
+                      PositionGroup.midfielder => state.midfielderPlayers,
+                      PositionGroup.defence => state.defencePlayers,
+                      null => state.goalKeeperPlayers,
+                    },
+                    heading: 'High-Rated Players',
+                    pills: PositionGroupTabs(state: state),
+                    onTap: (player) => context.read<DashboardBloc>().add(
+                          PlayerTap(player: player),
+                        ),
+                  ),
+                  const SizedBox(height: AppSpacing.space6),
+                  PlayersGrid(
+                    isLoading: state.processState == ProcessState.loading,
+                    players: state.sbcPlayers,
+                    heading: 'SBCs',
+                    onTap: (player) => context.read<DashboardBloc>().add(
+                          PlayerTap(player: player),
+                        ),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),

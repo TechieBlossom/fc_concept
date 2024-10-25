@@ -137,11 +137,14 @@ class _PlayerListItemState extends State<PlayerListItem>
                   ),
                 ),
               ),
-              PositionBox(position: player.position, isSmall: true),
+              PositionBox(
+                position: player.position,
+                size: PositionBoxSize.medium,
+              ),
               SizedBox(width: AppSpacing.space3),
               RatingBox(
                 rating: player.overall,
-                isSmall: true,
+                size: RatingBoxSize.medium,
                 bg: colors.$1,
                 fg: colors.$2,
               ),

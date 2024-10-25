@@ -5,3 +5,35 @@ abstract class DashboardEvent with DashboardEventMappable {}
 
 @MappableClass(discriminatorValue: 'init')
 class Init extends DashboardEvent with InitMappable {}
+
+@MappableClass(discriminatorValue: 'updatePlayerPrices')
+class UpdatePlayerPrices extends DashboardEvent
+    with UpdatePlayerPricesMappable {
+  UpdatePlayerPrices({
+    required this.playerGroup,
+  });
+
+  final PlayerGroup playerGroup;
+}
+
+@MappableClass(discriminatorValue: 'switchHighRatedPositionGroup')
+class SwitchHighRatedPositionGroup extends DashboardEvent
+    with SwitchHighRatedPositionGroupMappable {
+  SwitchHighRatedPositionGroup({
+    this.positionGroup,
+  });
+
+  final PositionGroup? positionGroup;
+}
+
+@MappableClass(discriminatorValue: 'playerTap')
+class PlayerTap extends DashboardEvent with PlayerTapMappable {
+  PlayerTap({
+    required this.player,
+  });
+
+  final Player player;
+}
+
+@MappableClass(discriminatorValue: 'searchTap')
+class SearchTap extends DashboardEvent with SearchTapMappable {}

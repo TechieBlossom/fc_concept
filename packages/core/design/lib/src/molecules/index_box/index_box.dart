@@ -24,8 +24,8 @@ class IndexBox extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              isIncreased ? lightRating4 : lightRating2,
-              isIncreased ? lightRating3 : lightRating1,
+              isIncreased ? lightRating3 : lightRating2,
+              isIncreased ? lightRating4 : lightRating1,
             ],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
@@ -70,17 +70,17 @@ class IndexBox extends StatelessWidget {
                   const SizedBox(height: AppSpacing.space3),
                   Row(
                     children: [
-                      AppAssets.images.futCoin.image(width: AppSpacing.space5),
-                      const Space(
-                        space: AppSpacing.space1,
-                        orientation: Axis.horizontal,
-                      ),
                       Text(
                         AppFormatter.formatCurrency(current.toInt()),
                         style: context.typography.body2.copyWith(
                           color: context.colors.contentPrimary,
                         ),
                       ),
+                      const Space(
+                        space: AppSpacing.space1,
+                        orientation: Axis.horizontal,
+                      ),
+                      AppAssets.images.futCoin.image(width: AppSpacing.space5),
                       const Space(
                         space: AppSpacing.space3,
                         orientation: Axis.horizontal,

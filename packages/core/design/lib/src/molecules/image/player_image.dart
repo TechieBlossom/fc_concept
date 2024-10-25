@@ -15,7 +15,7 @@ class PlayerImage extends StatelessWidget {
 
   (double?, double?) get dimensions => switch (size) {
         PlayerImageSize.small => (53.67, 75),
-        PlayerImageSize.medium => (71.56, 100),
+        PlayerImageSize.medium => (70, 100),
         PlayerImageSize.large => (200.36, 280),
         PlayerImageSize.infiniteWidth => (null, null),
       };

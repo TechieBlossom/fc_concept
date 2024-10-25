@@ -17,6 +17,16 @@ abstract class PlayerRepository {
 
   Future<Result<List<Player>?>> recentPlayers();
 
+  Future<Result<List<Player>?>> sbcPlayers();
+
+  Future<Result<List<Player>?>> topForwards();
+
+  Future<Result<List<Player>?>> topDefence();
+
+  Future<Result<List<Player>?>> topMidfielders();
+
+  Future<Result<List<Player>?>> topGoalKeepers();
+
   Future<Result<List<Player>?>> searchPlayers({
     required String query,
     int page = 0,

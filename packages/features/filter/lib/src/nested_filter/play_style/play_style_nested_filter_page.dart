@@ -57,7 +57,7 @@ class PlayStyleNestedFilterPage extends StatelessWidget {
                     SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                          bottom: AppSpacing.space8,
+                          bottom: AppSpacing.space9,
                         ),
                         child: FilterGroup(
                           pillItems: state.playStyles!

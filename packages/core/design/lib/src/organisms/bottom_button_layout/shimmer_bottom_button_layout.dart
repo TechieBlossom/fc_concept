@@ -26,7 +26,7 @@ class ShimmerBottomButtonLayout extends StatelessWidget {
     List.generate(2, (index) {
       if (index != 0) {
         widgets.add(
-          SizedBox(width: AppSpacing.space7),
+          SizedBox(width: AppSpacing.space8),
         );
       }
       widgets.add(shimmer);
@@ -40,7 +40,7 @@ class ShimmerBottomButtonLayout extends StatelessWidget {
           left: AppSpacing.space5,
           right: AppSpacing.space5,
           top: AppSpacing.space5,
-          bottom: AppSpacing.space7,
+          bottom: AppSpacing.space8,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

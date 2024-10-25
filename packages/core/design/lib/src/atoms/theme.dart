@@ -32,8 +32,8 @@ abstract class AppTheme {
       textTheme: GoogleFonts.ralewayTextTheme(),
       splashFactory: NoSplash.splashFactory,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: appColors.contentPrimary,
-        primary: appColors.contentPrimary,
+        seedColor: appColors.contentSecondary,
+        primary: appColors.contentSecondary,
         brightness: brightness,
       ),
       scaffoldBackgroundColor: appColors.backgroundPrimary,

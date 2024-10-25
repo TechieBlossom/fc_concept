@@ -17,6 +17,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
       ClubMapper.ensureInitialized();
       NationMapper.ensureInitialized();
       LeagueMapper.ensureInitialized();
+      PlayerOldPriceMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
     }
     return _instance!;
@@ -56,6 +57,9 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static League? _$league(Player v) => v.league;
   static const Field<Player, League> _f$league =
       Field('league', _$league, key: 'table_core_league', opt: true);
+  static PlayerOldPrice? _$price(Player v) => v.price;
+  static const Field<Player, PlayerOldPrice> _f$price =
+      Field('price', _$price, opt: true);
   static int? _$height(Player v) => v.height;
   static const Field<Player, int> _f$height =
       Field('height', _$height, opt: true);
@@ -92,6 +96,12 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static List<int>? _$rolesPlusPlus(Player v) => v.rolesPlusPlus;
   static const Field<Player, List<int>> _f$rolesPlusPlus =
       Field('rolesPlusPlus', _$rolesPlusPlus, opt: true);
+  static bool _$isSbcItem(Player v) => v.isSbcItem;
+  static const Field<Player, bool> _f$isSbcItem =
+      Field('isSbcItem', _$isSbcItem, opt: true, def: false);
+  static bool _$isObjectiveItem(Player v) => v.isObjectiveItem;
+  static const Field<Player, bool> _f$isObjectiveItem =
+      Field('isObjectiveItem', _$isObjectiveItem, opt: true, def: false);
   static int? _$facePace(Player v) => v.facePace;
   static const Field<Player, int> _f$facePace =
       Field('facePace', _$facePace, opt: true);
@@ -250,6 +260,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #club: _f$club,
     #nation: _f$nation,
     #league: _f$league,
+    #price: _f$price,
     #height: _f$height,
     #weight: _f$weight,
     #dateOfBirth: _f$dateOfBirth,
@@ -262,6 +273,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #playStylesPlus: _f$playStylesPlus,
     #rolesPlus: _f$rolesPlus,
     #rolesPlusPlus: _f$rolesPlusPlus,
+    #isSbcItem: _f$isSbcItem,
+    #isObjectiveItem: _f$isObjectiveItem,
     #facePace: _f$facePace,
     #faceShooting: _f$faceShooting,
     #facePassing: _f$facePassing,
@@ -324,6 +337,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
         club: data.dec(_f$club),
         nation: data.dec(_f$nation),
         league: data.dec(_f$league),
+        price: data.dec(_f$price),
         height: data.dec(_f$height),
         weight: data.dec(_f$weight),
         dateOfBirth: data.dec(_f$dateOfBirth),
@@ -336,6 +350,8 @@ class PlayerMapper extends ClassMapperBase<Player> {
         playStylesPlus: data.dec(_f$playStylesPlus),
         rolesPlus: data.dec(_f$rolesPlus),
         rolesPlusPlus: data.dec(_f$rolesPlusPlus),
+        isSbcItem: data.dec(_f$isSbcItem),
+        isObjectiveItem: data.dec(_f$isObjectiveItem),
         facePace: data.dec(_f$facePace),
         faceShooting: data.dec(_f$faceShooting),
         facePassing: data.dec(_f$facePassing),
@@ -435,6 +451,7 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
   ClubCopyWith<$R, Club, Club>? get club;
   NationCopyWith<$R, Nation, Nation>? get nation;
   LeagueCopyWith<$R, League, League>? get league;
+  PlayerOldPriceCopyWith<$R, PlayerOldPrice, PlayerOldPrice>? get price;
   PositionCopyWith<$R, Position, Position>? get position;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStyles;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStylesPlus;
@@ -452,6 +469,7 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       Club? club,
       Nation? nation,
       League? league,
+      PlayerOldPrice? price,
       int? height,
       int? weight,
       DateTime? dateOfBirth,
@@ -464,6 +482,8 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       List<int>? playStylesPlus,
       List<int>? rolesPlus,
       List<int>? rolesPlusPlus,
+      bool? isSbcItem,
+      bool? isObjectiveItem,
       int? facePace,
       int? faceShooting,
       int? facePassing,
@@ -533,6 +553,9 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
   LeagueCopyWith<$R, League, League>? get league =>
       $value.league?.copyWith.$chain((v) => call(league: v));
   @override
+  PlayerOldPriceCopyWith<$R, PlayerOldPrice, PlayerOldPrice>? get price =>
+      $value.price?.copyWith.$chain((v) => call(price: v));
+  @override
   PositionCopyWith<$R, Position, Position>? get position =>
       $value.position?.copyWith.$chain((v) => call(position: v));
   @override
@@ -580,6 +603,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? club = $none,
           Object? nation = $none,
           Object? league = $none,
+          Object? price = $none,
           Object? height = $none,
           Object? weight = $none,
           Object? dateOfBirth = $none,
@@ -592,6 +616,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? playStylesPlus = $none,
           Object? rolesPlus = $none,
           Object? rolesPlusPlus = $none,
+          bool? isSbcItem,
+          bool? isObjectiveItem,
           Object? facePace = $none,
           Object? faceShooting = $none,
           Object? facePassing = $none,
@@ -651,6 +677,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (club != $none) #club: club,
         if (nation != $none) #nation: nation,
         if (league != $none) #league: league,
+        if (price != $none) #price: price,
         if (height != $none) #height: height,
         if (weight != $none) #weight: weight,
         if (dateOfBirth != $none) #dateOfBirth: dateOfBirth,
@@ -663,6 +690,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (playStylesPlus != $none) #playStylesPlus: playStylesPlus,
         if (rolesPlus != $none) #rolesPlus: rolesPlus,
         if (rolesPlusPlus != $none) #rolesPlusPlus: rolesPlusPlus,
+        if (isSbcItem != null) #isSbcItem: isSbcItem,
+        if (isObjectiveItem != null) #isObjectiveItem: isObjectiveItem,
         if (facePace != $none) #facePace: facePace,
         if (faceShooting != $none) #faceShooting: faceShooting,
         if (facePassing != $none) #facePassing: facePassing,
@@ -748,6 +777,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       club: data.get(#club, or: $value.club),
       nation: data.get(#nation, or: $value.nation),
       league: data.get(#league, or: $value.league),
+      price: data.get(#price, or: $value.price),
       height: data.get(#height, or: $value.height),
       weight: data.get(#weight, or: $value.weight),
       dateOfBirth: data.get(#dateOfBirth, or: $value.dateOfBirth),
@@ -760,6 +790,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       playStylesPlus: data.get(#playStylesPlus, or: $value.playStylesPlus),
       rolesPlus: data.get(#rolesPlus, or: $value.rolesPlus),
       rolesPlusPlus: data.get(#rolesPlusPlus, or: $value.rolesPlusPlus),
+      isSbcItem: data.get(#isSbcItem, or: $value.isSbcItem),
+      isObjectiveItem: data.get(#isObjectiveItem, or: $value.isObjectiveItem),
       facePace: data.get(#facePace, or: $value.facePace),
       faceShooting: data.get(#faceShooting, or: $value.faceShooting),
       facePassing: data.get(#facePassing, or: $value.facePassing),

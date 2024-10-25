@@ -29,4 +29,6 @@ class TablePlayer {
   static const createdAt = 'createdAt';
   static const playStyles = 'playstyles';
   static const playStylesPlus = 'playstylesPlus';
+  static const isSbcItem = 'isSbcItem';
+  static const isObjectiveItem = 'isObjectiveItem';
 }

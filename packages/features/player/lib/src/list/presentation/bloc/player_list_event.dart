@@ -18,7 +18,7 @@ class Search extends PlayerListEvent with SearchMappable {
 @MappableClass(discriminatorValue: 'nextPage')
 class NextPage extends PlayerListEvent with NextPageMappable {}
 
-@MappableClass(discriminatorValue: ' playerTap')
+@MappableClass(discriminatorValue: 'playerTap')
 class PlayerTap extends PlayerListEvent with PlayerTapMappable {
   PlayerTap({
     required this.player,

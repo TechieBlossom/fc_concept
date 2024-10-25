@@ -35,9 +35,12 @@ abstract class AppSpacing {
   /// Space: `24.0`
   static const space6 = 24.0;
 
+  /// Space: `36.0`
+  static const space7 = 32.0;
+
   /// Space: `48.0`
-  static const space7 = 48.0;
+  static const space8 = 48.0;
 
   /// Space: `96.0`
-  static const space8 = 96.0;
+  static const space9 = 96.0;
 }

@@ -26,7 +26,7 @@ class _PlayerListPageState extends State<PlayerListPage> {
             key: _scaffoldKey,
             appBar: SearchContainer(
               margin: const EdgeInsets.only(
-                top: AppSpacing.space7 + AppSpacing.space3,
+                top: AppSpacing.space8 + AppSpacing.space3,
               ),
               isLoading: state.processState == ProcessState.loading,
               onSearch: (query) => context.read<PlayerListBloc>().add(

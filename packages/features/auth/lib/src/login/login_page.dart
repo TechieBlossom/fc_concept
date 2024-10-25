@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: AppSpacing.space7),
+                        padding: const EdgeInsets.only(top: AppSpacing.space8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

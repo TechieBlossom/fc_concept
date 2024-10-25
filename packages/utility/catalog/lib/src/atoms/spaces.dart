@@ -13,7 +13,7 @@ class SpacesContent extends StatelessWidget {
       AppSpacing.space4,
       AppSpacing.space5,
       AppSpacing.space6,
-      AppSpacing.space7,
+      AppSpacing.space8,
     ];
     return Scaffold(
       appBar: AppBar(

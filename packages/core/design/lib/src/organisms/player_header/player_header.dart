@@ -84,13 +84,13 @@ class PlayerHeader extends StatelessWidget {
                           isShown: player.position != null,
                           child: PositionBox(
                             position: player.position,
-                            isSmall: true,
+                            size: PositionBoxSize.medium,
                           ),
                         ),
                         SizedBox(width: AppSpacing.space3),
                         RatingBox(
                           rating: player.overall,
-                          isSmall: true,
+                          size: RatingBoxSize.medium,
                           bg: colors.$1,
                           fg: colors.$2,
                         ),

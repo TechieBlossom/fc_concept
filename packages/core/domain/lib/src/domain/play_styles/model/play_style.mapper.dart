@@ -30,6 +30,12 @@ class PlayStyleMapper extends ClassMapperBase<PlayStyle> {
   static String _$whoHasIt(PlayStyle v) => v.whoHasIt;
   static const Field<PlayStyle, String> _f$whoHasIt =
       Field('whoHasIt', _$whoHasIt);
+  static String _$playstyleDescription(PlayStyle v) => v.playstyleDescription;
+  static const Field<PlayStyle, String> _f$playstyleDescription =
+      Field('playstyleDescription', _$playstyleDescription);
+  static String _$playstylePDescription(PlayStyle v) => v.playstylePDescription;
+  static const Field<PlayStyle, String> _f$playstylePDescription =
+      Field('playstylePDescription', _$playstylePDescription);
   static String _$imagePath(PlayStyle v) => v.imagePath;
   static const Field<PlayStyle, String> _f$imagePath =
       Field('imagePath', _$imagePath);
@@ -40,6 +46,8 @@ class PlayStyleMapper extends ClassMapperBase<PlayStyle> {
     #name: _f$name,
     #categoryId: _f$categoryId,
     #whoHasIt: _f$whoHasIt,
+    #playstyleDescription: _f$playstyleDescription,
+    #playstylePDescription: _f$playstylePDescription,
     #imagePath: _f$imagePath,
   };
 
@@ -49,6 +57,8 @@ class PlayStyleMapper extends ClassMapperBase<PlayStyle> {
         name: data.dec(_f$name),
         categoryId: data.dec(_f$categoryId),
         whoHasIt: data.dec(_f$whoHasIt),
+        playstyleDescription: data.dec(_f$playstyleDescription),
+        playstylePDescription: data.dec(_f$playstylePDescription),
         imagePath: data.dec(_f$imagePath));
   }
 
@@ -107,6 +117,8 @@ abstract class PlayStyleCopyWith<$R, $In extends PlayStyle, $Out>
       String? name,
       int? categoryId,
       String? whoHasIt,
+      String? playstyleDescription,
+      String? playstylePDescription,
       String? imagePath});
   PlayStyleCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
@@ -125,12 +137,18 @@ class _PlayStyleCopyWithImpl<$R, $Out>
           String? name,
           int? categoryId,
           String? whoHasIt,
+          String? playstyleDescription,
+          String? playstylePDescription,
           String? imagePath}) =>
       $apply(FieldCopyWithData({
         if (eaId != null) #eaId: eaId,
         if (name != null) #name: name,
         if (categoryId != null) #categoryId: categoryId,
         if (whoHasIt != null) #whoHasIt: whoHasIt,
+        if (playstyleDescription != null)
+          #playstyleDescription: playstyleDescription,
+        if (playstylePDescription != null)
+          #playstylePDescription: playstylePDescription,
         if (imagePath != null) #imagePath: imagePath
       }));
   @override
@@ -139,6 +157,10 @@ class _PlayStyleCopyWithImpl<$R, $Out>
       name: data.get(#name, or: $value.name),
       categoryId: data.get(#categoryId, or: $value.categoryId),
       whoHasIt: data.get(#whoHasIt, or: $value.whoHasIt),
+      playstyleDescription:
+          data.get(#playstyleDescription, or: $value.playstyleDescription),
+      playstylePDescription:
+          data.get(#playstylePDescription, or: $value.playstylePDescription),
       imagePath: data.get(#imagePath, or: $value.imagePath));
 
   @override

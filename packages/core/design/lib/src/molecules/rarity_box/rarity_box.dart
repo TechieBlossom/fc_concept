@@ -1,6 +1,8 @@
 import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 
+
+
 class RarityBox extends StatelessWidget {
   const RarityBox({
     super.key,

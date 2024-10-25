@@ -8,6 +8,7 @@ import 'package:core_domain/src/domain/clubs/model/club.dart';
 import 'package:core_domain/src/domain/leagues/model/league.dart';
 import 'package:core_domain/src/domain/nations/model/nation.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
+import 'package:core_domain/src/domain/price/model/player_old_price.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -27,6 +28,7 @@ class Player with PlayerMappable {
     this.club,
     this.nation,
     this.league,
+    this.price,
     this.height,
     this.weight,
     this.dateOfBirth,
@@ -39,6 +41,8 @@ class Player with PlayerMappable {
     this.playStylesPlus,
     this.rolesPlus,
     this.rolesPlusPlus,
+    this.isSbcItem = false,
+    this.isObjectiveItem = false,
     this.facePace,
     this.faceShooting,
     this.facePassing,
@@ -103,6 +107,7 @@ class Player with PlayerMappable {
   final Nation? nation;
   @MappableField(key: TableLeague.tableLeague)
   final League? league;
+  final PlayerOldPrice? price;
   final int? height;
   final int? weight;
   @MappableField(key: TablePosition.tablePosition)
@@ -118,6 +123,9 @@ class Player with PlayerMappable {
   final int? foot;
   final int? gender;
   final DateTime? dateOfBirth;
+  final bool isSbcItem;
+  final bool isObjectiveItem;
+
   final int? facePace;
   final int? faceShooting;
   final int? facePassing;

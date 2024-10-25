@@ -1,45 +1,66 @@
 import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 
+enum RatingBoxSize {
+  small,
+  medium,
+}
+
 class RatingBox extends StatelessWidget {
   const RatingBox({
     super.key,
     required this.rating,
     required this.bg,
     required this.fg,
-    this.isSmall = false,
+    required this.size,
   });
 
   final int? rating;
-  final bool isSmall;
+  final RatingBoxSize size;
   final int bg;
   final int fg;
 
   @override
   Widget build(BuildContext context) {
-    final size = isSmall ? 28.0 : 40.0;
+    final width = switch (size) {
+      RatingBoxSize.small => 18.0,
+      RatingBoxSize.medium => 28.0,
+    };
+    final style = switch (size) {
+      RatingBoxSize.small => context.typography.caption2,
+      RatingBoxSize.medium => context.typography.body2,
+    };
+    final borderRadius = switch (size) {
+      RatingBoxSize.small => BorderRadius.circular(AppCornerRadius.radius1),
+      RatingBoxSize.medium => BorderRadius.circular(AppCornerRadius.radius1),
+    };
     return rating == null
         ? const SizedBox.shrink()
         : ConstrainedBox(
             constraints: BoxConstraints(
-              minWidth: size,
-              maxWidth: size,
-              minHeight: size,
-              maxHeight: size,
+              minWidth: width,
+              maxWidth: width,
+              minHeight: width,
+              maxHeight: width,
             ),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: isSmall
-                    ? BorderRadius.circular(AppCornerRadius.radius1)
-                    : BorderRadius.circular(AppCornerRadius.radius1),
+                borderRadius: borderRadius,
+                border: Border.all(
+                  width: 1,
+                  strokeAlign: BorderSide.strokeAlignInside,
+                  color: Color(fg),
+                ),
                 color: Color(bg),
               ),
-              child: Center(
+              child: Padding(
+                padding: size == RatingBoxSize.small
+                    ? const EdgeInsets.only(top: 2)
+                    : const EdgeInsets.only(top: 5),
                 child: Text(
                   rating.toString(),
-                  style: context.typography.body2.copyWith(
-                    color: Color(fg),
-                  ),
+                  textAlign: TextAlign.center,
+                  style: style.copyWith(color: Color(fg)),
                 ),
               ),
             ),

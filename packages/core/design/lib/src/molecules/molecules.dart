@@ -29,5 +29,6 @@ export 'package:core_design/src/molecules/range_slider/app_range_slider.dart';
 export 'package:core_design/src/molecules/rarity_box/rarity_box.dart';
 export 'package:core_design/src/molecules/rating_box/rating_box.dart';
 export 'package:core_design/src/molecules/role/role_bar.dart';
+export 'package:core_design/src/molecules/sheets/app_bottom_sheet.dart';
 export 'package:core_design/src/molecules/space/space.dart';
 export 'package:core_design/src/molecules/versions/versions.dart';

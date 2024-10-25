@@ -4,8 +4,8 @@ import 'package:core_domain/src/domain/players/player_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetPopularPlayerUseCase {
-  const GetPopularPlayerUseCase(this._playerRepository);
+class GetRecentPlayersUseCase {
+  const GetRecentPlayersUseCase(this._playerRepository);
 
   final PlayerRepository _playerRepository;
 

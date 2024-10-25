@@ -22,7 +22,7 @@ class BottomButtonLayout extends StatelessWidget {
         widgets.add(
           SizedBox(
             height: AppSpacing.space5 + AppSpacing.space3,
-            width: AppSpacing.space7,
+            width: AppSpacing.space8,
           ),
         );
       }

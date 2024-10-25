@@ -16,7 +16,7 @@ class ShimmerFilterGroup extends StatelessWidget {
       baseColor: const Color(0xFFE3E3E3),
       highlightColor: const Color(0xFFF4F4F4),
       child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.space5),
+        padding: margin ?? const EdgeInsets.all(AppSpacing.space5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

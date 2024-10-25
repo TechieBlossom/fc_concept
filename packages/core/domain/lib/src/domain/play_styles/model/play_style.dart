@@ -9,6 +9,8 @@ class PlayStyle with PlayStyleMappable {
     required this.name,
     required this.categoryId,
     required this.whoHasIt,
+    required this.playstyleDescription,
+    required this.playstylePDescription,
     required this.imagePath,
   });
 
@@ -16,6 +18,8 @@ class PlayStyle with PlayStyleMappable {
   final String name;
   final int categoryId;
   final String whoHasIt;
+  final String playstyleDescription;
+  final String playstylePDescription;
   final String imagePath;
 
   static const fromMap = PlayStyleMapper.fromMap;

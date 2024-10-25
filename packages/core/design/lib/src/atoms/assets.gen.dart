@@ -24,8 +24,15 @@ class $AssetsImagesGen {
   AssetGenImage get loginBg =>
       const AssetGenImage('assets/images/login_bg.png');
 
+  /// File path: assets/images/sbc_icon.webp
+  AssetGenImage get sbcIcon =>
+      const AssetGenImage('assets/images/sbc_icon.webp');
+
+  /// File path: assets/images/xp.webp
+  AssetGenImage get xp => const AssetGenImage('assets/images/xp.webp');
+
   /// List of all assets
-  List<AssetGenImage> get values => [appLogo, futCoin, loginBg];
+  List<AssetGenImage> get values => [appLogo, futCoin, loginBg, sbcIcon, xp];
 }
 
 class AppAssets {
