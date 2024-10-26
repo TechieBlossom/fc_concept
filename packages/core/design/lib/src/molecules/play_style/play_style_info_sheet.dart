@@ -50,7 +50,6 @@ class PlayStyleInfoSheet extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-
       ],
     );
   }

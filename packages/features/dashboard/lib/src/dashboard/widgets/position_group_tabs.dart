@@ -24,11 +24,13 @@ class PositionGroupTabs extends StatelessWidget {
                 text: 'Attackers',
                 data: PositionGroup.attack,
                 isSelected: state.positionGroup == PositionGroup.attack,
-                onTap: () => bloc.add(
-                  SwitchHighRatedPositionGroup(
-                    positionGroup: PositionGroup.attack,
-                  ),
-                ),
+                onTap: state.positionGroup == PositionGroup.attack
+                    ? null
+                    : () => bloc.add(
+                          SwitchHighRatedPositionGroup(
+                            positionGroup: PositionGroup.attack,
+                          ),
+                        ),
               ),
             ),
             Pill(
@@ -36,11 +38,13 @@ class PositionGroupTabs extends StatelessWidget {
                 text: 'Midfielders',
                 data: PositionGroup.attack,
                 isSelected: state.positionGroup == PositionGroup.midfielder,
-                onTap: () => bloc.add(
-                  SwitchHighRatedPositionGroup(
-                    positionGroup: PositionGroup.midfielder,
-                  ),
-                ),
+                onTap: state.positionGroup == PositionGroup.midfielder
+                    ? null
+                    : () => bloc.add(
+                          SwitchHighRatedPositionGroup(
+                            positionGroup: PositionGroup.midfielder,
+                          ),
+                        ),
               ),
             ),
             Pill(
@@ -48,11 +52,13 @@ class PositionGroupTabs extends StatelessWidget {
                 text: 'Defenders',
                 data: PositionGroup.attack,
                 isSelected: state.positionGroup == PositionGroup.defence,
-                onTap: () => bloc.add(
-                  SwitchHighRatedPositionGroup(
-                    positionGroup: PositionGroup.defence,
-                  ),
-                ),
+                onTap: state.positionGroup == PositionGroup.defence
+                    ? null
+                    : () => bloc.add(
+                          SwitchHighRatedPositionGroup(
+                            positionGroup: PositionGroup.defence,
+                          ),
+                        ),
               ),
             ),
             Pill(
@@ -60,7 +66,9 @@ class PositionGroupTabs extends StatelessWidget {
                 text: 'Goalkeepers',
                 data: PositionGroup.attack,
                 isSelected: state.positionGroup == null,
-                onTap: () => bloc.add(SwitchHighRatedPositionGroup()),
+                onTap: state.positionGroup == null
+                    ? null
+                    : () => bloc.add(SwitchHighRatedPositionGroup()),
               ),
             ),
           ]

@@ -1,5 +1,3 @@
-import 'package:core_domain/domain.dart';
-import 'package:feature_compare/src/compare/compare_page.dart';
 import 'package:feature_compare/src/player_selection/player_selection_page.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';

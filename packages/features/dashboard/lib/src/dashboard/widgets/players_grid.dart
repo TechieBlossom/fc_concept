@@ -13,7 +13,7 @@ class PlayersGrid extends StatelessWidget {
   });
 
   final bool isLoading;
-  final List<Player> players;
+  final List<Player>? players;
   final String heading;
   final Widget? pills;
   final void Function(Player) onTap;
@@ -62,7 +62,7 @@ class _Content extends StatelessWidget {
     this.pills,
   });
 
-  final List<Player> players;
+  final List<Player>? players;
   final String heading;
   final Widget? pills;
   final void Function(Player) onTap;
@@ -70,9 +70,13 @@ class _Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: pills == null ? 270 : 270 + 28 + 16,
+      height: pills == null
+          ? 270
+          : (players?.isEmpty ?? true)
+              ? 161
+              : 270 + 28 + 16,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
@@ -96,28 +100,53 @@ class _Content extends StatelessWidget {
               ),
               child: pills,
             ),
-          Expanded(
-            child: GridView.builder(
-              scrollDirection: Axis.horizontal,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.8,
-                crossAxisSpacing: AppSpacing.space5,
-              ),
-              itemCount: players.length,
-              itemBuilder: (context, index) {
-                final player = players[index];
-                return Padding(
-                  padding: EdgeInsets.only(
-                    left: AppSpacing.space3,
-                    right:
-                        (index >= players.length - 2) ? AppSpacing.space3 : 0,
+          if (players?.isEmpty ?? true)
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: AppSpacing.space5),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.space5,
+                  vertical: AppSpacing.space7,
+                ),
+                decoration: BoxDecoration(
+                  color: context.colors.backgroundTertiary,
+                  borderRadius: BorderRadius.circular(AppSpacing.space3),
+                ),
+                child: Text(
+                  'No players found',
+                  textAlign: TextAlign.center,
+                  style: context.typography.body1.copyWith(
+                    color: context.colors.contentPrimary,
                   ),
-                  child: PlayerBox(player: player, onTap: () => onTap(player)),
-                );
-              },
+                ),
+              ),
+            )
+          else
+            Expanded(
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: AppSpacing.space5,
+                ),
+                itemCount: players?.length,
+                itemBuilder: (context, index) {
+                  final player = players![index];
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: AppSpacing.space3,
+                      right: (index >= players!.length - 2)
+                          ? AppSpacing.space3
+                          : 0,
+                    ),
+                    child:
+                        PlayerBox(player: player, onTap: () => onTap(player)),
+                  );
+                },
+              ),
             ),
-          ),
         ],
       ),
     );

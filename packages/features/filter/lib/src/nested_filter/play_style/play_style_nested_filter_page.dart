@@ -57,29 +57,31 @@ class PlayStyleNestedFilterPage extends StatelessWidget {
                     SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.only(
+                          left: AppSpacing.space5,
+                          right: AppSpacing.space5,
                           bottom: AppSpacing.space9,
                         ),
-                        child: FilterGroup(
-                          pillItems: state.playStyles!
-                              .map(
-                                (item) => PillItem<PlayStyle>(
-                                  data: item,
-                                  text: item.name,
-                                  isSelected: (state.selectedPlayStyles ??
-                                              playStyleNestedFilterPageParams
-                                                  .items)
-                                          ?.contains(item) ??
-                                      false,
-                                  onTap: () => context
-                                      .read<PlayStyleNestedFilterBloc>()
-                                      .add(
-                                        SelectPlayStyle(
-                                          item: item,
-                                        ),
-                                      ),
-                                ),
-                              )
-                              .toList(),
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          spacing: AppSpacing.space4,
+                          runSpacing: AppSpacing.space4,
+                          children: [
+                            ...state.playStyles!
+                                .map(
+                                  (playStyle) => PlayStyleFilterItem(
+                                    playStyle: playStyle,
+                                    isSelected: (state.selectedPlayStyles ??
+                                                playStyleNestedFilterPageParams
+                                                    .items)
+                                            ?.contains(playStyle) ??
+                                        false,
+                                    onTap: () => context
+                                        .read<PlayStyleNestedFilterBloc>()
+                                        .add(SelectPlayStyle(item: playStyle)),
+                                  ),
+                                )
+                                .toList(),
+                          ],
                         ),
                       ),
                     ),

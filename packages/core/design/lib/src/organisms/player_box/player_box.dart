@@ -15,8 +15,8 @@ class PlayerBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = getPlayerColors(context, player);
-    final color1 = Color(colors.$1).withOpacity(0.6);
-    final color2 = Color(colors.$1).withOpacity(0.1);
+    final color1 = Color(colors.$1);
+    final color2 = Color(colors.$1).withOpacity(0.6);
     return InkWell(
       onTap: onTap,
       child: SizedBox(
@@ -66,7 +66,7 @@ class PlayerBox extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: context.typography.body4.copyWith(
-                          color: context.colors.contentPrimary,
+                          color: Color(colors.$2),
                         ),
                       ),
                     ),
@@ -75,8 +75,10 @@ class PlayerBox extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         PositionBox(
-                            position: player.position,
-                            size: PositionBoxSize.small),
+                          position: player.position,
+                          size: PositionBoxSize.small,
+                          color: Color(colors.$2),
+                        ),
                         const Space(
                           space: AppSpacing.space1,
                           orientation: Axis.horizontal,
@@ -97,7 +99,9 @@ class PlayerBox extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.end,
-                        style: context.typography.caption2,
+                        style: context.typography.caption2.copyWith(
+                          color: Color(colors.$2),
+                        ),
                       ),
                     ),
                     const Spacer(),
@@ -107,7 +111,9 @@ class PlayerBox extends StatelessWidget {
                         children: [
                           Text(
                             'EXTINCT',
-                            style: context.typography.caption2,
+                            style: context.typography.caption2.copyWith(
+                              color: Color(colors.$2),
+                            ),
                           ),
                           const Space(
                             space: AppSpacing.space1,
@@ -124,8 +130,11 @@ class PlayerBox extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            AppFormatter.formatCurrency(player.price?.price ?? 0),
-                            style: context.typography.caption2,
+                            AppFormatter.formatCurrency(
+                                player.price?.price ?? 0),
+                            style: context.typography.caption2.copyWith(
+                              color: Color(colors.$2),
+                            ),
                           ),
                           const Space(
                             space: AppSpacing.space1,
@@ -148,7 +157,9 @@ class PlayerBox extends StatelessWidget {
                         children: [
                           Text(
                             'OBJECTIVE',
-                            style: context.typography.caption2,
+                            style: context.typography.caption2.copyWith(
+                              color: Color(colors.$2),
+                            ),
                           ),
                           const Space(
                             space: AppSpacing.space1,

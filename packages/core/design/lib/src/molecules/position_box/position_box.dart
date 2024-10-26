@@ -12,10 +12,12 @@ class PositionBox extends StatelessWidget {
     super.key,
     required this.position,
     required this.size,
+    this.color,
   });
 
   final Position? position;
   final PositionBoxSize size;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class PositionBox extends StatelessWidget {
     return Text(
       position?.shortLabel.toUpperCase() ?? '',
       style: style.copyWith(
-        color: context.colors.contentPrimary,
+        color: color ?? context.colors.contentPrimary,
       ),
     );
   }

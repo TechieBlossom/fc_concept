@@ -7,9 +7,7 @@ import 'package:injectable/injectable.dart';
 @Injectable(as: RarityRepository)
 class RarityRepositoryImpl extends RarityRepository {
   @override
-  Future<Result<List<Rarity>>> getAllRarities({
-    required List<int> rarityIds,
-  }) async {
+  Future<Result<List<Rarity>>> getAllRarities() async {
     try {
       final raritiesResponse = await supabase
           .from(TableRarity.tableRarity)

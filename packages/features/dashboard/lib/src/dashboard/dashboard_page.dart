@@ -4,6 +4,7 @@ import 'package:feature_dashboard/src/dashboard/bloc/dashboard_bloc.dart';
 import 'package:feature_dashboard/src/dashboard/widgets/indices.dart';
 import 'package:feature_dashboard/src/dashboard/widgets/players_grid.dart';
 import 'package:feature_dashboard/src/dashboard/widgets/position_group_tabs.dart';
+import 'package:feature_dashboard/src/dashboard/widgets/rarity_squad_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
 
@@ -26,13 +27,13 @@ class DashboardPage extends StatelessWidget {
             appBar: AppBar(
               centerTitle: false,
               title: const Text('FC Concept'),
-              // actions: [
-              //   IconButton(
-              //     icon: const Icon(Icons.search_rounded),
-              //     onPressed: () =>
-              //         context.read<DashboardBloc>().add(SearchTap()),
-              //   ),
-              // ],
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.search_rounded),
+                  onPressed: () =>
+                      context.read<DashboardBloc>().add(SearchTap()),
+                ),
+              ],
             ),
             body: SingleChildScrollView(
               child: Column(
@@ -41,11 +42,21 @@ class DashboardPage extends StatelessWidget {
                   const SizedBox(height: AppSpacing.space6),
                   PlayersGrid(
                     isLoading: state.processState == ProcessState.loading,
-                    players: state.recentPlayers,
-                    heading: 'Recent Players',
+                    players: state.raritySquadPlayers[state.raritySquad],
+                    pills: RaritySquadTabs(state: state),
+                    heading: 'Trending Players',
                     onTap: (player) => context.read<DashboardBloc>().add(
                           PlayerTap(player: player),
                         ),
+                  ),
+                  const SizedBox(height: AppSpacing.space6),
+                  PlayersGrid(
+                    isLoading: state.processState == ProcessState.loading,
+                    players: state.sbcPlayers,
+                    heading: 'SBCs',
+                    onTap: (player) => context.read<DashboardBloc>().add(
+                      PlayerTap(player: player),
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.space6),
                   PlayersGrid(
@@ -59,17 +70,8 @@ class DashboardPage extends StatelessWidget {
                     heading: 'High-Rated Players',
                     pills: PositionGroupTabs(state: state),
                     onTap: (player) => context.read<DashboardBloc>().add(
-                          PlayerTap(player: player),
-                        ),
-                  ),
-                  const SizedBox(height: AppSpacing.space6),
-                  PlayersGrid(
-                    isLoading: state.processState == ProcessState.loading,
-                    players: state.sbcPlayers,
-                    heading: 'SBCs',
-                    onTap: (player) => context.read<DashboardBloc>().add(
-                          PlayerTap(player: player),
-                        ),
+                      PlayerTap(player: player),
+                    ),
                   ),
                 ],
               ),

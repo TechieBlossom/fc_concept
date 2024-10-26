@@ -212,7 +212,27 @@ class PlayerRepositoryImpl extends PlayerRepository {
     }
   }
 
-  // TODO: Create Team of the Week based player list
+  @override
+  Future<Result<List<Player>?>> getPlayersByRaritySquad({
+    required int raritySquadId,
+  }) async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .eq(TablePlayer.raritySquadId, raritySquadId)
+          .order(TablePlayer.overall, ascending: false)
+          .limit(30);
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
 
   @override
   Future<Result<List<Player>?>> searchPlayers({

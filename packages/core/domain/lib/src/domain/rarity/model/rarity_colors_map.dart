@@ -1,17 +1,20 @@
 import 'package:core_domain/domain.dart';
 
+@Deprecated('Not used now')
 class RarityColor {
+  @Deprecated('Not used now')
   const RarityColor(
-    this.id,
-    this.bg,
-    this.fg,
-  );
+      this.id,
+      this.bg,
+      this.fg,
+      );
 
   final int id;
   final int bg;
   final int fg;
 }
 
+@Deprecated('Not used now')
 const rarityColorMap = {
   0: RarityColor(0, nonRareBg, nonRareFg),
   1: RarityColor(1, rareBg, rareFg),

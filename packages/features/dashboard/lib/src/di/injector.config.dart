@@ -35,10 +35,11 @@ _i174.GetIt init(
       () => _i577.DashboardNavigator(gh<_i177.GoRouter>()));
   gh.factory<_i432.DashboardBloc>(() => _i432.DashboardBloc(
         gh<_i913.GetIndexDataUseCase>(),
-        gh<_i913.GetRecentPlayersUseCase>(),
         gh<_i913.GetPlayerOldPricesUseCase>(),
         gh<_i913.GetSbcPlayersUseCase>(),
         gh<_i913.GetPositionalPlayersUseCase>(),
+        gh<_i913.GetTrendingPlayersUseCase>(),
+        gh<_i913.GetUniqueRaritySquads>(),
         gh<_i657.DashboardNavigator>(),
       ));
   return getIt;

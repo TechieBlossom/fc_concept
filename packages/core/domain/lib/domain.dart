@@ -28,6 +28,7 @@ export 'package:core_domain/src/domain/players/use_case/get_positional_players_u
 export 'package:core_domain/src/domain/players/use_case/get_recent_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_sbc_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_top_players_use_case.dart';
+export 'package:core_domain/src/domain/players/use_case/get_trending_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart';
 export 'package:core_domain/src/domain/positions/model/position.dart';
 export 'package:core_domain/src/domain/positions/model/position_group.dart';
@@ -39,6 +40,8 @@ export 'package:core_domain/src/domain/price/use_case/get_player_price_use_case.
 export 'package:core_domain/src/domain/rarity/model/rarity.dart';
 export 'package:core_domain/src/domain/rarity/model/rarity_colors_map.dart';
 export 'package:core_domain/src/domain/rarity/use_case/get_all_rarities.dart';
+export 'package:core_domain/src/domain/rarity_squads/model/rarity_squad.dart';
+export 'package:core_domain/src/domain/rarity_squads/use_case/get_unique_rarity_squads.dart';
 export 'package:core_domain/src/domain/roles/model/role.dart';
 export 'package:core_domain/src/domain/roles/use_case/get_all_roles_use_case.dart';
 export 'package:core_domain/src/domain/roles/use_case/get_roles_by_ids_use_case.dart';

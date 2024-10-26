@@ -8,7 +8,6 @@ class GetAllRarities {
 
   final RarityRepository rarityRepository;
 
-  Future<Result<List<Rarity>>> call() async => rarityRepository.getAllRarities(
-        rarityIds: rarityColorMap.keys.toList(),
-      );
+  Future<Result<List<Rarity>>> call() async =>
+      rarityRepository.getAllRarities();
 }

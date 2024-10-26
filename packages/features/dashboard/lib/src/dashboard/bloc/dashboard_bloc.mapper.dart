@@ -16,6 +16,7 @@ class DashboardEventMapper extends ClassMapperBase<DashboardEvent> {
       InitMapper.ensureInitialized();
       UpdatePlayerPricesMapper.ensureInitialized();
       SwitchHighRatedPositionGroupMapper.ensureInitialized();
+      SwitchRaritySquadMapper.ensureInitialized();
       PlayerTapMapper.ensureInitialized();
       SearchTapMapper.ensureInitialized();
     }
@@ -405,6 +406,129 @@ class _SwitchHighRatedPositionGroupCopyWithImpl<$R, $Out>
           _SwitchHighRatedPositionGroupCopyWithImpl($value, $cast, t);
 }
 
+class SwitchRaritySquadMapper extends SubClassMapperBase<SwitchRaritySquad> {
+  SwitchRaritySquadMapper._();
+
+  static SwitchRaritySquadMapper? _instance;
+  static SwitchRaritySquadMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = SwitchRaritySquadMapper._());
+      DashboardEventMapper.ensureInitialized().addSubMapper(_instance!);
+      RaritySquadMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'SwitchRaritySquad';
+
+  static RaritySquad? _$raritySquad(SwitchRaritySquad v) => v.raritySquad;
+  static const Field<SwitchRaritySquad, RaritySquad> _f$raritySquad =
+      Field('raritySquad', _$raritySquad, opt: true);
+
+  @override
+  final MappableFields<SwitchRaritySquad> fields = const {
+    #raritySquad: _f$raritySquad,
+  };
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'switchRaritySquad';
+  @override
+  late final ClassMapperBase superMapper =
+      DashboardEventMapper.ensureInitialized();
+
+  static SwitchRaritySquad _instantiate(DecodingData data) {
+    return SwitchRaritySquad(raritySquad: data.dec(_f$raritySquad));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static SwitchRaritySquad fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<SwitchRaritySquad>(map);
+  }
+
+  static SwitchRaritySquad fromJson(String json) {
+    return ensureInitialized().decodeJson<SwitchRaritySquad>(json);
+  }
+}
+
+mixin SwitchRaritySquadMappable {
+  String toJson() {
+    return SwitchRaritySquadMapper.ensureInitialized()
+        .encodeJson<SwitchRaritySquad>(this as SwitchRaritySquad);
+  }
+
+  Map<String, dynamic> toMap() {
+    return SwitchRaritySquadMapper.ensureInitialized()
+        .encodeMap<SwitchRaritySquad>(this as SwitchRaritySquad);
+  }
+
+  SwitchRaritySquadCopyWith<SwitchRaritySquad, SwitchRaritySquad,
+          SwitchRaritySquad>
+      get copyWith => _SwitchRaritySquadCopyWithImpl(
+          this as SwitchRaritySquad, $identity, $identity);
+  @override
+  String toString() {
+    return SwitchRaritySquadMapper.ensureInitialized()
+        .stringifyValue(this as SwitchRaritySquad);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return SwitchRaritySquadMapper.ensureInitialized()
+        .equalsValue(this as SwitchRaritySquad, other);
+  }
+
+  @override
+  int get hashCode {
+    return SwitchRaritySquadMapper.ensureInitialized()
+        .hashValue(this as SwitchRaritySquad);
+  }
+}
+
+extension SwitchRaritySquadValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, SwitchRaritySquad, $Out> {
+  SwitchRaritySquadCopyWith<$R, SwitchRaritySquad, $Out>
+      get $asSwitchRaritySquad =>
+          $base.as((v, t, t2) => _SwitchRaritySquadCopyWithImpl(v, t, t2));
+}
+
+abstract class SwitchRaritySquadCopyWith<$R, $In extends SwitchRaritySquad,
+    $Out> implements DashboardEventCopyWith<$R, $In, $Out> {
+  RaritySquadCopyWith<$R, RaritySquad, RaritySquad>? get raritySquad;
+  @override
+  $R call({RaritySquad? raritySquad});
+  SwitchRaritySquadCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _SwitchRaritySquadCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, SwitchRaritySquad, $Out>
+    implements SwitchRaritySquadCopyWith<$R, SwitchRaritySquad, $Out> {
+  _SwitchRaritySquadCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<SwitchRaritySquad> $mapper =
+      SwitchRaritySquadMapper.ensureInitialized();
+  @override
+  RaritySquadCopyWith<$R, RaritySquad, RaritySquad>? get raritySquad =>
+      $value.raritySquad?.copyWith.$chain((v) => call(raritySquad: v));
+  @override
+  $R call({Object? raritySquad = $none}) => $apply(
+      FieldCopyWithData({if (raritySquad != $none) #raritySquad: raritySquad}));
+  @override
+  SwitchRaritySquad $make(CopyWithData data) => SwitchRaritySquad(
+      raritySquad: data.get(#raritySquad, or: $value.raritySquad));
+
+  @override
+  SwitchRaritySquadCopyWith<$R2, SwitchRaritySquad, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _SwitchRaritySquadCopyWithImpl($value, $cast, t);
+}
+
 class PlayerTapMapper extends SubClassMapperBase<PlayerTap> {
   PlayerTapMapper._();
 
@@ -635,6 +759,7 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
       ProcessStateMapper.ensureInitialized();
       IndexDataMapper.ensureInitialized();
       PositionGroupMapper.ensureInitialized();
+      RaritySquadMapper.ensureInitialized();
       PlayerMapper.ensureInitialized();
     }
     return _instance!;
@@ -654,9 +779,15 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
   static const Field<DashboardState, PositionGroup> _f$positionGroup = Field(
       'positionGroup', _$positionGroup,
       opt: true, def: PositionGroup.attack);
-  static List<Player> _$recentPlayers(DashboardState v) => v.recentPlayers;
-  static const Field<DashboardState, List<Player>> _f$recentPlayers =
-      Field('recentPlayers', _$recentPlayers, opt: true, def: const []);
+  static RaritySquad? _$raritySquad(DashboardState v) => v.raritySquad;
+  static const Field<DashboardState, RaritySquad> _f$raritySquad =
+      Field('raritySquad', _$raritySquad, opt: true);
+  static Map<RaritySquad?, List<Player>?> _$raritySquadPlayers(
+          DashboardState v) =>
+      v.raritySquadPlayers;
+  static const Field<DashboardState, Map<RaritySquad?, List<Player>?>>
+      _f$raritySquadPlayers = Field('raritySquadPlayers', _$raritySquadPlayers,
+          opt: true, def: const {});
   static List<Player> _$sbcPlayers(DashboardState v) => v.sbcPlayers;
   static const Field<DashboardState, List<Player>> _f$sbcPlayers =
       Field('sbcPlayers', _$sbcPlayers, opt: true, def: const []);
@@ -680,7 +811,8 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
     #processState: _f$processState,
     #indexes: _f$indexes,
     #positionGroup: _f$positionGroup,
-    #recentPlayers: _f$recentPlayers,
+    #raritySquad: _f$raritySquad,
+    #raritySquadPlayers: _f$raritySquadPlayers,
     #sbcPlayers: _f$sbcPlayers,
     #attackPlayers: _f$attackPlayers,
     #midfielderPlayers: _f$midfielderPlayers,
@@ -693,7 +825,8 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
         processState: data.dec(_f$processState),
         indexes: data.dec(_f$indexes),
         positionGroup: data.dec(_f$positionGroup),
-        recentPlayers: data.dec(_f$recentPlayers),
+        raritySquad: data.dec(_f$raritySquad),
+        raritySquadPlayers: data.dec(_f$raritySquadPlayers),
         sbcPlayers: data.dec(_f$sbcPlayers),
         attackPlayers: data.dec(_f$attackPlayers),
         midfielderPlayers: data.dec(_f$midfielderPlayers),
@@ -756,8 +889,9 @@ abstract class DashboardStateCopyWith<$R, $In extends DashboardState, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, IndexData, IndexDataCopyWith<$R, IndexData, IndexData>>?
       get indexes;
-  ListCopyWith<$R, Player, PlayerCopyWith<$R, Player, Player>>
-      get recentPlayers;
+  RaritySquadCopyWith<$R, RaritySquad, RaritySquad>? get raritySquad;
+  MapCopyWith<$R, RaritySquad?, List<Player>?,
+      ObjectCopyWith<$R, List<Player>?, List<Player>?>?> get raritySquadPlayers;
   ListCopyWith<$R, Player, PlayerCopyWith<$R, Player, Player>> get sbcPlayers;
   ListCopyWith<$R, Player, PlayerCopyWith<$R, Player, Player>>
       get attackPlayers;
@@ -771,7 +905,8 @@ abstract class DashboardStateCopyWith<$R, $In extends DashboardState, $Out>
       {ProcessState? processState,
       List<IndexData>? indexes,
       PositionGroup? positionGroup,
-      List<Player>? recentPlayers,
+      RaritySquad? raritySquad,
+      Map<RaritySquad?, List<Player>?>? raritySquadPlayers,
       List<Player>? sbcPlayers,
       List<Player>? attackPlayers,
       List<Player>? midfielderPlayers,
@@ -796,9 +931,15 @@ class _DashboardStateCopyWithImpl<$R, $Out>
               (v) => call(indexes: v))
           : null;
   @override
-  ListCopyWith<$R, Player, PlayerCopyWith<$R, Player, Player>>
-      get recentPlayers => ListCopyWith($value.recentPlayers,
-          (v, t) => v.copyWith.$chain(t), (v) => call(recentPlayers: v));
+  RaritySquadCopyWith<$R, RaritySquad, RaritySquad>? get raritySquad =>
+      $value.raritySquad?.copyWith.$chain((v) => call(raritySquad: v));
+  @override
+  MapCopyWith<$R, RaritySquad?, List<Player>?,
+          ObjectCopyWith<$R, List<Player>?, List<Player>?>?>
+      get raritySquadPlayers => MapCopyWith(
+          $value.raritySquadPlayers,
+          (v, t) => ObjectCopyWith(v, $identity, t),
+          (v) => call(raritySquadPlayers: v));
   @override
   ListCopyWith<$R, Player, PlayerCopyWith<$R, Player, Player>> get sbcPlayers =>
       ListCopyWith($value.sbcPlayers, (v, t) => v.copyWith.$chain(t),
@@ -824,7 +965,8 @@ class _DashboardStateCopyWithImpl<$R, $Out>
           {ProcessState? processState,
           Object? indexes = $none,
           Object? positionGroup = $none,
-          List<Player>? recentPlayers,
+          Object? raritySquad = $none,
+          Map<RaritySquad?, List<Player>?>? raritySquadPlayers,
           List<Player>? sbcPlayers,
           List<Player>? attackPlayers,
           List<Player>? midfielderPlayers,
@@ -834,7 +976,8 @@ class _DashboardStateCopyWithImpl<$R, $Out>
         if (processState != null) #processState: processState,
         if (indexes != $none) #indexes: indexes,
         if (positionGroup != $none) #positionGroup: positionGroup,
-        if (recentPlayers != null) #recentPlayers: recentPlayers,
+        if (raritySquad != $none) #raritySquad: raritySquad,
+        if (raritySquadPlayers != null) #raritySquadPlayers: raritySquadPlayers,
         if (sbcPlayers != null) #sbcPlayers: sbcPlayers,
         if (attackPlayers != null) #attackPlayers: attackPlayers,
         if (midfielderPlayers != null) #midfielderPlayers: midfielderPlayers,
@@ -846,7 +989,9 @@ class _DashboardStateCopyWithImpl<$R, $Out>
       processState: data.get(#processState, or: $value.processState),
       indexes: data.get(#indexes, or: $value.indexes),
       positionGroup: data.get(#positionGroup, or: $value.positionGroup),
-      recentPlayers: data.get(#recentPlayers, or: $value.recentPlayers),
+      raritySquad: data.get(#raritySquad, or: $value.raritySquad),
+      raritySquadPlayers:
+          data.get(#raritySquadPlayers, or: $value.raritySquadPlayers),
       sbcPlayers: data.get(#sbcPlayers, or: $value.sbcPlayers),
       attackPlayers: data.get(#attackPlayers, or: $value.attackPlayers),
       midfielderPlayers:

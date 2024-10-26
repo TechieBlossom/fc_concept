@@ -30,6 +30,8 @@ import 'package:core_domain/src/data/price/repository/price_repository_impl.dart
     as _i463;
 import 'package:core_domain/src/data/rarities/repository/rarity_repository_impl.dart'
     as _i176;
+import 'package:core_domain/src/data/rarity_squads/repository/rarity_squad_repository_impl.dart'
+    as _i433;
 import 'package:core_domain/src/data/roles/repository/role_repository_impl.dart'
     as _i33;
 import 'package:core_domain/src/domain/auth/auth_repository.dart' as _i172;
@@ -86,6 +88,8 @@ import 'package:core_domain/src/domain/players/use_case/get_sbc_players_use_case
     as _i1;
 import 'package:core_domain/src/domain/players/use_case/get_top_players_use_case.dart'
     as _i380;
+import 'package:core_domain/src/domain/players/use_case/get_trending_players_use_case.dart'
+    as _i530;
 import 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart'
     as _i354;
 import 'package:core_domain/src/domain/positions/position_repository.dart'
@@ -102,6 +106,10 @@ import 'package:core_domain/src/domain/price/use_case/get_player_price_use_case.
 import 'package:core_domain/src/domain/rarity/rarity_repository.dart' as _i52;
 import 'package:core_domain/src/domain/rarity/use_case/get_all_rarities.dart'
     as _i1054;
+import 'package:core_domain/src/domain/rarity_squads/rarity_squad_repository.dart'
+    as _i451;
+import 'package:core_domain/src/domain/rarity_squads/use_case/get_unique_rarity_squads.dart'
+    as _i696;
 import 'package:core_domain/src/domain/roles/role_repository.dart' as _i907;
 import 'package:core_domain/src/domain/roles/use_case/get_all_roles_use_case.dart'
     as _i651;
@@ -132,6 +140,8 @@ _i174.GetIt init(
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
+  gh.factory<_i451.RaritySquadRepository>(
+      () => _i433.RaritySquadRepositoryImpl());
   gh.factory<_i526.PriceRepository>(
       () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
   gh.factory<_i1070.PositionRepository>(() => _i684.PositionRepositoryImpl());
@@ -143,6 +153,8 @@ _i174.GetIt init(
   gh.factory<_i52.RarityRepository>(() => _i176.RarityRepositoryImpl());
   gh.factory<_i172.AuthRepository>(() => _i937.AuthRepositoryImpl());
   gh.factory<_i907.RoleRepository>(() => _i33.RoleRepositoryImpl());
+  gh.factory<_i696.GetUniqueRaritySquads>(
+      () => _i696.GetUniqueRaritySquads(gh<_i451.RaritySquadRepository>()));
   gh.factory<_i429.RegisterUserUseCase>(
       () => _i429.RegisterUserUseCase(gh<_i172.AuthRepository>()));
   gh.factory<_i1060.LoginUserUseCase>(
@@ -197,6 +209,8 @@ _i174.GetIt init(
       () => _i1.GetSbcPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i274.GetPositionalPlayersUseCase>(
       () => _i274.GetPositionalPlayersUseCase(gh<_i294.PlayerRepository>()));
+  gh.factory<_i530.GetTrendingPlayersUseCase>(
+      () => _i530.GetTrendingPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.lazySingleton<_i809.MetadataBloc>(() => _i809.MetadataBloc(
         gh<_i913.GetAllRolesUseCase>(),
         gh<_i913.GetAllPlayStylesUseCase>(),

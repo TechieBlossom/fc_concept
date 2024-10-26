@@ -1,7 +1,12 @@
-import 'package:core_design/design.dart';
+import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/image/club_image.dart';
 import 'package:core_design/src/molecules/image/league_image.dart';
 import 'package:core_design/src/molecules/image/nation_image.dart';
+import 'package:core_design/src/molecules/image/player_image.dart';
+import 'package:core_design/src/molecules/position_box/position_box.dart';
+import 'package:core_design/src/molecules/rating_box/rating_box.dart';
+import 'package:core_design/src/molecules/space/space.dart';
+import 'package:core_design/src/utility/get_player_colors.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';

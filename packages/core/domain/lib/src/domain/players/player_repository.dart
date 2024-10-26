@@ -27,6 +27,10 @@ abstract class PlayerRepository {
 
   Future<Result<List<Player>?>> topGoalKeepers();
 
+  Future<Result<List<Player>?>> getPlayersByRaritySquad({
+    required int raritySquadId,
+  });
+
   Future<Result<List<Player>?>> searchPlayers({
     required String query,
     int page = 0,

@@ -1,7 +1,6 @@
 import 'package:core_design/src/atoms/app_colors.dart';
 import 'package:core_design/src/atoms/app_dimens.dart';
 import 'package:core_design/src/atoms/app_typography.dart';
-import 'package:core_design/src/molecules/image/play_style_image.dart';
 import 'package:core_design/src/molecules/molecules.dart';
 import 'package:core_design/src/molecules/play_style/play_style_info_sheet.dart';
 import 'package:core_domain/domain.dart';
@@ -54,7 +53,6 @@ class PlayStyleWidget extends StatelessWidget {
                       ],
                     )
                   : null,
-              // color: !isPlus ? context.colors.contentTertiary : null,
               borderRadius: BorderRadius.all(
                 Radius.circular(AppCornerRadius.radius1),
               ),

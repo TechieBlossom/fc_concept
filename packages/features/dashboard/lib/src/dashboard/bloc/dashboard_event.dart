@@ -26,6 +26,15 @@ class SwitchHighRatedPositionGroup extends DashboardEvent
   final PositionGroup? positionGroup;
 }
 
+@MappableClass(discriminatorValue: 'switchRaritySquad')
+class SwitchRaritySquad extends DashboardEvent with SwitchRaritySquadMappable {
+  SwitchRaritySquad({
+    this.raritySquad,
+  });
+
+  final RaritySquad? raritySquad;
+}
+
 @MappableClass(discriminatorValue: 'playerTap')
 class PlayerTap extends DashboardEvent with PlayerTapMappable {
   PlayerTap({

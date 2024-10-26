@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:core_design/design.dart';
 import 'package:core_design/src/atoms/app_colors.dart';
+import 'package:core_design/src/atoms/app_dimens.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
