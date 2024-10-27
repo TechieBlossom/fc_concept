@@ -13,6 +13,7 @@ class PlayStyleMapper extends ClassMapperBase<PlayStyle> {
   static PlayStyleMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PlayStyleMapper._());
+      PlayStyleCategoryMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -24,8 +25,8 @@ class PlayStyleMapper extends ClassMapperBase<PlayStyle> {
   static const Field<PlayStyle, int> _f$eaId = Field('eaId', _$eaId);
   static String _$name(PlayStyle v) => v.name;
   static const Field<PlayStyle, String> _f$name = Field('name', _$name);
-  static int _$categoryId(PlayStyle v) => v.categoryId;
-  static const Field<PlayStyle, int> _f$categoryId =
+  static PlayStyleCategory _$categoryId(PlayStyle v) => v.categoryId;
+  static const Field<PlayStyle, PlayStyleCategory> _f$categoryId =
       Field('categoryId', _$categoryId);
   static String _$whoHasIt(PlayStyle v) => v.whoHasIt;
   static const Field<PlayStyle, String> _f$whoHasIt =
@@ -115,7 +116,7 @@ abstract class PlayStyleCopyWith<$R, $In extends PlayStyle, $Out>
   $R call(
       {int? eaId,
       String? name,
-      int? categoryId,
+      PlayStyleCategory? categoryId,
       String? whoHasIt,
       String? playstyleDescription,
       String? playstylePDescription,
@@ -135,7 +136,7 @@ class _PlayStyleCopyWithImpl<$R, $Out>
   $R call(
           {int? eaId,
           String? name,
-          int? categoryId,
+          PlayStyleCategory? categoryId,
           String? whoHasIt,
           String? playstyleDescription,
           String? playstylePDescription,

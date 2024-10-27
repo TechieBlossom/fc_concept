@@ -6,6 +6,7 @@ import 'package:feature_dashboard/dashboard.dart';
 import 'package:feature_dashboard/src/dashboard/bloc/player_group.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:utility_extensions/extensions.dart';
 
 part 'dashboard_bloc.mapper.dart';
 
@@ -163,7 +164,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   ) {
     switch (raritySquadsResult) {
       case Success(data: final raritySquads):
-        return raritySquads;
+        return raritySquads.distinctBy((e) => e.rarityGroupId).toList();
       case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);
@@ -200,6 +201,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
                 eaId: player.eaId,
                 price: null,
                 isExtinct: false,
+                isSbc: false,
               ),
             );
 

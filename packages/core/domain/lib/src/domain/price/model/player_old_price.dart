@@ -8,11 +8,13 @@ class PlayerOldPrice with PlayerOldPriceMappable {
     required this.eaId,
     required this.price,
     required this.isExtinct,
+    required this.isSbc,
   });
 
   final int eaId;
   final double? price;
   final bool isExtinct;
+  final bool isSbc;
 
   static const fromMap = PlayerOldPriceMapper.fromMap;
 }

@@ -32,7 +32,7 @@ class PriceWidget extends StatelessWidget {
         ),
         SizedBox(width: AppSpacing.space2),
         Text(
-          AppFormatter.formatCurrency(priceItem.price),
+          AppFormatter.formatCurrency(priceItem.price ?? 0),
           style: textStyle,
         ),
         SizedBox(width: AppSpacing.space1),

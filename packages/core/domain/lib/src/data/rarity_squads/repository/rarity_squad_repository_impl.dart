@@ -12,8 +12,7 @@ class RaritySquadRepositoryImpl extends RaritySquadRepository {
       final raritiesResponse = await supabase
           .from(TableRaritySquad.tableRaritySquad)
           .select()
-          .order(TableRaritySquad.releaseDate, ascending: false)
-          .limit(4);
+          .order(TableRaritySquad.releaseDate, ascending: false);
 
       final rarities = mapRarities(raritiesResponse);
       return Success(data: rarities);

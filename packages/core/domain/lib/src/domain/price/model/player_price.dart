@@ -22,10 +22,14 @@ class CurrentPrice with CurrentPriceMappable {
   CurrentPrice({
     required this.price,
     required this.priceUpdatedAt,
+    required this.isExtinct,
+    required this.isSbc,
   });
 
-  final int price;
-  final DateTime priceUpdatedAt;
+  final int? price;
+  final DateTime? priceUpdatedAt;
+  final bool isExtinct;
+  final bool isSbc;
 
   static const fromMap = CurrentPriceMapper.fromMap;
 }

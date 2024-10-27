@@ -140,7 +140,7 @@ class PlayerBox extends StatelessWidget {
                             space: AppSpacing.space1,
                             orientation: Axis.horizontal,
                           ),
-                          (player.isSbcItem)
+                          (player.price?.isSbc ?? false)
                               ? AppAssets.images.sbcIcon.image(
                                   width: 20,
                                   height: 20,

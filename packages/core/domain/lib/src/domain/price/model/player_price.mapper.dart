@@ -158,21 +158,31 @@ class CurrentPriceMapper extends ClassMapperBase<CurrentPrice> {
   @override
   final String id = 'CurrentPrice';
 
-  static int _$price(CurrentPrice v) => v.price;
+  static int? _$price(CurrentPrice v) => v.price;
   static const Field<CurrentPrice, int> _f$price = Field('price', _$price);
-  static DateTime _$priceUpdatedAt(CurrentPrice v) => v.priceUpdatedAt;
+  static DateTime? _$priceUpdatedAt(CurrentPrice v) => v.priceUpdatedAt;
   static const Field<CurrentPrice, DateTime> _f$priceUpdatedAt =
       Field('priceUpdatedAt', _$priceUpdatedAt);
+  static bool _$isExtinct(CurrentPrice v) => v.isExtinct;
+  static const Field<CurrentPrice, bool> _f$isExtinct =
+      Field('isExtinct', _$isExtinct);
+  static bool _$isSbc(CurrentPrice v) => v.isSbc;
+  static const Field<CurrentPrice, bool> _f$isSbc = Field('isSbc', _$isSbc);
 
   @override
   final MappableFields<CurrentPrice> fields = const {
     #price: _f$price,
     #priceUpdatedAt: _f$priceUpdatedAt,
+    #isExtinct: _f$isExtinct,
+    #isSbc: _f$isSbc,
   };
 
   static CurrentPrice _instantiate(DecodingData data) {
     return CurrentPrice(
-        price: data.dec(_f$price), priceUpdatedAt: data.dec(_f$priceUpdatedAt));
+        price: data.dec(_f$price),
+        priceUpdatedAt: data.dec(_f$priceUpdatedAt),
+        isExtinct: data.dec(_f$isExtinct),
+        isSbc: data.dec(_f$isSbc));
   }
 
   @override
@@ -227,7 +237,7 @@ extension CurrentPriceValueCopy<$R, $Out>
 
 abstract class CurrentPriceCopyWith<$R, $In extends CurrentPrice, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({int? price, DateTime? priceUpdatedAt});
+  $R call({int? price, DateTime? priceUpdatedAt, bool? isExtinct, bool? isSbc});
   CurrentPriceCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -240,14 +250,23 @@ class _CurrentPriceCopyWithImpl<$R, $Out>
   late final ClassMapperBase<CurrentPrice> $mapper =
       CurrentPriceMapper.ensureInitialized();
   @override
-  $R call({int? price, DateTime? priceUpdatedAt}) => $apply(FieldCopyWithData({
-        if (price != null) #price: price,
-        if (priceUpdatedAt != null) #priceUpdatedAt: priceUpdatedAt
+  $R call(
+          {Object? price = $none,
+          Object? priceUpdatedAt = $none,
+          bool? isExtinct,
+          bool? isSbc}) =>
+      $apply(FieldCopyWithData({
+        if (price != $none) #price: price,
+        if (priceUpdatedAt != $none) #priceUpdatedAt: priceUpdatedAt,
+        if (isExtinct != null) #isExtinct: isExtinct,
+        if (isSbc != null) #isSbc: isSbc
       }));
   @override
   CurrentPrice $make(CopyWithData data) => CurrentPrice(
       price: data.get(#price, or: $value.price),
-      priceUpdatedAt: data.get(#priceUpdatedAt, or: $value.priceUpdatedAt));
+      priceUpdatedAt: data.get(#priceUpdatedAt, or: $value.priceUpdatedAt),
+      isExtinct: data.get(#isExtinct, or: $value.isExtinct),
+      isSbc: data.get(#isSbc, or: $value.isSbc));
 
   @override
   CurrentPriceCopyWith<$R2, CurrentPrice, $Out2> $chain<$R2, $Out2>(

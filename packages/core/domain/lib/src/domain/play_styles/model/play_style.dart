@@ -1,3 +1,4 @@
+import 'package:core_domain/src/domain/play_styles/model/play_style_category.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
 part 'play_style.mapper.dart';
@@ -16,7 +17,7 @@ class PlayStyle with PlayStyleMappable {
 
   final int eaId;
   final String name;
-  final int categoryId;
+  final PlayStyleCategory categoryId;
   final String whoHasIt;
   final String playstyleDescription;
   final String playstylePDescription;

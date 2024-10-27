@@ -63,7 +63,9 @@ class PlayStyleWidget extends StatelessWidget {
               ),
             ),
             child: Text(
-              playStyle.name,
+              size == PlayStyleWidgetSize.medium
+                  ? '${playStyle.categoryId.titleCase} - ${playStyle.name}'
+                  : playStyle.name,
               style: size == PlayStyleWidgetSize.small
                   ? context.typography.caption1.copyWith(
                       color: context.colors.contentPrimary,

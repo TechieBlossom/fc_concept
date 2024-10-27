@@ -7,7 +7,9 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'player_detail_bloc.mapper.dart';
+
 part 'player_detail_event.dart';
+
 part 'player_detail_state.dart';
 
 class PlayerDetailBlocParams {
@@ -153,9 +155,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
         add(LoadRoles());
         add(LoadPlayStyles());
         add(LoadVersions());
-        if (player.hasPrice) {
-          add(LoadPrice());
-        }
+        add(LoadPrice());
       case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);

@@ -1,4 +1,7 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/organisms/card/extinct_price_card.dart';
+import 'package:core_design/src/organisms/card/objective_price_card.dart';
+import 'package:core_design/src/organisms/card/sbc_price_card.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -104,50 +107,33 @@ class PlayerHeader extends StatelessWidget {
                   ),
                   child: _AnimatedOpacity(
                     isShown: playerPrice != null,
-                    child: (playerPrice != null)
-                        ? PriceCard(
-                            bg: colors.$1,
-                            fg: colors.$2,
-                            priceItems: [
-                              PriceItem(
-                                label: 'Current: ',
-                                price: playerPrice!.currentPrice.price,
-                              ),
-                              PriceItem(
-                                label: 'Lowest: ',
-                                price: playerPrice!.momentum.lowestBin,
-                              ),
-                              PriceItem(
-                                label: 'Highest: ',
-                                price: playerPrice!.momentum.highestBin,
-                              ),
-                              PriceItem(
-                                label: 'Discard: ',
-                                price: playerPrice!.overview.discardValue,
-                              ),
-                            ],
-                          )
-                        : const SizedBox(height: 116),
+                    child: _PriceWidget(
+                      player: player,
+                      playerPrice: playerPrice,
+                      colors: colors,
+                    ),
                   ),
                 ),
                 _AnimatedOpacity(
                   isShown: player.facePace != null,
-                  child: player.position?.shortLabel == 'GK' ? AttributesCard(
-                    paceRating: player.gkFaceSpeed ?? 0,
-                    shootRating: player.gkFaceKicking ?? 0,
-                    passRating: player.gkFaceHandling ?? 0,
-                    dribbleRating: player.gkFaceReflexes ?? 0,
-                    defendRating: player.gkFacePositioning ?? 0,
-                    physicalRating: player.gkFaceDiving ?? 0,
-                    isGK: true,
-                  ) : AttributesCard(
-                    paceRating: player.facePace ?? 0,
-                    shootRating: player.faceShooting ?? 0,
-                    passRating: player.facePassing ?? 0,
-                    dribbleRating: player.faceDribbling ?? 0,
-                    defendRating: player.faceDefending ?? 0,
-                    physicalRating: player.facePhysicality ?? 0,
-                  ),
+                  child: player.position?.shortLabel == 'GK'
+                      ? AttributesCard(
+                          paceRating: player.gkFaceSpeed ?? 0,
+                          shootRating: player.gkFaceKicking ?? 0,
+                          passRating: player.gkFaceHandling ?? 0,
+                          dribbleRating: player.gkFaceReflexes ?? 0,
+                          defendRating: player.gkFacePositioning ?? 0,
+                          physicalRating: player.gkFaceDiving ?? 0,
+                          isGK: true,
+                        )
+                      : AttributesCard(
+                          paceRating: player.facePace ?? 0,
+                          shootRating: player.faceShooting ?? 0,
+                          passRating: player.facePassing ?? 0,
+                          dribbleRating: player.faceDribbling ?? 0,
+                          defendRating: player.faceDefending ?? 0,
+                          physicalRating: player.facePhysicality ?? 0,
+                        ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -208,5 +194,63 @@ class _AnimatedOpacity<T> extends StatelessWidget {
       duration: const Duration(milliseconds: 400),
       child: child,
     );
+  }
+}
+
+class _PriceWidget extends StatelessWidget {
+  const _PriceWidget({
+    required this.player,
+    required this.playerPrice,
+    required this.colors,
+  });
+
+  final Player player;
+  final PlayerPrice? playerPrice;
+  final (int, int) colors;
+
+  @override
+  Widget build(BuildContext context) {
+    if (playerPrice?.currentPrice.isExtinct ?? false)
+      return ExtinctPriceCard(
+        bg: colors.$1,
+        fg: colors.$2,
+        price: playerPrice?.currentPrice.price ?? 0,
+      );
+    if (playerPrice?.currentPrice.isSbc ?? false) {
+      return SbcPriceCard(
+        bg: colors.$1,
+        fg: colors.$2,
+        price: playerPrice?.currentPrice.price ?? 0,
+      );
+    } else if (playerPrice?.currentPrice.price != null)
+      return PriceCard(
+        bg: colors.$1,
+        fg: colors.$2,
+        priceItems: [
+          PriceItem(
+            label: 'Current: ',
+            price: playerPrice?.currentPrice.price,
+          ),
+          PriceItem(
+            label: 'Lowest: ',
+            price: playerPrice?.momentum.lowestBin,
+          ),
+          PriceItem(
+            label: 'Highest: ',
+            price: playerPrice?.momentum.highestBin,
+          ),
+          PriceItem(
+            label: 'Discard: ',
+            price: playerPrice?.overview.discardValue,
+          ),
+        ],
+      );
+    if (player.isObjectiveItem)
+      return ObjectivePriceCard(
+        bg: colors.$1,
+        fg: colors.$2,
+        price: playerPrice?.currentPrice.price ?? 0,
+      );
+    return SizedBox(height: 116);
   }
 }
