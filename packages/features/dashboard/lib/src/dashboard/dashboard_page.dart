@@ -55,8 +55,8 @@ class DashboardPage extends StatelessWidget {
                     players: state.sbcPlayers,
                     heading: 'SBCs',
                     onTap: (player) => context.read<DashboardBloc>().add(
-                      PlayerTap(player: player),
-                    ),
+                          PlayerTap(player: player),
+                        ),
                   ),
                   const SizedBox(height: AppSpacing.space6),
                   PlayersGrid(
@@ -70,8 +70,8 @@ class DashboardPage extends StatelessWidget {
                     heading: 'High-Rated Players',
                     pills: PositionGroupTabs(state: state),
                     onTap: (player) => context.read<DashboardBloc>().add(
-                      PlayerTap(player: player),
-                    ),
+                          PlayerTap(player: player),
+                        ),
                   ),
                 ],
               ),

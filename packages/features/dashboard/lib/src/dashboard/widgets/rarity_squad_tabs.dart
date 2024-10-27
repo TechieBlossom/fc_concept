@@ -27,11 +27,13 @@ class RaritySquadTabs extends StatelessWidget {
                     text: raritySquad?.name ?? 'Recent',
                     data: raritySquad,
                     isSelected: isSelected,
-                    onTap: isSelected ? null : () => bloc.add(
-                      SwitchRaritySquad(
-                        raritySquad: raritySquad,
-                      ),
-                    ),
+                    onTap: isSelected
+                        ? null
+                        : () => bloc.add(
+                              SwitchRaritySquad(
+                                raritySquad: raritySquad,
+                              ),
+                            ),
                   ),
                 );
               })

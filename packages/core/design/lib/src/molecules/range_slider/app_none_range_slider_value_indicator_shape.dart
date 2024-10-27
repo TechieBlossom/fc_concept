@@ -3,18 +3,21 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class AppNoneRangeSliderValueIndicatorShape extends RangeSliderValueIndicatorShape {
+class AppNoneRangeSliderValueIndicatorShape
+    extends RangeSliderValueIndicatorShape {
   /// Create a slider value indicator in the shape of an upside-down pear.
   const AppNoneRangeSliderValueIndicatorShape();
 
-  static const _PaddleSliderValueIndicatorPathPainter _pathPainter = _PaddleSliderValueIndicatorPathPainter();
+  static const _PaddleSliderValueIndicatorPathPainter _pathPainter =
+      _PaddleSliderValueIndicatorPathPainter();
 
   @override
-  Size getPreferredSize(bool isEnabled,
-      bool isDiscrete, {
-        required TextPainter labelPainter,
-        required double textScaleFactor,
-      }) {
+  Size getPreferredSize(
+    bool isEnabled,
+    bool isDiscrete, {
+    required TextPainter labelPainter,
+    required double textScaleFactor,
+  }) {
     assert(textScaleFactor >= 0);
     return _pathPainter.getPreferredSize(labelPainter, textScaleFactor);
   }
@@ -38,21 +41,22 @@ class AppNoneRangeSliderValueIndicatorShape extends RangeSliderValueIndicatorSha
   }
 
   @override
-  void paint(PaintingContext context,
-      Offset center, {
-        required Animation<double> activationAnimation,
-        required Animation<double> enableAnimation,
-        bool? isDiscrete,
-        bool isOnTop = false,
-        required TextPainter labelPainter,
-        required RenderBox parentBox,
-        required SliderThemeData sliderTheme,
-        TextDirection? textDirection,
-        Thumb? thumb,
-        double? value,
-        double? textScaleFactor,
-        Size? sizeWithOverflow,
-      }) {
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    bool? isDiscrete,
+    bool isOnTop = false,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    TextDirection? textDirection,
+    Thumb? thumb,
+    double? value,
+    double? textScaleFactor,
+    Size? sizeWithOverflow,
+  }) {
     assert(!sizeWithOverflow!.isEmpty);
     final ColorTween enableColor = ColorTween(
       begin: sliderTheme.disabledThumbColor,

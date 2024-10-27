@@ -1,4 +1,5 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/molecules/attribute/accelrate_bar.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_extensions/extensions.dart';
@@ -42,6 +43,10 @@ class AttributesLayout extends StatelessWidget {
                         rating: player.attributeSprintSpeed!.orZero(),
                       ),
                     ),
+                    if (player.accelerateType != null)
+                      AccelerateBar(
+                        accelerate: player.accelerateType!.title,
+                      ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
                 ),
               ),

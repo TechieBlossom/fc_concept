@@ -13,7 +13,7 @@ class AppRangeSlider extends StatefulWidget {
     required this.onChanged,
   });
 
-  final int  min;
+  final int min;
   final int max;
   final RangeValues initialRange;
   final void Function(RangeValues) onChanged;

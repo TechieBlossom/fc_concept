@@ -16,23 +16,20 @@ class PlayStylesFilterItem extends StatelessWidget {
         title: state.playStyles != null
             ? 'PlayStyles (Tap to change)'
             : 'PlayStyles',
-        subtitle: state.playStyles != null
-            ? null
-            : 'Tap to select PlayStyle(s)',
+        subtitle:
+            state.playStyles != null ? null : 'Tap to select PlayStyle(s)',
         selectedPills: state.playStyles
             ?.map(
-              (playStyle) =>
-              PillItem<PlayStyle>(
+              (playStyle) => PillItem<PlayStyle>(
                 data: playStyle,
                 text: playStyle.name,
                 isSelected: true,
               ),
-        )
+            )
             .toList(),
         pillGap: AppSpacing.space3,
         margin: AppSpacing.space5,
-        onTap: () =>
-            context.read<FilterBloc>().add(
+        onTap: () => context.read<FilterBloc>().add(
               TapPlayStyle(),
             ),
       ),

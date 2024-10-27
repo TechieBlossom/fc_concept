@@ -991,6 +991,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  utility_extensions:
+    dependency: "direct main"
+    description:
+      path: "../../utility/extensions"
+      relative: true
+    source: path
+    version: "0.0.1"
   vector_math:
     dependency: transitive
     description:

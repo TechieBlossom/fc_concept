@@ -21,6 +21,8 @@ dependencies:
   supabase_flutter: ^2.5.6
   utility_di:
     path: ../../../packages/utility/di
+  utility_extensions:
+    path: ../../../packages/utility/extensions
 
 dev_dependencies:
   build_runner: ^2.4.9

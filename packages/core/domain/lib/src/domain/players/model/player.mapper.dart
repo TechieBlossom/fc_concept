@@ -19,6 +19,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
       LeagueMapper.ensureInitialized();
       PlayerOldPriceMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
+      AccelerateTypeMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -102,6 +103,9 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static bool _$isObjectiveItem(Player v) => v.isObjectiveItem;
   static const Field<Player, bool> _f$isObjectiveItem =
       Field('isObjectiveItem', _$isObjectiveItem, opt: true, def: false);
+  static AccelerateType? _$accelerateType(Player v) => v.accelerateType;
+  static const Field<Player, AccelerateType> _f$accelerateType =
+      Field('accelerateType', _$accelerateType, opt: true);
   static int? _$facePace(Player v) => v.facePace;
   static const Field<Player, int> _f$facePace =
       Field('facePace', _$facePace, opt: true);
@@ -275,6 +279,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #rolesPlusPlus: _f$rolesPlusPlus,
     #isSbcItem: _f$isSbcItem,
     #isObjectiveItem: _f$isObjectiveItem,
+    #accelerateType: _f$accelerateType,
     #facePace: _f$facePace,
     #faceShooting: _f$faceShooting,
     #facePassing: _f$facePassing,
@@ -352,6 +357,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
         rolesPlusPlus: data.dec(_f$rolesPlusPlus),
         isSbcItem: data.dec(_f$isSbcItem),
         isObjectiveItem: data.dec(_f$isObjectiveItem),
+        accelerateType: data.dec(_f$accelerateType),
         facePace: data.dec(_f$facePace),
         faceShooting: data.dec(_f$faceShooting),
         facePassing: data.dec(_f$facePassing),
@@ -484,6 +490,7 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       List<int>? rolesPlusPlus,
       bool? isSbcItem,
       bool? isObjectiveItem,
+      AccelerateType? accelerateType,
       int? facePace,
       int? faceShooting,
       int? facePassing,
@@ -618,6 +625,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? rolesPlusPlus = $none,
           bool? isSbcItem,
           bool? isObjectiveItem,
+          Object? accelerateType = $none,
           Object? facePace = $none,
           Object? faceShooting = $none,
           Object? facePassing = $none,
@@ -692,6 +700,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (rolesPlusPlus != $none) #rolesPlusPlus: rolesPlusPlus,
         if (isSbcItem != null) #isSbcItem: isSbcItem,
         if (isObjectiveItem != null) #isObjectiveItem: isObjectiveItem,
+        if (accelerateType != $none) #accelerateType: accelerateType,
         if (facePace != $none) #facePace: facePace,
         if (faceShooting != $none) #faceShooting: faceShooting,
         if (facePassing != $none) #facePassing: facePassing,
@@ -792,6 +801,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       rolesPlusPlus: data.get(#rolesPlusPlus, or: $value.rolesPlusPlus),
       isSbcItem: data.get(#isSbcItem, or: $value.isSbcItem),
       isObjectiveItem: data.get(#isObjectiveItem, or: $value.isObjectiveItem),
+      accelerateType: data.get(#accelerateType, or: $value.accelerateType),
       facePace: data.get(#facePace, or: $value.facePace),
       faceShooting: data.get(#faceShooting, or: $value.faceShooting),
       facePassing: data.get(#facePassing, or: $value.facePassing),

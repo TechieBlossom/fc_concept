@@ -4,10 +4,10 @@ import 'package:core_domain/domain.dart';
 class RarityColor {
   @Deprecated('Not used now')
   const RarityColor(
-      this.id,
-      this.bg,
-      this.fg,
-      );
+    this.id,
+    this.bg,
+    this.fg,
+  );
 
   final int id;
   final int bg;

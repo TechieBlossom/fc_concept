@@ -23,7 +23,6 @@ class RoleNestedFilterBloc
         ) {
     on<SelectRole>((event, emit) => _selectItem(event.item, emit));
     on<Done>((event, emit) => _done());
-
   }
 
   final FilterNavigator _navigator;

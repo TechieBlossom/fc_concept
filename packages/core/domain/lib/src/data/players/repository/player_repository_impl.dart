@@ -393,7 +393,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
   List<Player> mapPlayers(List<Map<String, dynamic>> playersResponse) {
     return playersResponse
-        .map((playerJson) => Player.fromJson(playerJson))
+        .map((playerJson) => Player.fromMap(playerJson))
         .toList();
   }
 
@@ -408,7 +408,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .limit(1)
           .single();
 
-      final player = Player.fromJson(playerResponse);
+      final player = Player.fromMap(playerResponse);
       return Success(data: player);
     } catch (e, _) {
       return Failure(exception: e as Exception);
@@ -431,7 +431,7 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .limit(1)
           .single();
 
-      final player = Player.fromJson(playerResponse);
+      final player = Player.fromMap(playerResponse);
       return Success(data: player);
     } catch (e, _) {
       return Failure(exception: e as Exception);

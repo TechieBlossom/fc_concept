@@ -220,7 +220,8 @@ class PlayerPlaceholder extends StatelessWidget {
                     size: RatingBoxSize.medium,
                   ),
                   const SizedBox(width: AppSpacing.space3),
-                  PositionBox(position: player?.position, size: PositionBoxSize.medium),
+                  PositionBox(
+                      position: player?.position, size: PositionBoxSize.medium),
                 ],
               ),
             ),

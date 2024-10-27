@@ -97,7 +97,9 @@ class AppRangeSliderTrackShape extends RangeSliderTrackShape
       context.canvas.drawLine(
         Offset(index * 10, trackRect.top),
         Offset(index * 10, trackRect.bottom),
-        Paint()..strokeWidth = 5..color = Colors.white,
+        Paint()
+          ..strokeWidth = 5
+          ..color = Colors.white,
       );
     });
 

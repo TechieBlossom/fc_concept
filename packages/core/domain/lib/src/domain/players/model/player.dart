@@ -7,6 +7,7 @@ import 'package:core_domain/src/data/rarities/table_rarity.dart';
 import 'package:core_domain/src/domain/clubs/model/club.dart';
 import 'package:core_domain/src/domain/leagues/model/league.dart';
 import 'package:core_domain/src/domain/nations/model/nation.dart';
+import 'package:core_domain/src/domain/players/model/accelerate_type.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/price/model/player_old_price.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
@@ -43,6 +44,7 @@ class Player with PlayerMappable {
     this.rolesPlusPlus,
     this.isSbcItem = false,
     this.isObjectiveItem = false,
+    this.accelerateType,
     this.facePace,
     this.faceShooting,
     this.facePassing,
@@ -126,6 +128,7 @@ class Player with PlayerMappable {
   final bool isSbcItem;
   final bool isObjectiveItem;
 
+  final AccelerateType? accelerateType;
   final int? facePace;
   final int? faceShooting;
   final int? facePassing;
@@ -176,7 +179,7 @@ class Player with PlayerMappable {
 
   final bool hasPrice;
 
-  static const fromJson = PlayerMapper.fromMap;
+  static const fromMap = PlayerMapper.fromMap;
 
   int? get age {
     if (dateOfBirth == null) {

@@ -87,8 +87,10 @@ class IndexBox extends StatelessWidget {
                       ),
                       Text(
                         isIncreased
-                            ? AppFormatter.formatPositiveValue((current - previous).toInt())
-                            : AppFormatter.formatNegativeValue((current - previous).toInt()),
+                            ? AppFormatter.formatPositiveValue(
+                                (current - previous).toInt())
+                            : AppFormatter.formatNegativeValue(
+                                (current - previous).toInt()),
                         style: context.typography.caption2.copyWith(
                           color: isIncreased ? rating3 : rating2,
                         ),
