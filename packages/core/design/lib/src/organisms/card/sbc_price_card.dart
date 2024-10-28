@@ -1,6 +1,6 @@
-import 'package:core_design/design.dart';
 import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/molecules.dart';
+import 'package:core_design/src/utility/app_formatters.dart';
 import 'package:flutter/material.dart';
 
 class SbcPriceCard extends StatelessWidget {

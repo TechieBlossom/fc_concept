@@ -5,7 +5,9 @@ import 'package:feature_filter/src/nested_filter/play_style/play_style_nested_fi
 import 'package:injectable/injectable.dart';
 
 part 'play_style_nested_filter_bloc.mapper.dart';
+
 part 'play_style_nested_filter_event.dart';
+
 part 'play_style_nested_filter_state.dart';
 
 @injectable
@@ -36,7 +38,8 @@ class PlayStyleNestedFilterBloc
     ).toList();
     if (selectedPlayStyles.contains(item)) {
       emit(
-          state.copyWith(selectedPlayStyles: selectedPlayStyles..remove(item)));
+        state.copyWith(selectedPlayStyles: selectedPlayStyles..remove(item)),
+      );
     } else {
       emit(state.copyWith(selectedPlayStyles: selectedPlayStyles..add(item)));
     }

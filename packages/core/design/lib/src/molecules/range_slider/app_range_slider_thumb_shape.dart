@@ -68,10 +68,10 @@ class AppRangeSliderThumbShape extends RangeSliderThumbShape {
       begin: _disabledThumbRadius,
       end: enabledThumbRadius,
     );
-    final ColorTween colorTween = ColorTween(
-      begin: sliderTheme.disabledThumbColor,
-      end: sliderTheme.thumbColor,
-    );
+    // final ColorTween colorTween = ColorTween(
+    //   begin: sliderTheme.disabledThumbColor,
+    //   end: sliderTheme.thumbColor,
+    // );
     final double radius = radiusTween.evaluate(enableAnimation);
 
     /// Pad is to align the thumb with the track.

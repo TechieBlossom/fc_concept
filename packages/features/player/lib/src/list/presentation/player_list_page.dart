@@ -35,9 +35,6 @@ class _PlayerListPageState extends State<PlayerListPage> {
               onClearTap: () => context.read<PlayerListBloc>().add(
                     Search(query: ''),
                   ),
-              onLeadingTap: () {
-                _scaffoldKey.currentState?.openDrawer();
-              },
               onFilterTap: () => context.read<PlayerListBloc>().add(
                     FilterTap(),
                   ),

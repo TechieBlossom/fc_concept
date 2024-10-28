@@ -37,19 +37,19 @@ class ChemistryIcon extends StatelessWidget {
       };
 
   double get _centerLeft => switch (size) {
-    ChemistryIconSize.small => 7.5,
-    ChemistryIconSize.medium => 12,
-  };
+        ChemistryIconSize.small => 7.5,
+        ChemistryIconSize.medium => 12,
+      };
 
   double get _top => switch (size) {
-    ChemistryIconSize.small => 4,
-    ChemistryIconSize.medium => 6,
-  };
+        ChemistryIconSize.small => 4,
+        ChemistryIconSize.medium => 6,
+      };
 
   double get _bottom => switch (size) {
-    ChemistryIconSize.small => 6,
-    ChemistryIconSize.medium => 10,
-  };
+        ChemistryIconSize.small => 6,
+        ChemistryIconSize.medium => 10,
+      };
 
   @override
   Widget build(BuildContext context) {

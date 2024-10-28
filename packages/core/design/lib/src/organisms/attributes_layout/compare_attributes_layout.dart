@@ -1,4 +1,3 @@
-import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -568,52 +567,52 @@ class CompareAttributesLayout extends StatelessWidget {
   }
 }
 
-class _FaceAttribute extends StatelessWidget {
-  const _FaceAttribute({
-    required this.attributeItem,
-  });
-
-  final AttributeItem attributeItem;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space1),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Flexible(
-            fit: FlexFit.tight,
-            child: Text(
-              attributeItem.attribute,
-              textAlign: TextAlign.start,
-              style: context.typography.subHead,
-            ),
-          ),
-          Container(
-            padding: EdgeInsetsDirectional.only(
-              start: AppSpacing.space1,
-              end: AppSpacing.space1,
-              top: 1,
-              bottom: 2.5,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
-              color: attributeItem.lightRatingColor,
-              border: Border.all(
-                color: attributeItem.ratingColor,
-                width: 1,
-              ),
-            ),
-            child: Text(
-              attributeItem.rating.toString(),
-              style: context.typography.body5.copyWith(
-                color: attributeItem.ratingColor,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+// class _FaceAttribute extends StatelessWidget {
+//   const _FaceAttribute({
+//     required this.attributeItem,
+//   });
+//
+//   final AttributeItem attributeItem;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space1),
+//       child: Row(
+//         mainAxisSize: MainAxisSize.min,
+//         children: [
+//           Flexible(
+//             fit: FlexFit.tight,
+//             child: Text(
+//               attributeItem.attribute,
+//               textAlign: TextAlign.start,
+//               style: context.typography.subHead,
+//             ),
+//           ),
+//           Container(
+//             padding: EdgeInsetsDirectional.only(
+//               start: AppSpacing.space1,
+//               end: AppSpacing.space1,
+//               top: 1,
+//               bottom: 2.5,
+//             ),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
+//               color: attributeItem.lightRatingColor,
+//               border: Border.all(
+//                 color: attributeItem.ratingColor,
+//                 width: 1,
+//               ),
+//             ),
+//             child: Text(
+//               attributeItem.rating.toString(),
+//               style: context.typography.body5.copyWith(
+//                 color: attributeItem.ratingColor,
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

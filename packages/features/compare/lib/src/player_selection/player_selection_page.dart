@@ -28,7 +28,6 @@ class PlayerSelectionPage extends StatelessWidget {
                   onFilterTap: () => context.read<PlayerListBloc>().add(
                         FilterTap(),
                       ),
-                  onLeadingTap: null,
                 ),
                 Expanded(
                   child: PlayerList(

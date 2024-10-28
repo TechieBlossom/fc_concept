@@ -58,10 +58,10 @@ class AppNoneRangeSliderValueIndicatorShape
     Size? sizeWithOverflow,
   }) {
     assert(!sizeWithOverflow!.isEmpty);
-    final ColorTween enableColor = ColorTween(
-      begin: sliderTheme.disabledThumbColor,
-      end: sliderTheme.valueIndicatorColor,
-    );
+    // final ColorTween enableColor = ColorTween(
+    //   begin: sliderTheme.disabledThumbColor,
+    //   end: sliderTheme.valueIndicatorColor,
+    // );
     // Add a stroke of 1dp around the top paddle.
     // _pathPainter.paint(
     //   context.canvas,

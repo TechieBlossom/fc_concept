@@ -7,7 +7,9 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'player_detail_bloc.mapper.dart';
+
 part 'player_detail_event.dart';
+
 part 'player_detail_state.dart';
 
 class PlayerDetailBlocParams {
@@ -50,7 +52,8 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     on<LoadPrice>((_, emit) => _loadPrice(emit));
     on<CompareTap>((_, emit) => _compareTap());
     on<UpdateChemistryStyle>(
-        (event, emit) => _onUpdateChemistryStyle(event, emit));
+      (event, emit) => _onUpdateChemistryStyle(event, emit),
+    );
 
     add(Init(player: params.player));
   }

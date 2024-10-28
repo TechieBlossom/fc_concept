@@ -150,7 +150,6 @@ class ListItems extends StatelessWidget {
                 compactImagePath:
                     '2025/rarities-level-3-small/3.469ff66072d586f88e1927b844bfa16fd16b37aa71e555f5b649779d768127c5.png',
                 isSpecial: true,
-                isBrightColorScheme: false,
                 textColor: ["d98b68", "e0e0e0", "f6db7b"],
                 numberOfPlayers: 23,
               ),
@@ -177,7 +176,6 @@ class ListItems extends StatelessWidget {
                 compactImagePath:
                     '2025/rarities-level-0-small/12.5518fe64a8844e57884532987ec94e29143ea1b164cedcd3bed75cf01b8504a6.png',
                 isSpecial: true,
-                isBrightColorScheme: false,
                 textColor: ["594d2c", "594d2c", "594d2c"],
                 numberOfPlayers: 110,
               ),

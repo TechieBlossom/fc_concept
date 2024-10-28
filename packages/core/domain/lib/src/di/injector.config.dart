@@ -13,7 +13,7 @@ import 'package:core_domain/domain.dart' as _i913;
 import 'package:core_domain/src/data/auth/repository/auth_repository_impl.dart'
     as _i937;
 import 'package:core_domain/src/data/chemistry_style/repository/chemistry_style_repository_impl.dart'
-    as _i999;
+    as _i354;
 import 'package:core_domain/src/data/clubs/repository/club_repository_impl.dart'
     as _i767;
 import 'package:core_domain/src/data/index/repository/index_repository_impl.dart'
@@ -151,10 +151,10 @@ _i174.GetIt init(
   gh.factory<_i526.PriceRepository>(
       () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
   gh.factory<_i1070.PositionRepository>(() => _i684.PositionRepositoryImpl());
-  gh.factory<_i753.ChemistryStyleRepository>(
-      () => _i999.ChemistryStyleRepositoryImpl());
   gh.factory<_i437.GetAllPositionsUseCase>(
       () => _i437.GetAllPositionsUseCase(gh<_i1070.PositionRepository>()));
+  gh.factory<_i753.ChemistryStyleRepository>(
+      () => _i354.ChemistryStyleRepositoryImpl());
   gh.factory<_i140.IndexRepository>(() => _i1034.IndexRepositoryImpl());
   gh.factory<_i781.GetAllPlayStylesUseCase>(
       () => _i781.GetAllPlayStylesUseCase(gh<_i73.PlayStyleRepository>()));

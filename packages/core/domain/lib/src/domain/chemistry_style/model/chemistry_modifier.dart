@@ -4,41 +4,6 @@ part 'chemistry_modifier.mapper.dart';
 
 @MappableClass()
 class ChemistryModifier with ChemistryModifierMappable {
-  final int attributeCurve;
-  final int attributeVision;
-  final int attributeAgility;
-  final int attributeBalance;
-  final int attributeJumping;
-  final int attributeStamina;
-  final int attributeVolleys;
-  final int attributeCrossing;
-  final int attributeGkDiving;
-  final int attributeStrength;
-  final int attributeComposure;
-  final int attributeDribbling;
-  final int attributeFinishing;
-  final int attributeGkKicking;
-  final int attributeLongShots;
-  final int attributePenalties;
-  final int attributeReactions;
-  final int attributeShotPower;
-  final int attributeAggression;
-  final int attributeFkAccuracy;
-  final int attributeGkHandling;
-  final int attributeGkReflexes;
-  final int attributeBallControl;
-  final int attributeLongPassing;
-  final int attributePositioning;
-  final int attributeSprintSpeed;
-  final int attributeAcceleration;
-  final int attributeShortPassing;
-  final int attributeGkPositioning;
-  final int attributeInterceptions;
-  final int attributeSlidingTackle;
-  final int attributeStandingTackle;
-  final int attributeHeadingAccuracy;
-  final int attributeDefensiveAwareness;
-
   ChemistryModifier({
     required this.attributeCurve,
     required this.attributeVision,
@@ -75,4 +40,39 @@ class ChemistryModifier with ChemistryModifierMappable {
     required this.attributeHeadingAccuracy,
     required this.attributeDefensiveAwareness,
   });
+
+  final int attributeCurve;
+  final int attributeVision;
+  final int attributeAgility;
+  final int attributeBalance;
+  final int attributeJumping;
+  final int attributeStamina;
+  final int attributeVolleys;
+  final int attributeCrossing;
+  final int attributeGkDiving;
+  final int attributeStrength;
+  final int attributeComposure;
+  final int attributeDribbling;
+  final int attributeFinishing;
+  final int attributeGkKicking;
+  final int attributeLongShots;
+  final int attributePenalties;
+  final int attributeReactions;
+  final int attributeShotPower;
+  final int attributeAggression;
+  final int attributeFkAccuracy;
+  final int attributeGkHandling;
+  final int attributeGkReflexes;
+  final int attributeBallControl;
+  final int attributeLongPassing;
+  final int attributePositioning;
+  final int attributeSprintSpeed;
+  final int attributeAcceleration;
+  final int attributeShortPassing;
+  final int attributeGkPositioning;
+  final int attributeInterceptions;
+  final int attributeSlidingTackle;
+  final int attributeStandingTackle;
+  final int attributeHeadingAccuracy;
+  final int attributeDefensiveAwareness;
 }

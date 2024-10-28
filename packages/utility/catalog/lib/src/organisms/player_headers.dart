@@ -25,7 +25,6 @@ class PlayerHeaders extends StatelessWidget {
             compactImagePath:
                 '2025/rarities-level-0-small/12.5518fe64a8844e57884532987ec94e29143ea1b164cedcd3bed75cf01b8504a6.png',
             isSpecial: true,
-            isBrightColorScheme: false,
             textColor: ["594d2c", "594d2c", "594d2c"],
             numberOfPlayers: 110,
           ),

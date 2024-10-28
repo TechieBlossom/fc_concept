@@ -71,7 +71,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   Future<void> _onCreateAccountTap(Emitter<RegisterState> emit) async {
     if (state.email != null && state.password != null && state.name != null) {
-      final response = await _registerUserUseCase(
+      await _registerUserUseCase(
         registerRequestModel: RegisterRequestModel(
           name: state.name!,
           email: state.email!,

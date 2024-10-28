@@ -25,7 +25,7 @@ class Indices extends StatelessWidget {
 }
 
 class _LoadingState extends StatelessWidget {
-  const _LoadingState({super.key});
+  const _LoadingState();
 
   @override
   Widget build(BuildContext context) {
