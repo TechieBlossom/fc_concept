@@ -394,7 +394,7 @@ class PlayerTapMapper extends SubClassMapperBase<PlayerTap> {
   @override
   final String discriminatorKey = 'playerListEvent';
   @override
-  final dynamic discriminatorValue = ' playerTap';
+  final dynamic discriminatorValue = 'playerTap';
   @override
   late final ClassMapperBase superMapper =
       PlayerListEventMapper.ensureInitialized();

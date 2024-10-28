@@ -1,4 +1,5 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/molecules/attribute/accelrate_bar.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_extensions/extensions.dart';
@@ -7,9 +8,11 @@ class GkAttributesLayout extends StatelessWidget {
   const GkAttributesLayout({
     super.key,
     required this.player,
+    required this.chemistryBoost,
   });
 
   final Player player;
+  final ChemistryModifier? chemistryBoost;
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +31,27 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Speed',
                         rating: player.gkFaceSpeed!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Acceleration',
                         rating: player.attributeAcceleration!.orZero(),
+                        boost: chemistryBoost?.attributeAcceleration,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Sprint Speed',
                         rating: player.attributeSprintSpeed!.orZero(),
+                        boost: chemistryBoost?.attributeSprintSpeed,
                       ),
                     ),
+                    if (player.accelerateType != null)
+                      AccelerateBar(
+                        accelerate: player.accelerateType!.title,
+                      ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
                 ),
               ),
@@ -56,12 +66,14 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Diving',
                         rating: player.gkFaceDiving!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Diving',
                         rating: player.attributeGkDiving!.orZero(),
+                        boost: chemistryBoost?.attributeGkDiving,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -83,12 +95,14 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Kicking',
                         rating: player.gkFaceKicking!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Kicking',
                         rating: player.attributeGkKicking!.orZero(),
+                        boost: chemistryBoost?.attributeGkKicking,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -105,12 +119,14 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Handling',
                         rating: player.gkFaceHandling!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Handling',
                         rating: player.attributeGkHandling!.orZero(),
+                        boost: chemistryBoost?.attributeGkHandling,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -132,18 +148,21 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Reflexes',
                         rating: player.gkFaceReflexes!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Reflexes',
                         rating: player.attributeGkReflexes!.orZero(),
+                        boost: chemistryBoost?.attributeGkReflexes,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Reactions',
                         rating: player.attributeReactions!.orZero(),
+                        boost: chemistryBoost?.attributeReactions,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -160,12 +179,14 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Positioning',
                         rating: player.gkFacePositioning!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Positioning',
                         rating: player.gkFacePositioning!.orZero(),
+                        boost: chemistryBoost?.attributeGkPositioning,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),

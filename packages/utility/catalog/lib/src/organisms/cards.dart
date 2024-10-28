@@ -33,10 +33,12 @@ class Cards extends StatelessWidget {
               AttributeItem(
                 attribute: 'Acceleration',
                 rating: 90,
+                boost: 0,
               ),
               AttributeItem(
                 attribute: 'Sprint Speed',
                 rating: 90,
+                boost: 0,
               ),
             ],
           ),
@@ -47,26 +49,32 @@ class Cards extends StatelessWidget {
               AttributeItem(
                 attribute: 'Acceleration',
                 rating: 90,
+                boost: 0,
               ),
               AttributeItem(
                 attribute: 'Sprint Speed',
                 rating: 90,
+                boost: 0,
               ),
               AttributeItem(
                 attribute: 'Acceleration',
                 rating: 90,
+                boost: 0,
               ),
               AttributeItem(
                 attribute: 'Sprint Speed',
                 rating: 90,
+                boost: 0,
               ),
               AttributeItem(
                 attribute: 'Acceleration',
                 rating: 90,
+                boost: 0,
               ),
               AttributeItem(
                 attribute: 'Sprint Speed',
                 rating: 90,
+                boost: 0,
               ),
             ],
           ),

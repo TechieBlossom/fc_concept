@@ -35,8 +35,18 @@ class AttributeBar extends StatelessWidget {
                 style: context.typography.caption1,
               ),
             ),
+            const SizedBox(width: AppSpacing.space1),
+            if (attributeItem.boost != null && attributeItem.boost != 0) ...[
+              Text(
+                '+${attributeItem.boost}',
+                style: context.typography.caption2.copyWith(
+                  color: attributeItem.ratingColor,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.space3),
+            ],
             Text(
-              attributeItem.rating.toString(),
+              (attributeItem.rating + (attributeItem.boost ?? 0)).toString(),
               style: context.typography.body5.copyWith(
                 color: attributeItem.ratingColor,
               ),

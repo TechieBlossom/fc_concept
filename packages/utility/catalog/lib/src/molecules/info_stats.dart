@@ -22,6 +22,7 @@ class InfoStats extends StatelessWidget {
               attributeItem: AttributeItem(
                 attribute: 'PAC',
                 rating: 90,
+                boost: 0,
               ),
             ),
             SizedBox(height: AppSpacing.space5),

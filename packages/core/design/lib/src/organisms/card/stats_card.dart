@@ -53,53 +53,53 @@ class AttributesCard extends StatelessWidget {
             children: [
               if (isGK) ...[
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'DIV', rating: physicalRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'DIV', rating: physicalRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'HAN', rating: passRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'HAN', rating: passRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'KIC', rating: shootRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'KIC', rating: shootRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'REF', rating: dribbleRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'REF', rating: dribbleRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'SPD', rating: paceRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'SPD', rating: paceRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'POS', rating: defendRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'POS', rating: defendRating, boost: 0),
                 ),
               ] else ...[
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'PAC', rating: paceRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'PAC', rating: paceRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'SHO', rating: shootRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'SHO', rating: shootRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'PAS', rating: passRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'PAS', rating: passRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'DRI', rating: dribbleRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'DRI', rating: dribbleRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'DEF', rating: defendRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'DEF', rating: defendRating, boost: 0),
                 ),
                 Attribute(
-                  attributeItem:
-                      AttributeItem(attribute: 'PHY', rating: physicalRating),
+                  attributeItem: AttributeItem(
+                      attribute: 'PHY', rating: physicalRating, boost: 0),
                 ),
               ]
             ],

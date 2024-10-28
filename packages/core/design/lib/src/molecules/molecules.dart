@@ -7,6 +7,7 @@ export 'package:core_design/src/molecules/button/link_button.dart';
 export 'package:core_design/src/molecules/button/primary_button.dart';
 export 'package:core_design/src/molecules/button/pull_down_button.dart';
 export 'package:core_design/src/molecules/button/secondary_button.dart';
+export 'package:core_design/src/molecules/chemistry/chemistry_icon.dart';
 export 'package:core_design/src/molecules/compare/compare_item.dart';
 export 'package:core_design/src/molecules/compare/compare_list_item.dart';
 export 'package:core_design/src/molecules/image/club_image.dart';

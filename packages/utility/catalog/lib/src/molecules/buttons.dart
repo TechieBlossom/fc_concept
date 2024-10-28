@@ -16,6 +16,10 @@ class Buttons extends StatelessWidget {
             ),
             child: Column(
               children: [
+                const ChemistryIcon(
+                  chemistryCount: 3,
+                  isSelected: true,
+                ),
                 PrimaryButton(
                   text: 'Apply',
                   onPressed: () {},

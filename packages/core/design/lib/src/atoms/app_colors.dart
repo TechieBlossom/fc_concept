@@ -14,6 +14,9 @@ abstract class _LightColors {
   static const gold = Color(0xFFE8DC9A);
   static const gold2 = Color(0xFFC0A203);
   static const red = Color(0xFFEA6868);
+
+  static const chemistryInactiveColor = Color(0xFF44546D);
+  static const chemistryActiveColor = Color(0xFF71B3CE);
 }
 
 class AppColors extends ThemeExtension<AppColors> {
@@ -30,6 +33,8 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.gold,
     required this.gold2,
     required this.red,
+    required this.chemistryInactiveColor,
+    required this.chemistryActiveColor,
   });
 
   final Color backgroundPrimary;
@@ -44,6 +49,8 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color gold;
   final Color gold2;
   final Color red;
+  final Color chemistryInactiveColor;
+  final Color chemistryActiveColor;
 
   factory AppColors.light() => AppColors(
         backgroundPrimary: _LightColors.backgroundPrimary,
@@ -58,6 +65,8 @@ class AppColors extends ThemeExtension<AppColors> {
         gold: _LightColors.gold,
         gold2: _LightColors.gold2,
         red: _LightColors.red,
+        chemistryInactiveColor: _LightColors.chemistryInactiveColor,
+        chemistryActiveColor: _LightColors.chemistryActiveColor,
       );
 
   @override
@@ -74,6 +83,8 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? gold,
     Color? gold2,
     Color? red,
+    Color? chemistryInactiveColor,
+    Color? chemistryActiveColor,
   }) {
     return AppColors(
       backgroundPrimary: backgroundPrimary ?? this.backgroundPrimary,
@@ -88,6 +99,9 @@ class AppColors extends ThemeExtension<AppColors> {
       gold: gold ?? this.gold,
       gold2: gold2 ?? this.gold2,
       red: red ?? this.red,
+      chemistryInactiveColor:
+          chemistryInactiveColor ?? this.chemistryInactiveColor,
+      chemistryActiveColor: chemistryActiveColor ?? this.chemistryActiveColor,
     );
   }
 
@@ -118,6 +132,10 @@ class AppColors extends ThemeExtension<AppColors> {
       gold: Color.lerp(gold, other.gold, t)!,
       gold2: Color.lerp(gold2, other.gold2, t)!,
       red: Color.lerp(red, other.red, t)!,
+      chemistryInactiveColor:
+          Color.lerp(chemistryInactiveColor, other.chemistryInactiveColor, t)!,
+      chemistryActiveColor:
+          Color.lerp(chemistryActiveColor, other.chemistryActiveColor, t)!,
     );
   }
 }

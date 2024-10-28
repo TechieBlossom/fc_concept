@@ -12,16 +12,20 @@ class PlayerDetailPage extends StatelessWidget {
 
   final Player player;
 
+  bool get _isGk => player.position?.shortLabel == 'GK';
+
   @override
   Widget build(BuildContext context) {
     final roles = context.read<MetadataBloc>().state.roles;
     final playStyles = context.read<MetadataBloc>().state.playStyles;
+    final chemistryStyles = context.read<MetadataBloc>().state.chemistryStyles;
     return BlocProvider<PlayerDetailBloc>(
       create: (_) => di<PlayerDetailBloc>(
         param1: PlayerDetailBlocParams(
           player: player,
           allRoles: roles,
           allPlayStyles: playStyles,
+          allChemistryStyles: chemistryStyles,
         ),
       ),
       child: BlocBuilder<PlayerDetailBloc, PlayerDetailState>(
@@ -74,20 +78,40 @@ class PlayerDetailPage extends StatelessWidget {
                         playStylesPlus: state.playerPlayStylesPlus!,
                       ),
                     ),
+                  ChemistryStyleLayout(
+                    allChemistryStyles: _isGk
+                        ? chemistryStyles.where((e) => e.isGkStyle).toList()
+                        : chemistryStyles.where((e) => !e.isGkStyle).toList(),
+                    selectedChemistryModifier: state.selectedChemistryModifier,
+                    selectedChemistryStyle: state.selectedChemistryStyle,
+                    onResult: (modifier, style) =>
+                        context.read<PlayerDetailBloc>().add(
+                              UpdateChemistryStyle(
+                                chemistryModifier: modifier,
+                                chemistryStyle: style,
+                              ),
+                            ),
+                  ),
                   if (state.player.attributeAcceleration != null)
-                    if (state.player.position?.shortLabel == 'GK')
+                    if (_isGk)
                       Padding(
                         padding: const EdgeInsetsDirectional.symmetric(
                           horizontal: AppSpacing.space4,
                         ),
-                        child: GkAttributesLayout(player: state.player),
+                        child: GkAttributesLayout(
+                          player: state.player,
+                          chemistryBoost: state.chemistryModifier,
+                        ),
                       )
                     else
                       Padding(
                         padding: const EdgeInsetsDirectional.symmetric(
                           horizontal: AppSpacing.space4,
                         ),
-                        child: AttributesLayout(player: state.player),
+                        child: AttributesLayout(
+                          player: state.player,
+                          chemistryBoost: state.chemistryModifier,
+                        ),
                       ),
                 ],
               ),

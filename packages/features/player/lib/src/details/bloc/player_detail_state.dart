@@ -10,6 +10,8 @@ class PlayerDetailState with PlayerDetailStateMappable {
     this.playerPlayStyles,
     this.playerPlayStylesPlus,
     this.playerPrice,
+    this.selectedChemistryModifier,
+    this.selectedChemistryStyle,
   });
 
   final Player player;
@@ -19,4 +21,14 @@ class PlayerDetailState with PlayerDetailStateMappable {
   final List<PlayStyle>? playerPlayStyles;
   final List<PlayStyle>? playerPlayStylesPlus;
   final PlayerPrice? playerPrice;
+  final int? selectedChemistryModifier;
+  final ChemistryStyle? selectedChemistryStyle;
+
+  ChemistryModifier? get chemistryModifier =>
+      switch (selectedChemistryModifier) {
+        1 => selectedChemistryStyle?.oneChemistryModifiers,
+        2 => selectedChemistryStyle?.twoChemistryModifiers,
+        3 => selectedChemistryStyle?.threeChemistryModifiers,
+        _ => null,
+      };
 }

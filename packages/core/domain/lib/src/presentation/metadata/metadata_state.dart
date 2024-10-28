@@ -6,9 +6,11 @@ class MetadataState with MetadataStateMappable {
     this.roles = const [],
     this.playStyles = const [],
     this.positions = const [],
+    this.chemistryStyles = const [],
   });
 
   final List<Role> roles;
   final List<PlayStyle> playStyles;
   final List<Position> positions;
+  final List<ChemistryStyle> chemistryStyles;
 }

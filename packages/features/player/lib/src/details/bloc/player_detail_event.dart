@@ -23,6 +23,18 @@ class VersionTap extends PlayerDetailEvent with VersionTapMappable {
   final int versionId;
 }
 
+@MappableClass(discriminatorValue: 'updateChemistryStyle')
+class UpdateChemistryStyle extends PlayerDetailEvent
+    with UpdateChemistryStyleMappable {
+  UpdateChemistryStyle({
+    required this.chemistryModifier,
+    required this.chemistryStyle,
+  });
+
+  final int? chemistryModifier;
+  final ChemistryStyle? chemistryStyle;
+}
+
 @MappableClass(discriminatorValue: 'loadRoles')
 class LoadRoles extends PlayerDetailEvent with LoadRolesMappable {}
 

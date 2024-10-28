@@ -18,6 +18,7 @@ class MetadataBloc extends Bloc<MetadataEvent, MetadataState> {
     this._getAllRolesUseCase,
     this._getAllPlayStylesUseCase,
     this._getAllPositionsUseCase,
+    this._getAllChemistryStyles,
   ) : super(MetadataState()) {
     on<Init>((event, emit) => _onInit(emit));
 
@@ -27,17 +28,20 @@ class MetadataBloc extends Bloc<MetadataEvent, MetadataState> {
   final GetAllRolesUseCase _getAllRolesUseCase;
   final GetAllPlayStylesUseCase _getAllPlayStylesUseCase;
   final GetAllPositionsUseCase _getAllPositionsUseCase;
+  final GetAllChemistryStyles _getAllChemistryStyles;
 
   Future<void> _onInit(Emitter<MetadataState> emit) async {
     final responses = await Future.wait([
       _getAllRolesUseCase(),
       _getAllPlayStylesUseCase(),
       _getAllPositionsUseCase(),
+      _getAllChemistryStyles(),
     ]);
 
     var allRoles = <Role>[];
     var allPlayStyles = <PlayStyle>[];
     var allPositions = <Position>[];
+    var allChemistryStyles = <ChemistryStyle>[];
 
     final rolesResult = responses[0] as Result<List<Role>>;
     switch (rolesResult) {
@@ -69,11 +73,22 @@ class MetadataBloc extends Bloc<MetadataEvent, MetadataState> {
         }
     }
 
+    final chemistryStylesResult = responses[3] as Result<List<ChemistryStyle>>;
+    switch (chemistryStylesResult) {
+      case Success(data: final chemistryStyles):
+        allChemistryStyles = chemistryStyles;
+      case Failure(exception: final exception):
+        if (kDebugMode) {
+          print(exception);
+        }
+    }
+
     emit(
       state.copyWith(
         roles: allRoles,
         playStyles: allPlayStyles,
         positions: allPositions,
+        chemistryStyles: allChemistryStyles,
       ),
     );
   }

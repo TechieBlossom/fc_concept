@@ -7,9 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'player_detail_bloc.mapper.dart';
-
 part 'player_detail_event.dart';
-
 part 'player_detail_state.dart';
 
 class PlayerDetailBlocParams {
@@ -17,11 +15,13 @@ class PlayerDetailBlocParams {
     required this.player,
     required this.allRoles,
     required this.allPlayStyles,
+    required this.allChemistryStyles,
   });
 
   final Player player;
   final List<Role> allRoles;
   final List<PlayStyle> allPlayStyles;
+  final List<ChemistryStyle> allChemistryStyles;
 }
 
 @injectable
@@ -49,6 +49,8 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     on<LoadVersions>((_, emit) => _loadVersions(emit));
     on<LoadPrice>((_, emit) => _loadPrice(emit));
     on<CompareTap>((_, emit) => _compareTap());
+    on<UpdateChemistryStyle>(
+        (event, emit) => _onUpdateChemistryStyle(event, emit));
 
     add(Init(player: params.player));
   }
@@ -143,6 +145,18 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
 
   Future<void> _compareTap() async {
     await _playerNavigator.goToCompare(state.player);
+  }
+
+  void _onUpdateChemistryStyle(
+    UpdateChemistryStyle event,
+    Emitter<PlayerDetailState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        selectedChemistryModifier: event.chemistryModifier,
+        selectedChemistryStyle: event.chemistryStyle,
+      ),
+    );
   }
 
   void _handlePlayerDetailsResult(

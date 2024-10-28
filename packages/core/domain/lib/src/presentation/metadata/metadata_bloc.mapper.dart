@@ -161,6 +161,7 @@ class MetadataStateMapper extends ClassMapperBase<MetadataState> {
       RoleMapper.ensureInitialized();
       PlayStyleMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
+      ChemistryStyleMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -177,19 +178,25 @@ class MetadataStateMapper extends ClassMapperBase<MetadataState> {
   static List<Position> _$positions(MetadataState v) => v.positions;
   static const Field<MetadataState, List<Position>> _f$positions =
       Field('positions', _$positions, opt: true, def: const []);
+  static List<ChemistryStyle> _$chemistryStyles(MetadataState v) =>
+      v.chemistryStyles;
+  static const Field<MetadataState, List<ChemistryStyle>> _f$chemistryStyles =
+      Field('chemistryStyles', _$chemistryStyles, opt: true, def: const []);
 
   @override
   final MappableFields<MetadataState> fields = const {
     #roles: _f$roles,
     #playStyles: _f$playStyles,
     #positions: _f$positions,
+    #chemistryStyles: _f$chemistryStyles,
   };
 
   static MetadataState _instantiate(DecodingData data) {
     return MetadataState(
         roles: data.dec(_f$roles),
         playStyles: data.dec(_f$playStyles),
-        positions: data.dec(_f$positions));
+        positions: data.dec(_f$positions),
+        chemistryStyles: data.dec(_f$chemistryStyles));
   }
 
   @override
@@ -250,10 +257,14 @@ abstract class MetadataStateCopyWith<$R, $In extends MetadataState, $Out>
       get playStyles;
   ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>
       get positions;
+  ListCopyWith<$R, ChemistryStyle,
+          ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>>
+      get chemistryStyles;
   $R call(
       {List<Role>? roles,
       List<PlayStyle>? playStyles,
-      List<Position>? positions});
+      List<Position>? positions,
+      List<ChemistryStyle>? chemistryStyles});
   MetadataStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -278,20 +289,28 @@ class _MetadataStateCopyWithImpl<$R, $Out>
       get positions => ListCopyWith($value.positions,
           (v, t) => v.copyWith.$chain(t), (v) => call(positions: v));
   @override
+  ListCopyWith<$R, ChemistryStyle,
+          ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>>
+      get chemistryStyles => ListCopyWith($value.chemistryStyles,
+          (v, t) => v.copyWith.$chain(t), (v) => call(chemistryStyles: v));
+  @override
   $R call(
           {List<Role>? roles,
           List<PlayStyle>? playStyles,
-          List<Position>? positions}) =>
+          List<Position>? positions,
+          List<ChemistryStyle>? chemistryStyles}) =>
       $apply(FieldCopyWithData({
         if (roles != null) #roles: roles,
         if (playStyles != null) #playStyles: playStyles,
-        if (positions != null) #positions: positions
+        if (positions != null) #positions: positions,
+        if (chemistryStyles != null) #chemistryStyles: chemistryStyles
       }));
   @override
   MetadataState $make(CopyWithData data) => MetadataState(
       roles: data.get(#roles, or: $value.roles),
       playStyles: data.get(#playStyles, or: $value.playStyles),
-      positions: data.get(#positions, or: $value.positions));
+      positions: data.get(#positions, or: $value.positions),
+      chemistryStyles: data.get(#chemistryStyles, or: $value.chemistryStyles));
 
   @override
   MetadataStateCopyWith<$R2, MetadataState, $Out2> $chain<$R2, $Out2>(

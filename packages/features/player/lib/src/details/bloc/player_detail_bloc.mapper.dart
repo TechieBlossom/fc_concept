@@ -15,6 +15,7 @@ class PlayerDetailEventMapper extends ClassMapperBase<PlayerDetailEvent> {
       MapperContainer.globals.use(_instance = PlayerDetailEventMapper._());
       InitMapper.ensureInitialized();
       VersionTapMapper.ensureInitialized();
+      UpdateChemistryStyleMapper.ensureInitialized();
       LoadRolesMapper.ensureInitialized();
       LoadPlayStylesMapper.ensureInitialized();
       LoadVersionsMapper.ensureInitialized();
@@ -289,6 +290,149 @@ class _VersionTapCopyWithImpl<$R, $Out>
   VersionTapCopyWith<$R2, VersionTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
       _VersionTapCopyWithImpl($value, $cast, t);
+}
+
+class UpdateChemistryStyleMapper
+    extends SubClassMapperBase<UpdateChemistryStyle> {
+  UpdateChemistryStyleMapper._();
+
+  static UpdateChemistryStyleMapper? _instance;
+  static UpdateChemistryStyleMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = UpdateChemistryStyleMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+      ChemistryStyleMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'UpdateChemistryStyle';
+
+  static int? _$chemistryModifier(UpdateChemistryStyle v) =>
+      v.chemistryModifier;
+  static const Field<UpdateChemistryStyle, int> _f$chemistryModifier =
+      Field('chemistryModifier', _$chemistryModifier);
+  static ChemistryStyle? _$chemistryStyle(UpdateChemistryStyle v) =>
+      v.chemistryStyle;
+  static const Field<UpdateChemistryStyle, ChemistryStyle> _f$chemistryStyle =
+      Field('chemistryStyle', _$chemistryStyle);
+
+  @override
+  final MappableFields<UpdateChemistryStyle> fields = const {
+    #chemistryModifier: _f$chemistryModifier,
+    #chemistryStyle: _f$chemistryStyle,
+  };
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'updateChemistryStyle';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static UpdateChemistryStyle _instantiate(DecodingData data) {
+    return UpdateChemistryStyle(
+        chemistryModifier: data.dec(_f$chemistryModifier),
+        chemistryStyle: data.dec(_f$chemistryStyle));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static UpdateChemistryStyle fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<UpdateChemistryStyle>(map);
+  }
+
+  static UpdateChemistryStyle fromJson(String json) {
+    return ensureInitialized().decodeJson<UpdateChemistryStyle>(json);
+  }
+}
+
+mixin UpdateChemistryStyleMappable {
+  String toJson() {
+    return UpdateChemistryStyleMapper.ensureInitialized()
+        .encodeJson<UpdateChemistryStyle>(this as UpdateChemistryStyle);
+  }
+
+  Map<String, dynamic> toMap() {
+    return UpdateChemistryStyleMapper.ensureInitialized()
+        .encodeMap<UpdateChemistryStyle>(this as UpdateChemistryStyle);
+  }
+
+  UpdateChemistryStyleCopyWith<UpdateChemistryStyle, UpdateChemistryStyle,
+          UpdateChemistryStyle>
+      get copyWith => _UpdateChemistryStyleCopyWithImpl(
+          this as UpdateChemistryStyle, $identity, $identity);
+  @override
+  String toString() {
+    return UpdateChemistryStyleMapper.ensureInitialized()
+        .stringifyValue(this as UpdateChemistryStyle);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return UpdateChemistryStyleMapper.ensureInitialized()
+        .equalsValue(this as UpdateChemistryStyle, other);
+  }
+
+  @override
+  int get hashCode {
+    return UpdateChemistryStyleMapper.ensureInitialized()
+        .hashValue(this as UpdateChemistryStyle);
+  }
+}
+
+extension UpdateChemistryStyleValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, UpdateChemistryStyle, $Out> {
+  UpdateChemistryStyleCopyWith<$R, UpdateChemistryStyle, $Out>
+      get $asUpdateChemistryStyle =>
+          $base.as((v, t, t2) => _UpdateChemistryStyleCopyWithImpl(v, t, t2));
+}
+
+abstract class UpdateChemistryStyleCopyWith<
+    $R,
+    $In extends UpdateChemistryStyle,
+    $Out> implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
+      get chemistryStyle;
+  @override
+  $R call({int? chemistryModifier, ChemistryStyle? chemistryStyle});
+  UpdateChemistryStyleCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _UpdateChemistryStyleCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, UpdateChemistryStyle, $Out>
+    implements UpdateChemistryStyleCopyWith<$R, UpdateChemistryStyle, $Out> {
+  _UpdateChemistryStyleCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<UpdateChemistryStyle> $mapper =
+      UpdateChemistryStyleMapper.ensureInitialized();
+  @override
+  ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
+      get chemistryStyle => $value.chemistryStyle?.copyWith
+          .$chain((v) => call(chemistryStyle: v));
+  @override
+  $R call(
+          {Object? chemistryModifier = $none,
+          Object? chemistryStyle = $none}) =>
+      $apply(FieldCopyWithData({
+        if (chemistryModifier != $none) #chemistryModifier: chemistryModifier,
+        if (chemistryStyle != $none) #chemistryStyle: chemistryStyle
+      }));
+  @override
+  UpdateChemistryStyle $make(CopyWithData data) => UpdateChemistryStyle(
+      chemistryModifier:
+          data.get(#chemistryModifier, or: $value.chemistryModifier),
+      chemistryStyle: data.get(#chemistryStyle, or: $value.chemistryStyle));
+
+  @override
+  UpdateChemistryStyleCopyWith<$R2, UpdateChemistryStyle, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _UpdateChemistryStyleCopyWithImpl($value, $cast, t);
 }
 
 class LoadRolesMapper extends SubClassMapperBase<LoadRoles> {
@@ -830,6 +974,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
       RoleMapper.ensureInitialized();
       PlayStyleMapper.ensureInitialized();
       PlayerPriceMapper.ensureInitialized();
+      ChemistryStyleMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -863,6 +1008,16 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static PlayerPrice? _$playerPrice(PlayerDetailState v) => v.playerPrice;
   static const Field<PlayerDetailState, PlayerPrice> _f$playerPrice =
       Field('playerPrice', _$playerPrice, opt: true);
+  static int? _$selectedChemistryModifier(PlayerDetailState v) =>
+      v.selectedChemistryModifier;
+  static const Field<PlayerDetailState, int> _f$selectedChemistryModifier =
+      Field('selectedChemistryModifier', _$selectedChemistryModifier,
+          opt: true);
+  static ChemistryStyle? _$selectedChemistryStyle(PlayerDetailState v) =>
+      v.selectedChemistryStyle;
+  static const Field<PlayerDetailState, ChemistryStyle>
+      _f$selectedChemistryStyle =
+      Field('selectedChemistryStyle', _$selectedChemistryStyle, opt: true);
 
   @override
   final MappableFields<PlayerDetailState> fields = const {
@@ -873,6 +1028,8 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
     #playerPlayStyles: _f$playerPlayStyles,
     #playerPlayStylesPlus: _f$playerPlayStylesPlus,
     #playerPrice: _f$playerPrice,
+    #selectedChemistryModifier: _f$selectedChemistryModifier,
+    #selectedChemistryStyle: _f$selectedChemistryStyle,
   };
 
   static PlayerDetailState _instantiate(DecodingData data) {
@@ -883,7 +1040,9 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
         playerRoles: data.dec(_f$playerRoles),
         playerPlayStyles: data.dec(_f$playerPlayStyles),
         playerPlayStylesPlus: data.dec(_f$playerPlayStylesPlus),
-        playerPrice: data.dec(_f$playerPrice));
+        playerPrice: data.dec(_f$playerPrice),
+        selectedChemistryModifier: data.dec(_f$selectedChemistryModifier),
+        selectedChemistryStyle: data.dec(_f$selectedChemistryStyle));
   }
 
   @override
@@ -953,6 +1112,8 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
   ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
       get playerPlayStylesPlus;
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice;
+  ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
+      get selectedChemistryStyle;
   $R call(
       {Player? player,
       List<_t$_R0<int, int, String>>? playerVersions,
@@ -960,7 +1121,9 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
       List<Role>? playerRoles,
       List<PlayStyle>? playerPlayStyles,
       List<PlayStyle>? playerPlayStylesPlus,
-      PlayerPrice? playerPrice});
+      PlayerPrice? playerPrice,
+      int? selectedChemistryModifier,
+      ChemistryStyle? selectedChemistryStyle});
   PlayerDetailStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -1012,6 +1175,10 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice =>
       $value.playerPrice?.copyWith.$chain((v) => call(playerPrice: v));
   @override
+  ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
+      get selectedChemistryStyle => $value.selectedChemistryStyle?.copyWith
+          .$chain((v) => call(selectedChemistryStyle: v));
+  @override
   $R call(
           {Player? player,
           Object? playerVersions = $none,
@@ -1019,7 +1186,9 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
           Object? playerRoles = $none,
           Object? playerPlayStyles = $none,
           Object? playerPlayStylesPlus = $none,
-          Object? playerPrice = $none}) =>
+          Object? playerPrice = $none,
+          Object? selectedChemistryModifier = $none,
+          Object? selectedChemistryStyle = $none}) =>
       $apply(FieldCopyWithData({
         if (player != null) #player: player,
         if (playerVersions != $none) #playerVersions: playerVersions,
@@ -1028,7 +1197,11 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
         if (playerPlayStyles != $none) #playerPlayStyles: playerPlayStyles,
         if (playerPlayStylesPlus != $none)
           #playerPlayStylesPlus: playerPlayStylesPlus,
-        if (playerPrice != $none) #playerPrice: playerPrice
+        if (playerPrice != $none) #playerPrice: playerPrice,
+        if (selectedChemistryModifier != $none)
+          #selectedChemistryModifier: selectedChemistryModifier,
+        if (selectedChemistryStyle != $none)
+          #selectedChemistryStyle: selectedChemistryStyle
       }));
   @override
   PlayerDetailState $make(CopyWithData data) => PlayerDetailState(
@@ -1040,7 +1213,11 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
           data.get(#playerPlayStyles, or: $value.playerPlayStyles),
       playerPlayStylesPlus:
           data.get(#playerPlayStylesPlus, or: $value.playerPlayStylesPlus),
-      playerPrice: data.get(#playerPrice, or: $value.playerPrice));
+      playerPrice: data.get(#playerPrice, or: $value.playerPrice),
+      selectedChemistryModifier: data.get(#selectedChemistryModifier,
+          or: $value.selectedChemistryModifier),
+      selectedChemistryStyle:
+          data.get(#selectedChemistryStyle, or: $value.selectedChemistryStyle));
 
   @override
   PlayerDetailStateCopyWith<$R2, PlayerDetailState, $Out2> $chain<$R2, $Out2>(

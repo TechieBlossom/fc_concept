@@ -8,9 +8,11 @@ class AttributesLayout extends StatelessWidget {
   const AttributesLayout({
     super.key,
     required this.player,
+    required this.chemistryBoost,
   });
 
   final Player player;
+  final ChemistryModifier? chemistryBoost;
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +31,21 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Pace',
                         rating: player.facePace!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Acceleration',
                         rating: player.attributeAcceleration!.orZero(),
+                        boost: chemistryBoost?.attributeAcceleration,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Sprint Speed',
                         rating: player.attributeSprintSpeed!.orZero(),
+                        boost: chemistryBoost?.attributeSprintSpeed,
                       ),
                     ),
                     if (player.accelerateType != null)
@@ -61,42 +66,49 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Shooting',
                         rating: player.faceShooting!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Att. Position',
                         rating: player.attributePositioning!.orZero(),
+                        boost: chemistryBoost?.attributePositioning,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Finishing',
                         rating: player.attributeFinishing!.orZero(),
+                        boost: chemistryBoost?.attributeFinishing,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Shot Power',
                         rating: player.attributeShotPower!.orZero(),
+                        boost: chemistryBoost?.attributeShotPower,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Long Shots',
                         rating: player.attributeLongShots!.orZero(),
+                        boost: chemistryBoost?.attributeLongShots,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Volleys',
                         rating: player.attributeVolleys!.orZero(),
+                        boost: chemistryBoost?.attributeVolleys,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Penalties',
                         rating: player.attributePenalties!.orZero(),
+                        boost: chemistryBoost?.attributePenalties,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -118,42 +130,49 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Passing',
                         rating: player.facePassing!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Vision',
                         rating: player.attributeVision!.orZero(),
+                        boost: chemistryBoost?.attributeVision,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Crossing',
                         rating: player.attributeCrossing!.orZero(),
+                        boost: chemistryBoost?.attributeCrossing,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'FK. Acc.',
                         rating: player.attributeFkAccuracy!.orZero(),
+                        boost: chemistryBoost?.attributeFkAccuracy,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Short Pass',
                         rating: player.attributeShortPassing!.orZero(),
+                        boost: chemistryBoost?.attributeShortPassing,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Long Pass',
                         rating: player.attributeLongPassing!.orZero(),
+                        boost: chemistryBoost?.attributeLongPassing,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Curve',
                         rating: player.attributeCurve!.orZero(),
+                        boost: chemistryBoost?.attributeCurve,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -170,42 +189,49 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Dribbling',
                         rating: player.faceDribbling!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Agility',
                         rating: player.attributeAgility!.orZero(),
+                        boost: chemistryBoost?.attributeAgility,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Balance',
                         rating: player.attributeBalance!.orZero(),
+                        boost: chemistryBoost?.attributeBalance,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Reactions',
                         rating: player.attributeReactions!.orZero(),
+                        boost: chemistryBoost?.attributeReactions,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Ball Control',
                         rating: player.attributeBallControl!.orZero(),
+                        boost: chemistryBoost?.attributeBallControl,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Dribbling',
                         rating: player.attributeDribbling!.orZero(),
+                        boost: chemistryBoost?.attributeDribbling,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Composure',
                         rating: player.attributeComposure!.orZero(),
+                        boost: chemistryBoost?.attributeComposure,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -227,36 +253,42 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Defending',
                         rating: player.faceDefending!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Interceptions',
                         rating: player.attributeInterceptions!.orZero(),
+                        boost: chemistryBoost?.attributeInterceptions,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Heading Acc.',
                         rating: player.attributeHeadingAccuracy!.orZero(),
+                        boost: chemistryBoost?.attributeHeadingAccuracy,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Def. Aware',
                         rating: player.attributeDefensiveAwareness!.orZero(),
+                        boost: chemistryBoost?.attributeDefensiveAwareness,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Stand Tackle',
                         rating: player.attributeStandingTackle!.orZero(),
+                        boost: chemistryBoost?.attributeStandingTackle,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Slide Tackle',
                         rating: player.attributeSlidingTackle!.orZero(),
+                        boost: chemistryBoost?.attributeSlidingTackle,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
@@ -273,30 +305,35 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Physicality',
                         rating: player.facePhysicality!.orZero(),
+                        boost: 0,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Jumping',
                         rating: player.attributeJumping!.orZero(),
+                        boost: chemistryBoost?.attributeJumping,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Stamina',
                         rating: player.attributeStamina!.orZero(),
+                        boost: chemistryBoost?.attributeStamina,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Strength',
                         rating: player.attributeStrength!.orZero(),
+                        boost: chemistryBoost?.attributeStrength,
                       ),
                     ),
                     AttributeBar(
                       attributeItem: AttributeItem(
                         attribute: 'Aggression',
                         rating: player.attributeAggression!.orZero(),
+                        boost: chemistryBoost?.attributeAggression,
                       ),
                     ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
