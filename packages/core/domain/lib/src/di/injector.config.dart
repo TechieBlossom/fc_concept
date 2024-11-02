@@ -106,6 +106,8 @@ import 'package:core_domain/src/domain/positions/position_repository.dart'
     as _i1070;
 import 'package:core_domain/src/domain/positions/use_case/get_all_positions_use_case.dart'
     as _i437;
+import 'package:core_domain/src/domain/positions/use_case/get_positions_by_ids_use_case.dart'
+    as _i406;
 import 'package:core_domain/src/domain/positions/use_case/get_positions_from_position_group.dart'
     as _i264;
 import 'package:core_domain/src/domain/price/price_repository.dart' as _i526;
@@ -147,6 +149,8 @@ _i174.GetIt init(
       () => const _i1000.GetRolesByIdsUseCase());
   gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
       () => const _i1017.GetPlayStylesByIdsUseCase());
+  gh.factory<_i406.GetPositionsByIdsUseCase>(
+      () => const _i406.GetPositionsByIdsUseCase());
   gh.lazySingleton<_i264.GetPositionsFromPositionGroup>(
       () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());

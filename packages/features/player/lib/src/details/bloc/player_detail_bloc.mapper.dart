@@ -20,6 +20,7 @@ class PlayerDetailEventMapper extends ClassMapperBase<PlayerDetailEvent> {
       LoadPlayStylesMapper.ensureInitialized();
       LoadVersionsMapper.ensureInitialized();
       LoadPriceMapper.ensureInitialized();
+      LoadAlternativePositionsMapper.ensureInitialized();
       CompareTapMapper.ensureInitialized();
     }
     return _instance!;
@@ -857,6 +858,122 @@ class _LoadPriceCopyWithImpl<$R, $Out>
       _LoadPriceCopyWithImpl($value, $cast, t);
 }
 
+class LoadAlternativePositionsMapper
+    extends SubClassMapperBase<LoadAlternativePositions> {
+  LoadAlternativePositionsMapper._();
+
+  static LoadAlternativePositionsMapper? _instance;
+  static LoadAlternativePositionsMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals
+          .use(_instance = LoadAlternativePositionsMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'LoadAlternativePositions';
+
+  @override
+  final MappableFields<LoadAlternativePositions> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'loadAlternativePositions';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static LoadAlternativePositions _instantiate(DecodingData data) {
+    return LoadAlternativePositions();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static LoadAlternativePositions fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<LoadAlternativePositions>(map);
+  }
+
+  static LoadAlternativePositions fromJson(String json) {
+    return ensureInitialized().decodeJson<LoadAlternativePositions>(json);
+  }
+}
+
+mixin LoadAlternativePositionsMappable {
+  String toJson() {
+    return LoadAlternativePositionsMapper.ensureInitialized()
+        .encodeJson<LoadAlternativePositions>(this as LoadAlternativePositions);
+  }
+
+  Map<String, dynamic> toMap() {
+    return LoadAlternativePositionsMapper.ensureInitialized()
+        .encodeMap<LoadAlternativePositions>(this as LoadAlternativePositions);
+  }
+
+  LoadAlternativePositionsCopyWith<LoadAlternativePositions,
+          LoadAlternativePositions, LoadAlternativePositions>
+      get copyWith => _LoadAlternativePositionsCopyWithImpl(
+          this as LoadAlternativePositions, $identity, $identity);
+  @override
+  String toString() {
+    return LoadAlternativePositionsMapper.ensureInitialized()
+        .stringifyValue(this as LoadAlternativePositions);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return LoadAlternativePositionsMapper.ensureInitialized()
+        .equalsValue(this as LoadAlternativePositions, other);
+  }
+
+  @override
+  int get hashCode {
+    return LoadAlternativePositionsMapper.ensureInitialized()
+        .hashValue(this as LoadAlternativePositions);
+  }
+}
+
+extension LoadAlternativePositionsValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, LoadAlternativePositions, $Out> {
+  LoadAlternativePositionsCopyWith<$R, LoadAlternativePositions, $Out>
+      get $asLoadAlternativePositions => $base
+          .as((v, t, t2) => _LoadAlternativePositionsCopyWithImpl(v, t, t2));
+}
+
+abstract class LoadAlternativePositionsCopyWith<
+    $R,
+    $In extends LoadAlternativePositions,
+    $Out> implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  LoadAlternativePositionsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _LoadAlternativePositionsCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, LoadAlternativePositions, $Out>
+    implements
+        LoadAlternativePositionsCopyWith<$R, LoadAlternativePositions, $Out> {
+  _LoadAlternativePositionsCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<LoadAlternativePositions> $mapper =
+      LoadAlternativePositionsMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  LoadAlternativePositions $make(CopyWithData data) =>
+      LoadAlternativePositions();
+
+  @override
+  LoadAlternativePositionsCopyWith<$R2, LoadAlternativePositions, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _LoadAlternativePositionsCopyWithImpl($value, $cast, t);
+}
+
 class CompareTapMapper extends SubClassMapperBase<CompareTap> {
   CompareTapMapper._();
 
@@ -973,6 +1090,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
       _t$_R0Mapper.ensureInitialized();
       RoleMapper.ensureInitialized();
       PlayStyleMapper.ensureInitialized();
+      PositionMapper.ensureInitialized();
       PlayerPriceMapper.ensureInitialized();
       ChemistryStyleMapper.ensureInitialized();
     }
@@ -1005,6 +1123,11 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static const Field<PlayerDetailState, List<PlayStyle>>
       _f$playerPlayStylesPlus =
       Field('playerPlayStylesPlus', _$playerPlayStylesPlus, opt: true);
+  static List<Position>? _$alternativePositions(PlayerDetailState v) =>
+      v.alternativePositions;
+  static const Field<PlayerDetailState, List<Position>>
+      _f$alternativePositions =
+      Field('alternativePositions', _$alternativePositions, opt: true);
   static PlayerPrice? _$playerPrice(PlayerDetailState v) => v.playerPrice;
   static const Field<PlayerDetailState, PlayerPrice> _f$playerPrice =
       Field('playerPrice', _$playerPrice, opt: true);
@@ -1027,6 +1150,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
     #playerRoles: _f$playerRoles,
     #playerPlayStyles: _f$playerPlayStyles,
     #playerPlayStylesPlus: _f$playerPlayStylesPlus,
+    #alternativePositions: _f$alternativePositions,
     #playerPrice: _f$playerPrice,
     #selectedChemistryModifier: _f$selectedChemistryModifier,
     #selectedChemistryStyle: _f$selectedChemistryStyle,
@@ -1040,6 +1164,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
         playerRoles: data.dec(_f$playerRoles),
         playerPlayStyles: data.dec(_f$playerPlayStyles),
         playerPlayStylesPlus: data.dec(_f$playerPlayStylesPlus),
+        alternativePositions: data.dec(_f$alternativePositions),
         playerPrice: data.dec(_f$playerPrice),
         selectedChemistryModifier: data.dec(_f$selectedChemistryModifier),
         selectedChemistryStyle: data.dec(_f$selectedChemistryStyle));
@@ -1111,6 +1236,8 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
       get playerPlayStyles;
   ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
       get playerPlayStylesPlus;
+  ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>?
+      get alternativePositions;
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice;
   ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
       get selectedChemistryStyle;
@@ -1121,6 +1248,7 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
       List<Role>? playerRoles,
       List<PlayStyle>? playerPlayStyles,
       List<PlayStyle>? playerPlayStylesPlus,
+      List<Position>? alternativePositions,
       PlayerPrice? playerPrice,
       int? selectedChemistryModifier,
       ChemistryStyle? selectedChemistryStyle});
@@ -1172,6 +1300,14 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
               (v) => call(playerPlayStylesPlus: v))
           : null;
   @override
+  ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>?
+      get alternativePositions => $value.alternativePositions != null
+          ? ListCopyWith(
+              $value.alternativePositions!,
+              (v, t) => v.copyWith.$chain(t),
+              (v) => call(alternativePositions: v))
+          : null;
+  @override
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice =>
       $value.playerPrice?.copyWith.$chain((v) => call(playerPrice: v));
   @override
@@ -1186,6 +1322,7 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
           Object? playerRoles = $none,
           Object? playerPlayStyles = $none,
           Object? playerPlayStylesPlus = $none,
+          Object? alternativePositions = $none,
           Object? playerPrice = $none,
           Object? selectedChemistryModifier = $none,
           Object? selectedChemistryStyle = $none}) =>
@@ -1197,6 +1334,8 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
         if (playerPlayStyles != $none) #playerPlayStyles: playerPlayStyles,
         if (playerPlayStylesPlus != $none)
           #playerPlayStylesPlus: playerPlayStylesPlus,
+        if (alternativePositions != $none)
+          #alternativePositions: alternativePositions,
         if (playerPrice != $none) #playerPrice: playerPrice,
         if (selectedChemistryModifier != $none)
           #selectedChemistryModifier: selectedChemistryModifier,
@@ -1213,6 +1352,8 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
           data.get(#playerPlayStyles, or: $value.playerPlayStyles),
       playerPlayStylesPlus:
           data.get(#playerPlayStylesPlus, or: $value.playerPlayStylesPlus),
+      alternativePositions:
+          data.get(#alternativePositions, or: $value.alternativePositions),
       playerPrice: data.get(#playerPrice, or: $value.playerPrice),
       selectedChemistryModifier: data.get(#selectedChemistryModifier,
           or: $value.selectedChemistryModifier),

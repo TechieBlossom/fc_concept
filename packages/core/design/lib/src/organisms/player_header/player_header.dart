@@ -9,6 +9,7 @@ class PlayerHeader extends StatelessWidget {
   const PlayerHeader({
     super.key,
     required this.player,
+    required this.alternativePositions,
     required this.playerVersions,
     required this.selectedVersion,
     required this.onVersionTap,
@@ -16,6 +17,7 @@ class PlayerHeader extends StatelessWidget {
   });
 
   final Player player;
+  final List<Position>? alternativePositions;
   final List<(int, int, String)>? playerVersions;
   final int? selectedVersion;
   final void Function(int, int) onVersionTap;
@@ -81,21 +83,37 @@ class PlayerHeader extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        _AnimatedOpacity(
-                          isShown: player.position != null,
-                          child: PositionBox(
-                            position: player.position,
-                            size: PositionBoxSize.medium,
-                          ),
+                        Row(
+                          children: [
+                            _AnimatedOpacity(
+                              isShown: player.position != null,
+                              child: PositionBox(
+                                position: player.position,
+                                size: PositionBoxSize.medium,
+                              ),
+                            ),
+                            SizedBox(width: AppSpacing.space3),
+                            RatingBox(
+                              rating: player.overall,
+                              size: RatingBoxSize.medium,
+                              bg: colors.$1,
+                              fg: colors.$2,
+                            ),
+                          ],
                         ),
-                        SizedBox(width: AppSpacing.space3),
-                        RatingBox(
-                          rating: player.overall,
-                          size: RatingBoxSize.medium,
-                          bg: colors.$1,
-                          fg: colors.$2,
+                        SizedBox(height: AppSpacing.space2),
+                        _AnimatedOpacity(
+                          isShown: alternativePositions != null,
+                          child: Text(
+                            alternativePositions
+                                    ?.map((e) => e.shortLabel)
+                                    .join(' - ') ??
+                                '',
+                            style: context.typography.caption2,
+                          ),
                         ),
                       ],
                     ),

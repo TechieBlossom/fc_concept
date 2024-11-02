@@ -38,6 +38,7 @@ export 'package:core_domain/src/domain/players/use_case/get_trending_players_use
 export 'package:core_domain/src/domain/players/use_case/search_players_use_case.dart';
 export 'package:core_domain/src/domain/positions/model/position.dart';
 export 'package:core_domain/src/domain/positions/model/position_group.dart';
+export 'package:core_domain/src/domain/positions/use_case/get_positions_by_ids_use_case.dart';
 export 'package:core_domain/src/domain/positions/use_case/get_positions_from_position_group.dart';
 export 'package:core_domain/src/domain/price/model/player_old_price.dart';
 export 'package:core_domain/src/domain/price/model/player_price.dart';

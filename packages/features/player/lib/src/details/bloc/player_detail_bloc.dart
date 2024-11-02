@@ -7,9 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'player_detail_bloc.mapper.dart';
-
 part 'player_detail_event.dart';
-
 part 'player_detail_state.dart';
 
 class PlayerDetailBlocParams {
@@ -18,12 +16,14 @@ class PlayerDetailBlocParams {
     required this.allRoles,
     required this.allPlayStyles,
     required this.allChemistryStyles,
+    required this.allPositions,
   });
 
   final Player player;
   final List<Role> allRoles;
   final List<PlayStyle> allPlayStyles;
   final List<ChemistryStyle> allChemistryStyles;
+  final List<Position> allPositions;
 }
 
 @injectable
@@ -37,6 +37,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     this._getPlayStylesByIdsUseCase,
     this._getPlayerPriceUseCase,
     this._playerNavigator,
+    this._getPositionsByIdsUseCase,
   ) : super(PlayerDetailState(player: params.player)) {
     on<Init>((event, emit) => _initial(params.player, emit));
     on<VersionTap>(
@@ -50,6 +51,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     on<LoadPlayStyles>((event, emit) => _loadPlayStyles(event, emit));
     on<LoadVersions>((_, emit) => _loadVersions(emit));
     on<LoadPrice>((_, emit) => _loadPrice(emit));
+    on<LoadAlternativePositions>((_, emit) => _loadAlternativePositions(emit));
     on<CompareTap>((_, emit) => _compareTap());
     on<UpdateChemistryStyle>(
       (event, emit) => _onUpdateChemistryStyle(event, emit),
@@ -65,6 +67,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   final GetRolesByIdsUseCase _getRolesByIdsUseCase;
   final GetPlayStylesByIdsUseCase _getPlayStylesByIdsUseCase;
   final GetPlayerPriceUseCase _getPlayerPriceUseCase;
+  final GetPositionsByIdsUseCase _getPositionsByIdsUseCase;
   final PlayerNavigator _playerNavigator;
 
   Future<void> _initial(Player player, Emitter<PlayerDetailState> emit) async {
@@ -146,6 +149,17 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     }
   }
 
+  void _loadAlternativePositions(
+    Emitter<PlayerDetailState> emit,
+  ) {
+    final alternatePositions =
+        _getPositionsByIdsUseCase(
+          allPositions: params.allPositions,
+          eaIds: state.player.alternativePositionIds ?? [],
+        );
+    emit(state.copyWith(alternativePositions: alternatePositions));
+  }
+
   Future<void> _compareTap() async {
     await _playerNavigator.goToCompare(state.player);
   }
@@ -173,6 +187,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
         add(LoadPlayStyles());
         add(LoadVersions());
         add(LoadPrice());
+        add(LoadAlternativePositions());
       case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);

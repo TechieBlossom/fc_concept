@@ -19,6 +19,7 @@ class PlayerDetailPage extends StatelessWidget {
     final roles = context.read<MetadataBloc>().state.roles;
     final playStyles = context.read<MetadataBloc>().state.playStyles;
     final chemistryStyles = context.read<MetadataBloc>().state.chemistryStyles;
+    final positions = context.read<MetadataBloc>().state.positions;
     return BlocProvider<PlayerDetailBloc>(
       create: (_) => di<PlayerDetailBloc>(
         param1: PlayerDetailBlocParams(
@@ -26,6 +27,7 @@ class PlayerDetailPage extends StatelessWidget {
           allRoles: roles,
           allPlayStyles: playStyles,
           allChemistryStyles: chemistryStyles,
+          allPositions: positions,
         ),
       ),
       child: BlocBuilder<PlayerDetailBloc, PlayerDetailState>(
@@ -57,6 +59,7 @@ class PlayerDetailPage extends StatelessWidget {
                               ),
                             ),
                     playerPrice: state.playerPrice,
+                    alternativePositions: state.alternativePositions,
                   ),
                   if (state.playerRoles?.isNotEmpty ?? false)
                     Padding(

@@ -47,5 +47,9 @@ class LoadVersions extends PlayerDetailEvent with LoadVersionsMappable {}
 @MappableClass(discriminatorValue: 'loadPrice')
 class LoadPrice extends PlayerDetailEvent with LoadPriceMappable {}
 
+@MappableClass(discriminatorValue: 'loadAlternativePositions')
+class LoadAlternativePositions extends PlayerDetailEvent
+    with LoadAlternativePositionsMappable {}
+
 @MappableClass(discriminatorValue: 'compareTap')
 class CompareTap extends PlayerDetailEvent with CompareTapMappable {}

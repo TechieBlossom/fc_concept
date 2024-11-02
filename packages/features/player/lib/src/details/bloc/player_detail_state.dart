@@ -9,6 +9,7 @@ class PlayerDetailState with PlayerDetailStateMappable {
     this.playerRoles,
     this.playerPlayStyles,
     this.playerPlayStylesPlus,
+    this.alternativePositions,
     this.playerPrice,
     this.selectedChemistryModifier,
     this.selectedChemistryStyle,
@@ -20,6 +21,7 @@ class PlayerDetailState with PlayerDetailStateMappable {
   final List<Role>? playerRoles;
   final List<PlayStyle>? playerPlayStyles;
   final List<PlayStyle>? playerPlayStylesPlus;
+  final List<Position>? alternativePositions;
   final PlayerPrice? playerPrice;
   final int? selectedChemistryModifier;
   final ChemistryStyle? selectedChemistryStyle;
