@@ -43,6 +43,6 @@ app.*.map.json
 /android/app/release
 /packages/features/auth/devtools_options.yaml
 /packages/features/compare/devtools_options.yaml
-/packages/features/drawer/devtools_options.yaml
+/packages/features/menu/devtools_options.yaml
 /packages/features/filter/devtools_options.yaml
 /packages/features/player/devtools_options.yaml

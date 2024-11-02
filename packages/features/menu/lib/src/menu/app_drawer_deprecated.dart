@@ -1,20 +1,21 @@
 import 'package:core_design/design.dart';
-import 'package:feature_drawer/src/app_drawer/bloc/app_drawer_bloc.dart'
-    as bloc;
+import 'package:feature_menu/src/menu/bloc/menu_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utility_di/di.dart';
 
+@Deprecated('Use Menu Page instead')
 class AppDrawer extends StatelessWidget {
+  @Deprecated('Use Menu Page instead')
   const AppDrawer({super.key, required this.scaffoldKey});
 
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<bloc.AppDrawerBloc>(
-      create: (_) => di<bloc.AppDrawerBloc>(),
-      child: BlocBuilder<bloc.AppDrawerBloc, bloc.AppDrawerState>(
+    return BlocProvider<MenuBloc>(
+      create: (_) => di<MenuBloc>(),
+      child: BlocBuilder<MenuBloc, MenuState>(
         builder: (context, state) {
           return Drawer(
             backgroundColor: Colors.white,
@@ -37,8 +38,8 @@ class AppDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       scaffoldKey.currentState?.closeDrawer();
-                      context.read<bloc.AppDrawerBloc>().add(
-                            bloc.SignInTap(),
+                      context.read<MenuBloc>().add(
+                            SignInTap(),
                           );
                     },
                   ),
@@ -57,8 +58,8 @@ class AppDrawer extends StatelessWidget {
                     isSelected: true,
                     onTap: () {
                       scaffoldKey.currentState?.closeDrawer();
-                      context.read<bloc.AppDrawerBloc>().add(
-                            bloc.PlayersTap(),
+                      context.read<MenuBloc>().add(
+                            PlayersTap(),
                           );
                     },
                   ),
@@ -70,8 +71,8 @@ class AppDrawer extends StatelessWidget {
                   //   text: 'Popular',
                   //   onTap: () {
                   //     scaffoldKey.currentState?.closeDrawer();
-                  //     context.read<bloc.AppDrawerBloc>().add(
-                  //       bloc.PopularTap(),
+                  //     context.read<MenuBloc>().add(
+                  //       PopularTap(),
                   //     );
                   //   },
                   // ),
@@ -105,8 +106,8 @@ class AppDrawer extends StatelessWidget {
                     text: 'Compare',
                     onTap: () {
                       scaffoldKey.currentState?.closeDrawer();
-                      context.read<bloc.AppDrawerBloc>().add(
-                            bloc.CompareTap(),
+                      context.read<MenuBloc>().add(
+                            CompareTap(),
                           );
                     },
                   ),
@@ -138,7 +139,7 @@ class AppDrawer extends StatelessWidget {
                     ),
                     text: 'Log Out',
                     onTap: () {
-                      context.read<bloc.AppDrawerBloc>().add(bloc.LogoutTap());
+                      context.read<MenuBloc>().add(LogoutTap());
                     },
                   ),
                   Padding(

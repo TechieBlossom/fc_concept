@@ -4,60 +4,59 @@
 // ignore_for_file: unused_element, unnecessary_cast, override_on_non_overriding_member
 // ignore_for_file: strict_raw_type, inference_failure_on_untyped_parameter
 
-part of 'app_drawer_bloc.dart';
+part of 'menu_bloc.dart';
 
-class AppDrawerEventMapper extends ClassMapperBase<AppDrawerEvent> {
-  AppDrawerEventMapper._();
+class MenuEventMapper extends ClassMapperBase<MenuEvent> {
+  MenuEventMapper._();
 
-  static AppDrawerEventMapper? _instance;
-  static AppDrawerEventMapper ensureInitialized() {
+  static MenuEventMapper? _instance;
+  static MenuEventMapper ensureInitialized() {
     if (_instance == null) {
-      MapperContainer.globals.use(_instance = AppDrawerEventMapper._());
+      MapperContainer.globals.use(_instance = MenuEventMapper._());
       InitMapper.ensureInitialized();
       SignInTapMapper.ensureInitialized();
       CompareTapMapper.ensureInitialized();
       PlayersTapMapper.ensureInitialized();
       PopularTapMapper.ensureInitialized();
       LogoutTapMapper.ensureInitialized();
+      CheapestByRatingTapMapper.ensureInitialized();
     }
     return _instance!;
   }
 
   @override
-  final String id = 'AppDrawerEvent';
+  final String id = 'MenuEvent';
 
   @override
-  final MappableFields<AppDrawerEvent> fields = const {};
+  final MappableFields<MenuEvent> fields = const {};
 
-  static AppDrawerEvent _instantiate(DecodingData data) {
+  static MenuEvent _instantiate(DecodingData data) {
     throw MapperException.missingSubclass(
-        'AppDrawerEvent', 'appDrawerEvent', '${data.value['appDrawerEvent']}');
+        'MenuEvent', 'MenuEvent', '${data.value['MenuEvent']}');
   }
 
   @override
   final Function instantiate = _instantiate;
 
-  static AppDrawerEvent fromMap(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<AppDrawerEvent>(map);
+  static MenuEvent fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<MenuEvent>(map);
   }
 
-  static AppDrawerEvent fromJson(String json) {
-    return ensureInitialized().decodeJson<AppDrawerEvent>(json);
+  static MenuEvent fromJson(String json) {
+    return ensureInitialized().decodeJson<MenuEvent>(json);
   }
 }
 
-mixin AppDrawerEventMappable {
+mixin MenuEventMappable {
   String toJson();
   Map<String, dynamic> toMap();
-  AppDrawerEventCopyWith<AppDrawerEvent, AppDrawerEvent, AppDrawerEvent>
-      get copyWith;
+  MenuEventCopyWith<MenuEvent, MenuEvent, MenuEvent> get copyWith;
 }
 
-abstract class AppDrawerEventCopyWith<$R, $In extends AppDrawerEvent, $Out>
+abstract class MenuEventCopyWith<$R, $In extends MenuEvent, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call();
-  AppDrawerEventCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
-      Then<$Out2, $R2> t);
+  MenuEventCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
 class InitMapper extends SubClassMapperBase<Init> {
@@ -67,7 +66,7 @@ class InitMapper extends SubClassMapperBase<Init> {
   static InitMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = InitMapper._());
-      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
@@ -79,12 +78,11 @@ class InitMapper extends SubClassMapperBase<Init> {
   final MappableFields<Init> fields = const {};
 
   @override
-  final String discriminatorKey = 'appDrawerEvent';
+  final String discriminatorKey = 'MenuEvent';
   @override
   final dynamic discriminatorValue = 'init';
   @override
-  late final ClassMapperBase superMapper =
-      AppDrawerEventMapper.ensureInitialized();
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
 
   static Init _instantiate(DecodingData data) {
     return Init();
@@ -135,7 +133,7 @@ extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
-    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+    implements MenuEventCopyWith<$R, $In, $Out> {
   @override
   $R call();
   InitCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -164,7 +162,7 @@ class SignInTapMapper extends SubClassMapperBase<SignInTap> {
   static SignInTapMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = SignInTapMapper._());
-      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
@@ -176,12 +174,11 @@ class SignInTapMapper extends SubClassMapperBase<SignInTap> {
   final MappableFields<SignInTap> fields = const {};
 
   @override
-  final String discriminatorKey = 'appDrawerEvent';
+  final String discriminatorKey = 'MenuEvent';
   @override
   final dynamic discriminatorValue = 'signInTap';
   @override
-  late final ClassMapperBase superMapper =
-      AppDrawerEventMapper.ensureInitialized();
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
 
   static SignInTap _instantiate(DecodingData data) {
     return SignInTap();
@@ -236,7 +233,7 @@ extension SignInTapValueCopy<$R, $Out> on ObjectCopyWith<$R, SignInTap, $Out> {
 }
 
 abstract class SignInTapCopyWith<$R, $In extends SignInTap, $Out>
-    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+    implements MenuEventCopyWith<$R, $In, $Out> {
   @override
   $R call();
   SignInTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -268,7 +265,7 @@ class CompareTapMapper extends SubClassMapperBase<CompareTap> {
   static CompareTapMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = CompareTapMapper._());
-      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
@@ -280,12 +277,11 @@ class CompareTapMapper extends SubClassMapperBase<CompareTap> {
   final MappableFields<CompareTap> fields = const {};
 
   @override
-  final String discriminatorKey = 'appDrawerEvent';
+  final String discriminatorKey = 'MenuEvent';
   @override
   final dynamic discriminatorValue = 'compareTap';
   @override
-  late final ClassMapperBase superMapper =
-      AppDrawerEventMapper.ensureInitialized();
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
 
   static CompareTap _instantiate(DecodingData data) {
     return CompareTap();
@@ -341,7 +337,7 @@ extension CompareTapValueCopy<$R, $Out>
 }
 
 abstract class CompareTapCopyWith<$R, $In extends CompareTap, $Out>
-    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+    implements MenuEventCopyWith<$R, $In, $Out> {
   @override
   $R call();
   CompareTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -373,7 +369,7 @@ class PlayersTapMapper extends SubClassMapperBase<PlayersTap> {
   static PlayersTapMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PlayersTapMapper._());
-      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
@@ -385,12 +381,11 @@ class PlayersTapMapper extends SubClassMapperBase<PlayersTap> {
   final MappableFields<PlayersTap> fields = const {};
 
   @override
-  final String discriminatorKey = 'appDrawerEvent';
+  final String discriminatorKey = 'MenuEvent';
   @override
   final dynamic discriminatorValue = 'playersTap';
   @override
-  late final ClassMapperBase superMapper =
-      AppDrawerEventMapper.ensureInitialized();
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
 
   static PlayersTap _instantiate(DecodingData data) {
     return PlayersTap();
@@ -446,7 +441,7 @@ extension PlayersTapValueCopy<$R, $Out>
 }
 
 abstract class PlayersTapCopyWith<$R, $In extends PlayersTap, $Out>
-    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+    implements MenuEventCopyWith<$R, $In, $Out> {
   @override
   $R call();
   PlayersTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -478,7 +473,7 @@ class PopularTapMapper extends SubClassMapperBase<PopularTap> {
   static PopularTapMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PopularTapMapper._());
-      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
@@ -490,12 +485,11 @@ class PopularTapMapper extends SubClassMapperBase<PopularTap> {
   final MappableFields<PopularTap> fields = const {};
 
   @override
-  final String discriminatorKey = 'appDrawerEvent';
+  final String discriminatorKey = 'MenuEvent';
   @override
   final dynamic discriminatorValue = 'popularTap';
   @override
-  late final ClassMapperBase superMapper =
-      AppDrawerEventMapper.ensureInitialized();
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
 
   static PopularTap _instantiate(DecodingData data) {
     return PopularTap();
@@ -551,7 +545,7 @@ extension PopularTapValueCopy<$R, $Out>
 }
 
 abstract class PopularTapCopyWith<$R, $In extends PopularTap, $Out>
-    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+    implements MenuEventCopyWith<$R, $In, $Out> {
   @override
   $R call();
   PopularTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -583,7 +577,7 @@ class LogoutTapMapper extends SubClassMapperBase<LogoutTap> {
   static LogoutTapMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = LogoutTapMapper._());
-      AppDrawerEventMapper.ensureInitialized().addSubMapper(_instance!);
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
@@ -595,12 +589,11 @@ class LogoutTapMapper extends SubClassMapperBase<LogoutTap> {
   final MappableFields<LogoutTap> fields = const {};
 
   @override
-  final String discriminatorKey = 'appDrawerEvent';
+  final String discriminatorKey = 'MenuEvent';
   @override
   final dynamic discriminatorValue = 'logoutTap';
   @override
-  late final ClassMapperBase superMapper =
-      AppDrawerEventMapper.ensureInitialized();
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
 
   static LogoutTap _instantiate(DecodingData data) {
     return LogoutTap();
@@ -655,7 +648,7 @@ extension LogoutTapValueCopy<$R, $Out> on ObjectCopyWith<$R, LogoutTap, $Out> {
 }
 
 abstract class LogoutTapCopyWith<$R, $In extends LogoutTap, $Out>
-    implements AppDrawerEventCopyWith<$R, $In, $Out> {
+    implements MenuEventCopyWith<$R, $In, $Out> {
   @override
   $R call();
   LogoutTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -680,108 +673,214 @@ class _LogoutTapCopyWithImpl<$R, $Out>
       _LogoutTapCopyWithImpl($value, $cast, t);
 }
 
-class AppDrawerStateMapper extends ClassMapperBase<AppDrawerState> {
-  AppDrawerStateMapper._();
+class CheapestByRatingTapMapper
+    extends SubClassMapperBase<CheapestByRatingTap> {
+  CheapestByRatingTapMapper._();
 
-  static AppDrawerStateMapper? _instance;
-  static AppDrawerStateMapper ensureInitialized() {
+  static CheapestByRatingTapMapper? _instance;
+  static CheapestByRatingTapMapper ensureInitialized() {
     if (_instance == null) {
-      MapperContainer.globals.use(_instance = AppDrawerStateMapper._());
+      MapperContainer.globals.use(_instance = CheapestByRatingTapMapper._());
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
     }
     return _instance!;
   }
 
   @override
-  final String id = 'AppDrawerState';
-
-  static int? _$playerCount(AppDrawerState v) => v.playerCount;
-  static const Field<AppDrawerState, int> _f$playerCount =
-      Field('playerCount', _$playerCount, opt: true);
+  final String id = 'CheapestByRatingTap';
 
   @override
-  final MappableFields<AppDrawerState> fields = const {
-    #playerCount: _f$playerCount,
-  };
+  final MappableFields<CheapestByRatingTap> fields = const {};
 
-  static AppDrawerState _instantiate(DecodingData data) {
-    return AppDrawerState(playerCount: data.dec(_f$playerCount));
+  @override
+  final String discriminatorKey = 'MenuEvent';
+  @override
+  final dynamic discriminatorValue = 'cheapestByRatingTap';
+  @override
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
+
+  static CheapestByRatingTap _instantiate(DecodingData data) {
+    return CheapestByRatingTap();
   }
 
   @override
   final Function instantiate = _instantiate;
 
-  static AppDrawerState fromMap(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<AppDrawerState>(map);
+  static CheapestByRatingTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<CheapestByRatingTap>(map);
   }
 
-  static AppDrawerState fromJson(String json) {
-    return ensureInitialized().decodeJson<AppDrawerState>(json);
+  static CheapestByRatingTap fromJson(String json) {
+    return ensureInitialized().decodeJson<CheapestByRatingTap>(json);
   }
 }
 
-mixin AppDrawerStateMappable {
+mixin CheapestByRatingTapMappable {
   String toJson() {
-    return AppDrawerStateMapper.ensureInitialized()
-        .encodeJson<AppDrawerState>(this as AppDrawerState);
+    return CheapestByRatingTapMapper.ensureInitialized()
+        .encodeJson<CheapestByRatingTap>(this as CheapestByRatingTap);
   }
 
   Map<String, dynamic> toMap() {
-    return AppDrawerStateMapper.ensureInitialized()
-        .encodeMap<AppDrawerState>(this as AppDrawerState);
+    return CheapestByRatingTapMapper.ensureInitialized()
+        .encodeMap<CheapestByRatingTap>(this as CheapestByRatingTap);
   }
 
-  AppDrawerStateCopyWith<AppDrawerState, AppDrawerState, AppDrawerState>
-      get copyWith => _AppDrawerStateCopyWithImpl(
-          this as AppDrawerState, $identity, $identity);
+  CheapestByRatingTapCopyWith<CheapestByRatingTap, CheapestByRatingTap,
+          CheapestByRatingTap>
+      get copyWith => _CheapestByRatingTapCopyWithImpl(
+          this as CheapestByRatingTap, $identity, $identity);
   @override
   String toString() {
-    return AppDrawerStateMapper.ensureInitialized()
-        .stringifyValue(this as AppDrawerState);
+    return CheapestByRatingTapMapper.ensureInitialized()
+        .stringifyValue(this as CheapestByRatingTap);
   }
 
   @override
   bool operator ==(Object other) {
-    return AppDrawerStateMapper.ensureInitialized()
-        .equalsValue(this as AppDrawerState, other);
+    return CheapestByRatingTapMapper.ensureInitialized()
+        .equalsValue(this as CheapestByRatingTap, other);
   }
 
   @override
   int get hashCode {
-    return AppDrawerStateMapper.ensureInitialized()
-        .hashValue(this as AppDrawerState);
+    return CheapestByRatingTapMapper.ensureInitialized()
+        .hashValue(this as CheapestByRatingTap);
   }
 }
 
-extension AppDrawerStateValueCopy<$R, $Out>
-    on ObjectCopyWith<$R, AppDrawerState, $Out> {
-  AppDrawerStateCopyWith<$R, AppDrawerState, $Out> get $asAppDrawerState =>
-      $base.as((v, t, t2) => _AppDrawerStateCopyWithImpl(v, t, t2));
+extension CheapestByRatingTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, CheapestByRatingTap, $Out> {
+  CheapestByRatingTapCopyWith<$R, CheapestByRatingTap, $Out>
+      get $asCheapestByRatingTap =>
+          $base.as((v, t, t2) => _CheapestByRatingTapCopyWithImpl(v, t, t2));
 }
 
-abstract class AppDrawerStateCopyWith<$R, $In extends AppDrawerState, $Out>
-    implements ClassCopyWith<$R, $In, $Out> {
-  $R call({int? playerCount});
-  AppDrawerStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+abstract class CheapestByRatingTapCopyWith<$R, $In extends CheapestByRatingTap,
+    $Out> implements MenuEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  CheapestByRatingTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
 
-class _AppDrawerStateCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, AppDrawerState, $Out>
-    implements AppDrawerStateCopyWith<$R, AppDrawerState, $Out> {
-  _AppDrawerStateCopyWithImpl(super.value, super.then, super.then2);
+class _CheapestByRatingTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, CheapestByRatingTap, $Out>
+    implements CheapestByRatingTapCopyWith<$R, CheapestByRatingTap, $Out> {
+  _CheapestByRatingTapCopyWithImpl(super.value, super.then, super.then2);
 
   @override
-  late final ClassMapperBase<AppDrawerState> $mapper =
-      AppDrawerStateMapper.ensureInitialized();
+  late final ClassMapperBase<CheapestByRatingTap> $mapper =
+      CheapestByRatingTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  CheapestByRatingTap $make(CopyWithData data) => CheapestByRatingTap();
+
+  @override
+  CheapestByRatingTapCopyWith<$R2, CheapestByRatingTap, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _CheapestByRatingTapCopyWithImpl($value, $cast, t);
+}
+
+class MenuStateMapper extends ClassMapperBase<MenuState> {
+  MenuStateMapper._();
+
+  static MenuStateMapper? _instance;
+  static MenuStateMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = MenuStateMapper._());
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'MenuState';
+
+  static int? _$playerCount(MenuState v) => v.playerCount;
+  static const Field<MenuState, int> _f$playerCount =
+      Field('playerCount', _$playerCount, opt: true);
+
+  @override
+  final MappableFields<MenuState> fields = const {
+    #playerCount: _f$playerCount,
+  };
+
+  static MenuState _instantiate(DecodingData data) {
+    return MenuState(playerCount: data.dec(_f$playerCount));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static MenuState fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<MenuState>(map);
+  }
+
+  static MenuState fromJson(String json) {
+    return ensureInitialized().decodeJson<MenuState>(json);
+  }
+}
+
+mixin MenuStateMappable {
+  String toJson() {
+    return MenuStateMapper.ensureInitialized()
+        .encodeJson<MenuState>(this as MenuState);
+  }
+
+  Map<String, dynamic> toMap() {
+    return MenuStateMapper.ensureInitialized()
+        .encodeMap<MenuState>(this as MenuState);
+  }
+
+  MenuStateCopyWith<MenuState, MenuState, MenuState> get copyWith =>
+      _MenuStateCopyWithImpl(this as MenuState, $identity, $identity);
+  @override
+  String toString() {
+    return MenuStateMapper.ensureInitialized()
+        .stringifyValue(this as MenuState);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return MenuStateMapper.ensureInitialized()
+        .equalsValue(this as MenuState, other);
+  }
+
+  @override
+  int get hashCode {
+    return MenuStateMapper.ensureInitialized().hashValue(this as MenuState);
+  }
+}
+
+extension MenuStateValueCopy<$R, $Out> on ObjectCopyWith<$R, MenuState, $Out> {
+  MenuStateCopyWith<$R, MenuState, $Out> get $asMenuState =>
+      $base.as((v, t, t2) => _MenuStateCopyWithImpl(v, t, t2));
+}
+
+abstract class MenuStateCopyWith<$R, $In extends MenuState, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
+  $R call({int? playerCount});
+  MenuStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _MenuStateCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, MenuState, $Out>
+    implements MenuStateCopyWith<$R, MenuState, $Out> {
+  _MenuStateCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<MenuState> $mapper =
+      MenuStateMapper.ensureInitialized();
   @override
   $R call({Object? playerCount = $none}) => $apply(
       FieldCopyWithData({if (playerCount != $none) #playerCount: playerCount}));
   @override
-  AppDrawerState $make(CopyWithData data) => AppDrawerState(
-      playerCount: data.get(#playerCount, or: $value.playerCount));
+  MenuState $make(CopyWithData data) =>
+      MenuState(playerCount: data.get(#playerCount, or: $value.playerCount));
 
   @override
-  AppDrawerStateCopyWith<$R2, AppDrawerState, $Out2> $chain<$R2, $Out2>(
+  MenuStateCopyWith<$R2, MenuState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _AppDrawerStateCopyWithImpl($value, $cast, t);
+      _MenuStateCopyWithImpl($value, $cast, t);
 }

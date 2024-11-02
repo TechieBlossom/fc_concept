@@ -12,11 +12,12 @@ import 'package:core_domain/auth.dart' as _i643;
 import 'package:core_domain/domain.dart' as _i913;
 import 'package:feature_auth/auth.dart' as _i495;
 import 'package:feature_compare/compare.dart' as _i534;
-import 'package:feature_drawer/src/app_drawer/bloc/app_drawer_bloc.dart'
-    as _i1007;
+import 'package:feature_menu/src/menu/bloc/menu_bloc.dart' as _i929;
+import 'package:feature_menu/src/navigator/navigator.dart' as _i725;
 import 'package:feature_player/player.dart' as _i460;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:utility_navigation/navigation.dart' as _i177;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i174.GetIt init(
@@ -29,12 +30,15 @@ _i174.GetIt init(
     environment,
     environmentFilter,
   );
-  gh.factory<_i1007.AppDrawerBloc>(() => _i1007.AppDrawerBloc(
+  gh.lazySingleton<_i725.MenuNavigator>(
+      () => _i725.MenuNavigator(gh<_i177.GoRouter>()));
+  gh.factory<_i929.MenuBloc>(() => _i929.MenuBloc(
         gh<_i495.AuthNavigator>(),
         gh<_i534.CompareNavigator>(),
         gh<_i460.PlayerNavigator>(),
         gh<_i913.GetPlayerCountUseCase>(),
         gh<_i643.SignOutUserUseCase>(),
+        gh<_i725.MenuNavigator>(),
       ));
   return getIt;
 }

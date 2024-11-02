@@ -22,10 +22,10 @@ dependencies:
     path: packages/features/compare
   feature_dashboard:
     path: packages/features/dashboard
-  feature_drawer:
-    path: packages/features/drawer
   feature_filter:
     path: packages/features/filter
+  feature_menu:
+    path: packages/features/menu
   feature_player:
     path: packages/features/player
   flutter:

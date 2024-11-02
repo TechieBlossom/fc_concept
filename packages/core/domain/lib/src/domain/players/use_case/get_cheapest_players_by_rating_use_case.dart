@@ -36,8 +36,9 @@ class GetCheapestPlayersByRatingUseCase {
               return player.copyWith(price: price);
             }).toList();
             return updatedPlayers
-              ?..sort((a, b) =>
-                  a.price!.price?.compareTo(b.price!.price ?? 0) ?? 0);
+              ?..sort(
+                (a, b) => a.price!.price?.compareTo(b.price!.price ?? 0) ?? 0,
+              );
           case Failure(exception: final exception):
             if (kDebugMode) {
               print(exception);

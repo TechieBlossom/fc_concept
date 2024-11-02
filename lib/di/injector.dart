@@ -4,8 +4,8 @@ import 'package:fc_concept/di/injection.dart';
 import 'package:feature_auth/auth.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_dashboard/dashboard.dart';
-import 'package:feature_drawer/drawer.dart';
 import 'package:feature_filter/filter.dart';
+import 'package:feature_menu/menu.dart';
 import 'package:feature_player/player.dart';
 import 'package:utility_di/di.dart';
 import 'package:utility_navigation/navigation.dart';
@@ -20,7 +20,7 @@ Future<void> initializeDi(String environment) async {
         apiClientDi,
         domainDi,
         navigationDi,
-        drawerDi,
+        menuDi,
         dashboardDi,
         playerDi,
         filterDi,

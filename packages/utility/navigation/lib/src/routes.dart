@@ -26,6 +26,10 @@ abstract class CompareRoutes {
   static const pagePlayerSelection = '/compare-player-selection';
 }
 
+abstract class MenuRoutes {
+  static const pageMenu = '/menu';
+}
+
 abstract class AuthRoutes {
   static const pageAuthLogin = '/auth-login';
   static const pageAuthRegister = '/auth-register';

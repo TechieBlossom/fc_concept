@@ -339,17 +339,17 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  feature_drawer:
-    dependency: "direct main"
-    description:
-      path: "packages/features/drawer"
-      relative: true
-    source: path
-    version: "0.0.1"
   feature_filter:
     dependency: "direct main"
     description:
       path: "packages/features/filter"
+      relative: true
+    source: path
+    version: "0.0.1"
+  feature_menu:
+    dependency: "direct main"
+    description:
+      path: "packages/features/menu"
       relative: true
     source: path
     version: "0.0.1"

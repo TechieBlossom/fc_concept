@@ -15,8 +15,6 @@ dependencies:
   core_domain:
     path: ../../../packages/core/domain
   dart_mappable: ^4.2.2
-  feature_drawer:
-    path: ../../../packages/features/drawer
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5

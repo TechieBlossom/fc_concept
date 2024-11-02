@@ -1,6 +1,7 @@
 import 'package:fc_concept/home/bottom_nav_scaffold/bottom_nav_scaffold.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_dashboard/dashboard.dart';
+import 'package:feature_menu/menu.dart';
 import 'package:feature_player/player.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -23,8 +24,8 @@ class AppRoutesConfig extends RoutesConfig {
                 label: 'Players',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.compare_rounded),
-                label: 'Compare',
+                icon: Icon(Icons.menu_rounded),
+                label: 'Menu',
               ),
             ],
           ),
@@ -48,8 +49,8 @@ class AppRoutesConfig extends RoutesConfig {
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                  path: CompareRoutes.pageCompare,
-                  builder: (context, state) => const ComparePage(player: null),
+                  path: MenuRoutes.pageMenu,
+                  builder: (context, state) => const MenuPage(),
                 ),
               ],
             ),
