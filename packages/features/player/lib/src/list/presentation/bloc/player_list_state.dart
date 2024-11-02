@@ -6,6 +6,7 @@ class PlayerListState with PlayerListStateMappable {
     this.processState = ProcessState.loading,
     this.query = '',
     this.isPaginating = false,
+    this.hasReachedEnd = false,
     this.page = 0,
     this.players,
     this.filterConfiguration,
@@ -14,6 +15,7 @@ class PlayerListState with PlayerListStateMappable {
   final ProcessState processState;
   final String query;
   final bool isPaginating;
+  final bool hasReachedEnd;
   final int page;
   final List<Player>? players;
   final FilterConfiguration? filterConfiguration;

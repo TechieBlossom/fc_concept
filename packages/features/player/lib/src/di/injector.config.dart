@@ -15,6 +15,8 @@ import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart'
     as _i388;
 import 'package:feature_player/src/navigation/navigator.dart' as _i777;
 import 'package:feature_player/src/navigation/routes.dart' as _i445;
+import 'package:feature_player/src/rating/bloc/players_list_by_rating_bloc.dart'
+    as _i792;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:utility_navigation/navigation.dart' as _i177;
@@ -37,6 +39,10 @@ _i174.GetIt init(
         gh<_i913.GetTopPlayerUseCase>(),
         gh<_i913.SearchPlayersUseCase>(),
         gh<_i913.FilterPlayersUseCase>(),
+        gh<_i777.PlayerNavigator>(),
+      ));
+  gh.factory<_i792.PlayersListByRatingBloc>(() => _i792.PlayersListByRatingBloc(
+        gh<_i913.GetCheapestPlayersByRatingUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));
   gh.factoryParam<_i1047.PlayerDetailBloc, _i1047.PlayerDetailBlocParams,

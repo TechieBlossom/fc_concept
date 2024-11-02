@@ -1,9 +1,9 @@
+import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:stream_transform/stream_transform.dart';
 
 part 'player_list_bloc.mapper.dart';
 
@@ -12,10 +12,6 @@ part 'player_list_event.dart';
 part 'player_list_state.dart';
 
 const _duration = Duration(milliseconds: 50);
-
-EventTransformer<Event> debounce<Event>(Duration duration) {
-  return (events, mapper) => events.debounce(duration).switchMap(mapper);
-}
 
 @injectable
 class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
@@ -113,6 +109,8 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
             final players = List<Player>.from(state.players ?? [])
               ..addAll(newPlayers!);
             _handleSuccess(emit, players);
+          } else {
+            emit(state.copyWith(isPaginating: false, hasReachedEnd: true));
           }
         }
       case Failure(exception: final exception):

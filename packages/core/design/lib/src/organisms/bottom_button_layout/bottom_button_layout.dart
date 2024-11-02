@@ -1,5 +1,6 @@
-import 'package:core_design/design.dart';
+import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/glass/glass.dart';
+import 'package:core_design/src/organisms/bottom_button_layout/shimmer_bottom_button_layout.dart';
 import 'package:flutter/material.dart';
 
 class BottomButtonLayout extends StatelessWidget {

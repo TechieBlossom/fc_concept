@@ -31,19 +31,20 @@ class PlayerDetailPage extends StatelessWidget {
       child: BlocBuilder<PlayerDetailBloc, PlayerDetailState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: PageTitle(
+            appBar: const PageTitle(
               autoImplyLeading: true,
-              action: 'Compare',
-              onAction: () {
-                context.read<PlayerDetailBloc>().add(
-                      CompareTap(),
-                    );
-              },
+              // action: 'Compare',
+              // onAction: () {
+              //   context.read<PlayerDetailBloc>().add(
+              //         CompareTap(),
+              //       );
+              // },
             ),
             body: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  const Space(space: AppSpacing.space4),
                   PlayerHeader(
                     player: state.player,
                     playerVersions: state.playerVersions,
@@ -78,7 +79,7 @@ class PlayerDetailPage extends StatelessWidget {
                         playStylesPlus: state.playerPlayStylesPlus!,
                       ),
                     ),
-                  ChemistryStyleLayout(
+                  ChemistryStyleCard(
                     allChemistryStyles: _isGk
                         ? chemistryStyles.where((e) => e.isGkStyle).toList()
                         : chemistryStyles.where((e) => !e.isGkStyle).toList(),

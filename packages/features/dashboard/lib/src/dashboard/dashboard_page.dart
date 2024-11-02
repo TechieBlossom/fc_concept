@@ -39,7 +39,13 @@ class DashboardPage extends StatelessWidget {
               child: Column(
                 children: [
                   Indices(state: state),
-                  const SizedBox(height: AppSpacing.space6),
+                  const SizedBox(height: AppSpacing.space4),
+                  CheapestPlayerByRatingCard(
+                    onTap: () => context.read<DashboardBloc>().add(
+                          CheapestByPlayerRatingTap(),
+                        ),
+                  ),
+                  const SizedBox(height: AppSpacing.space4),
                   PlayersGrid(
                     isLoading: state.processState == ProcessState.loading,
                     players: state.raritySquadPlayers[state.raritySquad],

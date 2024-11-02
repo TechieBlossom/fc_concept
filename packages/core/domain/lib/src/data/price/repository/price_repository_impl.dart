@@ -6,6 +6,8 @@ import 'package:core_domain/src/domain/price/model/player_price.dart';
 import 'package:core_domain/src/domain/price/price_repository.dart';
 import 'package:injectable/injectable.dart';
 
+const _itemsPerPage = 10;
+
 @Injectable(as: PriceRepository)
 class PriceRepositoryImpl extends PriceRepository {
   PriceRepositoryImpl(this._apiClient);
@@ -53,5 +55,28 @@ class PriceRepositoryImpl extends PriceRepository {
     return pricesResponse
         .map((priceJson) => PlayerOldPrice.fromMap(priceJson))
         .toList();
+  }
+
+  @override
+  Future<Result<List<PlayerOldPrice>>> getCheapestPricesByRating({
+    required int page,
+    required int rating,
+  }) async {
+    final start = page * _itemsPerPage;
+    final end = ((page + 1) * _itemsPerPage) - 1;
+
+    try {
+      final pricesResponse = await supabase
+          .from(TablePlayerPrice.tablePlayerPrice)
+          .select()
+          .eq(TablePlayerPrice.overall, rating)
+          .order(TablePlayerPrice.price, ascending: true)
+          .range(start, end);
+
+      final prices = mapPrices(pricesResponse);
+      return Success(data: prices);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
   }
 }

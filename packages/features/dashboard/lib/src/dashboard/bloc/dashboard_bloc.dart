@@ -33,8 +33,13 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<SwitchRaritySquad>(
       (event, emit) => _onSwitchRaritySquad(event, emit),
     );
-    on<PlayerTap>((event, _) => _onPlayerTap(event));
-    on<SearchTap>((_, __) => _onSearchTap());
+    on<PlayerTap>(
+      (event, _) async => _navigator.goToPlayerDetail(event.player),
+    );
+    on<SearchTap>((_, __) async => _navigator.goToSearch());
+    on<CheapestByPlayerRatingTap>(
+      (_, __) async => _navigator.goToPlayersListByRating(),
+    );
 
     add(Init());
   }
@@ -253,13 +258,5 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     Emitter<DashboardState> emit,
   ) {
     emit(state.copyWith(raritySquad: event.raritySquad));
-  }
-
-  Future<void> _onPlayerTap(PlayerTap event) async {
-    return _navigator.goToPlayerDetail(event.player);
-  }
-
-  Future<void> _onSearchTap() async {
-    return _navigator.goToSearch();
   }
 }

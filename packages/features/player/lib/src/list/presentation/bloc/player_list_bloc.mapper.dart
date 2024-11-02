@@ -622,6 +622,9 @@ class PlayerListStateMapper extends ClassMapperBase<PlayerListState> {
   static bool _$isPaginating(PlayerListState v) => v.isPaginating;
   static const Field<PlayerListState, bool> _f$isPaginating =
       Field('isPaginating', _$isPaginating, opt: true, def: false);
+  static bool _$hasReachedEnd(PlayerListState v) => v.hasReachedEnd;
+  static const Field<PlayerListState, bool> _f$hasReachedEnd =
+      Field('hasReachedEnd', _$hasReachedEnd, opt: true, def: false);
   static int _$page(PlayerListState v) => v.page;
   static const Field<PlayerListState, int> _f$page =
       Field('page', _$page, opt: true, def: 0);
@@ -639,6 +642,7 @@ class PlayerListStateMapper extends ClassMapperBase<PlayerListState> {
     #processState: _f$processState,
     #query: _f$query,
     #isPaginating: _f$isPaginating,
+    #hasReachedEnd: _f$hasReachedEnd,
     #page: _f$page,
     #players: _f$players,
     #filterConfiguration: _f$filterConfiguration,
@@ -649,6 +653,7 @@ class PlayerListStateMapper extends ClassMapperBase<PlayerListState> {
         processState: data.dec(_f$processState),
         query: data.dec(_f$query),
         isPaginating: data.dec(_f$isPaginating),
+        hasReachedEnd: data.dec(_f$hasReachedEnd),
         page: data.dec(_f$page),
         players: data.dec(_f$players),
         filterConfiguration: data.dec(_f$filterConfiguration));
@@ -714,6 +719,7 @@ abstract class PlayerListStateCopyWith<$R, $In extends PlayerListState, $Out>
       {ProcessState? processState,
       String? query,
       bool? isPaginating,
+      bool? hasReachedEnd,
       int? page,
       List<Player>? players,
       FilterConfiguration? filterConfiguration});
@@ -744,6 +750,7 @@ class _PlayerListStateCopyWithImpl<$R, $Out>
           {ProcessState? processState,
           String? query,
           bool? isPaginating,
+          bool? hasReachedEnd,
           int? page,
           Object? players = $none,
           Object? filterConfiguration = $none}) =>
@@ -751,6 +758,7 @@ class _PlayerListStateCopyWithImpl<$R, $Out>
         if (processState != null) #processState: processState,
         if (query != null) #query: query,
         if (isPaginating != null) #isPaginating: isPaginating,
+        if (hasReachedEnd != null) #hasReachedEnd: hasReachedEnd,
         if (page != null) #page: page,
         if (players != $none) #players: players,
         if (filterConfiguration != $none)
@@ -761,6 +769,7 @@ class _PlayerListStateCopyWithImpl<$R, $Out>
       processState: data.get(#processState, or: $value.processState),
       query: data.get(#query, or: $value.query),
       isPaginating: data.get(#isPaginating, or: $value.isPaginating),
+      hasReachedEnd: data.get(#hasReachedEnd, or: $value.hasReachedEnd),
       page: data.get(#page, or: $value.page),
       players: data.get(#players, or: $value.players),
       filterConfiguration:

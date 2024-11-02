@@ -10,6 +10,7 @@ export 'package:core_design/src/molecules/button/secondary_button.dart';
 export 'package:core_design/src/molecules/chemistry/chemistry_icon.dart';
 export 'package:core_design/src/molecules/compare/compare_item.dart';
 export 'package:core_design/src/molecules/compare/compare_list_item.dart';
+export 'package:core_design/src/molecules/glass/glass.dart';
 export 'package:core_design/src/molecules/image/club_image.dart';
 export 'package:core_design/src/molecules/image/league_image.dart';
 export 'package:core_design/src/molecules/image/nation_image.dart';

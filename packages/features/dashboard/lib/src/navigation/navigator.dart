@@ -11,6 +11,10 @@ class DashboardNavigator extends AppNavigator {
         extra: player,
       );
 
+  Future<void> goToPlayersListByRating() async => goRouter.push(
+        PlayerRoutes.pagePlayerListByRating,
+      );
+
   Future<void> goToSearch() async => goRouter.go(
         PlayerRoutes.pagePlayerList,
       );

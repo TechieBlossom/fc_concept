@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 
 const _nextPageShimmers = 3;
 
+typedef PlayerListItemBuilder = Widget Function({
+  required Player player,
+  required VoidCallback onFavoriteToggle,
+});
+
 class PlayerList extends StatefulWidget {
   const PlayerList({
     super.key,
@@ -14,14 +19,16 @@ class PlayerList extends StatefulWidget {
     required this.query,
     required this.nextPage,
     this.resultWithSelection = false,
+    this.playerListItemBuilder,
   });
 
   final ProcessState processState;
   final bool isPaginating;
   final List<Player>? players;
-  final String query;
+  final String? query;
   final VoidCallback? nextPage;
   final bool resultWithSelection;
+  final PlayerListItemBuilder? playerListItemBuilder;
 
   @override
   State<PlayerList> createState() => _PlayerListState();
@@ -71,6 +78,12 @@ class _PlayerListState extends State<PlayerList> {
 
             final player = widget.players?[index];
             if (player != null) {
+              if (widget.playerListItemBuilder != null) {
+                return widget.playerListItemBuilder!(
+                  player: player,
+                  onFavoriteToggle: () {},
+                );
+              }
               return PlayerListItem(
                 player: player,
                 onTap: () => context.read<PlayerListBloc>().add(
@@ -92,7 +105,7 @@ class _PlayerListState extends State<PlayerList> {
       case ProcessState.loading:
         return const LoadingList();
       case ProcessState.empty:
-        if (widget.query.isNotEmpty) {
+        if (widget.query?.isNotEmpty ?? false) {
           return InfoMessage(
             message: 'No Players with name',
             highlightMessage: widget.query,

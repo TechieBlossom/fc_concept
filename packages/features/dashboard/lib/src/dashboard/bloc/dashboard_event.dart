@@ -46,3 +46,7 @@ class PlayerTap extends DashboardEvent with PlayerTapMappable {
 
 @MappableClass(discriminatorValue: 'searchTap')
 class SearchTap extends DashboardEvent with SearchTapMappable {}
+
+@MappableClass(discriminatorValue: 'cheapestPlayerByRatingTap')
+class CheapestByPlayerRatingTap extends DashboardEvent
+    with CheapestByPlayerRatingTapMappable {}

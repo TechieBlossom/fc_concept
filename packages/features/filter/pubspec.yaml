@@ -21,7 +21,6 @@ dependencies:
   flutter_bloc: ^8.1.5
   injectable: ^2.3.2
   json_annotation: ^4.8.1
-  stream_transform: ^2.1.0
   utility_di:
     path: ../../../packages/utility/di
   utility_navigation:

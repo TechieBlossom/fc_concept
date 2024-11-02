@@ -25,8 +25,8 @@ class PageTitle extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      surfaceTintColor: context.colors.backgroundPrimary,
-      backgroundColor: context.colors.backgroundPrimary,
+      // surfaceTintColor: context.colors.backgroundPrimary,
+      // backgroundColor: context.colors.backgroundPrimary,
       centerTitle: onBack == null && onAction == null,
       leading: leading ??
           (autoImplyLeading
@@ -36,7 +36,9 @@ class PageTitle extends StatelessWidget implements PreferredSize {
                 )
               : null),
       title: title != null ? Text(title!) : null,
-      titleTextStyle: context.typography.headline,
+      titleTextStyle: context.typography.headline.copyWith(
+        color: context.colors.contentPrimary,
+      ),
       titleSpacing: 0,
       actions: [
         if (action != null)

@@ -13,4 +13,10 @@ class PlayStyleNestedFilterState with PlayStyleNestedFilterStateMappable {
   final PlayStyleNestedFilterPageParams? playStyleNestedFilterPageParams;
   final List<PlayStyle>? playStyles;
   final List<PlayStyle>? selectedPlayStyles;
+
+  Map<PlayStyleCategory, List<PlayStyle>> get playStylesByCategory =>
+      groupBy<PlayStyle, PlayStyleCategory>(
+        playStyles?.sorted((a, b) => a.categoryId.index - b.categoryId.index) ?? [],
+            (playStyle) => playStyle.categoryId,
+      );
 }

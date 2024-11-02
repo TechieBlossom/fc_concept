@@ -15,8 +15,8 @@ abstract class _LightColors {
   static const gold2 = Color(0xFFC0A203);
   static const red = Color(0xFFEA6868);
 
-  static const chemistryInactiveColor = Color(0xFF44546D);
-  static const chemistryActiveColor = Color(0xFF71B3CE);
+  static const chemistryInactiveColor = Color(0x2244546D);
+  static const chemistryActiveColor = Color(0xFF336A85);
 }
 
 class AppColors extends ThemeExtension<AppColors> {

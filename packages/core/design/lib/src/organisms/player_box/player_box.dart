@@ -16,7 +16,7 @@ class PlayerBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = getPlayerColors(context, player);
     final color1 = Color(colors.$1);
-    final color2 = Color(colors.$1).withOpacity(0.6);
+    final color2 = Color(colors.$1).withOpacity(0.5);
     return InkWell(
       onTap: onTap,
       child: SizedBox(
@@ -38,8 +38,8 @@ class PlayerBox extends StatelessWidget {
                       color1,
                       color2,
                     ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
                   border: BorderDirectional(

@@ -35,6 +35,9 @@ class RoleMapper extends ClassMapperBase<Role> {
   static String _$cleanName(Role v) => v.cleanName;
   static const Field<Role, String> _f$cleanName =
       Field('cleanName', _$cleanName);
+  static String _$fullPositionName(Role v) => v.fullPositionName;
+  static const Field<Role, String> _f$fullPositionName =
+      Field('fullPositionName', _$fullPositionName);
   static String _$description(Role v) => v.description;
   static const Field<Role, String> _f$description =
       Field('description', _$description);
@@ -47,6 +50,7 @@ class RoleMapper extends ClassMapperBase<Role> {
     #isPlus: _f$isPlus,
     #isPlusPlus: _f$isPlusPlus,
     #cleanName: _f$cleanName,
+    #fullPositionName: _f$fullPositionName,
     #description: _f$description,
   };
 
@@ -58,6 +62,7 @@ class RoleMapper extends ClassMapperBase<Role> {
         isPlus: data.dec(_f$isPlus),
         isPlusPlus: data.dec(_f$isPlusPlus),
         cleanName: data.dec(_f$cleanName),
+        fullPositionName: data.dec(_f$fullPositionName),
         description: data.dec(_f$description));
   }
 
@@ -114,6 +119,7 @@ abstract class RoleCopyWith<$R, $In extends Role, $Out>
       bool? isPlus,
       bool? isPlusPlus,
       String? cleanName,
+      String? fullPositionName,
       String? description});
   RoleCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
@@ -132,6 +138,7 @@ class _RoleCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Role, $Out>
           bool? isPlus,
           bool? isPlusPlus,
           String? cleanName,
+          String? fullPositionName,
           String? description}) =>
       $apply(FieldCopyWithData({
         if (eaId != null) #eaId: eaId,
@@ -140,6 +147,7 @@ class _RoleCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Role, $Out>
         if (isPlus != null) #isPlus: isPlus,
         if (isPlusPlus != null) #isPlusPlus: isPlusPlus,
         if (cleanName != null) #cleanName: cleanName,
+        if (fullPositionName != null) #fullPositionName: fullPositionName,
         if (description != null) #description: description
       }));
   @override
@@ -150,6 +158,8 @@ class _RoleCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Role, $Out>
       isPlus: data.get(#isPlus, or: $value.isPlus),
       isPlusPlus: data.get(#isPlusPlus, or: $value.isPlusPlus),
       cleanName: data.get(#cleanName, or: $value.cleanName),
+      fullPositionName:
+          data.get(#fullPositionName, or: $value.fullPositionName),
       description: data.get(#description, or: $value.description));
 
   @override

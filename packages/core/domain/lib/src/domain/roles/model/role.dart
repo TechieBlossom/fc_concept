@@ -11,6 +11,7 @@ class Role with RoleMappable {
     required this.isPlus,
     required this.isPlusPlus,
     required this.cleanName,
+    required this.fullPositionName,
     required this.description,
   });
 
@@ -20,6 +21,7 @@ class Role with RoleMappable {
   final bool isPlus;
   final bool isPlusPlus;
   final String cleanName;
+  final String fullPositionName;
   final String description;
 
   static const fromMap = RoleMapper.fromMap;

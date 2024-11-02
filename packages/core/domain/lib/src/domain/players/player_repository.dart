@@ -64,4 +64,6 @@ abstract class PlayerRepository {
   });
 
   Future<int> getPlayerCount();
+
+  Future<Result<List<Player>?>> getPlayersByEaIds({required List<int> eaIds});
 }

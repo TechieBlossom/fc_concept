@@ -23,9 +23,10 @@ class PlayStyleInfoSheet extends StatelessWidget {
         Align(
           alignment: Alignment.centerLeft,
           child: PlayStyleWidget(
-              playStyle: playStyle,
-              isPlus: isPlus,
-              size: PlayStyleWidgetSize.medium),
+            playStyle: playStyle,
+            isPlus: isPlus,
+            size: PlayStyleWidgetSize.medium,
+          ),
         ),
         const SizedBox(height: AppSpacing.space5),
         Text(

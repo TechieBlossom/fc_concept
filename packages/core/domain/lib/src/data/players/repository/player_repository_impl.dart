@@ -475,4 +475,21 @@ class PlayerRepositoryImpl extends PlayerRepository {
 
     return response.count;
   }
+
+  @override
+  Future<Result<List<Player>?>> getPlayersByEaIds({
+    required List<int> eaIds,
+  }) async {
+    try {
+      final playersResponse = await supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList)
+          .inFilter(TablePlayer.eaId, eaIds);
+
+      final players = mapPlayers(playersResponse);
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
 }

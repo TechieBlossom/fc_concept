@@ -1,6 +1,5 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
-import 'package:feature_drawer/drawer.dart';
 import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart';
 import 'package:feature_player/src/list/presentation/player_list.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,6 @@ class _PlayerListPageState extends State<PlayerListPage> {
                     FilterTap(),
                   ),
             ),
-            drawer: AppDrawer(scaffoldKey: _scaffoldKey),
             body: PlayerList(
               processState: state.processState,
               isPaginating: state.isPaginating,

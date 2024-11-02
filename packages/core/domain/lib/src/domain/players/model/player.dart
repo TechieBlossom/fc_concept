@@ -34,6 +34,7 @@ class Player with PlayerMappable {
     this.weight,
     this.dateOfBirth,
     this.position,
+    this.alternativePositionIds,
     this.skillMoves,
     this.weakFoot,
     this.foot,
@@ -114,6 +115,7 @@ class Player with PlayerMappable {
   final int? weight;
   @MappableField(key: TablePosition.tablePosition)
   final Position? position;
+  final List<int>? alternativePositionIds;
   @MappableField(key: TablePlayer.playStyles)
   final List<int>? playStyles;
   @MappableField(key: TablePlayer.playStylesPlus)

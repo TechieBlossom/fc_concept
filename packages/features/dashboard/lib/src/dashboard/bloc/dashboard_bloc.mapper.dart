@@ -19,6 +19,7 @@ class DashboardEventMapper extends ClassMapperBase<DashboardEvent> {
       SwitchRaritySquadMapper.ensureInitialized();
       PlayerTapMapper.ensureInitialized();
       SearchTapMapper.ensureInitialized();
+      CheapestByPlayerRatingTapMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -747,6 +748,124 @@ class _SearchTapCopyWithImpl<$R, $Out>
   SearchTapCopyWith<$R2, SearchTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
       _SearchTapCopyWithImpl($value, $cast, t);
+}
+
+class CheapestByPlayerRatingTapMapper
+    extends SubClassMapperBase<CheapestByPlayerRatingTap> {
+  CheapestByPlayerRatingTapMapper._();
+
+  static CheapestByPlayerRatingTapMapper? _instance;
+  static CheapestByPlayerRatingTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals
+          .use(_instance = CheapestByPlayerRatingTapMapper._());
+      DashboardEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'CheapestByPlayerRatingTap';
+
+  @override
+  final MappableFields<CheapestByPlayerRatingTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'cheapestPlayerByRatingTap';
+  @override
+  late final ClassMapperBase superMapper =
+      DashboardEventMapper.ensureInitialized();
+
+  static CheapestByPlayerRatingTap _instantiate(DecodingData data) {
+    return CheapestByPlayerRatingTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static CheapestByPlayerRatingTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<CheapestByPlayerRatingTap>(map);
+  }
+
+  static CheapestByPlayerRatingTap fromJson(String json) {
+    return ensureInitialized().decodeJson<CheapestByPlayerRatingTap>(json);
+  }
+}
+
+mixin CheapestByPlayerRatingTapMappable {
+  String toJson() {
+    return CheapestByPlayerRatingTapMapper.ensureInitialized()
+        .encodeJson<CheapestByPlayerRatingTap>(
+            this as CheapestByPlayerRatingTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return CheapestByPlayerRatingTapMapper.ensureInitialized()
+        .encodeMap<CheapestByPlayerRatingTap>(
+            this as CheapestByPlayerRatingTap);
+  }
+
+  CheapestByPlayerRatingTapCopyWith<CheapestByPlayerRatingTap,
+          CheapestByPlayerRatingTap, CheapestByPlayerRatingTap>
+      get copyWith => _CheapestByPlayerRatingTapCopyWithImpl(
+          this as CheapestByPlayerRatingTap, $identity, $identity);
+  @override
+  String toString() {
+    return CheapestByPlayerRatingTapMapper.ensureInitialized()
+        .stringifyValue(this as CheapestByPlayerRatingTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return CheapestByPlayerRatingTapMapper.ensureInitialized()
+        .equalsValue(this as CheapestByPlayerRatingTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return CheapestByPlayerRatingTapMapper.ensureInitialized()
+        .hashValue(this as CheapestByPlayerRatingTap);
+  }
+}
+
+extension CheapestByPlayerRatingTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, CheapestByPlayerRatingTap, $Out> {
+  CheapestByPlayerRatingTapCopyWith<$R, CheapestByPlayerRatingTap, $Out>
+      get $asCheapestByPlayerRatingTap => $base
+          .as((v, t, t2) => _CheapestByPlayerRatingTapCopyWithImpl(v, t, t2));
+}
+
+abstract class CheapestByPlayerRatingTapCopyWith<
+    $R,
+    $In extends CheapestByPlayerRatingTap,
+    $Out> implements DashboardEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  CheapestByPlayerRatingTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _CheapestByPlayerRatingTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, CheapestByPlayerRatingTap, $Out>
+    implements
+        CheapestByPlayerRatingTapCopyWith<$R, CheapestByPlayerRatingTap, $Out> {
+  _CheapestByPlayerRatingTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<CheapestByPlayerRatingTap> $mapper =
+      CheapestByPlayerRatingTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  CheapestByPlayerRatingTap $make(CopyWithData data) =>
+      CheapestByPlayerRatingTap();
+
+  @override
+  CheapestByPlayerRatingTapCopyWith<$R2, CheapestByPlayerRatingTap, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _CheapestByPlayerRatingTapCopyWithImpl($value, $cast, t);
 }
 
 class DashboardStateMapper extends ClassMapperBase<DashboardState> {

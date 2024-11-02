@@ -51,41 +51,10 @@ class PlayStyleNestedFilterPage extends StatelessWidget {
               ],
             ),
             body: switch (state.processState) {
-              ProcessState.success => Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: AppSpacing.space5,
-                          right: AppSpacing.space5,
-                          bottom: AppSpacing.space9,
-                        ),
-                        child: Wrap(
-                          alignment: WrapAlignment.center,
-                          spacing: AppSpacing.space4,
-                          runSpacing: AppSpacing.space4,
-                          children: [
-                            ...state.playStyles!
-                                .map(
-                                  (playStyle) => PlayStyleFilterItem(
-                                    playStyle: playStyle,
-                                    isSelected: (state.selectedPlayStyles ??
-                                                playStyleNestedFilterPageParams
-                                                    .items)
-                                            ?.contains(playStyle) ??
-                                        false,
-                                    onTap: () => context
-                                        .read<PlayStyleNestedFilterBloc>()
-                                        .add(SelectPlayStyle(item: playStyle)),
-                                  ),
-                                )
-                                .toList(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+              ProcessState.success => _Success(
+                  state: state,
+                  playStyleNestedFilterPageParams:
+                      playStyleNestedFilterPageParams,
                 ),
               ProcessState.loading => const LoadingList(
                   loadingListType: LoadingListType.filterGroup,
@@ -96,6 +65,53 @@ class PlayStyleNestedFilterPage extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class _Success extends StatelessWidget {
+  const _Success({
+    required this.state,
+    required this.playStyleNestedFilterPageParams,
+  });
+
+  final PlayStyleNestedFilterState state;
+  final PlayStyleNestedFilterPageParams playStyleNestedFilterPageParams;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: AppSpacing.space5,
+              right: AppSpacing.space5,
+              bottom: AppSpacing.space9,
+            ),
+            child: Column(
+              children: state.playStylesByCategory.entries
+                  .map<Widget>(
+                    (entry) {
+                      return PlayStyleFilterCategoryGroup(
+                        playStyles: entry.value,
+                        onPlayStyleTap: (playStyle) => context
+                            .read<PlayStyleNestedFilterBloc>()
+                            .add(SelectPlayStyle(item: playStyle)),
+                        selectedPlayStyles: state.selectedPlayStyles ??
+                            playStyleNestedFilterPageParams.items,
+                      );
+                    },
+                  )
+                  .intersperse(
+                    const Space(space: AppSpacing.space5),
+                  )
+                  .toList(),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

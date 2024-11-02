@@ -4,4 +4,5 @@ class TablePlayerPrice {
   static const tablePlayerPrice = 'table_player_price';
   static const eaId = 'eaId';
   static const price = 'price';
+  static const overall = 'overall';
 }

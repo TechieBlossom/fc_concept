@@ -73,6 +73,10 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static Position? _$position(Player v) => v.position;
   static const Field<Player, Position> _f$position =
       Field('position', _$position, key: 'table_core_position', opt: true);
+  static List<int>? _$alternativePositionIds(Player v) =>
+      v.alternativePositionIds;
+  static const Field<Player, List<int>> _f$alternativePositionIds =
+      Field('alternativePositionIds', _$alternativePositionIds, opt: true);
   static int? _$skillMoves(Player v) => v.skillMoves;
   static const Field<Player, int> _f$skillMoves =
       Field('skillMoves', _$skillMoves, opt: true);
@@ -269,6 +273,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
     #weight: _f$weight,
     #dateOfBirth: _f$dateOfBirth,
     #position: _f$position,
+    #alternativePositionIds: _f$alternativePositionIds,
     #skillMoves: _f$skillMoves,
     #weakFoot: _f$weakFoot,
     #foot: _f$foot,
@@ -347,6 +352,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
         weight: data.dec(_f$weight),
         dateOfBirth: data.dec(_f$dateOfBirth),
         position: data.dec(_f$position),
+        alternativePositionIds: data.dec(_f$alternativePositionIds),
         skillMoves: data.dec(_f$skillMoves),
         weakFoot: data.dec(_f$weakFoot),
         foot: data.dec(_f$foot),
@@ -459,6 +465,8 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
   LeagueCopyWith<$R, League, League>? get league;
   PlayerOldPriceCopyWith<$R, PlayerOldPrice, PlayerOldPrice>? get price;
   PositionCopyWith<$R, Position, Position>? get position;
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>?
+      get alternativePositionIds;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStyles;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStylesPlus;
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get rolesPlus;
@@ -480,6 +488,7 @@ abstract class PlayerCopyWith<$R, $In extends Player, $Out>
       int? weight,
       DateTime? dateOfBirth,
       Position? position,
+      List<int>? alternativePositionIds,
       int? skillMoves,
       int? weakFoot,
       int? foot,
@@ -566,6 +575,14 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
   PositionCopyWith<$R, Position, Position>? get position =>
       $value.position?.copyWith.$chain((v) => call(position: v));
   @override
+  ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>?
+      get alternativePositionIds => $value.alternativePositionIds != null
+          ? ListCopyWith(
+              $value.alternativePositionIds!,
+              (v, t) => ObjectCopyWith(v, $identity, t),
+              (v) => call(alternativePositionIds: v))
+          : null;
+  @override
   ListCopyWith<$R, int, ObjectCopyWith<$R, int, int>>? get playStyles =>
       $value.playStyles != null
           ? ListCopyWith(
@@ -615,6 +632,7 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           Object? weight = $none,
           Object? dateOfBirth = $none,
           Object? position = $none,
+          Object? alternativePositionIds = $none,
           Object? skillMoves = $none,
           Object? weakFoot = $none,
           Object? foot = $none,
@@ -690,6 +708,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
         if (weight != $none) #weight: weight,
         if (dateOfBirth != $none) #dateOfBirth: dateOfBirth,
         if (position != $none) #position: position,
+        if (alternativePositionIds != $none)
+          #alternativePositionIds: alternativePositionIds,
         if (skillMoves != $none) #skillMoves: skillMoves,
         if (weakFoot != $none) #weakFoot: weakFoot,
         if (foot != $none) #foot: foot,
@@ -791,6 +811,8 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
       weight: data.get(#weight, or: $value.weight),
       dateOfBirth: data.get(#dateOfBirth, or: $value.dateOfBirth),
       position: data.get(#position, or: $value.position),
+      alternativePositionIds:
+          data.get(#alternativePositionIds, or: $value.alternativePositionIds),
       skillMoves: data.get(#skillMoves, or: $value.skillMoves),
       weakFoot: data.get(#weakFoot, or: $value.weakFoot),
       foot: data.get(#foot, or: $value.foot),
@@ -866,11 +888,9 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
           or: $value.attributeStandingTackle),
       attributeSlidingTackle:
           data.get(#attributeSlidingTackle, or: $value.attributeSlidingTackle),
-      attributeVolleys:
-          data.get(#attributeVolleys, or: $value.attributeVolleys),
+      attributeVolleys: data.get(#attributeVolleys, or: $value.attributeVolleys),
       attributeCurve: data.get(#attributeCurve, or: $value.attributeCurve),
-      attributePenalties:
-          data.get(#attributePenalties, or: $value.attributePenalties),
+      attributePenalties: data.get(#attributePenalties, or: $value.attributePenalties),
       attributeGkDiving: data.get(#attributeGkDiving, or: $value.attributeGkDiving),
       attributeGkHandling: data.get(#attributeGkHandling, or: $value.attributeGkHandling),
       attributeGkKicking: data.get(#attributeGkKicking, or: $value.attributeGkKicking),

@@ -16,6 +16,7 @@ abstract class DashboardRoutes {
 
 abstract class PlayerRoutes {
   static const pagePlayerList = '/player-list';
+  static const pagePlayerListByRating= '/player-list-by-rating';
   static const pagePopularPlayerList = '/popular-player-list';
   static const pagePlayerDetail = '/player-detail';
 }

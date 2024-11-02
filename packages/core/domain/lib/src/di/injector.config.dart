@@ -78,6 +78,8 @@ import 'package:core_domain/src/domain/play_styles/use_case/get_play_styles_by_i
 import 'package:core_domain/src/domain/players/player_repository.dart' as _i294;
 import 'package:core_domain/src/domain/players/use_case/filter_players_use_case.dart'
     as _i120;
+import 'package:core_domain/src/domain/players/use_case/get_cheapest_players_by_rating_use_case.dart'
+    as _i288;
 import 'package:core_domain/src/domain/players/use_case/get_player_by_version_use_case.dart'
     as _i216;
 import 'package:core_domain/src/domain/players/use_case/get_player_count_use_case.dart'
@@ -86,6 +88,8 @@ import 'package:core_domain/src/domain/players/use_case/get_player_details_use_c
     as _i75;
 import 'package:core_domain/src/domain/players/use_case/get_player_versions_use_case.dart'
     as _i77;
+import 'package:core_domain/src/domain/players/use_case/get_players_by_ea_ids_use_case.dart'
+    as _i94;
 import 'package:core_domain/src/domain/players/use_case/get_positional_players_use_case.dart'
     as _i274;
 import 'package:core_domain/src/domain/players/use_case/get_recent_players_use_case.dart'
@@ -105,6 +109,8 @@ import 'package:core_domain/src/domain/positions/use_case/get_all_positions_use_
 import 'package:core_domain/src/domain/positions/use_case/get_positions_from_position_group.dart'
     as _i264;
 import 'package:core_domain/src/domain/price/price_repository.dart' as _i526;
+import 'package:core_domain/src/domain/price/use_case/get_cheapest_prices_by_rating_use_case.dart'
+    as _i529;
 import 'package:core_domain/src/domain/price/use_case/get_player_old_prices_use_case.dart'
     as _i47;
 import 'package:core_domain/src/domain/price/use_case/get_player_price_use_case.dart'
@@ -177,10 +183,14 @@ _i174.GetIt init(
       () => _i282.GetPlayerPriceUseCase(gh<_i526.PriceRepository>()));
   gh.factory<_i47.GetPlayerOldPricesUseCase>(
       () => _i47.GetPlayerOldPricesUseCase(gh<_i526.PriceRepository>()));
+  gh.factory<_i529.GetCheapestPricesByRatingUseCase>(() =>
+      _i529.GetCheapestPricesByRatingUseCase(gh<_i526.PriceRepository>()));
   gh.factory<_i739.GetOtherLeaguesUseCase>(
       () => _i739.GetOtherLeaguesUseCase(gh<_i191.LeagueRepository>()));
   gh.factory<_i439.GetTopLeaguesUseCase>(
       () => _i439.GetTopLeaguesUseCase(gh<_i191.LeagueRepository>()));
+  gh.factory<_i94.GetPlayersByEaIdsUseCase>(
+      () => _i94.GetPlayersByEaIdsUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i651.GetAllRolesUseCase>(
       () => _i651.GetAllRolesUseCase(gh<_i907.RoleRepository>()));
   gh.factory<_i1022.GetClubsByLeagueUseCase>(
@@ -199,6 +209,11 @@ _i174.GetIt init(
       () => _i728.SetSessionUseCase(gh<_i172.AuthRepository>()));
   gh.factory<_i929.SignOutUserUseCase>(
       () => _i929.SignOutUserUseCase(gh<_i172.AuthRepository>()));
+  gh.factory<_i288.GetCheapestPlayersByRatingUseCase>(
+      () => _i288.GetCheapestPlayersByRatingUseCase(
+            gh<_i529.GetCheapestPricesByRatingUseCase>(),
+            gh<_i94.GetPlayersByEaIdsUseCase>(),
+          ));
   gh.factory<_i394.GetPlayerCountUseCase>(
       () => _i394.GetPlayerCountUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i354.SearchPlayersUseCase>(

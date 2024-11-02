@@ -50,37 +50,9 @@ class RoleNestedFilterPage extends StatelessWidget {
               ],
             ),
             body: switch (state.processState) {
-              ProcessState.success => Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: AppSpacing.space9,
-                        ),
-                        child: FilterGroup(
-                          pillItems: state.roles!
-                              .map(
-                                (item) => PillItem<Role>(
-                                  data: item,
-                                  text: '${item.name} | ${item.positionName}',
-                                  isSelected: (state.selectedRoles ??
-                                              roleNestedFilterPageParams.items)
-                                          ?.contains(item) ??
-                                      false,
-                                  onTap: () =>
-                                      context.read<RoleNestedFilterBloc>().add(
-                                            SelectRole(
-                                              item: item,
-                                            ),
-                                          ),
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      ),
-                    ),
-                  ],
+              ProcessState.success => _Success(
+                  state: state,
+                  roleNestedFilterPageParams: roleNestedFilterPageParams,
                 ),
               ProcessState.loading => const LoadingList(
                   loadingListType: LoadingListType.filterGroup,
@@ -91,6 +63,53 @@ class RoleNestedFilterPage extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class _Success extends StatelessWidget {
+  const _Success({
+    required this.state,
+    required this.roleNestedFilterPageParams,
+  });
+
+  final RoleNestedFilterState state;
+  final RoleNestedFilterPageParams roleNestedFilterPageParams;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: AppSpacing.space5,
+              right: AppSpacing.space5,
+              bottom: AppSpacing.space9,
+            ),
+            child: Column(
+              children: state.rolesByPosition.entries
+                  .map<Widget>(
+                    (entry) {
+                      return RoleFilterPositionGroup(
+                        roles: entry.value,
+                        onRoleTap: (role) => context
+                            .read<RoleNestedFilterBloc>()
+                            .add(SelectRole(item: role)),
+                        selectedRoles: state.selectedRoles ??
+                            roleNestedFilterPageParams.items,
+                      );
+                    },
+                  )
+                  .intersperse(
+                    const Space(space: AppSpacing.space5),
+                  )
+                  .toList(),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
