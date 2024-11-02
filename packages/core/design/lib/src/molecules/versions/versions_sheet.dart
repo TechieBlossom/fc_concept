@@ -32,6 +32,7 @@ class VersionsSheet extends StatelessWidget {
           (player) {
             return PlayerListItem(
               player: player,
+              showTeams: false,
               onTap: () {
                 onTap(player.eaId);
                 Navigator.of(context).pop();

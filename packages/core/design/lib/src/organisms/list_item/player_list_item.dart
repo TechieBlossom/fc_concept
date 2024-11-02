@@ -18,12 +18,14 @@ class PlayerListItem extends StatefulWidget {
     required this.onTap,
     this.isFavorite = false,
     this.onFavoriteToggle,
+    this.showTeams = true,
   });
 
   // Image widget is null, Just for catalog purpose
   final Player player;
   final VoidCallback onTap;
   final bool isFavorite;
+  final bool showTeams;
   final VoidCallback? onFavoriteToggle;
 
   @override
@@ -52,11 +54,8 @@ class _PlayerListItemState extends State<PlayerListItem>
     final colors = getPlayerColors(context, player);
     return InkWell(
       onTap: widget.onTap,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: 75,
-          maxHeight: 75,
-        ),
+      child: SizedBox(
+        height: widget.showTeams ? 75 : 54,
         child: Slidable(
           controller: _controller,
           key: LabeledGlobalKey(player.eaId.toString()),
@@ -117,27 +116,29 @@ class _PlayerListItemState extends State<PlayerListItem>
                         player.rarity.name,
                         style: context.typography.caption1,
                       ),
-                      SizedBox(height: AppSpacing.space2),
-                      Row(
-                        children: [
-                          if (player.club != null) ...[
-                            ClubImage(club: player.club!),
-                            const Space(
-                              space: AppSpacing.space2,
-                              orientation: Axis.horizontal,
-                            ),
+                      if (widget.showTeams) ...[
+                        SizedBox(height: AppSpacing.space2),
+                        Row(
+                          children: [
+                            if (player.club != null) ...[
+                              ClubImage(club: player.club!),
+                              const Space(
+                                space: AppSpacing.space2,
+                                orientation: Axis.horizontal,
+                              ),
+                            ],
+                            if (player.nation != null) ...[
+                              NationImage(nation: player.nation!),
+                              const Space(
+                                space: AppSpacing.space2,
+                                orientation: Axis.horizontal,
+                              ),
+                            ],
+                            if (player.league?.name != 'Icons')
+                              LeagueImage(league: player.league!),
                           ],
-                          if (player.nation != null) ...[
-                            NationImage(nation: player.nation!),
-                            const Space(
-                              space: AppSpacing.space2,
-                              orientation: Axis.horizontal,
-                            ),
-                          ],
-                          if (player.league?.name != 'Icons')
-                            LeagueImage(league: player.league!),
-                        ],
-                      ),
+                        ),
+                      ],
                     ],
                   ),
                 ),

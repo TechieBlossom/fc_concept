@@ -136,14 +136,10 @@ class _CheapestPlayerByRatingListItemState
                   ),
                 ),
               ),
-              // PositionBox(
-              //   position: player.position,
-              //   size: PositionBoxSize.medium,
-              // ),
               SizedBox(width: AppSpacing.space3),
               PositionBox(
                 position: player.position,
-                size: PositionBoxSize.small,
+                size: PositionBoxSize.medium,
               ),
               Space(space: AppSpacing.space3, orientation: Axis.horizontal),
               Container(
