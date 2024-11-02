@@ -1,4 +1,5 @@
 import 'package:core_domain/src/domain/models/result.dart';
+import 'package:core_domain/src/domain/players/model/player.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,9 +9,13 @@ class GetPlayerVersionsUseCase {
 
   final PlayerRepository _playerRepository;
 
-  Future<Result<List<(int, int, String)>?>> call({
-    required String name,
+  Future<Result<List<Player>?>> call({
+    required int basePlayerEaId,
+    required int eaId,
   }) async {
-    return _playerRepository.getPlayerVersions(name: name);
+    return _playerRepository.getPlayerVersions(
+      basePlayerEaId: basePlayerEaId,
+      eaId: eaId,
+    );
   }
 }

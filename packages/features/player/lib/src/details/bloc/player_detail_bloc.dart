@@ -32,18 +32,16 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     @factoryParam this.params,
     this._getPlayerDetailsUseCase,
     this._getPlayerVersionsUseCase,
-    this._getPlayerByVersionUseCase,
     this._getRolesByIdsUseCase,
     this._getPlayStylesByIdsUseCase,
     this._getPlayerPriceUseCase,
     this._playerNavigator,
     this._getPositionsByIdsUseCase,
   ) : super(PlayerDetailState(player: params.player)) {
-    on<Init>((event, emit) => _initial(params.player, emit));
+    on<Init>((event, emit) => _initial(event.player, emit));
     on<VersionTap>(
       (event, emit) => _versionTap(
         event.playerId,
-        event.versionId,
         emit,
       ),
     );
@@ -63,7 +61,6 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   final PlayerDetailBlocParams params;
   final GetPlayerDetailsUseCase _getPlayerDetailsUseCase;
   final GetPlayerVersionsUseCase _getPlayerVersionsUseCase;
-  final GetPlayerByVersionUseCase _getPlayerByVersionUseCase;
   final GetRolesByIdsUseCase _getRolesByIdsUseCase;
   final GetPlayStylesByIdsUseCase _getPlayStylesByIdsUseCase;
   final GetPlayerPriceUseCase _getPlayerPriceUseCase;
@@ -76,20 +73,25 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   }
 
   Future<void> _versionTap(
-    int playerId,
-    int versionId,
+    int eaId,
     Emitter<PlayerDetailState> emit,
   ) async {
+    final currentPlayer = state.player;
+    final selectedPlayer = state.playerVersions?.firstWhereOrNull(
+      (player) => player.eaId == eaId,
+    );
+
     emit(
       state.copyWith(
-        selectedVersion: versionId,
+        player: selectedPlayer,
+        playerVersions: state.playerVersions
+          ?..removeWhere((p) => p.eaId == eaId)
+          ..add(currentPlayer)
+          ..sort((a, b) => a.overall.compareTo(b.overall)),
       ),
     );
-    final playerResult = await _getPlayerByVersionUseCase(
-      playerId: playerId,
-      versionId: versionId,
-    );
-    _handlePlayerDetailsResult(playerResult, emit);
+
+    add(Init(player: selectedPlayer!));
   }
 
   void _loadRoles(LoadRoles event, Emitter<PlayerDetailState> emit) {
@@ -132,9 +134,11 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   // We can just show the player from the map.
   // For this, the cache should be there in repository
   Future<void> _loadVersions(Emitter<PlayerDetailState> emit) async {
-    final playerVersionsResult =
-        await _getPlayerVersionsUseCase(name: state.player.commonName!);
-    _handleVersionsResult(playerVersionsResult, emit);
+    final playerVersions = await _getPlayerVersionsUseCase(
+      basePlayerEaId: state.player.basePlayerEaId,
+      eaId: state.player.eaId,
+    );
+    _handleVersionsResult(playerVersions, emit);
   }
 
   Future<void> _loadPrice(Emitter<PlayerDetailState> emit) async {
@@ -152,11 +156,10 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   void _loadAlternativePositions(
     Emitter<PlayerDetailState> emit,
   ) {
-    final alternatePositions =
-        _getPositionsByIdsUseCase(
-          allPositions: params.allPositions,
-          eaIds: state.player.alternativePositionIds ?? [],
-        );
+    final alternatePositions = _getPositionsByIdsUseCase(
+      allPositions: params.allPositions,
+      eaIds: state.player.alternativePositionIds ?? [],
+    );
     emit(state.copyWith(alternativePositions: alternatePositions));
   }
 
@@ -196,17 +199,12 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   }
 
   void _handleVersionsResult(
-    Result<List<(int, int, String)>?> playerRaritiesResult,
+    Result<List<Player>?> playerVersionsResult,
     Emitter<PlayerDetailState> emit,
   ) {
-    switch (playerRaritiesResult) {
+    switch (playerVersionsResult) {
       case Success(data: final versions):
-        emit(
-          state.copyWith(
-            playerVersions: versions,
-            selectedVersion: state.player.rarity.eaId,
-          ),
-        );
+        emit(state.copyWith(playerVersions: versions));
       case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);

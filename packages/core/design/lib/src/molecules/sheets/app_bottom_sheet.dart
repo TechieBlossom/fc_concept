@@ -5,6 +5,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 Future<T?> showAppBottomSheet<T>(
   BuildContext context, {
   required Widget child,
+  EdgeInsets? padding,
 }) {
   // return showCustomModalBottomSheet<T>(
   //   context: context,
@@ -34,11 +35,12 @@ Future<T?> showAppBottomSheet<T>(
     context: context,
     builder: (context) => Material(
       child: Padding(
-        padding: const EdgeInsets.only(
-          left: AppSpacing.space5,
-          right: AppSpacing.space5,
-          top: AppSpacing.space5,
-        ),
+        padding: padding ??
+            const EdgeInsets.only(
+              left: AppSpacing.space5,
+              right: AppSpacing.space5,
+              top: AppSpacing.space5,
+            ),
         child: SafeArea(
           child: child,
         ),

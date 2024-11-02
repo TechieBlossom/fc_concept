@@ -7,10 +7,10 @@ class PlayerHeaders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PageTitle(title: 'Player Header'),
+    return const Scaffold(
+      appBar: PageTitle(title: 'Player Header'),
       body: PlayerHeader(
-        player: const Player(
+        player: Player(
           eaId: 158023,
           basePlayerEaId: 158023,
           commonName: 'Lionel Messi',
@@ -37,10 +37,16 @@ class PlayerHeaders extends StatelessWidget {
           ),
           overall: 97,
         ),
-        playerVersions: null,
-        onVersionTap: (_, __) {},
-        selectedVersion: null,
         playerPrice: null,
+        alternativePositions: [
+          Position(
+            eaId: 1,
+            label: 'ST',
+            shortLabel: 'ST',
+            positionTypeId: 'attackers',
+            positionTypeName: 'Attackers',
+          ),
+        ],
       ),
     );
   }

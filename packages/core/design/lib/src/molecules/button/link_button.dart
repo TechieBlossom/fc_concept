@@ -17,59 +17,30 @@ class LinkButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = ButtonStyle(
+    final textStyle = switch (buttonType) {
+      ButtonSize.normal => context.typography.body1,
+      ButtonSize.small => context.typography.caption1,
+    };
+
+    return InkWell(
+      onTap: onPressed,
+      splashColor: Colors.transparent,
       splashFactory: NoSplash.splashFactory,
-      textStyle: WidgetStateProperty.all<TextStyle?>(
-        switch (buttonType) {
-          ButtonSize.normal => context.typography.body1.copyWith(
-              decoration: TextDecoration.underline,
+      child: Container(
+        padding: const EdgeInsets.only(bottom: 2),
+        decoration: BoxDecoration(
+          border: BorderDirectional(
+            bottom: BorderSide(
+              width: 0.5,
+              strokeAlign: BorderSide.strokeAlignInside,
             ),
-          ButtonSize.small => context.typography.caption1.copyWith(
-              decoration: TextDecoration.underline,
-            ),
-        },
-      ),
-      foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-        if (reverseTheme) {
-          if (states.contains(WidgetState.pressed)) {
-            return context.colors.contentTertiary;
-          } else if (states.contains(WidgetState.disabled)) {
-            return context.colors.contentTertiary;
-          }
-          return context.colors.backgroundPrimary;
-        } else {
-          if (states.contains(WidgetState.pressed)) {
-            return context.colors.contentTertiary;
-          } else if (states.contains(WidgetState.disabled)) {
-            return context.colors.contentTertiary;
-          }
-          return context.colors.contentSecondary;
-        }
-      }),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+          ),
+        ),
+        child: Text(
+          text,
+          style: textStyle,
         ),
       ),
-      backgroundColor: WidgetStateProperty.all<Color?>(Colors.transparent),
-      overlayColor: WidgetStateProperty.all<Color?>(Colors.transparent),
-      padding: WidgetStateProperty.all<EdgeInsets>(
-        switch (buttonType) {
-          ButtonSize.normal => const EdgeInsets.symmetric(
-              horizontal: AppSpacing.space3,
-              vertical: AppSpacing.space3,
-            ),
-          ButtonSize.small => const EdgeInsets.symmetric(
-              vertical: AppSpacing.space2,
-            ),
-        },
-      ),
-    );
-
-    return TextButton(
-      style: style,
-      onPressed: onPressed,
-      child: Text(text),
     );
   }
 }

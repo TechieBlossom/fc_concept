@@ -33,14 +33,27 @@ class PlayerDetailPage extends StatelessWidget {
       child: BlocBuilder<PlayerDetailBloc, PlayerDetailState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: const PageTitle(
+            appBar: PageTitle(
               autoImplyLeading: true,
-              // action: 'Compare',
-              // onAction: () {
-              //   context.read<PlayerDetailBloc>().add(
-              //         CompareTap(),
-              //       );
-              // },
+              action: (state.playerVersions?.isNotEmpty ?? false)
+                  ? 'Other Versions'
+                  : null,
+              onAction: (state.playerVersions?.isNotEmpty ?? false)
+                  ? () {
+                      showAppBottomSheet(
+                        context,
+                        padding: EdgeInsets.zero,
+                        child: VersionsSheet(
+                          players: state.playerVersions!,
+                          onTap: (eaId) => context.read<PlayerDetailBloc>().add(
+                                VersionTap(
+                                  playerId: eaId,
+                                ),
+                              ),
+                        ),
+                      );
+                    }
+                  : null,
             ),
             body: SingleChildScrollView(
               child: Column(
@@ -49,15 +62,6 @@ class PlayerDetailPage extends StatelessWidget {
                   const Space(space: AppSpacing.space4),
                   PlayerHeader(
                     player: state.player,
-                    playerVersions: state.playerVersions,
-                    selectedVersion: state.selectedVersion,
-                    onVersionTap: (playerId, versionId) =>
-                        context.read<PlayerDetailBloc>().add(
-                              VersionTap(
-                                playerId: playerId,
-                                versionId: versionId,
-                              ),
-                            ),
                     playerPrice: state.playerPrice,
                     alternativePositions: state.alternativePositions,
                   ),

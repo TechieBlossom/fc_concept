@@ -50,7 +50,6 @@ _i174.GetIt init(
         params,
         gh<_i913.GetPlayerDetailsUseCase>(),
         gh<_i913.GetPlayerVersionsUseCase>(),
-        gh<_i913.GetPlayerByVersionUseCase>(),
         gh<_i913.GetRolesByIdsUseCase>(),
         gh<_i913.GetPlayStylesByIdsUseCase>(),
         gh<_i913.GetPlayerPriceUseCase>(),

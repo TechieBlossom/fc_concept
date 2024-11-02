@@ -10,17 +10,11 @@ class PlayerHeader extends StatelessWidget {
     super.key,
     required this.player,
     required this.alternativePositions,
-    required this.playerVersions,
-    required this.selectedVersion,
-    required this.onVersionTap,
     required this.playerPrice,
   });
 
   final Player player;
   final List<Position>? alternativePositions;
-  final List<(int, int, String)>? playerVersions;
-  final int? selectedVersion;
-  final void Function(int, int) onVersionTap;
   final PlayerPrice? playerPrice;
 
   @override
@@ -36,7 +30,7 @@ class PlayerHeader extends StatelessWidget {
           Positioned(
             width: 360,
             child: Opacity(
-              opacity: 0.1,
+              opacity: 0.2,
               child: PlayerImage(
                 imagePath: player.imagePath,
                 size: PlayerImageSize.infiniteWidth,
@@ -88,7 +82,7 @@ class PlayerHeader extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            _AnimatedOpacity(
+                            AppAnimatedOpacity(
                               isShown: player.position != null,
                               child: PositionBox(
                                 position: player.position,
@@ -105,7 +99,7 @@ class PlayerHeader extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: AppSpacing.space2),
-                        _AnimatedOpacity(
+                        AppAnimatedOpacity(
                           isShown: alternativePositions != null,
                           child: Text(
                             alternativePositions
@@ -123,7 +117,7 @@ class PlayerHeader extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     vertical: AppSpacing.space3,
                   ),
-                  child: _AnimatedOpacity(
+                  child: AppAnimatedOpacity(
                     isShown: playerPrice != null,
                     child: _PriceWidget(
                       player: player,
@@ -132,7 +126,7 @@ class PlayerHeader extends StatelessWidget {
                     ),
                   ),
                 ),
-                _AnimatedOpacity(
+                AppAnimatedOpacity(
                   isShown: player.facePace != null,
                   child: player.position?.shortLabel == 'GK'
                       ? AttributesCard(
@@ -157,7 +151,7 @@ class PlayerHeader extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     vertical: AppSpacing.space3,
                   ),
-                  child: _AnimatedOpacity(
+                  child: AppAnimatedOpacity(
                     isShown: player.age != null,
                     child: InfoCard(
                       age: player.age.toString(),
@@ -169,48 +163,11 @@ class PlayerHeader extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Align(
-                //   alignment: Alignment.center,
-                //   child: ConstrainedBox(
-                //     constraints: BoxConstraints(
-                //       minHeight: 48,
-                //       maxHeight: 48,
-                //     ),
-                //     child: _AnimatedOpacity(
-                //       isShown: playerVersions != null,
-                //       child: Versions(
-                //         ids: playerVersions,
-                //         selectedVersion: selectedVersion,
-                //         onItemTap: onVersionTap,
-                //       ),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class _AnimatedOpacity<T> extends StatelessWidget {
-  const _AnimatedOpacity({
-    super.key,
-    required this.child,
-    required this.isShown,
-  });
-
-  final Widget child;
-  final bool isShown;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: isShown ? 1 : 0,
-      duration: const Duration(milliseconds: 400),
-      child: child,
     );
   }
 }

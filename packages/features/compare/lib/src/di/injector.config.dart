@@ -40,8 +40,6 @@ _i174.GetIt init(
         player,
         gh<_i534.CompareNavigator>(),
         gh<_i913.GetPlayerDetailsUseCase>(),
-        gh<_i913.GetPlayerVersionsUseCase>(),
-        gh<_i913.GetPlayerByVersionUseCase>(),
       ));
   return getIt;
 }

@@ -40,13 +40,9 @@ abstract class PlayerRepository {
     required int playerId,
   });
 
-  Future<Result<Player>> getPlayerByVersion({
-    required int playerId,
-    required int versionId,
-  });
-
-  Future<Result<List<(int, int, String)>?>> getPlayerVersions({
-    required String name,
+  Future<Result<List<Player>?>> getPlayerVersions({
+    required int basePlayerEaId,
+    required int eaId,
   });
 
   Future<Result<List<Player>?>> filterPlayers({

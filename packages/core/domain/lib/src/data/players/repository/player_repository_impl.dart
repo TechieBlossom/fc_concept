@@ -60,11 +60,6 @@ final _columnsToFetchForList = [
   _positionTable,
 ].join(',');
 
-final _columnsToFetchForVersions = [
-  TablePlayer.eaId,
-  _rarityTable,
-].join(',');
-
 @Injectable(as: PlayerRepository)
 class PlayerRepositoryImpl extends PlayerRepository {
   @override
@@ -416,51 +411,20 @@ class PlayerRepositoryImpl extends PlayerRepository {
   }
 
   @override
-  Future<Result<Player>> getPlayerByVersion({
-    required int playerId,
-    required int versionId,
+  Future<Result<List<Player>?>> getPlayerVersions({
+    required int basePlayerEaId,
+    required int eaId,
   }) async {
     try {
-      final playerResponse = await supabase
+      final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select('*, $_rarityTable')
-          .match({
-            TablePlayer.eaId: playerId,
-            TablePlayer.rarity: versionId,
-          })
-          .limit(1)
-          .single();
+          .select(_columnsToFetchForList)
+          .eq(TablePlayer.basePlayerEaId, basePlayerEaId)
+          .neq(TablePlayer.eaId, eaId)
+          .order(TablePlayer.overall, ascending: false);
 
-      final player = Player.fromMap(playerResponse);
-      return Success(data: player);
-    } catch (e, _) {
-      return Failure(exception: e as Exception);
-    }
-  }
-
-  @override
-  Future<Result<List<(int, int, String)>?>> getPlayerVersions({
-    required String name,
-  }) async {
-    try {
-      final versionsResponse = await supabase
-          .from(TablePlayer.tablePlayer)
-          .select(_columnsToFetchForVersions)
-          .eq(TablePlayer.commonName, name);
-
-      final playerRarities = versionsResponse
-          .map(
-            (entry) => (
-              entry[TablePlayer.eaId] as int,
-              (entry[TableRarity.tableRarity]
-                  as Map<String, dynamic>)[TableRarity.eaId] as int,
-              (entry[TableRarity.tableRarity]
-                  as Map<String, dynamic>)[TableRarity.name] as String,
-            ),
-          )
-          .toList();
-
-      return Success(data: playerRarities);
+      final players = mapPlayers(playersResponse);
+      return Success(data: players);
     } catch (e, _) {
       return Failure(exception: Exception());
     }

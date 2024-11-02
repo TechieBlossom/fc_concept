@@ -80,8 +80,6 @@ import 'package:core_domain/src/domain/players/use_case/filter_players_use_case.
     as _i120;
 import 'package:core_domain/src/domain/players/use_case/get_cheapest_players_by_rating_use_case.dart'
     as _i288;
-import 'package:core_domain/src/domain/players/use_case/get_player_by_version_use_case.dart'
-    as _i216;
 import 'package:core_domain/src/domain/players/use_case/get_player_count_use_case.dart'
     as _i394;
 import 'package:core_domain/src/domain/players/use_case/get_player_details_use_case.dart'
@@ -224,14 +222,10 @@ _i174.GetIt init(
       () => _i354.SearchPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i120.FilterPlayersUseCase>(
       () => _i120.FilterPlayersUseCase(gh<_i294.PlayerRepository>()));
-  gh.factory<_i216.GetPlayerByVersionUseCase>(
-      () => _i216.GetPlayerByVersionUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i274.GetPositionalPlayersUseCase>(
       () => _i274.GetPositionalPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i75.GetPlayerDetailsUseCase>(
       () => _i75.GetPlayerDetailsUseCase(gh<_i294.PlayerRepository>()));
-  gh.factory<_i77.GetPlayerVersionsUseCase>(
-      () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i171.GetRecentPlayersUseCase>(
       () => _i171.GetRecentPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i380.GetTopPlayerUseCase>(
@@ -240,6 +234,8 @@ _i174.GetIt init(
       () => _i1.GetSbcPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i530.GetTrendingPlayersUseCase>(
       () => _i530.GetTrendingPlayersUseCase(gh<_i294.PlayerRepository>()));
+  gh.factory<_i77.GetPlayerVersionsUseCase>(
+      () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
   gh.lazySingleton<_i809.MetadataBloc>(() => _i809.MetadataBloc(
         gh<_i913.GetAllRolesUseCase>(),
         gh<_i913.GetAllPlayStylesUseCase>(),

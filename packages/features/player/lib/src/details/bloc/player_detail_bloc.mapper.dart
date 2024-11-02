@@ -190,14 +190,10 @@ class VersionTapMapper extends SubClassMapperBase<VersionTap> {
   static int _$playerId(VersionTap v) => v.playerId;
   static const Field<VersionTap, int> _f$playerId =
       Field('playerId', _$playerId);
-  static int _$versionId(VersionTap v) => v.versionId;
-  static const Field<VersionTap, int> _f$versionId =
-      Field('versionId', _$versionId);
 
   @override
   final MappableFields<VersionTap> fields = const {
     #playerId: _f$playerId,
-    #versionId: _f$versionId,
   };
 
   @override
@@ -209,8 +205,7 @@ class VersionTapMapper extends SubClassMapperBase<VersionTap> {
       PlayerDetailEventMapper.ensureInitialized();
 
   static VersionTap _instantiate(DecodingData data) {
-    return VersionTap(
-        playerId: data.dec(_f$playerId), versionId: data.dec(_f$versionId));
+    return VersionTap(playerId: data.dec(_f$playerId));
   }
 
   @override
@@ -265,7 +260,7 @@ extension VersionTapValueCopy<$R, $Out>
 abstract class VersionTapCopyWith<$R, $In extends VersionTap, $Out>
     implements PlayerDetailEventCopyWith<$R, $In, $Out> {
   @override
-  $R call({int? playerId, int? versionId});
+  $R call({int? playerId});
   VersionTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -278,14 +273,11 @@ class _VersionTapCopyWithImpl<$R, $Out>
   late final ClassMapperBase<VersionTap> $mapper =
       VersionTapMapper.ensureInitialized();
   @override
-  $R call({int? playerId, int? versionId}) => $apply(FieldCopyWithData({
-        if (playerId != null) #playerId: playerId,
-        if (versionId != null) #versionId: versionId
-      }));
+  $R call({int? playerId}) =>
+      $apply(FieldCopyWithData({if (playerId != null) #playerId: playerId}));
   @override
-  VersionTap $make(CopyWithData data) => VersionTap(
-      playerId: data.get(#playerId, or: $value.playerId),
-      versionId: data.get(#versionId, or: $value.versionId));
+  VersionTap $make(CopyWithData data) =>
+      VersionTap(playerId: data.get(#playerId, or: $value.playerId));
 
   @override
   VersionTapCopyWith<$R2, VersionTap, $Out2> $chain<$R2, $Out2>(
@@ -1087,7 +1079,6 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PlayerDetailStateMapper._());
       PlayerMapper.ensureInitialized();
-      _t$_R0Mapper.ensureInitialized();
       RoleMapper.ensureInitialized();
       PlayStyleMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
@@ -1103,14 +1094,10 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static Player _$player(PlayerDetailState v) => v.player;
   static const Field<PlayerDetailState, Player> _f$player =
       Field('player', _$player);
-  static List<_t$_R0<int, int, String>>? _$playerVersions(
-          PlayerDetailState v) =>
+  static List<Player>? _$playerVersions(PlayerDetailState v) =>
       v.playerVersions;
-  static const Field<PlayerDetailState, List<_t$_R0<int, int, String>>>
-      _f$playerVersions = Field('playerVersions', _$playerVersions, opt: true);
-  static int? _$selectedVersion(PlayerDetailState v) => v.selectedVersion;
-  static const Field<PlayerDetailState, int> _f$selectedVersion =
-      Field('selectedVersion', _$selectedVersion, opt: true);
+  static const Field<PlayerDetailState, List<Player>> _f$playerVersions =
+      Field('playerVersions', _$playerVersions, opt: true);
   static List<Role>? _$playerRoles(PlayerDetailState v) => v.playerRoles;
   static const Field<PlayerDetailState, List<Role>> _f$playerRoles =
       Field('playerRoles', _$playerRoles, opt: true);
@@ -1146,7 +1133,6 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   final MappableFields<PlayerDetailState> fields = const {
     #player: _f$player,
     #playerVersions: _f$playerVersions,
-    #selectedVersion: _f$selectedVersion,
     #playerRoles: _f$playerRoles,
     #playerPlayStyles: _f$playerPlayStyles,
     #playerPlayStylesPlus: _f$playerPlayStylesPlus,
@@ -1160,7 +1146,6 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
     return PlayerDetailState(
         player: data.dec(_f$player),
         playerVersions: data.dec(_f$playerVersions),
-        selectedVersion: data.dec(_f$selectedVersion),
         playerRoles: data.dec(_f$playerRoles),
         playerPlayStyles: data.dec(_f$playerPlayStyles),
         playerPlayStylesPlus: data.dec(_f$playerPlayStylesPlus),
@@ -1226,11 +1211,8 @@ extension PlayerDetailStateValueCopy<$R, $Out>
 abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
   PlayerCopyWith<$R, Player, Player> get player;
-  ListCopyWith<
-      $R,
-      _t$_R0<int, int, String>,
-      ObjectCopyWith<$R, _t$_R0<int, int, String>,
-          _t$_R0<int, int, String>>>? get playerVersions;
+  ListCopyWith<$R, Player, PlayerCopyWith<$R, Player, Player>>?
+      get playerVersions;
   ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get playerRoles;
   ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
       get playerPlayStyles;
@@ -1243,8 +1225,7 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
       get selectedChemistryStyle;
   $R call(
       {Player? player,
-      List<_t$_R0<int, int, String>>? playerVersions,
-      int? selectedVersion,
+      List<Player>? playerVersions,
       List<Role>? playerRoles,
       List<PlayStyle>? playerPlayStyles,
       List<PlayStyle>? playerPlayStylesPlus,
@@ -1268,15 +1249,9 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   PlayerCopyWith<$R, Player, Player> get player =>
       $value.player.copyWith.$chain((v) => call(player: v));
   @override
-  ListCopyWith<
-      $R,
-      _t$_R0<int, int, String>,
-      ObjectCopyWith<$R, _t$_R0<int, int, String>,
-          _t$_R0<int, int, String>>>? get playerVersions =>
-      $value.playerVersions != null
-          ? ListCopyWith(
-              $value.playerVersions!,
-              (v, t) => ObjectCopyWith(v, $identity, t),
+  ListCopyWith<$R, Player, PlayerCopyWith<$R, Player, Player>>?
+      get playerVersions => $value.playerVersions != null
+          ? ListCopyWith($value.playerVersions!, (v, t) => v.copyWith.$chain(t),
               (v) => call(playerVersions: v))
           : null;
   @override
@@ -1318,7 +1293,6 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   $R call(
           {Player? player,
           Object? playerVersions = $none,
-          Object? selectedVersion = $none,
           Object? playerRoles = $none,
           Object? playerPlayStyles = $none,
           Object? playerPlayStylesPlus = $none,
@@ -1329,7 +1303,6 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
       $apply(FieldCopyWithData({
         if (player != null) #player: player,
         if (playerVersions != $none) #playerVersions: playerVersions,
-        if (selectedVersion != $none) #selectedVersion: selectedVersion,
         if (playerRoles != $none) #playerRoles: playerRoles,
         if (playerPlayStyles != $none) #playerPlayStyles: playerPlayStyles,
         if (playerPlayStylesPlus != $none)
@@ -1346,7 +1319,6 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   PlayerDetailState $make(CopyWithData data) => PlayerDetailState(
       player: data.get(#player, or: $value.player),
       playerVersions: data.get(#playerVersions, or: $value.playerVersions),
-      selectedVersion: data.get(#selectedVersion, or: $value.selectedVersion),
       playerRoles: data.get(#playerRoles, or: $value.playerRoles),
       playerPlayStyles:
           data.get(#playerPlayStyles, or: $value.playerPlayStyles),
@@ -1364,54 +1336,4 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   PlayerDetailStateCopyWith<$R2, PlayerDetailState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
       _PlayerDetailStateCopyWithImpl($value, $cast, t);
-}
-
-typedef _t$_R0<A, B, C> = (A, B, C);
-
-class _t$_R0Mapper extends RecordMapperBase<_t$_R0> {
-  static _t$_R0Mapper? _instance;
-  _t$_R0Mapper._();
-
-  static _t$_R0Mapper ensureInitialized() {
-    if (_instance == null) {
-      MapperContainer.globals.use(_instance = _t$_R0Mapper._());
-      MapperBase.addType(<A, B, C>(f) => f<(A, B, C)>());
-    }
-    return _instance!;
-  }
-
-  static dynamic _$$1(_t$_R0 v) => v.$1;
-  static dynamic _arg$$1<A, B, C>(f) => f<A>();
-  static const Field<_t$_R0, dynamic> _f$$1 = Field('\$1', _$$1, arg: _arg$$1);
-  static dynamic _$$2(_t$_R0 v) => v.$2;
-  static dynamic _arg$$2<A, B, C>(f) => f<B>();
-  static const Field<_t$_R0, dynamic> _f$$2 = Field('\$2', _$$2, arg: _arg$$2);
-  static dynamic _$$3(_t$_R0 v) => v.$3;
-  static dynamic _arg$$3<A, B, C>(f) => f<C>();
-  static const Field<_t$_R0, dynamic> _f$$3 = Field('\$3', _$$3, arg: _arg$$3);
-
-  @override
-  final MappableFields<_t$_R0> fields = const {
-    #$1: _f$$1,
-    #$2: _f$$2,
-    #$3: _f$$3,
-  };
-
-  @override
-  Function get typeFactory => <A, B, C>(f) => f<_t$_R0<A, B, C>>();
-
-  static _t$_R0<A, B, C> _instantiate<A, B, C>(DecodingData<_t$_R0> data) {
-    return (data.dec(_f$$1), data.dec(_f$$2), data.dec(_f$$3));
-  }
-
-  @override
-  final Function instantiate = _instantiate;
-
-  static _t$_R0<A, B, C> fromMap<A, B, C>(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<_t$_R0<A, B, C>>(map);
-  }
-
-  static _t$_R0<A, B, C> fromJson<A, B, C>(String json) {
-    return ensureInitialized().decodeJson<_t$_R0<A, B, C>>(json);
-  }
 }

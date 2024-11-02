@@ -16,11 +16,9 @@ class Init extends PlayerDetailEvent with InitMappable {
 class VersionTap extends PlayerDetailEvent with VersionTapMappable {
   VersionTap({
     required this.playerId,
-    required this.versionId,
   });
 
   final int playerId;
-  final int versionId;
 }
 
 @MappableClass(discriminatorValue: 'updateChemistryStyle')

@@ -67,14 +67,14 @@ class SecondaryButton extends StatelessWidget {
         style: style,
         onPressed: onPressed,
         icon: leading,
-        label: Text(text.toUpperCase()),
+        label: Text(text),
       );
     }
 
     return FilledButton(
       style: style,
       onPressed: onPressed,
-      child: Text(text.toUpperCase()),
+      child: Text(text),
     );
   }
 }

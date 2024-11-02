@@ -1,3 +1,4 @@
+export 'package:core_design/src/molecules/animated/app_animated_opacity.dart';
 export 'package:core_design/src/molecules/attribute/attribute.dart';
 export 'package:core_design/src/molecules/attribute/attribute_bar.dart';
 export 'package:core_design/src/molecules/attribute/attribute_item.dart';
@@ -36,3 +37,4 @@ export 'package:core_design/src/molecules/role/role_bar.dart';
 export 'package:core_design/src/molecules/sheets/app_bottom_sheet.dart';
 export 'package:core_design/src/molecules/space/space.dart';
 export 'package:core_design/src/molecules/versions/versions.dart';
+export 'package:core_design/src/molecules/versions/versions_sheet.dart';

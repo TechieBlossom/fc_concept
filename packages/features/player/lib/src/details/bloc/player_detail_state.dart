@@ -5,7 +5,6 @@ class PlayerDetailState with PlayerDetailStateMappable {
   PlayerDetailState({
     required this.player,
     this.playerVersions,
-    this.selectedVersion,
     this.playerRoles,
     this.playerPlayStyles,
     this.playerPlayStylesPlus,
@@ -16,8 +15,7 @@ class PlayerDetailState with PlayerDetailStateMappable {
   });
 
   final Player player;
-  final List<(int, int, String)>? playerVersions;
-  final int? selectedVersion;
+  final List<Player>? playerVersions;
   final List<Role>? playerRoles;
   final List<PlayStyle>? playerPlayStyles;
   final List<PlayStyle>? playerPlayStylesPlus;

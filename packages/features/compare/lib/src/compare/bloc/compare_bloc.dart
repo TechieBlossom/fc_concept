@@ -5,7 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'compare_bloc.mapper.dart';
+
 part 'compare_event.dart';
+
 part 'compare_state.dart';
 
 @injectable
@@ -14,20 +16,9 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
     @factoryParam Player? player,
     this._navigator,
     this._getPlayerDetailsUseCase,
-    this._getPlayerVersionsUseCase,
-    this._getPlayerByVersionUseCase,
   ) : super(CompareState()) {
     on<Init>((event, emit) => _initial(event.player, emit));
     on<SelectPlayer>((event, emit) => _selectPlayer(event.index, emit));
-    on<SelectVersion>(
-      (event, emit) => _selectVersion(
-        event.index,
-        event.playerId,
-        event.versionId,
-        event.version,
-        emit,
-      ),
-    );
 
     if (player != null) {
       add(Init(player: player));
@@ -36,13 +27,9 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
 
   final CompareNavigator _navigator;
   final GetPlayerDetailsUseCase _getPlayerDetailsUseCase;
-  final GetPlayerVersionsUseCase _getPlayerVersionsUseCase;
-  final GetPlayerByVersionUseCase _getPlayerByVersionUseCase;
 
   Future<void> _initial(Player player, Emitter<CompareState> emit) async {
     emit(state.copyWith(player1: player));
-    final versions = await _getPlayerVersionsUseCase(name: player.commonName!);
-    _handleVersionsResult(player, versions, 0, emit);
   }
 
   Future<void> _selectPlayer(int index, Emitter<CompareState> emit) async {
@@ -57,26 +44,6 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
           await _getPlayerDetailsUseCase(playerId: player.eaId);
       _handlePlayerDetailsResult(index, playerResult, null, null, emit);
     }
-
-    if (player != null) {
-      final versions =
-          await _getPlayerVersionsUseCase(name: player.commonName!);
-      _handleVersionsResult(player, versions, index, emit);
-    }
-  }
-
-  Future<void> _selectVersion(
-    int index,
-    int playerId,
-    int versionId,
-    String version,
-    Emitter<CompareState> emit,
-  ) async {
-    final playerResult = await _getPlayerByVersionUseCase(
-      playerId: playerId,
-      versionId: versionId,
-    );
-    _handlePlayerDetailsResult(index, playerResult, versionId, version, emit);
   }
 
   void _handlePlayerDetailsResult(
@@ -105,42 +72,6 @@ class CompareBloc extends Bloc<CompareEvent, CompareState> {
               selectedPlayer2Version: (
                 versionId ?? player.rarity.eaId,
                 version ?? player.rarity.name,
-              ),
-            ),
-          );
-        }
-      case Failure(exception: final exception):
-        if (kDebugMode) {
-          print(exception);
-        }
-    }
-  }
-
-  void _handleVersionsResult(
-    Player player,
-    Result<List<(int, int, String)>?> versions,
-    int index,
-    Emitter<CompareState> emit,
-  ) {
-    switch (versions) {
-      case Success(data: final versions):
-        if (index == 0) {
-          emit(
-            state.copyWith(
-              player1Versions: versions,
-              selectedPlayer1Version: (
-                player.rarity.eaId,
-                player.rarity.name,
-              ),
-            ),
-          );
-        } else if (index == 1) {
-          emit(
-            state.copyWith(
-              player2Versions: versions,
-              selectedPlayer2Version: (
-                player.rarity.eaId,
-                player.rarity.name,
               ),
             ),
           );
