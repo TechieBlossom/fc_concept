@@ -82,8 +82,8 @@ class _PlayerListItemState extends State<PlayerListItem>
                           widget.onFavoriteToggle!();
                         }
                       },
-                      backgroundColor: context.colors.backgroundFour,
-                      foregroundColor: context.colors.contentSecondary,
+                      backgroundColor: context.colors.backgroundTertiary,
+                      foregroundColor: context.colors.contentPrimary,
                       icon: widget.isFavorite
                           ? Icons.bookmark_remove
                           : Icons.bookmark_add_outlined,
@@ -108,13 +108,15 @@ class _PlayerListItemState extends State<PlayerListItem>
                       Text(
                         player.commonName ?? '',
                         style: context.typography.body3.copyWith(
-                          color: context.colors.contentSecondary,
+                          color: context.colors.contentPrimary,
                         ),
                       ),
                       SizedBox(height: AppSpacing.space2),
                       Text(
                         player.rarity.name,
-                        style: context.typography.caption1,
+                        style: context.typography.caption1.copyWith(
+                          color: context.colors.contentPrimary,
+                        ),
                       ),
                       if (widget.showTeams) ...[
                         SizedBox(height: AppSpacing.space2),

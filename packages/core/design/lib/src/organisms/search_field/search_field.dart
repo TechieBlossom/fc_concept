@@ -58,7 +58,7 @@ class _SearchFieldState extends State<SearchField> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
-              color: context.colors.backgroundTertiary70,
+              color: context.colors.backgroundTertiary,
             ),
             margin: const EdgeInsets.symmetric(
               horizontal: AppSpacing.space5,
@@ -72,8 +72,10 @@ class _SearchFieldState extends State<SearchField> {
               controller: _controller,
               onChanged: widget.onSearch,
               textCapitalization: TextCapitalization.words,
-              style: context.typography.body1
-                  .copyWith(color: context.colors.contentSecondary),
+              style: context.typography.body1.copyWith(
+                color: context.colors.contentPrimary,
+              ),
+              cursorColor: context.colors.contentPrimary,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.only(
                   top: AppSpacing.space4 + AppSpacing.space1,
@@ -110,7 +112,7 @@ class _SearchFieldState extends State<SearchField> {
                 ),
                 hintText: 'Search by player name',
                 hintStyle: context.typography.body1
-                    .copyWith(color: context.colors.contentTertiary),
+                    .copyWith(color: context.colors.contentSecondary),
                 hintFadeDuration: const Duration(milliseconds: 100),
               ),
             ),
@@ -124,8 +126,8 @@ class _SearchFieldState extends State<SearchField> {
               opacity: widget.isLoading ? 1 : 0,
               duration: const Duration(milliseconds: 300),
               child: Shimmer.fromColors(
-                baseColor: const Color(0xFFD5E6FF),
-                highlightColor: const Color(0xFFACECD8),
+                baseColor: context.colors.contentPrimary.withOpacity(0.5),
+                highlightColor: context.colors.contentPrimary,
                 child: SizedBox(
                   height: 8,
                   width: double.infinity,

@@ -66,7 +66,7 @@ class _IndicesContent extends StatelessWidget {
             'Indexes',
             textAlign: TextAlign.center,
             style: context.typography.headline.copyWith(
-              color: context.colors.contentSecondary,
+              color: context.colors.contentPrimary,
             ),
           ),
         ),

@@ -31,7 +31,7 @@ class RoleFilterPositionGroup extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: context.colors.backgroundTertiary,
+            color: context.colors.backgroundSecondary,
             width: 2,
           ),
         ),
@@ -42,7 +42,7 @@ class RoleFilterPositionGroup extends StatelessWidget {
           Text(
             roles.first.fullPositionName,
             style: context.typography.body1.copyWith(
-              color: context.colors.contentSecondary,
+              color: context.colors.contentPrimary,
             ),
           ),
           const Space(space: AppSpacing.space3),

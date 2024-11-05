@@ -48,8 +48,8 @@ class PlayStyleWidget extends StatelessWidget {
               gradient: isPlus
                   ? LinearGradient(
                       colors: [
-                        context.colors.gold2,
-                        context.colors.gold,
+                        context.colors.primary.withOpacity(0.3),
+                        context.colors.primary,
                       ],
                     )
                   : null,
@@ -57,7 +57,7 @@ class PlayStyleWidget extends StatelessWidget {
                 Radius.circular(AppCornerRadius.radius1),
               ),
               border: Border.all(
-                color: context.colors.contentTertiary,
+                color: context.colors.contentSecondary,
                 width: 1,
                 strokeAlign: BorderSide.strokeAlignInside,
               ),
@@ -68,10 +68,14 @@ class PlayStyleWidget extends StatelessWidget {
                   : playStyle.name,
               style: size == PlayStyleWidgetSize.small
                   ? context.typography.caption1.copyWith(
-                      color: context.colors.contentPrimary,
+                      color: isPlus
+                          ? context.colors.onPrimary
+                          : context.colors.contentPrimary,
                     )
                   : context.typography.body1.copyWith(
-                      color: context.colors.contentPrimary,
+                      color: isPlus
+                          ? context.colors.onPrimary
+                          : context.colors.contentPrimary,
                     ),
             ),
           ),

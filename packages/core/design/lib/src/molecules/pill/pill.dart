@@ -1,7 +1,7 @@
 import 'package:core_design/design.dart';
 import 'package:flutter/material.dart';
 
-const _height = 28.0;
+const _height = 36.0;
 
 class Pill<T> extends StatelessWidget {
   const Pill({
@@ -14,8 +14,8 @@ class Pill<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = pillItem.isSelected
-        ? context.colors.backgroundPrimary
-        : context.colors.contentSecondary;
+        ? context.colors.onPrimary
+        : context.colors.contentPrimary;
     final textStyle = pillItem.isSelected
         ? switch (pillItem.hasDigit) {
             true => context.typography.body5,
@@ -27,9 +27,7 @@ class Pill<T> extends StatelessWidget {
           };
     return InkWell(
       onTap: (pillItem.onTap != null)
-          ? () {
-              pillItem.onTap!();
-            }
+          ? () => pillItem.onTap?.call()
           : null,
       radius: mediumCorner.value,
       borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
@@ -37,28 +35,28 @@ class Pill<T> extends StatelessWidget {
         height: _height,
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.space3,
+          horizontal: AppSpacing.space4,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
-          border: Border.all(
-            color: context.colors.backgroundSecondary,
-          ),
           color: pillItem.isSelected
-              ? context.colors.backgroundSecondary
-              : Colors.transparent,
+              ? context.colors.primary
+              : context.colors.backgroundTertiary,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (pillItem.image != null) ...[
               pillItem.image!,
               SizedBox(width: AppSpacing.space2),
             ],
-            Text(
-              pillItem.text,
-              style: textStyle.copyWith(color: color),
+            Flexible(
+              child: Text(
+                pillItem.text,
+                style: textStyle.copyWith(color: color),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
             ),
             if (pillItem.iconData != null) ...[
               SizedBox(width: AppSpacing.space1),

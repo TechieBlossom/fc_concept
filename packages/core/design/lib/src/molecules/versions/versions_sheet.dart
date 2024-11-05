@@ -25,7 +25,12 @@ class VersionsSheet extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(AppSpacing.space5) -
                 const EdgeInsets.only(bottom: AppSpacing.space5),
-            child: Text('Select version', style: context.typography.body1),
+            child: Text(
+              'Select version',
+              style: context.typography.body1.copyWith(
+                color: context.colors.contentPrimary,
+              ),
+            ),
           ),
         ),
         ...players.map<Widget>(

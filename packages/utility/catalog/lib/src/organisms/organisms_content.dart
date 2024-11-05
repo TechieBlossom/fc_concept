@@ -4,7 +4,6 @@ import 'package:utility_catalog/src/organisms/cards.dart';
 import 'package:utility_catalog/src/organisms/list_items.dart';
 import 'package:utility_catalog/src/organisms/page_titles.dart';
 import 'package:utility_catalog/src/organisms/player_headers.dart';
-import 'package:utility_catalog/src/organisms/pull_downs.dart';
 import 'package:utility_catalog/src/organisms/search_fields.dart';
 
 class OrganismsContent extends StatelessWidget {
@@ -49,18 +48,6 @@ class OrganismsContent extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => const ListItems(),
-              ),
-            ),
-          ),
-          ListTile(
-            title: Text(
-              'Pull Downs',
-              style: context.typography.headline,
-            ),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const PullDowns(),
               ),
             ),
           ),

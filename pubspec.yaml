@@ -9,6 +9,8 @@ environment:
 
 dependencies:
   cached_network_image: ^3.3.1
+  core_ads:
+    path: packages/core/ads
   core_api_client:
     path: packages/core/api_client
   core_design:

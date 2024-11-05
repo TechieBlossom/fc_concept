@@ -44,7 +44,7 @@ class SavedFilterItem extends StatelessWidget {
             Icon(
               Icons.chevron_right_rounded,
               size: 16,
-              color: context.colors.contentSecondary,
+              color: context.colors.contentPrimary,
             ),
           ],
         ),

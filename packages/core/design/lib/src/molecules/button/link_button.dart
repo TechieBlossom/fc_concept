@@ -33,6 +33,9 @@ class LinkButton extends StatelessWidget {
             bottom: BorderSide(
               width: 0.5,
               strokeAlign: BorderSide.strokeAlignInside,
+              color: reverseTheme
+                  ? context.colors.contentPrimary
+                  : context.colors.contentSecondary,
             ),
           ),
         ),

@@ -29,7 +29,7 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
         if (topItems?.isNotEmpty ?? false)
           Padding(
             padding: const EdgeInsets.only(
-              bottom: AppSpacing.space5,
+              bottom: AppSpacing.space7,
             ),
             child: FilterGroup<T>(
               title: 'Top',
@@ -55,7 +55,7 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
         if (otherItems?.isNotEmpty ?? false)
           Padding(
             padding: const EdgeInsets.only(
-              bottom: AppSpacing.space9,
+              bottom: AppSpacing.space7,
             ),
             child: FilterGroup(
               title: 'Other',

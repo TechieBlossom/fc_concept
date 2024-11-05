@@ -24,11 +24,11 @@ class RoleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = size == RoleBarSize.small
-        ? context.typography.caption2.copyWith(
-            color: context.colors.backgroundPrimary,
+        ? context.typography.caption1.copyWith(
+            color: context.colors.primary,
           )
         : context.typography.body1.copyWith(
-            color: context.colors.backgroundPrimary,
+            color: context.colors.primary,
           );
     return InkWell(
       onTap: () {
@@ -43,7 +43,7 @@ class RoleBar extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(AppSpacing.space3),
             decoration: BoxDecoration(
-              color: context.colors.contentPrimary,
+              color: context.colors.contentTertiary,
               borderRadius: BorderRadiusDirectional.horizontal(
                 start: Radius.circular(AppCornerRadius.radius1),
               ),
@@ -56,14 +56,16 @@ class RoleBar extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(AppSpacing.space3),
             decoration: BoxDecoration(
-              color: context.colors.contentTertiary,
+              color: context.colors.primary,
               borderRadius: BorderRadiusDirectional.horizontal(
                 end: Radius.circular(AppCornerRadius.radius1),
               ),
             ),
             child: Text(
               role.positionName,
-              style: textStyle,
+              style: textStyle.copyWith(
+                color: context.colors.onPrimary,
+              ),
             ),
           ),
         ],

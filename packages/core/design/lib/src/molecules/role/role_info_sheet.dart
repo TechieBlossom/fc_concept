@@ -28,8 +28,8 @@ class RoleInfoSheet extends StatelessWidget {
         const SizedBox(height: AppSpacing.space5),
         Text(
           role.description,
-          style: context.typography.body1.copyWith(
-            color: context.colors.contentTertiary,
+          style: context.typography.body3.copyWith(
+            color: context.colors.contentSecondary,
             height: 1.2,
           ),
         ),

@@ -25,7 +25,7 @@ class OverallRatingFilterItem extends StatelessWidget {
             child: Text(
               'Overall Rating',
               style: context.typography.body3.copyWith(
-                color: context.colors.contentSecondary,
+                color: context.colors.contentPrimary,
               ),
             ),
           ),

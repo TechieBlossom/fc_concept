@@ -77,8 +77,8 @@ class _CheapestPlayerByRatingListItemState
                           widget.onFavoriteToggle!();
                         }
                       },
-                      backgroundColor: context.colors.backgroundFour,
-                      foregroundColor: context.colors.contentSecondary,
+                      backgroundColor: context.colors.backgroundTertiary,
+                      foregroundColor: context.colors.contentPrimary,
                       icon: widget.isFavorite
                           ? Icons.bookmark_remove
                           : Icons.bookmark_add_outlined,
@@ -103,7 +103,7 @@ class _CheapestPlayerByRatingListItemState
                       Text(
                         player.commonName ?? '',
                         style: context.typography.body3.copyWith(
-                          color: context.colors.contentSecondary,
+                          color: context.colors.contentPrimary,
                         ),
                       ),
                       SizedBox(height: AppSpacing.space2),

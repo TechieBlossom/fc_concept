@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:core_ads/ads.dart';
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:fc_concept/di/injector.dart';
@@ -8,6 +11,7 @@ import 'package:utility_navigation/navigation.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  unawaited(MobileAds.instance.initialize());
   await initializeDi('dev');
 
   runApp(const MyApp());

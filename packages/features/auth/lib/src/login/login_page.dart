@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                               child: Text(
                                 'Not a member?',
                                 style: context.typography.body1.copyWith(
-                                  color: context.colors.backgroundTertiary,
+                                  color: context.colors.backgroundSecondary,
                                 ),
                               ),
                             ),

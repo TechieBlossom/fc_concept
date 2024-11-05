@@ -33,7 +33,7 @@ class CompareListItem extends StatelessWidget {
         Expanded(
           flex: 1,
           child: ColoredBox(
-            color: context.colors.backgroundTertiary,
+            color: context.colors.backgroundSecondary,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: AppSpacing.space3,

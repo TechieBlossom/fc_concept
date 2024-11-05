@@ -18,17 +18,21 @@ class CheapestPlayerByRatingCard extends StatelessWidget {
       ),
       child: ListTile(
         onTap: onTap,
-        tileColor: context.colors.backgroundTertiary70,
+        tileColor: context.colors.backgroundTertiary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
         ),
         title: Text(
           'Cheapest by Rating',
-          style: context.typography.body3,
+          style: context.typography.body3.copyWith(
+            color: context.colors.contentPrimary,
+          ),
         ),
         subtitle: Text(
           'Find the cheapest players by rating',
-          style: context.typography.caption1,
+          style: context.typography.caption1.copyWith(
+            color: context.colors.contentSecondary,
+          ),
         ),
         trailing: Icon(Icons.arrow_forward_ios_rounded, size: 24),
       ),

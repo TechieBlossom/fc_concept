@@ -19,14 +19,18 @@ class Info extends StatelessWidget {
       children: [
         Text(
           label,
-          style: context.typography.body5,
+          style: context.typography.body3.copyWith(
+            color: context.colors.contentPrimary,
+          ),
         ),
         const SizedBox(height: AppSpacing.space2),
         Row(
           children: [
             Text(
               value,
-              style: context.typography.caption2,
+              style: context.typography.body5.copyWith(
+                color: context.colors.contentPrimary,
+              ),
             ),
             if (icon != null) icon!,
           ],

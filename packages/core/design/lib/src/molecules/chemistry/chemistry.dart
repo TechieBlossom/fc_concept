@@ -18,7 +18,9 @@ class Chemistry extends StatelessWidget {
       children: [
         Text(
           chemistryStyle?.name.capitalize() ?? '- - - - - ',
-          style: context.typography.body2,
+          style: context.typography.body2.copyWith(
+            color: context.colors.contentPrimary,
+          ),
         ),
       ],
     );

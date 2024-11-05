@@ -37,12 +37,16 @@ class SecondaryButton extends StatelessWidget {
         },
       ),
       foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+        final mainColor = context.colors.contentPrimary;
         if (states.contains(WidgetState.pressed)) {
-          return context.colors.contentTertiary;
+          return Color.alphaBlend(
+            mainColor.withOpacity(0.6),
+            context.colors.backgroundTertiary,
+          );
         } else if (states.contains(WidgetState.disabled)) {
-          return context.colors.contentTertiary;
+          return context.colors.contentSecondary;
         }
-        return context.colors.contentSecondary;
+        return mainColor;
       }),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(

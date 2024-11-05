@@ -15,10 +15,10 @@ class AccelerateBar extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
-        color: context.colors.backgroundTertiary70,
+        color: context.colors.backgroundTertiary,
         border: BorderDirectional(
           start: BorderSide(
-            color: context.colors.contentSecondary,
+            color: context.colors.contentPrimary,
             width: 2,
             strokeAlign: BorderSide.strokeAlignOutside,
           ),
@@ -38,7 +38,7 @@ class AccelerateBar extends StatelessWidget {
               'AcceleRATE',
               textAlign: TextAlign.start,
               style: context.typography.caption1.copyWith(
-                color: context.colors.contentSecondary,
+                color: context.colors.contentPrimary,
               ),
             ),
             const Space(space: AppSpacing.space2),
@@ -46,7 +46,7 @@ class AccelerateBar extends StatelessWidget {
               accelerate,
               textAlign: TextAlign.start,
               style: context.typography.body4.copyWith(
-                color: context.colors.contentSecondary,
+                color: context.colors.contentPrimary,
                 fontWeight: FontWeight.w600,
               ),
             ),

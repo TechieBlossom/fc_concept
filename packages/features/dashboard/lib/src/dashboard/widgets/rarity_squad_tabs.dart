@@ -39,7 +39,7 @@ class RaritySquadTabs extends StatelessWidget {
               })
               .intersperse(
                 const Space(
-                  space: AppSpacing.space4,
+                  space: AppSpacing.space3,
                   orientation: Axis.horizontal,
                 ),
               )

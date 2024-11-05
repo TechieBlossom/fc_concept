@@ -64,7 +64,7 @@ class IndexBox extends StatelessWidget {
                   Text(
                     type.name.toUpperCase(),
                     style: context.typography.body4.copyWith(
-                      color: context.colors.contentPrimary,
+                      color: context.colors.black,
                     ),
                   ),
                   const SizedBox(height: AppSpacing.space3),
@@ -73,7 +73,7 @@ class IndexBox extends StatelessWidget {
                       Text(
                         AppFormatter.formatCurrency(current.toInt()),
                         style: context.typography.body2.copyWith(
-                          color: context.colors.contentPrimary,
+                          color: context.colors.black,
                         ),
                       ),
                       const Space(

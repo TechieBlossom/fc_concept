@@ -235,19 +235,23 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       event.positionGroup,
     );
 
-    for (var i = 0; i < positionsFromGroup.length; i++) {
-      if (positions.contains(positionsFromGroup[i])) {
-        positions.remove(positionsFromGroup[i]);
-      } else {
-        positions.add(positionsFromGroup[i]);
-      }
-    }
-
     if (positionGroups.contains(event.positionGroup)) {
       positionGroups.remove(event.positionGroup);
+      positions.removeWhere(
+        (element) => positionsFromGroup.contains(element),
+      );
     } else {
       positionGroups.add(event.positionGroup);
+      positions.addAll(positionsFromGroup);
     }
+
+    // for (var i = 0; i < positionGroups.length; i++) {
+    //   if (positionGroups.contains(positionGroups[i])) {
+    //     positions.remove(positionsFromGroup[i]);
+    //   } else {
+    //     positions.add(positionsFromGroup[i]);
+    //   }
+    // }
 
     emit(
       state.copyWith(

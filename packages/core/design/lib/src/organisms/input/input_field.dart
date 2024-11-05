@@ -64,34 +64,34 @@ class _InputFieldState extends State<InputField> {
 
   Border get border => switch (widget.order) {
         InputFieldOrder.top => Border(
-            top: BorderSide(color: context.colors.contentTertiary30),
-            left: BorderSide(color: context.colors.contentTertiary30),
-            right: BorderSide(color: context.colors.contentTertiary30),
+            top: BorderSide(color: context.colors.contentTertiary),
+            left: BorderSide(color: context.colors.contentTertiary),
+            right: BorderSide(color: context.colors.contentTertiary),
             bottom: BorderSide(
-              color: context.colors.contentTertiary30,
+              color: context.colors.contentTertiary,
               width: 0.5,
             ),
           ),
         InputFieldOrder.middle => Border(
             top: BorderSide(
-              color: context.colors.contentTertiary30,
+              color: context.colors.contentTertiary,
               width: 0.5,
             ),
-            left: BorderSide(color: context.colors.contentTertiary30),
-            right: BorderSide(color: context.colors.contentTertiary30),
+            left: BorderSide(color: context.colors.contentTertiary),
+            right: BorderSide(color: context.colors.contentTertiary),
             bottom: BorderSide(
-              color: context.colors.contentTertiary30,
+              color: context.colors.contentTertiary,
               width: 0.5,
             ),
           ),
         InputFieldOrder.bottom => Border(
             top: BorderSide(
-              color: context.colors.contentTertiary30,
+              color: context.colors.contentTertiary,
               width: 0.5,
             ),
-            left: BorderSide(color: context.colors.contentTertiary30),
-            right: BorderSide(color: context.colors.contentTertiary30),
-            bottom: BorderSide(color: context.colors.contentTertiary30),
+            left: BorderSide(color: context.colors.contentTertiary),
+            right: BorderSide(color: context.colors.contentTertiary),
+            bottom: BorderSide(color: context.colors.contentTertiary),
           ),
       };
 
@@ -100,7 +100,7 @@ class _InputFieldState extends State<InputField> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: borderRadius,
-        color: context.colors.backgroundTertiary,
+        color: context.colors.backgroundSecondary,
         border: border,
       ),
       padding: const EdgeInsets.symmetric(
@@ -112,7 +112,7 @@ class _InputFieldState extends State<InputField> {
         onChanged: widget.onChanged,
         textCapitalization: widget.textCapitalization,
         style: context.typography.body3.copyWith(
-          color: context.colors.contentSecondary,
+          color: context.colors.contentPrimary,
         ),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.only(
@@ -121,7 +121,7 @@ class _InputFieldState extends State<InputField> {
           border: InputBorder.none,
           hintText: widget.hint,
           hintStyle: context.typography.body3.copyWith(
-            color: context.colors.contentTertiary,
+            color: context.colors.contentSecondary,
           ),
           hintFadeDuration: const Duration(milliseconds: 100),
         ),

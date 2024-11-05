@@ -26,7 +26,7 @@ class PlayStyleFilterCategoryGroup extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: context.colors.backgroundTertiary,
+            color: context.colors.backgroundSecondary,
             width: 2,
           ),
         ),
@@ -37,7 +37,7 @@ class PlayStyleFilterCategoryGroup extends StatelessWidget {
           Text(
             playStyles.first.categoryId.titleCase,
             style: context.typography.body1.copyWith(
-              color: context.colors.contentSecondary,
+              color: context.colors.contentPrimary,
             ),
           ),
           const Space(space: AppSpacing.space3),

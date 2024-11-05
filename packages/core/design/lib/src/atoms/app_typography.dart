@@ -14,7 +14,7 @@ TextStyle _largeTitle({Color? color}) => textStyle.copyWith(
 TextStyle _title3({Color? color}) => textStyle.copyWith(
       fontSize: 20,
       height: 20 / 20,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       letterSpacing: 0,
       color: color,
     );
@@ -55,7 +55,7 @@ TextStyle _body4({Color? color}) => textStyle.copyWith(
       fontSize: 13,
       height: 13 / 13,
       letterSpacing: 0,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       color: color,
     );
 
@@ -79,7 +79,7 @@ TextStyle _caption1({Color? color}) => textStyle.copyWith(
       fontSize: 12,
       height: 12 / 12,
       letterSpacing: 0,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
       color: color,
     );
 

@@ -15,13 +15,15 @@ class Attribute extends StatelessWidget {
       children: [
         Text(
           attributeItem.attribute.toUpperCase(),
-          style: context.typography.body2,
+          style: context.typography.body2.copyWith(
+            color: context.colors.contentPrimary,
+          ),
         ),
         SizedBox(height: AppSpacing.space2),
         Text(
           attributeItem.rating.toString(),
           style: context.typography.body2.copyWith(
-            color: attributeItem.ratingColor,
+            color: context.colors.contentPrimary,
           ),
         ),
       ],

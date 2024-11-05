@@ -13,8 +13,8 @@ class ShimmerListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: const Color(0xFFE3E3E3),
-      highlightColor: const Color(0xFFF4F4F4),
+      baseColor: context.colors.backgroundSecondary,
+      highlightColor: context.colors.backgroundTertiary,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.space5,

@@ -15,42 +15,51 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton(
-      style: ButtonStyle(
-        textStyle: WidgetStateProperty.all<TextStyle?>(
-          switch (buttonType) {
-            ButtonSize.normal => context.typography.body3,
-            ButtonSize.small => context.typography.body4,
-          },
-        ),
-        foregroundColor:
-            WidgetStateProperty.all<Color>(context.colors.backgroundPrimary),
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
+    return SizedBox(
+      height: 36,
+      child: FilledButton(
+        style: ButtonStyle(
+          textStyle: WidgetStateProperty.all<TextStyle?>(
+            switch (buttonType) {
+              ButtonSize.normal => context.typography.body3,
+              ButtonSize.small => context.typography.body4,
+            },
+          ),
+          foregroundColor:
+              WidgetStateProperty.all<Color>(context.colors.onPrimary),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppCornerRadius.radius1),
+            ),
+          ),
+          backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+            final mainColor = context.colors.primary;
+            if (states.contains(WidgetState.pressed)) {
+              return Color.alphaBlend(
+                mainColor.withOpacity(0.8),
+                context.colors.backgroundTertiary,
+              );
+            } else if (states.contains(WidgetState.disabled)) {
+              return context.colors.contentSecondary;
+            }
+            return mainColor;
+          }),
+          padding: WidgetStateProperty.all<EdgeInsets>(
+            switch (buttonType) {
+              ButtonSize.normal => const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.space5,
+                  vertical: AppSpacing.space1,
+                ),
+              ButtonSize.small => const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.space4,
+                  vertical: AppSpacing.space1,
+                ),
+            },
           ),
         ),
-        backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-          if (states.contains(WidgetState.pressed)) {
-            return context.colors.contentTertiary;
-          } else if (states.contains(WidgetState.disabled)) {
-            return context.colors.contentTertiary;
-          }
-          return context.colors.contentSecondary;
-        }),
-        padding: WidgetStateProperty.all<EdgeInsets>(
-          switch (buttonType) {
-            ButtonSize.normal => const EdgeInsets.symmetric(
-                horizontal: AppSpacing.space5,
-              ),
-            ButtonSize.small => const EdgeInsets.symmetric(
-                horizontal: AppSpacing.space4,
-              ),
-          },
-        ),
+        onPressed: onPressed,
+        child: Text(text.toUpperCase()),
       ),
-      onPressed: onPressed,
-      child: Text(text.toUpperCase()),
     );
   }
 }

@@ -25,16 +25,22 @@ class FilterGroup<T> extends StatelessWidget {
           if (title != null)
             Text(
               title!,
-              style: context.typography.body3.copyWith(
-                color: context.colors.contentSecondary,
+              style: context.typography.body1.copyWith(
+                color: context.colors.contentPrimary,
               ),
             ),
-          SizedBox(height: AppSpacing.space2),
-          Wrap(
-            runSpacing: AppSpacing.space3,
-            spacing: AppSpacing.space3,
+          SizedBox(height: AppSpacing.space5),
+          GridView(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: AppSpacing.space3,
+              mainAxisSpacing: AppSpacing.space3,
+              childAspectRatio: 4,
+            ),
             children: indices
-                .map((index) => Pill<T>(pillItem: pillItems[index]))
+                .map<Widget>((index) => Pill<T>(pillItem: pillItems[index]))
                 .toList(),
           ),
         ],

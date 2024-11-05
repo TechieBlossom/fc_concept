@@ -177,33 +177,6 @@ class PlayerPlaceholder extends StatelessWidget {
               player!.commonName ?? '',
               style: context.typography.body3,
             ),
-            if (versions != null) ...[
-              const SizedBox(height: AppSpacing.space3),
-              PullDown(
-                key: ValueKey(player?.eaId),
-                constrainedWidth: 164,
-                heading: selectedVersion!.$2,
-                items: versions!
-                    .map(
-                      (version) => (
-                        version.$1,
-                        version.$2,
-                        version.$3,
-                      ),
-                    )
-                    .toList(),
-                onItemTapped: (version) {
-                  context.read<CompareBloc>().add(
-                        SelectVersion(
-                          index: index,
-                          playerId: version.$1,
-                          versionId: version.$2,
-                          version: version.$3,
-                        ),
-                      );
-                },
-              ),
-            ],
             const SizedBox(height: AppSpacing.space3),
             PlayerImage(
               imagePath: player!.imagePath,

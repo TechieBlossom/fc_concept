@@ -50,7 +50,9 @@ class _ChemistrySelectionSheetState extends State<ChemistrySelectionSheet> {
           children: [
             Text(
               'Select Chemistry Modifier',
-              style: context.typography.body1,
+              style: context.typography.body1.copyWith(
+                color: context.colors.contentPrimary,
+              ),
             ),
             SecondaryButton(
                 buttonType: ButtonSize.small,

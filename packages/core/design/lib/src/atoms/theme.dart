@@ -14,7 +14,7 @@ abstract class AppTheme {
   ) {
     final isIos = Platform.isIOS;
     final appColors =
-        brightness == Brightness.light ? AppColors.light() : AppColors.light();
+        brightness == Brightness.light ? AppColors.light() : AppColors.dark();
     final appTypography = AppTypography.base();
 
     final baseTheme = ThemeData(
@@ -32,9 +32,18 @@ abstract class AppTheme {
       textTheme: GoogleFonts.ralewayTextTheme(),
       splashFactory: NoSplash.splashFactory,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: appColors.contentSecondary,
-        primary: appColors.contentSecondary,
+        seedColor: appColors.primary,
+        primary: appColors.primary,
         brightness: brightness,
+      ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: appColors.backgroundPrimary,
+        foregroundColor: appColors.contentPrimary,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: appColors.backgroundPrimary,
+        selectedItemColor: appColors.contentPrimary,
+        unselectedItemColor: appColors.contentSecondary,
       ),
       scaffoldBackgroundColor: appColors.backgroundPrimary,
       drawerTheme: DrawerThemeData(
@@ -42,7 +51,7 @@ abstract class AppTheme {
         surfaceTintColor: appColors.backgroundPrimary,
       ),
       dividerTheme: DividerThemeData(
-        color: appColors.backgroundTertiary70,
+        color: appColors.backgroundTertiary,
       ),
     );
   }

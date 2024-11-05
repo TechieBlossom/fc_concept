@@ -34,7 +34,7 @@ class PlayStyleInfoSheet extends StatelessWidget {
               ? playStyle.playstylePDescription
               : playStyle.playstyleDescription,
           style: context.typography.body1.copyWith(
-            color: context.colors.contentTertiary,
+            color: context.colors.contentSecondary,
             height: 1.2,
           ),
         ),

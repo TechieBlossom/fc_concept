@@ -15,14 +15,23 @@ class BottomNavScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: navigationShell,
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: navigationShell.currentIndex,
-          onTap: navigationShell.goBranch,
-          selectedItemColor: context.colors.contentPrimary,
-          unselectedItemColor: context.colors.contentTertiary,
-          selectedLabelStyle: context.typography.body3,
-          type: BottomNavigationBarType.shifting,
-          items: destinations,
+        bottomNavigationBar: Glass.lessBlur(
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: context.colors.backgroundSecondary.withOpacity(0.1),
+            ),
+            child: BottomNavigationBar(
+              elevation: 0,
+              useLegacyColorScheme: false,
+              currentIndex: navigationShell.currentIndex,
+              onTap: navigationShell.goBranch,
+              selectedItemColor: context.colors.contentPrimary,
+              unselectedItemColor: context.colors.contentSecondary,
+              selectedLabelStyle: context.typography.body3,
+              type: BottomNavigationBarType.shifting,
+              items: destinations,
+            ),
+          ),
         ),
         // bottomNavigationBar:
         //     Theme.of(context).platform == TargetPlatform.android
@@ -30,14 +39,14 @@ class BottomNavScaffold extends StatelessWidget {
         //             currentIndex: navigationShell.currentIndex,
         //             onTap: navigationShell.goBranch,
         //             selectedItemColor: context.colors.contentPrimary,
-        //             unselectedItemColor: context.colors.contentTertiary,
+        //             unselectedItemColor: context.colors.contentSecondary,
         //             items: destinations,
         //           )
         //         : CupertinoTabBar(
         //             currentIndex: navigationShell.currentIndex,
         //             onTap: navigationShell.goBranch,
         //             activeColor: context.colors.contentPrimary,
-        //             inactiveColor: context.colors.contentTertiary,
+        //             inactiveColor: context.colors.contentSecondary,
         //             items: destinations,
         //           ),
       );

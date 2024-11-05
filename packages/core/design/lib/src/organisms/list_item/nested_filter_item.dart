@@ -28,14 +28,14 @@ class NestedFilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = _isDisabled
-        ? context.colors.contentTertiary
-        : context.colors.contentSecondary;
+        ? context.colors.contentSecondary
+        : context.colors.contentPrimary;
     return InkWell(
       onTap: onTap,
       child: Container(
         constraints: BoxConstraints(
-          minHeight: 62,
-          maxHeight: 62,
+          minHeight: 66,
+          maxHeight: 66,
         ),
         child: Row(
           children: [
@@ -47,7 +47,7 @@ class NestedFilterItem extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(
                       left: margin,
-                      bottom: AppSpacing.space2,
+                      bottom: AppSpacing.space3,
                     ),
                     child: Text(
                       title,
@@ -109,8 +109,8 @@ class _Options extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: 28,
-        maxHeight: 28,
+        minHeight: 36,
+        maxHeight: 36,
       ),
       child: ListView.builder(
         shrinkWrap: true,

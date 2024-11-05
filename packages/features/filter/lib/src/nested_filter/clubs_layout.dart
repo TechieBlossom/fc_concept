@@ -25,7 +25,7 @@ class ClubsLayout extends StatelessWidget {
             (entry) {
               return Padding(
                 padding: const EdgeInsets.only(
-                  bottom: AppSpacing.space9,
+                  bottom: AppSpacing.space7,
                 ),
                 child: FilterGroup(
                   title: leagues

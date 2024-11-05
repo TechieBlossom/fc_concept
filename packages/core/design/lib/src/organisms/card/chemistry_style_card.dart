@@ -29,7 +29,7 @@ class ChemistryStyleCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
         border: Border.all(
           strokeAlign: BorderSide.strokeAlignOutside,
-          color: context.colors.backgroundTertiary,
+          color: context.colors.primary,
           width: 2,
         ),
       ),
@@ -57,7 +57,7 @@ class ChemistryStyleCard extends StatelessWidget {
         },
         child: Material(
           elevation: 1,
-          color: context.colors.backgroundPrimary,
+          color: context.colors.backgroundSecondary,
           borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -70,11 +70,13 @@ class ChemistryStyleCard extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'Chemistry',
-                    style: context.typography.body3,
+                    style: context.typography.body3.copyWith(
+                      color: context.colors.onPrimary,
+                    ),
                   ),
                 ),
                 decoration: BoxDecoration(
-                  color: context.colors.backgroundTertiary,
+                  color: context.colors.primary,
                   borderRadius: BorderRadius.horizontal(
                     left: Radius.circular(AppCornerRadius.radius2),
                   ),

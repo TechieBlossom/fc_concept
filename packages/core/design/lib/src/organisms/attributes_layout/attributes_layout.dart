@@ -366,7 +366,9 @@ class _FaceAttribute extends StatelessWidget {
             child: Text(
               attributeItem.attribute,
               textAlign: TextAlign.start,
-              style: context.typography.subHead,
+              style: context.typography.subHead.copyWith(
+                color: context.colors.contentPrimary,
+              ),
             ),
           ),
           Container(

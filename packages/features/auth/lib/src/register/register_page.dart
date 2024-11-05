@@ -78,7 +78,7 @@ class RegisterPage extends StatelessWidget {
                                   'By registering, you agree to our',
                                   textAlign: TextAlign.right,
                                   style: context.typography.body1.copyWith(
-                                    color: context.colors.backgroundTertiary,
+                                    color: context.colors.backgroundSecondary,
                                   ),
                                 ),
                               ),

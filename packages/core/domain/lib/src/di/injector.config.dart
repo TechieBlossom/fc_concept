@@ -220,8 +220,6 @@ _i174.GetIt init(
       () => _i394.GetPlayerCountUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i354.SearchPlayersUseCase>(
       () => _i354.SearchPlayersUseCase(gh<_i294.PlayerRepository>()));
-  gh.factory<_i120.FilterPlayersUseCase>(
-      () => _i120.FilterPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i274.GetPositionalPlayersUseCase>(
       () => _i274.GetPositionalPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i75.GetPlayerDetailsUseCase>(
@@ -236,6 +234,11 @@ _i174.GetIt init(
       () => _i530.GetTrendingPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i77.GetPlayerVersionsUseCase>(
       () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
+  gh.factory<_i120.FilterPlayersUseCase>(() => _i120.FilterPlayersUseCase(
+        gh<_i294.PlayerRepository>(),
+        gh<_i264.GetPositionsFromPositionGroup>(),
+        gh<_i437.GetAllPositionsUseCase>(),
+      ));
   gh.lazySingleton<_i809.MetadataBloc>(() => _i809.MetadataBloc(
         gh<_i913.GetAllRolesUseCase>(),
         gh<_i913.GetAllPlayStylesUseCase>(),

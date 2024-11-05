@@ -1,5 +1,4 @@
 import 'package:fc_concept/home/bottom_nav_scaffold/bottom_nav_scaffold.dart';
-import 'package:feature_compare/compare.dart';
 import 'package:feature_dashboard/dashboard.dart';
 import 'package:feature_menu/menu.dart';
 import 'package:feature_player/player.dart';

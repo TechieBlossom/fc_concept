@@ -74,7 +74,7 @@ class _Content extends StatelessWidget {
           ? 270
           : (players?.isEmpty ?? true)
               ? 161
-              : 270 + 28 + 16,
+              : 270 + 36 + 16,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
@@ -88,7 +88,7 @@ class _Content extends StatelessWidget {
             child: Text(
               heading,
               style: context.typography.headline.copyWith(
-                color: context.colors.contentSecondary,
+                color: context.colors.contentPrimary,
               ),
             ),
           ),
@@ -110,7 +110,7 @@ class _Content extends StatelessWidget {
                   vertical: AppSpacing.space7,
                 ),
                 decoration: BoxDecoration(
-                  color: context.colors.backgroundTertiary,
+                  color: context.colors.backgroundSecondary,
                   borderRadius: BorderRadius.circular(AppSpacing.space3),
                 ),
                 child: Text(
@@ -128,7 +128,7 @@ class _Content extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.8,
+                  childAspectRatio: 0.78,
                   crossAxisSpacing: AppSpacing.space5,
                 ),
                 itemCount: players?.length,

@@ -28,21 +28,20 @@ class PlayStyleFilterItem extends StatelessWidget {
           PlayStyleImage(
             playStyle: playStyle,
             size: PlayStyleImageSize.small,
+            isSelected: isSelected,
           ),
           Container(
-            padding: const EdgeInsets.all(AppSpacing.space2),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.space3,
+              vertical: AppSpacing.space2,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
                 Radius.circular(AppCornerRadius.radius1),
               ),
-              border: Border.all(
-                color: context.colors.contentTertiary,
-                width: 1,
-                strokeAlign: BorderSide.strokeAlignInside,
-              ),
               color: isSelected
-                  ? context.colors.contentPrimary
-                  : Colors.transparent,
+                  ? context.colors.primary
+                  : context.colors.backgroundTertiary,
             ),
             child: Text(
               playStyle.name,

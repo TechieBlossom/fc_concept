@@ -22,8 +22,8 @@ class PlayerHeader extends StatelessWidget {
     final colors = getPlayerColors(context, player);
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: 192,
-        maxHeight: 292,
+        minHeight: 194,
+        maxHeight: 294,
       ),
       child: Stack(
         children: [
@@ -61,7 +61,9 @@ class PlayerHeader extends StatelessWidget {
                         children: [
                           Text(
                             player.commonName ?? '',
-                            style: context.typography.title3,
+                            style: context.typography.title3.copyWith(
+                              color: context.colors.contentPrimary,
+                            ),
                           ),
                           SizedBox(height: AppSpacing.space2),
                           Row(
@@ -106,7 +108,9 @@ class PlayerHeader extends StatelessWidget {
                                     ?.map((e) => e.shortLabel)
                                     .join(' - ') ??
                                 '',
-                            style: context.typography.caption2,
+                            style: context.typography.caption2.copyWith(
+                              color: context.colors.contentPrimary,
+                            ),
                           ),
                         ),
                       ],

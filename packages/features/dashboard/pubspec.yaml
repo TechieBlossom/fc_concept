@@ -9,6 +9,8 @@ environment:
 
 dependencies:
   bloc_concurrency: ^0.2.5
+  core_ads:
+    path: ../../../packages/core/ads
   core_api_client:
     path: ../../../packages/core/api_client
   core_design:

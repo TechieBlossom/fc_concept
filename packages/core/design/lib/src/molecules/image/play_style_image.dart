@@ -17,16 +17,22 @@ class PlayStyleImage extends StatelessWidget {
     required this.playStyle,
     this.size = PlayStyleImageSize.small,
     this.isPlus = false,
+    this.isSelected = false,
   });
 
   final PlayStyle playStyle;
   final PlayStyleImageSize size;
   final bool isPlus;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      color: isPlus ? context.colors.gold2 : context.colors.contentPrimary,
+      color: isPlus
+          ? context.colors.gold2
+          : isSelected
+              ? context.colors.primary
+              : context.colors.contentPrimary,
       width: size == PlayStyleImageSize.small
           ? AppSpacing.space7
           : AppSpacing.space8,

@@ -7,16 +7,14 @@ class ColorsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = [
-      context.colors.backgroundTertiary70,
-      context.colors.contentSecondary,
+      context.colors.backgroundTertiary,
       context.colors.backgroundPrimary,
       Theme.of(context).colorScheme.onPrimaryContainer,
-      context.colors.contentTertiary,
-      context.colors.backgroundSecondary,
-      context.colors.backgroundSecondary,
+      context.colors.contentSecondary,
+      context.colors.primary,
+      context.colors.primary,
       context.colors.gold,
       context.colors.contentPrimary,
-      context.colors.backgroundFour,
       Theme.of(context).colorScheme.onTertiaryContainer,
       Theme.of(context).colorScheme.outline,
       context.colors.gold2,
