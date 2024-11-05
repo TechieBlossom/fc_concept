@@ -11,10 +11,11 @@ class NestedFilterItem extends StatelessWidget {
     required this.margin,
     this.selectedPills,
     this.onTap,
-  }) : assert(
-          (selectedPills == null && subtitle != null) ||
-              (selectedPills != null && subtitle == null),
-        );
+  });
+      // : assert(
+      //     (selectedPills?.length == 0 && subtitle != null) ||
+      //         (selectedPills?.length != 0 && subtitle == null),
+      //   );
 
   final String title;
   final String? subtitle;
@@ -56,7 +57,7 @@ class NestedFilterItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (selectedPills == null && subtitle != null)
+                  if ((selectedPills?.isEmpty ?? true) && subtitle != null)
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: margin),
                       child: Text(
@@ -66,7 +67,7 @@ class NestedFilterItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                  if (selectedPills != null)
+                  if (selectedPills?.isNotEmpty ?? false)
                     _Options(
                       pills: selectedPills!,
                       pillGap: pillGap,

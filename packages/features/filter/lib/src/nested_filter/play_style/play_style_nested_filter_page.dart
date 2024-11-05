@@ -39,7 +39,10 @@ class PlayStyleNestedFilterPage extends StatelessWidget {
               buttons: [
                 SecondaryButton(
                   text: 'Clear',
-                  onPressed: () {},
+                  onPressed: () =>
+                      context.read<PlayStyleNestedFilterBloc>().add(
+                            Clear(),
+                          ),
                 ),
                 PrimaryButton(
                   text: 'Done',

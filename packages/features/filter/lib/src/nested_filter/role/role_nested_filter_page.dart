@@ -39,7 +39,9 @@ class RoleNestedFilterPage extends StatelessWidget {
               buttons: [
                 SecondaryButton(
                   text: 'Clear',
-                  onPressed: () {},
+                  onPressed: () => context.read<RoleNestedFilterBloc>().add(
+                        Clear(),
+                      ),
                 ),
                 PrimaryButton(
                   text: 'Done',

@@ -17,3 +17,6 @@ class SelectRole extends RoleNestedFilterEvent with SelectRoleMappable {
 
 @MappableClass(discriminatorValue: 'done')
 class Done extends RoleNestedFilterEvent with DoneMappable {}
+
+@MappableClass(discriminatorValue: 'clear')
+class Clear extends RoleNestedFilterEvent with ClearMappable {}

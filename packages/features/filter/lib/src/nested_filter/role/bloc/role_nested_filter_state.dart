@@ -5,17 +5,17 @@ class RoleNestedFilterState with RoleNestedFilterStateMappable {
   RoleNestedFilterState({
     this.processState = ProcessState.success,
     this.roleNestedFilterPageParams,
-    this.roles,
+    this.roles = const [],
     this.selectedRoles,
   });
 
   final ProcessState processState;
   final RoleNestedFilterPageParams? roleNestedFilterPageParams;
-  final List<Role>? roles;
+  final List<Role> roles;
   final List<Role>? selectedRoles;
 
   Map<String, List<Role>> get rolesByPosition => groupBy<Role, String>(
-        roles ?? [],
+        roles,
         (role) => role.fullPositionName,
       );
 }

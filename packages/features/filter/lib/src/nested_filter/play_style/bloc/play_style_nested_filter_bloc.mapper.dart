@@ -18,6 +18,7 @@ class PlayStyleNestedFilterEventMapper
       InitMapper.ensureInitialized();
       SelectPlayStyleMapper.ensureInitialized();
       DoneMapper.ensureInitialized();
+      ClearMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -379,6 +380,104 @@ class _DoneCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Done, $Out>
       _DoneCopyWithImpl($value, $cast, t);
 }
 
+class ClearMapper extends SubClassMapperBase<Clear> {
+  ClearMapper._();
+
+  static ClearMapper? _instance;
+  static ClearMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ClearMapper._());
+      PlayStyleNestedFilterEventMapper.ensureInitialized()
+          .addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'Clear';
+
+  @override
+  final MappableFields<Clear> fields = const {};
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'clear';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayStyleNestedFilterEventMapper.ensureInitialized();
+
+  static Clear _instantiate(DecodingData data) {
+    return Clear();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static Clear fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<Clear>(map);
+  }
+
+  static Clear fromJson(String json) {
+    return ensureInitialized().decodeJson<Clear>(json);
+  }
+}
+
+mixin ClearMappable {
+  String toJson() {
+    return ClearMapper.ensureInitialized().encodeJson<Clear>(this as Clear);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ClearMapper.ensureInitialized().encodeMap<Clear>(this as Clear);
+  }
+
+  ClearCopyWith<Clear, Clear, Clear> get copyWith =>
+      _ClearCopyWithImpl(this as Clear, $identity, $identity);
+  @override
+  String toString() {
+    return ClearMapper.ensureInitialized().stringifyValue(this as Clear);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return ClearMapper.ensureInitialized().equalsValue(this as Clear, other);
+  }
+
+  @override
+  int get hashCode {
+    return ClearMapper.ensureInitialized().hashValue(this as Clear);
+  }
+}
+
+extension ClearValueCopy<$R, $Out> on ObjectCopyWith<$R, Clear, $Out> {
+  ClearCopyWith<$R, Clear, $Out> get $asClear =>
+      $base.as((v, t, t2) => _ClearCopyWithImpl(v, t, t2));
+}
+
+abstract class ClearCopyWith<$R, $In extends Clear, $Out>
+    implements PlayStyleNestedFilterEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  ClearCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _ClearCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Clear, $Out>
+    implements ClearCopyWith<$R, Clear, $Out> {
+  _ClearCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<Clear> $mapper = ClearMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  Clear $make(CopyWithData data) => Clear();
+
+  @override
+  ClearCopyWith<$R2, Clear, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+      _ClearCopyWithImpl($value, $cast, t);
+}
+
 class PlayStyleNestedFilterStateMapper
     extends ClassMapperBase<PlayStyleNestedFilterState> {
   PlayStyleNestedFilterStateMapper._();
@@ -410,10 +509,11 @@ class PlayStyleNestedFilterStateMapper
       Field(
           'playStyleNestedFilterPageParams', _$playStyleNestedFilterPageParams,
           opt: true);
-  static List<PlayStyle>? _$playStyles(PlayStyleNestedFilterState v) =>
+  static List<PlayStyle> _$playStyles(PlayStyleNestedFilterState v) =>
       v.playStyles;
   static const Field<PlayStyleNestedFilterState, List<PlayStyle>>
-      _f$playStyles = Field('playStyles', _$playStyles, opt: true);
+      _f$playStyles =
+      Field('playStyles', _$playStyles, opt: true, def: const []);
   static List<PlayStyle>? _$selectedPlayStyles(PlayStyleNestedFilterState v) =>
       v.selectedPlayStyles;
   static const Field<PlayStyleNestedFilterState, List<PlayStyle>>
@@ -496,7 +596,7 @@ abstract class PlayStyleNestedFilterStateCopyWith<
     $R,
     $In extends PlayStyleNestedFilterState,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>
       get playStyles;
   ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
       get selectedPlayStyles;
@@ -520,11 +620,9 @@ class _PlayStyleNestedFilterStateCopyWithImpl<$R, $Out>
   late final ClassMapperBase<PlayStyleNestedFilterState> $mapper =
       PlayStyleNestedFilterStateMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
-      get playStyles => $value.playStyles != null
-          ? ListCopyWith($value.playStyles!, (v, t) => v.copyWith.$chain(t),
-              (v) => call(playStyles: v))
-          : null;
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>
+      get playStyles => ListCopyWith($value.playStyles,
+          (v, t) => v.copyWith.$chain(t), (v) => call(playStyles: v));
   @override
   ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
       get selectedPlayStyles => $value.selectedPlayStyles != null
@@ -537,13 +635,13 @@ class _PlayStyleNestedFilterStateCopyWithImpl<$R, $Out>
   $R call(
           {ProcessState? processState,
           Object? playStyleNestedFilterPageParams = $none,
-          Object? playStyles = $none,
+          List<PlayStyle>? playStyles,
           Object? selectedPlayStyles = $none}) =>
       $apply(FieldCopyWithData({
         if (processState != null) #processState: processState,
         if (playStyleNestedFilterPageParams != $none)
           #playStyleNestedFilterPageParams: playStyleNestedFilterPageParams,
-        if (playStyles != $none) #playStyles: playStyles,
+        if (playStyles != null) #playStyles: playStyles,
         if (selectedPlayStyles != $none) #selectedPlayStyles: selectedPlayStyles
       }));
   @override

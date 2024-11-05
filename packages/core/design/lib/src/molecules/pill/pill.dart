@@ -45,6 +45,7 @@ class Pill<T> extends StatelessWidget {
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (pillItem.image != null) ...[
               pillItem.image!,

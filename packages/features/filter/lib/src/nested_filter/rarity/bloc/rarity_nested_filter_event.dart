@@ -17,3 +17,6 @@ class SelectRarity extends RarityNestedFilterEvent with SelectRarityMappable {
 
 @MappableClass(discriminatorValue: 'done')
 class Done extends RarityNestedFilterEvent with DoneMappable {}
+
+@MappableClass(discriminatorValue: 'clear')
+class Clear extends RarityNestedFilterEvent with ClearMappable {}

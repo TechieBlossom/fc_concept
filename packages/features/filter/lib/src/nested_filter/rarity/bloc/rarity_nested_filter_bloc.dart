@@ -25,6 +25,7 @@ class RarityNestedFilterBloc
         ) {
     on<Init>((event, emit) => _initial(emit));
     on<SelectRarity>((event, emit) => _selectItem(event.item, emit));
+    on<Clear>((_, emit) => _clear(emit));
     on<Done>((event, emit) => _done());
 
     add(Init());
@@ -51,10 +52,12 @@ class RarityNestedFilterBloc
     }
   }
 
+  void _clear(Emitter<RarityNestedFilterState> emit) {
+    emit(state.copyWith(selectedRarities: []));
+  }
+
   void _done() {
-    _navigator.closeAny<List<Rarity>?>(
-      (state.selectedRarities?.isEmpty ?? true) ? null : state.selectedRarities,
-    );
+    _navigator.closeAny<List<Rarity>?>(state.selectedRarities);
   }
 
   void _handleRaritiesResult(

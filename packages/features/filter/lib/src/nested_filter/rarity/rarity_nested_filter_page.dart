@@ -36,7 +36,9 @@ class RarityNestedFilterPage extends StatelessWidget {
               buttons: [
                 SecondaryButton(
                   text: 'Clear',
-                  onPressed: () {},
+                  onPressed: () => context.read<RarityNestedFilterBloc>().add(
+                    Clear(),
+                  ),
                 ),
                 PrimaryButton(
                   text: 'Done',
@@ -56,7 +58,7 @@ class RarityNestedFilterPage extends StatelessWidget {
                           bottom: AppSpacing.space9,
                         ),
                         child: FilterGroup(
-                          pillItems: state.rarities!
+                          pillItems: state.rarities
                               .map(
                                 (item) => PillItem<Rarity>(
                                   data: item,

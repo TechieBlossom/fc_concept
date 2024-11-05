@@ -25,7 +25,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.positions,
     this.positionGroups,
     this.roles,
-    this.playStyles,
+    this.playStyles = const [],
   });
 
   final List<NestedFilterLayoutType>? leagues;
@@ -38,5 +38,5 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<Position>? positions;
   final List<PositionGroup>? positionGroups;
   final List<Role>? roles;
-  final List<PlayStyle>? playStyles;
+  final List<PlayStyle> playStyles;
 }

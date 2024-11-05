@@ -21,13 +21,17 @@ class InfoMessage extends StatelessWidget {
         Text(
           message,
           textAlign: TextAlign.center,
-          style: context.typography.headline,
+          style: context.typography.headline.copyWith(
+            color: context.colors.contentPrimary,
+          ),
         ),
         if (highlightMessage != null)
           Text(
             highlightMessage!,
             textAlign: TextAlign.center,
-            style: context.typography.body1,
+            style: context.typography.body1.copyWith(
+              color: context.colors.contentPrimary,
+            ),
           )
       ],
     );

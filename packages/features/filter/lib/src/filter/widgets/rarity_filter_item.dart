@@ -16,8 +16,12 @@ class RarityFilterItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
-        title: state.rarities != null ? 'Rarity (Tap to change)' : 'Rarity',
-        subtitle: state.rarities != null ? null : 'Tap to select Rarity(s)',
+        title: (state.rarities?.isEmpty ?? true)
+            ? 'Rarity'
+            : 'Rarity (Tap to change)',
+        subtitle: (state.rarities?.isEmpty ?? true)
+            ? 'Tap to select Rarity(s)'
+            : null,
         selectedPills: state.rarities
             ?.map(
               (rarity) => PillItem<Rarity>(

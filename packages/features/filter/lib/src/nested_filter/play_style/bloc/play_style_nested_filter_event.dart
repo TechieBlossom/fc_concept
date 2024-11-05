@@ -19,3 +19,6 @@ class SelectPlayStyle extends PlayStyleNestedFilterEvent
 
 @MappableClass(discriminatorValue: 'done')
 class Done extends PlayStyleNestedFilterEvent with DoneMappable {}
+
+@MappableClass(discriminatorValue: 'clear')
+class Clear extends PlayStyleNestedFilterEvent with ClearMappable {}

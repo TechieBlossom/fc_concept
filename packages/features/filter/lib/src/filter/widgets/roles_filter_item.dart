@@ -13,8 +13,10 @@ class RolesFilterItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
-        title: state.roles != null ? 'Roles (Tap to change)' : 'Roles',
-        subtitle: state.roles != null ? null : 'Tap to select Roles(s)',
+        title:
+            (state.roles?.isEmpty ?? true) ? 'Roles' : 'Roles (Tap to change)',
+        subtitle:
+            (state.roles?.isEmpty ?? true) ? 'Tap to select Roles(s)' : null,
         selectedPills: state.roles
             ?.map(
               (role) => PillItem<Role>(

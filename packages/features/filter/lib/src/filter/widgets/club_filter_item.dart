@@ -16,8 +16,9 @@ class ClubFilterItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
-        title: state.clubs != null ? 'Club (Tap to change)' : 'Club',
-        subtitle: state.clubs != null ? null : 'Tap to select Club(s)',
+        title: (state.clubs?.isEmpty ?? true) ? 'Club' : 'Club (Tap to change)',
+        subtitle:
+            (state.clubs?.isEmpty ?? true) ? 'Tap to select Club(s)' : null,
         selectedPills: state.clubs
             ?.map(
               (club) => PillItem<Club>(
@@ -29,7 +30,7 @@ class ClubFilterItem extends StatelessWidget {
             .toList(),
         pillGap: AppSpacing.space3,
         margin: AppSpacing.space5,
-        onTap: state.leagues != null
+        onTap: state.leagues?.isNotEmpty ?? false
             ? () => context.read<FilterBloc>().add(
                   TapClub(),
                 )

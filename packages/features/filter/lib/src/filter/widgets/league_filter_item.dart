@@ -16,8 +16,11 @@ class LeagueFilterItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
-        title: state.leagues != null ? 'League (Tap to change)' : 'League',
-        subtitle: state.leagues != null ? null : 'Tap to select League(s)',
+        title: (state.leagues?.isEmpty ?? true)
+            ? 'League'
+            : 'League (Tap to change)',
+        subtitle:
+            (state.leagues?.isEmpty ?? true) ? 'Tap to select League(s)' : null,
         selectedPills: state.leagues
             ?.map(
               (league) => PillItem<NestedFilterLayoutType>(

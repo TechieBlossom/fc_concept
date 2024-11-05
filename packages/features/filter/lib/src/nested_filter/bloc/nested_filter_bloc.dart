@@ -27,6 +27,7 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
     on<SelectClub>((event, emit) => _selectClub(event.club, emit));
     on<SelectItem>((event, emit) => _selectItem(event.item, emit));
     on<Done>((event, emit) => _done());
+    on<Clear>((event, emit) => _clear(event, emit));
     on<Back>((event, emit) => _back());
 
     add(Init());
@@ -96,19 +97,27 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
     }
   }
 
+  void _clear(Clear event, Emitter<NestedFilterState> emit) {
+    switch (event.nestedFilterType) {
+      case NestedFilterType.league:
+      case NestedFilterType.nation:
+        emit(state.copyWith(selectedItems: []));
+      case NestedFilterType.club:
+        emit(state.copyWith(selectedClubs: []));
+      case _:
+        {}
+    }
+  }
+
   void _done() {
     final selectedItems = state.selectedItems;
     final selectedClubs = state.selectedClubs;
     switch (state.nestedFilterPageParams?.nestedFilterType) {
       case NestedFilterType.league:
       case NestedFilterType.nation:
-        _navigator.closeAny<List<NestedFilterLayoutType>?>(
-          (selectedItems?.isEmpty ?? true) ? null : selectedItems,
-        );
+        _navigator.closeAny<List<NestedFilterLayoutType>?>(selectedItems);
       case NestedFilterType.club:
-        _navigator.closeAny<List<Club>?>(
-          (selectedClubs?.isEmpty ?? true) ? null : selectedClubs,
-        );
+        _navigator.closeAny<List<Club>?>(selectedClubs);
       case null:
       // TODO: Handle this case.
       case NestedFilterType.rarity:

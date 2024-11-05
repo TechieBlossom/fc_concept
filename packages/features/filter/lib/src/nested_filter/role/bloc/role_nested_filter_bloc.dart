@@ -5,7 +5,9 @@ import 'package:feature_filter/src/nested_filter/role/role_nested_filter_page.da
 import 'package:injectable/injectable.dart';
 
 part 'role_nested_filter_bloc.mapper.dart';
+
 part 'role_nested_filter_event.dart';
+
 part 'role_nested_filter_state.dart';
 
 @injectable
@@ -22,6 +24,7 @@ class RoleNestedFilterBloc
           ),
         ) {
     on<SelectRole>((event, emit) => _selectItem(event.item, emit));
+    on<Clear>((event, emit) => _clear(emit));
     on<Done>((event, emit) => _done());
   }
 
@@ -38,9 +41,11 @@ class RoleNestedFilterBloc
     }
   }
 
+  void _clear(Emitter<RoleNestedFilterState> emit) {
+    emit(state.copyWith(selectedRoles: []));
+  }
+
   void _done() {
-    _navigator.closeAny<List<Role>?>(
-      (state.selectedRoles?.isEmpty ?? true) ? null : state.selectedRoles,
-    );
+    _navigator.closeAny<List<Role>?>(state.selectedRoles);
   }
 }

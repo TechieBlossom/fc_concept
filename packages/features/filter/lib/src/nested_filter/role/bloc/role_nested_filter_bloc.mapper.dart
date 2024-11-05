@@ -17,6 +17,7 @@ class RoleNestedFilterEventMapper
       InitMapper.ensureInitialized();
       SelectRoleMapper.ensureInitialized();
       DoneMapper.ensureInitialized();
+      ClearMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -371,6 +372,103 @@ class _DoneCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Done, $Out>
       _DoneCopyWithImpl($value, $cast, t);
 }
 
+class ClearMapper extends SubClassMapperBase<Clear> {
+  ClearMapper._();
+
+  static ClearMapper? _instance;
+  static ClearMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ClearMapper._());
+      RoleNestedFilterEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'Clear';
+
+  @override
+  final MappableFields<Clear> fields = const {};
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'clear';
+  @override
+  late final ClassMapperBase superMapper =
+      RoleNestedFilterEventMapper.ensureInitialized();
+
+  static Clear _instantiate(DecodingData data) {
+    return Clear();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static Clear fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<Clear>(map);
+  }
+
+  static Clear fromJson(String json) {
+    return ensureInitialized().decodeJson<Clear>(json);
+  }
+}
+
+mixin ClearMappable {
+  String toJson() {
+    return ClearMapper.ensureInitialized().encodeJson<Clear>(this as Clear);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ClearMapper.ensureInitialized().encodeMap<Clear>(this as Clear);
+  }
+
+  ClearCopyWith<Clear, Clear, Clear> get copyWith =>
+      _ClearCopyWithImpl(this as Clear, $identity, $identity);
+  @override
+  String toString() {
+    return ClearMapper.ensureInitialized().stringifyValue(this as Clear);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return ClearMapper.ensureInitialized().equalsValue(this as Clear, other);
+  }
+
+  @override
+  int get hashCode {
+    return ClearMapper.ensureInitialized().hashValue(this as Clear);
+  }
+}
+
+extension ClearValueCopy<$R, $Out> on ObjectCopyWith<$R, Clear, $Out> {
+  ClearCopyWith<$R, Clear, $Out> get $asClear =>
+      $base.as((v, t, t2) => _ClearCopyWithImpl(v, t, t2));
+}
+
+abstract class ClearCopyWith<$R, $In extends Clear, $Out>
+    implements RoleNestedFilterEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  ClearCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _ClearCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Clear, $Out>
+    implements ClearCopyWith<$R, Clear, $Out> {
+  _ClearCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<Clear> $mapper = ClearMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  Clear $make(CopyWithData data) => Clear();
+
+  @override
+  ClearCopyWith<$R2, Clear, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+      _ClearCopyWithImpl($value, $cast, t);
+}
+
 class RoleNestedFilterStateMapper
     extends ClassMapperBase<RoleNestedFilterState> {
   RoleNestedFilterStateMapper._();
@@ -399,9 +497,9 @@ class RoleNestedFilterStateMapper
       _f$roleNestedFilterPageParams = Field(
           'roleNestedFilterPageParams', _$roleNestedFilterPageParams,
           opt: true);
-  static List<Role>? _$roles(RoleNestedFilterState v) => v.roles;
+  static List<Role> _$roles(RoleNestedFilterState v) => v.roles;
   static const Field<RoleNestedFilterState, List<Role>> _f$roles =
-      Field('roles', _$roles, opt: true);
+      Field('roles', _$roles, opt: true, def: const []);
   static List<Role>? _$selectedRoles(RoleNestedFilterState v) =>
       v.selectedRoles;
   static const Field<RoleNestedFilterState, List<Role>> _f$selectedRoles =
@@ -480,7 +578,7 @@ abstract class RoleNestedFilterStateCopyWith<
     $R,
     $In extends RoleNestedFilterState,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get roles;
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>> get roles;
   ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get selectedRoles;
   $R call(
       {ProcessState? processState,
@@ -500,11 +598,9 @@ class _RoleNestedFilterStateCopyWithImpl<$R, $Out>
   late final ClassMapperBase<RoleNestedFilterState> $mapper =
       RoleNestedFilterStateMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get roles =>
-      $value.roles != null
-          ? ListCopyWith($value.roles!, (v, t) => v.copyWith.$chain(t),
-              (v) => call(roles: v))
-          : null;
+  ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>> get roles =>
+      ListCopyWith(
+          $value.roles, (v, t) => v.copyWith.$chain(t), (v) => call(roles: v));
   @override
   ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get selectedRoles =>
       $value.selectedRoles != null
@@ -515,13 +611,13 @@ class _RoleNestedFilterStateCopyWithImpl<$R, $Out>
   $R call(
           {ProcessState? processState,
           Object? roleNestedFilterPageParams = $none,
-          Object? roles = $none,
+          List<Role>? roles,
           Object? selectedRoles = $none}) =>
       $apply(FieldCopyWithData({
         if (processState != null) #processState: processState,
         if (roleNestedFilterPageParams != $none)
           #roleNestedFilterPageParams: roleNestedFilterPageParams,
-        if (roles != $none) #roles: roles,
+        if (roles != null) #roles: roles,
         if (selectedRoles != $none) #selectedRoles: selectedRoles
       }));
   @override

@@ -10,9 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 part 'filter_bloc.mapper.dart';
-
 part 'filter_event.dart';
-
 part 'filter_state.dart';
 
 @injectable
@@ -71,18 +69,21 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         items: state.leagues,
       ),
     );
+    if (leagues == null) {
+      return;
+    }
     // 1. Checking if previous leagues are not same as new leagues,
     // if yes then there is no need to update filters as nothing really changed
     // 2. Remove clubs if there league is removed or in other words, only keep
     // clubs for which leagues is still present
-    if (!(state.leagues?.equals(leagues ?? []) ?? false)) {
+    if (!(state.leagues?.equals(leagues) ?? false)) {
       final newClubs = List<Club>.empty(growable: true);
-      leagues?.forEach((league) {
+      for (final league in leagues) {
         newClubs.addAll(
           state.clubs?.takeWhile((club) => club.leagueEaId == league.eaId) ??
               [],
         );
-      });
+      }
       emit(
         state.copyWith(
           leagues: leagues,
@@ -100,7 +101,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         clubs: state.clubs,
       ),
     );
-    if (!(state.clubs?.equals(clubs ?? []) ?? false)) {
+
+    if (clubs == null) {
+      return;
+    }
+
+    if (!(state.clubs?.equals(clubs) ?? false)) {
       emit(
         state.copyWith(
           clubs: clubs,
@@ -116,7 +122,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         items: state.nations,
       ),
     );
-    if (!(state.nations?.equals(nations ?? []) ?? false)) {
+
+    if (nations == null) {
+      return;
+    }
+
+    if (!(state.nations?.equals(nations) ?? false)) {
       emit(
         state.copyWith(
           nations: nations,
@@ -131,7 +142,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         items: state.rarities,
       ),
     );
-    if (!(state.rarities?.equals(rarities ?? []) ?? false)) {
+
+    if (rarities == null) {
+      return;
+    }
+
+    if (!(state.rarities?.equals(rarities) ?? false)) {
       emit(
         state.copyWith(
           rarities: rarities,
@@ -146,7 +162,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         items: state.roles,
       ),
     );
-    if (!(state.roles?.equals(roles ?? []) ?? false)) {
+
+    if (roles == null) {
+      return;
+    }
+
+    if (!(state.roles?.equals(roles) ?? false)) {
       emit(
         state.copyWith(
           roles: roles,
@@ -161,7 +182,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         items: state.playStyles,
       ),
     );
-    if (!(state.playStyles?.equals(playStyles ?? []) ?? false)) {
+
+    if (playStyles == null) {
+      return;
+    }
+
+    if (!(state.playStyles?.equals(playStyles) ?? false)) {
       emit(
         state.copyWith(
           playStyles: playStyles,
@@ -263,16 +289,16 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
 
   void _apply() {
     final filterConfiguration = FilterConfiguration(
-      leagues: state.leagues,
-      clubs: state.clubs,
-      nations: state.nations,
+      leagues: state.leagues ?? [],
+      clubs: state.clubs ?? [],
+      nations: state.nations ?? [],
       positions: state.positions,
       positionGroups: state.positionGroups,
       genders: state.genders,
       foots: state.foots,
-      rarities: state.rarities,
-      roles: state.roles,
-      playStyles: state.playStyles,
+      rarities: state.rarities ?? [],
+      roles: state.roles ?? [],
+      playStyles: state.playStyles ?? [],
       overallRatingRange: state.overallRatingRange,
     );
     _navigator.closeAny(filterConfiguration);

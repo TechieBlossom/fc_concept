@@ -27,5 +27,14 @@ class SelectItem extends NestedFilterEvent with SelectItemMappable {
 @MappableClass(discriminatorValue: 'done')
 class Done extends NestedFilterEvent with DoneMappable {}
 
+@MappableClass(discriminatorValue: 'clear')
+class Clear extends NestedFilterEvent with ClearMappable {
+  Clear({
+    required this.nestedFilterType,
+  });
+
+  final NestedFilterType nestedFilterType;
+}
+
 @MappableClass(discriminatorValue: 'Back')
 class Back extends NestedFilterEvent with BackMappable {}

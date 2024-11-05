@@ -13,16 +13,18 @@ class PlayStylesFilterItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
-        title: state.playStyles != null
-            ? 'PlayStyles (Tap to change)'
-            : 'PlayStyles',
-        subtitle:
-            state.playStyles != null ? null : 'Tap to select PlayStyle(s)',
+        title: (state.playStyles?.isEmpty ?? true)
+            ? 'PlayStyles'
+            : 'PlayStyles (Tap to change)',
+        subtitle: (state.playStyles?.isEmpty ?? true)
+            ? 'Tap to select PlayStyle(s)'
+            : null,
         selectedPills: state.playStyles
             ?.map(
               (playStyle) => PillItem<PlayStyle>(
                 data: playStyle,
                 text: playStyle.name,
+                image: PlayStyleImage(playStyle: playStyle),
                 isSelected: true,
               ),
             )

@@ -16,12 +16,6 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
   final List<T>? otherItems;
   final List<T>? selectedItems;
 
-  // bool get isNation => T.runtimeType == Nation;
-  //
-  // bool get isLeague => T.runtimeType == League;
-  //
-  // bool get isClub => T.runtimeType == Club;
-
   @override
   Widget build(BuildContext context) {
     return Column(

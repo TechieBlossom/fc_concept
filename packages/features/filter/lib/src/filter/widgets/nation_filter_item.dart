@@ -16,8 +16,11 @@ class NationFilterItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
-        title: state.nations != null ? 'Nation (Tap to change)' : 'Nation',
-        subtitle: state.nations != null ? null : 'Tap to select Nation(s)',
+        title: (state.nations?.isEmpty ?? true)
+            ? 'Nation'
+            : 'Nation (Tap to change)',
+        subtitle:
+            (state.nations?.isEmpty ?? true) ? 'Tap to select Nation(s)' : null,
         selectedPills: state.nations
             ?.map(
               (nation) => PillItem<NestedFilterLayoutType>(

@@ -47,7 +47,7 @@ class PlayStyleFilterItem extends StatelessWidget {
               playStyle.name,
               style: context.typography.caption1.copyWith(
                 color: isSelected
-                    ? context.colors.backgroundPrimary
+                    ? context.colors.onPrimary
                     : context.colors.contentPrimary,
               ),
             ),

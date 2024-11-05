@@ -25,6 +25,7 @@ class PlayStyleNestedFilterBloc
           ),
         ) {
     on<SelectPlayStyle>((event, emit) => _selectItem(event.item, emit));
+    on<Clear>((event, emit) => _clear(emit));
     on<Done>((event, emit) => _done());
   }
 
@@ -45,11 +46,11 @@ class PlayStyleNestedFilterBloc
     }
   }
 
+  void _clear(Emitter<PlayStyleNestedFilterState> emit) {
+    emit(state.copyWith(selectedPlayStyles: []));
+  }
+
   void _done() {
-    _navigator.closeAny<List<PlayStyle>?>(
-      (state.selectedPlayStyles?.isEmpty ?? true)
-          ? null
-          : state.selectedPlayStyles,
-    );
+    _navigator.closeAny<List<PlayStyle>?>(state.selectedPlayStyles);
   }
 }

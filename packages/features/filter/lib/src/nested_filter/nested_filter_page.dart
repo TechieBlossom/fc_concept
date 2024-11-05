@@ -50,7 +50,12 @@ class NestedFilterPage extends StatelessWidget {
               buttons: [
                 SecondaryButton(
                   text: 'Clear',
-                  onPressed: () {},
+                  onPressed: () => context.read<NestedFilterBloc>().add(
+                        Clear(
+                          nestedFilterType:
+                              nestedFilterPageParams.nestedFilterType,
+                        ),
+                      ),
                 ),
                 PrimaryButton(
                   text: 'Done',
@@ -61,41 +66,36 @@ class NestedFilterPage extends StatelessWidget {
               ],
             ),
             body: switch (state.processState) {
-              ProcessState.success => Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const SizedBox(height: AppSpacing.space3),
-                          if (nestedFilterPageParams.nestedFilterType ==
-                              NestedFilterType.league)
-                            NestedFilterLayout(
-                              topItems: state.topLeagues,
-                              otherItems: state.otherLeagues,
-                              selectedItems: state.selectedItems ??
-                                  nestedFilterPageParams.items,
-                            ),
-                          if (nestedFilterPageParams.nestedFilterType ==
-                              NestedFilterType.club)
-                            ClubsLayout(
-                              leagues: nestedFilterPageParams.items,
-                              clubsMap: state.clubs,
-                              selectedClubs: state.selectedClubs ??
-                                  nestedFilterPageParams.clubs,
-                            ),
-                          if (nestedFilterPageParams.nestedFilterType ==
-                              NestedFilterType.nation)
-                            NestedFilterLayout(
-                              topItems: state.topNations,
-                              otherItems: state.otherNations,
-                              selectedItems: state.selectedItems ??
-                                  nestedFilterPageParams.items,
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
+              ProcessState.success => SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: AppSpacing.space3),
+                      if (nestedFilterPageParams.nestedFilterType ==
+                          NestedFilterType.league)
+                        NestedFilterLayout(
+                          topItems: state.topLeagues,
+                          otherItems: state.otherLeagues,
+                          selectedItems: state.selectedItems ??
+                              nestedFilterPageParams.items,
+                        ),
+                      if (nestedFilterPageParams.nestedFilterType ==
+                          NestedFilterType.club)
+                        ClubsLayout(
+                          leagues: nestedFilterPageParams.items,
+                          clubsMap: state.clubs,
+                          selectedClubs: state.selectedClubs ??
+                              nestedFilterPageParams.clubs,
+                        ),
+                      if (nestedFilterPageParams.nestedFilterType ==
+                          NestedFilterType.nation)
+                        NestedFilterLayout(
+                          topItems: state.topNations,
+                          otherItems: state.otherNations,
+                          selectedItems: state.selectedItems ??
+                              nestedFilterPageParams.items,
+                        ),
+                    ],
+                  ),
                 ),
               ProcessState.loading => const LoadingList(
                   loadingListType: LoadingListType.filterGroup,
