@@ -17,18 +17,25 @@ class FootFilterItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(
         title: 'Preferred Foot',
-        selectedPills: Foot.values
-            .map(
-              (foot) => PillItem<Foot>(
-                data: foot,
-                text: foot.toValue(),
-                isSelected: state.foots?.contains(foot) ?? false,
-                onTap: () => context.read<FilterBloc>().add(
-                      TapFoot(foot: foot),
-                    ),
+        selectedPills: Foot.values.map(
+          (foot) {
+            final isSelected = state.foots?.contains(foot) ?? false;
+            return PillItem<Foot>(
+              data: foot,
+              image: FootImage(
+                foot: foot,
+                color: isSelected
+                    ? context.colors.onPrimary
+                    : context.colors.contentPrimary,
               ),
-            )
-            .toList(),
+              text: foot.toValue(),
+              isSelected: isSelected,
+              onTap: () => context.read<FilterBloc>().add(
+                    TapFoot(foot: foot),
+                  ),
+            );
+          },
+        ).toList(),
         pillGap: AppSpacing.space3,
         margin: AppSpacing.space5,
         onTap: () {},
