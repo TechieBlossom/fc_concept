@@ -63,9 +63,9 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
   static List<Role>? _$roles(FilterConfiguration v) => v.roles;
   static const Field<FilterConfiguration, List<Role>> _f$roles =
       Field('roles', _$roles, opt: true);
-  static List<PlayStyle>? _$playStyles(FilterConfiguration v) => v.playStyles;
+  static List<PlayStyle> _$playStyles(FilterConfiguration v) => v.playStyles;
   static const Field<FilterConfiguration, List<PlayStyle>> _f$playStyles =
-      Field('playStyles', _$playStyles, opt: true);
+      Field('playStyles', _$playStyles, opt: true, def: const []);
 
   @override
   final MappableFields<FilterConfiguration> fields = const {
@@ -167,7 +167,7 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
   ListCopyWith<$R, PositionGroup,
       ObjectCopyWith<$R, PositionGroup, PositionGroup>>? get positionGroups;
   ListCopyWith<$R, Role, RoleCopyWith<$R, Role, Role>>? get roles;
-  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>
       get playStyles;
   $R call(
       {List<NestedFilterLayoutType>? leagues,
@@ -259,11 +259,9 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
               (v) => call(roles: v))
           : null;
   @override
-  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>?
-      get playStyles => $value.playStyles != null
-          ? ListCopyWith($value.playStyles!, (v, t) => v.copyWith.$chain(t),
-              (v) => call(playStyles: v))
-          : null;
+  ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>
+      get playStyles => ListCopyWith($value.playStyles,
+          (v, t) => v.copyWith.$chain(t), (v) => call(playStyles: v));
   @override
   $R call(
           {Object? leagues = $none,
@@ -276,7 +274,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           Object? positions = $none,
           Object? positionGroups = $none,
           Object? roles = $none,
-          Object? playStyles = $none}) =>
+          List<PlayStyle>? playStyles}) =>
       $apply(FieldCopyWithData({
         if (leagues != $none) #leagues: leagues,
         if (nations != $none) #nations: nations,
@@ -289,7 +287,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
         if (positions != $none) #positions: positions,
         if (positionGroups != $none) #positionGroups: positionGroups,
         if (roles != $none) #roles: roles,
-        if (playStyles != $none) #playStyles: playStyles
+        if (playStyles != null) #playStyles: playStyles
       }));
   @override
   FilterConfiguration $make(CopyWithData data) => FilterConfiguration(

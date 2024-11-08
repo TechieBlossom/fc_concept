@@ -7,9 +7,11 @@ class Pill<T> extends StatelessWidget {
   const Pill({
     super.key,
     required this.pillItem,
+    this.mainAxisAlignment = MainAxisAlignment.center,
   });
 
   final PillItem<T> pillItem;
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class Pill<T> extends StatelessWidget {
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: mainAxisAlignment,
           children: [
             if (pillItem.image != null) ...[
               pillItem.image!,

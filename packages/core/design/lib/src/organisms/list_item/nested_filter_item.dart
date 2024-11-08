@@ -62,8 +62,8 @@ class NestedFilterItem extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: margin),
                       child: Text(
                         subtitle!,
-                        style: context.typography.body4.copyWith(
-                          color: textColor,
+                        style: context.typography.caption1.copyWith(
+                          color: context.colors.contentSecondary,
                         ),
                       ),
                     ),

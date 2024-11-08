@@ -145,10 +145,10 @@ _i174.GetIt init(
   );
   gh.factory<_i1000.GetRolesByIdsUseCase>(
       () => const _i1000.GetRolesByIdsUseCase());
-  gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
-      () => const _i1017.GetPlayStylesByIdsUseCase());
   gh.factory<_i406.GetPositionsByIdsUseCase>(
       () => const _i406.GetPositionsByIdsUseCase());
+  gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
+      () => const _i1017.GetPlayStylesByIdsUseCase());
   gh.lazySingleton<_i264.GetPositionsFromPositionGroup>(
       () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
@@ -224,6 +224,8 @@ _i174.GetIt init(
       () => _i274.GetPositionalPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i75.GetPlayerDetailsUseCase>(
       () => _i75.GetPlayerDetailsUseCase(gh<_i294.PlayerRepository>()));
+  gh.factory<_i77.GetPlayerVersionsUseCase>(
+      () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i171.GetRecentPlayersUseCase>(
       () => _i171.GetRecentPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i380.GetTopPlayerUseCase>(
@@ -232,8 +234,6 @@ _i174.GetIt init(
       () => _i1.GetSbcPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i530.GetTrendingPlayersUseCase>(
       () => _i530.GetTrendingPlayersUseCase(gh<_i294.PlayerRepository>()));
-  gh.factory<_i77.GetPlayerVersionsUseCase>(
-      () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i120.FilterPlayersUseCase>(() => _i120.FilterPlayersUseCase(
         gh<_i294.PlayerRepository>(),
         gh<_i264.GetPositionsFromPositionGroup>(),

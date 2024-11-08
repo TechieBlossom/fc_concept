@@ -24,69 +24,56 @@ class RoleFilterPositionGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(
-        bottom: AppSpacing.space4,
-      ),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: context.colors.backgroundSecondary,
-            width: 2,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          roles.first.fullPositionName,
+          style: context.typography.body1.copyWith(
+            color: context.colors.contentPrimary,
           ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            roles.first.fullPositionName,
-            style: context.typography.body1.copyWith(
-              color: context.colors.contentPrimary,
-            ),
-          ),
-          const Space(space: AppSpacing.space3),
-          Wrap(
-            alignment: WrapAlignment.start,
-            spacing: AppSpacing.space3,
-            runSpacing: AppSpacing.space3,
-            children: [
-              ...plusPLusRoles
-                  .map(
-                    (role) => Pill<Role>(
-                      pillItem: PillItem<Role>(
-                        data: role,
-                        text: role.name,
-                        isSelected: selectedRoles?.contains(role) ?? false,
-                        onTap: () => onRoleTap(role),
-                      ),
+        const Space(space: AppSpacing.space3),
+        Wrap(
+          alignment: WrapAlignment.start,
+          spacing: AppSpacing.space3,
+          runSpacing: AppSpacing.space3,
+          children: [
+            ...plusPLusRoles
+                .map(
+                  (role) => Pill<Role>(
+                    pillItem: PillItem<Role>(
+                      data: role,
+                      text: role.name,
+                      isSelected: selectedRoles?.contains(role) ?? false,
+                      onTap: () => onRoleTap(role),
                     ),
-                  )
-                  .toList(),
-            ],
-          ),
-          const Space(space: AppSpacing.space5),
-          Wrap(
-            alignment: WrapAlignment.start,
-            spacing: AppSpacing.space3,
-            runSpacing: AppSpacing.space3,
-            children: [
-              ...plusRoles
-                  .map(
-                    (role) => Pill<Role>(
-                      pillItem: PillItem<Role>(
-                        data: role,
-                        text: role.name,
-                        isSelected: selectedRoles?.contains(role) ?? false,
-                        onTap: () => onRoleTap(role),
-                      ),
+                  ),
+                )
+                .toList(),
+          ],
+        ),
+        const Space(space: AppSpacing.space5),
+        Wrap(
+          alignment: WrapAlignment.start,
+          spacing: AppSpacing.space3,
+          runSpacing: AppSpacing.space3,
+          children: [
+            ...plusRoles
+                .map(
+                  (role) => Pill<Role>(
+                    pillItem: PillItem<Role>(
+                      data: role,
+                      text: role.name,
+                      isSelected: selectedRoles?.contains(role) ?? false,
+                      onTap: () => onRoleTap(role),
                     ),
-                  )
-                  .toList(),
-            ],
-          ),
-        ],
-      ),
+                  ),
+                )
+                .toList(),
+          ],
+        ),
+      ],
     );
   }
 }

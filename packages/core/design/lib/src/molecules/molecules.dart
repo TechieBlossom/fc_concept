@@ -12,6 +12,7 @@ export 'package:core_design/src/molecules/compare/compare_item.dart';
 export 'package:core_design/src/molecules/compare/compare_list_item.dart';
 export 'package:core_design/src/molecules/glass/glass.dart';
 export 'package:core_design/src/molecules/image/club_image.dart';
+export 'package:core_design/src/molecules/image/foot_image.dart';
 export 'package:core_design/src/molecules/image/league_image.dart';
 export 'package:core_design/src/molecules/image/nation_image.dart';
 export 'package:core_design/src/molecules/image/play_style_image.dart';

@@ -14,6 +14,7 @@ class NationImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (nation.imagePath == null) return const SizedBox.shrink();
     return CachedNetworkImage(
       width: 20,
       fit: BoxFit.fitWidth,

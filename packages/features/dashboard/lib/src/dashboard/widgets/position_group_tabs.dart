@@ -15,6 +15,7 @@ class PositionGroupTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<DashboardBloc>();
     return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space5),
         child: Row(

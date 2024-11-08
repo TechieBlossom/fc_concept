@@ -13,6 +13,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   unawaited(MobileAds.instance.initialize());
   await initializeDi('dev');
+  PersistentStorageHolder.storage = await CachingPersistentStorage.create();
 
   runApp(const MyApp());
 }

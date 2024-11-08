@@ -27,6 +27,7 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
             ),
             child: FilterGroup<T>(
               title: 'Top',
+              pillContentHorizontalAlignment: MainAxisAlignment.start,
               pillItems: topItems!
                   .map(
                     (item) => PillItem<T>(
@@ -53,6 +54,7 @@ class NestedFilterLayout<T extends NestedFilterLayoutType>
             ),
             child: FilterGroup(
               title: 'Other',
+              pillContentHorizontalAlignment: MainAxisAlignment.start,
               pillItems: otherItems!
                   .map(
                     (item) => PillItem<T>(

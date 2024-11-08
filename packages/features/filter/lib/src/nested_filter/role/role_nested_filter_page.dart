@@ -88,7 +88,7 @@ class _Success extends StatelessWidget {
             padding: const EdgeInsets.only(
               left: AppSpacing.space5,
               right: AppSpacing.space5,
-              bottom: AppSpacing.space9,
+              bottom: AppSpacing.space6,
             ),
             child: Column(
               children: state.rolesByPosition.entries
@@ -105,7 +105,12 @@ class _Success extends StatelessWidget {
                     },
                   )
                   .intersperse(
-                    const Space(space: AppSpacing.space5),
+                    const Column(
+                      children: [
+                        Divider(),
+                        Space(space: AppSpacing.space5),
+                      ],
+                    ),
                   )
                   .toList(),
             ),

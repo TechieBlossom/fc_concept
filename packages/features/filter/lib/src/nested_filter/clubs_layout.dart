@@ -28,6 +28,7 @@ class ClubsLayout extends StatelessWidget {
                   bottom: AppSpacing.space7,
                 ),
                 child: FilterGroup(
+                  pillContentHorizontalAlignment: MainAxisAlignment.start,
                   title: leagues
                           ?.firstWhere((league) => league.eaId == entry.key)
                           .name ??

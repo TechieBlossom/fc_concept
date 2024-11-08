@@ -14,7 +14,7 @@ class GenderFilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.space3),
+      padding: const EdgeInsets.only(bottom: AppSpacing.space5),
       child: NestedFilterItem(
         title: 'Gender',
         selectedPills: Gender.values

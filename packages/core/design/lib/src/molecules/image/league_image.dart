@@ -17,6 +17,7 @@ class LeagueImage extends StatelessWidget {
     final imagePath = Theme.of(context).brightness == Brightness.dark
         ? league.imagePath
         : league.imageLightPath;
+    if (imagePath == null) return const SizedBox.shrink();
     return CachedNetworkImage(
       width: 20,
       fit: BoxFit.fitWidth,

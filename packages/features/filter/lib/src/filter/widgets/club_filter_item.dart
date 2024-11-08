@@ -13,6 +13,9 @@ class ClubFilterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (state.leagues?.isEmpty ?? true) {
+      return const SizedBox.shrink();
+    }
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.space3),
       child: NestedFilterItem(

@@ -1,4 +1,6 @@
+export 'package:cached_annotation/cached_annotation.dart';
 export 'package:collection/collection.dart';
+export 'package:core_domain/src/caching/persistent_storage.dart';
 export 'package:core_domain/src/di/injector.dart';
 export 'package:core_domain/src/domain/chemistry_style/model/chemistry_modifier.dart';
 export 'package:core_domain/src/domain/chemistry_style/model/chemistry_style.dart';

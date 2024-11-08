@@ -7,10 +7,12 @@ class FilterGroup<T> extends StatelessWidget {
     super.key,
     this.title,
     required this.pillItems,
+    this.pillContentHorizontalAlignment = MainAxisAlignment.center,
   });
 
   final String? title;
   final List<PillItem<T>> pillItems;
+  final MainAxisAlignment pillContentHorizontalAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,9 @@ class FilterGroup<T> extends StatelessWidget {
               childAspectRatio: 4,
             ),
             children: indices
-                .map<Widget>((index) => Pill<T>(pillItem: pillItems[index]))
+                .map<Widget>((index) => Pill<T>(
+                    mainAxisAlignment: pillContentHorizontalAlignment,
+                    pillItem: pillItems[index]))
                 .toList(),
           ),
         ],

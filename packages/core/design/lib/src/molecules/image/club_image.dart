@@ -17,6 +17,7 @@ class ClubImage extends StatelessWidget {
     final imagePath = Theme.of(context).brightness == Brightness.dark
         ? club.imagePath
         : club.lightImagePath;
+    if (imagePath == null) return const SizedBox.shrink();
     return CachedNetworkImage(
       width: 20,
       fit: BoxFit.fitWidth,

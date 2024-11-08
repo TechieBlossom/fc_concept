@@ -79,6 +79,7 @@ class DashboardPage extends StatelessWidget {
                           PlayerTap(player: player),
                         ),
                   ),
+                  const SizedBox(height: AppSpacing.space6),
                 ],
               ),
             ),

@@ -12,7 +12,8 @@ class OverallRatingFilterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
-        bottom: AppSpacing.space3,
+        bottom: AppSpacing.space5,
+        top: AppSpacing.space6,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

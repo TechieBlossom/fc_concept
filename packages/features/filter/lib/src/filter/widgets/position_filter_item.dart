@@ -17,14 +17,17 @@ class PositionFilterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final allPositions = context.read<MetadataBloc>().state.positions;
     return Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.space3),
+      padding: const EdgeInsets.only(
+        bottom: AppSpacing.space3,
+        top: AppSpacing.space4,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(
               left: AppSpacing.space5,
-              bottom: AppSpacing.space2,
+              bottom: AppSpacing.space3,
             ),
             child: Text(
               'Position',
