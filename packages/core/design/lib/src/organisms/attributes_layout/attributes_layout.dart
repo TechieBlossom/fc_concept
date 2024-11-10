@@ -9,10 +9,12 @@ class AttributesLayout extends StatelessWidget {
     super.key,
     required this.player,
     required this.chemistryBoost,
+    required this.chemistryBoostFaceValues,
   });
 
   final Player player;
   final ChemistryModifier? chemistryBoost;
+  final ChemistryBoostFaceValues? chemistryBoostFaceValues;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Pace',
                         rating: player.facePace!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.pace,
                       ),
                     ),
                     AttributeBar(
@@ -66,7 +68,7 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Shooting',
                         rating: player.faceShooting!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.shooting,
                       ),
                     ),
                     AttributeBar(
@@ -130,7 +132,7 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Passing',
                         rating: player.facePassing!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.passing,
                       ),
                     ),
                     AttributeBar(
@@ -189,7 +191,7 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Dribbling',
                         rating: player.faceDribbling!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.dribbling,
                       ),
                     ),
                     AttributeBar(
@@ -253,7 +255,7 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Defending',
                         rating: player.faceDefending!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.defending,
                       ),
                     ),
                     AttributeBar(
@@ -305,7 +307,7 @@ class AttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Physicality',
                         rating: player.facePhysicality!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.physical,
                       ),
                     ),
                     AttributeBar(
@@ -371,6 +373,15 @@ class _FaceAttribute extends StatelessWidget {
               ),
             ),
           ),
+          if (attributeItem.boost != null && attributeItem.boost != 0) ...[
+            Text(
+              '+${attributeItem.boost}',
+              style: context.typography.caption2.copyWith(
+                color: attributeItem.lightRatingColor,
+              ),
+            ),
+            const SizedBox(width: AppSpacing.space3),
+          ],
           Container(
             padding: EdgeInsetsDirectional.only(
               start: AppSpacing.space1,
@@ -387,7 +398,7 @@ class _FaceAttribute extends StatelessWidget {
               ),
             ),
             child: Text(
-              attributeItem.rating.toString(),
+              '${attributeItem.rating + (attributeItem.boost?.orZero() ?? 0)}',
               style: context.typography.body5.copyWith(
                 color: attributeItem.ratingColor,
               ),

@@ -5,7 +5,7 @@ class RarityNestedFilterState with RarityNestedFilterStateMappable {
   RarityNestedFilterState({
     this.processState = ProcessState.loading,
     this.rarityNestedFilterPageParams,
-    this.rarities = const[],
+    this.rarities = const [],
     this.selectedRarities,
   });
 

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:core_ads/ads.dart';
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';

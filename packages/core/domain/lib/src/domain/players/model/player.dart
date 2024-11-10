@@ -213,4 +213,6 @@ class Player with PlayerMappable {
     }
     return foot == 1 ? 'Right' : 'Left';
   }
+
+  bool get isGk => position?.shortLabel == 'GK';
 }

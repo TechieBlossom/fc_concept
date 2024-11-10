@@ -49,5 +49,13 @@ class LoadPrice extends PlayerDetailEvent with LoadPriceMappable {}
 class LoadAlternativePositions extends PlayerDetailEvent
     with LoadAlternativePositionsMappable {}
 
+@MappableClass(discriminatorValue: 'loadChemistryBoostFaceValues')
+class LoadChemistryBoostFaceValues extends PlayerDetailEvent
+    with LoadChemistryBoostFaceValuesMappable {}
+
+@MappableClass(discriminatorValue: 'normalizeChemistryBoost')
+class NormalizeChemistryBoost extends PlayerDetailEvent
+    with NormalizeChemistryBoostMappable {}
+
 @MappableClass(discriminatorValue: 'compareTap')
 class CompareTap extends PlayerDetailEvent with CompareTapMappable {}

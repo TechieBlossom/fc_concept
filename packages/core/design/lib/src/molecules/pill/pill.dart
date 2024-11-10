@@ -28,9 +28,7 @@ class Pill<T> extends StatelessWidget {
             false => context.typography.caption1,
           };
     return InkWell(
-      onTap: (pillItem.onTap != null)
-          ? () => pillItem.onTap?.call()
-          : null,
+      onTap: (pillItem.onTap != null) ? () => pillItem.onTap?.call() : null,
       radius: mediumCorner.value,
       borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
       child: AnimatedContainer(

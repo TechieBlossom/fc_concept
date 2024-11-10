@@ -41,7 +41,8 @@ abstract mixin class ChemistryStyleRepositoryImpl
   }
 
   List<ChemistryStyle> mapChemistryStyles(
-          List<dynamic> chemistryStylesResponse) =>
+    List<dynamic> chemistryStylesResponse,
+  ) =>
       chemistryStylesResponse
           .map((json) => ChemistryStyle.fromMap(json as Map<String, dynamic>))
           .toList();

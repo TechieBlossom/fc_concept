@@ -12,8 +12,6 @@ class PlayerDetailPage extends StatelessWidget {
 
   final Player player;
 
-  bool get _isGk => player.position?.shortLabel == 'GK';
-
   @override
   Widget build(BuildContext context) {
     final roles = context.read<MetadataBloc>().state.roles;
@@ -87,7 +85,7 @@ class PlayerDetailPage extends StatelessWidget {
                       ),
                     ),
                   ChemistryStyleCard(
-                    allChemistryStyles: _isGk
+                    allChemistryStyles: player.isGk
                         ? chemistryStyles.where((e) => e.isGkStyle).toList()
                         : chemistryStyles.where((e) => !e.isGkStyle).toList(),
                     selectedChemistryModifier: state.selectedChemistryModifier,
@@ -101,14 +99,16 @@ class PlayerDetailPage extends StatelessWidget {
                             ),
                   ),
                   if (state.player.attributeAcceleration != null)
-                    if (_isGk)
+                    if (player.isGk)
                       Padding(
                         padding: const EdgeInsetsDirectional.symmetric(
                           horizontal: AppSpacing.space4,
                         ),
                         child: GkAttributesLayout(
                           player: state.player,
-                          chemistryBoost: state.chemistryModifier,
+                          chemistryBoost: state.normalizedChemistryBoost,
+                          chemistryBoostFaceValues:
+                              state.chemistryBoostFaceValues,
                         ),
                       )
                     else
@@ -118,7 +118,9 @@ class PlayerDetailPage extends StatelessWidget {
                         ),
                         child: AttributesLayout(
                           player: state.player,
-                          chemistryBoost: state.chemistryModifier,
+                          chemistryBoost: state.normalizedChemistryBoost,
+                          chemistryBoostFaceValues:
+                              state.chemistryBoostFaceValues,
                         ),
                       ),
                 ],

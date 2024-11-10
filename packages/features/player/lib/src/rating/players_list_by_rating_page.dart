@@ -59,10 +59,11 @@ class PlayersListByRatingPage extends StatelessWidget {
                                   text: i.toString(),
                                   isSelected: state.rating == i,
                                   hasDigit: true,
-                                  onTap: () =>
-                                      context.read<PlayersListByRatingBloc>().add(
-                                            ChangeRating(rating: i),
-                                          ),
+                                  onTap: () => context
+                                      .read<PlayersListByRatingBloc>()
+                                      .add(
+                                        ChangeRating(rating: i),
+                                      ),
                                 ),
                               ),
                             const Space(

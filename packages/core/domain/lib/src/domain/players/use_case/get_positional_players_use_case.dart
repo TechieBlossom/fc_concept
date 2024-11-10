@@ -12,6 +12,6 @@ class GetPositionalPlayersUseCase {
 
   Future<Result<List<Player>?>> call({
     required PositionGroup positionGroup,
-  }) async => _playerRepository
-        .getPositionalPlayers(positionGroup);
+  }) async =>
+      _playerRepository.getPositionalPlayers(positionGroup);
 }

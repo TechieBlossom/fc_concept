@@ -29,9 +29,8 @@ class Ornament extends StatelessWidget {
         foreground != null ? Color(foreground!) : context.colors.gold2;
     final backgroundColor =
         background != null ? Color(background!) : context.colors.gold;
-    final textColor = foreground != null
-        ? Color(foreground!)
-        : context.colors.contentPrimary;
+    final textColor =
+        foreground != null ? Color(foreground!) : context.colors.contentPrimary;
     return InkWell(
       onTap: onTap,
       borderRadius:

@@ -9,10 +9,12 @@ class GkAttributesLayout extends StatelessWidget {
     super.key,
     required this.player,
     required this.chemistryBoost,
+    required this.chemistryBoostFaceValues,
   });
 
   final Player player;
   final ChemistryModifier? chemistryBoost;
+  final ChemistryBoostFaceValues? chemistryBoostFaceValues;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Speed',
                         rating: player.gkFaceSpeed!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.pace,
                       ),
                     ),
                     AttributeBar(
@@ -66,7 +68,7 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Diving',
                         rating: player.gkFaceDiving!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.physical,
                       ),
                     ),
                     AttributeBar(
@@ -95,7 +97,7 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Kicking',
                         rating: player.gkFaceKicking!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.shooting,
                       ),
                     ),
                     AttributeBar(
@@ -119,7 +121,7 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Handling',
                         rating: player.gkFaceHandling!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.passing,
                       ),
                     ),
                     AttributeBar(
@@ -148,7 +150,7 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Reflexes',
                         rating: player.gkFaceReflexes!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.dribbling,
                       ),
                     ),
                     AttributeBar(
@@ -179,7 +181,7 @@ class GkAttributesLayout extends StatelessWidget {
                       attributeItem: AttributeItem(
                         attribute: 'Positioning',
                         rating: player.gkFacePositioning!.orZero(),
-                        boost: 0,
+                        boost: chemistryBoostFaceValues?.defending,
                       ),
                     ),
                     AttributeBar(
@@ -224,6 +226,15 @@ class _FaceAttribute extends StatelessWidget {
               ),
             ),
           ),
+          if (attributeItem.boost != null && attributeItem.boost != 0) ...[
+            Text(
+              '+${attributeItem.boost}',
+              style: context.typography.caption2.copyWith(
+                color: attributeItem.lightRatingColor,
+              ),
+            ),
+            const SizedBox(width: AppSpacing.space3),
+          ],
           Container(
             padding: EdgeInsetsDirectional.only(
               start: AppSpacing.space1,
@@ -240,7 +251,7 @@ class _FaceAttribute extends StatelessWidget {
               ),
             ),
             child: Text(
-              attributeItem.rating.toString(),
+              '${attributeItem.rating + (attributeItem.boost?.orZero() ?? 0)}',
               style: context.typography.body5.copyWith(
                 color: attributeItem.ratingColor,
               ),

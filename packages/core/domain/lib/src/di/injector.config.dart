@@ -53,6 +53,12 @@ import 'package:core_domain/src/domain/chemistry_style/chemistry_style_repositor
     as _i753;
 import 'package:core_domain/src/domain/chemistry_style/use_case/get_all_chemistry_styles_use_case.dart'
     as _i669;
+import 'package:core_domain/src/domain/chemistry_style/use_case/get_chemistry_boost_face_values_gk_use_case.dart'
+    as _i1014;
+import 'package:core_domain/src/domain/chemistry_style/use_case/get_chemistry_boost_face_values_use_case.dart'
+    as _i322;
+import 'package:core_domain/src/domain/chemistry_style/use_case/normalize_chemistry_boost_use_case.dart'
+    as _i642;
 import 'package:core_domain/src/domain/clubs/club_repository.dart' as _i177;
 import 'package:core_domain/src/domain/clubs/use_case/get_clubs_by_league_use_case.dart'
     as _i1022;
@@ -149,6 +155,12 @@ _i174.GetIt init(
       () => const _i406.GetPositionsByIdsUseCase());
   gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
       () => const _i1017.GetPlayStylesByIdsUseCase());
+  gh.factory<_i322.GetChemistryBoostFaceValuesUseCase>(
+      () => const _i322.GetChemistryBoostFaceValuesUseCase());
+  gh.factory<_i642.NormalizeChemistryBoostUseCase>(
+      () => const _i642.NormalizeChemistryBoostUseCase());
+  gh.factory<_i1014.GetChemistryBoostFaceValuesGkUseCase>(
+      () => const _i1014.GetChemistryBoostFaceValuesGkUseCase());
   gh.lazySingleton<_i264.GetPositionsFromPositionGroup>(
       () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());

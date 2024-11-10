@@ -28,7 +28,6 @@ abstract mixin class LeagueRepositoryImpl
     }
   }
 
-
   @override
   Future<Result<List<League>>> getOtherLeagues() async {
     try {

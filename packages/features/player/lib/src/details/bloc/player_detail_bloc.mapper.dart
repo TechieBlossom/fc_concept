@@ -21,6 +21,8 @@ class PlayerDetailEventMapper extends ClassMapperBase<PlayerDetailEvent> {
       LoadVersionsMapper.ensureInitialized();
       LoadPriceMapper.ensureInitialized();
       LoadAlternativePositionsMapper.ensureInitialized();
+      LoadChemistryBoostFaceValuesMapper.ensureInitialized();
+      NormalizeChemistryBoostMapper.ensureInitialized();
       CompareTapMapper.ensureInitialized();
     }
     return _instance!;
@@ -966,6 +968,241 @@ class _LoadAlternativePositionsCopyWithImpl<$R, $Out>
           _LoadAlternativePositionsCopyWithImpl($value, $cast, t);
 }
 
+class LoadChemistryBoostFaceValuesMapper
+    extends SubClassMapperBase<LoadChemistryBoostFaceValues> {
+  LoadChemistryBoostFaceValuesMapper._();
+
+  static LoadChemistryBoostFaceValuesMapper? _instance;
+  static LoadChemistryBoostFaceValuesMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals
+          .use(_instance = LoadChemistryBoostFaceValuesMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'LoadChemistryBoostFaceValues';
+
+  @override
+  final MappableFields<LoadChemistryBoostFaceValues> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'loadChemistryBoostFaceValues';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static LoadChemistryBoostFaceValues _instantiate(DecodingData data) {
+    return LoadChemistryBoostFaceValues();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static LoadChemistryBoostFaceValues fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<LoadChemistryBoostFaceValues>(map);
+  }
+
+  static LoadChemistryBoostFaceValues fromJson(String json) {
+    return ensureInitialized().decodeJson<LoadChemistryBoostFaceValues>(json);
+  }
+}
+
+mixin LoadChemistryBoostFaceValuesMappable {
+  String toJson() {
+    return LoadChemistryBoostFaceValuesMapper.ensureInitialized()
+        .encodeJson<LoadChemistryBoostFaceValues>(
+            this as LoadChemistryBoostFaceValues);
+  }
+
+  Map<String, dynamic> toMap() {
+    return LoadChemistryBoostFaceValuesMapper.ensureInitialized()
+        .encodeMap<LoadChemistryBoostFaceValues>(
+            this as LoadChemistryBoostFaceValues);
+  }
+
+  LoadChemistryBoostFaceValuesCopyWith<LoadChemistryBoostFaceValues,
+          LoadChemistryBoostFaceValues, LoadChemistryBoostFaceValues>
+      get copyWith => _LoadChemistryBoostFaceValuesCopyWithImpl(
+          this as LoadChemistryBoostFaceValues, $identity, $identity);
+  @override
+  String toString() {
+    return LoadChemistryBoostFaceValuesMapper.ensureInitialized()
+        .stringifyValue(this as LoadChemistryBoostFaceValues);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return LoadChemistryBoostFaceValuesMapper.ensureInitialized()
+        .equalsValue(this as LoadChemistryBoostFaceValues, other);
+  }
+
+  @override
+  int get hashCode {
+    return LoadChemistryBoostFaceValuesMapper.ensureInitialized()
+        .hashValue(this as LoadChemistryBoostFaceValues);
+  }
+}
+
+extension LoadChemistryBoostFaceValuesValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, LoadChemistryBoostFaceValues, $Out> {
+  LoadChemistryBoostFaceValuesCopyWith<$R, LoadChemistryBoostFaceValues, $Out>
+      get $asLoadChemistryBoostFaceValues => $base.as(
+          (v, t, t2) => _LoadChemistryBoostFaceValuesCopyWithImpl(v, t, t2));
+}
+
+abstract class LoadChemistryBoostFaceValuesCopyWith<
+    $R,
+    $In extends LoadChemistryBoostFaceValues,
+    $Out> implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  LoadChemistryBoostFaceValuesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _LoadChemistryBoostFaceValuesCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, LoadChemistryBoostFaceValues, $Out>
+    implements
+        LoadChemistryBoostFaceValuesCopyWith<$R, LoadChemistryBoostFaceValues,
+            $Out> {
+  _LoadChemistryBoostFaceValuesCopyWithImpl(
+      super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<LoadChemistryBoostFaceValues> $mapper =
+      LoadChemistryBoostFaceValuesMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  LoadChemistryBoostFaceValues $make(CopyWithData data) =>
+      LoadChemistryBoostFaceValues();
+
+  @override
+  LoadChemistryBoostFaceValuesCopyWith<$R2, LoadChemistryBoostFaceValues, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _LoadChemistryBoostFaceValuesCopyWithImpl($value, $cast, t);
+}
+
+class NormalizeChemistryBoostMapper
+    extends SubClassMapperBase<NormalizeChemistryBoost> {
+  NormalizeChemistryBoostMapper._();
+
+  static NormalizeChemistryBoostMapper? _instance;
+  static NormalizeChemistryBoostMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals
+          .use(_instance = NormalizeChemistryBoostMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'NormalizeChemistryBoost';
+
+  @override
+  final MappableFields<NormalizeChemistryBoost> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'normalizeChemistryBoost';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static NormalizeChemistryBoost _instantiate(DecodingData data) {
+    return NormalizeChemistryBoost();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static NormalizeChemistryBoost fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<NormalizeChemistryBoost>(map);
+  }
+
+  static NormalizeChemistryBoost fromJson(String json) {
+    return ensureInitialized().decodeJson<NormalizeChemistryBoost>(json);
+  }
+}
+
+mixin NormalizeChemistryBoostMappable {
+  String toJson() {
+    return NormalizeChemistryBoostMapper.ensureInitialized()
+        .encodeJson<NormalizeChemistryBoost>(this as NormalizeChemistryBoost);
+  }
+
+  Map<String, dynamic> toMap() {
+    return NormalizeChemistryBoostMapper.ensureInitialized()
+        .encodeMap<NormalizeChemistryBoost>(this as NormalizeChemistryBoost);
+  }
+
+  NormalizeChemistryBoostCopyWith<NormalizeChemistryBoost,
+          NormalizeChemistryBoost, NormalizeChemistryBoost>
+      get copyWith => _NormalizeChemistryBoostCopyWithImpl(
+          this as NormalizeChemistryBoost, $identity, $identity);
+  @override
+  String toString() {
+    return NormalizeChemistryBoostMapper.ensureInitialized()
+        .stringifyValue(this as NormalizeChemistryBoost);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return NormalizeChemistryBoostMapper.ensureInitialized()
+        .equalsValue(this as NormalizeChemistryBoost, other);
+  }
+
+  @override
+  int get hashCode {
+    return NormalizeChemistryBoostMapper.ensureInitialized()
+        .hashValue(this as NormalizeChemistryBoost);
+  }
+}
+
+extension NormalizeChemistryBoostValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, NormalizeChemistryBoost, $Out> {
+  NormalizeChemistryBoostCopyWith<$R, NormalizeChemistryBoost, $Out>
+      get $asNormalizeChemistryBoost => $base
+          .as((v, t, t2) => _NormalizeChemistryBoostCopyWithImpl(v, t, t2));
+}
+
+abstract class NormalizeChemistryBoostCopyWith<
+    $R,
+    $In extends NormalizeChemistryBoost,
+    $Out> implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  NormalizeChemistryBoostCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _NormalizeChemistryBoostCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, NormalizeChemistryBoost, $Out>
+    implements
+        NormalizeChemistryBoostCopyWith<$R, NormalizeChemistryBoost, $Out> {
+  _NormalizeChemistryBoostCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<NormalizeChemistryBoost> $mapper =
+      NormalizeChemistryBoostMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  NormalizeChemistryBoost $make(CopyWithData data) => NormalizeChemistryBoost();
+
+  @override
+  NormalizeChemistryBoostCopyWith<$R2, NormalizeChemistryBoost, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _NormalizeChemistryBoostCopyWithImpl($value, $cast, t);
+}
+
 class CompareTapMapper extends SubClassMapperBase<CompareTap> {
   CompareTapMapper._();
 
@@ -1083,7 +1320,9 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
       PlayStyleMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
       PlayerPriceMapper.ensureInitialized();
+      ChemistryModifierMapper.ensureInitialized();
       ChemistryStyleMapper.ensureInitialized();
+      _t$_R0Mapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -1123,11 +1362,22 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static const Field<PlayerDetailState, int> _f$selectedChemistryModifier =
       Field('selectedChemistryModifier', _$selectedChemistryModifier,
           opt: true);
+  static ChemistryModifier? _$normalizedChemistryBoost(PlayerDetailState v) =>
+      v.normalizedChemistryBoost;
+  static const Field<PlayerDetailState, ChemistryModifier>
+      _f$normalizedChemistryBoost =
+      Field('normalizedChemistryBoost', _$normalizedChemistryBoost, opt: true);
   static ChemistryStyle? _$selectedChemistryStyle(PlayerDetailState v) =>
       v.selectedChemistryStyle;
   static const Field<PlayerDetailState, ChemistryStyle>
       _f$selectedChemistryStyle =
       Field('selectedChemistryStyle', _$selectedChemistryStyle, opt: true);
+  static ChemistryBoostFaceValues? _$chemistryBoostFaceValues(
+          PlayerDetailState v) =>
+      v.chemistryBoostFaceValues;
+  static const Field<PlayerDetailState, ChemistryBoostFaceValues>
+      _f$chemistryBoostFaceValues =
+      Field('chemistryBoostFaceValues', _$chemistryBoostFaceValues, opt: true);
 
   @override
   final MappableFields<PlayerDetailState> fields = const {
@@ -1139,7 +1389,9 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
     #alternativePositions: _f$alternativePositions,
     #playerPrice: _f$playerPrice,
     #selectedChemistryModifier: _f$selectedChemistryModifier,
+    #normalizedChemistryBoost: _f$normalizedChemistryBoost,
     #selectedChemistryStyle: _f$selectedChemistryStyle,
+    #chemistryBoostFaceValues: _f$chemistryBoostFaceValues,
   };
 
   static PlayerDetailState _instantiate(DecodingData data) {
@@ -1152,7 +1404,9 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
         alternativePositions: data.dec(_f$alternativePositions),
         playerPrice: data.dec(_f$playerPrice),
         selectedChemistryModifier: data.dec(_f$selectedChemistryModifier),
-        selectedChemistryStyle: data.dec(_f$selectedChemistryStyle));
+        normalizedChemistryBoost: data.dec(_f$normalizedChemistryBoost),
+        selectedChemistryStyle: data.dec(_f$selectedChemistryStyle),
+        chemistryBoostFaceValues: data.dec(_f$chemistryBoostFaceValues));
   }
 
   @override
@@ -1221,6 +1475,8 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
   ListCopyWith<$R, Position, PositionCopyWith<$R, Position, Position>>?
       get alternativePositions;
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice;
+  ChemistryModifierCopyWith<$R, ChemistryModifier, ChemistryModifier>?
+      get normalizedChemistryBoost;
   ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
       get selectedChemistryStyle;
   $R call(
@@ -1232,7 +1488,9 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
       List<Position>? alternativePositions,
       PlayerPrice? playerPrice,
       int? selectedChemistryModifier,
-      ChemistryStyle? selectedChemistryStyle});
+      ChemistryModifier? normalizedChemistryBoost,
+      ChemistryStyle? selectedChemistryStyle,
+      ChemistryBoostFaceValues? chemistryBoostFaceValues});
   PlayerDetailStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -1286,6 +1544,10 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   PlayerPriceCopyWith<$R, PlayerPrice, PlayerPrice>? get playerPrice =>
       $value.playerPrice?.copyWith.$chain((v) => call(playerPrice: v));
   @override
+  ChemistryModifierCopyWith<$R, ChemistryModifier, ChemistryModifier>?
+      get normalizedChemistryBoost => $value.normalizedChemistryBoost?.copyWith
+          .$chain((v) => call(normalizedChemistryBoost: v));
+  @override
   ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
       get selectedChemistryStyle => $value.selectedChemistryStyle?.copyWith
           .$chain((v) => call(selectedChemistryStyle: v));
@@ -1299,7 +1561,9 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
           Object? alternativePositions = $none,
           Object? playerPrice = $none,
           Object? selectedChemistryModifier = $none,
-          Object? selectedChemistryStyle = $none}) =>
+          Object? normalizedChemistryBoost = $none,
+          Object? selectedChemistryStyle = $none,
+          Object? chemistryBoostFaceValues = $none}) =>
       $apply(FieldCopyWithData({
         if (player != null) #player: player,
         if (playerVersions != $none) #playerVersions: playerVersions,
@@ -1312,8 +1576,12 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
         if (playerPrice != $none) #playerPrice: playerPrice,
         if (selectedChemistryModifier != $none)
           #selectedChemistryModifier: selectedChemistryModifier,
+        if (normalizedChemistryBoost != $none)
+          #normalizedChemistryBoost: normalizedChemistryBoost,
         if (selectedChemistryStyle != $none)
-          #selectedChemistryStyle: selectedChemistryStyle
+          #selectedChemistryStyle: selectedChemistryStyle,
+        if (chemistryBoostFaceValues != $none)
+          #chemistryBoostFaceValues: chemistryBoostFaceValues
       }));
   @override
   PlayerDetailState $make(CopyWithData data) => PlayerDetailState(
@@ -1329,11 +1597,108 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
       playerPrice: data.get(#playerPrice, or: $value.playerPrice),
       selectedChemistryModifier: data.get(#selectedChemistryModifier,
           or: $value.selectedChemistryModifier),
+      normalizedChemistryBoost: data.get(#normalizedChemistryBoost,
+          or: $value.normalizedChemistryBoost),
       selectedChemistryStyle:
-          data.get(#selectedChemistryStyle, or: $value.selectedChemistryStyle));
+          data.get(#selectedChemistryStyle, or: $value.selectedChemistryStyle),
+      chemistryBoostFaceValues: data.get(#chemistryBoostFaceValues,
+          or: $value.chemistryBoostFaceValues));
 
   @override
   PlayerDetailStateCopyWith<$R2, PlayerDetailState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
       _PlayerDetailStateCopyWithImpl($value, $cast, t);
+}
+
+typedef _t$_R0<A, B, C, D, E, F> = ({
+  A defending,
+  B dribbling,
+  C pace,
+  D passing,
+  E physical,
+  F shooting
+});
+
+class _t$_R0Mapper extends RecordMapperBase<_t$_R0> {
+  static _t$_R0Mapper? _instance;
+  _t$_R0Mapper._();
+
+  static _t$_R0Mapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = _t$_R0Mapper._());
+      MapperBase.addType(<A, B, C, D, E, F>(f) => f<
+          ({
+            A defending,
+            B dribbling,
+            C pace,
+            D passing,
+            E physical,
+            F shooting
+          })>());
+    }
+    return _instance!;
+  }
+
+  static dynamic _$defending(_t$_R0 v) => v.defending;
+  static dynamic _arg$defending<A, B, C, D, E, F>(f) => f<A>();
+  static const Field<_t$_R0, dynamic> _f$defending =
+      Field('defending', _$defending, arg: _arg$defending);
+  static dynamic _$dribbling(_t$_R0 v) => v.dribbling;
+  static dynamic _arg$dribbling<A, B, C, D, E, F>(f) => f<B>();
+  static const Field<_t$_R0, dynamic> _f$dribbling =
+      Field('dribbling', _$dribbling, arg: _arg$dribbling);
+  static dynamic _$pace(_t$_R0 v) => v.pace;
+  static dynamic _arg$pace<A, B, C, D, E, F>(f) => f<C>();
+  static const Field<_t$_R0, dynamic> _f$pace =
+      Field('pace', _$pace, arg: _arg$pace);
+  static dynamic _$passing(_t$_R0 v) => v.passing;
+  static dynamic _arg$passing<A, B, C, D, E, F>(f) => f<D>();
+  static const Field<_t$_R0, dynamic> _f$passing =
+      Field('passing', _$passing, arg: _arg$passing);
+  static dynamic _$physical(_t$_R0 v) => v.physical;
+  static dynamic _arg$physical<A, B, C, D, E, F>(f) => f<E>();
+  static const Field<_t$_R0, dynamic> _f$physical =
+      Field('physical', _$physical, arg: _arg$physical);
+  static dynamic _$shooting(_t$_R0 v) => v.shooting;
+  static dynamic _arg$shooting<A, B, C, D, E, F>(f) => f<F>();
+  static const Field<_t$_R0, dynamic> _f$shooting =
+      Field('shooting', _$shooting, arg: _arg$shooting);
+
+  @override
+  final MappableFields<_t$_R0> fields = const {
+    #defending: _f$defending,
+    #dribbling: _f$dribbling,
+    #pace: _f$pace,
+    #passing: _f$passing,
+    #physical: _f$physical,
+    #shooting: _f$shooting,
+  };
+
+  @override
+  Function get typeFactory =>
+      <A, B, C, D, E, F>(f) => f<_t$_R0<A, B, C, D, E, F>>();
+
+  static _t$_R0<A, B, C, D, E, F> _instantiate<A, B, C, D, E, F>(
+      DecodingData<_t$_R0> data) {
+    return (
+      defending: data.dec(_f$defending),
+      dribbling: data.dec(_f$dribbling),
+      pace: data.dec(_f$pace),
+      passing: data.dec(_f$passing),
+      physical: data.dec(_f$physical),
+      shooting: data.dec(_f$shooting)
+    );
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static _t$_R0<A, B, C, D, E, F> fromMap<A, B, C, D, E, F>(
+      Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<_t$_R0<A, B, C, D, E, F>>(map);
+  }
+
+  static _t$_R0<A, B, C, D, E, F> fromJson<A, B, C, D, E, F>(String json) {
+    return ensureInitialized().decodeJson<_t$_R0<A, B, C, D, E, F>>(json);
+  }
 }

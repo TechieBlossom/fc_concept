@@ -33,10 +33,8 @@ abstract mixin class ClubRepositoryImpl
   @PersistentCached(ttl: _cacheTTL)
   Future<List<dynamic>> _getClubs(String filters) async {
     try {
-      final clubsResponse = await supabase
-          .from(TableClub.tableClub)
-          .select()
-          .or(filters);
+      final clubsResponse =
+          await supabase.from(TableClub.tableClub).select().or(filters);
 
       return clubsResponse;
     } catch (e, _) {

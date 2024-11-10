@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:core_domain/domain.dart';
 import 'package:core_domain/src/domain/positions/use_case/get_all_positions_use_case.dart';
 import 'package:dart_mappable/dart_mappable.dart';

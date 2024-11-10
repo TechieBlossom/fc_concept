@@ -11,7 +11,9 @@ class PlayerDetailState with PlayerDetailStateMappable {
     this.alternativePositions,
     this.playerPrice,
     this.selectedChemistryModifier,
+    this.normalizedChemistryBoost,
     this.selectedChemistryStyle,
+    this.chemistryBoostFaceValues,
   });
 
   final Player player;
@@ -22,7 +24,9 @@ class PlayerDetailState with PlayerDetailStateMappable {
   final List<Position>? alternativePositions;
   final PlayerPrice? playerPrice;
   final int? selectedChemistryModifier;
+  final ChemistryModifier? normalizedChemistryBoost;
   final ChemistryStyle? selectedChemistryStyle;
+  final ChemistryBoostFaceValues? chemistryBoostFaceValues;
 
   ChemistryModifier? get chemistryModifier =>
       switch (selectedChemistryModifier) {

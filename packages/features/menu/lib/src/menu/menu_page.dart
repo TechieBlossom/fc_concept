@@ -15,7 +15,8 @@ class MenuPage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space4),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: AppSpacing.space4),
               child: SafeArea(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

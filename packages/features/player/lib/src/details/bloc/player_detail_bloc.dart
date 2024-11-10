@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
@@ -7,7 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'player_detail_bloc.mapper.dart';
+
 part 'player_detail_event.dart';
+
 part 'player_detail_state.dart';
 
 class PlayerDetailBlocParams {
@@ -35,8 +35,11 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     this._getRolesByIdsUseCase,
     this._getPlayStylesByIdsUseCase,
     this._getPlayerPriceUseCase,
-    this._playerNavigator,
     this._getPositionsByIdsUseCase,
+    this._getChemistryBoostFaceValuesUseCase,
+    this._getChemistryBoostFaceValuesGkUseCase,
+    this._normalizeChemistryBoostUseCase,
+    this._playerNavigator,
   ) : super(PlayerDetailState(player: params.player)) {
     on<Init>((event, emit) => _initial(event.player, emit));
     on<VersionTap>(
@@ -50,6 +53,12 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     on<LoadVersions>((_, emit) => _loadVersions(emit));
     on<LoadPrice>((_, emit) => _loadPrice(emit));
     on<LoadAlternativePositions>((_, emit) => _loadAlternativePositions(emit));
+    on<LoadChemistryBoostFaceValues>(
+      (_, emit) => _loadChemistryBoostFaceValues(emit),
+    );
+    on<NormalizeChemistryBoost>(
+      (_, emit) => _normalizeChemistryBoost(emit),
+    );
     on<CompareTap>((_, emit) => _compareTap());
     on<UpdateChemistryStyle>(
       (event, emit) => _onUpdateChemistryStyle(event, emit),
@@ -65,6 +74,10 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   final GetPlayStylesByIdsUseCase _getPlayStylesByIdsUseCase;
   final GetPlayerPriceUseCase _getPlayerPriceUseCase;
   final GetPositionsByIdsUseCase _getPositionsByIdsUseCase;
+  final GetChemistryBoostFaceValuesUseCase _getChemistryBoostFaceValuesUseCase;
+  final GetChemistryBoostFaceValuesGkUseCase
+      _getChemistryBoostFaceValuesGkUseCase;
+  final NormalizeChemistryBoostUseCase _normalizeChemistryBoostUseCase;
   final PlayerNavigator _playerNavigator;
 
   Future<void> _initial(Player player, Emitter<PlayerDetailState> emit) async {
@@ -126,13 +139,6 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     );
   }
 
-  // TODO: Load versions can be optimised.
-  // Idea: Load all players by baseEaId info when a player is tapped in the list,
-  // then show the one which id matches the tapped player.
-  // And, store all players in a map with baseEaId as key.
-  // This way, we can avoid loading all versions of a player when a player is tapped.
-  // We can just show the player from the map.
-  // For this, the cache should be there in repository
   Future<void> _loadVersions(Emitter<PlayerDetailState> emit) async {
     final playerVersions = await _getPlayerVersionsUseCase(
       basePlayerEaId: state.player.basePlayerEaId,
@@ -151,6 +157,21 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
           print(exception);
         }
     }
+  }
+
+  void _loadChemistryBoostFaceValues(
+    Emitter<PlayerDetailState> emit,
+  ) {
+    final faceValues = state.player.isGk
+        ? _getChemistryBoostFaceValuesGkUseCase(
+            state.player,
+            state.normalizedChemistryBoost,
+          )
+        : _getChemistryBoostFaceValuesUseCase(
+            state.player,
+            state.normalizedChemistryBoost,
+          );
+    emit(state.copyWith(chemistryBoostFaceValues: faceValues));
   }
 
   void _loadAlternativePositions(
@@ -177,6 +198,16 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
         selectedChemistryStyle: event.chemistryStyle,
       ),
     );
+    add(NormalizeChemistryBoost());
+  }
+
+  void _normalizeChemistryBoost(Emitter<PlayerDetailState> emit) {
+    final normalizedChemistryBoost = _normalizeChemistryBoostUseCase(
+      state.player,
+      state.chemistryModifier,
+    );
+    emit(state.copyWith(normalizedChemistryBoost: normalizedChemistryBoost));
+    add(LoadChemistryBoostFaceValues());
   }
 
   void _handlePlayerDetailsResult(

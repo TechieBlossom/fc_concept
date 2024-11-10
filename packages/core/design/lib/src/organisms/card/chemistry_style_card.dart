@@ -109,7 +109,10 @@ class ChemistryStyleCard extends StatelessWidget {
                 isSelected: selectedChemistryModifier == 3,
               ),
               const Spacer(),
-              Icon(Icons.arrow_drop_down_rounded, size: 32,),
+              Icon(
+                Icons.arrow_drop_down_rounded,
+                size: 32,
+              ),
               const Space(
                 space: AppSpacing.space3,
                 orientation: Axis.horizontal,

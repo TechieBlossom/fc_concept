@@ -30,7 +30,8 @@ class PositionGroupTabs extends StatelessWidget {
                   pillItem: PillItem<PositionGroup>(
                     text: positionGroup.toString(),
                     data: positionGroup,
-                    isSelected: state.positionGroup == positionGroup,
+                    isSelected: state.positionGroup.toString() ==
+                        positionGroup.toString(),
                     onTap: state.positionGroup == positionGroup
                         ? null
                         : () => bloc.add(

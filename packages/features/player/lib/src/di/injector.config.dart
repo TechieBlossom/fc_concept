@@ -41,6 +41,10 @@ _i174.GetIt init(
         gh<_i913.FilterPlayersUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));
+  gh.factory<_i792.PlayersListByRatingBloc>(() => _i792.PlayersListByRatingBloc(
+        gh<_i913.GetCheapestPlayersByRatingUseCase>(),
+        gh<_i777.PlayerNavigator>(),
+      ));
   gh.factoryParam<_i1047.PlayerDetailBloc, _i1047.PlayerDetailBlocParams,
       dynamic>((
     params,
@@ -53,11 +57,10 @@ _i174.GetIt init(
         gh<_i913.GetRolesByIdsUseCase>(),
         gh<_i913.GetPlayStylesByIdsUseCase>(),
         gh<_i913.GetPlayerPriceUseCase>(),
-        gh<_i777.PlayerNavigator>(),
         gh<_i913.GetPositionsByIdsUseCase>(),
-      ));
-  gh.factory<_i792.PlayersListByRatingBloc>(() => _i792.PlayersListByRatingBloc(
-        gh<_i913.GetCheapestPlayersByRatingUseCase>(),
+        gh<_i913.GetChemistryBoostFaceValuesUseCase>(),
+        gh<_i913.GetChemistryBoostFaceValuesGkUseCase>(),
+        gh<_i913.NormalizeChemistryBoostUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));
   return getIt;

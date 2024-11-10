@@ -240,7 +240,7 @@ abstract mixin class PlayerRepositoryImpl
           .order(TablePlayer.overall, ascending: false)
           .limit(30);
 
-     return playersResponse;
+      return playersResponse;
     } catch (e, _) {
       rethrow;
     }

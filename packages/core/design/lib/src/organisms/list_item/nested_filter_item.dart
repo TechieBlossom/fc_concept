@@ -12,10 +12,10 @@ class NestedFilterItem extends StatelessWidget {
     this.selectedPills,
     this.onTap,
   });
-      // : assert(
-      //     (selectedPills?.length == 0 && subtitle != null) ||
-      //         (selectedPills?.length != 0 && subtitle == null),
-      //   );
+  // : assert(
+  //     (selectedPills?.length == 0 && subtitle != null) ||
+  //         (selectedPills?.length != 0 && subtitle == null),
+  //   );
 
   final String title;
   final String? subtitle;
