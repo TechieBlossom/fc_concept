@@ -30,10 +30,10 @@ class FilterPage extends StatelessWidget {
       child: BlocBuilder<FilterBloc, FilterState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: PageTitle(
+            appBar: const PageTitle(
               title: 'Filters',
-              action: 'Saved Filters',
-              onAction: () {},
+              // action: 'Saved Filters',
+              // onAction: () {},
             ),
             bottomNavigationBar: BottomButtonLayout(
               buttons: [
