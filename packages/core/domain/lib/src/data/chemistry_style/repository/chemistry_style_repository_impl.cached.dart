@@ -2,39 +2,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 
-part of 'league_repository_impl.dart';
+part of 'chemistry_style_repository_impl.dart';
 
 // **************************************************************************
 // CachedGenerator
 // **************************************************************************
 
-abstract class _$LeagueRepositoryImpl {}
+abstract class _$ChemistryStyleRepositoryImpl {}
 
-class _LeagueRepositoryImpl
-    with LeagueRepositoryImpl
-    implements _$LeagueRepositoryImpl {
-  _LeagueRepositoryImpl() {
+class _ChemistryStyleRepositoryImpl
+    with ChemistryStyleRepositoryImpl
+    implements _$ChemistryStyleRepositoryImpl {
+  _ChemistryStyleRepositoryImpl() {
     _init();
   }
 
   Future<void> _init() async {
     try {
       final cachedMap =
-          await PersistentStorageHolder.read('__getLeaguesCached');
+          await PersistentStorageHolder.read('__getAllChemistryStylesCached');
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
       });
 
-      __getLeaguesCached = cachedMap;
+      __getAllChemistryStylesCached = cachedMap;
     } catch (e) {
-      __getLeaguesCached = <String, dynamic>{};
+      __getAllChemistryStylesCached = <String, dynamic>{};
     }
 
     try {
-      __getLeaguesTtl = await PersistentStorageHolder.read('__getLeaguesTtl');
+      __getAllChemistryStylesTtl =
+          await PersistentStorageHolder.read('__getAllChemistryStylesTtl');
     } catch (e) {
-      __getLeaguesTtl = <String, dynamic>{};
+      __getAllChemistryStylesTtl = <String, dynamic>{};
     }
 
     _completer.complete();
@@ -43,43 +44,44 @@ class _LeagueRepositoryImpl
   final _completer = Completer<void>();
   Future<void> get _completerFuture => _completer.future;
 
-  late final Map<String, dynamic> __getLeaguesCached;
+  late final Map<String, dynamic> __getAllChemistryStylesCached;
 
-  late final __getLeaguesTtl;
+  late final __getAllChemistryStylesTtl;
 
   @override
-  Future<List<dynamic>> _getLeagues(bool isTop) async {
+  Future<List<dynamic>> _getAllChemistryStyles() async {
     await _completerFuture;
 
     final now = DateTime.now();
-    final cachedTtl = __getLeaguesTtl["${isTop.hashCode}"];
+    final cachedTtl = __getAllChemistryStylesTtl[""];
     final currentTtl = cachedTtl != null ? DateTime.parse(cachedTtl) : null;
 
     if (currentTtl != null && currentTtl.isBefore(now)) {
-      __getLeaguesTtl.remove("${isTop.hashCode}");
-      __getLeaguesCached.remove("${isTop.hashCode}");
+      __getAllChemistryStylesTtl.remove("");
+      __getAllChemistryStylesCached.remove("");
     }
 
-    final cachedValue = __getLeaguesCached["${isTop.hashCode}"];
+    final cachedValue = __getAllChemistryStylesCached[""];
     if (cachedValue == null) {
       final List<dynamic> toReturn;
       try {
-        final result = super._getLeagues(isTop);
+        final result = super._getAllChemistryStyles();
 
         toReturn = await result;
       } catch (_) {
         rethrow;
       } finally {}
 
-      __getLeaguesCached["${isTop.hashCode}"] = toReturn;
+      __getAllChemistryStylesCached[""] = toReturn;
 
-      const duration = Duration(seconds: 2592000);
-      __getLeaguesTtl["${isTop.hashCode}"] =
+      const duration = Duration(seconds: 31536000);
+      __getAllChemistryStylesTtl[""] =
           DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getLeaguesCached', __getLeaguesCached);
-      await PersistentStorageHolder.write('__getLeaguesTtl', __getLeaguesTtl);
+          '__getAllChemistryStylesCached', __getAllChemistryStylesCached);
+      await PersistentStorageHolder.write(
+          '__getAllChemistryStylesTtl', __getAllChemistryStylesTtl);
 
       return toReturn;
     } else {

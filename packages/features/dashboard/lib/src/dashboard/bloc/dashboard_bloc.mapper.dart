@@ -286,7 +286,6 @@ class SwitchHighRatedPositionGroupMapper
       MapperContainer.globals
           .use(_instance = SwitchHighRatedPositionGroupMapper._());
       DashboardEventMapper.ensureInitialized().addSubMapper(_instance!);
-      PositionGroupMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -877,7 +876,6 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
       MapperContainer.globals.use(_instance = DashboardStateMapper._());
       ProcessStateMapper.ensureInitialized();
       IndexDataMapper.ensureInitialized();
-      PositionGroupMapper.ensureInitialized();
       RaritySquadMapper.ensureInitialized();
       PlayerMapper.ensureInitialized();
     }
@@ -894,10 +892,9 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
   static List<IndexData>? _$indexes(DashboardState v) => v.indexes;
   static const Field<DashboardState, List<IndexData>> _f$indexes =
       Field('indexes', _$indexes, opt: true);
-  static PositionGroup? _$positionGroup(DashboardState v) => v.positionGroup;
-  static const Field<DashboardState, PositionGroup> _f$positionGroup = Field(
-      'positionGroup', _$positionGroup,
-      opt: true, def: PositionGroup.attack);
+  static PositionGroup _$positionGroup(DashboardState v) => v.positionGroup;
+  static const Field<DashboardState, PositionGroup> _f$positionGroup =
+      Field('positionGroup', _$positionGroup, opt: true, def: const Forwards());
   static RaritySquad? _$raritySquad(DashboardState v) => v.raritySquad;
   static const Field<DashboardState, RaritySquad> _f$raritySquad =
       Field('raritySquad', _$raritySquad, opt: true);
@@ -1083,7 +1080,7 @@ class _DashboardStateCopyWithImpl<$R, $Out>
   $R call(
           {ProcessState? processState,
           Object? indexes = $none,
-          Object? positionGroup = $none,
+          PositionGroup? positionGroup,
           Object? raritySquad = $none,
           Map<RaritySquad?, List<Player>?>? raritySquadPlayers,
           List<Player>? sbcPlayers,
@@ -1094,7 +1091,7 @@ class _DashboardStateCopyWithImpl<$R, $Out>
       $apply(FieldCopyWithData({
         if (processState != null) #processState: processState,
         if (indexes != $none) #indexes: indexes,
-        if (positionGroup != $none) #positionGroup: positionGroup,
+        if (positionGroup != null) #positionGroup: positionGroup,
         if (raritySquad != $none) #raritySquad: raritySquad,
         if (raritySquadPlayers != null) #raritySquadPlayers: raritySquadPlayers,
         if (sbcPlayers != null) #sbcPlayers: sbcPlayers,

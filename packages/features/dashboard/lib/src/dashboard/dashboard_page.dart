@@ -68,10 +68,10 @@ class DashboardPage extends StatelessWidget {
                   PlayersGrid(
                     isLoading: state.processState == ProcessState.loading,
                     players: switch (state.positionGroup) {
-                      PositionGroup.attack => state.attackPlayers,
-                      PositionGroup.midfielder => state.midfielderPlayers,
-                      PositionGroup.defence => state.defencePlayers,
-                      null => state.goalKeeperPlayers,
+                      Forwards() => state.attackPlayers,
+                      Midfielders() => state.midfielderPlayers,
+                      Defenders() => state.defencePlayers,
+                      Goalkeepers() => state.goalKeeperPlayers,
                     },
                     heading: 'High-Rated Players',
                     pills: PositionGroupTabs(state: state),

@@ -11,17 +11,7 @@ class GetPositionalPlayersUseCase {
   final PlayerRepository _playerRepository;
 
   Future<Result<List<Player>?>> call({
-    required PositionGroup? positionGroup,
-  }) async {
-    switch (positionGroup) {
-      case PositionGroup.attack:
-        return _playerRepository.topForwards();
-      case PositionGroup.midfielder:
-        return _playerRepository.topMidfielders();
-      case PositionGroup.defence:
-        return _playerRepository.topDefence();
-      default:
-        return _playerRepository.topGoalKeepers();
-    }
-  }
+    required PositionGroup positionGroup,
+  }) async => _playerRepository
+        .getPositionalPlayers(positionGroup);
 }

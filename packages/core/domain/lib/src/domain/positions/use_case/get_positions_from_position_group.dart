@@ -10,7 +10,7 @@ class GetPositionsFromPositionGroup {
   ) {
     return allPositions
         .where(
-          (position) => position.positionTypeName == positionGroup.toValue(),
+          (position) => position.positionTypeName == positionGroup.toString(),
         )
         .toList();
   }

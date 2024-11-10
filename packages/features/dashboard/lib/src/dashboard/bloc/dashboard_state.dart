@@ -5,7 +5,7 @@ class DashboardState with DashboardStateMappable {
   DashboardState({
     this.processState = ProcessState.loading,
     this.indexes,
-    this.positionGroup = PositionGroup.attack,
+    this.positionGroup = const Forwards(),
     this.raritySquad,
     this.raritySquadPlayers = const {},
     this.sbcPlayers = const [],
@@ -17,7 +17,7 @@ class DashboardState with DashboardStateMappable {
 
   final ProcessState processState;
   final List<IndexData>? indexes;
-  final PositionGroup? positionGroup;
+  final PositionGroup positionGroup;
   final RaritySquad? raritySquad;
   final Map<RaritySquad?, List<Player>?> raritySquadPlayers;
   final List<Player> sbcPlayers;

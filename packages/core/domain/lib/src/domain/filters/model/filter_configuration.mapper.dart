@@ -19,7 +19,6 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
       GenderMapper.ensureInitialized();
       FootMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
-      PositionGroupMapper.ensureInitialized();
       RoleMapper.ensureInitialized();
       PlayStyleMapper.ensureInitialized();
     }

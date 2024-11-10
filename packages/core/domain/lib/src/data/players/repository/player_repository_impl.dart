@@ -1,25 +1,25 @@
 import 'package:core_api_client/api_client.dart';
+import 'package:core_domain/domain.dart';
 import 'package:core_domain/src/data/clubs/table_club.dart';
 import 'package:core_domain/src/data/leagues/table_league.dart';
 import 'package:core_domain/src/data/nations/table_nation.dart';
 import 'package:core_domain/src/data/players/table_player.dart';
 import 'package:core_domain/src/data/positions/table_position.dart';
 import 'package:core_domain/src/data/rarities/table_rarity.dart';
-import 'package:core_domain/src/domain/clubs/model/club.dart';
-import 'package:core_domain/src/domain/common/foot.dart';
-import 'package:core_domain/src/domain/common/gender.dart';
-import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
-import 'package:core_domain/src/domain/models/result.dart';
-import 'package:core_domain/src/domain/play_styles/model/play_style.dart';
-import 'package:core_domain/src/domain/players/model/player.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
-import 'package:core_domain/src/domain/positions/model/position.dart';
-import 'package:core_domain/src/domain/rarity/model/rarity.dart';
-import 'package:core_domain/src/domain/roles/model/role.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+part 'player_repository_impl.cached.dart';
+
+const _cacheTTL = 1 * 60 * 60; // 6 hours
+const _playerCacheTTL = 30 * 24 * 60 * 60; // 30 days
+const _forwardPositionSet = {23, 25, 27};
+const _midfieldPositionSet = {10, 12, 14, 16, 18};
+const _defenderPositionSet = {3, 5, 7};
+const _goalkeeperPositionSet = {0};
 
 const _itemsPerPage = 10;
 const _rarityTable =
@@ -61,9 +61,30 @@ final _columnsToFetchForList = [
 ].join(',');
 
 @Injectable(as: PlayerRepository)
-class PlayerRepositoryImpl extends PlayerRepository {
+@WithCache()
+abstract mixin class PlayerRepositoryImpl
+    implements PlayerRepository, _$PlayerRepositoryImpl {
+  @factoryMethod
+  factory PlayerRepositoryImpl() = _PlayerRepositoryImpl;
+
   @override
   Future<Result<List<Player>?>> topPlayers({
+    int page = 0,
+  }) async {
+    try {
+      final rawResponse = await _topPlayers(page: page);
+      final players = mapPlayers(rawResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @PersistentCached(ttl: _cacheTTL)
+  Future<List<dynamic>> _topPlayers({
     int page = 0,
   }) async {
     final start = page * _itemsPerPage;
@@ -78,6 +99,16 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .order(TablePlayer.createdAt, ascending: false)
           .range(start, end);
 
+      return playersResponse;
+    } catch (e, _) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> recentPlayers() async {
+    try {
+      final playersResponse = await _recentPlayers();
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
         print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
@@ -88,8 +119,8 @@ class PlayerRepositoryImpl extends PlayerRepository {
     }
   }
 
-  @override
-  Future<Result<List<Player>?>> recentPlayers() async {
+  @PersistentCached(ttl: _cacheTTL)
+  Future<List<dynamic>> _recentPlayers() async {
     try {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
@@ -97,6 +128,17 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .order(TablePlayer.createdAt, ascending: false)
           .limit(30);
 
+      return playersResponse;
+    } catch (e, _) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> sbcPlayers() async {
+    try {
+      final playersResponse = await _sbcPlayers();
+
       final players = mapPlayers(playersResponse);
       if (kDebugMode) {
         print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
@@ -107,8 +149,8 @@ class PlayerRepositoryImpl extends PlayerRepository {
     }
   }
 
-  @override
-  Future<Result<List<Player>?>> sbcPlayers() async {
+  @PersistentCached(ttl: _cacheTTL)
+  Future<List<dynamic>> _sbcPlayers() async {
     try {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
@@ -116,7 +158,19 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .eq(TablePlayer.isSbcItem, true)
           .order(TablePlayer.createdAt, ascending: false);
 
-      final players = mapPlayers(playersResponse);
+      return playersResponse;
+    } catch (e, _) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> getPositionalPlayers(
+    PositionGroup positionGroup,
+  ) async {
+    try {
+      final rawResponse = await _getPositionalPlayers(positionGroup);
+      final players = mapPlayers(rawResponse);
       if (kDebugMode) {
         print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
       }
@@ -126,89 +180,56 @@ class PlayerRepositoryImpl extends PlayerRepository {
     }
   }
 
-  @override
-  Future<Result<List<Player>?>> topForwards() async {
+  @PersistentCached(ttl: _cacheTTL)
+  Future<List<dynamic>> _getPositionalPlayers(
+    PositionGroup positionGroup,
+  ) async {
+    final positions = switch (positionGroup) {
+      Forwards() => _forwardPositionSet,
+      Midfielders() => _midfieldPositionSet,
+      Defenders() => _defenderPositionSet,
+      Goalkeepers() => _goalkeeperPositionSet,
+    };
+    final overall = switch (positionGroup) {
+      Forwards() || Midfielders() || Defenders() => 80,
+      Goalkeepers() => 87,
+    };
     try {
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
-          .inFilter(TablePlayer.position, [23, 25, 27])
+          .gte(TablePlayer.overall, overall)
+          .inFilter(TablePlayer.position, positions.toList())
           .order(TablePlayer.overall, ascending: false)
           .limit(30);
 
-      final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
-      return Success(data: players);
+      return playersResponse;
     } catch (e, _) {
-      return Failure(exception: e as Exception);
-    }
-  }
-
-  @override
-  Future<Result<List<Player>?>> topDefence() async {
-    try {
-      final playersResponse = await supabase
-          .from(TablePlayer.tablePlayer)
-          .select(_columnsToFetchForList)
-          .inFilter(TablePlayer.position, [3, 5, 7])
-          .order(TablePlayer.overall, ascending: false)
-          .limit(30);
-
-      final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
-      return Success(data: players);
-    } catch (e, _) {
-      return Failure(exception: e as Exception);
-    }
-  }
-
-  @override
-  Future<Result<List<Player>?>> topMidfielders() async {
-    try {
-      final playersResponse = await supabase
-          .from(TablePlayer.tablePlayer)
-          .select(_columnsToFetchForList)
-          .inFilter(TablePlayer.position, [10, 12, 14, 16, 18])
-          .order(TablePlayer.overall, ascending: false)
-          .limit(30);
-
-      final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
-      return Success(data: players);
-    } catch (e, _) {
-      return Failure(exception: e as Exception);
-    }
-  }
-
-  @override
-  Future<Result<List<Player>?>> topGoalKeepers() async {
-    try {
-      final playersResponse = await supabase
-          .from(TablePlayer.tablePlayer)
-          .select(_columnsToFetchForList)
-          .inFilter(TablePlayer.position, [0])
-          .gte(TablePlayer.overall, 87)
-          .order(TablePlayer.overall, ascending: false)
-          .limit(30);
-
-      final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
-      return Success(data: players);
-    } catch (e, _) {
-      return Failure(exception: e as Exception);
+      rethrow;
     }
   }
 
   @override
   Future<Result<List<Player>?>> getPlayersByRaritySquad({
+    required int raritySquadId,
+  }) async {
+    try {
+      final playersResponse = await _getPlayersByRaritySquad(
+        raritySquadId: raritySquadId,
+      );
+
+      final players = mapPlayers(playersResponse);
+      if (kDebugMode) {
+        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
+      }
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @PersistentCached(ttl: _cacheTTL)
+  Future<List<dynamic>> _getPlayersByRaritySquad({
     required int raritySquadId,
   }) async {
     try {
@@ -219,13 +240,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .order(TablePlayer.overall, ascending: false)
           .limit(30);
 
-      final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
-      return Success(data: players);
+     return playersResponse;
     } catch (e, _) {
-      return Failure(exception: e as Exception);
+      rethrow;
     }
   }
 
@@ -386,14 +403,26 @@ class PlayerRepositoryImpl extends PlayerRepository {
     }
   }
 
-  List<Player> mapPlayers(List<Map<String, dynamic>> playersResponse) {
+  List<Player> mapPlayers(List<dynamic> playersResponse) {
     return playersResponse
-        .map((playerJson) => Player.fromMap(playerJson))
+        .map((playerJson) => Player.fromMap(playerJson as Map<String, dynamic>))
         .toList();
   }
 
   @override
   Future<Result<Player>> getPlayer({required int playerId}) async {
+    try {
+      final playerResponse = await _getPlayer(playerId: playerId);
+
+      final player = Player.fromMap(playerResponse as Map<String, dynamic>);
+      return Success(data: player);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @PersistentCached(ttl: _playerCacheTTL)
+  Future<dynamic> _getPlayer({required int playerId}) async {
     try {
       final playerResponse = await supabase
           .from(TablePlayer.tablePlayer)
@@ -403,10 +432,9 @@ class PlayerRepositoryImpl extends PlayerRepository {
           .limit(1)
           .single();
 
-      final player = Player.fromMap(playerResponse);
-      return Success(data: player);
+      return playerResponse;
     } catch (e, _) {
-      return Failure(exception: e as Exception);
+      rethrow;
     }
   }
 

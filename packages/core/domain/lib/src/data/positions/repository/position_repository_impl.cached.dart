@@ -2,39 +2,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 
-part of 'league_repository_impl.dart';
+part of 'position_repository_impl.dart';
 
 // **************************************************************************
 // CachedGenerator
 // **************************************************************************
 
-abstract class _$LeagueRepositoryImpl {}
+abstract class _$PositionRepositoryImpl {}
 
-class _LeagueRepositoryImpl
-    with LeagueRepositoryImpl
-    implements _$LeagueRepositoryImpl {
-  _LeagueRepositoryImpl() {
+class _PositionRepositoryImpl
+    with PositionRepositoryImpl
+    implements _$PositionRepositoryImpl {
+  _PositionRepositoryImpl() {
     _init();
   }
 
   Future<void> _init() async {
     try {
       final cachedMap =
-          await PersistentStorageHolder.read('__getLeaguesCached');
+          await PersistentStorageHolder.read('__getPositionsCached');
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
       });
 
-      __getLeaguesCached = cachedMap;
+      __getPositionsCached = cachedMap;
     } catch (e) {
-      __getLeaguesCached = <String, dynamic>{};
+      __getPositionsCached = <String, dynamic>{};
     }
 
     try {
-      __getLeaguesTtl = await PersistentStorageHolder.read('__getLeaguesTtl');
+      __getPositionsTtl =
+          await PersistentStorageHolder.read('__getPositionsTtl');
     } catch (e) {
-      __getLeaguesTtl = <String, dynamic>{};
+      __getPositionsTtl = <String, dynamic>{};
     }
 
     _completer.complete();
@@ -43,43 +44,43 @@ class _LeagueRepositoryImpl
   final _completer = Completer<void>();
   Future<void> get _completerFuture => _completer.future;
 
-  late final Map<String, dynamic> __getLeaguesCached;
+  late final Map<String, dynamic> __getPositionsCached;
 
-  late final __getLeaguesTtl;
+  late final __getPositionsTtl;
 
   @override
-  Future<List<dynamic>> _getLeagues(bool isTop) async {
+  Future<List<dynamic>> _getPositions() async {
     await _completerFuture;
 
     final now = DateTime.now();
-    final cachedTtl = __getLeaguesTtl["${isTop.hashCode}"];
+    final cachedTtl = __getPositionsTtl[""];
     final currentTtl = cachedTtl != null ? DateTime.parse(cachedTtl) : null;
 
     if (currentTtl != null && currentTtl.isBefore(now)) {
-      __getLeaguesTtl.remove("${isTop.hashCode}");
-      __getLeaguesCached.remove("${isTop.hashCode}");
+      __getPositionsTtl.remove("");
+      __getPositionsCached.remove("");
     }
 
-    final cachedValue = __getLeaguesCached["${isTop.hashCode}"];
+    final cachedValue = __getPositionsCached[""];
     if (cachedValue == null) {
       final List<dynamic> toReturn;
       try {
-        final result = super._getLeagues(isTop);
+        final result = super._getPositions();
 
         toReturn = await result;
       } catch (_) {
         rethrow;
       } finally {}
 
-      __getLeaguesCached["${isTop.hashCode}"] = toReturn;
+      __getPositionsCached[""] = toReturn;
 
-      const duration = Duration(seconds: 2592000);
-      __getLeaguesTtl["${isTop.hashCode}"] =
-          DateTime.now().add(duration).toIso8601String();
+      const duration = Duration(seconds: 31536000);
+      __getPositionsTtl[""] = DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getLeaguesCached', __getLeaguesCached);
-      await PersistentStorageHolder.write('__getLeaguesTtl', __getLeaguesTtl);
+          '__getPositionsCached', __getPositionsCached);
+      await PersistentStorageHolder.write(
+          '__getPositionsTtl', __getPositionsTtl);
 
       return toReturn;
     } else {

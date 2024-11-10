@@ -156,7 +156,7 @@ _i174.GetIt init(
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
   gh.factory<_i451.RaritySquadRepository>(
       () => _i433.RaritySquadRepositoryImpl());
-  gh.factory<_i526.PriceRepository>(
+  gh.lazySingleton<_i526.PriceRepository>(
       () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
   gh.factory<_i1070.PositionRepository>(() => _i684.PositionRepositoryImpl());
   gh.factory<_i437.GetAllPositionsUseCase>(

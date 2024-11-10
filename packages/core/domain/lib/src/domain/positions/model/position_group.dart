@@ -1,10 +1,47 @@
-import 'package:dart_mappable/dart_mappable.dart';
+import 'package:flutter/cupertino.dart';
 
-part 'position_group.mapper.dart';
+@immutable
+sealed class PositionGroup {
+  const PositionGroup._();
 
-@MappableEnum(caseStyle: CaseStyle.pascalCase)
-enum PositionGroup {
-  attack,
-  midfielder,
-  defence,
+  @override
+  String toString() {
+    return switch (this) {
+      Forwards() => 'Forwards',
+      Midfielders() => 'Midfielders',
+      Defenders() => 'Defenders',
+      Goalkeepers() => 'Goalkeepers',
+    };
+  }
+
+  @override
+  int get hashCode {
+    return switch (this) {
+      Forwards() => 0,
+      Midfielders() => 1,
+      Defenders() => 2,
+      Goalkeepers() => 3,
+    };
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return super.hashCode == other.hashCode;
+  }
+}
+
+class Forwards extends PositionGroup {
+  const Forwards() : super._();
+}
+
+class Midfielders extends PositionGroup {
+  const Midfielders() : super._();
+}
+
+class Defenders extends PositionGroup {
+  const Defenders() : super._();
+}
+
+class Goalkeepers extends PositionGroup {
+  const Goalkeepers() : super._();
 }

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_dashboard/dashboard.dart';
@@ -9,9 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:utility_extensions/extensions.dart';
 
 part 'dashboard_bloc.mapper.dart';
-
 part 'dashboard_event.dart';
-
 part 'dashboard_state.dart';
 
 @injectable
@@ -56,10 +52,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     final results = await Future.wait([
       _getIndexDataUseCase(),
       _getUniqueRaritySquads(),
-      _getPositionalPlayersUseCase(positionGroup: PositionGroup.attack),
-      _getPositionalPlayersUseCase(positionGroup: PositionGroup.midfielder),
-      _getPositionalPlayersUseCase(positionGroup: PositionGroup.defence),
-      _getPositionalPlayersUseCase(positionGroup: null),
+      _getPositionalPlayersUseCase(positionGroup: const Forwards()),
+      _getPositionalPlayersUseCase(positionGroup: const Midfielders()),
+      _getPositionalPlayersUseCase(positionGroup: const Defenders()),
+      _getPositionalPlayersUseCase(positionGroup: const Goalkeepers()),
       _getSbcPlayersUseCase(),
     ]);
 

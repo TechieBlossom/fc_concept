@@ -44,13 +44,17 @@ class PositionFilterItem extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: PositionGroup.values
+              children: [
+                const Forwards(),
+                const Midfielders(),
+                const Defenders(),
+              ]
                   .map<Widget>(
                     (group) => Expanded(
                       child: Pill(
                         pillItem: PillItem<PositionGroup>(
                           data: group,
-                          text: group.toValue(),
+                          text: group.toString(),
                           isSelected: positionGroups?.contains(group) ?? false,
                           onTap: () {
                             context.read<FilterBloc>().add(

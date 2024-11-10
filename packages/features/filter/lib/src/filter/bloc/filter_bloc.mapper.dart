@@ -1138,7 +1138,6 @@ class TapPositionGroupMapper extends SubClassMapperBase<TapPositionGroup> {
       MapperContainer.globals.use(_instance = TapPositionGroupMapper._());
       FilterEventMapper.ensureInitialized().addSubMapper(_instance!);
       PositionMapper.ensureInitialized();
-      PositionGroupMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -1492,7 +1491,6 @@ class FilterStateMapper extends ClassMapperBase<FilterState> {
       GenderMapper.ensureInitialized();
       FootMapper.ensureInitialized();
       PositionMapper.ensureInitialized();
-      PositionGroupMapper.ensureInitialized();
       RoleMapper.ensureInitialized();
       PlayStyleMapper.ensureInitialized();
     }
