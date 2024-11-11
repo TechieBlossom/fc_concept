@@ -24,7 +24,10 @@ class PlayStylesFilterItem extends StatelessWidget {
               (playStyle) => PillItem<PlayStyle>(
                 data: playStyle,
                 text: playStyle.name,
-                image: PlayStyleImage(playStyle: playStyle),
+                image: PlayStyleImage(
+                  playStyle: playStyle,
+                  color: context.colors.onPrimary,
+                ),
                 isSelected: true,
               ),
             )
