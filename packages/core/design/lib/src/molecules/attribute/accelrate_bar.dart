@@ -1,14 +1,21 @@
 import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/space/space.dart';
+import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
 class AccelerateBar extends StatelessWidget {
   const AccelerateBar({
     super.key,
-    required this.accelerate,
+    required this.accelerateType,
+    this.chemistryStyleAccelerate,
   });
 
-  final String accelerate;
+  final AccelerateType accelerateType;
+  final AccelerateType? chemistryStyleAccelerate;
+
+  bool get accelerateTypeIsDifferent =>
+      chemistryStyleAccelerate != null &&
+      accelerateType != chemistryStyleAccelerate;
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +48,29 @@ class AccelerateBar extends StatelessWidget {
                 color: context.colors.contentPrimary,
               ),
             ),
-            const Space(space: AppSpacing.space2),
+            const Space(space: AppSpacing.space3),
             Text(
-              accelerate,
+              accelerateType.title,
               textAlign: TextAlign.start,
-              style: context.typography.body4.copyWith(
-                color: context.colors.contentPrimary,
-                fontWeight: FontWeight.w600,
+              style: context.typography.body2.copyWith(
+                color: accelerateTypeIsDifferent
+                    ? context.colors.contentTertiary
+                    : context.colors.contentPrimary,
+                decoration: accelerateTypeIsDifferent
+                    ? TextDecoration.lineThrough
+                    : null,
               ),
             ),
+            if (accelerateTypeIsDifferent) ...[
+              const Space(space: AppSpacing.space3),
+              Text(
+                chemistryStyleAccelerate!.title,
+                textAlign: TextAlign.start,
+                style: context.typography.body2.copyWith(
+                  color: context.colors.contentPrimary,
+                ),
+              ),
+            ],
           ],
         ),
       ),

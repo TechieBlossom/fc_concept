@@ -10,11 +10,13 @@ class GkAttributesLayout extends StatelessWidget {
     required this.player,
     required this.chemistryBoost,
     required this.chemistryBoostFaceValues,
+    required this.chemistryStyleAccelerate,
   });
 
   final Player player;
   final ChemistryModifier? chemistryBoost;
   final ChemistryBoostFaceValues? chemistryBoostFaceValues;
+  final AccelerateType? chemistryStyleAccelerate;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,8 @@ class GkAttributesLayout extends StatelessWidget {
                     ),
                     if (player.accelerateType != null)
                       AccelerateBar(
-                        accelerate: player.accelerateType!.title,
+                        accelerateType: player.accelerateType!,
+                        chemistryStyleAccelerate: chemistryStyleAccelerate,
                       ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
                 ),

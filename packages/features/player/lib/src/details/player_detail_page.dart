@@ -109,6 +109,8 @@ class PlayerDetailPage extends StatelessWidget {
                           chemistryBoost: state.normalizedChemistryBoost,
                           chemistryBoostFaceValues:
                               state.chemistryBoostFaceValues,
+                          chemistryStyleAccelerate:
+                              state.chemistryStyleAccelerate,
                         ),
                       )
                     else
@@ -121,6 +123,8 @@ class PlayerDetailPage extends StatelessWidget {
                           chemistryBoost: state.normalizedChemistryBoost,
                           chemistryBoostFaceValues:
                               state.chemistryBoostFaceValues,
+                          chemistryStyleAccelerate:
+                              state.chemistryStyleAccelerate,
                         ),
                       ),
                 ],

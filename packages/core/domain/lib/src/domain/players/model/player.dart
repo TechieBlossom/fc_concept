@@ -8,6 +8,7 @@ import 'package:core_domain/src/domain/clubs/model/club.dart';
 import 'package:core_domain/src/domain/leagues/model/league.dart';
 import 'package:core_domain/src/domain/nations/model/nation.dart';
 import 'package:core_domain/src/domain/players/model/accelerate_type.dart';
+import 'package:core_domain/src/domain/players/model/accelerate_types.dart';
 import 'package:core_domain/src/domain/positions/model/position.dart';
 import 'package:core_domain/src/domain/price/model/player_old_price.dart';
 import 'package:core_domain/src/domain/rarity/model/rarity.dart';
@@ -46,6 +47,7 @@ class Player with PlayerMappable {
     this.isSbcItem = false,
     this.isObjectiveItem = false,
     this.accelerateType,
+    this.accelerateTypes,
     this.facePace,
     this.faceShooting,
     this.facePassing,
@@ -131,6 +133,7 @@ class Player with PlayerMappable {
   final bool isObjectiveItem;
 
   final AccelerateType? accelerateType;
+  final AccelerateTypes? accelerateTypes;
   final int? facePace;
   final int? faceShooting;
   final int? facePassing;
