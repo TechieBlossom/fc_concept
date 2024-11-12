@@ -1,5 +1,6 @@
 import 'package:core_design/src/atoms/atoms.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SearchField extends StatefulWidget {
@@ -69,6 +70,8 @@ class _SearchFieldState extends State<SearchField> {
             ),
             child: TextFormField(
               cursorHeight: 20,
+              maxLength: 30,
+              maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
               controller: _controller,
               onChanged: widget.onSearch,
               textCapitalization: TextCapitalization.words,
@@ -81,6 +84,7 @@ class _SearchFieldState extends State<SearchField> {
                   top: AppSpacing.space4 + AppSpacing.space1,
                   left: AppSpacing.space4,
                 ),
+                counter: const SizedBox.shrink(),
                 border: InputBorder.none,
                 prefixIcon: widget.onLeadingTap != null
                     ? IconButton(

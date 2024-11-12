@@ -27,7 +27,7 @@ class _PlayerListPageState extends State<PlayerListPage> {
             key: _scaffoldKey,
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(
-                kToolbarHeight + (hasFilters ? 32 : 2),
+                kToolbarHeight + (hasFilters ? 36 : 6),
               ),
               child: Column(
                 children: [

@@ -1,5 +1,5 @@
 import 'package:core_design/design.dart';
-import 'package:core_design/src/molecules/attribute/accelrate_bar.dart';
+import 'package:core_design/src/molecules/accelerate/accelerate_bar.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_extensions/extensions.dart';
