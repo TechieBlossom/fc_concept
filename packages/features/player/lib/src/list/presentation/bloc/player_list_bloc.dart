@@ -17,7 +17,6 @@ const _duration = Duration(milliseconds: 50);
 class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   PlayerListBloc(
     this._getTopPlayerUseCase,
-    this._searchPlayersUseCase,
     this._filterPlayersUseCase,
     this._navigator,
   ) : super(PlayerListState()) {
@@ -31,7 +30,6 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   }
 
   final GetTopPlayerUseCase _getTopPlayerUseCase;
-  final SearchPlayersUseCase _searchPlayersUseCase;
   final FilterPlayersUseCase _filterPlayersUseCase;
   final PlayerNavigator _navigator;
 
@@ -55,19 +53,24 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     Search event,
     Emitter<PlayerListState> emit,
   ) async {
-    if (event.query.isEmpty) {
-      emit(state.copyWith(query: '', page: 0));
-      add(Init());
-    }
     emit(
       state.copyWith(
         processState: ProcessState.loading,
         page: 0,
-        query: event.query,
+        filterConfiguration: state.filterConfiguration?.copyWith(
+          searchQuery: event.query,
+        ),
       ),
     );
-    final response = await _searchPlayersUseCase(
-      query: event.query,
+
+    if (event.query.isEmpty) {
+      add(Init());
+    }
+
+    final response = await _filterPlayersUseCase(
+      filterConfiguration: state.filterConfiguration ?? FilterConfiguration(
+        searchQuery: event.query,
+      ),
       page: state.page,
     );
     switch (response) {
@@ -91,13 +94,8 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
         page: state.page,
         filterConfiguration: state.filterConfiguration,
       );
-    } else if (state.query.isEmpty) {
-      response = await _getTopPlayerUseCase(
-        page: state.page,
-      );
     } else {
-      response = await _searchPlayersUseCase(
-        query: state.query,
+      response = await _getTopPlayerUseCase(
         page: state.page,
       );
     }
@@ -135,7 +133,9 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
       emit(
         state.copyWith(
           processState: ProcessState.loading,
-          filterConfiguration: filterConfiguration,
+          filterConfiguration: filterConfiguration.copyWith(
+            searchQuery: state.filterConfiguration?.searchQuery,
+          ),
         ),
       );
       final response = await _filterPlayersUseCase(

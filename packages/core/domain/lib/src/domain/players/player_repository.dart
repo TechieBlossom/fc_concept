@@ -44,6 +44,7 @@ abstract class PlayerRepository {
 
   Future<Result<List<Player>?>> filterPlayers({
     int page = 0,
+    String? searchQuery,
     List<NestedFilterLayoutType>? leagues,
     List<NestedFilterLayoutType>? nations,
     List<Club>? clubs,

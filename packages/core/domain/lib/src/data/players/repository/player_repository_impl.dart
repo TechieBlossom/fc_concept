@@ -274,6 +274,7 @@ abstract mixin class PlayerRepositoryImpl
   @override
   Future<Result<List<Player>?>> filterPlayers({
     int page = 0,
+    String? searchQuery,
     List<NestedFilterLayoutType>? leagues,
     List<NestedFilterLayoutType>? nations,
     List<Club>? clubs,
@@ -304,6 +305,14 @@ abstract mixin class PlayerRepositoryImpl
     try {
       PostgrestFilterBuilder postgresFilterBuilder =
           supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+
+      if (searchQuery?.isNotEmpty ?? false) {
+        postgresFilterBuilder = postgresFilterBuilder.like(
+          TablePlayer.commonName,
+          '%$searchQuery%',
+        );
+      }
+
       if (leagueIds != null && leagueIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
           TablePlayer.league,

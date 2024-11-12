@@ -34,7 +34,7 @@ class PlayerSelectionPage extends StatelessWidget {
                     processState: state.processState,
                     isPaginating: state.isPaginating,
                     players: state.players,
-                    query: state.query,
+                    query: state.filterConfiguration?.searchQuery,
                     nextPage: () => context.read<PlayerListBloc>().add(
                           FilterTap(),
                         ),

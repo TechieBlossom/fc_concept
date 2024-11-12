@@ -28,6 +28,9 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
   @override
   final String id = 'FilterConfiguration';
 
+  static String _$searchQuery(FilterConfiguration v) => v.searchQuery;
+  static const Field<FilterConfiguration, String> _f$searchQuery =
+      Field('searchQuery', _$searchQuery, opt: true, def: '');
   static List<NestedFilterLayoutType>? _$leagues(FilterConfiguration v) =>
       v.leagues;
   static const Field<FilterConfiguration, List<NestedFilterLayoutType>>
@@ -69,6 +72,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
 
   @override
   final MappableFields<FilterConfiguration> fields = const {
+    #searchQuery: _f$searchQuery,
     #leagues: _f$leagues,
     #nations: _f$nations,
     #clubs: _f$clubs,
@@ -84,6 +88,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
 
   static FilterConfiguration _instantiate(DecodingData data) {
     return FilterConfiguration(
+        searchQuery: data.dec(_f$searchQuery),
         leagues: data.dec(_f$leagues),
         nations: data.dec(_f$nations),
         clubs: data.dec(_f$clubs),
@@ -170,7 +175,8 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
   ListCopyWith<$R, PlayStyle, PlayStyleCopyWith<$R, PlayStyle, PlayStyle>>
       get playStyles;
   $R call(
-      {List<NestedFilterLayoutType>? leagues,
+      {String? searchQuery,
+      List<NestedFilterLayoutType>? leagues,
       List<NestedFilterLayoutType>? nations,
       List<Club>? clubs,
       List<Rarity>? rarities,
@@ -264,7 +270,8 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           (v, t) => v.copyWith.$chain(t), (v) => call(playStyles: v));
   @override
   $R call(
-          {Object? leagues = $none,
+          {String? searchQuery,
+          Object? leagues = $none,
           Object? nations = $none,
           Object? clubs = $none,
           Object? rarities = $none,
@@ -276,6 +283,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           Object? roles = $none,
           List<PlayStyle>? playStyles}) =>
       $apply(FieldCopyWithData({
+        if (searchQuery != null) #searchQuery: searchQuery,
         if (leagues != $none) #leagues: leagues,
         if (nations != $none) #nations: nations,
         if (clubs != $none) #clubs: clubs,
@@ -290,6 +298,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
       }));
   @override
   FilterConfiguration $make(CopyWithData data) => FilterConfiguration(
+      searchQuery: data.get(#searchQuery, or: $value.searchQuery),
       leagues: data.get(#leagues, or: $value.leagues),
       nations: data.get(#nations, or: $value.nations),
       clubs: data.get(#clubs, or: $value.clubs),

@@ -15,6 +15,7 @@ part 'filter_configuration.mapper.dart';
 @MappableClass()
 class FilterConfiguration with FilterConfigurationMappable {
   const FilterConfiguration({
+    this.searchQuery = '',
     this.leagues,
     this.nations,
     this.clubs,
@@ -28,6 +29,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.playStyles = const [],
   });
 
+  final String searchQuery;
   final List<NestedFilterLayoutType>? leagues;
   final List<NestedFilterLayoutType>? nations;
   final List<Club>? clubs;
@@ -41,7 +43,8 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<PlayStyle> playStyles;
 
   bool hasFilters() {
-    return (genders?.isNotEmpty ?? false) ||
+    return (searchQuery.isNotEmpty) ||
+        (genders?.isNotEmpty ?? false) ||
         (foots?.isNotEmpty ?? false) ||
         (positions?.isNotEmpty ?? false) ||
         (rarities?.isNotEmpty ?? false) ||

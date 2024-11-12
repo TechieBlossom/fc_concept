@@ -37,7 +37,6 @@ _i174.GetIt init(
       () => _i777.PlayerNavigator(gh<_i177.GoRouter>()));
   gh.factory<_i388.PlayerListBloc>(() => _i388.PlayerListBloc(
         gh<_i913.GetTopPlayerUseCase>(),
-        gh<_i913.SearchPlayersUseCase>(),
         gh<_i913.FilterPlayersUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));
