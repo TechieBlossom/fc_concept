@@ -13,6 +13,8 @@ dependencies:
     path: packages/core/ads
   core_api_client:
     path: packages/core/api_client
+  core_analytics:
+    path: packages/core/analytics
   core_design:
     path: packages/core/design
   core_domain:

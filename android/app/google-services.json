@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "550861170698",
+    "project_id": "fut-maidaan",
+    "storage_bucket": "fut-maidaan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550861170698:android:7a589c6221cd3ab77ad7f3",
+        "android_client_info": {
+          "package_name": "com.techieblossom.fut_maidaan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt4RXgoe1uHQaB90XF6UXI4WLgpr0qEUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

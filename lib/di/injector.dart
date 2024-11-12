@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_api_client/api_client.dart';
 import 'package:core_domain/domain.dart';
 import 'package:fc_concept/di/injection.dart';
@@ -20,6 +21,7 @@ Future<void> initializeDi(String environment) async {
         apiClientDi,
         domainDi,
         navigationDi,
+        analyticsDi,
         menuDi,
         dashboardDi,
         playerDi,

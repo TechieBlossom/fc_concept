@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:core_analytics/analytics.dart' as _i863;
 import 'package:core_domain/domain.dart' as _i913;
 import 'package:feature_dashboard/dashboard.dart' as _i657;
 import 'package:feature_dashboard/src/dashboard/bloc/dashboard_bloc.dart'
@@ -40,6 +41,7 @@ _i174.GetIt init(
         gh<_i913.GetPositionalPlayersUseCase>(),
         gh<_i913.GetTrendingPlayersUseCase>(),
         gh<_i913.GetUniqueRaritySquads>(),
+        gh<_i863.LogEventUseCase>(),
         gh<_i657.DashboardNavigator>(),
       ));
   return getIt;

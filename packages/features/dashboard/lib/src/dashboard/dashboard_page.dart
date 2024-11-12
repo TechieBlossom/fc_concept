@@ -18,12 +18,6 @@ class DashboardPage extends StatelessWidget {
       child: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           return Scaffold(
-            // appBar: SearchContainer(
-            //   margin: const EdgeInsets.only(
-            //     top: AppSpacing.space7 + AppSpacing.space3,
-            //   ),
-            //   onTap: () => context.read<DashboardBloc>().add(SearchTap()),
-            // ),
             appBar: AppBar(
               centerTitle: false,
               title: const Text('FC Concept'),
@@ -61,7 +55,7 @@ class DashboardPage extends StatelessWidget {
                     players: state.sbcPlayers,
                     heading: 'SBCs',
                     onTap: (player) => context.read<DashboardBloc>().add(
-                          PlayerTap(player: player),
+                          PlayerTap(player: player, fromSbc: true),
                         ),
                   ),
                   const SizedBox(height: AppSpacing.space6),

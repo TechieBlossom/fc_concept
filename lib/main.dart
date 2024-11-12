@@ -1,7 +1,9 @@
 import 'package:core_ads/ads.dart';
+import 'package:core_analytics/analytics.dart';
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:fc_concept/di/injector.dart';
+import 'package:fc_concept/firebase_options.dart';
 import 'package:feature_auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
@@ -10,6 +12,7 @@ import 'package:utility_navigation/navigation.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   unawaited(MobileAds.instance.initialize());
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await initializeDi('dev');
   PersistentStorageHolder.storage = await CachingPersistentStorage.create();
 
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<AuthStateBloc, void>(
         builder: (context, state) {
           return MaterialApp.router(
-            title: 'FC Concept App',
+            title: 'FUT Maidaan',
             theme: AppTheme.themeData(context, Brightness.light),
             darkTheme: AppTheme.themeData(context, Brightness.dark),
             routerConfig: di<GoRouter>(),

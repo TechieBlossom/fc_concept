@@ -20,6 +20,7 @@ class DashboardEventMapper extends ClassMapperBase<DashboardEvent> {
       PlayerTapMapper.ensureInitialized();
       SearchTapMapper.ensureInitialized();
       CheapestByPlayerRatingTapMapper.ensureInitialized();
+      IndexTapMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -547,10 +548,14 @@ class PlayerTapMapper extends SubClassMapperBase<PlayerTap> {
 
   static Player _$player(PlayerTap v) => v.player;
   static const Field<PlayerTap, Player> _f$player = Field('player', _$player);
+  static bool _$fromSbc(PlayerTap v) => v.fromSbc;
+  static const Field<PlayerTap, bool> _f$fromSbc =
+      Field('fromSbc', _$fromSbc, opt: true, def: false);
 
   @override
   final MappableFields<PlayerTap> fields = const {
     #player: _f$player,
+    #fromSbc: _f$fromSbc,
   };
 
   @override
@@ -562,7 +567,8 @@ class PlayerTapMapper extends SubClassMapperBase<PlayerTap> {
       DashboardEventMapper.ensureInitialized();
 
   static PlayerTap _instantiate(DecodingData data) {
-    return PlayerTap(player: data.dec(_f$player));
+    return PlayerTap(
+        player: data.dec(_f$player), fromSbc: data.dec(_f$fromSbc));
   }
 
   @override
@@ -617,7 +623,7 @@ abstract class PlayerTapCopyWith<$R, $In extends PlayerTap, $Out>
     implements DashboardEventCopyWith<$R, $In, $Out> {
   PlayerCopyWith<$R, Player, Player> get player;
   @override
-  $R call({Player? player});
+  $R call({Player? player, bool? fromSbc});
   PlayerTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -633,11 +639,14 @@ class _PlayerTapCopyWithImpl<$R, $Out>
   PlayerCopyWith<$R, Player, Player> get player =>
       $value.player.copyWith.$chain((v) => call(player: v));
   @override
-  $R call({Player? player}) =>
-      $apply(FieldCopyWithData({if (player != null) #player: player}));
+  $R call({Player? player, bool? fromSbc}) => $apply(FieldCopyWithData({
+        if (player != null) #player: player,
+        if (fromSbc != null) #fromSbc: fromSbc
+      }));
   @override
-  PlayerTap $make(CopyWithData data) =>
-      PlayerTap(player: data.get(#player, or: $value.player));
+  PlayerTap $make(CopyWithData data) => PlayerTap(
+      player: data.get(#player, or: $value.player),
+      fromSbc: data.get(#fromSbc, or: $value.fromSbc));
 
   @override
   PlayerTapCopyWith<$R2, PlayerTap, $Out2> $chain<$R2, $Out2>(
@@ -865,6 +874,117 @@ class _CheapestByPlayerRatingTapCopyWithImpl<$R, $Out>
   CheapestByPlayerRatingTapCopyWith<$R2, CheapestByPlayerRatingTap, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
           _CheapestByPlayerRatingTapCopyWithImpl($value, $cast, t);
+}
+
+class IndexTapMapper extends SubClassMapperBase<IndexTap> {
+  IndexTapMapper._();
+
+  static IndexTapMapper? _instance;
+  static IndexTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = IndexTapMapper._());
+      DashboardEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'IndexTap';
+
+  static IndexType _$indexType(IndexTap v) => v.indexType;
+  static const Field<IndexTap, IndexType> _f$indexType =
+      Field('indexType', _$indexType);
+
+  @override
+  final MappableFields<IndexTap> fields = const {
+    #indexType: _f$indexType,
+  };
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'indexTap';
+  @override
+  late final ClassMapperBase superMapper =
+      DashboardEventMapper.ensureInitialized();
+
+  static IndexTap _instantiate(DecodingData data) {
+    return IndexTap(indexType: data.dec(_f$indexType));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static IndexTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<IndexTap>(map);
+  }
+
+  static IndexTap fromJson(String json) {
+    return ensureInitialized().decodeJson<IndexTap>(json);
+  }
+}
+
+mixin IndexTapMappable {
+  String toJson() {
+    return IndexTapMapper.ensureInitialized()
+        .encodeJson<IndexTap>(this as IndexTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return IndexTapMapper.ensureInitialized()
+        .encodeMap<IndexTap>(this as IndexTap);
+  }
+
+  IndexTapCopyWith<IndexTap, IndexTap, IndexTap> get copyWith =>
+      _IndexTapCopyWithImpl(this as IndexTap, $identity, $identity);
+  @override
+  String toString() {
+    return IndexTapMapper.ensureInitialized().stringifyValue(this as IndexTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return IndexTapMapper.ensureInitialized()
+        .equalsValue(this as IndexTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return IndexTapMapper.ensureInitialized().hashValue(this as IndexTap);
+  }
+}
+
+extension IndexTapValueCopy<$R, $Out> on ObjectCopyWith<$R, IndexTap, $Out> {
+  IndexTapCopyWith<$R, IndexTap, $Out> get $asIndexTap =>
+      $base.as((v, t, t2) => _IndexTapCopyWithImpl(v, t, t2));
+}
+
+abstract class IndexTapCopyWith<$R, $In extends IndexTap, $Out>
+    implements DashboardEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call({IndexType? indexType});
+  IndexTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _IndexTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, IndexTap, $Out>
+    implements IndexTapCopyWith<$R, IndexTap, $Out> {
+  _IndexTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<IndexTap> $mapper =
+      IndexTapMapper.ensureInitialized();
+  @override
+  $R call({IndexType? indexType}) =>
+      $apply(FieldCopyWithData({if (indexType != null) #indexType: indexType}));
+  @override
+  IndexTap $make(CopyWithData data) =>
+      IndexTap(indexType: data.get(#indexType, or: $value.indexType));
+
+  @override
+  IndexTapCopyWith<$R2, IndexTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _IndexTapCopyWithImpl($value, $cast, t);
 }
 
 class DashboardStateMapper extends ClassMapperBase<DashboardState> {

@@ -1,3 +1,5 @@
+import 'package:core_analytics/analytics.dart';
+import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_dashboard/dashboard.dart';
@@ -7,7 +9,9 @@ import 'package:injectable/injectable.dart';
 import 'package:utility_extensions/extensions.dart';
 
 part 'dashboard_bloc.mapper.dart';
+
 part 'dashboard_event.dart';
+
 part 'dashboard_state.dart';
 
 @injectable
@@ -19,9 +23,11 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     this._getPositionalPlayersUseCase,
     this._getTrendingPlayersUseCase,
     this._getUniqueRaritySquads,
+    this._logEventUseCase,
     this._navigator,
   ) : super(DashboardState()) {
     on<Init>((event, emit) => _onInit(emit));
+    on<IndexTap>((_, __) => {});
     on<UpdatePlayerPrices>((event, emit) => _onUpdatePlayerPrices(event, emit));
     on<SwitchHighRatedPositionGroup>(
       (event, emit) => _onSwitchHighRatedPositionGroup(event, emit),
@@ -46,7 +52,51 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final GetPositionalPlayersUseCase _getPositionalPlayersUseCase;
   final GetTrendingPlayersUseCase _getTrendingPlayersUseCase;
   final GetUniqueRaritySquads _getUniqueRaritySquads;
+  final LogEventUseCase _logEventUseCase;
   final DashboardNavigator _navigator;
+
+  @override
+  Object onEvent(DashboardEvent event) {
+    super.onEvent(event);
+    return switch (event) {
+      IndexTap() => _logEventUseCase(
+          name: AnalyticsEventName.dashboardIndexTap,
+          parameters: {'index': event.indexType.title},
+        ),
+      SearchTap() => _logEventUseCase(
+          name: AnalyticsEventName.dashboardTopSearchTap,
+        ),
+      CheapestByPlayerRatingTap() => _logEventUseCase(
+          name: AnalyticsEventName.dashboardCheapestRatingTap,
+        ),
+      SwitchRaritySquad() => _logEventUseCase(
+          name: AnalyticsEventName.dashboardTrendingSwitch,
+          parameters: {'rarity': event.raritySquad?.name ?? ''},
+        ),
+      SwitchHighRatedPositionGroup() => _logEventUseCase(
+          name: AnalyticsEventName.dashboardPositionalSwitch,
+          parameters: {
+            'positionGroup': event.positionGroup?.toPositionTypeName() ?? '',
+          },
+        ),
+      PlayerTap() => event.fromSbc
+          ? _logEventUseCase(
+              name: AnalyticsEventName.dashboardSBCPlayerTap,
+              parameters: {
+                'id': event.player.eaId,
+                'name': event.player.commonName ?? '',
+              },
+            )
+          : _logEventUseCase(
+              name: AnalyticsEventName.dashboardPlayerTap,
+              parameters: {
+                'id': event.player.eaId,
+                'name': event.player.commonName ?? '',
+              },
+            ),
+      _ => {},
+    };
+  }
 
   Future<void> _onInit(Emitter<DashboardState> emit) async {
     final results = await Future.wait([
