@@ -44,7 +44,7 @@ class FilterPlayersUseCase {
           foots: filterConfiguration?.foots,
           positions: <Position>{
             ...?filterConfiguration?.positions,
-            ...?positionsFromPositionGroups,
+            // ...?positionsFromPositionGroups,
           }.toList(),
           roles: filterConfiguration?.roles,
           playStyles: filterConfiguration?.playStyles,

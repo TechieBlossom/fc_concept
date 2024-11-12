@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 part 'filter_bloc.mapper.dart';
+
 part 'filter_event.dart';
+
 part 'filter_state.dart';
 
 @injectable
@@ -19,6 +21,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     @factoryParam FilterConfiguration? existingFilters,
     this._navigator,
     this._getPositionsFromPositionGroup,
+    this._getPositionGroupFromPositions,
   ) : super(
           FilterState(
             leagues: existingFilters?.leagues,
@@ -53,12 +56,14 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     on<TapRole>((event, emit) => _tapRoles(emit));
     on<TapPlayStyle>((event, emit) => _tapPlayStyle(emit));
     on<Apply>((event, emit) => _apply());
+    on<Clear>((event, emit) => _clear(emit));
 
     add(Init());
   }
 
   final FilterNavigator _navigator;
   final GetPositionsFromPositionGroup _getPositionsFromPositionGroup;
+  final GetPositionGroupFromPositions _getPositionGroupFromPositions;
 
   void _init(Emitter<FilterState> emit) {}
 
@@ -248,6 +253,17 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         positions: positions,
       ),
     );
+
+    final positionGroups = _getPositionGroupFromPositions(
+      positions,
+      state.positions ?? [],
+    );
+
+    emit(
+      state.copyWith(
+        positionGroups: positionGroups,
+      ),
+    );
   }
 
   void _tapPositionGroup(
@@ -261,8 +277,14 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       event.positionGroup,
     );
 
-    if (positionGroups.contains(event.positionGroup)) {
-      positionGroups.remove(event.positionGroup);
+    if (positionGroups
+        .map((group) => group.toPositionTypeName())
+        .contains(event.positionGroup.toPositionTypeName())) {
+      positionGroups.removeWhere(
+        (group) =>
+            group.toPositionTypeName() ==
+            event.positionGroup.toPositionTypeName(),
+      );
       positions.removeWhere(
         (element) => positionsFromGroup.contains(element),
       );
@@ -281,7 +303,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
 
     emit(
       state.copyWith(
-        positions: positions,
+        positions: positions.toSet().toList(),
         positionGroups: positionGroups,
       ),
     );
@@ -302,5 +324,23 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       overallRatingRange: state.overallRatingRange,
     );
     _navigator.closeAny(filterConfiguration);
+  }
+
+  void _clear(Emitter<FilterState> emit) {
+    emit(
+      state.copyWith(
+        leagues: [],
+        clubs: [],
+        nations: [],
+        positions: [],
+        positionGroups: [],
+        genders: [],
+        foots: [],
+        rarities: [],
+        roles: [],
+        playStyles: [],
+        overallRatingRange: const RangeValues(47, 99),
+      ),
+    );
   }
 }

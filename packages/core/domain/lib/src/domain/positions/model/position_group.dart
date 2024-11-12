@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 @immutable
 sealed class PositionGroup {
@@ -10,6 +10,15 @@ sealed class PositionGroup {
       Forwards() => 'Forwards',
       Midfielders() => 'Midfielders',
       Defenders() => 'Defenders',
+      Goalkeepers() => 'Goalkeepers',
+    };
+  }
+
+  String toPositionTypeName() {
+    return switch (this) {
+      Forwards() => 'Attack',
+      Midfielders() => 'Midfielder',
+      Defenders() => 'Defence',
       Goalkeepers() => 'Goalkeepers',
     };
   }

@@ -38,8 +38,10 @@ class FilterPage extends StatelessWidget {
             bottomNavigationBar: BottomButtonLayout(
               buttons: [
                 SecondaryButton(
-                  text: 'Cancel',
-                  onPressed: () {},
+                  text: 'Clear',
+                  onPressed: () => context.read<FilterBloc>().add(
+                      Clear(),
+                    ),
                 ),
                 PrimaryButton(
                   text: 'Apply',

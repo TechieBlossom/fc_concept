@@ -45,6 +45,7 @@ export 'package:core_domain/src/domain/positions/model/position.dart';
 export 'package:core_domain/src/domain/positions/model/position_group.dart';
 export 'package:core_domain/src/domain/positions/use_case/get_positions_by_ids_use_case.dart';
 export 'package:core_domain/src/domain/positions/use_case/get_positions_from_position_group.dart';
+export 'package:core_domain/src/domain/positions/use_case/get_positions_group_from_positions.dart';
 export 'package:core_domain/src/domain/price/model/player_old_price.dart';
 export 'package:core_domain/src/domain/price/model/player_price.dart';
 export 'package:core_domain/src/domain/price/use_case/get_player_old_prices_use_case.dart';

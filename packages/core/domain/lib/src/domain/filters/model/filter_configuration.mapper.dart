@@ -42,10 +42,11 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
   static List<Rarity>? _$rarities(FilterConfiguration v) => v.rarities;
   static const Field<FilterConfiguration, List<Rarity>> _f$rarities =
       Field('rarities', _$rarities, opt: true);
-  static RangeValues? _$overallRatingRange(FilterConfiguration v) =>
+  static RangeValues _$overallRatingRange(FilterConfiguration v) =>
       v.overallRatingRange;
   static const Field<FilterConfiguration, RangeValues> _f$overallRatingRange =
-      Field('overallRatingRange', _$overallRatingRange, opt: true);
+      Field('overallRatingRange', _$overallRatingRange,
+          opt: true, def: const RangeValues(47, 99));
   static List<Gender>? _$genders(FilterConfiguration v) => v.genders;
   static const Field<FilterConfiguration, List<Gender>> _f$genders =
       Field('genders', _$genders, opt: true);
@@ -267,7 +268,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           Object? nations = $none,
           Object? clubs = $none,
           Object? rarities = $none,
-          Object? overallRatingRange = $none,
+          RangeValues? overallRatingRange,
           Object? genders = $none,
           Object? foots = $none,
           Object? positions = $none,
@@ -279,8 +280,7 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
         if (nations != $none) #nations: nations,
         if (clubs != $none) #clubs: clubs,
         if (rarities != $none) #rarities: rarities,
-        if (overallRatingRange != $none)
-          #overallRatingRange: overallRatingRange,
+        if (overallRatingRange != null) #overallRatingRange: overallRatingRange,
         if (genders != $none) #genders: genders,
         if (foots != $none) #foots: foots,
         if (positions != $none) #positions: positions,

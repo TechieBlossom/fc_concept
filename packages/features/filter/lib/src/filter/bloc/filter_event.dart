@@ -73,3 +73,6 @@ class TapPosition extends FilterEvent with TapPositionMappable {
 
 @MappableClass(discriminatorValue: 'apply')
 class Apply extends FilterEvent with ApplyMappable {}
+
+@MappableClass(discriminatorValue: 'clear')
+class Clear extends FilterEvent with ClearMappable {}

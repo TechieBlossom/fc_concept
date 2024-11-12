@@ -55,7 +55,10 @@ class PositionFilterItem extends StatelessWidget {
                         pillItem: PillItem<PositionGroup>(
                           data: group,
                           text: group.toString(),
-                          isSelected: positionGroups?.contains(group) ?? false,
+                          isSelected: positionGroups
+                                  ?.map((group) => group.toPositionTypeName())
+                                  .contains(group.toPositionTypeName()) ??
+                              false,
                           onTap: () {
                             context.read<FilterBloc>().add(
                                   TapPositionGroup(

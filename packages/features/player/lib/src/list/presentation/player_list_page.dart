@@ -2,6 +2,7 @@ import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart';
 import 'package:feature_player/src/list/presentation/player_list.dart';
+import 'package:feature_player/src/list/presentation/widgets/filter_container.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
 
@@ -21,22 +22,36 @@ class _PlayerListPageState extends State<PlayerListPage> {
       create: (context) => di<PlayerListBloc>(),
       child: BlocBuilder<PlayerListBloc, PlayerListState>(
         builder: (context, state) {
+          final hasFilters = state.filterConfiguration?.hasFilters() ?? false;
           return Scaffold(
             key: _scaffoldKey,
-            appBar: SearchContainer(
-              margin: const EdgeInsets.only(
-                top: AppSpacing.space8 + AppSpacing.space3,
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(
+                kToolbarHeight + (hasFilters ? 32 : 2),
               ),
-              isLoading: state.processState == ProcessState.loading,
-              onSearch: (query) => context.read<PlayerListBloc>().add(
-                    Search(query: query),
+              child: Column(
+                children: [
+                  SearchContainer(
+                    margin: const EdgeInsets.only(
+                      top: AppSpacing.space8 + AppSpacing.space3,
+                    ),
+                    isLoading: state.processState == ProcessState.loading,
+                    onSearch: (query) => context.read<PlayerListBloc>().add(
+                          Search(query: query),
+                        ),
+                    onClearTap: () => context.read<PlayerListBloc>().add(
+                          Search(query: ''),
+                        ),
+                    onFilterTap: () => context.read<PlayerListBloc>().add(
+                          FilterTap(),
+                        ),
                   ),
-              onClearTap: () => context.read<PlayerListBloc>().add(
-                    Search(query: ''),
-                  ),
-              onFilterTap: () => context.read<PlayerListBloc>().add(
-                    FilterTap(),
-                  ),
+                  if (hasFilters)
+                    FilterContainer(
+                      filterConfiguration: state.filterConfiguration,
+                    ),
+                ],
+              ),
             ),
             body: PlayerList(
               processState: state.processState,

@@ -19,7 +19,7 @@ class FilterConfiguration with FilterConfigurationMappable {
     this.nations,
     this.clubs,
     this.rarities,
-    this.overallRatingRange,
+    this.overallRatingRange = const RangeValues(47, 99),
     this.genders,
     this.foots,
     this.positions,
@@ -32,11 +32,23 @@ class FilterConfiguration with FilterConfigurationMappable {
   final List<NestedFilterLayoutType>? nations;
   final List<Club>? clubs;
   final List<Rarity>? rarities;
-  final RangeValues? overallRatingRange;
+  final RangeValues overallRatingRange;
   final List<Gender>? genders;
   final List<Foot>? foots;
   final List<Position>? positions;
   final List<PositionGroup>? positionGroups;
   final List<Role>? roles;
   final List<PlayStyle> playStyles;
+
+  bool hasFilters() {
+    return (genders?.isNotEmpty ?? false) ||
+        (foots?.isNotEmpty ?? false) ||
+        (positions?.isNotEmpty ?? false) ||
+        (rarities?.isNotEmpty ?? false) ||
+        (roles?.isNotEmpty ?? false) ||
+        (playStyles.isNotEmpty ?? false) ||
+        (leagues?.isNotEmpty ?? false) ||
+        (nations?.isNotEmpty ?? false) ||
+        (clubs?.isNotEmpty ?? false);
+  }
 }
