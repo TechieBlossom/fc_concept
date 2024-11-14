@@ -1,9 +1,10 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
 part 'role.mapper.dart';
 
 @MappableClass()
-class Role with RoleMappable {
+class Role with RoleMappable, AnalyticsEventParameters {
   Role({
     required this.eaId,
     required this.name,
@@ -25,4 +26,7 @@ class Role with RoleMappable {
   final String description;
 
   static const fromMap = RoleMapper.fromMap;
+
+  @override
+  Map<String, Object> get analyticsParameters => {'eaId': eaId, 'name': name};
 }

@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
@@ -17,6 +18,7 @@ class RarityNestedFilterBloc
   RarityNestedFilterBloc(
     @factoryParam RarityNestedFilterPageParams rarityNestedFilterPageParams,
     this._getAllRarities,
+    this._logEventUseCase,
     this._navigator,
   ) : super(
           RarityNestedFilterState(
@@ -32,7 +34,20 @@ class RarityNestedFilterBloc
   }
 
   final GetAllRarities _getAllRarities;
+  final LogEventUseCase _logEventUseCase;
   final FilterNavigator _navigator;
+
+  @override
+  Object onEvent(RarityNestedFilterEvent event) {
+    super.onEvent(event);
+    if (event is SelectRarity) {
+      return _logEventUseCase(
+        name: AnalyticsEventName.filterRaritySelect,
+        parameters: event.item.analyticsParameters,
+      );
+    }
+    return {};
+  }
 
   Future<void> _initial(
     Emitter<RarityNestedFilterState> emit,

@@ -151,22 +151,22 @@ _i174.GetIt init(
     environment,
     environmentFilter,
   );
+  gh.factory<_i642.NormalizeChemistryBoostUseCase>(
+      () => const _i642.NormalizeChemistryBoostUseCase());
+  gh.factory<_i322.GetChemistryBoostFaceValuesUseCase>(
+      () => const _i322.GetChemistryBoostFaceValuesUseCase());
+  gh.factory<_i1014.GetChemistryBoostFaceValuesGkUseCase>(
+      () => const _i1014.GetChemistryBoostFaceValuesGkUseCase());
   gh.factory<_i1000.GetRolesByIdsUseCase>(
       () => const _i1000.GetRolesByIdsUseCase());
   gh.factory<_i406.GetPositionsByIdsUseCase>(
       () => const _i406.GetPositionsByIdsUseCase());
   gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
       () => const _i1017.GetPlayStylesByIdsUseCase());
-  gh.factory<_i322.GetChemistryBoostFaceValuesUseCase>(
-      () => const _i322.GetChemistryBoostFaceValuesUseCase());
-  gh.factory<_i642.NormalizeChemistryBoostUseCase>(
-      () => const _i642.NormalizeChemistryBoostUseCase());
-  gh.factory<_i1014.GetChemistryBoostFaceValuesGkUseCase>(
-      () => const _i1014.GetChemistryBoostFaceValuesGkUseCase());
-  gh.lazySingleton<_i264.GetPositionsFromPositionGroup>(
-      () => _i264.GetPositionsFromPositionGroup());
   gh.lazySingleton<_i129.GetPositionGroupFromPositions>(
       () => _i129.GetPositionGroupFromPositions());
+  gh.lazySingleton<_i264.GetPositionsFromPositionGroup>(
+      () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());

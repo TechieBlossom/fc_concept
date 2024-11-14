@@ -16,10 +16,12 @@ class RoleBar extends StatelessWidget {
     super.key,
     required this.role,
     this.size = RoleBarSize.small,
+    this.onTap,
   });
 
   final Role role;
   final RoleBarSize size;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class RoleBar extends StatelessWidget {
           );
     return InkWell(
       onTap: () {
+        onTap?.call();
         showAppBottomSheet(
           context,
           child: RoleInfoSheet(role: role),

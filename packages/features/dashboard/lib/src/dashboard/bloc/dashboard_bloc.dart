@@ -71,28 +71,20 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         ),
       SwitchRaritySquad() => _logEventUseCase(
           name: AnalyticsEventName.dashboardTrendingSwitch,
-          parameters: {'rarity': event.raritySquad?.name ?? ''},
+          parameters: event.raritySquad?.analyticsParameters,
         ),
       SwitchHighRatedPositionGroup() => _logEventUseCase(
           name: AnalyticsEventName.dashboardPositionalSwitch,
-          parameters: {
-            'positionGroup': event.positionGroup?.toPositionTypeName() ?? '',
-          },
+          parameters: event.positionGroup?.analyticsParameters,
         ),
       PlayerTap() => event.fromSbc
           ? _logEventUseCase(
               name: AnalyticsEventName.dashboardSBCPlayerTap,
-              parameters: {
-                'id': event.player.eaId,
-                'name': event.player.commonName ?? '',
-              },
+              parameters: event.player.analyticsParameters,
             )
           : _logEventUseCase(
               name: AnalyticsEventName.dashboardPlayerTap,
-              parameters: {
-                'id': event.player.eaId,
-                'name': event.player.commonName ?? '',
-              },
+              parameters: event.player.analyticsParameters,
             ),
       _ => {},
     };

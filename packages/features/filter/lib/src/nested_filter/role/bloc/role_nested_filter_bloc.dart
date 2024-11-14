@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
@@ -16,6 +17,7 @@ class RoleNestedFilterBloc
   RoleNestedFilterBloc(
     @factoryParam RoleNestedFilterPageParams roleNestedFilterPageParams,
     @factoryParam List<Role> allRoles,
+    this._logEventUseCase,
     this._navigator,
   ) : super(
           RoleNestedFilterState(
@@ -28,7 +30,20 @@ class RoleNestedFilterBloc
     on<Done>((event, emit) => _done());
   }
 
+  final LogEventUseCase _logEventUseCase;
   final FilterNavigator _navigator;
+
+  @override
+  Object onEvent(RoleNestedFilterEvent event) {
+    super.onEvent(event);
+    if (event is SelectRole) {
+      return _logEventUseCase(
+        name: AnalyticsEventName.filterRoleSelect,
+        parameters: event.item.analyticsParameters,
+      );
+    }
+    return {};
+  }
 
   void _selectItem(Role item, Emitter<RoleNestedFilterState> emit) {
     final selectedRoles = List<Role>.from(

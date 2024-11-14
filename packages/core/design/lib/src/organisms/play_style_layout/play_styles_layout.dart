@@ -8,10 +8,12 @@ class PlayStylesLayout extends StatelessWidget {
     super.key,
     required this.playStyles,
     required this.playStylesPlus,
+    this.onPlayStyleTap,
   });
 
   final List<PlayStyle> playStyles;
   final List<PlayStyle> playStylesPlus;
+  final void Function(PlayStyle)? onPlayStyleTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,19 @@ class PlayStylesLayout extends StatelessWidget {
       runSpacing: AppSpacing.space4,
       children: [
         ...playStylesPlus.map(
-          (playStyle) => PlayStyleWidget(playStyle: playStyle, isPlus: true),
+          (playStyle) => PlayStyleWidget(
+            playStyle: playStyle,
+            isPlus: true,
+            onTap: () => onPlayStyleTap?.call(playStyle),
+          ),
         ),
         ...playStyles
-            .map((playStyle) => PlayStyleWidget(playStyle: playStyle))
+            .map(
+              (playStyle) => PlayStyleWidget(
+                playStyle: playStyle,
+                onTap: () => onPlayStyleTap?.call(playStyle),
+              ),
+            )
             .toList(),
       ],
     );

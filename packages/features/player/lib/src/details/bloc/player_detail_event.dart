@@ -59,3 +59,45 @@ class NormalizeChemistryBoost extends PlayerDetailEvent
 
 @MappableClass(discriminatorValue: 'compareTap')
 class CompareTap extends PlayerDetailEvent with CompareTapMappable {}
+
+@MappableClass(discriminatorValue: 'roleTap')
+class RoleTap extends PlayerDetailEvent with RoleTapMappable {
+  RoleTap({
+    required this.role,
+  });
+
+  final Role role;
+}
+
+@MappableClass(discriminatorValue: 'playStyleTap')
+class PlayStyleTap extends PlayerDetailEvent with PlayStyleTapMappable {
+  PlayStyleTap({
+    required this.playStyle,
+  });
+
+  final PlayStyle playStyle;
+}
+
+@MappableClass(discriminatorValue: 'accelerateTap')
+class AccelerateTap extends PlayerDetailEvent with AccelerateTapMappable {
+  AccelerateTap({
+    required this.accelerateType,
+  });
+
+  final AccelerateType accelerateType;
+}
+
+@MappableClass(discriminatorValue: 'chemistryTap')
+class ChemistryTap extends PlayerDetailEvent with ChemistryTapMappable { }
+
+@MappableClass(discriminatorValue: 'chemistryApply')
+class ChemistryApply extends PlayerDetailEvent with ChemistryApplyMappable {
+  ChemistryApply({
+    required this.chemistryStyle,
+    required this.chemistryModifier,
+  });
+
+  final ChemistryStyle chemistryStyle;
+  final int chemistryModifier;
+}
+

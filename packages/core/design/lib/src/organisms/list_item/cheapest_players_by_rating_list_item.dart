@@ -109,7 +109,9 @@ class _CheapestPlayerByRatingListItemState
                       SizedBox(height: AppSpacing.space2),
                       Text(
                         player.rarity.name,
-                        style: context.typography.caption1,
+                        style: context.typography.caption1.copyWith(
+                          color: context.colors.contentSecondary,
+                        ),
                       ),
                       SizedBox(height: AppSpacing.space2),
                       Row(

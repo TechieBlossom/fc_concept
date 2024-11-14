@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
@@ -17,6 +18,7 @@ class PlayStyleNestedFilterBloc
     @factoryParam
     PlayStyleNestedFilterPageParams playStyleNestedFilterPageParams,
     @factoryParam List<PlayStyle> allPlayStyles,
+    this._logEventUseCase,
     this._navigator,
   ) : super(
           PlayStyleNestedFilterState(
@@ -29,6 +31,19 @@ class PlayStyleNestedFilterBloc
     on<Done>((event, emit) => _done());
   }
 
+  @override
+  Object onEvent(PlayStyleNestedFilterEvent event) {
+    super.onEvent(event);
+    if (event is SelectPlayStyle) {
+      return _logEventUseCase(
+        name: AnalyticsEventName.filterPlayStyleSelect,
+        parameters: event.item.analyticsParameters,
+      );
+    }
+    return {};
+  }
+
+  final LogEventUseCase _logEventUseCase;
   final FilterNavigator _navigator;
 
   void _selectItem(PlayStyle item, Emitter<PlayStyleNestedFilterState> emit) {

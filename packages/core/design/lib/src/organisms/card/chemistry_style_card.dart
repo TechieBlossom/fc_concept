@@ -14,12 +14,14 @@ class ChemistryStyleCard extends StatelessWidget {
     required this.selectedChemistryModifier,
     this.selectedChemistryStyle,
     required this.onResult,
+    this.onTap,
   });
 
   final List<ChemistryStyle> allChemistryStyles;
   final int? selectedChemistryModifier;
   final ChemistryStyle? selectedChemistryStyle;
   final Function(int?, ChemistryStyle?) onResult;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class ChemistryStyleCard extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
         onTap: () async {
+          onTap?.call();
           final result = await showAppBottomSheet(
             context,
             child: ChemistrySelectionSheet(

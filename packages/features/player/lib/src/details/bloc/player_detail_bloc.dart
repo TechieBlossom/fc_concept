@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
@@ -39,6 +40,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     this._getChemistryBoostFaceValuesUseCase,
     this._getChemistryBoostFaceValuesGkUseCase,
     this._normalizeChemistryBoostUseCase,
+    this._logEventUseCase,
     this._playerNavigator,
   ) : super(PlayerDetailState(player: params.player)) {
     on<Init>((event, emit) => _initial(event.player, emit));
@@ -63,6 +65,10 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     on<UpdateChemistryStyle>(
       (event, emit) => _onUpdateChemistryStyle(event, emit),
     );
+    on<RoleTap>((_, __) => {});
+    on<PlayStyleTap>((_, __) => {});
+    on<AccelerateTap>((_, __) => {});
+    on<ChemistryTap>((_, __) => {});
 
     add(Init(player: params.player));
   }
@@ -78,7 +84,57 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   final GetChemistryBoostFaceValuesGkUseCase
       _getChemistryBoostFaceValuesGkUseCase;
   final NormalizeChemistryBoostUseCase _normalizeChemistryBoostUseCase;
+  final LogEventUseCase _logEventUseCase;
   final PlayerNavigator _playerNavigator;
+
+  @override
+  Object onEvent(PlayerDetailEvent event) {
+    super.onEvent(event);
+    return switch (event) {
+      VersionTap() => _logEventUseCase(
+          name: AnalyticsEventName.playerDetailVersionSelect,
+          parameters: {'playerId': event.playerId},
+        ),
+      RoleTap() => _logEventUseCase(
+          name: AnalyticsEventName.playerDetailRoleTap,
+          parameters: {
+            'playerId': state.player.eaId,
+            ...event.role.analyticsParameters,
+          },
+        ),
+      PlayStyleTap() => _logEventUseCase(
+          name: AnalyticsEventName.playerDetailPlayStyleTap,
+          parameters: {
+            'playerId': state.player.eaId,
+            ...event.playStyle.analyticsParameters,
+          },
+        ),
+      AccelerateTap() => _logEventUseCase(
+          name: AnalyticsEventName.playerDetailAccelerateTap,
+          parameters: {
+            'playerId': state.player.eaId,
+            'accelerateType': event.accelerateType.title,
+          },
+        ),
+      ChemistryTap() => _logEventUseCase(
+          name: AnalyticsEventName.playerDetailChemistryTap,
+        ),
+      UpdateChemistryStyle() => {
+          if (event.chemistryStyle != null && event.chemistryModifier != null)
+            {
+              _logEventUseCase(
+                name: AnalyticsEventName.playerDetailChemistrySelect,
+                parameters: {
+                  'playerId': state.player.eaId,
+                  'chemistryStyle': event.chemistryStyle!.name,
+                  'chemistryModifier': event.chemistryModifier!,
+                },
+              ),
+            },
+        },
+      _ => {},
+    };
+  }
 
   Future<void> _initial(Player player, Emitter<PlayerDetailState> emit) async {
     final playerResult = await _getPlayerDetailsUseCase(playerId: player.eaId);

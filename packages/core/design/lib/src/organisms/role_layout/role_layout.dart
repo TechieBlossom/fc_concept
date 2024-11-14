@@ -7,9 +7,11 @@ class RoleLayout extends StatelessWidget {
   const RoleLayout({
     super.key,
     required this.roles,
+    this.onRoleTap,
   });
 
   final List<Role> roles;
+  final void Function(Role)? onRoleTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,10 @@ class RoleLayout extends StatelessWidget {
       runSpacing: AppSpacing.space4,
       children: roles
           .map(
-            (role) => RoleBar(role: role),
+            (role) => RoleBar(
+              role: role,
+              onTap: () => onRoleTap?.call(role),
+            ),
           )
           .toList(),
     );

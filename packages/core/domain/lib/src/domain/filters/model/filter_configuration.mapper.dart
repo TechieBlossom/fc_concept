@@ -13,6 +13,8 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
   static FilterConfigurationMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = FilterConfigurationMapper._());
+      MapperContainer.globals
+          .useAll([RangeValuesMapper(), PositionGroupMapper()]);
       NestedFilterLayoutTypeMapper.ensureInitialized();
       ClubMapper.ensureInitialized();
       RarityMapper.ensureInitialized();

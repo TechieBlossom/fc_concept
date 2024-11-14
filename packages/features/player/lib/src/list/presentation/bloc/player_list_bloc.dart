@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
@@ -11,13 +12,14 @@ part 'player_list_event.dart';
 
 part 'player_list_state.dart';
 
-const _duration = Duration(milliseconds: 50);
+const _duration = Duration(milliseconds: 250);
 
 @injectable
 class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
   PlayerListBloc(
     this._getTopPlayerUseCase,
     this._filterPlayersUseCase,
+    this._logEventUseCase,
     this._navigator,
   ) : super(PlayerListState()) {
     on<Init>((event, emit) => _initial(event, emit));
@@ -31,7 +33,23 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
 
   final GetTopPlayerUseCase _getTopPlayerUseCase;
   final FilterPlayersUseCase _filterPlayersUseCase;
+  final LogEventUseCase _logEventUseCase;
   final PlayerNavigator _navigator;
+
+  @override
+  Object onEvent(PlayerListEvent event) {
+    super.onEvent(event);
+    return switch (event) {
+      PlayerTap() => _logEventUseCase(
+          name: AnalyticsEventName.playerListPlayerTap,
+          parameters: event.player.analyticsParameters,
+        ),
+      FilterTap() => _logEventUseCase(
+          name: AnalyticsEventName.playerListFilterTap,
+        ),
+      _ => {},
+    };
+  }
 
   Future<void> _initial(
     Init event,
@@ -53,6 +71,14 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     Search event,
     Emitter<PlayerListState> emit,
   ) async {
+    if (event.query.isNotEmpty) {
+      unawaited(
+        _logEventUseCase(
+          name: AnalyticsEventName.playerListSearch,
+          parameters: {'query': event.query},
+        ),
+      );
+    }
     emit(
       state.copyWith(
         processState: ProcessState.loading,
@@ -68,9 +94,10 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     }
 
     final response = await _filterPlayersUseCase(
-      filterConfiguration: state.filterConfiguration ?? FilterConfiguration(
-        searchQuery: event.query,
-      ),
+      filterConfiguration: state.filterConfiguration ??
+          FilterConfiguration(
+            searchQuery: event.query,
+          ),
       page: state.page,
     );
     switch (response) {

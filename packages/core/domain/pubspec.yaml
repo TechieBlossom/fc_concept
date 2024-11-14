@@ -10,6 +10,8 @@ environment:
 dependencies:
   cached_annotation: ^1.7.0
   collection: ^1.18.0
+  core_analytics:
+    path: ../../../packages/core/analytics
   core_api_client:
     path: ../../../packages/core/api_client
   dart_mappable: ^4.2.2

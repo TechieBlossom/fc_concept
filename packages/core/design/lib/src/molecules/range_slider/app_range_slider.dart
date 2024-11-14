@@ -34,15 +34,15 @@ class _AppRangeSliderState extends State<AppRangeSlider> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 48,
       child: SliderTheme(
         data: SliderTheme.of(context).copyWith(
-          trackHeight: 20.0,
-          rangeTrackShape: const AppRangeSliderTrackShape(),
+          trackHeight: 28.0,
+          rangeTrackShape: AppRangeSliderTrackShape(context.colors.backgroundPrimary),
           rangeThumbShape: AppRangeSliderThumbShape(
             buildContext: context,
             rangeValues: range,
-            enabledThumbRadius: 10.0,
+            enabledThumbRadius: 12.0,
           ),
           thumbColor: context.colors.contentPrimary,
           overlappingShapeStrokeColor: context.colors.backgroundPrimary,

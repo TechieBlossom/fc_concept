@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:core_analytics/analytics.dart' as _i863;
 import 'package:core_domain/domain.dart' as _i913;
 import 'package:feature_player/src/details/bloc/player_detail_bloc.dart'
     as _i1047;
@@ -35,15 +36,6 @@ _i174.GetIt init(
   gh.lazySingleton<_i445.PlayerRoutesConfig>(() => _i445.PlayerRoutesConfig());
   gh.lazySingleton<_i777.PlayerNavigator>(
       () => _i777.PlayerNavigator(gh<_i177.GoRouter>()));
-  gh.factory<_i388.PlayerListBloc>(() => _i388.PlayerListBloc(
-        gh<_i913.GetTopPlayerUseCase>(),
-        gh<_i913.FilterPlayersUseCase>(),
-        gh<_i777.PlayerNavigator>(),
-      ));
-  gh.factory<_i792.PlayersListByRatingBloc>(() => _i792.PlayersListByRatingBloc(
-        gh<_i913.GetCheapestPlayersByRatingUseCase>(),
-        gh<_i777.PlayerNavigator>(),
-      ));
   gh.factoryParam<_i1047.PlayerDetailBloc, _i1047.PlayerDetailBlocParams,
       dynamic>((
     params,
@@ -60,6 +52,18 @@ _i174.GetIt init(
         gh<_i913.GetChemistryBoostFaceValuesUseCase>(),
         gh<_i913.GetChemistryBoostFaceValuesGkUseCase>(),
         gh<_i913.NormalizeChemistryBoostUseCase>(),
+        gh<_i863.LogEventUseCase>(),
+        gh<_i777.PlayerNavigator>(),
+      ));
+  gh.factory<_i388.PlayerListBloc>(() => _i388.PlayerListBloc(
+        gh<_i913.GetTopPlayerUseCase>(),
+        gh<_i913.FilterPlayersUseCase>(),
+        gh<_i863.LogEventUseCase>(),
+        gh<_i777.PlayerNavigator>(),
+      ));
+  gh.factory<_i792.PlayersListByRatingBloc>(() => _i792.PlayersListByRatingBloc(
+        gh<_i913.GetCheapestPlayersByRatingUseCase>(),
+        gh<_i863.LogEventUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));
   return getIt;

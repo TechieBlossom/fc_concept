@@ -115,7 +115,7 @@ class _PlayerListItemState extends State<PlayerListItem>
                       Text(
                         player.rarity.name,
                         style: context.typography.caption1.copyWith(
-                          color: context.colors.contentPrimary,
+                          color: context.colors.contentSecondary,
                         ),
                       ),
                       if (widget.showTeams) ...[

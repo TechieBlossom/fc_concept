@@ -1,9 +1,10 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
 part 'position.mapper.dart';
 
 @MappableClass()
-class Position with PositionMappable {
+class Position with PositionMappable, AnalyticsEventParameters {
   const Position({
     required this.eaId,
     required this.label,
@@ -19,4 +20,10 @@ class Position with PositionMappable {
   final String positionTypeName;
 
   static const fromMap = PositionMapper.fromMap;
+
+  @override
+  Map<String, Object> get analyticsParameters => {
+        'id': eaId,
+        'name': shortLabel,
+      };
 }

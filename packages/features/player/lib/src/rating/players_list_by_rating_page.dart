@@ -15,7 +15,7 @@ class PlayersListByRatingPage extends StatelessWidget {
       child: BlocBuilder<PlayersListByRatingBloc, PlayersListByRatingState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: const PageTitle(title: 'Cheapest players by rating'),
+            appBar: PageTitle(title: 'Cheapest players by ${state.rating} rating'),
             body: Column(
               children: [
                 Expanded(

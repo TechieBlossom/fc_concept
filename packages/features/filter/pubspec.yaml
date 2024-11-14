@@ -9,6 +9,8 @@ environment:
 
 dependencies:
   collection: ^1.18.0
+  core_analytics:
+    path: ../../../packages/core/analytics
   core_api_client:
     path: ../../../packages/core/api_client
   core_design:

@@ -17,16 +17,19 @@ class PlayStyleWidget extends StatelessWidget {
     required this.playStyle,
     this.size = PlayStyleWidgetSize.small,
     this.isPlus = false,
+    this.onTap,
   });
 
   final PlayStyle playStyle;
   final PlayStyleWidgetSize size;
   final bool isPlus;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        onTap?.call();
         showAppBottomSheet(
           context,
           child: PlayStyleInfoSheet(playStyle: playStyle, isPlus: isPlus),

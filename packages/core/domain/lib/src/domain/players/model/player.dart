@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/src/data/clubs/table_club.dart';
 import 'package:core_domain/src/data/leagues/table_league.dart';
 import 'package:core_domain/src/data/nations/table_nation.dart';
@@ -17,7 +18,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'player.mapper.dart';
 
 @MappableClass()
-class Player with PlayerMappable {
+class Player with PlayerMappable, AnalyticsEventParameters {
   const Player({
     required this.eaId,
     required this.basePlayerEaId,
@@ -218,4 +219,10 @@ class Player with PlayerMappable {
   }
 
   bool get isGk => position?.shortLabel == 'GK';
+
+  @override
+  Map<String, Object> get analyticsParameters => {
+        'id': eaId,
+        'name': commonName ?? '',
+      };
 }

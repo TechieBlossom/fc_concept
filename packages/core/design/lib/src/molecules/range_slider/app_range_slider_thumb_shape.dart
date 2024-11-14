@@ -88,9 +88,9 @@ class AppRangeSliderThumbShape extends RangeSliderThumbShape {
         ui.Path()
           ..addPolygon(<Offset>[
             Offset(pad + center.dx - radius, center.dy - radius - 4),
-            Offset(pad + center.dx - radius + 15, center.dy - radius - 4),
-            Offset(pad + center.dx + radius + 5, center.dy / 2 + radius + 2),
-            Offset(pad + center.dx - radius + 15, center.dy + radius + 4),
+            Offset(pad + center.dx - radius + 20, center.dy - radius - 4),
+            Offset(pad + center.dx + radius + 5, center.dy / 2 + radius + 4),
+            Offset(pad + center.dx - radius + 20, center.dy + radius + 4),
             Offset(pad + center.dx - radius, center.dy + radius + 4),
           ], true),
         Paint()..color = startRating.color,
@@ -101,9 +101,9 @@ class AppRangeSliderThumbShape extends RangeSliderThumbShape {
         ui.Path()
           ..addPolygon(<Offset>[
             Offset(center.dx - pad + radius, center.dy - radius - 4),
-            Offset(center.dx - pad + radius - 15, center.dy - radius - 4),
-            Offset(center.dx - pad - radius - 5, center.dy / 2 + radius + 2),
-            Offset(center.dx - pad + radius - 15, center.dy + radius + 4),
+            Offset(center.dx - pad + radius - 20, center.dy - radius - 4),
+            Offset(center.dx - pad - radius - 5, center.dy / 2 + radius + 4),
+            Offset(center.dx - pad + radius - 20, center.dy + radius + 4),
             Offset(center.dx - pad + radius, center.dy + radius + 4),
           ], true),
         Paint()..color = endRating.color,

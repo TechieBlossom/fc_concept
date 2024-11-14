@@ -35,7 +35,7 @@ class OverallRatingFilterItem extends StatelessWidget {
               horizontal: AppSpacing.space3 - 2,
             ),
             child: SizedBox(
-              height: 48,
+              height: 64,
               child: AppRangeSlider(
                 initialRange: existingFilters?.overallRatingRange ??
                     const RangeValues(47, 99),

@@ -1,9 +1,10 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
 part 'rarity.mapper.dart';
 
 @MappableClass()
-class Rarity with RarityMappable {
+class Rarity with RarityMappable, AnalyticsEventParameters {
   const Rarity({
     required this.eaId,
     required this.name,
@@ -31,4 +32,7 @@ class Rarity with RarityMappable {
   final int numberOfPlayers;
 
   static const fromMap = RarityMapper.fromMap;
+
+  @override
+  Map<String, Object> get analyticsParameters => {'eaId': eaId, 'name': name};
 }

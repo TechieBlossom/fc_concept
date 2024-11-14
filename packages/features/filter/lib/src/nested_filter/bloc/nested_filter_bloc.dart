@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
@@ -21,6 +22,7 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
     this._getClubsByLeagueUseCase,
     this._getTopNationsUseCase,
     this._getOtherNationsUseCase,
+    this._logEventUseCase,
     this._navigator,
   ) : super(NestedFilterState(nestedFilterPageParams: nestedFilterPageParams)) {
     on<Init>((event, emit) => _initial(emit));
@@ -38,7 +40,28 @@ class NestedFilterBloc extends Bloc<NestedFilterEvent, NestedFilterState> {
   final GetOtherLeaguesUseCase _getOtherLeaguesUseCase;
   final GetTopNationsUseCase _getTopNationsUseCase;
   final GetOtherNationsUseCase _getOtherNationsUseCase;
+  final LogEventUseCase _logEventUseCase;
   final FilterNavigator _navigator;
+
+  @override
+  Object onEvent(NestedFilterEvent event) {
+    super.onEvent(event);
+    return switch (event) {
+      SelectClub() => _logEventUseCase(
+          name: AnalyticsEventName.filterClubSelect,
+          parameters: event.club.analyticsParameters,
+        ),
+      SelectItem() => _logEventUseCase(
+          name: (event.item is League)
+              ? AnalyticsEventName.filterLeagueSelect
+              : AnalyticsEventName.filterNationSelect,
+          parameters: (event.item is League)
+              ? (event.item as League).analyticsParameters
+              : (event.item as Nation).analyticsParameters,
+        ),
+      _ => {},
+    };
+  }
 
   Future<void> _initial(
     Emitter<NestedFilterState> emit,

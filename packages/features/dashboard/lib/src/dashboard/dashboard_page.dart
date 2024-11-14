@@ -20,7 +20,10 @@ class DashboardPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               centerTitle: false,
-              title: const Text('FC Concept'),
+              title: const Text('FUT Maidaan'),
+              titleTextStyle: context.typography.title3.copyWith(
+                color: context.colors.primary,
+              ),
               actions: [
                 IconButton(
                   icon: const Icon(Icons.search_rounded),

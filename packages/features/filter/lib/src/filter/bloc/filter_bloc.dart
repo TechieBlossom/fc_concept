@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:feature_filter/src/navigation/navigator.dart';
@@ -22,6 +23,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     this._navigator,
     this._getPositionsFromPositionGroup,
     this._getPositionGroupFromPositions,
+    this._logEventUseCase,
   ) : super(
           FilterState(
             leagues: existingFilters?.leagues,
@@ -64,6 +66,48 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   final FilterNavigator _navigator;
   final GetPositionsFromPositionGroup _getPositionsFromPositionGroup;
   final GetPositionGroupFromPositions _getPositionGroupFromPositions;
+  final LogEventUseCase _logEventUseCase;
+
+  @override
+  Object onEvent(FilterEvent event) {
+    super.onEvent(event);
+    return switch (event) {
+      TapRole() => _logEventUseCase(name: AnalyticsEventName.filterRoleTap),
+      TapPlayStyle() => _logEventUseCase(
+          name: AnalyticsEventName.filterPlayStyleTap,
+        ),
+      TapNation() => _logEventUseCase(
+          name: AnalyticsEventName.filterNationTap,
+        ),
+      TapClub() => _logEventUseCase(
+          name: AnalyticsEventName.filterClubTap,
+        ),
+      TapLeague() => _logEventUseCase(
+          name: AnalyticsEventName.filterLeagueTap,
+        ),
+      TapRarity() => _logEventUseCase(
+          name: AnalyticsEventName.filterRarityTap,
+        ),
+      TapFoot() => _logEventUseCase(
+          name: AnalyticsEventName.filterFootTap,
+          parameters: event.foot.analyticsParameters,
+        ),
+      TapGender() => _logEventUseCase(
+          name: AnalyticsEventName.filterGenderTap,
+          parameters: event.gender.analyticsParameters,
+        ),
+      TapPositionGroup() => _logEventUseCase(
+          name: AnalyticsEventName.filterPositionGroupTap,
+          parameters: event.positionGroup.analyticsParameters,
+        ),
+      TapPosition() => _logEventUseCase(
+          name: AnalyticsEventName.filterPositionTap,
+          parameters: event.position.analyticsParameters,
+        ),
+      Clear() => _logEventUseCase(name: AnalyticsEventName.filterClear),
+      _ => {},
+    };
+  }
 
   void _init(Emitter<FilterState> emit) {}
 
@@ -322,6 +366,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       roles: state.roles ?? [],
       playStyles: state.playStyles ?? [],
       overallRatingRange: state.overallRatingRange,
+    );
+    unawaited(
+      _logEventUseCase(
+        name: AnalyticsEventName.filterApply,
+        parameters: filterConfiguration.analyticsParameters,
+      ),
     );
     _navigator.closeAny(filterConfiguration);
   }

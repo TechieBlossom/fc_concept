@@ -1,3 +1,4 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'players_list_by_rating_bloc.mapper.dart';
+
 part 'players_list_by_rating_event.dart';
+
 part 'players_list_by_rating_state.dart';
 
 const _duration = Duration(milliseconds: 50);
@@ -16,6 +19,7 @@ class PlayersListByRatingBloc
     extends Bloc<PlayersListByRatingEvent, PlayersListByRatingState> {
   PlayersListByRatingBloc(
     this._getCheapestPlayersByRatingUseCase,
+    this._logEventUseCase,
     this._navigator,
   ) : super(PlayersListByRatingState()) {
     on<ChangeRating>((event, emit) => _onChangeRating(event, emit));
@@ -28,7 +32,24 @@ class PlayersListByRatingBloc
   }
 
   final GetCheapestPlayersByRatingUseCase _getCheapestPlayersByRatingUseCase;
+  final LogEventUseCase _logEventUseCase;
   final PlayerNavigator _navigator;
+
+  @override
+  Object onEvent(PlayersListByRatingEvent event) {
+    super.onEvent(event);
+    return switch (event) {
+      ChangeRating() => _logEventUseCase(
+          name: AnalyticsEventName.cheapestRatingTap,
+          parameters: {'rating': event.rating},
+        ),
+      PlayerTap() => _logEventUseCase(
+          name: AnalyticsEventName.cheapestPlayerTap,
+          parameters: event.player.analyticsParameters,
+        ),
+      _ => {},
+    };
+  }
 
   Future<void> _onChangeRating(
     ChangeRating event,

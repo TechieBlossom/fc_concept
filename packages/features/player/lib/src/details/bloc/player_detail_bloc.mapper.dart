@@ -24,6 +24,11 @@ class PlayerDetailEventMapper extends ClassMapperBase<PlayerDetailEvent> {
       LoadChemistryBoostFaceValuesMapper.ensureInitialized();
       NormalizeChemistryBoostMapper.ensureInitialized();
       CompareTapMapper.ensureInitialized();
+      RoleTapMapper.ensureInitialized();
+      PlayStyleTapMapper.ensureInitialized();
+      AccelerateTapMapper.ensureInitialized();
+      ChemistryTapMapper.ensureInitialized();
+      ChemistryApplyMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -1306,6 +1311,594 @@ class _CompareTapCopyWithImpl<$R, $Out>
   CompareTapCopyWith<$R2, CompareTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
       _CompareTapCopyWithImpl($value, $cast, t);
+}
+
+class RoleTapMapper extends SubClassMapperBase<RoleTap> {
+  RoleTapMapper._();
+
+  static RoleTapMapper? _instance;
+  static RoleTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = RoleTapMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+      RoleMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'RoleTap';
+
+  static Role _$role(RoleTap v) => v.role;
+  static const Field<RoleTap, Role> _f$role = Field('role', _$role);
+
+  @override
+  final MappableFields<RoleTap> fields = const {
+    #role: _f$role,
+  };
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'roleTap';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static RoleTap _instantiate(DecodingData data) {
+    return RoleTap(role: data.dec(_f$role));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static RoleTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<RoleTap>(map);
+  }
+
+  static RoleTap fromJson(String json) {
+    return ensureInitialized().decodeJson<RoleTap>(json);
+  }
+}
+
+mixin RoleTapMappable {
+  String toJson() {
+    return RoleTapMapper.ensureInitialized()
+        .encodeJson<RoleTap>(this as RoleTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return RoleTapMapper.ensureInitialized()
+        .encodeMap<RoleTap>(this as RoleTap);
+  }
+
+  RoleTapCopyWith<RoleTap, RoleTap, RoleTap> get copyWith =>
+      _RoleTapCopyWithImpl(this as RoleTap, $identity, $identity);
+  @override
+  String toString() {
+    return RoleTapMapper.ensureInitialized().stringifyValue(this as RoleTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return RoleTapMapper.ensureInitialized()
+        .equalsValue(this as RoleTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return RoleTapMapper.ensureInitialized().hashValue(this as RoleTap);
+  }
+}
+
+extension RoleTapValueCopy<$R, $Out> on ObjectCopyWith<$R, RoleTap, $Out> {
+  RoleTapCopyWith<$R, RoleTap, $Out> get $asRoleTap =>
+      $base.as((v, t, t2) => _RoleTapCopyWithImpl(v, t, t2));
+}
+
+abstract class RoleTapCopyWith<$R, $In extends RoleTap, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  RoleCopyWith<$R, Role, Role> get role;
+  @override
+  $R call({Role? role});
+  RoleTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _RoleTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, RoleTap, $Out>
+    implements RoleTapCopyWith<$R, RoleTap, $Out> {
+  _RoleTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<RoleTap> $mapper =
+      RoleTapMapper.ensureInitialized();
+  @override
+  RoleCopyWith<$R, Role, Role> get role =>
+      $value.role.copyWith.$chain((v) => call(role: v));
+  @override
+  $R call({Role? role}) =>
+      $apply(FieldCopyWithData({if (role != null) #role: role}));
+  @override
+  RoleTap $make(CopyWithData data) =>
+      RoleTap(role: data.get(#role, or: $value.role));
+
+  @override
+  RoleTapCopyWith<$R2, RoleTap, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+      _RoleTapCopyWithImpl($value, $cast, t);
+}
+
+class PlayStyleTapMapper extends SubClassMapperBase<PlayStyleTap> {
+  PlayStyleTapMapper._();
+
+  static PlayStyleTapMapper? _instance;
+  static PlayStyleTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = PlayStyleTapMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+      PlayStyleMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'PlayStyleTap';
+
+  static PlayStyle _$playStyle(PlayStyleTap v) => v.playStyle;
+  static const Field<PlayStyleTap, PlayStyle> _f$playStyle =
+      Field('playStyle', _$playStyle);
+
+  @override
+  final MappableFields<PlayStyleTap> fields = const {
+    #playStyle: _f$playStyle,
+  };
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'playStyleTap';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static PlayStyleTap _instantiate(DecodingData data) {
+    return PlayStyleTap(playStyle: data.dec(_f$playStyle));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static PlayStyleTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<PlayStyleTap>(map);
+  }
+
+  static PlayStyleTap fromJson(String json) {
+    return ensureInitialized().decodeJson<PlayStyleTap>(json);
+  }
+}
+
+mixin PlayStyleTapMappable {
+  String toJson() {
+    return PlayStyleTapMapper.ensureInitialized()
+        .encodeJson<PlayStyleTap>(this as PlayStyleTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return PlayStyleTapMapper.ensureInitialized()
+        .encodeMap<PlayStyleTap>(this as PlayStyleTap);
+  }
+
+  PlayStyleTapCopyWith<PlayStyleTap, PlayStyleTap, PlayStyleTap> get copyWith =>
+      _PlayStyleTapCopyWithImpl(this as PlayStyleTap, $identity, $identity);
+  @override
+  String toString() {
+    return PlayStyleTapMapper.ensureInitialized()
+        .stringifyValue(this as PlayStyleTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return PlayStyleTapMapper.ensureInitialized()
+        .equalsValue(this as PlayStyleTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return PlayStyleTapMapper.ensureInitialized()
+        .hashValue(this as PlayStyleTap);
+  }
+}
+
+extension PlayStyleTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, PlayStyleTap, $Out> {
+  PlayStyleTapCopyWith<$R, PlayStyleTap, $Out> get $asPlayStyleTap =>
+      $base.as((v, t, t2) => _PlayStyleTapCopyWithImpl(v, t, t2));
+}
+
+abstract class PlayStyleTapCopyWith<$R, $In extends PlayStyleTap, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  PlayStyleCopyWith<$R, PlayStyle, PlayStyle> get playStyle;
+  @override
+  $R call({PlayStyle? playStyle});
+  PlayStyleTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _PlayStyleTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, PlayStyleTap, $Out>
+    implements PlayStyleTapCopyWith<$R, PlayStyleTap, $Out> {
+  _PlayStyleTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<PlayStyleTap> $mapper =
+      PlayStyleTapMapper.ensureInitialized();
+  @override
+  PlayStyleCopyWith<$R, PlayStyle, PlayStyle> get playStyle =>
+      $value.playStyle.copyWith.$chain((v) => call(playStyle: v));
+  @override
+  $R call({PlayStyle? playStyle}) =>
+      $apply(FieldCopyWithData({if (playStyle != null) #playStyle: playStyle}));
+  @override
+  PlayStyleTap $make(CopyWithData data) =>
+      PlayStyleTap(playStyle: data.get(#playStyle, or: $value.playStyle));
+
+  @override
+  PlayStyleTapCopyWith<$R2, PlayStyleTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _PlayStyleTapCopyWithImpl($value, $cast, t);
+}
+
+class AccelerateTapMapper extends SubClassMapperBase<AccelerateTap> {
+  AccelerateTapMapper._();
+
+  static AccelerateTapMapper? _instance;
+  static AccelerateTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = AccelerateTapMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+      AccelerateTypeMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'AccelerateTap';
+
+  static AccelerateType _$accelerateType(AccelerateTap v) => v.accelerateType;
+  static const Field<AccelerateTap, AccelerateType> _f$accelerateType =
+      Field('accelerateType', _$accelerateType);
+
+  @override
+  final MappableFields<AccelerateTap> fields = const {
+    #accelerateType: _f$accelerateType,
+  };
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'accelerateTap';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static AccelerateTap _instantiate(DecodingData data) {
+    return AccelerateTap(accelerateType: data.dec(_f$accelerateType));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static AccelerateTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<AccelerateTap>(map);
+  }
+
+  static AccelerateTap fromJson(String json) {
+    return ensureInitialized().decodeJson<AccelerateTap>(json);
+  }
+}
+
+mixin AccelerateTapMappable {
+  String toJson() {
+    return AccelerateTapMapper.ensureInitialized()
+        .encodeJson<AccelerateTap>(this as AccelerateTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return AccelerateTapMapper.ensureInitialized()
+        .encodeMap<AccelerateTap>(this as AccelerateTap);
+  }
+
+  AccelerateTapCopyWith<AccelerateTap, AccelerateTap, AccelerateTap>
+      get copyWith => _AccelerateTapCopyWithImpl(
+          this as AccelerateTap, $identity, $identity);
+  @override
+  String toString() {
+    return AccelerateTapMapper.ensureInitialized()
+        .stringifyValue(this as AccelerateTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return AccelerateTapMapper.ensureInitialized()
+        .equalsValue(this as AccelerateTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return AccelerateTapMapper.ensureInitialized()
+        .hashValue(this as AccelerateTap);
+  }
+}
+
+extension AccelerateTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, AccelerateTap, $Out> {
+  AccelerateTapCopyWith<$R, AccelerateTap, $Out> get $asAccelerateTap =>
+      $base.as((v, t, t2) => _AccelerateTapCopyWithImpl(v, t, t2));
+}
+
+abstract class AccelerateTapCopyWith<$R, $In extends AccelerateTap, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call({AccelerateType? accelerateType});
+  AccelerateTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _AccelerateTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, AccelerateTap, $Out>
+    implements AccelerateTapCopyWith<$R, AccelerateTap, $Out> {
+  _AccelerateTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<AccelerateTap> $mapper =
+      AccelerateTapMapper.ensureInitialized();
+  @override
+  $R call({AccelerateType? accelerateType}) => $apply(FieldCopyWithData(
+      {if (accelerateType != null) #accelerateType: accelerateType}));
+  @override
+  AccelerateTap $make(CopyWithData data) => AccelerateTap(
+      accelerateType: data.get(#accelerateType, or: $value.accelerateType));
+
+  @override
+  AccelerateTapCopyWith<$R2, AccelerateTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _AccelerateTapCopyWithImpl($value, $cast, t);
+}
+
+class ChemistryTapMapper extends SubClassMapperBase<ChemistryTap> {
+  ChemistryTapMapper._();
+
+  static ChemistryTapMapper? _instance;
+  static ChemistryTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ChemistryTapMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'ChemistryTap';
+
+  @override
+  final MappableFields<ChemistryTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'chemistryTap';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static ChemistryTap _instantiate(DecodingData data) {
+    return ChemistryTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static ChemistryTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<ChemistryTap>(map);
+  }
+
+  static ChemistryTap fromJson(String json) {
+    return ensureInitialized().decodeJson<ChemistryTap>(json);
+  }
+}
+
+mixin ChemistryTapMappable {
+  String toJson() {
+    return ChemistryTapMapper.ensureInitialized()
+        .encodeJson<ChemistryTap>(this as ChemistryTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ChemistryTapMapper.ensureInitialized()
+        .encodeMap<ChemistryTap>(this as ChemistryTap);
+  }
+
+  ChemistryTapCopyWith<ChemistryTap, ChemistryTap, ChemistryTap> get copyWith =>
+      _ChemistryTapCopyWithImpl(this as ChemistryTap, $identity, $identity);
+  @override
+  String toString() {
+    return ChemistryTapMapper.ensureInitialized()
+        .stringifyValue(this as ChemistryTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return ChemistryTapMapper.ensureInitialized()
+        .equalsValue(this as ChemistryTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return ChemistryTapMapper.ensureInitialized()
+        .hashValue(this as ChemistryTap);
+  }
+}
+
+extension ChemistryTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, ChemistryTap, $Out> {
+  ChemistryTapCopyWith<$R, ChemistryTap, $Out> get $asChemistryTap =>
+      $base.as((v, t, t2) => _ChemistryTapCopyWithImpl(v, t, t2));
+}
+
+abstract class ChemistryTapCopyWith<$R, $In extends ChemistryTap, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  ChemistryTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _ChemistryTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, ChemistryTap, $Out>
+    implements ChemistryTapCopyWith<$R, ChemistryTap, $Out> {
+  _ChemistryTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<ChemistryTap> $mapper =
+      ChemistryTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  ChemistryTap $make(CopyWithData data) => ChemistryTap();
+
+  @override
+  ChemistryTapCopyWith<$R2, ChemistryTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _ChemistryTapCopyWithImpl($value, $cast, t);
+}
+
+class ChemistryApplyMapper extends SubClassMapperBase<ChemistryApply> {
+  ChemistryApplyMapper._();
+
+  static ChemistryApplyMapper? _instance;
+  static ChemistryApplyMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ChemistryApplyMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+      ChemistryStyleMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'ChemistryApply';
+
+  static ChemistryStyle _$chemistryStyle(ChemistryApply v) => v.chemistryStyle;
+  static const Field<ChemistryApply, ChemistryStyle> _f$chemistryStyle =
+      Field('chemistryStyle', _$chemistryStyle);
+  static int _$chemistryModifier(ChemistryApply v) => v.chemistryModifier;
+  static const Field<ChemistryApply, int> _f$chemistryModifier =
+      Field('chemistryModifier', _$chemistryModifier);
+
+  @override
+  final MappableFields<ChemistryApply> fields = const {
+    #chemistryStyle: _f$chemistryStyle,
+    #chemistryModifier: _f$chemistryModifier,
+  };
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'chemistryApply';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static ChemistryApply _instantiate(DecodingData data) {
+    return ChemistryApply(
+        chemistryStyle: data.dec(_f$chemistryStyle),
+        chemistryModifier: data.dec(_f$chemistryModifier));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static ChemistryApply fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<ChemistryApply>(map);
+  }
+
+  static ChemistryApply fromJson(String json) {
+    return ensureInitialized().decodeJson<ChemistryApply>(json);
+  }
+}
+
+mixin ChemistryApplyMappable {
+  String toJson() {
+    return ChemistryApplyMapper.ensureInitialized()
+        .encodeJson<ChemistryApply>(this as ChemistryApply);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ChemistryApplyMapper.ensureInitialized()
+        .encodeMap<ChemistryApply>(this as ChemistryApply);
+  }
+
+  ChemistryApplyCopyWith<ChemistryApply, ChemistryApply, ChemistryApply>
+      get copyWith => _ChemistryApplyCopyWithImpl(
+          this as ChemistryApply, $identity, $identity);
+  @override
+  String toString() {
+    return ChemistryApplyMapper.ensureInitialized()
+        .stringifyValue(this as ChemistryApply);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return ChemistryApplyMapper.ensureInitialized()
+        .equalsValue(this as ChemistryApply, other);
+  }
+
+  @override
+  int get hashCode {
+    return ChemistryApplyMapper.ensureInitialized()
+        .hashValue(this as ChemistryApply);
+  }
+}
+
+extension ChemistryApplyValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, ChemistryApply, $Out> {
+  ChemistryApplyCopyWith<$R, ChemistryApply, $Out> get $asChemistryApply =>
+      $base.as((v, t, t2) => _ChemistryApplyCopyWithImpl(v, t, t2));
+}
+
+abstract class ChemistryApplyCopyWith<$R, $In extends ChemistryApply, $Out>
+    implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle> get chemistryStyle;
+  @override
+  $R call({ChemistryStyle? chemistryStyle, int? chemistryModifier});
+  ChemistryApplyCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _ChemistryApplyCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, ChemistryApply, $Out>
+    implements ChemistryApplyCopyWith<$R, ChemistryApply, $Out> {
+  _ChemistryApplyCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<ChemistryApply> $mapper =
+      ChemistryApplyMapper.ensureInitialized();
+  @override
+  ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>
+      get chemistryStyle =>
+          $value.chemistryStyle.copyWith.$chain((v) => call(chemistryStyle: v));
+  @override
+  $R call({ChemistryStyle? chemistryStyle, int? chemistryModifier}) =>
+      $apply(FieldCopyWithData({
+        if (chemistryStyle != null) #chemistryStyle: chemistryStyle,
+        if (chemistryModifier != null) #chemistryModifier: chemistryModifier
+      }));
+  @override
+  ChemistryApply $make(CopyWithData data) => ChemistryApply(
+      chemistryStyle: data.get(#chemistryStyle, or: $value.chemistryStyle),
+      chemistryModifier:
+          data.get(#chemistryModifier, or: $value.chemistryModifier));
+
+  @override
+  ChemistryApplyCopyWith<$R2, ChemistryApply, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _ChemistryApplyCopyWithImpl($value, $cast, t);
 }
 
 class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {

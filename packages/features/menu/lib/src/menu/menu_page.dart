@@ -25,7 +25,7 @@ class MenuPage extends StatelessWidget {
                     const SizedBox(
                       height: AppSpacing.space5,
                     ),
-                    const _Header(text: 'FC Concept', isSmall: false),
+                    const _Header(text: 'FUT Maidaan', isSmall: false),
                     _DrawerItem(
                       text: 'Cheapest by rating',
                       leading: Icon(
@@ -193,7 +193,7 @@ class _Header extends StatelessWidget {
                 color: context.colors.contentSecondary,
               )
             : context.typography.largeTitle.copyWith(
-                color: context.colors.contentPrimary,
+                color: context.colors.primary,
               ),
       ),
     );

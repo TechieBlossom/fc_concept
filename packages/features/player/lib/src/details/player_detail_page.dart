@@ -70,7 +70,13 @@ class PlayerDetailPage extends StatelessWidget {
                         end: AppSpacing.space4,
                         bottom: AppSpacing.space4,
                       ),
-                      child: RoleLayout(roles: state.playerRoles!),
+                      child: RoleLayout(
+                        roles: state.playerRoles!,
+                        onRoleTap: (role) =>
+                            context.read<PlayerDetailBloc>().add(
+                                  RoleTap(role: role),
+                                ),
+                      ),
                     ),
                   if (state.playerPlayStyles?.isNotEmpty ?? false)
                     Padding(
@@ -82,6 +88,10 @@ class PlayerDetailPage extends StatelessWidget {
                       child: PlayStylesLayout(
                         playStyles: state.playerPlayStyles!,
                         playStylesPlus: state.playerPlayStylesPlus!,
+                        onPlayStyleTap: (playStyle) =>
+                            context.read<PlayerDetailBloc>().add(
+                                  PlayStyleTap(playStyle: playStyle),
+                                ),
                       ),
                     ),
                   ChemistryStyleCard(
@@ -97,6 +107,9 @@ class PlayerDetailPage extends StatelessWidget {
                                 chemistryStyle: style,
                               ),
                             ),
+                    onTap: () => context.read<PlayerDetailBloc>().add(
+                          ChemistryTap(),
+                        ),
                   ),
                   if (state.player.attributeAcceleration != null)
                     if (player.isGk)
@@ -125,8 +138,25 @@ class PlayerDetailPage extends StatelessWidget {
                               state.chemistryBoostFaceValues,
                           chemistryStyleAccelerate:
                               state.chemistryStyleAccelerate,
+                          onAccelerateTap: (accelerateType) =>
+                              context.read<PlayerDetailBloc>().add(
+                                    AccelerateTap(
+                                      accelerateType: accelerateType,
+                                    ),
+                                  ),
                         ),
                       ),
+                  if (state.player.league != null)
+                    LeagueCard(
+                      margin: const EdgeInsets.only(
+                        left: AppSpacing.space3,
+                        right: AppSpacing.space3,
+                        bottom: AppSpacing.space3,
+                        top: AppSpacing.space5,
+                      ),
+                      league: state.player.league!,
+                      onTap: () {},
+                    ),
                 ],
               ),
             ),

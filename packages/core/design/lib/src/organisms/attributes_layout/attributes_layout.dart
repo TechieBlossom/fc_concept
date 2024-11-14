@@ -11,12 +11,14 @@ class AttributesLayout extends StatelessWidget {
     required this.chemistryBoost,
     required this.chemistryBoostFaceValues,
     required this.chemistryStyleAccelerate,
+    this.onAccelerateTap,
   });
 
   final Player player;
   final ChemistryModifier? chemistryBoost;
   final ChemistryBoostFaceValues? chemistryBoostFaceValues;
   final AccelerateType? chemistryStyleAccelerate;
+  final void Function(AccelerateType)? onAccelerateTap;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,7 @@ class AttributesLayout extends StatelessWidget {
                       AccelerateBar(
                         accelerateType: player.accelerateType!,
                         chemistryStyleAccelerate: chemistryStyleAccelerate,
+                        onTap: onAccelerateTap,
                       ),
                   ].intersperse(Space(space: AppSpacing.space2)).toList(),
                 ),

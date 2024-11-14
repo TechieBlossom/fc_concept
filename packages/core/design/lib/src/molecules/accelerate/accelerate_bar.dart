@@ -9,10 +9,12 @@ class AccelerateBar extends StatelessWidget {
     super.key,
     required this.accelerateType,
     this.chemistryStyleAccelerate,
+    this.onTap,
   });
 
   final AccelerateType accelerateType;
   final AccelerateType? chemistryStyleAccelerate;
+  final void Function(AccelerateType)? onTap;
 
   bool get accelerateTypeIsDifferent =>
       chemistryStyleAccelerate != null &&
@@ -22,6 +24,7 @@ class AccelerateBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        onTap?.call(chemistryStyleAccelerate ?? accelerateType);
         showAppBottomSheet(
           context,
           child: AccelerateInfoSheet(

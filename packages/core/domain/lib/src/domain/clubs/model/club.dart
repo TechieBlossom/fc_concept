@@ -1,9 +1,10 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
 part 'club.mapper.dart';
 
 @MappableClass()
-class Club with ClubMappable {
+class Club with ClubMappable, AnalyticsEventParameters {
   const Club({
     required this.eaId,
     required this.name,
@@ -25,4 +26,7 @@ class Club with ClubMappable {
   final String? lightImagePath;
 
   static const fromMap = ClubMapper.fromMap;
+
+  @override
+  Map<String, Object> get analyticsParameters => {'id': eaId, 'name': name};
 }

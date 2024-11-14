@@ -8,7 +8,9 @@ class AppRangeSliderTrackShape extends RangeSliderTrackShape
   ///
   /// The middle track segment is the selected range and is active, and the two
   /// outer track segments are inactive.
-  const AppRangeSliderTrackShape();
+  const AppRangeSliderTrackShape(this.backgroundColor);
+
+  final Color backgroundColor;
 
   @override
   void paint(
@@ -67,10 +69,10 @@ class AppRangeSliderTrackShape extends RangeSliderTrackShape
         Offset(trackRect.left, 0),
         Offset(trackRect.right, 0),
         <Color>[
-          lightRating1,
-          lightRating2,
-          lightRating3,
-          lightRating4,
+          backgroundColor,
+          backgroundColor,
+          backgroundColor,
+          backgroundColor,
         ],
         <double>[
           0.0,
@@ -99,7 +101,7 @@ class AppRangeSliderTrackShape extends RangeSliderTrackShape
         Offset(index * 10, trackRect.bottom),
         Paint()
           ..strokeWidth = 5
-          ..color = Colors.white,
+          ..color = backgroundColor,
       );
     });
 
