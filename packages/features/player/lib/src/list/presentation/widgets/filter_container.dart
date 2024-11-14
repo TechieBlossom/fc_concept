@@ -18,7 +18,7 @@ class FilterContainer extends StatelessWidget {
       filterConfiguration?.foots?.map((foot) => foot.toValue()).join(', ');
 
   String? get rating => filterConfiguration?.overallRatingRange != null
-      ? '${filterConfiguration!.overallRatingRange!.start.toInt()} - ${filterConfiguration!.overallRatingRange!.end.toInt()}'
+      ? '${filterConfiguration!.overallRatingRange.start.toInt()} - ${filterConfiguration!.overallRatingRange.end.toInt()}'
       : null;
 
   String? get positions => filterConfiguration?.positions
@@ -65,33 +65,34 @@ class FilterContainer extends StatelessWidget {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                    children: <Widget>[
-                  const SizedBox(width: AppSpacing.space2),
-                  if (rating != null) _FilterPill(label: 'Rating: $rating'),
-                  if (gender?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Gender: $gender'),
-                  if (foot?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Foot: $foot'),
-                  if (positions?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Positions: $positions'),
-                  if (rarities?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Rarity: $rarities'),
-                  if (roles?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Roles: $roles'),
-                  if (playStyles?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Play Styles: $playStyles'),
-                  if (leagues?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Leagues: $leagues'),
-                  if (clubs?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Clubs: $clubs'),
-                  if (nations?.isNotEmpty ?? false)
-                    _FilterPill(label: 'Nations: $nations'),
-                  const SizedBox(width: AppSpacing.space5),
-                ]
-                        .intersperse(
-                          const SizedBox(width: AppSpacing.space2),
-                        )
-                        .toList()),
+                  children: <Widget>[
+                    const SizedBox(width: AppSpacing.space2),
+                    if (rating != null) _FilterPill(label: 'Rating: $rating'),
+                    if (gender?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Gender: $gender'),
+                    if (foot?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Foot: $foot'),
+                    if (positions?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Positions: $positions'),
+                    if (rarities?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Rarity: $rarities'),
+                    if (roles?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Roles: $roles'),
+                    if (playStyles?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Play Styles: $playStyles'),
+                    if (leagues?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Leagues: $leagues'),
+                    if (clubs?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Clubs: $clubs'),
+                    if (nations?.isNotEmpty ?? false)
+                      _FilterPill(label: 'Nations: $nations'),
+                    const SizedBox(width: AppSpacing.space5),
+                  ]
+                      .intersperse(
+                        const SizedBox(width: AppSpacing.space2),
+                      )
+                      .toList(),
+                ),
               ),
             ),
         ],
