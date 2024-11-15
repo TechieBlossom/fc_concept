@@ -1,53 +1,37 @@
 import 'package:cached_annotation/cached_annotation.dart';
 import 'package:core_api_client/api_client.dart';
+import 'package:core_domain/src/data/price/api/price_api.dart';
 import 'package:core_domain/src/data/price/table_player_price.dart';
 import 'package:core_domain/src/domain/models/result.dart';
 import 'package:core_domain/src/domain/price/model/player_old_price.dart';
 import 'package:core_domain/src/domain/price/model/player_price.dart';
 import 'package:core_domain/src/domain/price/price_repository.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-part 'price_repository_impl.cached.dart';
+// part 'price_repository_impl.cached.dart';
 
 const _cacheTTL = 1 * 60 * 60; // 1 hour
 
 const _itemsPerPage = 10;
 
 @LazySingleton(as: PriceRepository)
-@WithCache()
-abstract mixin class PriceRepositoryImpl
-    implements PriceRepository, _$PriceRepositoryImpl {
-  @factoryMethod
-  factory PriceRepositoryImpl(ApiClient _apiClient) = _PriceRepositoryImpl;
+class PriceRepositoryImpl implements PriceRepository {
+  PriceRepositoryImpl() : _priceApi = PriceApi(Dio());
+
+  final PriceApi _priceApi;
 
   @override
   Future<Result<PlayerPrice>> getPlayerPrice(int playerId) async {
     try {
-      final response = await _getPlayerPrice(playerId);
-      final player = PlayerPrice.fromMap(
-        (response as Map<String, dynamic>)['data'] as Map<String, dynamic>,
-      );
-      return Success(data: player);
+      final response =
+          await _priceApi.getPlayerPrice(playerId) as Map<String, dynamic>;
+      final playerPrice =
+          PlayerPrice.fromMap(response['data'] as Map<String, dynamic>);
+      return Success(data: playerPrice);
     } catch (e, _) {
       return Failure(exception: e as Exception);
     }
-  }
-
-  @PersistentCached(ttl: _cacheTTL)
-  Future<dynamic> _getPlayerPrice(int playerId) async {
-    final response = await _apiClient.dio.get(
-      'https://www.fut.gg/api/fut/player-prices/25/$playerId',
-    );
-
-    if (response.statusCode != 200) {
-      throw Exception('Failed to get player price');
-    }
-
-    if (response.data == null) {
-      throw Exception('Player price not found');
-    }
-
-    return response.data;
   }
 
   @override
@@ -64,7 +48,7 @@ abstract mixin class PriceRepositoryImpl
   }
 
   // TODO: Looks like this is not working. The response is not being cached.
-  @PersistentCached(ttl: _cacheTTL)
+  // @PersistentCached(ttl: _cacheTTL)
   Future<List<dynamic>> _getOldPlayerPrice(List<int> eaIds) async {
     try {
       final pricesResponse = await supabase

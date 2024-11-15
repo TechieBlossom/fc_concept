@@ -332,6 +332,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.3+1"
+  dio_cache_interceptor:
+    dependency: transitive
+    description:
+      name: dio_cache_interceptor
+      sha256: fb7905c0d12075d8786a6b63bffd64ae062d053f682cfaf28d145a2686507308
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.5.0"
+  dio_cache_interceptor_hive_store:
+    dependency: transitive
+    description:
+      name: dio_cache_interceptor_hive_store
+      sha256: "449b36541216cb20543228081125ad2995eb9712ec35bd030d85663ea1761895"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.2"
   email_validator:
     dependency: transitive
     description:
@@ -1041,10 +1057,10 @@ packages:
     dependency: transitive
     description:
       name: retrofit
-      sha256: "13a2865c0d97da580ea4e3c64d412d81f365fd5b26be2a18fca9582e021da37a"
+      sha256: "3c9885ef3dbc5dc4b3fb0a40c972ab52e4dad04d52dac9bba24dfa76cf100451"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.0"
+    version: "4.4.1"
   retry:
     dependency: transitive
     description:

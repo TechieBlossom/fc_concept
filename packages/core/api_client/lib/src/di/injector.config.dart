@@ -28,9 +28,10 @@ _i174.GetIt init(
     environmentFilter,
   );
   final dioModule = _$DioModule();
-  gh.lazySingleton<_i361.Dio>(() => dioModule.dio);
+  gh.lazySingletonAsync<_i361.Dio>(() => dioModule.dio);
   gh.lazySingleton<_i158.ApiKeyInterceptor>(() => _i158.ApiKeyInterceptor());
-  gh.factory<_i955.ApiClient>(() => _i955.ApiClient(gh<_i361.Dio>()));
+  gh.factoryAsync<_i955.ApiClient>(
+      () async => _i955.ApiClient(await gh.getAsync<_i361.Dio>()));
   return getIt;
 }
 

@@ -8,7 +8,6 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:core_api_client/api_client.dart' as _i327;
 import 'package:core_domain/domain.dart' as _i913;
 import 'package:core_domain/src/data/auth/repository/auth_repository_impl.dart'
     as _i937;
@@ -169,11 +168,10 @@ _i174.GetIt init(
       () => _i264.GetPositionsFromPositionGroup());
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
+  gh.lazySingleton<_i526.PriceRepository>(() => _i463.PriceRepositoryImpl());
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
   gh.factory<_i451.RaritySquadRepository>(
       () => _i433.RaritySquadRepositoryImpl());
-  gh.lazySingleton<_i526.PriceRepository>(
-      () => _i463.PriceRepositoryImpl(gh<_i327.ApiClient>()));
   gh.factory<_i1070.PositionRepository>(() => _i684.PositionRepositoryImpl());
   gh.factory<_i437.GetAllPositionsUseCase>(
       () => _i437.GetAllPositionsUseCase(gh<_i1070.PositionRepository>()));
