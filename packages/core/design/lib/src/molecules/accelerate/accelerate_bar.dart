@@ -46,7 +46,7 @@ class AccelerateBar extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.space2,
+            horizontal: AppSpacing.space3,
             vertical: AppSpacing.space3,
           ),
           child: Column(
@@ -67,11 +67,12 @@ class AccelerateBar extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: context.typography.body2.copyWith(
                   color: accelerateTypeIsDifferent
-                      ? context.colors.contentTertiary
+                      ? context.colors.contentSecondary
                       : context.colors.contentPrimary,
                   decoration: accelerateTypeIsDifferent
                       ? TextDecoration.lineThrough
                       : null,
+                  decorationColor: context.colors.backgroundTertiary,
                 ),
               ),
               if (accelerateTypeIsDifferent) ...[

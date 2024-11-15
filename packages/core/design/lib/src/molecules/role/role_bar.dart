@@ -27,10 +27,10 @@ class RoleBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = size == RoleBarSize.small
         ? context.typography.caption1.copyWith(
-            color: context.colors.primary,
+            color: context.colors.contentPrimary,
           )
         : context.typography.body1.copyWith(
-            color: context.colors.primary,
+            color: context.colors.contentPrimary,
           );
     return InkWell(
       onTap: () {

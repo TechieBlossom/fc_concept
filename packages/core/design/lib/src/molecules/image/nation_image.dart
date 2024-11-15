@@ -6,7 +6,7 @@ const _apiBasePath = 'https://game-assets.fut.gg/';
 
 enum NationImageSize {
   small,
-  large,
+  medium,
 }
 class NationImage extends StatelessWidget {
   const NationImage({
@@ -18,7 +18,7 @@ class NationImage extends StatelessWidget {
   final Nation nation;
   final NationImageSize size;
 
-  double get width => size == NationImageSize.small ? 20 : 40;
+  double get width => size == NationImageSize.small ? 20 : 32;
 
   @override
   Widget build(BuildContext context) {

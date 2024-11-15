@@ -5,6 +5,7 @@ import 'package:core_domain/domain.dart';
 import 'package:fc_concept/di/injector.dart';
 import 'package:fc_concept/firebase_options.dart';
 import 'package:feature_auth/auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
 import 'package:utility_navigation/navigation.dart';
@@ -13,9 +14,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   unawaited(MobileAds.instance.initialize());
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(!kDebugMode);
   await initializeDi('dev');
   PersistentStorageHolder.storage = await CachingPersistentStorage.create();
-
   runApp(const MyApp());
 }
 

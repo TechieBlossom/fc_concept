@@ -1,48 +1,48 @@
 class AnalyticsEventName {
   const AnalyticsEventName._();
 
-  static const dashboardIndexTap = 'Dashboard-Index Tap';
-  static const dashboardTopSearchTap = 'Dashboard-Top Search Tap';
-  static const dashboardCheapestRatingTap = 'Dashboard-Cheapest Rating Tap';
-  static const dashboardTrendingSwitch = 'Dashboard-Trending Switch';
-  static const dashboardPositionalSwitch = 'Dashboard-Positional Switch';
-  static const dashboardSBCPlayerTap = 'Dashboard-SBC Player Tap';
-  static const dashboardPlayerTap = 'Dashboard-Player Tap';
-  static const dashboardBottomTap = 'Dashboard-Bottom Tap';
+  static const dashboardIndexTap = 'dashboard_index_tap';
+  static const dashboardTopSearchTap = 'dashboard_top_search_tap';
+  static const dashboardCheapestRatingTap = 'dashboard_cheapest_rating_tap';
+  static const dashboardTrendingSwitch = 'dashboard_trending_switch';
+  static const dashboardPositionalSwitch = 'dashboard_positional_switch';
+  static const dashboardSBCPlayerTap = 'dashboard_sbc_player_tap';
+  static const dashboardPlayerTap = 'dashboard_player_tap';
+  static const dashboardBottomTap = 'dashboard_Bottom_tap';
 
-  static const playerListSearch = 'Player List-Search Enter';
-  static const playerListPlayerTap = 'Player List-Player Tap';
-  static const playerListPaginate = 'Player List-Paginate';
-  static const playerListFilterTap = 'Player List-Filter Tap';
+  static const playerListSearch = 'player_list_search Enter';
+  static const playerListPlayerTap = 'player_list_player_tap';
+  static const playerListPaginate = 'player_list_paginate';
+  static const playerListFilterTap = 'player_list_filter_tap';
 
-  static const filterRoleTap = 'Filter-Role Tap';
-  static const filterPlayStyleTap = 'Filter-PlayStyle Tap';
-  static const filterLeagueTap = 'Filter-League Tap';
-  static const filterClubTap = 'Filter-Club Tap';
-  static const filterNationTap = 'Filter-Nation Tap';
-  static const filterRarityTap = 'Filter-Rarity Tap';
-  static const filterPositionGroupTap = 'Filter-PositionGroup Tap';
-  static const filterPositionTap = 'Filter-Position Tap';
-  static const filterGenderTap = 'Filter-Gender Tap';
-  static const filterFootTap = 'Filter-Foot Tap';
-  static const filterApply = 'Filter-Apply';
-  static const filterClear = 'Filter-Clear';
-  static const filterRoleSelect = 'Filter-Role Select';
-  static const filterPlayStyleSelect = 'Filter-PlayStyle Select';
-  static const filterLeagueSelect = 'Filter-League Select';
-  static const filterClubSelect = 'Filter-Club Select';
-  static const filterNationSelect = 'Filter-Nation Select';
-  static const filterRaritySelect = 'Filter-Rarity Select';
+  static const filterRoleTap = 'filter_role_tap';
+  static const filterPlayStyleTap = 'filter_playStyle_tap';
+  static const filterLeagueTap = 'filter_league_tap';
+  static const filterClubTap = 'filter_club_tap';
+  static const filterNationTap = 'filter_nation_tap';
+  static const filterRarityTap = 'filter_rarity_tap';
+  static const filterPositionGroupTap = 'filter_positionGroup_tap';
+  static const filterPositionTap = 'filter_position_tap';
+  static const filterGenderTap = 'filter_gender_tap';
+  static const filterFootTap = 'filter_foot_tap';
+  static const filterApply = 'filter_apply';
+  static const filterClear = 'filter_clear';
+  static const filterRoleSelect = 'filter_role_select';
+  static const filterPlayStyleSelect = 'filter_playStyle_select';
+  static const filterLeagueSelect = 'filter_league_select';
+  static const filterClubSelect = 'filter_club_select';
+  static const filterNationSelect = 'filter_nation_select';
+  static const filterRaritySelect = 'filter_rarity_select';
 
-  static const playerDetailVersionSelect = 'Player Detail-Version Select';
-  static const playerDetailRoleTap = 'Player Detail-Role Tap';
-  static const playerDetailPlayStyleTap = 'Player Detail-PlayStyle Tap';
-  static const playerDetailAccelerateTap = 'Player Detail-Accelerate Tap';
-  static const playerDetailChemistryTap = 'Player Detail-Chemistry Tap';
-  static const playerDetailChemistrySelect = 'Player Detail-Chemistry Select';
-  static const playerDetailCompareApply = 'Player Detail-Cheapest Apply';
-  static const playerDetailCompareClear = 'Player Detail-Cheapest Clear';
+  static const playerDetailVersionSelect = 'player_detail_version_select';
+  static const playerDetailRoleTap = 'player_detail_role_tap';
+  static const playerDetailPlayStyleTap = 'player_detail_playStyle_tap';
+  static const playerDetailAccelerateTap = 'player_detail_accelerate_tap';
+  static const playerDetailChemistryTap = 'player_detail_chemistry_tap';
+  static const playerDetailChemistrySelect = 'player_detail_chemistry_select';
+  static const playerDetailChemistryApply = 'player_detail_chemistry_apply';
+  static const playerDetailChemistryClear = 'player_detail_chemistry_clear';
 
-  static const cheapestRatingTap = 'Cheapest-Rating Tap';
-  static const cheapestPlayerTap = 'Cheapest-Player Tap';
+  static const cheapestRatingTap = 'cheapest_rating_tap';
+  static const cheapestPlayerTap = 'cheapest_player_tap';
 }

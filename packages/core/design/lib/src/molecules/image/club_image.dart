@@ -6,7 +6,7 @@ const _apiBasePath = 'https://game-assets.fut.gg/';
 
 enum ClubImageSize {
   small,
-  large,
+  medium,
 }
 
 class ClubImage extends StatelessWidget {
@@ -19,7 +19,7 @@ class ClubImage extends StatelessWidget {
   final Club club;
   final ClubImageSize size;
 
-  double get width => size == ClubImageSize.small ? 20 : 40;
+  double get width => size == ClubImageSize.small ? 20 : 32;
 
   @override
   Widget build(BuildContext context) {

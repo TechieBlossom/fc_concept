@@ -193,7 +193,7 @@ class _Header extends StatelessWidget {
                 color: context.colors.contentSecondary,
               )
             : context.typography.largeTitle.copyWith(
-                color: context.colors.primary,
+                color: context.colors.contentPrimary,
               ),
       ),
     );

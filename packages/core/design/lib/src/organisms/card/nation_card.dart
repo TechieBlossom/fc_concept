@@ -9,15 +9,12 @@ class NationCard extends StatelessWidget {
     required this.nation,
     required this.onTap,
     required this.margin,
-    this.size = NationImageSize.small,
   });
 
   final Nation nation;
   final VoidCallback? onTap;
   final EdgeInsets margin;
-  final NationImageSize size;
 
-  double get width => size == NationImageSize.small ? 20 : 40;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +26,13 @@ class NationCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
         ),
-        leading: NationImage(nation: nation, size: NationImageSize.large),
+        leading: NationImage(nation: nation, size: NationImageSize.medium),
         title: Text('NATION'),
-        titleTextStyle: context.typography.body4.copyWith(
+        titleTextStyle: context.typography.body5.copyWith(
           color: context.colors.contentSecondary,
         ),
         subtitle: Text(nation.name),
-        subtitleTextStyle: context.typography.body1.copyWith(
+        subtitleTextStyle: context.typography.body3.copyWith(
           color: context.colors.contentPrimary,
         ),
         // trailing: Icon(Icons.arrow_forward_ios_rounded, size: 24),

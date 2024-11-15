@@ -38,14 +38,17 @@ Future<T?> showAppBottomSheet<T>(
       color: context.colors.backgroundSecondary,
       child: Padding(
         padding: padding ??
-            const EdgeInsets.only(
+            EdgeInsets.only(
               left: AppSpacing.space5,
               right: AppSpacing.space5,
               top: AppSpacing.space5,
+              bottom: Theme.of(context).platform == TargetPlatform.iOS
+                  ? 0
+                  : AppSpacing.space5,
             ),
-        child: SafeArea(
-          child: child,
-        ),
+        child: Theme.of(context).platform == TargetPlatform.iOS
+            ? SafeArea(child: child)
+            : child,
       ),
     ),
   );

@@ -25,13 +25,13 @@ class ClubCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
         ),
-        leading: ClubImage(club: club, size: ClubImageSize.large),
+        leading: ClubImage(club: club, size: ClubImageSize.medium),
         title: Text('CLUB'),
-        titleTextStyle: context.typography.body4.copyWith(
+        titleTextStyle: context.typography.body5.copyWith(
           color: context.colors.contentSecondary,
         ),
         subtitle: Text(club.name),
-        subtitleTextStyle: context.typography.body1.copyWith(
+        subtitleTextStyle: context.typography.body3.copyWith(
           color: context.colors.contentPrimary,
         ),
         // trailing: Icon(Icons.arrow_forward_ios_rounded, size: 24),

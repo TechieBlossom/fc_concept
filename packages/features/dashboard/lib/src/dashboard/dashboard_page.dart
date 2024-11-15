@@ -22,7 +22,7 @@ class DashboardPage extends StatelessWidget {
               centerTitle: false,
               title: const Text('FUT Maidaan'),
               titleTextStyle: context.typography.title3.copyWith(
-                color: context.colors.primary,
+                color: context.colors.contentPrimary,
               ),
               actions: [
                 IconButton(

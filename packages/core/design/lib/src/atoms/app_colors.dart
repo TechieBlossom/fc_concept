@@ -57,7 +57,7 @@ abstract class _DarkColors {
   static const backgroundTertiary = Color(0xaa093537);
   static const contentPrimary = Color(0xFFFFFFFF);
   static const contentSecondary = Color(0xFF9B9B9B);
-  static const contentTertiary = Color(0xFFF1EFEF);
+  static const contentTertiary = Color(0x4D777777);
 
   static const gold = Color(0xFFE8DC9A);
   static const gold2 = Color(0xFFC0A203);
