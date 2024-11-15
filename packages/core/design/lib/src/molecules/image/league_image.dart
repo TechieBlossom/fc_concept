@@ -4,13 +4,22 @@ import 'package:flutter/material.dart';
 
 const _apiBasePath = 'https://game-assets.fut.gg/';
 
+enum LeagueImageSize {
+  small,
+  large,
+}
+
 class LeagueImage extends StatelessWidget {
   const LeagueImage({
     super.key,
     required this.league,
+    this.size = LeagueImageSize.small,
   });
 
   final League league;
+  final LeagueImageSize size;
+
+  double get width => size == LeagueImageSize.small ? 20 : 40;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +28,7 @@ class LeagueImage extends StatelessWidget {
         : league.imageLightPath;
     if (imagePath == null) return const SizedBox.shrink();
     return CachedNetworkImage(
-      width: 20,
+      width: width,
       fit: BoxFit.fitWidth,
       imageUrl: '$_apiBasePath$imagePath',
       placeholderFadeInDuration: const Duration(milliseconds: 500),

@@ -6,8 +6,10 @@ export 'package:core_design/src/organisms/bottom_button_layout/shimmer_bottom_bu
 export 'package:core_design/src/organisms/card/attributes_card.dart';
 export 'package:core_design/src/organisms/card/cheapest_player_by_rating_card.dart';
 export 'package:core_design/src/organisms/card/chemistry_style_card.dart';
+export 'package:core_design/src/organisms/card/club_card.dart';
 export 'package:core_design/src/organisms/card/info_card.dart';
 export 'package:core_design/src/organisms/card/league_card.dart';
+export 'package:core_design/src/organisms/card/nation_card.dart';
 export 'package:core_design/src/organisms/card/price_card.dart';
 export 'package:core_design/src/organisms/input/input_field.dart';
 export 'package:core_design/src/organisms/list_item/cheapest_players_by_rating_list_item.dart';

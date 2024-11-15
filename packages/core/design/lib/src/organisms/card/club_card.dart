@@ -1,17 +1,17 @@
 import 'package:core_design/src/atoms/atoms.dart';
-import 'package:core_design/src/molecules/image/league_image.dart';
+import 'package:core_design/src/molecules/image/club_image.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
-class LeagueCard extends StatelessWidget {
-  const LeagueCard({
+class ClubCard extends StatelessWidget {
+  const ClubCard({
     super.key,
-    required this.league,
+    required this.club,
     required this.onTap,
     required this.margin,
   });
 
-  final League league;
+  final Club club;
   final VoidCallback? onTap;
   final EdgeInsets margin;
 
@@ -25,12 +25,12 @@ class LeagueCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
         ),
-        leading: LeagueImage(league: league, size: LeagueImageSize.large),
-        title: Text('LEAGUE'),
+        leading: ClubImage(club: club, size: ClubImageSize.large),
+        title: Text('CLUB'),
         titleTextStyle: context.typography.body4.copyWith(
           color: context.colors.contentSecondary,
         ),
-        subtitle: Text(league.name),
+        subtitle: Text(club.name),
         subtitleTextStyle: context.typography.body1.copyWith(
           color: context.colors.contentPrimary,
         ),

@@ -157,6 +157,25 @@ class PlayerDetailPage extends StatelessWidget {
                       league: state.player.league!,
                       onTap: () {},
                     ),
+                  if (state.player.club != null)
+                    ClubCard(
+                      margin: const EdgeInsets.only(
+                        left: AppSpacing.space3,
+                        right: AppSpacing.space3,
+                        bottom: AppSpacing.space3,
+                      ),
+                      club: state.player.club!,
+                      onTap: () {},
+                    ),
+                  if (state.player.nation != null)
+                    NationCard(
+                      margin: const EdgeInsets.only(
+                        left: AppSpacing.space3,
+                        right: AppSpacing.space3,
+                      ),
+                      nation: state.player.nation!,
+                      onTap: () {},
+                    ),
                 ],
               ),
             ),
