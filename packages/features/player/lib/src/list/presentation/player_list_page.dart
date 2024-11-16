@@ -25,42 +25,53 @@ class _PlayerListPageState extends State<PlayerListPage> {
           final hasFilters = state.filterConfiguration?.hasFilters() ?? false;
           return Scaffold(
             key: _scaffoldKey,
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(
-                kToolbarHeight + (hasFilters ? 40 : 10),
-              ),
-              child: Column(
-                children: [
-                  SearchContainer(
-                    margin: const EdgeInsets.only(
-                      top: AppSpacing.space8 + AppSpacing.space3,
-                    ),
-                    isLoading: state.processState == ProcessState.loading,
-                    onSearch: (query) => context.read<PlayerListBloc>().add(
-                          Search(query: query),
-                        ),
-                    onClearTap: () => context.read<PlayerListBloc>().add(
-                          Search(query: ''),
-                        ),
-                    onFilterTap: () => context.read<PlayerListBloc>().add(
-                          FilterTap(),
+            body: Stack(
+              fit: StackFit.expand,
+              children: [
+                Positioned.fill(
+                  child: PlayerList(
+                    aboveMargin: hasFilters ? 96 : 72,
+                    processState: state.processState,
+                    isPaginating: state.isPaginating,
+                    players: state.players,
+                    query: state.filterConfiguration?.searchQuery,
+                    nextPage: () => context.read<PlayerListBloc>().add(
+                          NextPage(),
                         ),
                   ),
-                  if (hasFilters)
-                    FilterContainer(
-                      filterConfiguration: state.filterConfiguration,
+                ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Glass.lessBlur(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SearchContainer(
+                          margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).viewPadding.top,
+                          ),
+                          isLoading: state.processState == ProcessState.loading,
+                          onSearch: (query) => context.read<PlayerListBloc>().add(
+                            Search(query: query),
+                          ),
+                          onClearTap: () => context.read<PlayerListBloc>().add(
+                            Search(query: ''),
+                          ),
+                          onFilterTap: () => context.read<PlayerListBloc>().add(
+                            FilterTap(),
+                          ),
+                        ),
+                        if (hasFilters)
+                          FilterContainer(
+                            filterConfiguration: state.filterConfiguration,
+                          ),
+                      ],
                     ),
-                ],
-              ),
-            ),
-            body: PlayerList(
-              processState: state.processState,
-              isPaginating: state.isPaginating,
-              players: state.players,
-              query: state.filterConfiguration?.searchQuery,
-              nextPage: () => context.read<PlayerListBloc>().add(
-                    NextPage(),
                   ),
+                )
+              ],
             ),
           );
         },

@@ -3,6 +3,7 @@ part of 'player_detail_bloc.dart';
 @MappableClass()
 class PlayerDetailState with PlayerDetailStateMappable {
   PlayerDetailState({
+    this.priceProcessState = ProcessState.loading,
     required this.player,
     this.playerVersions,
     this.playerRoles,
@@ -15,6 +16,8 @@ class PlayerDetailState with PlayerDetailStateMappable {
     this.selectedChemistryStyle,
     this.chemistryBoostFaceValues,
   });
+
+  final ProcessState? priceProcessState;
 
   final Player player;
   final List<Player>? playerVersions;

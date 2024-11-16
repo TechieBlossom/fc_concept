@@ -1,7 +1,7 @@
 import 'package:core_design/src/organisms/search_field/search_field.dart';
 import 'package:flutter/material.dart';
 
-class SearchContainer extends StatelessWidget implements PreferredSize {
+class SearchContainer extends StatelessWidget {
   const SearchContainer({
     super.key,
     this.onSearch,
@@ -22,12 +22,6 @@ class SearchContainer extends StatelessWidget implements PreferredSize {
   final VoidCallback? onClearTap;
   final VoidCallback? onTap;
   final EdgeInsets? margin;
-
-  @override
-  Widget get child => const SizedBox.shrink();
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 56);
 
   @override
   Widget build(BuildContext context) {

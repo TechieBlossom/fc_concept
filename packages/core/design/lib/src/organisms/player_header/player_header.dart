@@ -11,11 +11,13 @@ class PlayerHeader extends StatelessWidget {
     required this.player,
     required this.alternativePositions,
     required this.playerPrice,
+    required this.priceProcessState,
   });
 
   final Player player;
   final List<Position>? alternativePositions;
   final PlayerPrice? playerPrice;
+  final ProcessState? priceProcessState;
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +88,7 @@ class PlayerHeader extends StatelessWidget {
                           children: [
                             AppAnimatedOpacity(
                               isShown: player.position != null,
+                              secondChild: const SizedBox.shrink(),
                               child: PositionBox(
                                 position: player.position,
                                 size: PositionBoxSize.medium,
@@ -103,6 +106,7 @@ class PlayerHeader extends StatelessWidget {
                         SizedBox(height: AppSpacing.space2),
                         AppAnimatedOpacity(
                           isShown: alternativePositions != null,
+                          secondChild: const SizedBox.shrink(),
                           child: Text(
                             alternativePositions
                                     ?.map((e) => e.shortLabel)
@@ -122,7 +126,8 @@ class PlayerHeader extends StatelessWidget {
                     vertical: AppSpacing.space3,
                   ),
                   child: AppAnimatedOpacity(
-                    isShown: playerPrice != null,
+                    isShown: priceProcessState == ProcessState.success,
+                    secondChild: const SizedBox.shrink(),
                     child: _PriceWidget(
                       player: player,
                       playerPrice: playerPrice,
@@ -132,6 +137,7 @@ class PlayerHeader extends StatelessWidget {
                 ),
                 AppAnimatedOpacity(
                   isShown: player.facePace != null,
+                  secondChild: const SizedBox.shrink(),
                   child: player.position?.shortLabel == 'GK'
                       ? AttributesCard(
                           paceRating: player.gkFaceSpeed ?? 0,
@@ -157,6 +163,7 @@ class PlayerHeader extends StatelessWidget {
                   ),
                   child: AppAnimatedOpacity(
                     isShown: player.age != null,
+                    secondChild: const SizedBox.shrink(),
                     child: InfoCard(
                       age: player.age.toString(),
                       height: player.heightInString(),

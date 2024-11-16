@@ -1908,6 +1908,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   static PlayerDetailStateMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PlayerDetailStateMapper._());
+      ProcessStateMapper.ensureInitialized();
       PlayerMapper.ensureInitialized();
       RoleMapper.ensureInitialized();
       PlayStyleMapper.ensureInitialized();
@@ -1923,6 +1924,11 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
   @override
   final String id = 'PlayerDetailState';
 
+  static ProcessState? _$priceProcessState(PlayerDetailState v) =>
+      v.priceProcessState;
+  static const Field<PlayerDetailState, ProcessState> _f$priceProcessState =
+      Field('priceProcessState', _$priceProcessState,
+          opt: true, def: ProcessState.loading);
   static Player _$player(PlayerDetailState v) => v.player;
   static const Field<PlayerDetailState, Player> _f$player =
       Field('player', _$player);
@@ -1974,6 +1980,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
 
   @override
   final MappableFields<PlayerDetailState> fields = const {
+    #priceProcessState: _f$priceProcessState,
     #player: _f$player,
     #playerVersions: _f$playerVersions,
     #playerRoles: _f$playerRoles,
@@ -1989,6 +1996,7 @@ class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
 
   static PlayerDetailState _instantiate(DecodingData data) {
     return PlayerDetailState(
+        priceProcessState: data.dec(_f$priceProcessState),
         player: data.dec(_f$player),
         playerVersions: data.dec(_f$playerVersions),
         playerRoles: data.dec(_f$playerRoles),
@@ -2073,7 +2081,8 @@ abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
   ChemistryStyleCopyWith<$R, ChemistryStyle, ChemistryStyle>?
       get selectedChemistryStyle;
   $R call(
-      {Player? player,
+      {ProcessState? priceProcessState,
+      Player? player,
       List<Player>? playerVersions,
       List<Role>? playerRoles,
       List<PlayStyle>? playerPlayStyles,
@@ -2146,7 +2155,8 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
           .$chain((v) => call(selectedChemistryStyle: v));
   @override
   $R call(
-          {Player? player,
+          {Object? priceProcessState = $none,
+          Player? player,
           Object? playerVersions = $none,
           Object? playerRoles = $none,
           Object? playerPlayStyles = $none,
@@ -2158,6 +2168,7 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
           Object? selectedChemistryStyle = $none,
           Object? chemistryBoostFaceValues = $none}) =>
       $apply(FieldCopyWithData({
+        if (priceProcessState != $none) #priceProcessState: priceProcessState,
         if (player != null) #player: player,
         if (playerVersions != $none) #playerVersions: playerVersions,
         if (playerRoles != $none) #playerRoles: playerRoles,
@@ -2178,6 +2189,8 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
       }));
   @override
   PlayerDetailState $make(CopyWithData data) => PlayerDetailState(
+      priceProcessState:
+          data.get(#priceProcessState, or: $value.priceProcessState),
       player: data.get(#player, or: $value.player),
       playerVersions: data.get(#playerVersions, or: $value.playerVersions),
       playerRoles: data.get(#playerRoles, or: $value.playerRoles),

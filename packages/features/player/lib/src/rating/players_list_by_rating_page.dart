@@ -15,7 +15,8 @@ class PlayersListByRatingPage extends StatelessWidget {
       child: BlocBuilder<PlayersListByRatingBloc, PlayersListByRatingState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: PageTitle(title: 'Cheapest players by ${state.rating} rating'),
+            appBar:
+                PageTitle(title: 'Cheapest players by ${state.rating} rating'),
             body: Column(
               children: [
                 Expanded(
@@ -40,45 +41,44 @@ class PlayersListByRatingPage extends StatelessWidget {
                         ),
                   ),
                 ),
-                SafeArea(
-                  child: Glass.lessBlur(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: AppSpacing.space6),
-                        child: Row(
-                          children: <Widget>[
-                            const Space(
-                              space: AppSpacing.space2,
-                              orientation: Axis.horizontal,
-                            ),
-                            for (var i = 95; i >= 50; i--)
-                              Pill<int>(
-                                pillItem: PillItem(
-                                  data: i,
-                                  text: i.toString(),
-                                  isSelected: state.rating == i,
-                                  hasDigit: true,
-                                  onTap: () => context
-                                      .read<PlayersListByRatingBloc>()
-                                      .add(
-                                        ChangeRating(rating: i),
-                                      ),
-                                ),
+                Glass.lessBlur(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpacing.space6,
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          const Space(
+                            space: AppSpacing.space2,
+                            orientation: Axis.horizontal,
+                          ),
+                          for (var i = 95; i >= 50; i--)
+                            Pill<int>(
+                              pillItem: PillItem(
+                                data: i,
+                                text: i.toString(),
+                                isSelected: state.rating == i,
+                                hasDigit: true,
+                                onTap: () =>
+                                    context.read<PlayersListByRatingBloc>().add(
+                                          ChangeRating(rating: i),
+                                        ),
                               ),
-                            const Space(
-                              space: AppSpacing.space4,
-                              orientation: Axis.horizontal,
                             ),
-                          ]
-                              .intersperse(
-                                const Space(
-                                  space: AppSpacing.space4,
-                                  orientation: Axis.horizontal,
-                                ),
-                              )
-                              .toList(),
-                        ),
+                          const Space(
+                            space: AppSpacing.space4,
+                            orientation: Axis.horizontal,
+                          ),
+                        ]
+                            .intersperse(
+                              const Space(
+                                space: AppSpacing.space4,
+                                orientation: Axis.horizontal,
+                              ),
+                            )
+                            .toList(),
                       ),
                     ),
                   ),

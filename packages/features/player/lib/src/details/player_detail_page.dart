@@ -61,6 +61,7 @@ class PlayerDetailPage extends StatelessWidget {
                   PlayerHeader(
                     player: state.player,
                     playerPrice: state.playerPrice,
+                    priceProcessState: state.priceProcessState,
                     alternativePositions: state.alternativePositions,
                   ),
                   if (state.playerRoles?.isNotEmpty ?? false)

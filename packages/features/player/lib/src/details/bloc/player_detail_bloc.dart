@@ -204,10 +204,16 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
   }
 
   Future<void> _loadPrice(Emitter<PlayerDetailState> emit) async {
+    emit(state.copyWith(priceProcessState: ProcessState.loading));
     final priceResult = await _getPlayerPriceUseCase(state.player.eaId);
     switch (priceResult) {
       case Success(data: final playerPrice):
-        emit(state.copyWith(playerPrice: playerPrice));
+        emit(
+          state.copyWith(
+            playerPrice: playerPrice,
+            priceProcessState: ProcessState.success,
+          ),
+        );
       case Failure(exception: final exception):
         if (kDebugMode) {
           print(exception);

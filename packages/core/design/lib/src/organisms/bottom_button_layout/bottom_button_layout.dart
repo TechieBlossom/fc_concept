@@ -38,7 +38,7 @@ class BottomButtonLayout extends StatelessWidget {
           left: AppSpacing.space5,
           right: AppSpacing.space5,
           top: AppSpacing.space3,
-          bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.space5,
+          bottom: MediaQuery.of(context).viewPadding.bottom,
         ),
         color: context.colors.backgroundSecondary.withOpacity(0.1),
         child: Row(

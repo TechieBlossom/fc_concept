@@ -49,7 +49,10 @@ class FilterContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: AppSpacing.space5),
+      padding: const EdgeInsets.only(
+        left: AppSpacing.space5,
+        bottom: AppSpacing.space3,
+      ),
       child: Row(
         mainAxisAlignment:
             hasFilters ? MainAxisAlignment.start : MainAxisAlignment.center,

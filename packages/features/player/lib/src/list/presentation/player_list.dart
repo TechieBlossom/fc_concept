@@ -22,6 +22,7 @@ class PlayerList extends StatefulWidget {
     required this.nextPage,
     this.resultWithSelection = false,
     this.playerListItemBuilder,
+    this.aboveMargin,
   });
 
   final ProcessState processState;
@@ -31,6 +32,7 @@ class PlayerList extends StatefulWidget {
   final VoidCallback? nextPage;
   final bool resultWithSelection;
   final PlayerListItemBuilder? playerListItemBuilder;
+  final double? aboveMargin;
 
   @override
   State<PlayerList> createState() => _PlayerListState();
@@ -86,15 +88,23 @@ class _PlayerListState extends State<PlayerList> {
                   onFavoriteToggle: () {},
                 );
               }
-              return PlayerListItem(
-                player: player,
-                onTap: () => context.read<PlayerListBloc>().add(
-                      PlayerTap(
-                        player: player,
-                        resultWithSelection: widget.resultWithSelection,
+              return Padding(
+                padding: EdgeInsets.only(
+                  top: index == 0
+                      ? MediaQuery.viewInsetsOf(context).top +
+                          (widget.aboveMargin ?? 0)
+                      : 0,
+                ),
+                child: PlayerListItem(
+                  player: player,
+                  onTap: () => context.read<PlayerListBloc>().add(
+                        PlayerTap(
+                          player: player,
+                          resultWithSelection: widget.resultWithSelection,
+                        ),
                       ),
-                    ),
-                onFavoriteToggle: () {},
+                  onFavoriteToggle: () {},
+                ),
               );
             }
 

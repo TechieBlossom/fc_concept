@@ -44,7 +44,8 @@ class VersionsSheet extends StatelessWidget {
               },
             );
           },
-        )
+        ),
+        const SizedBox(height: AppSpacing.space3),
       ].intersperse(const SizedBox(height: AppSpacing.space5)).toList(),
     );
   }
