@@ -118,7 +118,13 @@ class _PlayerListState extends State<PlayerList> {
           },
         );
       case ProcessState.loading:
-        return const LoadingList();
+        return Padding(
+          padding: EdgeInsets.only(
+            top: MediaQuery.viewInsetsOf(context).top +
+                (widget.aboveMargin ?? 0),
+          ),
+          child: const LoadingList(),
+        );
       case ProcessState.empty:
         if (widget.query?.isNotEmpty ?? false) {
           return InfoMessage(

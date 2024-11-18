@@ -29,6 +29,7 @@ class FilterPlayersUseCase {
       positions: filterConfiguration?.positions,
       roles: filterConfiguration?.roles,
       playStyles: filterConfiguration?.playStyles,
+      sortOrder: filterConfiguration?.sortOrder,
     );
   }
 }

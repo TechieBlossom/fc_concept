@@ -71,6 +71,15 @@ class TapPosition extends FilterEvent with TapPositionMappable {
   final Position position;
 }
 
+@MappableClass(discriminatorValue: 'tapSortOrder')
+class TapSortOrder extends FilterEvent with TapSortOrderMappable {
+  TapSortOrder({
+    required this.sortOrder,
+  });
+
+  final SortOrder sortOrder;
+}
+
 @MappableClass(discriminatorValue: 'apply')
 class Apply extends FilterEvent with ApplyMappable {}
 

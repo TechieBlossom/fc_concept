@@ -11,9 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 part 'filter_bloc.mapper.dart';
-
 part 'filter_event.dart';
-
 part 'filter_state.dart';
 
 @injectable
@@ -38,6 +36,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
             playStyles: existingFilters?.playStyles,
             overallRatingRange: existingFilters?.overallRatingRange ??
                 const RangeValues(47, 99),
+            sortOrder: existingFilters?.sortOrder ?? SortOrder.descending,
           ),
         ) {
     on<Init>((event, emit) => _init(emit));
@@ -48,6 +47,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     on<ChangeOverallRating>((event, emit) => _changeOverallRating(event, emit));
     on<TapGender>((event, emit) => _tapGender(event.gender, emit));
     on<TapFoot>((event, emit) => _tapFoot(event.foot, emit));
+    on<TapSortOrder>((event, emit) => _tapSortOrder(event, emit));
     on<TapPosition>((event, emit) => _tapPosition(event.position, emit));
     on<TapPositionGroup>(
       (event, emit) => _tapPositionGroup(
@@ -353,6 +353,18 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     );
   }
 
+  void _tapSortOrder(TapSortOrder event, Emitter<FilterState> emit) {
+    if (state.sortOrder == event.sortOrder) {
+      return;
+    }
+
+    emit(
+      state.copyWith(
+        sortOrder: event.sortOrder,
+      ),
+    );
+  }
+
   void _apply() {
     final filterConfiguration = FilterConfiguration(
       leagues: state.leagues ?? [],
@@ -366,6 +378,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       roles: state.roles ?? [],
       playStyles: state.playStyles ?? [],
       overallRatingRange: state.overallRatingRange,
+      sortOrder: state.sortOrder,
     );
     unawaited(
       _logEventUseCase(
@@ -390,6 +403,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         roles: [],
         playStyles: [],
         overallRatingRange: const RangeValues(47, 99),
+        sortOrder: SortOrder.descending,
       ),
     );
   }

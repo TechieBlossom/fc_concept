@@ -1,13 +1,5 @@
 import 'package:core_analytics/analytics.dart';
-import 'package:core_domain/src/domain/clubs/model/club.dart';
-import 'package:core_domain/src/domain/common/foot.dart';
-import 'package:core_domain/src/domain/common/gender.dart';
-import 'package:core_domain/src/domain/common/nested_filter_layout_type.dart';
-import 'package:core_domain/src/domain/play_styles/model/play_style.dart';
-import 'package:core_domain/src/domain/positions/model/position.dart';
-import 'package:core_domain/src/domain/positions/model/position_group.dart';
-import 'package:core_domain/src/domain/rarity/model/rarity.dart';
-import 'package:core_domain/src/domain/roles/model/role.dart';
+import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +26,7 @@ class FilterConfiguration
     this.positionGroups,
     this.roles,
     this.playStyles = const [],
+    this.sortOrder = SortOrder.descending,
   });
 
   final String searchQuery;
@@ -48,6 +41,7 @@ class FilterConfiguration
   final List<PositionGroup>? positionGroups;
   final List<Role>? roles;
   final List<PlayStyle> playStyles;
+  final SortOrder sortOrder;
 
   bool hasFilters() {
     return (searchQuery.isNotEmpty) ||
@@ -62,42 +56,33 @@ class FilterConfiguration
         (clubs?.isNotEmpty ?? false);
   }
 
-  // @override
-  // Map<String, Object> get analyticsParameters {
-  //   return {'filterConfiguration': toMap()};
-  // }
-
   @override
   Map<String, Object> get analyticsParameters {
     final map = <String, Object>{};
+    map['sortOrder'] = sortOrder.title;
     if (searchQuery.isNotEmpty) {
       map['searchQuery'] = searchQuery;
     }
     if (roles?.isNotEmpty ?? false) {
-      map['roles'] =
-          roles!.map((e) => e.analyticsParameters).join(',');
+      map['roles'] = roles!.map((e) => e.analyticsParameters).join(',');
     }
     if (playStyles.isNotEmpty) {
       map['playStyles'] =
           playStyles.map((e) => e.analyticsParameters).join(',');
     }
     if (leagues?.isNotEmpty ?? false) {
-      map['leagues'] = leagues!
-          .map((e) => {'id': e.eaId, 'name': e.name})
-          .join(',');
+      map['leagues'] =
+          leagues!.map((e) => {'id': e.eaId, 'name': e.name}).join(',');
     }
     if (clubs?.isNotEmpty ?? false) {
-      map['clubs'] =
-          clubs!.map((e) => e.analyticsParameters).join(',');
+      map['clubs'] = clubs!.map((e) => e.analyticsParameters).join(',');
     }
     if (nations?.isNotEmpty ?? false) {
-      map['nations'] = nations!
-          .map((e) => {'id': e.eaId, 'name': e.name})
-          .join(',');
+      map['nations'] =
+          nations!.map((e) => {'id': e.eaId, 'name': e.name}).join(',');
     }
     if (rarities?.isNotEmpty ?? false) {
-      map['rarities'] =
-          rarities!.map((e) => e.analyticsParameters).join(',');
+      map['rarities'] = rarities!.map((e) => e.analyticsParameters).join(',');
     }
     if (overallRatingRange.start != 47 || overallRatingRange.end != 99) {
       map['overallRatingRange'] = {
@@ -106,20 +91,17 @@ class FilterConfiguration
       }.toString();
     }
     if (positions?.isNotEmpty ?? false) {
-      map['positions'] =
-          positions!.map((e) => e.analyticsParameters).join(',');
+      map['positions'] = positions!.map((e) => e.analyticsParameters).join(',');
     }
     if (positionGroups?.isNotEmpty ?? false) {
       map['positionGroups'] =
           positionGroups!.map((e) => e.analyticsParameters).join(',');
     }
     if (genders?.isNotEmpty ?? false) {
-      map['genders'] =
-          genders!.map((e) => e.analyticsParameters).join(',');
+      map['genders'] = genders!.map((e) => e.analyticsParameters).join(',');
     }
     if (foots?.isNotEmpty ?? false) {
-      map['foots'] =
-          foots!.map((e) => e.analyticsParameters).join(',');
+      map['foots'] = foots!.map((e) => e.analyticsParameters).join(',');
     }
 
     return map;

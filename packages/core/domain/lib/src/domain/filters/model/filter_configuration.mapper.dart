@@ -71,6 +71,9 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
   static List<PlayStyle> _$playStyles(FilterConfiguration v) => v.playStyles;
   static const Field<FilterConfiguration, List<PlayStyle>> _f$playStyles =
       Field('playStyles', _$playStyles, opt: true, def: const []);
+  static SortOrder _$sortOrder(FilterConfiguration v) => v.sortOrder;
+  static const Field<FilterConfiguration, SortOrder> _f$sortOrder =
+      Field('sortOrder', _$sortOrder, opt: true, def: SortOrder.descending);
 
   @override
   final MappableFields<FilterConfiguration> fields = const {
@@ -86,6 +89,7 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
     #positionGroups: _f$positionGroups,
     #roles: _f$roles,
     #playStyles: _f$playStyles,
+    #sortOrder: _f$sortOrder,
   };
 
   static FilterConfiguration _instantiate(DecodingData data) {
@@ -101,7 +105,8 @@ class FilterConfigurationMapper extends ClassMapperBase<FilterConfiguration> {
         positions: data.dec(_f$positions),
         positionGroups: data.dec(_f$positionGroups),
         roles: data.dec(_f$roles),
-        playStyles: data.dec(_f$playStyles));
+        playStyles: data.dec(_f$playStyles),
+        sortOrder: data.dec(_f$sortOrder));
   }
 
   @override
@@ -188,7 +193,8 @@ abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
       List<Position>? positions,
       List<PositionGroup>? positionGroups,
       List<Role>? roles,
-      List<PlayStyle>? playStyles});
+      List<PlayStyle>? playStyles,
+      SortOrder? sortOrder});
   FilterConfigurationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -283,7 +289,8 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
           Object? positions = $none,
           Object? positionGroups = $none,
           Object? roles = $none,
-          List<PlayStyle>? playStyles}) =>
+          List<PlayStyle>? playStyles,
+          SortOrder? sortOrder}) =>
       $apply(FieldCopyWithData({
         if (searchQuery != null) #searchQuery: searchQuery,
         if (leagues != $none) #leagues: leagues,
@@ -296,7 +303,8 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
         if (positions != $none) #positions: positions,
         if (positionGroups != $none) #positionGroups: positionGroups,
         if (roles != $none) #roles: roles,
-        if (playStyles != null) #playStyles: playStyles
+        if (playStyles != null) #playStyles: playStyles,
+        if (sortOrder != null) #sortOrder: sortOrder
       }));
   @override
   FilterConfiguration $make(CopyWithData data) => FilterConfiguration(
@@ -312,7 +320,8 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
       positions: data.get(#positions, or: $value.positions),
       positionGroups: data.get(#positionGroups, or: $value.positionGroups),
       roles: data.get(#roles, or: $value.roles),
-      playStyles: data.get(#playStyles, or: $value.playStyles));
+      playStyles: data.get(#playStyles, or: $value.playStyles),
+      sortOrder: data.get(#sortOrder, or: $value.sortOrder));
 
   @override
   FilterConfigurationCopyWith<$R2, FilterConfiguration, $Out2>

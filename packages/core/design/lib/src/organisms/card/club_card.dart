@@ -1,5 +1,5 @@
 import 'package:core_design/src/atoms/atoms.dart';
-import 'package:core_design/src/molecules/image/club_image.dart';
+import 'package:core_design/src/molecules/molecules.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -19,22 +19,43 @@ class ClubCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: margin,
-      child: ListTile(
+      child: InkWell(
         onTap: onTap,
-        tileColor: context.colors.backgroundTertiary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+        borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+        child: Container(
+          padding: const EdgeInsets.all(AppSpacing.space5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
+            color: context.colors.backgroundTertiary,
+          ),
+          child: Row(
+            children: [
+              ClubImage(club: club, size: ClubImageSize.medium),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'CLUB',
+                      style: context.typography.body5.copyWith(
+                        color: context.colors.contentSecondary,
+                      ),
+                    ),
+                    const Space(space: AppSpacing.space2),
+                    Text(
+                      club.name,
+                      style: context.typography.body3.copyWith(
+                        color: context.colors.contentPrimary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Icon(Icons.arrow_forward_ios_rounded, size: 24),
+            ],
+          ),
         ),
-        leading: ClubImage(club: club, size: ClubImageSize.medium),
-        title: Text('CLUB'),
-        titleTextStyle: context.typography.body5.copyWith(
-          color: context.colors.contentSecondary,
-        ),
-        subtitle: Text(club.name),
-        subtitleTextStyle: context.typography.body3.copyWith(
-          color: context.colors.contentPrimary,
-        ),
-        // trailing: Icon(Icons.arrow_forward_ios_rounded, size: 24),
       ),
     );
   }

@@ -14,6 +14,7 @@ class FilterState with FilterStateMappable {
     required this.roles,
     required this.playStyles,
     required this.overallRatingRange,
+    required this.sortOrder,
   });
 
   final List<NestedFilterLayoutType>? leagues;
@@ -27,4 +28,5 @@ class FilterState with FilterStateMappable {
   final List<Role>? roles;
   final List<PlayStyle>? playStyles;
   final RangeValues overallRatingRange;
+  final SortOrder sortOrder;
 }

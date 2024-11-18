@@ -285,6 +285,7 @@ abstract mixin class PlayerRepositoryImpl
     List<Position>? positions,
     List<Role>? roles,
     List<PlayStyle>? playStyles,
+    SortOrder? sortOrder,
   }) async {
     final start = page * _itemsPerPage;
     final end = ((page + 1) * _itemsPerPage) - 1;
@@ -397,7 +398,10 @@ abstract mixin class PlayerRepositoryImpl
       }
 
       final playersResponse = await postgresFilterBuilder
-          .order(TablePlayer.overall, ascending: false)
+          .order(
+            TablePlayer.overall,
+            ascending: sortOrder == SortOrder.ascending,
+          )
           .order(TablePlayer.commonName, ascending: true)
           .order(TablePlayer.createdAt, ascending: false)
           .range(start, end);

@@ -25,6 +25,7 @@ class FilterEventMapper extends ClassMapperBase<FilterEvent> {
       TapFootMapper.ensureInitialized();
       TapPositionGroupMapper.ensureInitialized();
       TapPositionMapper.ensureInitialized();
+      TapSortOrderMapper.ensureInitialized();
       ApplyMapper.ensureInitialized();
       ClearMapper.ensureInitialized();
     }
@@ -1382,6 +1383,120 @@ class _TapPositionCopyWithImpl<$R, $Out>
       _TapPositionCopyWithImpl($value, $cast, t);
 }
 
+class TapSortOrderMapper extends SubClassMapperBase<TapSortOrder> {
+  TapSortOrderMapper._();
+
+  static TapSortOrderMapper? _instance;
+  static TapSortOrderMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = TapSortOrderMapper._());
+      FilterEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'TapSortOrder';
+
+  static SortOrder _$sortOrder(TapSortOrder v) => v.sortOrder;
+  static const Field<TapSortOrder, SortOrder> _f$sortOrder =
+      Field('sortOrder', _$sortOrder);
+
+  @override
+  final MappableFields<TapSortOrder> fields = const {
+    #sortOrder: _f$sortOrder,
+  };
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'tapSortOrder';
+  @override
+  late final ClassMapperBase superMapper =
+      FilterEventMapper.ensureInitialized();
+
+  static TapSortOrder _instantiate(DecodingData data) {
+    return TapSortOrder(sortOrder: data.dec(_f$sortOrder));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static TapSortOrder fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<TapSortOrder>(map);
+  }
+
+  static TapSortOrder fromJson(String json) {
+    return ensureInitialized().decodeJson<TapSortOrder>(json);
+  }
+}
+
+mixin TapSortOrderMappable {
+  String toJson() {
+    return TapSortOrderMapper.ensureInitialized()
+        .encodeJson<TapSortOrder>(this as TapSortOrder);
+  }
+
+  Map<String, dynamic> toMap() {
+    return TapSortOrderMapper.ensureInitialized()
+        .encodeMap<TapSortOrder>(this as TapSortOrder);
+  }
+
+  TapSortOrderCopyWith<TapSortOrder, TapSortOrder, TapSortOrder> get copyWith =>
+      _TapSortOrderCopyWithImpl(this as TapSortOrder, $identity, $identity);
+  @override
+  String toString() {
+    return TapSortOrderMapper.ensureInitialized()
+        .stringifyValue(this as TapSortOrder);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return TapSortOrderMapper.ensureInitialized()
+        .equalsValue(this as TapSortOrder, other);
+  }
+
+  @override
+  int get hashCode {
+    return TapSortOrderMapper.ensureInitialized()
+        .hashValue(this as TapSortOrder);
+  }
+}
+
+extension TapSortOrderValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, TapSortOrder, $Out> {
+  TapSortOrderCopyWith<$R, TapSortOrder, $Out> get $asTapSortOrder =>
+      $base.as((v, t, t2) => _TapSortOrderCopyWithImpl(v, t, t2));
+}
+
+abstract class TapSortOrderCopyWith<$R, $In extends TapSortOrder, $Out>
+    implements FilterEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call({SortOrder? sortOrder});
+  TapSortOrderCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _TapSortOrderCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, TapSortOrder, $Out>
+    implements TapSortOrderCopyWith<$R, TapSortOrder, $Out> {
+  _TapSortOrderCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<TapSortOrder> $mapper =
+      TapSortOrderMapper.ensureInitialized();
+  @override
+  $R call({SortOrder? sortOrder}) =>
+      $apply(FieldCopyWithData({if (sortOrder != null) #sortOrder: sortOrder}));
+  @override
+  TapSortOrder $make(CopyWithData data) =>
+      TapSortOrder(sortOrder: data.get(#sortOrder, or: $value.sortOrder));
+
+  @override
+  TapSortOrderCopyWith<$R2, TapSortOrder, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _TapSortOrderCopyWithImpl($value, $cast, t);
+}
+
 class ApplyMapper extends SubClassMapperBase<Apply> {
   ApplyMapper._();
 
@@ -1633,6 +1748,9 @@ class FilterStateMapper extends ClassMapperBase<FilterState> {
       v.overallRatingRange;
   static const Field<FilterState, RangeValues> _f$overallRatingRange =
       Field('overallRatingRange', _$overallRatingRange);
+  static SortOrder _$sortOrder(FilterState v) => v.sortOrder;
+  static const Field<FilterState, SortOrder> _f$sortOrder =
+      Field('sortOrder', _$sortOrder);
 
   @override
   final MappableFields<FilterState> fields = const {
@@ -1647,6 +1765,7 @@ class FilterStateMapper extends ClassMapperBase<FilterState> {
     #roles: _f$roles,
     #playStyles: _f$playStyles,
     #overallRatingRange: _f$overallRatingRange,
+    #sortOrder: _f$sortOrder,
   };
 
   static FilterState _instantiate(DecodingData data) {
@@ -1661,7 +1780,8 @@ class FilterStateMapper extends ClassMapperBase<FilterState> {
         positionGroups: data.dec(_f$positionGroups),
         roles: data.dec(_f$roles),
         playStyles: data.dec(_f$playStyles),
-        overallRatingRange: data.dec(_f$overallRatingRange));
+        overallRatingRange: data.dec(_f$overallRatingRange),
+        sortOrder: data.dec(_f$sortOrder));
   }
 
   @override
@@ -1743,7 +1863,8 @@ abstract class FilterStateCopyWith<$R, $In extends FilterState, $Out>
       List<PositionGroup>? positionGroups,
       List<Role>? roles,
       List<PlayStyle>? playStyles,
-      RangeValues? overallRatingRange});
+      RangeValues? overallRatingRange,
+      SortOrder? sortOrder});
   FilterStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -1838,7 +1959,8 @@ class _FilterStateCopyWithImpl<$R, $Out>
           Object? positionGroups = $none,
           Object? roles = $none,
           Object? playStyles = $none,
-          RangeValues? overallRatingRange}) =>
+          RangeValues? overallRatingRange,
+          SortOrder? sortOrder}) =>
       $apply(FieldCopyWithData({
         if (leagues != $none) #leagues: leagues,
         if (nations != $none) #nations: nations,
@@ -1850,7 +1972,8 @@ class _FilterStateCopyWithImpl<$R, $Out>
         if (positionGroups != $none) #positionGroups: positionGroups,
         if (roles != $none) #roles: roles,
         if (playStyles != $none) #playStyles: playStyles,
-        if (overallRatingRange != null) #overallRatingRange: overallRatingRange
+        if (overallRatingRange != null) #overallRatingRange: overallRatingRange,
+        if (sortOrder != null) #sortOrder: sortOrder
       }));
   @override
   FilterState $make(CopyWithData data) => FilterState(
@@ -1865,7 +1988,8 @@ class _FilterStateCopyWithImpl<$R, $Out>
       roles: data.get(#roles, or: $value.roles),
       playStyles: data.get(#playStyles, or: $value.playStyles),
       overallRatingRange:
-          data.get(#overallRatingRange, or: $value.overallRatingRange));
+          data.get(#overallRatingRange, or: $value.overallRatingRange),
+      sortOrder: data.get(#sortOrder, or: $value.sortOrder));
 
   @override
   FilterStateCopyWith<$R2, FilterState, $Out2> $chain<$R2, $Out2>(

@@ -58,6 +58,7 @@ export 'package:core_domain/src/domain/rarity_squads/use_case/get_unique_rarity_
 export 'package:core_domain/src/domain/roles/model/role.dart';
 export 'package:core_domain/src/domain/roles/use_case/get_all_roles_use_case.dart';
 export 'package:core_domain/src/domain/roles/use_case/get_roles_by_ids_use_case.dart';
+export 'package:core_domain/src/domain/sort/model/sort_order.dart';
 export 'package:core_domain/src/presentation/domain_colors.dart';
 export 'package:core_domain/src/presentation/metadata/metadata_bloc.dart';
 export 'package:core_domain/src/presentation/process_state.dart';
