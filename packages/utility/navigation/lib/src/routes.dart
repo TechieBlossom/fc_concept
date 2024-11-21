@@ -12,6 +12,7 @@ abstract class AppNavigator {
 
 abstract class DashboardRoutes {
   static const pageDashboard = '/dashboard';
+  static const pageIndexDetail = '/index-detail';
 }
 
 abstract class PlayerRoutes {
@@ -28,6 +29,8 @@ abstract class CompareRoutes {
 
 abstract class MenuRoutes {
   static const pageMenu = '/menu';
+  static const pageAboutUs = '/about-us';
+  static const pagePrivacyPolicy = '/privacy-policy';
 }
 
 abstract class AuthRoutes {

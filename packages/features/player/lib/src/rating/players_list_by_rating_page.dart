@@ -54,7 +54,7 @@ class PlayersListByRatingPage extends StatelessWidget {
                             space: AppSpacing.space2,
                             orientation: Axis.horizontal,
                           ),
-                          for (var i = 95; i >= 50; i--)
+                          for (var i = 99; i >= 50; i--)
                             Pill<int>(
                               pillItem: PillItem(
                                 data: i,

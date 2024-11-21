@@ -32,6 +32,12 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     on<CheapestByRatingTap>(
       (_, __) async => _menuNavigator.goToCheapestByRating(),
     );
+    on<PrivacyPolicyTap>(
+      (_, __) async => _menuNavigator.goToPrivacyPolicy(),
+    );
+    on<AboutUsTap>(
+      (_, __) async => _menuNavigator.goToAboutUs(),
+    );
 
     add(Init());
   }

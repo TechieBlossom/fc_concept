@@ -111,9 +111,9 @@ class _PlayerListState extends State<PlayerList> {
             return const SizedBox.shrink();
           },
           separatorBuilder: (context, index) {
-            if (index != 0 && index % 12 == 0) {
-              return const AppBannerAd();
-            }
+            // if (index != 0 && index % 12 == 0) {
+            //   return const AppBannerAd();
+            // }
             return const SizedBox(height: 0);
           },
         );

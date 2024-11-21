@@ -20,6 +20,8 @@ class MenuEventMapper extends ClassMapperBase<MenuEvent> {
       PopularTapMapper.ensureInitialized();
       LogoutTapMapper.ensureInitialized();
       CheapestByRatingTapMapper.ensureInitialized();
+      PrivacyPolicyTapMapper.ensureInitialized();
+      AboutUsTapMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -781,6 +783,218 @@ class _CheapestByRatingTapCopyWithImpl<$R, $Out>
   CheapestByRatingTapCopyWith<$R2, CheapestByRatingTap, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
           _CheapestByRatingTapCopyWithImpl($value, $cast, t);
+}
+
+class PrivacyPolicyTapMapper extends SubClassMapperBase<PrivacyPolicyTap> {
+  PrivacyPolicyTapMapper._();
+
+  static PrivacyPolicyTapMapper? _instance;
+  static PrivacyPolicyTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = PrivacyPolicyTapMapper._());
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'PrivacyPolicyTap';
+
+  @override
+  final MappableFields<PrivacyPolicyTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'MenuEvent';
+  @override
+  final dynamic discriminatorValue = 'privacyPolicyTap';
+  @override
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
+
+  static PrivacyPolicyTap _instantiate(DecodingData data) {
+    return PrivacyPolicyTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static PrivacyPolicyTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<PrivacyPolicyTap>(map);
+  }
+
+  static PrivacyPolicyTap fromJson(String json) {
+    return ensureInitialized().decodeJson<PrivacyPolicyTap>(json);
+  }
+}
+
+mixin PrivacyPolicyTapMappable {
+  String toJson() {
+    return PrivacyPolicyTapMapper.ensureInitialized()
+        .encodeJson<PrivacyPolicyTap>(this as PrivacyPolicyTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return PrivacyPolicyTapMapper.ensureInitialized()
+        .encodeMap<PrivacyPolicyTap>(this as PrivacyPolicyTap);
+  }
+
+  PrivacyPolicyTapCopyWith<PrivacyPolicyTap, PrivacyPolicyTap, PrivacyPolicyTap>
+      get copyWith => _PrivacyPolicyTapCopyWithImpl(
+          this as PrivacyPolicyTap, $identity, $identity);
+  @override
+  String toString() {
+    return PrivacyPolicyTapMapper.ensureInitialized()
+        .stringifyValue(this as PrivacyPolicyTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return PrivacyPolicyTapMapper.ensureInitialized()
+        .equalsValue(this as PrivacyPolicyTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return PrivacyPolicyTapMapper.ensureInitialized()
+        .hashValue(this as PrivacyPolicyTap);
+  }
+}
+
+extension PrivacyPolicyTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, PrivacyPolicyTap, $Out> {
+  PrivacyPolicyTapCopyWith<$R, PrivacyPolicyTap, $Out>
+      get $asPrivacyPolicyTap =>
+          $base.as((v, t, t2) => _PrivacyPolicyTapCopyWithImpl(v, t, t2));
+}
+
+abstract class PrivacyPolicyTapCopyWith<$R, $In extends PrivacyPolicyTap, $Out>
+    implements MenuEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  PrivacyPolicyTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _PrivacyPolicyTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, PrivacyPolicyTap, $Out>
+    implements PrivacyPolicyTapCopyWith<$R, PrivacyPolicyTap, $Out> {
+  _PrivacyPolicyTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<PrivacyPolicyTap> $mapper =
+      PrivacyPolicyTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  PrivacyPolicyTap $make(CopyWithData data) => PrivacyPolicyTap();
+
+  @override
+  PrivacyPolicyTapCopyWith<$R2, PrivacyPolicyTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _PrivacyPolicyTapCopyWithImpl($value, $cast, t);
+}
+
+class AboutUsTapMapper extends SubClassMapperBase<AboutUsTap> {
+  AboutUsTapMapper._();
+
+  static AboutUsTapMapper? _instance;
+  static AboutUsTapMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = AboutUsTapMapper._());
+      MenuEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'AboutUsTap';
+
+  @override
+  final MappableFields<AboutUsTap> fields = const {};
+
+  @override
+  final String discriminatorKey = 'MenuEvent';
+  @override
+  final dynamic discriminatorValue = 'aboutUsTap';
+  @override
+  late final ClassMapperBase superMapper = MenuEventMapper.ensureInitialized();
+
+  static AboutUsTap _instantiate(DecodingData data) {
+    return AboutUsTap();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static AboutUsTap fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<AboutUsTap>(map);
+  }
+
+  static AboutUsTap fromJson(String json) {
+    return ensureInitialized().decodeJson<AboutUsTap>(json);
+  }
+}
+
+mixin AboutUsTapMappable {
+  String toJson() {
+    return AboutUsTapMapper.ensureInitialized()
+        .encodeJson<AboutUsTap>(this as AboutUsTap);
+  }
+
+  Map<String, dynamic> toMap() {
+    return AboutUsTapMapper.ensureInitialized()
+        .encodeMap<AboutUsTap>(this as AboutUsTap);
+  }
+
+  AboutUsTapCopyWith<AboutUsTap, AboutUsTap, AboutUsTap> get copyWith =>
+      _AboutUsTapCopyWithImpl(this as AboutUsTap, $identity, $identity);
+  @override
+  String toString() {
+    return AboutUsTapMapper.ensureInitialized()
+        .stringifyValue(this as AboutUsTap);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return AboutUsTapMapper.ensureInitialized()
+        .equalsValue(this as AboutUsTap, other);
+  }
+
+  @override
+  int get hashCode {
+    return AboutUsTapMapper.ensureInitialized().hashValue(this as AboutUsTap);
+  }
+}
+
+extension AboutUsTapValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, AboutUsTap, $Out> {
+  AboutUsTapCopyWith<$R, AboutUsTap, $Out> get $asAboutUsTap =>
+      $base.as((v, t, t2) => _AboutUsTapCopyWithImpl(v, t, t2));
+}
+
+abstract class AboutUsTapCopyWith<$R, $In extends AboutUsTap, $Out>
+    implements MenuEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  AboutUsTapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _AboutUsTapCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, AboutUsTap, $Out>
+    implements AboutUsTapCopyWith<$R, AboutUsTap, $Out> {
+  _AboutUsTapCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<AboutUsTap> $mapper =
+      AboutUsTapMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  AboutUsTap $make(CopyWithData data) => AboutUsTap();
+
+  @override
+  AboutUsTapCopyWith<$R2, AboutUsTap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _AboutUsTapCopyWithImpl($value, $cast, t);
 }
 
 class MenuStateMapper extends ClassMapperBase<MenuState> {

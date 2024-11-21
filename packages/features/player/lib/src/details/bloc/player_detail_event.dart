@@ -33,6 +33,10 @@ class UpdateChemistryStyle extends PlayerDetailEvent
   final ChemistryStyle? chemistryStyle;
 }
 
+@MappableClass(discriminatorValue: 'clearChemistryStyle')
+class ClearChemistryStyle extends PlayerDetailEvent
+    with ClearChemistryStyleMappable {}
+
 @MappableClass(discriminatorValue: 'loadRoles')
 class LoadRoles extends PlayerDetailEvent with LoadRolesMappable {}
 
@@ -88,7 +92,7 @@ class AccelerateTap extends PlayerDetailEvent with AccelerateTapMappable {
 }
 
 @MappableClass(discriminatorValue: 'chemistryTap')
-class ChemistryTap extends PlayerDetailEvent with ChemistryTapMappable { }
+class ChemistryTap extends PlayerDetailEvent with ChemistryTapMappable {}
 
 @MappableClass(discriminatorValue: 'chemistryApply')
 class ChemistryApply extends PlayerDetailEvent with ChemistryApplyMappable {
@@ -100,4 +104,3 @@ class ChemistryApply extends PlayerDetailEvent with ChemistryApplyMappable {
   final ChemistryStyle chemistryStyle;
   final int chemistryModifier;
 }
-

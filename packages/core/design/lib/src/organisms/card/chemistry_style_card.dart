@@ -14,6 +14,7 @@ class ChemistryStyleCard extends StatelessWidget {
     required this.selectedChemistryModifier,
     this.selectedChemistryStyle,
     required this.onResult,
+    required this.onClear,
     this.onTap,
   });
 
@@ -21,6 +22,7 @@ class ChemistryStyleCard extends StatelessWidget {
   final int? selectedChemistryModifier;
   final ChemistryStyle? selectedChemistryStyle;
   final Function(int?, ChemistryStyle?) onResult;
+  final VoidCallback onClear;
   final VoidCallback? onTap;
 
   @override
@@ -46,6 +48,7 @@ class ChemistryStyleCard extends StatelessWidget {
           final result = await showAppBottomSheet(
             context,
             child: ChemistrySelectionSheet(
+              onClear: onClear,
               chemistryStyles: allChemistryStyles,
               selectedChemistryModifier: selectedChemistryModifier,
               selectedChemistryStyle: selectedChemistryStyle,

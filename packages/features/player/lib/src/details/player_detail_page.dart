@@ -54,130 +54,141 @@ class PlayerDetailPage extends StatelessWidget {
                   : null,
             ),
             body: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Space(space: AppSpacing.space4),
-                  PlayerHeader(
-                    player: state.player,
-                    playerPrice: state.playerPrice,
-                    priceProcessState: state.priceProcessState,
-                    alternativePositions: state.alternativePositions,
-                  ),
-                  if (state.playerRoles?.isNotEmpty ?? false)
-                    Padding(
-                      padding: const EdgeInsetsDirectional.only(
-                        start: AppSpacing.space4,
-                        end: AppSpacing.space4,
-                        bottom: AppSpacing.space4,
-                      ),
-                      child: RoleLayout(
-                        roles: state.playerRoles!,
-                        onRoleTap: (role) =>
-                            context.read<PlayerDetailBloc>().add(
-                                  RoleTap(role: role),
-                                ),
-                      ),
+              child: SafeArea(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Space(space: AppSpacing.space4),
+                    PlayerHeader(
+                      player: state.player,
+                      playerPrice: state.playerPrice,
+                      priceProcessState: state.priceProcessState,
+                      alternativePositions: state.alternativePositions,
                     ),
-                  if (state.playerPlayStyles?.isNotEmpty ?? false)
-                    Padding(
-                      padding: const EdgeInsetsDirectional.only(
-                        start: AppSpacing.space4,
-                        end: AppSpacing.space4,
-                        bottom: AppSpacing.space6,
-                      ),
-                      child: PlayStylesLayout(
-                        playStyles: state.playerPlayStyles!,
-                        playStylesPlus: state.playerPlayStylesPlus!,
-                        onPlayStyleTap: (playStyle) =>
-                            context.read<PlayerDetailBloc>().add(
-                                  PlayStyleTap(playStyle: playStyle),
-                                ),
-                      ),
-                    ),
-                  ChemistryStyleCard(
-                    allChemistryStyles: player.isGk
-                        ? chemistryStyles.where((e) => e.isGkStyle).toList()
-                        : chemistryStyles.where((e) => !e.isGkStyle).toList(),
-                    selectedChemistryModifier: state.selectedChemistryModifier,
-                    selectedChemistryStyle: state.selectedChemistryStyle,
-                    onResult: (modifier, style) =>
-                        context.read<PlayerDetailBloc>().add(
-                              UpdateChemistryStyle(
-                                chemistryModifier: modifier,
-                                chemistryStyle: style,
-                              ),
-                            ),
-                    onTap: () => context.read<PlayerDetailBloc>().add(
-                          ChemistryTap(),
-                        ),
-                  ),
-                  if (state.player.attributeAcceleration != null)
-                    if (player.isGk)
+                    if (state.playerRoles?.isNotEmpty ?? false)
                       Padding(
-                        padding: const EdgeInsetsDirectional.symmetric(
-                          horizontal: AppSpacing.space4,
+                        padding: const EdgeInsetsDirectional.only(
+                          start: AppSpacing.space4,
+                          end: AppSpacing.space4,
+                          bottom: AppSpacing.space4,
                         ),
-                        child: GkAttributesLayout(
-                          player: state.player,
-                          chemistryBoost: state.normalizedChemistryBoost,
-                          chemistryBoostFaceValues:
-                              state.chemistryBoostFaceValues,
-                          chemistryStyleAccelerate:
-                              state.chemistryStyleAccelerate,
-                        ),
-                      )
-                    else
-                      Padding(
-                        padding: const EdgeInsetsDirectional.symmetric(
-                          horizontal: AppSpacing.space4,
-                        ),
-                        child: AttributesLayout(
-                          player: state.player,
-                          chemistryBoost: state.normalizedChemistryBoost,
-                          chemistryBoostFaceValues:
-                              state.chemistryBoostFaceValues,
-                          chemistryStyleAccelerate:
-                              state.chemistryStyleAccelerate,
-                          onAccelerateTap: (accelerateType) =>
+                        child: RoleLayout(
+                          roles: state.playerRoles!,
+                          onRoleTap: (role) =>
                               context.read<PlayerDetailBloc>().add(
-                                    AccelerateTap(
-                                      accelerateType: accelerateType,
-                                    ),
+                                    RoleTap(role: role),
                                   ),
                         ),
                       ),
-                  if (state.player.league != null)
-                    LeagueCard(
-                      margin: const EdgeInsets.only(
-                        left: AppSpacing.space3,
-                        right: AppSpacing.space3,
-                        bottom: AppSpacing.space3,
-                        top: AppSpacing.space5,
+                    if (state.playerPlayStyles?.isNotEmpty ?? false)
+                      Padding(
+                        padding: const EdgeInsetsDirectional.only(
+                          start: AppSpacing.space4,
+                          end: AppSpacing.space4,
+                          bottom: AppSpacing.space6,
+                        ),
+                        child: PlayStylesLayout(
+                          playStyles: state.playerPlayStyles!,
+                          playStylesPlus: state.playerPlayStylesPlus!,
+                          onPlayStyleTap: (playStyle) =>
+                              context.read<PlayerDetailBloc>().add(
+                                    PlayStyleTap(playStyle: playStyle),
+                                  ),
+                        ),
                       ),
-                      league: state.player.league!,
-                      onTap: () {},
+                    ChemistryStyleCard(
+                      allChemistryStyles: player.isGk
+                          ? chemistryStyles.where((e) => e.isGkStyle).toList()
+                          : chemistryStyles.where((e) => !e.isGkStyle).toList(),
+                      selectedChemistryModifier:
+                          state.selectedChemistryModifier,
+                      selectedChemistryStyle: state.selectedChemistryStyle,
+                      onResult: (modifier, style) =>
+                          context.read<PlayerDetailBloc>().add(
+                                UpdateChemistryStyle(
+                                  chemistryModifier: modifier,
+                                  chemistryStyle: style,
+                                ),
+                              ),
+                      onClear: () => context.read<PlayerDetailBloc>().add(
+                            ClearChemistryStyle(),
+                          ),
+                      onTap: () => context.read<PlayerDetailBloc>().add(
+                            ChemistryTap(),
+                          ),
                     ),
-                  if (state.player.club != null)
-                    ClubCard(
-                      margin: const EdgeInsets.only(
-                        left: AppSpacing.space3,
-                        right: AppSpacing.space3,
-                        bottom: AppSpacing.space3,
+                    if (state.player.attributeAcceleration != null)
+                      if (player.isGk)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.symmetric(
+                            horizontal: AppSpacing.space4,
+                          ),
+                          child: GkAttributesLayout(
+                            player: state.player,
+                            chemistryBoost: state.normalizedChemistryBoost,
+                            chemistryBoostFaceValues:
+                                state.chemistryBoostFaceValues,
+                            chemistryStyleAccelerate:
+                                state.chemistryStyleAccelerate,
+                          ),
+                        )
+                      else
+                        Padding(
+                          padding: const EdgeInsetsDirectional.symmetric(
+                            horizontal: AppSpacing.space4,
+                          ),
+                          child: AttributesLayout(
+                            player: state.player,
+                            chemistryBoost: state.normalizedChemistryBoost,
+                            chemistryBoostFaceValues:
+                                state.chemistryBoostFaceValues,
+                            chemistryStyleAccelerate:
+                                state.chemistryStyleAccelerate,
+                            onAccelerateTap: (accelerateType) =>
+                                context.read<PlayerDetailBloc>().add(
+                                      AccelerateTap(
+                                        accelerateType: accelerateType,
+                                      ),
+                                    ),
+                          ),
+                        ),
+                    if (state.player.league != null)
+                      LeagueCard(
+                        margin: const EdgeInsets.only(
+                          left: AppSpacing.space3,
+                          right: AppSpacing.space3,
+                          bottom: AppSpacing.space3,
+                          top: AppSpacing.space5,
+                        ),
+                        league: state.player.league!,
+                        onTap: () {},
                       ),
-                      club: state.player.club!,
-                      onTap: () {},
-                    ),
-                  if (state.player.nation != null)
-                    NationCard(
-                      margin: const EdgeInsets.only(
-                        left: AppSpacing.space3,
-                        right: AppSpacing.space3,
+                    if (state.player.club != null)
+                      ClubCard(
+                        margin: const EdgeInsets.only(
+                          left: AppSpacing.space3,
+                          right: AppSpacing.space3,
+                          bottom: AppSpacing.space3,
+                        ),
+                        club: state.player.club!,
+                        onTap: () {},
                       ),
-                      nation: state.player.nation!,
-                      onTap: () {},
+                    if (state.player.nation != null)
+                      NationCard(
+                        margin: const EdgeInsets.only(
+                          left: AppSpacing.space3,
+                          right: AppSpacing.space3,
+                        ),
+                        nation: state.player.nation!,
+                        onTap: () {},
+                      ),
+                    Space(
+                      space: Theme.of(context).platform == TargetPlatform.iOS
+                          ? 0
+                          : AppSpacing.space5,
                     ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

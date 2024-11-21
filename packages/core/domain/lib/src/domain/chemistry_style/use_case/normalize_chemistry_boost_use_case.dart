@@ -10,141 +10,144 @@ class NormalizeChemistryBoostUseCase {
     Player player,
     ChemistryModifier? chemistryBoost,
   ) {
+    if (chemistryBoost == null) {
+      return null;
+    }
     return ChemistryModifier(
       attributeAcceleration: _min(
-        chemistryBoost?.attributeAcceleration,
+        chemistryBoost.attributeAcceleration,
         player.attributeAcceleration!,
       ),
       attributeAggression: _min(
-        chemistryBoost?.attributeAggression,
+        chemistryBoost.attributeAggression,
         player.attributeAggression!,
       ),
       attributeAgility: _min(
-        chemistryBoost?.attributeAgility,
+        chemistryBoost.attributeAgility,
         player.attributeAgility!,
       ),
       attributeBalance: _min(
-        chemistryBoost?.attributeBalance,
+        chemistryBoost.attributeBalance,
         player.attributeBalance!,
       ),
       attributeBallControl: _min(
-        chemistryBoost?.attributeBallControl,
+        chemistryBoost.attributeBallControl,
         player.attributeBallControl!,
       ),
       attributeComposure: _min(
-        chemistryBoost?.attributeComposure,
+        chemistryBoost.attributeComposure,
         player.attributeComposure!,
       ),
       attributeCrossing: _min(
-        chemistryBoost?.attributeCrossing,
+        chemistryBoost.attributeCrossing,
         player.attributeCrossing!,
       ),
       attributeCurve: _min(
-        chemistryBoost?.attributeCurve,
+        chemistryBoost.attributeCurve,
         player.attributeCurve!,
       ),
       attributeDefensiveAwareness: _min(
-        chemistryBoost?.attributeDefensiveAwareness,
+        chemistryBoost.attributeDefensiveAwareness,
         player.attributeDefensiveAwareness!,
       ),
       attributeDribbling: _min(
-        chemistryBoost?.attributeDribbling,
+        chemistryBoost.attributeDribbling,
         player.attributeDribbling!,
       ),
       attributeFinishing: _min(
-        chemistryBoost?.attributeFinishing,
+        chemistryBoost.attributeFinishing,
         player.attributeFinishing!,
       ),
       attributeFkAccuracy: _min(
-        chemistryBoost?.attributeFkAccuracy,
+        chemistryBoost.attributeFkAccuracy,
         player.attributeFkAccuracy!,
       ),
       attributeHeadingAccuracy: _min(
-        chemistryBoost?.attributeHeadingAccuracy,
+        chemistryBoost.attributeHeadingAccuracy,
         player.attributeHeadingAccuracy!,
       ),
       attributeInterceptions: _min(
-        chemistryBoost?.attributeInterceptions,
+        chemistryBoost.attributeInterceptions,
         player.attributeInterceptions!,
       ),
       attributeJumping: _min(
-        chemistryBoost?.attributeJumping,
+        chemistryBoost.attributeJumping,
         player.attributeJumping!,
       ),
       attributeLongPassing: _min(
-        chemistryBoost?.attributeLongPassing,
+        chemistryBoost.attributeLongPassing,
         player.attributeLongPassing!,
       ),
       attributeLongShots: _min(
-        chemistryBoost?.attributeLongShots,
+        chemistryBoost.attributeLongShots,
         player.attributeLongShots!,
       ),
       attributePenalties: _min(
-        chemistryBoost?.attributePenalties,
+        chemistryBoost.attributePenalties,
         player.attributePenalties!,
       ),
       attributePositioning: _min(
-        chemistryBoost?.attributePositioning,
+        chemistryBoost.attributePositioning,
         player.attributePositioning!,
       ),
       attributeReactions: _min(
-        chemistryBoost?.attributeReactions,
+        chemistryBoost.attributeReactions,
         player.attributeReactions!,
       ),
       attributeShortPassing: _min(
-        chemistryBoost?.attributeShortPassing,
+        chemistryBoost.attributeShortPassing,
         player.attributeShortPassing!,
       ),
       attributeShotPower: _min(
-        chemistryBoost?.attributeShotPower,
+        chemistryBoost.attributeShotPower,
         player.attributeShotPower!,
       ),
       attributeSlidingTackle: _min(
-        chemistryBoost?.attributeSlidingTackle,
+        chemistryBoost.attributeSlidingTackle,
         player.attributeSlidingTackle!,
       ),
       attributeSprintSpeed: _min(
-        chemistryBoost?.attributeSprintSpeed,
+        chemistryBoost.attributeSprintSpeed,
         player.attributeSprintSpeed!,
       ),
       attributeStamina: _min(
-        chemistryBoost?.attributeStamina,
+        chemistryBoost.attributeStamina,
         player.attributeStamina!,
       ),
       attributeStandingTackle: _min(
-        chemistryBoost?.attributeStandingTackle,
+        chemistryBoost.attributeStandingTackle,
         player.attributeStandingTackle!,
       ),
       attributeStrength: _min(
-        chemistryBoost?.attributeStrength,
+        chemistryBoost.attributeStrength,
         player.attributeStrength!,
       ),
       attributeVision: _min(
-        chemistryBoost?.attributeVision,
+        chemistryBoost.attributeVision,
         player.attributeVision!,
       ),
       attributeVolleys: _min(
-        chemistryBoost?.attributeVolleys,
+        chemistryBoost.attributeVolleys,
         player.attributeVolleys!,
       ),
       attributeGkDiving: _min(
-        chemistryBoost?.attributeGkDiving,
+        chemistryBoost.attributeGkDiving,
         player.attributeGkDiving!,
       ),
       attributeGkHandling: _min(
-        chemistryBoost?.attributeGkHandling,
+        chemistryBoost.attributeGkHandling,
         player.attributeGkHandling!,
       ),
       attributeGkKicking: _min(
-        chemistryBoost?.attributeGkKicking,
+        chemistryBoost.attributeGkKicking,
         player.attributeGkKicking!,
       ),
       attributeGkPositioning: _min(
-        chemistryBoost?.attributeGkPositioning,
+        chemistryBoost.attributeGkPositioning,
         player.attributeGkPositioning!,
       ),
       attributeGkReflexes: _min(
-        chemistryBoost?.attributeGkReflexes,
+        chemistryBoost.attributeGkReflexes,
         player.attributeGkReflexes!,
       ),
     );

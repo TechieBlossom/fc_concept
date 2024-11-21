@@ -23,3 +23,9 @@ class LogoutTap extends MenuEvent with LogoutTapMappable {}
 
 @MappableClass(discriminatorValue: 'cheapestByRatingTap')
 class CheapestByRatingTap extends MenuEvent with CheapestByRatingTapMappable {}
+
+@MappableClass(discriminatorValue: 'privacyPolicyTap')
+class PrivacyPolicyTap extends MenuEvent with PrivacyPolicyTapMappable {}
+
+@MappableClass(discriminatorValue: 'aboutUsTap')
+class AboutUsTap extends MenuEvent with AboutUsTapMappable {}

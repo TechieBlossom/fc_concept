@@ -65,6 +65,7 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     on<UpdateChemistryStyle>(
       (event, emit) => _onUpdateChemistryStyle(event, emit),
     );
+    on<ClearChemistryStyle>((_, emit) => _onClearChemistryStyle(emit));
     on<RoleTap>((_, __) => {});
     on<PlayStyleTap>((_, __) => {});
     on<AccelerateTap>((_, __) => {});
@@ -258,6 +259,19 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
       state.copyWith(
         selectedChemistryModifier: event.chemistryModifier,
         selectedChemistryStyle: event.chemistryStyle,
+      ),
+    );
+    if (event.chemistryModifier != null && event.chemistryStyle != null) {
+      add(NormalizeChemistryBoost());
+    }
+  }
+
+  //TODO: Why on clearing Mathys Tel still has +1 Dribbling
+  void _onClearChemistryStyle(Emitter<PlayerDetailState> emit) {
+    emit(
+      state.copyWith(
+        selectedChemistryModifier: null,
+        selectedChemistryStyle: null,
       ),
     );
     add(NormalizeChemistryBoost());

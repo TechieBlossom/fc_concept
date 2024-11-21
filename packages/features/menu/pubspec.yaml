@@ -22,6 +22,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
+  flutter_markdown: ^0.7.4+2
   injectable: ^2.3.2
   utility_di:
     path: ../../../packages/utility/di

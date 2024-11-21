@@ -9,10 +9,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:core_analytics/analytics.dart' as _i863;
+import 'package:core_design/design.dart' as _i102;
 import 'package:core_domain/domain.dart' as _i913;
 import 'package:feature_dashboard/dashboard.dart' as _i657;
 import 'package:feature_dashboard/src/dashboard/bloc/dashboard_bloc.dart'
     as _i432;
+import 'package:feature_dashboard/src/index/bloc/index_bloc.dart' as _i283;
 import 'package:feature_dashboard/src/navigation/navigator.dart' as _i577;
 import 'package:feature_dashboard/src/navigation/routes.dart' as _i323;
 import 'package:get_it/get_it.dart' as _i174;
@@ -30,10 +32,17 @@ _i174.GetIt init(
     environment,
     environmentFilter,
   );
-  gh.lazySingleton<_i323.DashboardRoutesConfig>(
-      () => _i323.DashboardRoutesConfig());
+  gh.lazySingleton<_i323.MenuRoutesConfig>(() => _i323.MenuRoutesConfig());
   gh.lazySingleton<_i577.DashboardNavigator>(
       () => _i577.DashboardNavigator(gh<_i177.GoRouter>()));
+  gh.factoryParam<_i283.IndexBloc, _i102.IndexType, dynamic>((
+    indexType,
+    _,
+  ) =>
+      _i283.IndexBloc(
+        indexType,
+        gh<_i913.GetAllIndexDataUseCase>(),
+      ));
   gh.factory<_i432.DashboardBloc>(() => _i432.DashboardBloc(
         gh<_i913.GetIndexDataUseCase>(),
         gh<_i913.GetPlayerOldPricesUseCase>(),

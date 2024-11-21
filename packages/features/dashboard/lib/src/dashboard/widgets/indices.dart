@@ -81,17 +81,17 @@ class _IndicesContent extends StatelessWidget {
                   type: IndexType.forwards,
                   current: state.indexes?[0].forwards ?? 0,
                   previous: state.indexes?[1].forwards ?? 0,
-                  onTap: () => context.read<DashboardBloc>().add(
-                        IndexTap(indexType: IndexType.forwards),
-                      ),
+                  // onTap: () => context.read<DashboardBloc>().add(
+                  //       IndexTap(indexType: IndexType.forwards),
+                  //     ),
                 ),
                 IndexBox(
                   type: IndexType.midfielders,
                   current: state.indexes?[0].midfielders ?? 0,
                   previous: state.indexes?[1].midfielders ?? 0,
-                  onTap: () => context.read<DashboardBloc>().add(
-                    IndexTap(indexType: IndexType.midfielders),
-                  ),
+                  // onTap: () => context.read<DashboardBloc>().add(
+                  //   IndexTap(indexType: IndexType.midfielders),
+                  // ),
                 ),
               ]
                   .intersperse(
@@ -113,17 +113,17 @@ class _IndicesContent extends StatelessWidget {
                   type: IndexType.defenders,
                   current: state.indexes?[0].defenders ?? 0,
                   previous: state.indexes?[1].defenders ?? 0,
-                  onTap: () => context.read<DashboardBloc>().add(
-                    IndexTap(indexType: IndexType.defenders),
-                  ),
+                  // onTap: () => context.read<DashboardBloc>().add(
+                  //   IndexTap(indexType: IndexType.defenders),
+                  // ),
                 ),
                 IndexBox(
                   type: IndexType.goalkeepers,
                   current: state.indexes?[0].goalkeepers ?? 0,
                   previous: state.indexes?[1].goalkeepers ?? 0,
-                  onTap: () => context.read<DashboardBloc>().add(
-                    IndexTap(indexType: IndexType.goalkeepers),
-                  ),
+                  // onTap: () => context.read<DashboardBloc>().add(
+                  //   IndexTap(indexType: IndexType.goalkeepers),
+                  // ),
                 ),
               ]
                   .intersperse(

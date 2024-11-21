@@ -16,6 +16,7 @@ class PlayerDetailEventMapper extends ClassMapperBase<PlayerDetailEvent> {
       InitMapper.ensureInitialized();
       VersionTapMapper.ensureInitialized();
       UpdateChemistryStyleMapper.ensureInitialized();
+      ClearChemistryStyleMapper.ensureInitialized();
       LoadRolesMapper.ensureInitialized();
       LoadPlayStylesMapper.ensureInitialized();
       LoadVersionsMapper.ensureInitialized();
@@ -433,6 +434,117 @@ class _UpdateChemistryStyleCopyWithImpl<$R, $Out>
   UpdateChemistryStyleCopyWith<$R2, UpdateChemistryStyle, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
           _UpdateChemistryStyleCopyWithImpl($value, $cast, t);
+}
+
+class ClearChemistryStyleMapper
+    extends SubClassMapperBase<ClearChemistryStyle> {
+  ClearChemistryStyleMapper._();
+
+  static ClearChemistryStyleMapper? _instance;
+  static ClearChemistryStyleMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ClearChemistryStyleMapper._());
+      PlayerDetailEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'ClearChemistryStyle';
+
+  @override
+  final MappableFields<ClearChemistryStyle> fields = const {};
+
+  @override
+  final String discriminatorKey = 'playerDetailEvent';
+  @override
+  final dynamic discriminatorValue = 'clearChemistryStyle';
+  @override
+  late final ClassMapperBase superMapper =
+      PlayerDetailEventMapper.ensureInitialized();
+
+  static ClearChemistryStyle _instantiate(DecodingData data) {
+    return ClearChemistryStyle();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static ClearChemistryStyle fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<ClearChemistryStyle>(map);
+  }
+
+  static ClearChemistryStyle fromJson(String json) {
+    return ensureInitialized().decodeJson<ClearChemistryStyle>(json);
+  }
+}
+
+mixin ClearChemistryStyleMappable {
+  String toJson() {
+    return ClearChemistryStyleMapper.ensureInitialized()
+        .encodeJson<ClearChemistryStyle>(this as ClearChemistryStyle);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ClearChemistryStyleMapper.ensureInitialized()
+        .encodeMap<ClearChemistryStyle>(this as ClearChemistryStyle);
+  }
+
+  ClearChemistryStyleCopyWith<ClearChemistryStyle, ClearChemistryStyle,
+          ClearChemistryStyle>
+      get copyWith => _ClearChemistryStyleCopyWithImpl(
+          this as ClearChemistryStyle, $identity, $identity);
+  @override
+  String toString() {
+    return ClearChemistryStyleMapper.ensureInitialized()
+        .stringifyValue(this as ClearChemistryStyle);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return ClearChemistryStyleMapper.ensureInitialized()
+        .equalsValue(this as ClearChemistryStyle, other);
+  }
+
+  @override
+  int get hashCode {
+    return ClearChemistryStyleMapper.ensureInitialized()
+        .hashValue(this as ClearChemistryStyle);
+  }
+}
+
+extension ClearChemistryStyleValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, ClearChemistryStyle, $Out> {
+  ClearChemistryStyleCopyWith<$R, ClearChemistryStyle, $Out>
+      get $asClearChemistryStyle =>
+          $base.as((v, t, t2) => _ClearChemistryStyleCopyWithImpl(v, t, t2));
+}
+
+abstract class ClearChemistryStyleCopyWith<$R, $In extends ClearChemistryStyle,
+    $Out> implements PlayerDetailEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  ClearChemistryStyleCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _ClearChemistryStyleCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, ClearChemistryStyle, $Out>
+    implements ClearChemistryStyleCopyWith<$R, ClearChemistryStyle, $Out> {
+  _ClearChemistryStyleCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<ClearChemistryStyle> $mapper =
+      ClearChemistryStyleMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  ClearChemistryStyle $make(CopyWithData data) => ClearChemistryStyle();
+
+  @override
+  ClearChemistryStyleCopyWith<$R2, ClearChemistryStyle, $Out2>
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _ClearChemistryStyleCopyWithImpl($value, $cast, t);
 }
 
 class LoadRolesMapper extends SubClassMapperBase<LoadRoles> {

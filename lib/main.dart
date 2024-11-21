@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
             title: 'FUT Maidaan',
             theme: AppTheme.themeData(context, Brightness.light),
             darkTheme: AppTheme.themeData(context, Brightness.dark),
+            debugShowCheckedModeBanner: false,
             routerConfig: di<GoRouter>(),
             builder: (context, child) {
               return BlocProvider<MetadataBloc>(

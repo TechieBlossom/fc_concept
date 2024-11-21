@@ -2,6 +2,7 @@ import 'package:core_design/design.dart';
 import 'package:core_design/src/organisms/card/extinct_price_card.dart';
 import 'package:core_design/src/organisms/card/objective_price_card.dart';
 import 'package:core_design/src/organisms/card/sbc_price_card.dart';
+import 'package:core_design/src/organisms/card/untradable_price_card.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -237,6 +238,10 @@ class _PriceWidget extends StatelessWidget {
         fg: colors.$2,
         price: playerPrice?.currentPrice.price ?? 0,
       );
-    return SizedBox(height: 116);
+    return UntradablePriceCard(
+      bg: colors.$1,
+      fg: colors.$2,
+      price: playerPrice?.currentPrice.price ?? 0,
+    );
   }
 }

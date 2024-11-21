@@ -17,11 +17,13 @@ class ChemistrySelectionSheet extends StatefulWidget {
     required this.chemistryStyles,
     required this.selectedChemistryModifier,
     required this.selectedChemistryStyle,
+    required this.onClear,
   });
 
   final List<ChemistryStyle> chemistryStyles;
   final int? selectedChemistryModifier;
   final ChemistryStyle? selectedChemistryStyle;
+  final VoidCallback onClear;
 
   @override
   State<ChemistrySelectionSheet> createState() =>
@@ -61,10 +63,8 @@ class _ChemistrySelectionSheetState extends State<ChemistrySelectionSheet> {
                         _selectedChemistryModifier == null
                     ? null
                     : () {
-                        setState(() {
-                          _selectedChemistryModifier = null;
-                          _selectedChemistryStyle = null;
-                        });
+                        widget.onClear();
+                        Navigator.pop(context);
                       }),
           ],
         ),

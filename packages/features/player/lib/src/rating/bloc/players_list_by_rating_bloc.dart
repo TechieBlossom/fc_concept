@@ -7,9 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'players_list_by_rating_bloc.mapper.dart';
-
 part 'players_list_by_rating_event.dart';
-
 part 'players_list_by_rating_state.dart';
 
 const _duration = Duration(milliseconds: 50);
@@ -28,7 +26,7 @@ class PlayersListByRatingBloc
       (event, _) async => _navigator.goToPlayerDetail(event.player),
     );
 
-    add(ChangeRating(rating: 90));
+    add(ChangeRating(rating: 92));
   }
 
   final GetCheapestPlayersByRatingUseCase _getCheapestPlayersByRatingUseCase;

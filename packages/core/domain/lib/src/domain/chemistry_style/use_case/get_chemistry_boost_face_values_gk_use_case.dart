@@ -10,27 +10,37 @@ class GetChemistryBoostFaceValuesGkUseCase {
     Player player,
     ChemistryModifier? chemistryBoost,
   ) {
+    if (chemistryBoost == null) {
+      return (
+        pace: 0,
+        shooting: 0,
+        passing: 0,
+        dribbling: 0,
+        defending: 0,
+        physical: 0,
+      );
+    }
     final speed = 0.45 *
             (player.attributeSprintSpeed!.orZero() +
-                (chemistryBoost?.attributeSprintSpeed.orZero() ?? 0)) +
+                (chemistryBoost.attributeSprintSpeed.orZero())) +
         0.55 *
             (player.attributeAcceleration!.orZero() +
-                (chemistryBoost?.attributeAcceleration.orZero() ?? 0));
+                (chemistryBoost.attributeAcceleration.orZero()));
 
     final kicking = player.attributeGkKicking!.orZero() +
-        (chemistryBoost?.attributeGkKicking.orZero() ?? 0);
+        (chemistryBoost.attributeGkKicking.orZero());
 
     final handling = player.attributeGkHandling!.orZero() +
-        (chemistryBoost?.attributeGkHandling.orZero() ?? 0);
+        (chemistryBoost.attributeGkHandling.orZero());
 
     final reflexes = player.attributeGkReflexes!.orZero() +
-        (chemistryBoost?.attributeGkReflexes.orZero() ?? 0);
+        (chemistryBoost.attributeGkReflexes.orZero());
 
     final positioning = player.attributeGkPositioning!.orZero() +
-        (chemistryBoost?.attributeGkPositioning.orZero() ?? 0);
+        (chemistryBoost.attributeGkPositioning.orZero());
 
     final diving = player.attributeGkDiving!.orZero() +
-        (chemistryBoost?.attributeGkDiving.orZero() ?? 0);
+        (chemistryBoost.attributeGkDiving.orZero());
 
     return (
       pace: (speed - player.gkFaceSpeed!.orZero()).round(),

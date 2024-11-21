@@ -383,7 +383,7 @@ class _FaceAttribute extends StatelessWidget {
             Text(
               '+${attributeItem.boost}',
               style: context.typography.caption2.copyWith(
-                color: attributeItem.lightRatingColor,
+                color: attributeItem.ratingColor,
               ),
             ),
             const SizedBox(width: AppSpacing.space3),

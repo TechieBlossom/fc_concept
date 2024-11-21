@@ -62,6 +62,8 @@ import 'package:core_domain/src/domain/clubs/club_repository.dart' as _i177;
 import 'package:core_domain/src/domain/clubs/use_case/get_clubs_by_league_use_case.dart'
     as _i1022;
 import 'package:core_domain/src/domain/index/index_repository.dart' as _i140;
+import 'package:core_domain/src/domain/index/use_case/get_all_index_data_use_case.dart'
+    as _i906;
 import 'package:core_domain/src/domain/index/use_case/get_index_data_use_case.dart'
     as _i883;
 import 'package:core_domain/src/domain/leagues/league_repository.dart' as _i191;
@@ -213,6 +215,8 @@ _i174.GetIt init(
       () => _i1022.GetClubsByLeagueUseCase(gh<_i177.ClubRepository>()));
   gh.factory<_i883.GetIndexDataUseCase>(
       () => _i883.GetIndexDataUseCase(gh<_i140.IndexRepository>()));
+  gh.factory<_i906.GetAllIndexDataUseCase>(
+      () => _i906.GetAllIndexDataUseCase(gh<_i140.IndexRepository>()));
   gh.factory<_i491.GetTopNationsUseCase>(
       () => _i491.GetTopNationsUseCase(gh<_i829.NationRepository>()));
   gh.factory<_i847.GetOtherNationsUseCase>(

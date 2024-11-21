@@ -87,6 +87,7 @@ class _CheapestPlayerByRatingListItemState
                 )
               : null,
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(width: AppSpacing.space5),
@@ -244,6 +245,17 @@ class _Price extends StatelessWidget {
           ),
         ],
       );
-    return const Placeholder();
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          'UNTRADABLE',
+          style: context.typography.caption2.copyWith(
+            color: Color(colors.$2),
+          ),
+        ),
+      ],
+    );
   }
 }

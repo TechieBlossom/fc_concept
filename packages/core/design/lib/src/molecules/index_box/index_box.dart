@@ -8,13 +8,13 @@ class IndexBox extends StatelessWidget {
     required this.type,
     required this.current,
     required this.previous,
-    required this.onTap,
+    this.onTap,
   });
 
   final IndexType type;
   final double current;
   final double previous;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   bool get isIncreased => current >= previous;
 

@@ -2,6 +2,9 @@ import 'package:core_domain/domain.dart';
 import 'package:injectable/injectable.dart';
 import 'package:utility_extensions/extensions.dart';
 
+// TODO: Check for calculations again.
+// Tel and some other players are not calculated correctly
+
 typedef ChemistryBoostFaceValues = ({
   /// Speed for GK
   int pace,
@@ -30,98 +33,108 @@ class GetChemistryBoostFaceValuesUseCase {
     Player player,
     ChemistryModifier? chemistryBoost,
   ) {
+    if (chemistryBoost == null) {
+      return (
+        pace: 0,
+        shooting: 0,
+        passing: 0,
+        dribbling: 0,
+        defending: 0,
+        physical: 0,
+      );
+    }
     final pace = 0.55 *
             (player.attributeSprintSpeed!.orZero() +
-                (chemistryBoost?.attributeSprintSpeed.orZero() ?? 0)) +
+                (chemistryBoost.attributeSprintSpeed.orZero())) +
         0.45 *
             (player.attributeAcceleration!.orZero() +
-                (chemistryBoost?.attributeAcceleration.orZero() ?? 0));
+                (chemistryBoost.attributeAcceleration.orZero()));
 
     final shooting = 0.45 *
             (player.attributeFinishing!.orZero() +
-                (chemistryBoost?.attributeFinishing.orZero() ?? 0)) +
+                (chemistryBoost.attributeFinishing.orZero())) +
         0.20 *
             (player.attributeLongShots!.orZero() +
-                (chemistryBoost?.attributeLongShots.orZero() ?? 0)) +
+                (chemistryBoost.attributeLongShots.orZero())) +
         0.05 *
             (player.attributePenalties!.orZero() +
-                (chemistryBoost?.attributePenalties.orZero() ?? 0)) +
+                (chemistryBoost.attributePenalties.orZero())) +
         0.20 *
             (player.attributeShotPower!.orZero() +
-                (chemistryBoost?.attributeShotPower.orZero() ?? 0)) +
+                (chemistryBoost.attributeShotPower.orZero())) +
         0.05 *
             (player.attributePositioning!.orZero() +
-                (chemistryBoost?.attributePositioning.orZero() ?? 0)) +
+                (chemistryBoost.attributePositioning.orZero())) +
         0.05 *
             (player.attributeVolleys!.orZero() +
-                (chemistryBoost?.attributeVolleys.orZero() ?? 0));
+                (chemistryBoost.attributeVolleys.orZero()));
 
     final passing = 0.05 *
             (player.attributeVision!.orZero() +
-                (chemistryBoost?.attributeVision.orZero() ?? 0)) +
+                (chemistryBoost.attributeVision.orZero())) +
         0.20 *
             (player.attributeCrossing!.orZero() +
-                (chemistryBoost?.attributeCrossing.orZero() ?? 0)) +
+                (chemistryBoost.attributeCrossing.orZero())) +
         0.35 *
             (player.attributeShortPassing!.orZero() +
-                (chemistryBoost?.attributeShortPassing.orZero() ?? 0)) +
+                (chemistryBoost.attributeShortPassing.orZero())) +
         0.15 *
             (player.attributeLongPassing!.orZero() +
-                (chemistryBoost?.attributeLongPassing.orZero() ?? 0)) +
+                (chemistryBoost.attributeLongPassing.orZero())) +
         0.05 *
             (player.attributeFkAccuracy!.orZero() +
-                (chemistryBoost?.attributeFkAccuracy.orZero() ?? 0)) +
+                (chemistryBoost.attributeFkAccuracy.orZero())) +
         0.20 *
             (player.attributeCurve!.orZero() +
-                (chemistryBoost?.attributeCurve.orZero() ?? 0));
+                (chemistryBoost.attributeCurve.orZero()));
 
     final dribbling = 0.10 *
             (player.attributeAgility!.orZero() +
-                (chemistryBoost?.attributeAgility.orZero() ?? 0)) +
+                (chemistryBoost.attributeAgility.orZero())) +
         0.05 *
             (player.attributeBalance!.orZero() +
-                (chemistryBoost?.attributeBalance.orZero() ?? 0)) +
+                (chemistryBoost.attributeBalance.orZero())) +
         0.00 *
             (player.attributeReactions!.orZero() +
-                (chemistryBoost?.attributeReactions.orZero() ?? 0)) +
+                (chemistryBoost.attributeReactions.orZero())) +
         0.35 *
             (player.attributeBallControl!.orZero() +
-                (chemistryBoost?.attributeBallControl.orZero() ?? 0)) +
+                (chemistryBoost.attributeBallControl.orZero())) +
         0.50 *
             (player.attributeDribbling!.orZero() +
-                (chemistryBoost?.attributeDribbling.orZero() ?? 0)) +
+                (chemistryBoost.attributeDribbling.orZero())) +
         0.00 *
             (player.attributeComposure!.orZero() +
-                (chemistryBoost?.attributeComposure.orZero() ?? 0));
+                (chemistryBoost.attributeComposure.orZero()));
 
     final defending = 0.20 *
             (player.attributeInterceptions!.orZero() +
-                (chemistryBoost?.attributeInterceptions.orZero() ?? 0)) +
+                (chemistryBoost.attributeInterceptions.orZero())) +
         0.10 *
             (player.attributeHeadingAccuracy!.orZero() +
-                (chemistryBoost?.attributeHeadingAccuracy.orZero() ?? 0)) +
+                (chemistryBoost.attributeHeadingAccuracy.orZero())) +
         0.30 *
             (player.attributeStandingTackle!.orZero() +
-                (chemistryBoost?.attributeStandingTackle.orZero() ?? 0)) +
+                (chemistryBoost.attributeStandingTackle.orZero())) +
         0.30 *
             (player.attributeDefensiveAwareness!.orZero() +
-                (chemistryBoost?.attributeDefensiveAwareness.orZero() ?? 0)) +
+                (chemistryBoost.attributeDefensiveAwareness.orZero())) +
         0.10 *
             (player.attributeSlidingTackle!.orZero() +
-                (chemistryBoost?.attributeSlidingTackle.orZero() ?? 0));
+                (chemistryBoost.attributeSlidingTackle.orZero()));
 
     final physical = 0.05 *
             (player.attributeJumping!.orZero() +
-                (chemistryBoost?.attributeJumping.orZero() ?? 0)) +
+                (chemistryBoost.attributeJumping.orZero())) +
         0.25 *
             (player.attributeStamina!.orZero() +
-                (chemistryBoost?.attributeStamina.orZero() ?? 0)) +
+                (chemistryBoost.attributeStamina.orZero())) +
         0.50 *
             (player.attributeStrength!.orZero() +
-                (chemistryBoost?.attributeStrength.orZero() ?? 0)) +
+                (chemistryBoost.attributeStrength.orZero())) +
         0.20 *
             (player.attributeAggression!.orZero() +
-                (chemistryBoost?.attributeAggression.orZero() ?? 0));
+                (chemistryBoost.attributeAggression.orZero()));
 
     return (
       pace: (pace - player.facePace!.orZero()).round(),

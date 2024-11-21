@@ -1,4 +1,6 @@
+import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
+import 'package:feature_dashboard/src/index/index_page.dart';
 import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
@@ -17,5 +19,10 @@ class DashboardNavigator extends AppNavigator {
 
   Future<void> goToSearch() async => goRouter.go(
         PlayerRoutes.pagePlayerList,
+      );
+
+  Future<void> goToIndex(IndexType indexType) async => goRouter.push(
+        DashboardRoutes.pageIndexDetail,
+        extra: IndexPageParams(indexType: indexType),
       );
 }

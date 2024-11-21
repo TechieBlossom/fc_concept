@@ -20,7 +20,7 @@ export 'package:core_design/src/molecules/image/player_image.dart';
 export 'package:core_design/src/molecules/image/rarity_image.dart';
 export 'package:core_design/src/molecules/image/version_image.dart';
 export 'package:core_design/src/molecules/index_box/index_box.dart';
-export 'package:core_design/src/molecules/index_box/index_type.dart';
+export 'package:core_domain/src/domain/index/model/index_type.dart';
 export 'package:core_design/src/molecules/info/info.dart';
 export 'package:core_design/src/molecules/message/info_message.dart';
 export 'package:core_design/src/molecules/ornament/ornament.dart';

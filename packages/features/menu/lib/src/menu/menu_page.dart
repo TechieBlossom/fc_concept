@@ -122,19 +122,27 @@ class MenuPage extends StatelessWidget {
                     const _Header(text: 'ABOUT'),
                     _DrawerItem(
                       leading: Icon(
-                        Icons.security_rounded,
+                        Icons.business_rounded,
                         color: context.colors.contentPrimary,
                       ),
-                      text: 'Privacy Policy',
-                      onTap: () {},
+                      text: 'About Us',
+                      onTap: () {
+                        context.read<MenuBloc>().add(
+                          AboutUsTap(),
+                        );
+                      },
                     ),
                     _DrawerItem(
                       leading: Icon(
-                        Icons.settings_rounded,
+                        Icons.privacy_tip_rounded,
                         color: context.colors.contentPrimary,
                       ),
-                      text: 'Settings',
-                      onTap: () {},
+                      text: 'Privacy Policy',
+                      onTap: () {
+                        context.read<MenuBloc>().add(
+                              PrivacyPolicyTap(),
+                            );
+                      },
                     ),
                     // _DrawerItem(
                     //   leading: Icon(

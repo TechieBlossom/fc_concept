@@ -13,6 +13,7 @@ dependencies:
   core_domain:
     path: ../../../packages/core/domain
   cached_network_image: ^3.3.1
+  fl_chart: ^0.68.0
   flutter:
     sdk: flutter
   flutter_slidable: ^3.1.0

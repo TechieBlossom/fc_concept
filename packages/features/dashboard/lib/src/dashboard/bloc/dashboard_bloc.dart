@@ -27,7 +27,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     this._navigator,
   ) : super(DashboardState()) {
     on<Init>((event, emit) => _onInit(emit));
-    on<IndexTap>((_, __) => {});
+    on<IndexTap>((event, _) => _navigator.goToIndex(event.indexType));
     on<UpdatePlayerPrices>((event, emit) => _onUpdatePlayerPrices(event, emit));
     on<SwitchHighRatedPositionGroup>(
       (event, emit) => _onSwitchHighRatedPositionGroup(event, emit),

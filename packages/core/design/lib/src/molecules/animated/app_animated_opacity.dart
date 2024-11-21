@@ -14,13 +14,18 @@ class AppAnimatedOpacity<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedCrossFade(
-      firstChild: child,
-      secondChild: secondChild,
-      crossFadeState: isShown
-          ? CrossFadeState.showFirst
-          : CrossFadeState.showSecond,
+    return AnimatedOpacity(
+      opacity: isShown ? 1 : 0,
       duration: const Duration(milliseconds: 400),
+      child: child,
     );
+    // return AnimatedCrossFade(
+    //   firstChild: child,
+    //   secondChild: secondChild,
+    //   crossFadeState: isShown
+    //       ? CrossFadeState.showFirst
+    //       : CrossFadeState.showSecond,
+    //   duration: const Duration(milliseconds: 400),
+    // );
   }
 }
