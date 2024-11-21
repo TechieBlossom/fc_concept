@@ -26,7 +26,7 @@ class PlayersListByRatingPage extends StatelessWidget {
                     players: state.players,
                     playerListItemBuilder: ({
                       required Player player,
-                      required VoidCallback onFavoriteToggle,
+                      VoidCallback? onFavoriteToggle,
                     }) =>
                         CheapestPlayerByRatingListItem(
                       player: player,

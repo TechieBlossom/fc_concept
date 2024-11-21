@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:injectable/injectable.dart';
 
@@ -7,9 +9,11 @@ class LogEventUseCase {
     required String name,
     Map<String, Object>? parameters,
   }) async {
-    return FirebaseAnalytics.instance.logEvent(
+    unawaited(
+      FirebaseAnalytics.instance.logEvent(
         name: name,
         parameters: parameters,
-      );
+      ),
+    );
   }
 }

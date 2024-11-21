@@ -1,4 +1,6 @@
+import 'package:core_analytics/analytics.dart';
 import 'package:core_design/design.dart';
+import 'package:feature_menu/menu.dart';
 import 'package:feature_menu/src/menu/bloc/menu_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -128,8 +130,8 @@ class MenuPage extends StatelessWidget {
                       text: 'About Us',
                       onTap: () {
                         context.read<MenuBloc>().add(
-                          AboutUsTap(),
-                        );
+                              AboutUsTap(),
+                            );
                       },
                     ),
                     _DrawerItem(
@@ -154,6 +156,30 @@ class MenuPage extends StatelessWidget {
                     //     context.read<MenuBloc>().add(LogoutTap());
                     //   },
                     // ),
+                    const Divider(
+                      indent: AppSpacing.space4,
+                      endIndent: AppSpacing.space4,
+                    ),
+                    const _Header(text: 'FEEDBACK'),
+                    _DrawerItem(
+                      leading: Icon(
+                        Icons.feedback_rounded,
+                        color: context.colors.contentPrimary,
+                      ),
+                      text: 'Feedback',
+                      onTap: () => showWiredashFeedback(context),
+                    ),
+                    _DrawerItem(
+                      leading: Icon(
+                        Icons.recommend_rounded,
+                        color: context.colors.contentPrimary,
+                      ),
+                      text: 'Would you recommend FUT Maidaan?',
+                      onTap: () => showWiredashPromoterSurvey(
+                        context,
+                        force: true,
+                      ),
+                    ),
                     const Spacer(),
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -162,7 +188,7 @@ class MenuPage extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'App Version 1.0.0',
+                          'App Version 1.0.1',
                           style: context.typography.body4.copyWith(
                             color: context.colors.contentSecondary,
                           ),

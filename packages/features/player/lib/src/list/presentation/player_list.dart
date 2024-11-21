@@ -9,7 +9,7 @@ const _nextPageShimmers = 3;
 
 typedef PlayerListItemBuilder = Widget Function({
   required Player player,
-  required VoidCallback onFavoriteToggle,
+  VoidCallback? onFavoriteToggle,
 });
 
 class PlayerList extends StatefulWidget {
@@ -85,7 +85,6 @@ class _PlayerListState extends State<PlayerList> {
               if (widget.playerListItemBuilder != null) {
                 return widget.playerListItemBuilder!(
                   player: player,
-                  onFavoriteToggle: () {},
                 );
               }
               return Padding(
@@ -103,7 +102,6 @@ class _PlayerListState extends State<PlayerList> {
                           resultWithSelection: widget.resultWithSelection,
                         ),
                       ),
-                  onFavoriteToggle: () {},
                 ),
               );
             }
