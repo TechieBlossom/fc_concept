@@ -40,8 +40,8 @@ class FilterPage extends StatelessWidget {
                 SecondaryButton(
                   text: 'Clear',
                   onPressed: () => context.read<FilterBloc>().add(
-                      Clear(),
-                    ),
+                        Clear(),
+                      ),
                 ),
                 PrimaryButton(
                   text: 'Apply',

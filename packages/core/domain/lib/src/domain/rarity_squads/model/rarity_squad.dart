@@ -4,7 +4,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'rarity_squad.mapper.dart';
 
 @MappableClass()
-class RaritySquad with RaritySquadMappable, AnalyticsEventParameters{
+class RaritySquad with RaritySquadMappable, AnalyticsEventParameters {
   const RaritySquad({
     required this.id,
     required this.name,

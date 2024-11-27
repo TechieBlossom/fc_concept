@@ -17,8 +17,7 @@ class MenuNavigator extends AppNavigator {
   //     );
   // }
 
-  Future<void> goToAboutUs() =>
-      goRouter.push(MenuRoutes.pageAboutUs);
+  Future<void> goToAboutUs() => goRouter.push(MenuRoutes.pageAboutUs);
 
   Future<void> goToPrivacyPolicy() =>
       goRouter.push(MenuRoutes.pagePrivacyPolicy);

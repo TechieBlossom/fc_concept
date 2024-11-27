@@ -12,7 +12,7 @@ class GetAllIndexDataUseCase {
 
   Future<Result<List<IndexData>>> call({
     required IndexType indexType,
-}) async {
+  }) async {
     return _indexRepository.getAllIndexData(indexType: indexType);
   }
 }

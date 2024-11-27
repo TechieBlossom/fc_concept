@@ -71,7 +71,8 @@ class _SearchFieldState extends State<SearchField> {
             child: TextFormField(
               cursorHeight: 20,
               maxLength: 30,
-              maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
+              maxLengthEnforcement:
+                  MaxLengthEnforcement.truncateAfterCompositionEnds,
               controller: _controller,
               onChanged: widget.onSearch,
               textCapitalization: TextCapitalization.words,

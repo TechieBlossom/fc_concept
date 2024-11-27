@@ -32,7 +32,22 @@ Future<T?> showAppBottomSheet<T>(
   //   },
   // );
 
-  return showCupertinoModalBottomSheet<T>(
+  return
+showBarModalBottomSheet(
+  context: context,
+  builder: (context) => ListView.builder(
+    itemCount: 50,
+    itemBuilder: (context, index) {
+      return ListTile(
+        title: Text("Item $index"),
+        onTap: () => Navigator.pop(context),
+      );
+    },
+  ),
+);
+
+
+  return showBarModalBottomSheet<T>(
     context: context,
     builder: (context) => Material(
       color: context.colors.backgroundSecondary,
@@ -47,7 +62,7 @@ Future<T?> showAppBottomSheet<T>(
                   : AppSpacing.space5,
             ),
         child: Theme.of(context).platform == TargetPlatform.iOS
-            ? SafeArea(child: child)
+            ? SafeArea(child: child, top: false,)
             : child,
       ),
     ),

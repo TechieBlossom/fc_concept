@@ -1,6 +1,5 @@
 import 'package:core_analytics/analytics.dart';
 import 'package:core_design/design.dart';
-import 'package:feature_menu/menu.dart';
 import 'package:feature_menu/src/menu/bloc/menu_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

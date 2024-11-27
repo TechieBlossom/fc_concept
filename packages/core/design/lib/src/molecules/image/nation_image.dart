@@ -8,6 +8,7 @@ enum NationImageSize {
   small,
   medium,
 }
+
 class NationImage extends StatelessWidget {
   const NationImage({
     super.key,

@@ -1,12 +1,9 @@
-import 'dart:math';
-
 import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/utility/app_formatters.dart';
-import 'package:core_domain/src/domain/charts/model/trend_type.dart';
 import 'package:core_design/src/utility/x_int.dart';
+import 'package:core_domain/src/domain/charts/model/trend_type.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:utility_extensions/extensions.dart';
 
 class AppLineChart extends StatelessWidget {
   const AppLineChart({
@@ -79,8 +76,8 @@ class AppLineChart extends StatelessWidget {
                 return SideTitleWidget(
                   axisSide: AxisSide.left,
                   fitInside: SideTitleFitInsideData.fromTitleMeta(
-                      metaData,
-                      enabled: true,
+                    metaData,
+                    enabled: true,
                   ),
                   space: AppSpacing.space4,
                   child: Text(
@@ -100,11 +97,8 @@ class AppLineChart extends StatelessWidget {
               getTitlesWidget: (value, metaData) {
                 return SideTitleWidget(
                   axisSide: AxisSide.bottom,
-                  fitInside: SideTitleFitInsideData.fromTitleMeta(
-                    metaData,
-                    enabled: true,
-                    distanceFromEdge: 2
-                  ),
+                  fitInside: SideTitleFitInsideData.fromTitleMeta(metaData,
+                      enabled: true, distanceFromEdge: 2),
                   space: AppSpacing.space3,
                   child: Text(
                     value.toInt().toString(),

@@ -3,7 +3,7 @@ enum SortOrder {
   descending;
 
   String get title => switch (this) {
-    SortOrder.ascending => 'Ascending',
-    SortOrder.descending => 'Descending',
-  };
+        SortOrder.ascending => 'Ascending',
+        SortOrder.descending => 'Descending',
+      };
 }

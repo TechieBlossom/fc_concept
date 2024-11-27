@@ -7,15 +7,15 @@ import 'package:utility_navigation/navigation.dart';
 class MenuRoutesConfig extends RoutesConfig {
   @override
   List<GoRoute> getRoutes() => [
-    GoRoute(
-      path: DashboardRoutes.pageIndexDetail,
-      pageBuilder: (context, state) => MaterialPage(
-        key: state.pageKey,
-        name: state.fullPath,
-        arguments: state.pathParameters,
-        restorationId: state.pageKey.value,
-        child: IndexPage(params: state.extra! as IndexPageParams),
-      ),
-    ),
-  ];
+        GoRoute(
+          path: DashboardRoutes.pageIndexDetail,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.fullPath,
+            arguments: state.pathParameters,
+            restorationId: state.pageKey.value,
+            child: IndexPage(params: state.extra! as IndexPageParams),
+          ),
+        ),
+      ];
 }

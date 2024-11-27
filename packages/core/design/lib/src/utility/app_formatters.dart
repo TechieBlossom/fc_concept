@@ -4,7 +4,8 @@ class AppFormatter {
   AppFormatter._();
 
   static NumberFormat currencyFormat = NumberFormat('###,###,###,###,###.##');
-  static NumberFormat currencyFormatWithoutDecimal = NumberFormat('###,###,###,###,###.#');
+  static NumberFormat currencyFormatWithoutDecimal =
+      NumberFormat('###,###,###,###,###.#');
 
   static String formatCurrency(num value) {
     return '${currencyFormat.format(value)}';

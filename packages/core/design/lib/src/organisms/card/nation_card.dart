@@ -15,7 +15,6 @@ class NationCard extends StatelessWidget {
   final VoidCallback? onTap;
   final EdgeInsets margin;
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(

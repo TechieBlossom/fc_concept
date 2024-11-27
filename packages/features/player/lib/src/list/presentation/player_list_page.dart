@@ -53,15 +53,16 @@ class _PlayerListPageState extends State<PlayerListPage> {
                             top: MediaQuery.of(context).viewPadding.top,
                           ),
                           isLoading: state.processState == ProcessState.loading,
-                          onSearch: (query) => context.read<PlayerListBloc>().add(
-                            Search(query: query),
-                          ),
+                          onSearch: (query) =>
+                              context.read<PlayerListBloc>().add(
+                                    Search(query: query),
+                                  ),
                           onClearTap: () => context.read<PlayerListBloc>().add(
-                            Search(query: ''),
-                          ),
+                                Search(query: ''),
+                              ),
                           onFilterTap: () => context.read<PlayerListBloc>().add(
-                            FilterTap(),
-                          ),
+                                FilterTap(),
+                              ),
                         ),
                         if (hasFilters)
                           FilterContainer(
@@ -70,7 +71,7 @@ class _PlayerListPageState extends State<PlayerListPage> {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           );

@@ -5,7 +5,6 @@ part 'price_api.g.dart';
 
 @RestApi(baseUrl: 'https://www.fut.gg/api/fut')
 abstract class PriceApi {
-
   factory PriceApi(Dio dio) = _PriceApi;
 
   @GET('/player-prices/25/{playerId}')

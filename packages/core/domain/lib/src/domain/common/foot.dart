@@ -4,7 +4,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'foot.mapper.dart';
 
 @MappableEnum(caseStyle: CaseStyle.pascalCase)
-enum Foot with AnalyticsEventParameters{
+enum Foot with AnalyticsEventParameters {
   right(1),
   left(2);
 

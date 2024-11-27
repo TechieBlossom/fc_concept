@@ -6,7 +6,6 @@ import 'package:core_domain/domain.dart';
 import 'package:fc_concept/di/injector.dart';
 import 'package:fc_concept/firebase_options.dart';
 import 'package:feature_auth/auth.dart';
-import 'package:feature_menu/menu.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';

@@ -37,7 +37,7 @@ class IndexBloc extends Bloc<IndexEvent, IndexState> {
           };
           final sortedValues = values.sorted((a, b) => a.compareTo(b));
           final range = sortedValues.last - sortedValues.first;
-          double interval = 200;
+          var interval = 200.0;
           if (range > 5000) {
             interval = 1000;
           } else if (range > 1000) {

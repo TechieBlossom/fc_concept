@@ -46,7 +46,8 @@ class PlayerHeaders extends StatelessWidget {
             positionTypeId: 'attackers',
             positionTypeName: 'Attackers',
           ),
-        ], priceProcessState: ProcessState.success,
+        ],
+        priceProcessState: ProcessState.success,
       ),
     );
   }

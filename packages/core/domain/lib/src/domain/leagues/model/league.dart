@@ -5,7 +5,8 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'league.mapper.dart';
 
 @MappableClass(discriminatorValue: 'league')
-class League extends NestedFilterLayoutType with LeagueMappable, AnalyticsEventParameters {
+class League extends NestedFilterLayoutType
+    with LeagueMappable, AnalyticsEventParameters {
   League({
     required int eaId,
     required String name,

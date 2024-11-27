@@ -12,7 +12,7 @@ part 'player_list_event.dart';
 
 part 'player_list_state.dart';
 
-const _duration = Duration(milliseconds: 250);
+const _duration = Duration(milliseconds: 10);
 
 @injectable
 class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {

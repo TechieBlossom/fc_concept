@@ -13,7 +13,7 @@ class PrivacyPolicyPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(AppSpacing.space5),
         child: Markdown(data: markdownPrivacyPolicy),
-        ),
-      );
+      ),
+    );
   }
 }

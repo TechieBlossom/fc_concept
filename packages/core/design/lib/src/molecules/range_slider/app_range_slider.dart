@@ -38,7 +38,8 @@ class _AppRangeSliderState extends State<AppRangeSlider> {
       child: SliderTheme(
         data: SliderTheme.of(context).copyWith(
           trackHeight: 28.0,
-          rangeTrackShape: AppRangeSliderTrackShape(context.colors.backgroundPrimary),
+          rangeTrackShape:
+              AppRangeSliderTrackShape(context.colors.backgroundPrimary),
           rangeThumbShape: AppRangeSliderThumbShape(
             buildContext: context,
             rangeValues: range,

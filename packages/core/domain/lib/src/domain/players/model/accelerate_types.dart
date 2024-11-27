@@ -4,7 +4,6 @@ part 'accelerate_types.mapper.dart';
 
 @MappableClass()
 class AccelerateTypes with AccelerateTypesMappable {
-
   const AccelerateTypes({
     required this.lengthy,
     required this.explosive,

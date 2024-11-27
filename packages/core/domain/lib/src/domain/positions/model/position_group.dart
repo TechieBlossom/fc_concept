@@ -23,7 +23,7 @@ sealed class PositionGroup with AnalyticsEventParameters {
     } else if (value == 'Defenders') {
       return const Defenders();
     }
-      return const Goalkeepers();
+    return const Goalkeepers();
   }
 
   String toPositionTypeName() {

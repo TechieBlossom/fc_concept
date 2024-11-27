@@ -85,7 +85,8 @@ class IndexBox extends StatelessWidget {
                           space: AppSpacing.space1,
                           orientation: Axis.horizontal,
                         ),
-                        AppAssets.images.futCoin.image(width: AppSpacing.space5),
+                        AppAssets.images.futCoin
+                            .image(width: AppSpacing.space5),
                         const Space(
                           space: AppSpacing.space3,
                           orientation: Axis.horizontal,

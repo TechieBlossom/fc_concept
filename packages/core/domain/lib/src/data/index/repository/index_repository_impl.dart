@@ -29,10 +29,8 @@ class IndexRepositoryImpl extends IndexRepository {
     required IndexType indexType,
   }) async {
     try {
-      final indexesResponse = await supabase
-          .from(TableIndex.tableIndex)
-          .select()
-          .limit(30);
+      final indexesResponse =
+          await supabase.from(TableIndex.tableIndex).select().limit(30);
 
       final indexes = mapIndexes(indexesResponse);
       return Success(data: indexes);

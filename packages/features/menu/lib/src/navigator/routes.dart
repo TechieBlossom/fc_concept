@@ -8,25 +8,25 @@ import 'package:utility_navigation/navigation.dart';
 class DashboardRoutesConfig extends RoutesConfig {
   @override
   List<GoRoute> getRoutes() => [
-    GoRoute(
-      path: MenuRoutes.pageAboutUs,
-      pageBuilder: (context, state) => MaterialPage(
-        key: state.pageKey,
-        name: state.fullPath,
-        arguments: state.pathParameters,
-        restorationId: state.pageKey.value,
-        child: const AboutUsPage(),
-      ),
-    ),
-    GoRoute(
-      path: MenuRoutes.pagePrivacyPolicy,
-      pageBuilder: (context, state) => MaterialPage(
-        key: state.pageKey,
-        name: state.fullPath,
-        arguments: state.pathParameters,
-        restorationId: state.pageKey.value,
-        child: const PrivacyPolicyPage(),
-      ),
-    ),
-  ];
+        GoRoute(
+          path: MenuRoutes.pageAboutUs,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.fullPath,
+            arguments: state.pathParameters,
+            restorationId: state.pageKey.value,
+            child: const AboutUsPage(),
+          ),
+        ),
+        GoRoute(
+          path: MenuRoutes.pagePrivacyPolicy,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.fullPath,
+            arguments: state.pathParameters,
+            restorationId: state.pageKey.value,
+            child: const PrivacyPolicyPage(),
+          ),
+        ),
+      ];
 }
