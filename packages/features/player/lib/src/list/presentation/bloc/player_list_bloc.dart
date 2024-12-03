@@ -83,9 +83,11 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
       state.copyWith(
         processState: ProcessState.loading,
         page: 0,
-        filterConfiguration: state.filterConfiguration?.copyWith(
-          searchQuery: event.query,
-        ),
+        filterConfiguration: state.filterConfiguration == null
+            ? FilterConfiguration(searchQuery: event.query)
+            : state.filterConfiguration?.copyWith(
+                searchQuery: event.query,
+              ),
       ),
     );
 
@@ -94,10 +96,7 @@ class PlayerListBloc extends Bloc<PlayerListEvent, PlayerListState> {
     }
 
     final response = await _filterPlayersUseCase(
-      filterConfiguration: state.filterConfiguration ??
-          FilterConfiguration(
-            searchQuery: event.query,
-          ),
+      filterConfiguration: state.filterConfiguration,
       page: state.page,
     );
     switch (response) {

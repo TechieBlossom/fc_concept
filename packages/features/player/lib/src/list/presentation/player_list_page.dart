@@ -28,8 +28,8 @@ class _PlayerListPageState extends State<PlayerListPage> {
             body: Stack(
               fit: StackFit.expand,
               children: [
-                SafeArea(
-                  child: Positioned.fill(
+                Positioned.fill(
+                  child: SafeArea(
                     child: PlayerList(
                       aboveMargin: hasFilters ? 96 : 72,
                       processState: state.processState,
