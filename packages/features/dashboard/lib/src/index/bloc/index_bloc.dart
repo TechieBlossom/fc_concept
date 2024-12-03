@@ -5,9 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'index_bloc.mapper.dart';
-
 part 'index_event.dart';
-
 part 'index_state.dart';
 
 @injectable

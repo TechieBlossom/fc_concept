@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:550861170698:android:7a589c6221cd3ab77ad7f3",
+        "mobilesdk_app_id": "1:550861170698:android:3b114909a0de5a1e7ad7f3",
         "android_client_info": {
-          "package_name": "com.techieblossom.fut_maidaan"
+          "package_name": "com.techieblossom.fut_maidan"
         }
       },
       "oauth_client": [],

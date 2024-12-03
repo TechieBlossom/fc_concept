@@ -26,36 +26,38 @@ class IndexPage extends StatelessWidget {
           autoImplyLeading: true,
           title: params.indexType.title,
         ),
-        body: BlocBuilder<IndexBloc, IndexState>(
-          builder: (context, state) {
-            return AppAnimatedOpacity(
-              isShown: state.processState == ProcessState.loading,
-              secondChild: state.values == null
-                  ? const SizedBox.shrink()
-                  : Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.space3,
-                        vertical: AppSpacing.space5,
-                      ),
-                      child: AspectRatio(
-                        aspectRatio: 1.3,
-                        child: AppLineChart(
-                          minY: state.min,
-                          maxY: state.max,
-                          interval: state.interval,
-                          offsets: [
-                            for (var i = 0; i < state.values!.length; i++)
-                              Offset(
-                                i.toDouble(),
-                                state.values![i],
-                              ),
-                          ],
+        body: SafeArea(
+          child: BlocBuilder<IndexBloc, IndexState>(
+            builder: (context, state) {
+              return AppAnimatedOpacity(
+                isShown: state.processState == ProcessState.success,
+                secondChild: const ShimmerListItem(),
+                child: state.values == null
+                    ? const SizedBox.shrink()
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.space3,
+                          vertical: AppSpacing.space5,
+                        ),
+                        child: AspectRatio(
+                          aspectRatio: 1.3,
+                          child: AppLineChart(
+                            minY: state.min,
+                            maxY: state.max,
+                            interval: state.interval,
+                            offsets: [
+                              for (var i = 0; i < state.values!.length; i++)
+                                Offset(
+                                  i.toDouble(),
+                                  state.values![i],
+                                ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-              child: const ShimmerListItem(),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

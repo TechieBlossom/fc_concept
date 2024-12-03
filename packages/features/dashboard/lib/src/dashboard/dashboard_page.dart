@@ -32,52 +32,54 @@ class DashboardPage extends StatelessWidget {
                 ),
               ],
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Indices(state: state),
-                  const SizedBox(height: AppSpacing.space4),
-                  CheapestPlayerByRatingCard(
-                    onTap: () => context.read<DashboardBloc>().add(
-                          CheapestByPlayerRatingTap(),
-                        ),
-                  ),
-                  const SizedBox(height: AppSpacing.space4),
-                  PlayersGrid(
-                    isLoading: state.processState == ProcessState.loading,
-                    players: state.raritySquadPlayers[state.raritySquad],
-                    pills: RaritySquadTabs(state: state),
-                    heading: 'Trending Players',
-                    onTap: (player) => context.read<DashboardBloc>().add(
-                          PlayerTap(player: player),
-                        ),
-                  ),
-                  const SizedBox(height: AppSpacing.space6),
-                  PlayersGrid(
-                    isLoading: state.processState == ProcessState.loading,
-                    players: state.sbcPlayers,
-                    heading: 'SBCs',
-                    onTap: (player) => context.read<DashboardBloc>().add(
-                          PlayerTap(player: player, fromSbc: true),
-                        ),
-                  ),
-                  const SizedBox(height: AppSpacing.space6),
-                  PlayersGrid(
-                    isLoading: state.processState == ProcessState.loading,
-                    players: switch (state.positionGroup) {
-                      Forwards() => state.attackPlayers,
-                      Midfielders() => state.midfielderPlayers,
-                      Defenders() => state.defencePlayers,
-                      Goalkeepers() => state.goalKeeperPlayers,
-                    },
-                    heading: 'High-Rated Players',
-                    pills: PositionGroupTabs(state: state),
-                    onTap: (player) => context.read<DashboardBloc>().add(
-                          PlayerTap(player: player),
-                        ),
-                  ),
-                  const SizedBox(height: AppSpacing.space6),
-                ],
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Indices(state: state),
+                    const SizedBox(height: AppSpacing.space4),
+                    CheapestPlayerByRatingCard(
+                      onTap: () => context.read<DashboardBloc>().add(
+                            CheapestByPlayerRatingTap(),
+                          ),
+                    ),
+                    const SizedBox(height: AppSpacing.space4),
+                    PlayersGrid(
+                      isLoading: state.processState == ProcessState.loading,
+                      players: state.raritySquadPlayers[state.raritySquad],
+                      pills: RaritySquadTabs(state: state),
+                      heading: 'Trending Players',
+                      onTap: (player) => context.read<DashboardBloc>().add(
+                            PlayerTap(player: player),
+                          ),
+                    ),
+                    const SizedBox(height: AppSpacing.space6),
+                    PlayersGrid(
+                      isLoading: state.processState == ProcessState.loading,
+                      players: state.sbcPlayers,
+                      heading: 'SBCs',
+                      onTap: (player) => context.read<DashboardBloc>().add(
+                            PlayerTap(player: player, fromSbc: true),
+                          ),
+                    ),
+                    const SizedBox(height: AppSpacing.space6),
+                    PlayersGrid(
+                      isLoading: state.processState == ProcessState.loading,
+                      players: switch (state.positionGroup) {
+                        Forwards() => state.attackPlayers,
+                        Midfielders() => state.midfielderPlayers,
+                        Defenders() => state.defencePlayers,
+                        Goalkeepers() => state.goalKeeperPlayers,
+                      },
+                      heading: 'High-Rated Players',
+                      pills: PositionGroupTabs(state: state),
+                      onTap: (player) => context.read<DashboardBloc>().add(
+                            PlayerTap(player: player),
+                          ),
+                    ),
+                    const SizedBox(height: AppSpacing.space6),
+                  ],
+                ),
               ),
             ),
           );

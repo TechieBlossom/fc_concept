@@ -28,16 +28,18 @@ class _PlayerListPageState extends State<PlayerListPage> {
             body: Stack(
               fit: StackFit.expand,
               children: [
-                Positioned.fill(
-                  child: PlayerList(
-                    aboveMargin: hasFilters ? 96 : 72,
-                    processState: state.processState,
-                    isPaginating: state.isPaginating,
-                    players: state.players,
-                    query: state.filterConfiguration?.searchQuery,
-                    nextPage: () => context.read<PlayerListBloc>().add(
-                          NextPage(),
-                        ),
+                SafeArea(
+                  child: Positioned.fill(
+                    child: PlayerList(
+                      aboveMargin: hasFilters ? 96 : 72,
+                      processState: state.processState,
+                      isPaginating: state.isPaginating,
+                      players: state.players,
+                      query: state.filterConfiguration?.searchQuery,
+                      nextPage: () => context.read<PlayerListBloc>().add(
+                            NextPage(),
+                          ),
+                    ),
                   ),
                 ),
                 Positioned(

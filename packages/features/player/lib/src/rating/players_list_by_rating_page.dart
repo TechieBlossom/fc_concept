@@ -17,73 +17,75 @@ class PlayersListByRatingPage extends StatelessWidget {
           return Scaffold(
             appBar:
                 PageTitle(title: 'Cheapest players by ${state.rating} rating'),
-            body: Column(
-              children: [
-                Expanded(
-                  child: PlayerList(
-                    processState: state.processState,
-                    isPaginating: state.isPaginating,
-                    players: state.players,
-                    playerListItemBuilder: ({
-                      required Player player,
-                      VoidCallback? onFavoriteToggle,
-                    }) =>
-                        CheapestPlayerByRatingListItem(
-                      player: player,
-                      onTap: () => context.read<PlayersListByRatingBloc>().add(
-                            PlayerTap(player: player),
-                          ),
-                      onFavoriteToggle: onFavoriteToggle,
-                    ),
-                    query: '',
-                    nextPage: () => context.read<PlayersListByRatingBloc>().add(
-                          NextPage(),
-                        ),
-                  ),
-                ),
-                Glass.lessBlur(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: AppSpacing.space6,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          const Space(
-                            space: AppSpacing.space2,
-                            orientation: Axis.horizontal,
-                          ),
-                          for (var i = 99; i >= 50; i--)
-                            Pill<int>(
-                              pillItem: PillItem(
-                                data: i,
-                                text: i.toString(),
-                                isSelected: state.rating == i,
-                                hasDigit: true,
-                                onTap: () =>
-                                    context.read<PlayersListByRatingBloc>().add(
-                                          ChangeRating(rating: i),
-                                        ),
-                              ),
+            body: SafeArea(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: PlayerList(
+                      processState: state.processState,
+                      isPaginating: state.isPaginating,
+                      players: state.players,
+                      playerListItemBuilder: ({
+                        required Player player,
+                        VoidCallback? onFavoriteToggle,
+                      }) =>
+                          CheapestPlayerByRatingListItem(
+                        player: player,
+                        onTap: () => context.read<PlayersListByRatingBloc>().add(
+                              PlayerTap(player: player),
                             ),
-                          const Space(
-                            space: AppSpacing.space4,
-                            orientation: Axis.horizontal,
+                        onFavoriteToggle: onFavoriteToggle,
+                      ),
+                      query: '',
+                      nextPage: () => context.read<PlayersListByRatingBloc>().add(
+                            NextPage(),
                           ),
-                        ]
-                            .intersperse(
-                              const Space(
-                                space: AppSpacing.space4,
-                                orientation: Axis.horizontal,
+                    ),
+                  ),
+                  Glass.lessBlur(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: AppSpacing.space6,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            const Space(
+                              space: AppSpacing.space2,
+                              orientation: Axis.horizontal,
+                            ),
+                            for (var i = 99; i >= 50; i--)
+                              Pill<int>(
+                                pillItem: PillItem(
+                                  data: i,
+                                  text: i.toString(),
+                                  isSelected: state.rating == i,
+                                  hasDigit: true,
+                                  onTap: () =>
+                                      context.read<PlayersListByRatingBloc>().add(
+                                            ChangeRating(rating: i),
+                                          ),
+                                ),
                               ),
-                            )
-                            .toList(),
+                            const Space(
+                              space: AppSpacing.space4,
+                              orientation: Axis.horizontal,
+                            ),
+                          ]
+                              .intersperse(
+                                const Space(
+                                  space: AppSpacing.space4,
+                                  orientation: Axis.horizontal,
+                                ),
+                              )
+                              .toList(),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
