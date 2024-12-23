@@ -1,5 +1,7 @@
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
+import 'package:feature_player/src/collection/player_collection_page.dart';
+import 'package:feature_player/src/details/bloc/all_player_tap_type.dart';
 import 'package:feature_player/src/details/bloc/player_detail_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
@@ -64,6 +66,15 @@ class PlayerDetailPage extends StatelessWidget {
                       playerPrice: state.playerPrice,
                       priceProcessState: state.priceProcessState,
                       alternativePositions: state.alternativePositions,
+                      onRarityTap: () {},
+                      // onRarityTap: () => context.read<PlayerDetailBloc>().add(
+                      //       RarityTap(
+                      //         params: PlayerCollectionPageParams(
+                      //           type: PlayerCollectionType.rarity,
+                      //           data: state.player.rarity,
+                      //         ),
+                      //       ),
+                      //     ),
                     ),
                     if (state.playerRoles?.isNotEmpty ?? false)
                       Padding(
@@ -77,6 +88,12 @@ class PlayerDetailPage extends StatelessWidget {
                           onRoleTap: (role) =>
                               context.read<PlayerDetailBloc>().add(
                                     RoleTap(role: role),
+                                  ),
+                          onAllPlayersTap: (role) =>
+                              context.read<PlayerDetailBloc>().add(
+                                    AllPlayersTap(
+                                      type: RolePlayerTapType(data: role),
+                                    ),
                                   ),
                         ),
                       ),
@@ -94,6 +111,13 @@ class PlayerDetailPage extends StatelessWidget {
                               context.read<PlayerDetailBloc>().add(
                                     PlayStyleTap(playStyle: playStyle),
                                   ),
+                          onAllPlayersTap: (playStyle) => context
+                              .read<PlayerDetailBloc>()
+                              .add(
+                                AllPlayersTap(
+                                  type: PlayStylePlayerTapType(data: playStyle),
+                                ),
+                              ),
                         ),
                       ),
                     ChemistryStyleCard(

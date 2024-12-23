@@ -90,8 +90,8 @@ class _IndicesContent extends StatelessWidget {
                   current: state.indexes?[0].midfielders ?? 0,
                   previous: state.indexes?[1].midfielders ?? 0,
                   onTap: () => context.read<DashboardBloc>().add(
-                    IndexTap(indexType: IndexType.midfielders),
-                  ),
+                        IndexTap(indexType: IndexType.midfielders),
+                      ),
                 ),
               ]
                   .intersperse(
@@ -114,16 +114,16 @@ class _IndicesContent extends StatelessWidget {
                   current: state.indexes?[0].defenders ?? 0,
                   previous: state.indexes?[1].defenders ?? 0,
                   onTap: () => context.read<DashboardBloc>().add(
-                    IndexTap(indexType: IndexType.defenders),
-                  ),
+                        IndexTap(indexType: IndexType.defenders),
+                      ),
                 ),
                 IndexBox(
                   type: IndexType.goalkeepers,
                   current: state.indexes?[0].goalkeepers ?? 0,
                   previous: state.indexes?[1].goalkeepers ?? 0,
                   onTap: () => context.read<DashboardBloc>().add(
-                    IndexTap(indexType: IndexType.goalkeepers),
-                  ),
+                        IndexTap(indexType: IndexType.goalkeepers),
+                      ),
                 ),
               ]
                   .intersperse(

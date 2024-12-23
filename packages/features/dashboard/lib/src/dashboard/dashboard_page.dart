@@ -1,4 +1,4 @@
-import 'package:core_design/design.dart';
+import 'package:core_design/design.dart' hide Switch;
 import 'package:core_domain/domain.dart';
 import 'package:feature_dashboard/src/dashboard/bloc/dashboard_bloc.dart';
 import 'package:feature_dashboard/src/dashboard/widgets/indices.dart';
@@ -64,7 +64,9 @@ class DashboardPage extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSpacing.space6),
                     PlayersGrid(
-                      isLoading: state.processState == ProcessState.loading,
+                      isLoading: state.processState == ProcessState.loading ||
+                          state.positionalPlayersProcessState ==
+                              ProcessState.loading,
                       players: switch (state.positionGroup) {
                         Forwards() => state.attackPlayers,
                         Midfielders() => state.midfielderPlayers,
@@ -73,6 +75,30 @@ class DashboardPage extends StatelessWidget {
                       },
                       heading: 'High-Rated Players',
                       pills: PositionGroupTabs(state: state),
+                      trailing: InkWell(
+                        onTap: () => context.read<DashboardBloc>().add(
+                              ToggleIcons(),
+                            ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          spacing: AppSpacing.space2,
+                          children: [
+                            Text(
+                              'Icons',
+                              style: context.typography.body1.copyWith(
+                                color: context.colors.contentSecondary,
+                              ),
+                            ),
+                            Icon(
+                              state.showIcons
+                                  ? Icons.visibility_rounded
+                                  : Icons.visibility_off_rounded,
+                              size: 16,
+                              color: context.colors.contentSecondary,
+                            ),
+                          ],
+                        ),
+                      ),
                       onTap: (player) => context.read<DashboardBloc>().add(
                             PlayerTap(player: player),
                           ),

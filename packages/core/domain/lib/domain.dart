@@ -32,8 +32,10 @@ export 'package:core_domain/src/domain/play_styles/use_case/get_all_play_styles_
 export 'package:core_domain/src/domain/play_styles/use_case/get_play_styles_by_ids_use_case.dart';
 export 'package:core_domain/src/domain/players/model/accelerate_type.dart';
 export 'package:core_domain/src/domain/players/model/player.dart';
+export 'package:core_domain/src/domain/players/model/player_collection_type.dart';
 export 'package:core_domain/src/domain/players/use_case/filter_players_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_cheapest_players_by_rating_use_case.dart';
+export 'package:core_domain/src/domain/players/use_case/get_player_collection_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_count_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_details_use_case.dart';
 export 'package:core_domain/src/domain/players/use_case/get_player_versions_use_case.dart';

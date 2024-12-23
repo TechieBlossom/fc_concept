@@ -10,12 +10,14 @@ class PlayersGrid extends StatelessWidget {
     required this.onTap,
     this.pills,
     this.isLoading = false,
+    this.trailing,
   });
 
   final bool isLoading;
   final List<Player>? players;
   final String heading;
   final Widget? pills;
+  final Widget? trailing;
   final void Function(Player) onTap;
 
   @override
@@ -29,6 +31,7 @@ class PlayersGrid extends StatelessWidget {
         players: players,
         heading: heading,
         pills: pills,
+        trailing: trailing,
         onTap: onTap,
       ),
     );
@@ -59,12 +62,14 @@ class _Content extends StatelessWidget {
     required this.players,
     required this.heading,
     required this.onTap,
+    this.trailing,
     this.pills,
   });
 
   final List<Player>? players;
   final String heading;
   final Widget? pills;
+  final Widget? trailing;
   final void Function(Player) onTap;
 
   @override
@@ -85,11 +90,19 @@ class _Content extends StatelessWidget {
               right: AppSpacing.space5,
               bottom: AppSpacing.space3,
             ),
-            child: Text(
-              heading,
-              style: context.typography.headline.copyWith(
-                color: context.colors.contentPrimary,
-              ),
+            child: Row(
+              children: [
+                Text(
+                  heading,
+                  style: context.typography.headline.copyWith(
+                    color: context.colors.contentPrimary,
+                  ),
+                ),
+                if (trailing != null) ...[
+                  const Spacer(),
+                  trailing!,
+                ],
+              ],
             ),
           ),
           if (pills != null)

@@ -1,3 +1,4 @@
+export 'package:core_design/src/molecules/animated/app_animated_cross_fade.dart';
 export 'package:core_design/src/molecules/animated/app_animated_opacity.dart';
 export 'package:core_design/src/molecules/attribute/attribute.dart';
 export 'package:core_design/src/molecules/attribute/attribute_bar.dart';
@@ -20,7 +21,6 @@ export 'package:core_design/src/molecules/image/player_image.dart';
 export 'package:core_design/src/molecules/image/rarity_image.dart';
 export 'package:core_design/src/molecules/image/version_image.dart';
 export 'package:core_design/src/molecules/index_box/index_box.dart';
-export 'package:core_domain/src/domain/index/model/index_type.dart';
 export 'package:core_design/src/molecules/info/info.dart';
 export 'package:core_design/src/molecules/message/info_message.dart';
 export 'package:core_design/src/molecules/ornament/ornament.dart';
@@ -38,3 +38,4 @@ export 'package:core_design/src/molecules/sheets/app_bottom_sheet.dart';
 export 'package:core_design/src/molecules/space/space.dart';
 export 'package:core_design/src/molecules/versions/versions.dart';
 export 'package:core_design/src/molecules/versions/versions_sheet.dart';
+export 'package:core_domain/src/domain/index/model/index_type.dart';

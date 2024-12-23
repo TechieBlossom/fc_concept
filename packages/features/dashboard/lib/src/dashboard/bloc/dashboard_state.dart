@@ -4,6 +4,7 @@ part of 'dashboard_bloc.dart';
 class DashboardState with DashboardStateMappable {
   DashboardState({
     this.processState = ProcessState.loading,
+    this.positionalPlayersProcessState = ProcessState.success,
     this.indexes,
     this.positionGroup = const Forwards(),
     this.raritySquad,
@@ -13,9 +14,11 @@ class DashboardState with DashboardStateMappable {
     this.midfielderPlayers = const [],
     this.defencePlayers = const [],
     this.goalKeeperPlayers = const [],
+    this.showIcons = true,
   });
 
   final ProcessState processState;
+  final ProcessState positionalPlayersProcessState;
   final List<IndexData>? indexes;
   final PositionGroup positionGroup;
   final RaritySquad? raritySquad;
@@ -25,4 +28,5 @@ class DashboardState with DashboardStateMappable {
   final List<Player> midfielderPlayers;
   final List<Player> defencePlayers;
   final List<Player> goalKeeperPlayers;
+  final bool showIcons;
 }

@@ -42,6 +42,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<CheapestByPlayerRatingTap>(
       (_, __) async => _navigator.goToPlayersListByRating(),
     );
+    on<ToggleIcons>((event, emit) => _onToggle(emit));
 
     add(Init());
   }
@@ -296,5 +297,61 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     Emitter<DashboardState> emit,
   ) {
     emit(state.copyWith(raritySquad: event.raritySquad));
+  }
+
+  Future<void> _onToggle(Emitter<DashboardState> emit) async {
+    emit(
+      state.copyWith(
+        showIcons: !state.showIcons,
+        positionalPlayersProcessState: ProcessState.loading,
+      ),
+    );
+    final results = await Future.wait([
+      _getPositionalPlayersUseCase(
+        positionGroup: const Forwards(),
+        fetchIcons: state.showIcons,
+      ),
+      _getPositionalPlayersUseCase(
+        positionGroup: const Midfielders(),
+        fetchIcons: state.showIcons,
+      ),
+      _getPositionalPlayersUseCase(
+        positionGroup: const Defenders(),
+        fetchIcons: state.showIcons,
+      ),
+      _getPositionalPlayersUseCase(
+        positionGroup: const Goalkeepers(),
+        fetchIcons: state.showIcons,
+      ),
+    ]);
+
+    final attackPlayersResult = results[0];
+    final _attackPlayers = _getTrendingPlayersFromResult(attackPlayersResult);
+
+    final midfielderPlayersResult = results[1];
+    final _midfielderPlayers =
+        _getTrendingPlayersFromResult(midfielderPlayersResult);
+
+    final defencePlayersResult = results[2];
+    final _defencePlayers = _getTrendingPlayersFromResult(defencePlayersResult);
+
+    final goalKeeperPlayersResult = results[3];
+    final _goalKeeperPlayers =
+        _getTrendingPlayersFromResult(goalKeeperPlayersResult);
+
+    emit(
+      state.copyWith(
+        positionalPlayersProcessState: ProcessState.success,
+        attackPlayers: _attackPlayers,
+        midfielderPlayers: _midfielderPlayers,
+        defencePlayers: _defencePlayers,
+        goalKeeperPlayers: _goalKeeperPlayers,
+      ),
+    );
+
+    add(UpdatePlayerPrices(playerGroup: const Attack()));
+    add(UpdatePlayerPrices(playerGroup: const Midfielder()));
+    add(UpdatePlayerPrices(playerGroup: const Defence()));
+    add(UpdatePlayerPrices(playerGroup: const GoalKeeper()));
   }
 }

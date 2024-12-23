@@ -20,6 +20,7 @@ abstract class PlayerRoutes {
   static const pagePlayerListByRating = '/player-list-by-rating';
   static const pagePopularPlayerList = '/popular-player-list';
   static const pagePlayerDetail = '/player-detail';
+  static const pagePlayerCollection = '/player-collection';
 }
 
 abstract class CompareRoutes {

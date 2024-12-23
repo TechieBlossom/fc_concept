@@ -31,15 +31,17 @@ class PlayersListByRatingPage extends StatelessWidget {
                       }) =>
                           CheapestPlayerByRatingListItem(
                         player: player,
-                        onTap: () => context.read<PlayersListByRatingBloc>().add(
-                              PlayerTap(player: player),
-                            ),
+                        onTap: () =>
+                            context.read<PlayersListByRatingBloc>().add(
+                                  PlayerTap(player: player),
+                                ),
                         onFavoriteToggle: onFavoriteToggle,
                       ),
                       query: '',
-                      nextPage: () => context.read<PlayersListByRatingBloc>().add(
-                            NextPage(),
-                          ),
+                      nextPage: () =>
+                          context.read<PlayersListByRatingBloc>().add(
+                                NextPage(),
+                              ),
                     ),
                   ),
                   Glass.lessBlur(
@@ -62,10 +64,11 @@ class PlayersListByRatingPage extends StatelessWidget {
                                   text: i.toString(),
                                   isSelected: state.rating == i,
                                   hasDigit: true,
-                                  onTap: () =>
-                                      context.read<PlayersListByRatingBloc>().add(
-                                            ChangeRating(rating: i),
-                                          ),
+                                  onTap: () => context
+                                      .read<PlayersListByRatingBloc>()
+                                      .add(
+                                        ChangeRating(rating: i),
+                                      ),
                                 ),
                               ),
                             const Space(

@@ -13,12 +13,14 @@ class PlayerHeader extends StatelessWidget {
     required this.alternativePositions,
     required this.playerPrice,
     required this.priceProcessState,
+    required this.onRarityTap,
   });
 
   final Player player;
   final List<Position>? alternativePositions;
   final PlayerPrice? playerPrice;
   final ProcessState? priceProcessState;
+  final VoidCallback onRarityTap;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +77,7 @@ class PlayerHeader extends StatelessWidget {
                                 rarity: player.rarity.name,
                                 bg: colors.$1,
                                 fg: colors.$2,
+                                onTap: onRarityTap,
                               ),
                               SizedBox(width: AppSpacing.space2),
                             ],

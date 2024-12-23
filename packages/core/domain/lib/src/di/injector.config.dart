@@ -87,6 +87,8 @@ import 'package:core_domain/src/domain/players/use_case/filter_players_use_case.
     as _i120;
 import 'package:core_domain/src/domain/players/use_case/get_cheapest_players_by_rating_use_case.dart'
     as _i288;
+import 'package:core_domain/src/domain/players/use_case/get_player_collection_use_case.dart'
+    as _i988;
 import 'package:core_domain/src/domain/players/use_case/get_player_count_use_case.dart'
     as _i394;
 import 'package:core_domain/src/domain/players/use_case/get_player_details_use_case.dart'
@@ -213,10 +215,10 @@ _i174.GetIt init(
       () => _i651.GetAllRolesUseCase(gh<_i907.RoleRepository>()));
   gh.factory<_i1022.GetClubsByLeagueUseCase>(
       () => _i1022.GetClubsByLeagueUseCase(gh<_i177.ClubRepository>()));
-  gh.factory<_i883.GetIndexDataUseCase>(
-      () => _i883.GetIndexDataUseCase(gh<_i140.IndexRepository>()));
   gh.factory<_i906.GetAllIndexDataUseCase>(
       () => _i906.GetAllIndexDataUseCase(gh<_i140.IndexRepository>()));
+  gh.factory<_i883.GetIndexDataUseCase>(
+      () => _i883.GetIndexDataUseCase(gh<_i140.IndexRepository>()));
   gh.factory<_i491.GetTopNationsUseCase>(
       () => _i491.GetTopNationsUseCase(gh<_i829.NationRepository>()));
   gh.factory<_i847.GetOtherNationsUseCase>(
@@ -246,6 +248,8 @@ _i174.GetIt init(
       () => _i75.GetPlayerDetailsUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i77.GetPlayerVersionsUseCase>(
       () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
+  gh.factory<_i988.GetPlayerCollectionUseCase>(
+      () => _i988.GetPlayerCollectionUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i171.GetRecentPlayersUseCase>(
       () => _i171.GetRecentPlayersUseCase(gh<_i294.PlayerRepository>()));
   gh.factory<_i380.GetTopPlayerUseCase>(

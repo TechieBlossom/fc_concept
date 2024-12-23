@@ -23,6 +23,7 @@ abstract class PlayerRepository {
 
   Future<Result<List<Player>?>> getPositionalPlayers(
     PositionGroup positionGroup,
+    bool fetchIcons,
   );
 
   Future<Result<List<Player>?>> getPlayersByRaritySquad({
@@ -62,4 +63,24 @@ abstract class PlayerRepository {
   Future<int> getPlayerCount();
 
   Future<Result<List<Player>?>> getPlayersByEaIds({required List<int> eaIds});
+
+  Future<Result<List<Player>?>> getRarityCollection({
+    required int rarityId,
+    String? query,
+    int page = 0,
+  });
+
+  Future<Result<List<Player>?>> getRoleCollection({
+    required int roleId,
+    bool isPlusPlus = false,
+    String? query,
+    int page = 0,
+  });
+
+  Future<Result<List<Player>?>> getPlayStyleCollection({
+    required int playStyleId,
+    bool isPlus = false,
+    String? query,
+    int page = 0,
+  });
 }

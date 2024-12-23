@@ -104,3 +104,21 @@ class ChemistryApply extends PlayerDetailEvent with ChemistryApplyMappable {
   final ChemistryStyle chemistryStyle;
   final int chemistryModifier;
 }
+
+@MappableClass(discriminatorValue: 'rarityTap')
+class RarityTap extends PlayerDetailEvent with RarityTapMappable {
+  RarityTap({
+    required this.params,
+  });
+
+  final PlayerCollectionPageParams params;
+}
+
+@MappableClass(discriminatorValue: 'allPlayersTap')
+class AllPlayersTap extends PlayerDetailEvent with AllPlayersTapMappable {
+  AllPlayersTap({
+    required this.type,
+  });
+
+  final AllPlayerTapType type;
+}

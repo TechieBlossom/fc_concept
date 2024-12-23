@@ -1,4 +1,5 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/molecules/tappable/app_tappable.dart';
 import 'package:flutter/material.dart';
 
 class LinkButton extends StatelessWidget {
@@ -22,10 +23,8 @@ class LinkButton extends StatelessWidget {
       ButtonSize.small => context.typography.caption1,
     };
 
-    return InkWell(
+    return AppTappable(
       onTap: onPressed,
-      splashColor: Colors.transparent,
-      splashFactory: NoSplash.splashFactory,
       child: Container(
         padding: const EdgeInsets.only(bottom: 2),
         decoration: BoxDecoration(
@@ -41,7 +40,11 @@ class LinkButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: textStyle,
+          style: textStyle.copyWith(
+            color: reverseTheme
+                ? context.colors.contentPrimary
+                : context.colors.contentSecondary,
+          ),
         ),
       ),
     );

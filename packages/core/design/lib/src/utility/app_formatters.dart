@@ -6,6 +6,8 @@ class AppFormatter {
   static NumberFormat currencyFormat = NumberFormat('###,###,###,###,###.##');
   static NumberFormat currencyFormatWithoutDecimal =
       NumberFormat('###,###,###,###,###.#');
+  static DateFormat chartDateFormat = DateFormat('dd-MMM');
+  static DateFormat chartDateTimeFormat = DateFormat('dd-MMM, HH:mm');
 
   static String formatCurrency(num value) {
     return '${currencyFormat.format(value)}';
@@ -21,6 +23,14 @@ class AppFormatter {
 
   static String formatNegativeValue(num value) {
     return '-${currencyFormat.format(value)}';
+  }
+
+  static String formatDate(DateTime dateTime) {
+    return '${chartDateFormat.format(dateTime)}';
+  }
+
+  static String formatDateTime(DateTime dateTime) {
+    return '${chartDateTimeFormat.format(dateTime)}';
   }
 
   static String formatCurrencyShortForm(num value) {

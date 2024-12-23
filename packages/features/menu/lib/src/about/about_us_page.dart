@@ -18,7 +18,7 @@ class AboutUsPage extends StatelessWidget {
           'We offer a unique approach to player data analysis, '
           'helping you find hidden gems and build a competitive squad.\n\n'
           'All game assets, player faces, club badges and league logos are property of EA Sports.',
-          style: context.typography.body4.copyWith(
+          style: context.typography.body1.copyWith(
             color: context.colors.contentPrimary,
           ),
         ),

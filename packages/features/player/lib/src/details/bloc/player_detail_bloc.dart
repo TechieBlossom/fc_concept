@@ -1,6 +1,8 @@
 import 'package:core_analytics/analytics.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:feature_player/src/collection/player_collection_page.dart';
+import 'package:feature_player/src/details/bloc/all_player_tap_type.dart';
 import 'package:feature_player/src/navigation/navigator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -70,6 +72,29 @@ class PlayerDetailBloc extends Bloc<PlayerDetailEvent, PlayerDetailState> {
     on<PlayStyleTap>((_, __) => {});
     on<AccelerateTap>((_, __) => {});
     on<ChemistryTap>((_, __) => {});
+    on<RarityTap>(
+      (event, __) => _playerNavigator.goToPlayerCollection(event.params),
+    );
+    on<AllPlayersTap>(
+      (event, __) {
+        final playerCollectionType = switch (event.type) {
+          RolePlayerTapType() => (event.type.data as Role).isPlus
+              ? PlayerCollectionType.role
+              : PlayerCollectionType.rolePlus,
+          PlayStylePlayerTapType() => (state.playerPlayStylesPlus
+                      ?.contains(event.type.data as PlayStyle) ??
+                  false)
+              ? PlayerCollectionType.playStylePlus
+              : PlayerCollectionType.playStyle,
+        };
+        return _playerNavigator.goToPlayerCollection(
+          PlayerCollectionPageParams(
+            type: playerCollectionType,
+            data: event.type.data,
+          ),
+        );
+      },
+    );
 
     add(Init(player: params.player));
   }

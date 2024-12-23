@@ -3,6 +3,7 @@ import 'package:core_design/src/atoms/app_dimens.dart';
 import 'package:core_design/src/atoms/app_typography.dart';
 import 'package:core_design/src/molecules/molecules.dart';
 import 'package:core_design/src/molecules/role/role_info_sheet.dart';
+import 'package:core_design/src/molecules/tappable/app_tappable.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +18,13 @@ class RoleBar extends StatelessWidget {
     required this.role,
     this.size = RoleBarSize.small,
     this.onTap,
+    this.onAllPlayersTap,
   });
 
   final Role role;
   final RoleBarSize size;
   final VoidCallback? onTap;
+  final VoidCallback? onAllPlayersTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +35,12 @@ class RoleBar extends StatelessWidget {
         : context.typography.body1.copyWith(
             color: context.colors.contentPrimary,
           );
-    return InkWell(
+    return AppTappable(
       onTap: () {
         onTap?.call();
         showAppBottomSheet(
           context,
-          child: RoleInfoSheet(role: role),
+          child: RoleInfoSheet(role: role, allPlayersTap: onAllPlayersTap),
         );
       },
       child: Row(

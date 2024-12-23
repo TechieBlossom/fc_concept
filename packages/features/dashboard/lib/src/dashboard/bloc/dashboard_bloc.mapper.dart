@@ -21,6 +21,7 @@ class DashboardEventMapper extends ClassMapperBase<DashboardEvent> {
       SearchTapMapper.ensureInitialized();
       CheapestByPlayerRatingTapMapper.ensureInitialized();
       IndexTapMapper.ensureInitialized();
+      ToggleIconsMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -987,6 +988,111 @@ class _IndexTapCopyWithImpl<$R, $Out>
       _IndexTapCopyWithImpl($value, $cast, t);
 }
 
+class ToggleIconsMapper extends SubClassMapperBase<ToggleIcons> {
+  ToggleIconsMapper._();
+
+  static ToggleIconsMapper? _instance;
+  static ToggleIconsMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ToggleIconsMapper._());
+      DashboardEventMapper.ensureInitialized().addSubMapper(_instance!);
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'ToggleIcons';
+
+  @override
+  final MappableFields<ToggleIcons> fields = const {};
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'toggleIcons';
+  @override
+  late final ClassMapperBase superMapper =
+      DashboardEventMapper.ensureInitialized();
+
+  static ToggleIcons _instantiate(DecodingData data) {
+    return ToggleIcons();
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static ToggleIcons fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<ToggleIcons>(map);
+  }
+
+  static ToggleIcons fromJson(String json) {
+    return ensureInitialized().decodeJson<ToggleIcons>(json);
+  }
+}
+
+mixin ToggleIconsMappable {
+  String toJson() {
+    return ToggleIconsMapper.ensureInitialized()
+        .encodeJson<ToggleIcons>(this as ToggleIcons);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ToggleIconsMapper.ensureInitialized()
+        .encodeMap<ToggleIcons>(this as ToggleIcons);
+  }
+
+  ToggleIconsCopyWith<ToggleIcons, ToggleIcons, ToggleIcons> get copyWith =>
+      _ToggleIconsCopyWithImpl(this as ToggleIcons, $identity, $identity);
+  @override
+  String toString() {
+    return ToggleIconsMapper.ensureInitialized()
+        .stringifyValue(this as ToggleIcons);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return ToggleIconsMapper.ensureInitialized()
+        .equalsValue(this as ToggleIcons, other);
+  }
+
+  @override
+  int get hashCode {
+    return ToggleIconsMapper.ensureInitialized().hashValue(this as ToggleIcons);
+  }
+}
+
+extension ToggleIconsValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, ToggleIcons, $Out> {
+  ToggleIconsCopyWith<$R, ToggleIcons, $Out> get $asToggleIcons =>
+      $base.as((v, t, t2) => _ToggleIconsCopyWithImpl(v, t, t2));
+}
+
+abstract class ToggleIconsCopyWith<$R, $In extends ToggleIcons, $Out>
+    implements DashboardEventCopyWith<$R, $In, $Out> {
+  @override
+  $R call();
+  ToggleIconsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _ToggleIconsCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, ToggleIcons, $Out>
+    implements ToggleIconsCopyWith<$R, ToggleIcons, $Out> {
+  _ToggleIconsCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<ToggleIcons> $mapper =
+      ToggleIconsMapper.ensureInitialized();
+  @override
+  $R call() => $apply(FieldCopyWithData({}));
+  @override
+  ToggleIcons $make(CopyWithData data) => ToggleIcons();
+
+  @override
+  ToggleIconsCopyWith<$R2, ToggleIcons, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _ToggleIconsCopyWithImpl($value, $cast, t);
+}
+
 class DashboardStateMapper extends ClassMapperBase<DashboardState> {
   DashboardStateMapper._();
 
@@ -1009,6 +1115,12 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
   static const Field<DashboardState, ProcessState> _f$processState = Field(
       'processState', _$processState,
       opt: true, def: ProcessState.loading);
+  static ProcessState _$positionalPlayersProcessState(DashboardState v) =>
+      v.positionalPlayersProcessState;
+  static const Field<DashboardState, ProcessState>
+      _f$positionalPlayersProcessState = Field(
+          'positionalPlayersProcessState', _$positionalPlayersProcessState,
+          opt: true, def: ProcessState.success);
   static List<IndexData>? _$indexes(DashboardState v) => v.indexes;
   static const Field<DashboardState, List<IndexData>> _f$indexes =
       Field('indexes', _$indexes, opt: true);
@@ -1041,10 +1153,14 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
       v.goalKeeperPlayers;
   static const Field<DashboardState, List<Player>> _f$goalKeeperPlayers =
       Field('goalKeeperPlayers', _$goalKeeperPlayers, opt: true, def: const []);
+  static bool _$showIcons(DashboardState v) => v.showIcons;
+  static const Field<DashboardState, bool> _f$showIcons =
+      Field('showIcons', _$showIcons, opt: true, def: true);
 
   @override
   final MappableFields<DashboardState> fields = const {
     #processState: _f$processState,
+    #positionalPlayersProcessState: _f$positionalPlayersProcessState,
     #indexes: _f$indexes,
     #positionGroup: _f$positionGroup,
     #raritySquad: _f$raritySquad,
@@ -1054,11 +1170,14 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
     #midfielderPlayers: _f$midfielderPlayers,
     #defencePlayers: _f$defencePlayers,
     #goalKeeperPlayers: _f$goalKeeperPlayers,
+    #showIcons: _f$showIcons,
   };
 
   static DashboardState _instantiate(DecodingData data) {
     return DashboardState(
         processState: data.dec(_f$processState),
+        positionalPlayersProcessState:
+            data.dec(_f$positionalPlayersProcessState),
         indexes: data.dec(_f$indexes),
         positionGroup: data.dec(_f$positionGroup),
         raritySquad: data.dec(_f$raritySquad),
@@ -1067,7 +1186,8 @@ class DashboardStateMapper extends ClassMapperBase<DashboardState> {
         attackPlayers: data.dec(_f$attackPlayers),
         midfielderPlayers: data.dec(_f$midfielderPlayers),
         defencePlayers: data.dec(_f$defencePlayers),
-        goalKeeperPlayers: data.dec(_f$goalKeeperPlayers));
+        goalKeeperPlayers: data.dec(_f$goalKeeperPlayers),
+        showIcons: data.dec(_f$showIcons));
   }
 
   @override
@@ -1139,6 +1259,7 @@ abstract class DashboardStateCopyWith<$R, $In extends DashboardState, $Out>
       get goalKeeperPlayers;
   $R call(
       {ProcessState? processState,
+      ProcessState? positionalPlayersProcessState,
       List<IndexData>? indexes,
       PositionGroup? positionGroup,
       RaritySquad? raritySquad,
@@ -1147,7 +1268,8 @@ abstract class DashboardStateCopyWith<$R, $In extends DashboardState, $Out>
       List<Player>? attackPlayers,
       List<Player>? midfielderPlayers,
       List<Player>? defencePlayers,
-      List<Player>? goalKeeperPlayers});
+      List<Player>? goalKeeperPlayers,
+      bool? showIcons});
   DashboardStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -1199,6 +1321,7 @@ class _DashboardStateCopyWithImpl<$R, $Out>
   @override
   $R call(
           {ProcessState? processState,
+          ProcessState? positionalPlayersProcessState,
           Object? indexes = $none,
           PositionGroup? positionGroup,
           Object? raritySquad = $none,
@@ -1207,9 +1330,12 @@ class _DashboardStateCopyWithImpl<$R, $Out>
           List<Player>? attackPlayers,
           List<Player>? midfielderPlayers,
           List<Player>? defencePlayers,
-          List<Player>? goalKeeperPlayers}) =>
+          List<Player>? goalKeeperPlayers,
+          bool? showIcons}) =>
       $apply(FieldCopyWithData({
         if (processState != null) #processState: processState,
+        if (positionalPlayersProcessState != null)
+          #positionalPlayersProcessState: positionalPlayersProcessState,
         if (indexes != $none) #indexes: indexes,
         if (positionGroup != null) #positionGroup: positionGroup,
         if (raritySquad != $none) #raritySquad: raritySquad,
@@ -1218,11 +1344,14 @@ class _DashboardStateCopyWithImpl<$R, $Out>
         if (attackPlayers != null) #attackPlayers: attackPlayers,
         if (midfielderPlayers != null) #midfielderPlayers: midfielderPlayers,
         if (defencePlayers != null) #defencePlayers: defencePlayers,
-        if (goalKeeperPlayers != null) #goalKeeperPlayers: goalKeeperPlayers
+        if (goalKeeperPlayers != null) #goalKeeperPlayers: goalKeeperPlayers,
+        if (showIcons != null) #showIcons: showIcons
       }));
   @override
   DashboardState $make(CopyWithData data) => DashboardState(
       processState: data.get(#processState, or: $value.processState),
+      positionalPlayersProcessState: data.get(#positionalPlayersProcessState,
+          or: $value.positionalPlayersProcessState),
       indexes: data.get(#indexes, or: $value.indexes),
       positionGroup: data.get(#positionGroup, or: $value.positionGroup),
       raritySquad: data.get(#raritySquad, or: $value.raritySquad),
@@ -1234,7 +1363,8 @@ class _DashboardStateCopyWithImpl<$R, $Out>
           data.get(#midfielderPlayers, or: $value.midfielderPlayers),
       defencePlayers: data.get(#defencePlayers, or: $value.defencePlayers),
       goalKeeperPlayers:
-          data.get(#goalKeeperPlayers, or: $value.goalKeeperPlayers));
+          data.get(#goalKeeperPlayers, or: $value.goalKeeperPlayers),
+      showIcons: data.get(#showIcons, or: $value.showIcons));
 
   @override
   DashboardStateCopyWith<$R2, DashboardState, $Out2> $chain<$R2, $Out2>(

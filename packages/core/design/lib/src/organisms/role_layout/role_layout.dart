@@ -8,10 +8,12 @@ class RoleLayout extends StatelessWidget {
     super.key,
     required this.roles,
     this.onRoleTap,
+    this.onAllPlayersTap,
   });
 
   final List<Role> roles;
   final void Function(Role)? onRoleTap;
+  final void Function(Role)? onAllPlayersTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class RoleLayout extends StatelessWidget {
             (role) => RoleBar(
               role: role,
               onTap: () => onRoleTap?.call(role),
+              onAllPlayersTap: () => onAllPlayersTap?.call(role),
             ),
           )
           .toList(),

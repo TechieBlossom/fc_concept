@@ -1,4 +1,5 @@
 import 'package:core_domain/domain.dart';
+import 'package:feature_player/src/collection/player_collection_page.dart';
 import 'package:injectable/injectable.dart';
 import 'package:utility_navigation/navigation.dart';
 
@@ -8,6 +9,14 @@ class PlayerNavigator extends AppNavigator {
 
   Future<void> goToPlayers() async => goRouter.push(
         PlayerRoutes.pagePlayerList,
+      );
+
+  Future<void> goToPlayerCollection(
+    PlayerCollectionPageParams params,
+  ) async =>
+      goRouter.push(
+        PlayerRoutes.pagePlayerCollection,
+        extra: params,
       );
 
   Future<void> goToPopularPlayers() async => goRouter.push(

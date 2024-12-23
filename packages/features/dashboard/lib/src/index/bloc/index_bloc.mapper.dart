@@ -14,6 +14,7 @@ class IndexEventMapper extends ClassMapperBase<IndexEvent> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = IndexEventMapper._());
       InitMapper.ensureInitialized();
+      ChartHoveredMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -149,6 +150,133 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
       _InitCopyWithImpl($value, $cast, t);
 }
 
+class ChartHoveredMapper extends SubClassMapperBase<ChartHovered> {
+  ChartHoveredMapper._();
+
+  static ChartHoveredMapper? _instance;
+  static ChartHoveredMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ChartHoveredMapper._());
+      IndexEventMapper.ensureInitialized().addSubMapper(_instance!);
+      IndexDataMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'ChartHovered';
+
+  static IndexType _$indexType(ChartHovered v) => v.indexType;
+  static const Field<ChartHovered, IndexType> _f$indexType =
+      Field('indexType', _$indexType);
+  static IndexData? _$indexData(ChartHovered v) => v.indexData;
+  static const Field<ChartHovered, IndexData> _f$indexData =
+      Field('indexData', _$indexData);
+
+  @override
+  final MappableFields<ChartHovered> fields = const {
+    #indexType: _f$indexType,
+    #indexData: _f$indexData,
+  };
+
+  @override
+  final String discriminatorKey = 'event';
+  @override
+  final dynamic discriminatorValue = 'chartHovered';
+  @override
+  late final ClassMapperBase superMapper = IndexEventMapper.ensureInitialized();
+
+  static ChartHovered _instantiate(DecodingData data) {
+    return ChartHovered(
+        indexType: data.dec(_f$indexType), indexData: data.dec(_f$indexData));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static ChartHovered fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<ChartHovered>(map);
+  }
+
+  static ChartHovered fromJson(String json) {
+    return ensureInitialized().decodeJson<ChartHovered>(json);
+  }
+}
+
+mixin ChartHoveredMappable {
+  String toJson() {
+    return ChartHoveredMapper.ensureInitialized()
+        .encodeJson<ChartHovered>(this as ChartHovered);
+  }
+
+  Map<String, dynamic> toMap() {
+    return ChartHoveredMapper.ensureInitialized()
+        .encodeMap<ChartHovered>(this as ChartHovered);
+  }
+
+  ChartHoveredCopyWith<ChartHovered, ChartHovered, ChartHovered> get copyWith =>
+      _ChartHoveredCopyWithImpl(this as ChartHovered, $identity, $identity);
+  @override
+  String toString() {
+    return ChartHoveredMapper.ensureInitialized()
+        .stringifyValue(this as ChartHovered);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return ChartHoveredMapper.ensureInitialized()
+        .equalsValue(this as ChartHovered, other);
+  }
+
+  @override
+  int get hashCode {
+    return ChartHoveredMapper.ensureInitialized()
+        .hashValue(this as ChartHovered);
+  }
+}
+
+extension ChartHoveredValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, ChartHovered, $Out> {
+  ChartHoveredCopyWith<$R, ChartHovered, $Out> get $asChartHovered =>
+      $base.as((v, t, t2) => _ChartHoveredCopyWithImpl(v, t, t2));
+}
+
+abstract class ChartHoveredCopyWith<$R, $In extends ChartHovered, $Out>
+    implements IndexEventCopyWith<$R, $In, $Out> {
+  IndexDataCopyWith<$R, IndexData, IndexData>? get indexData;
+  @override
+  $R call({IndexType? indexType, IndexData? indexData});
+  ChartHoveredCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _ChartHoveredCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, ChartHovered, $Out>
+    implements ChartHoveredCopyWith<$R, ChartHovered, $Out> {
+  _ChartHoveredCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<ChartHovered> $mapper =
+      ChartHoveredMapper.ensureInitialized();
+  @override
+  IndexDataCopyWith<$R, IndexData, IndexData>? get indexData =>
+      $value.indexData?.copyWith.$chain((v) => call(indexData: v));
+  @override
+  $R call({IndexType? indexType, Object? indexData = $none}) =>
+      $apply(FieldCopyWithData({
+        if (indexType != null) #indexType: indexType,
+        if (indexData != $none) #indexData: indexData
+      }));
+  @override
+  ChartHovered $make(CopyWithData data) => ChartHovered(
+      indexType: data.get(#indexType, or: $value.indexType),
+      indexData: data.get(#indexData, or: $value.indexData));
+
+  @override
+  ChartHoveredCopyWith<$R2, ChartHovered, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _ChartHoveredCopyWithImpl($value, $cast, t);
+}
+
 class IndexStateMapper extends ClassMapperBase<IndexState> {
   IndexStateMapper._();
 
@@ -156,6 +284,7 @@ class IndexStateMapper extends ClassMapperBase<IndexState> {
   static IndexStateMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = IndexStateMapper._());
+      IndexDataMapper.ensureInitialized();
       ProcessStateMapper.ensureInitialized();
     }
     return _instance!;
@@ -164,9 +293,9 @@ class IndexStateMapper extends ClassMapperBase<IndexState> {
   @override
   final String id = 'IndexState';
 
-  static List<double>? _$values(IndexState v) => v.values;
-  static const Field<IndexState, List<double>> _f$values =
-      Field('values', _$values, opt: true);
+  static List<IndexData>? _$entries(IndexState v) => v.entries;
+  static const Field<IndexState, List<IndexData>> _f$entries =
+      Field('entries', _$entries, opt: true);
   static double? _$min(IndexState v) => v.min;
   static const Field<IndexState, double> _f$min =
       Field('min', _$min, opt: true);
@@ -176,6 +305,15 @@ class IndexStateMapper extends ClassMapperBase<IndexState> {
   static double? _$interval(IndexState v) => v.interval;
   static const Field<IndexState, double> _f$interval =
       Field('interval', _$interval, opt: true);
+  static double? _$current(IndexState v) => v.current;
+  static const Field<IndexState, double> _f$current =
+      Field('current', _$current, opt: true);
+  static double? _$previous(IndexState v) => v.previous;
+  static const Field<IndexState, double> _f$previous =
+      Field('previous', _$previous, opt: true);
+  static double? _$hoveredIndexData(IndexState v) => v.hoveredIndexData;
+  static const Field<IndexState, double> _f$hoveredIndexData =
+      Field('hoveredIndexData', _$hoveredIndexData, opt: true);
   static ProcessState? _$processState(IndexState v) => v.processState;
   static const Field<IndexState, ProcessState> _f$processState = Field(
       'processState', _$processState,
@@ -183,19 +321,25 @@ class IndexStateMapper extends ClassMapperBase<IndexState> {
 
   @override
   final MappableFields<IndexState> fields = const {
-    #values: _f$values,
+    #entries: _f$entries,
     #min: _f$min,
     #max: _f$max,
     #interval: _f$interval,
+    #current: _f$current,
+    #previous: _f$previous,
+    #hoveredIndexData: _f$hoveredIndexData,
     #processState: _f$processState,
   };
 
   static IndexState _instantiate(DecodingData data) {
     return IndexState(
-        values: data.dec(_f$values),
+        entries: data.dec(_f$entries),
         min: data.dec(_f$min),
         max: data.dec(_f$max),
         interval: data.dec(_f$interval),
+        current: data.dec(_f$current),
+        previous: data.dec(_f$previous),
+        hoveredIndexData: data.dec(_f$hoveredIndexData),
         processState: data.dec(_f$processState));
   }
 
@@ -250,12 +394,16 @@ extension IndexStateValueCopy<$R, $Out>
 
 abstract class IndexStateCopyWith<$R, $In extends IndexState, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, double, ObjectCopyWith<$R, double, double>>? get values;
+  ListCopyWith<$R, IndexData, IndexDataCopyWith<$R, IndexData, IndexData>>?
+      get entries;
   $R call(
-      {List<double>? values,
+      {List<IndexData>? entries,
       double? min,
       double? max,
       double? interval,
+      double? current,
+      double? previous,
+      double? hoveredIndexData,
       ProcessState? processState});
   IndexStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
@@ -269,31 +417,41 @@ class _IndexStateCopyWithImpl<$R, $Out>
   late final ClassMapperBase<IndexState> $mapper =
       IndexStateMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, double, ObjectCopyWith<$R, double, double>>? get values =>
-      $value.values != null
-          ? ListCopyWith($value.values!,
-              (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(values: v))
+  ListCopyWith<$R, IndexData, IndexDataCopyWith<$R, IndexData, IndexData>>?
+      get entries => $value.entries != null
+          ? ListCopyWith($value.entries!, (v, t) => v.copyWith.$chain(t),
+              (v) => call(entries: v))
           : null;
   @override
   $R call(
-          {Object? values = $none,
+          {Object? entries = $none,
           Object? min = $none,
           Object? max = $none,
           Object? interval = $none,
+          Object? current = $none,
+          Object? previous = $none,
+          Object? hoveredIndexData = $none,
           Object? processState = $none}) =>
       $apply(FieldCopyWithData({
-        if (values != $none) #values: values,
+        if (entries != $none) #entries: entries,
         if (min != $none) #min: min,
         if (max != $none) #max: max,
         if (interval != $none) #interval: interval,
+        if (current != $none) #current: current,
+        if (previous != $none) #previous: previous,
+        if (hoveredIndexData != $none) #hoveredIndexData: hoveredIndexData,
         if (processState != $none) #processState: processState
       }));
   @override
   IndexState $make(CopyWithData data) => IndexState(
-      values: data.get(#values, or: $value.values),
+      entries: data.get(#entries, or: $value.entries),
       min: data.get(#min, or: $value.min),
       max: data.get(#max, or: $value.max),
       interval: data.get(#interval, or: $value.interval),
+      current: data.get(#current, or: $value.current),
+      previous: data.get(#previous, or: $value.previous),
+      hoveredIndexData:
+          data.get(#hoveredIndexData, or: $value.hoveredIndexData),
       processState: data.get(#processState, or: $value.processState));
 
   @override

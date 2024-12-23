@@ -20,6 +20,9 @@ class IndexDataMapper extends ClassMapperBase<IndexData> {
   @override
   final String id = 'IndexData';
 
+  static DateTime _$dateTime(IndexData v) => v.dateTime;
+  static const Field<IndexData, DateTime> _f$dateTime =
+      Field('dateTime', _$dateTime, key: 'created_at');
   static double _$forwards(IndexData v) => v.forwards;
   static const Field<IndexData, double> _f$forwards =
       Field('forwards', _$forwards);
@@ -35,6 +38,7 @@ class IndexDataMapper extends ClassMapperBase<IndexData> {
 
   @override
   final MappableFields<IndexData> fields = const {
+    #dateTime: _f$dateTime,
     #forwards: _f$forwards,
     #midfielders: _f$midfielders,
     #defenders: _f$defenders,
@@ -43,6 +47,7 @@ class IndexDataMapper extends ClassMapperBase<IndexData> {
 
   static IndexData _instantiate(DecodingData data) {
     return IndexData(
+        dateTime: data.dec(_f$dateTime),
         forwards: data.dec(_f$forwards),
         midfielders: data.dec(_f$midfielders),
         defenders: data.dec(_f$defenders),
@@ -100,7 +105,8 @@ extension IndexDataValueCopy<$R, $Out> on ObjectCopyWith<$R, IndexData, $Out> {
 abstract class IndexDataCopyWith<$R, $In extends IndexData, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {double? forwards,
+      {DateTime? dateTime,
+      double? forwards,
       double? midfielders,
       double? defenders,
       double? goalkeepers});
@@ -117,11 +123,13 @@ class _IndexDataCopyWithImpl<$R, $Out>
       IndexDataMapper.ensureInitialized();
   @override
   $R call(
-          {double? forwards,
+          {DateTime? dateTime,
+          double? forwards,
           double? midfielders,
           double? defenders,
           double? goalkeepers}) =>
       $apply(FieldCopyWithData({
+        if (dateTime != null) #dateTime: dateTime,
         if (forwards != null) #forwards: forwards,
         if (midfielders != null) #midfielders: midfielders,
         if (defenders != null) #defenders: defenders,
@@ -129,6 +137,7 @@ class _IndexDataCopyWithImpl<$R, $Out>
       }));
   @override
   IndexData $make(CopyWithData data) => IndexData(
+      dateTime: data.get(#dateTime, or: $value.dateTime),
       forwards: data.get(#forwards, or: $value.forwards),
       midfielders: data.get(#midfielders, or: $value.midfielders),
       defenders: data.get(#defenders, or: $value.defenders),

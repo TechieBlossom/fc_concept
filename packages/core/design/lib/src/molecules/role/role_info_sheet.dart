@@ -1,4 +1,5 @@
 import 'package:core_design/src/atoms/atoms.dart';
+import 'package:core_design/src/molecules/button/link_button.dart';
 import 'package:core_design/src/molecules/button/primary_button.dart';
 import 'package:core_design/src/molecules/role/role_bar.dart';
 import 'package:core_domain/domain.dart';
@@ -8,9 +9,11 @@ class RoleInfoSheet extends StatelessWidget {
   const RoleInfoSheet({
     super.key,
     required this.role,
+    this.allPlayersTap,
   });
 
   final Role role;
+  final VoidCallback? allPlayersTap;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +38,13 @@ class RoleInfoSheet extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.space5),
         // Align(
-        //   child: SecondaryButton(
-        //     text: 'All Players with ${playStyle.name}',
-        //     onPressed: () {},
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(AppSpacing.space5),
+        //     child: LinkButton(
+        //       text: 'Show All Players with ${role.name}',
+        //       reverseTheme: true,
+        //       onPressed: allPlayersTap,
+        //     ),
         //   ),
         // ),
         PrimaryButton(

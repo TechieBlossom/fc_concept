@@ -187,7 +187,7 @@ class MenuPage extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'App Version 1.0.1',
+                          'App Version 1.0.7',
                           style: context.typography.body4.copyWith(
                             color: context.colors.contentSecondary,
                           ),

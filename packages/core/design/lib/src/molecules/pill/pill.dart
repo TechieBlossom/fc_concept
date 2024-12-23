@@ -1,4 +1,5 @@
 import 'package:core_design/design.dart';
+import 'package:core_design/src/molecules/tappable/app_tappable.dart';
 import 'package:flutter/material.dart';
 
 const _height = 36.0;
@@ -27,10 +28,8 @@ class Pill<T> extends StatelessWidget {
             true => context.typography.body5,
             false => context.typography.caption1,
           };
-    return InkWell(
+    return AppTappable(
       onTap: (pillItem.onTap != null) ? () => pillItem.onTap?.call() : null,
-      radius: mediumCorner.value,
-      borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
       child: AnimatedContainer(
         height: _height,
         duration: const Duration(milliseconds: 200),

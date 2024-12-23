@@ -1,4 +1,5 @@
 import 'package:core_design/src/atoms/atoms.dart';
+import 'package:core_design/src/molecules/button/link_button.dart';
 import 'package:core_design/src/molecules/button/primary_button.dart';
 import 'package:core_design/src/molecules/play_style/play_style_widget.dart';
 import 'package:core_domain/domain.dart';
@@ -9,10 +10,12 @@ class PlayStyleInfoSheet extends StatelessWidget {
     super.key,
     required this.playStyle,
     required this.isPlus,
+    this.allPlayersTap,
   });
 
   final PlayStyle playStyle;
   final bool isPlus;
+  final VoidCallback? allPlayersTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +43,13 @@ class PlayStyleInfoSheet extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.space5),
         // Align(
-        //   child: SecondaryButton(
-        //     text: 'All Players with ${playStyle.name}',
-        //     onPressed: () {},
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(AppSpacing.space5),
+        //     child: LinkButton(
+        //       text: 'Show All Players with ${playStyle.name}',
+        //       reverseTheme: true,
+        //       onPressed: allPlayersTap,
+        //     ),
         //   ),
         // ),
         PrimaryButton(

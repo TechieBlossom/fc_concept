@@ -12,6 +12,10 @@ class GetPositionalPlayersUseCase {
 
   Future<Result<List<Player>?>> call({
     required PositionGroup positionGroup,
+    bool fetchIcons = true,
   }) async =>
-      _playerRepository.getPositionalPlayers(positionGroup);
+      _playerRepository.getPositionalPlayers(
+        positionGroup,
+        fetchIcons,
+      );
 }

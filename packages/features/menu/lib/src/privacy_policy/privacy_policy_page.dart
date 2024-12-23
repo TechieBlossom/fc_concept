@@ -8,11 +8,28 @@ class PrivacyPolicyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: PageTitle(title: 'Privacy Policy'),
+    return Scaffold(
+      appBar: const PageTitle(title: 'Privacy Policy'),
       body: Padding(
-        padding: EdgeInsets.all(AppSpacing.space5),
-        child: Markdown(data: markdownPrivacyPolicy),
+        padding: const EdgeInsets.all(AppSpacing.space5),
+        child: Markdown(
+          data: markdownPrivacyPolicy,
+          styleSheet: MarkdownStyleSheet(
+            strong: context.typography.body1.copyWith(
+              fontWeight: FontWeight.bold,
+              color: context.colors.contentPrimary,
+            ),
+            p: context.typography.body1.copyWith(
+              fontWeight: FontWeight.w100,
+              height: 1.2,
+              color: context.colors.contentPrimary,
+            ),
+            listBullet: context.typography.body1.copyWith(
+              fontWeight: FontWeight.w900,
+              color: context.colors.contentPrimary,
+            ),
+          ),
+        ),
       ),
     );
   }

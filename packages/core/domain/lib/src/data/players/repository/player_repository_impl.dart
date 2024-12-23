@@ -7,7 +7,6 @@ import 'package:core_domain/src/data/players/table_player.dart';
 import 'package:core_domain/src/data/positions/table_position.dart';
 import 'package:core_domain/src/data/rarities/table_rarity.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -74,9 +73,6 @@ abstract mixin class PlayerRepositoryImpl
     try {
       final rawResponse = await _topPlayers(page: page);
       final players = mapPlayers(rawResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
       return Success(data: players);
     } catch (e, _) {
       return Failure(exception: e as Exception);
@@ -110,9 +106,6 @@ abstract mixin class PlayerRepositoryImpl
     try {
       final playersResponse = await _recentPlayers();
       final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
       return Success(data: players);
     } catch (e, _) {
       return Failure(exception: e as Exception);
@@ -140,9 +133,6 @@ abstract mixin class PlayerRepositoryImpl
       final playersResponse = await _sbcPlayers();
 
       final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
       return Success(data: players);
     } catch (e, _) {
       return Failure(exception: e as Exception);
@@ -167,13 +157,14 @@ abstract mixin class PlayerRepositoryImpl
   @override
   Future<Result<List<Player>?>> getPositionalPlayers(
     PositionGroup positionGroup,
+    bool fetchIcons,
   ) async {
     try {
-      final rawResponse = await _getPositionalPlayers(positionGroup);
+      final rawResponse = await _getPositionalPlayers(
+        positionGroup,
+        fetchIcons,
+      );
       final players = mapPlayers(rawResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
       return Success(data: players);
     } catch (e, _) {
       return Failure(exception: e as Exception);
@@ -183,6 +174,7 @@ abstract mixin class PlayerRepositoryImpl
   @PersistentCached(ttl: _cacheTTL)
   Future<List<dynamic>> _getPositionalPlayers(
     PositionGroup positionGroup,
+    bool fetchIcons,
   ) async {
     final positions = switch (positionGroup) {
       Forwards() => _forwardPositionSet,
@@ -195,9 +187,16 @@ abstract mixin class PlayerRepositoryImpl
       Goalkeepers() => 87,
     };
     try {
-      final playersResponse = await supabase
-          .from(TablePlayer.tablePlayer)
-          .select(_columnsToFetchForList)
+      PostgrestFilterBuilder postgresFilterBuilder =
+          supabase.from(TablePlayer.tablePlayer)
+              .select(_columnsToFetchForList);
+
+      if (fetchIcons == false) {
+        postgresFilterBuilder = postgresFilterBuilder
+          .neq(TablePlayer.league, 2118);
+      }
+
+      final playersResponse = await postgresFilterBuilder
           .gte(TablePlayer.overall, overall)
           .inFilter(TablePlayer.position, positions.toList())
           .order(TablePlayer.overall, ascending: false)
@@ -219,9 +218,6 @@ abstract mixin class PlayerRepositoryImpl
       );
 
       final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
       return Success(data: players);
     } catch (e, _) {
       return Failure(exception: e as Exception);
@@ -258,7 +254,7 @@ abstract mixin class PlayerRepositoryImpl
       final playersResponse = await supabase
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
-          .like(TablePlayer.commonName, '%$query%')
+          .ilike(TablePlayer.commonName, '%$query%')
           .order(TablePlayer.overall, ascending: false)
           .order(TablePlayer.commonName, ascending: true)
           .order(TablePlayer.createdAt, ascending: false)
@@ -407,9 +403,6 @@ abstract mixin class PlayerRepositoryImpl
           .range(start, end);
 
       final players = mapPlayers(playersResponse);
-      if (kDebugMode) {
-        print(players.map((e) => '${e.eaId} ${e.commonName} ${e.overall}'));
-      }
       return Success(data: players);
     } catch (e, _) {
       return Failure(exception: e as Exception);
@@ -490,6 +483,122 @@ abstract mixin class PlayerRepositoryImpl
           .from(TablePlayer.tablePlayer)
           .select(_columnsToFetchForList)
           .inFilter(TablePlayer.eaId, eaIds);
+
+      final players = mapPlayers(playersResponse);
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> getRarityCollection({
+    required int rarityId,
+    String? query,
+    int page = 0,
+  }) async {
+    try {
+      final start = page * _itemsPerPage;
+      final end = (page + 1) * _itemsPerPage - 1;
+
+      PostgrestFilterBuilder postgresFilterBuilder =
+          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+
+      if (query?.isNotEmpty ?? false) {
+        postgresFilterBuilder = postgresFilterBuilder.ilike(
+          TablePlayer.commonName,
+          '%$query%',
+        );
+      }
+
+      postgresFilterBuilder = postgresFilterBuilder.eq(
+        TablePlayer.rarity,
+        rarityId,
+      );
+
+      final playersResponse = await postgresFilterBuilder
+          .order(TablePlayer.overall, ascending: false)
+          .order(TablePlayer.commonName, ascending: true)
+          .order(TablePlayer.createdAt, ascending: false)
+          .range(start, end);
+
+      final players = mapPlayers(playersResponse);
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> getRoleCollection({
+    required int roleId,
+    bool isPlusPlus = false,
+    String? query,
+    int page = 0,
+  }) async {
+    try {
+      final start = page * _itemsPerPage;
+      final end = (page + 1) * _itemsPerPage - 1;
+
+      PostgrestFilterBuilder postgresFilterBuilder =
+          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+
+      if (query?.isNotEmpty ?? false) {
+        postgresFilterBuilder = postgresFilterBuilder.ilike(
+          TablePlayer.commonName,
+          '%$query%',
+        );
+      }
+
+      postgresFilterBuilder = postgresFilterBuilder.contains(
+        isPlusPlus ? TablePlayer.rolesPlusPlus : TablePlayer.rolesPlus,
+        [roleId],
+      );
+
+      final playersResponse = await postgresFilterBuilder
+          .order(TablePlayer.overall, ascending: false)
+          .order(TablePlayer.commonName, ascending: true)
+          .order(TablePlayer.createdAt, ascending: false)
+          .range(start, end);
+
+      final players = mapPlayers(playersResponse);
+      return Success(data: players);
+    } catch (e, _) {
+      return Failure(exception: e as Exception);
+    }
+  }
+
+  @override
+  Future<Result<List<Player>?>> getPlayStyleCollection({
+    required int playStyleId,
+    bool isPlus = false,
+    String? query,
+    int page = 0,
+  }) async {
+    try {
+      final start = page * _itemsPerPage;
+      final end = (page + 1) * _itemsPerPage - 1;
+
+      PostgrestFilterBuilder postgresFilterBuilder =
+          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+
+      if (query?.isNotEmpty ?? false) {
+        postgresFilterBuilder = postgresFilterBuilder.ilike(
+          TablePlayer.commonName,
+          '%$query%',
+        );
+      }
+
+      postgresFilterBuilder = postgresFilterBuilder.contains(
+        isPlus ? TablePlayer.playStylesPlus : TablePlayer.playStyles,
+        [playStyleId],
+      );
+
+      final playersResponse = await postgresFilterBuilder
+          .order(TablePlayer.overall, ascending: false)
+          .order(TablePlayer.commonName, ascending: true)
+          .order(TablePlayer.createdAt, ascending: false)
+          .range(start, end);
 
       final players = mapPlayers(playersResponse);
       return Success(data: players);

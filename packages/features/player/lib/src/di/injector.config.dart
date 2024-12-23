@@ -10,6 +10,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:core_analytics/analytics.dart' as _i863;
 import 'package:core_domain/domain.dart' as _i913;
+import 'package:feature_player/src/collection/player_collection_bloc.dart'
+    as _i84;
+import 'package:feature_player/src/collection/player_collection_page.dart'
+    as _i197;
 import 'package:feature_player/src/details/bloc/player_detail_bloc.dart'
     as _i1047;
 import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart'
@@ -53,6 +57,16 @@ _i174.GetIt init(
         gh<_i913.GetChemistryBoostFaceValuesGkUseCase>(),
         gh<_i913.NormalizeChemistryBoostUseCase>(),
         gh<_i863.LogEventUseCase>(),
+        gh<_i777.PlayerNavigator>(),
+      ));
+  gh.factoryParam<_i84.PlayerCollectionBloc, _i197.PlayerCollectionPageParams,
+      dynamic>((
+    params,
+    _,
+  ) =>
+      _i84.PlayerCollectionBloc(
+        params,
+        gh<_i913.GetPlayerCollectionUseCase>(),
         gh<_i777.PlayerNavigator>(),
       ));
   gh.factory<_i388.PlayerListBloc>(() => _i388.PlayerListBloc(

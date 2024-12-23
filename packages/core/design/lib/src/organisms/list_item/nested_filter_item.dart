@@ -1,5 +1,6 @@
 import 'package:core_design/src/atoms/atoms.dart';
 import 'package:core_design/src/molecules/molecules.dart';
+import 'package:core_design/src/molecules/tappable/app_tappable.dart';
 import 'package:flutter/material.dart';
 
 class NestedFilterItem extends StatelessWidget {
@@ -31,7 +32,7 @@ class NestedFilterItem extends StatelessWidget {
     final textColor = _isDisabled
         ? context.colors.contentSecondary
         : context.colors.contentPrimary;
-    return InkWell(
+    return AppTappable(
       onTap: onTap,
       child: Container(
         constraints: BoxConstraints(

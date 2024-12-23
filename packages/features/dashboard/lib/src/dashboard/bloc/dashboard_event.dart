@@ -61,3 +61,6 @@ class IndexTap extends DashboardEvent with IndexTapMappable {
 
   final IndexType indexType;
 }
+
+@MappableClass(discriminatorValue: 'toggleIcons')
+class ToggleIcons extends DashboardEvent with ToggleIconsMappable {}

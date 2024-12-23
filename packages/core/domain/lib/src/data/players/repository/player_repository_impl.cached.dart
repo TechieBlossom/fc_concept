@@ -326,34 +326,39 @@ class _PlayerRepositoryImpl
 
   @override
   Future<List<dynamic>> _getPositionalPlayers(
-      PositionGroup positionGroup) async {
+      PositionGroup positionGroup, bool fetchIcons) async {
     await _completerFuture;
 
     final now = DateTime.now();
-    final cachedTtl = __getPositionalPlayersTtl["${positionGroup.hashCode}"];
+    final cachedTtl = __getPositionalPlayersTtl[
+        "${positionGroup.hashCode}${fetchIcons.hashCode}"];
     final currentTtl = cachedTtl != null ? DateTime.parse(cachedTtl) : null;
 
     if (currentTtl != null && currentTtl.isBefore(now)) {
-      __getPositionalPlayersTtl.remove("${positionGroup.hashCode}");
-      __getPositionalPlayersCached.remove("${positionGroup.hashCode}");
+      __getPositionalPlayersTtl
+          .remove("${positionGroup.hashCode}${fetchIcons.hashCode}");
+      __getPositionalPlayersCached
+          .remove("${positionGroup.hashCode}${fetchIcons.hashCode}");
     }
 
-    final cachedValue =
-        __getPositionalPlayersCached["${positionGroup.hashCode}"];
+    final cachedValue = __getPositionalPlayersCached[
+        "${positionGroup.hashCode}${fetchIcons.hashCode}"];
     if (cachedValue == null) {
       final List<dynamic> toReturn;
       try {
-        final result = super._getPositionalPlayers(positionGroup);
+        final result = super._getPositionalPlayers(positionGroup, fetchIcons);
 
         toReturn = await result;
       } catch (_) {
         rethrow;
       } finally {}
 
-      __getPositionalPlayersCached["${positionGroup.hashCode}"] = toReturn;
+      __getPositionalPlayersCached[
+          "${positionGroup.hashCode}${fetchIcons.hashCode}"] = toReturn;
 
       const duration = Duration(seconds: 3600);
-      __getPositionalPlayersTtl["${positionGroup.hashCode}"] =
+      __getPositionalPlayersTtl[
+              "${positionGroup.hashCode}${fetchIcons.hashCode}"] =
           DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(

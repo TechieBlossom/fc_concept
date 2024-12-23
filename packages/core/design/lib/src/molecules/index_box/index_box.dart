@@ -42,21 +42,6 @@ class IndexBox extends StatelessWidget {
                 width: 2,
                 strokeAlign: BorderSide.strokeAlignInside,
               ),
-              // bottom: BorderSide(
-              //   color: isIncreased ? rating4 : rating1,
-              //   width: 2,
-              //   strokeAlign: BorderSide.strokeAlignInside,
-              // ),
-              // top: BorderSide(
-              //   color: isIncreased ? rating4 : rating1,
-              //   width: 2,
-              //   strokeAlign: BorderSide.strokeAlignInside,
-              // ),
-              // end: BorderSide(
-              //   color: isIncreased ? rating4 : rating1,
-              //   width: 2,
-              //   strokeAlign: BorderSide.strokeAlignInside,
-              // ),
             ),
           ),
           child: Row(

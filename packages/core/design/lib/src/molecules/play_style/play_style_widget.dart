@@ -3,6 +3,7 @@ import 'package:core_design/src/atoms/app_dimens.dart';
 import 'package:core_design/src/atoms/app_typography.dart';
 import 'package:core_design/src/molecules/molecules.dart';
 import 'package:core_design/src/molecules/play_style/play_style_info_sheet.dart';
+import 'package:core_design/src/molecules/tappable/app_tappable.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -18,21 +19,27 @@ class PlayStyleWidget extends StatelessWidget {
     this.size = PlayStyleWidgetSize.small,
     this.isPlus = false,
     this.onTap,
+    this.onAllPlayersTap,
   });
 
   final PlayStyle playStyle;
   final PlayStyleWidgetSize size;
   final bool isPlus;
   final VoidCallback? onTap;
+  final VoidCallback? onAllPlayersTap;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return AppTappable(
       onTap: () {
         onTap?.call();
         showAppBottomSheet(
           context,
-          child: PlayStyleInfoSheet(playStyle: playStyle, isPlus: isPlus),
+          child: PlayStyleInfoSheet(
+            playStyle: playStyle,
+            isPlus: isPlus,
+            allPlayersTap: onAllPlayersTap,
+          ),
         );
       },
       child: Column(

@@ -1,4 +1,5 @@
 import 'package:core_domain/domain.dart';
+import 'package:feature_player/src/collection/player_collection_page.dart';
 import 'package:feature_player/src/details/player_detail_page.dart';
 import 'package:feature_player/src/rating/players_list_by_rating_page.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,18 @@ class PlayerRoutesConfig extends RoutesConfig {
             arguments: state.pathParameters,
             restorationId: state.pageKey.value,
             child: const PlayersListByRatingPage(),
+          ),
+        ),
+        GoRoute(
+          path: PlayerRoutes.pagePlayerCollection,
+          pageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            name: state.fullPath,
+            arguments: state.pathParameters,
+            restorationId: state.pageKey.value,
+            child: PlayerCollectionPage(
+              params: state.extra! as PlayerCollectionPageParams,
+            ),
           ),
         ),
       ];

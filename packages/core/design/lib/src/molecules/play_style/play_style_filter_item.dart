@@ -2,6 +2,7 @@ import 'package:core_design/src/atoms/app_colors.dart';
 import 'package:core_design/src/atoms/app_dimens.dart';
 import 'package:core_design/src/atoms/app_typography.dart';
 import 'package:core_design/src/molecules/molecules.dart';
+import 'package:core_design/src/molecules/tappable/app_tappable.dart';
 import 'package:core_domain/domain.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class PlayStyleFilterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return AppTappable(
       onTap: onTap,
       child: Column(
         mainAxisSize: MainAxisSize.min,
