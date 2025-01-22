@@ -22,11 +22,11 @@ class LoginPage extends StatelessWidget {
           return Material(
             child: Stack(
               children: [
-                Positioned.fill(
-                  child: AppAssets.images.loginBg.image(
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
+                // Positioned.fill(
+                //   child: AppAssets.images.loginBg.image(
+                //     fit: BoxFit.fitWidth,
+                //   ),
+                // ),
                 Positioned(
                   top: 128,
                   left: 16,
@@ -43,10 +43,10 @@ class LoginPage extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            AppAssets.images.appLogo.image(
-                              width: 200,
-                              height: 200,
-                            ),
+                            // AppAssets.images.appLogo.image(
+                            //   width: 200,
+                            //   height: 200,
+                            // ),
                             Text(
                               'Sign in to your account',
                               style: context.typography.headline,

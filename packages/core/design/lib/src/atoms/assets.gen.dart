@@ -28,17 +28,16 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/app_logo.png
-  AssetGenImage get appLogo =>
-      const AssetGenImage('assets/images/app_logo.png');
-
   /// File path: assets/images/fut_coin.webp
   AssetGenImage get futCoin =>
       const AssetGenImage('assets/images/fut_coin.webp');
 
-  /// File path: assets/images/login_bg.png
-  AssetGenImage get loginBg =>
-      const AssetGenImage('assets/images/login_bg.png');
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/logo_tinted.png
+  AssetGenImage get logoTinted =>
+      const AssetGenImage('assets/images/logo_tinted.png');
 
   /// File path: assets/images/sbc_icon.webp
   AssetGenImage get sbcIcon =>
@@ -48,7 +47,7 @@ class $AssetsImagesGen {
   AssetGenImage get xp => const AssetGenImage('assets/images/xp.webp');
 
   /// List of all assets
-  List<AssetGenImage> get values => [appLogo, futCoin, loginBg, sbcIcon, xp];
+  List<AssetGenImage> get values => [futCoin, logo, logoTinted, sbcIcon, xp];
 }
 
 class AppAssets {

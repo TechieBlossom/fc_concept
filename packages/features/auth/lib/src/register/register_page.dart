@@ -22,11 +22,11 @@ class RegisterPage extends StatelessWidget {
           return Material(
             child: Stack(
               children: [
-                Positioned.fill(
-                  child: AppAssets.images.loginBg.image(
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
+                // Positioned.fill(
+                //   child: AppAssets.images.loginBg.image(
+                //     fit: BoxFit.fitWidth,
+                //   ),
+                // ),
                 Positioned(
                   top: 128,
                   left: 16,
@@ -46,10 +46,10 @@ class RegisterPage extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            AppAssets.images.appLogo.image(
-                              width: 200,
-                              height: 200,
-                            ),
+                            // AppAssets.images.appLogo.image(
+                            //   width: 200,
+                            //   height: 200,
+                            // ),
                             Text(
                               'Create an account',
                               style: context.typography.headline,

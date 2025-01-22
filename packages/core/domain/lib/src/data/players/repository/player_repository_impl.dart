@@ -304,7 +304,7 @@ abstract mixin class PlayerRepositoryImpl
           supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
 
       if (searchQuery?.isNotEmpty ?? false) {
-        postgresFilterBuilder = postgresFilterBuilder.like(
+        postgresFilterBuilder = postgresFilterBuilder.ilike(
           TablePlayer.commonName,
           '%$searchQuery%',
         );

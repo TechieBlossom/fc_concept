@@ -26,7 +26,29 @@ class MenuPage extends StatelessWidget {
                     const SizedBox(
                       height: AppSpacing.space5,
                     ),
-                    const _Header(text: 'FUT Maidaan', isSmall: false),
+                    Row(
+                      children: [
+                        if (Theme.of(context).brightness == Brightness.light)
+                          AppAssets.images.logo.image(
+                            cacheWidth: 60,
+                            cacheHeight: 60,
+                            width: 60,
+                            height: 60,
+                          )
+                        else
+                          AppAssets.images.logoTinted.image(
+                            cacheWidth: 60,
+                            cacheHeight: 60,
+                            width: 60,
+                            height: 60,
+                          ),
+                        const _Header(text: 'FUT Maidaan', isSmall: false),
+                      ],
+                    ),
+                    const Space(space: AppSpacing.space5),
+                    const SizedBox(
+                      height: AppSpacing.space5,
+                    ),
                     _DrawerItem(
                       text: 'Cheapest by rating',
                       leading: Icon(
@@ -121,6 +143,7 @@ class MenuPage extends StatelessWidget {
                       endIndent: AppSpacing.space4,
                     ),
                     const _Header(text: 'ABOUT'),
+                    const Space(space: AppSpacing.space5),
                     _DrawerItem(
                       leading: Icon(
                         Icons.business_rounded,
@@ -160,6 +183,7 @@ class MenuPage extends StatelessWidget {
                       endIndent: AppSpacing.space4,
                     ),
                     const _Header(text: 'FEEDBACK'),
+                    const Space(space: AppSpacing.space5),
                     _DrawerItem(
                       leading: Icon(
                         Icons.feedback_rounded,
@@ -218,7 +242,11 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.space5),
+      padding: const EdgeInsets.only(
+        left: AppSpacing.space5,
+        right: AppSpacing.space5,
+        top: AppSpacing.space5,
+      ),
       child: Text(
         text,
         style: isSmall
@@ -227,6 +255,7 @@ class _Header extends StatelessWidget {
               )
             : context.typography.largeTitle.copyWith(
                 color: context.colors.contentPrimary,
+                fontWeight: FontWeight.bold,
               ),
       ),
     );
