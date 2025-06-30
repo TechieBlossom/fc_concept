@@ -40,7 +40,7 @@ class SecondaryButton extends StatelessWidget {
         final mainColor = context.colors.contentPrimary;
         if (states.contains(WidgetState.pressed)) {
           return Color.alphaBlend(
-            mainColor.withOpacity(0.6),
+            mainColor.withAlpha(153),
             context.colors.backgroundTertiary,
           );
         } else if (states.contains(WidgetState.disabled)) {

@@ -18,7 +18,7 @@ class BottomNavScaffold extends StatelessWidget {
         bottomNavigationBar: Glass.lessBlur(
           child: Theme(
             data: Theme.of(context).copyWith(
-              canvasColor: context.colors.backgroundSecondary.withOpacity(0.1),
+              canvasColor: context.colors.backgroundSecondary.withAlpha(25),
             ),
             child: BottomNavigationBar(
               elevation: 0,

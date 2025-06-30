@@ -58,7 +58,7 @@ class PlayStyleWidget extends StatelessWidget {
               gradient: isPlus
                   ? LinearGradient(
                       colors: [
-                        context.colors.primary.withOpacity(0.3),
+                        context.colors.primary.withAlpha(76),
                         context.colors.primary,
                       ],
                     )

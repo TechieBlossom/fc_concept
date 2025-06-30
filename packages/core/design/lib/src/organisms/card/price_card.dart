@@ -24,7 +24,7 @@ class PriceCard extends StatelessWidget {
             height: 104,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppCornerRadius.radius2),
-              color: Color(bg).withOpacity(0.8),
+              color: Color(bg).withAlpha(204),
             ),
             margin: const EdgeInsets.only(
               top: AppSpacing.space4,

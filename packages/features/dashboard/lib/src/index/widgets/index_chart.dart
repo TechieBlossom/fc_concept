@@ -1,7 +1,4 @@
-import 'package:core_design/src/atoms/atoms.dart';
-import 'package:core_design/src/molecules/molecules.dart';
-import 'package:core_design/src/utility/app_formatters.dart';
-import 'package:core_design/src/utility/x_int.dart';
+import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_dashboard/src/index/bloc/index_bloc.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -49,22 +46,22 @@ class IndexChart extends StatelessWidget {
   List<Color> get gradient => switch (trendType) {
         TrendType.up => [
             Colors.transparent,
-            75.color.withOpacity(0.4),
+            75.color.withAlpha(102),
           ],
         TrendType.down => [
             Colors.transparent,
-            55.color.withOpacity(0.4),
+            55.color.withAlpha(102),
           ],
         _ => [
-            Colors.white.withOpacity(0.1),
-            Colors.white.withOpacity(0.3),
+            Colors.white.withAlpha(25),
+            Colors.white.withAlpha(76),
           ],
       };
 
   Color get color => switch (trendType) {
         TrendType.up => 75.color,
         TrendType.down => 55.color,
-        _ => Colors.white.withOpacity(0.5),
+        _ => Colors.white.withAlpha(127),
       };
 
   @override
@@ -91,10 +88,9 @@ class IndexChart extends StatelessWidget {
                   return const SizedBox.shrink();
                 }
                 return SideTitleWidget(
-                  axisSide: AxisSide.left,
+                  meta: metaData,
                   fitInside: SideTitleFitInsideData.fromTitleMeta(
                     metaData,
-                    enabled: true,
                   ),
                   space: AppSpacing.space4,
                   child: Text(
@@ -114,16 +110,14 @@ class IndexChart extends StatelessWidget {
               getTitlesWidget: (value, metaData) {
                 if (value == metaData.max || value == metaData.min) {
                   return SideTitleWidget(
-                    axisSide: AxisSide.bottom,
+                    meta: metaData,
                     fitInside: SideTitleFitInsideData.fromTitleMeta(
                       metaData,
-                      enabled: true,
                       distanceFromEdge: 2,
                     ),
-                    space: AppSpacing.space3,
                     child: Text(
                       AppFormatter.formatDate(
-                          DateTime.fromMillisecondsSinceEpoch(value.toInt())),
+                          DateTime.fromMillisecondsSinceEpoch(value.toInt()),),
                       textAlign: TextAlign.center,
                       style: context.typography.body5.copyWith(
                         color: context.colors.contentSecondary,
@@ -139,7 +133,6 @@ class IndexChart extends StatelessWidget {
           topTitles: const AxisTitles(),
         ),
         gridData: FlGridData(
-          show: true,
           horizontalInterval: interval,
           getDrawingHorizontalLine: (value) => FlLine(
             color: context.colors.backgroundTertiary,
@@ -151,8 +144,6 @@ class IndexChart extends StatelessWidget {
           ),
         ),
         lineTouchData: LineTouchData(
-          enabled: true,
-          handleBuiltInTouches: true,
           touchCallback: (event, touchResponse) {
             if (touchResponse?.lineBarSpots == null) {
               context.read<IndexBloc>().add(
@@ -210,7 +201,7 @@ class IndexChart extends StatelessWidget {
           LineChartBarData(
             shadow: Shadow(
               color: color,
-              offset: Offset(0, 1),
+              offset: const Offset(0, 1),
               blurRadius: 1,
             ),
             isCurved: true,

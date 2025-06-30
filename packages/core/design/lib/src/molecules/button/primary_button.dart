@@ -36,7 +36,7 @@ class PrimaryButton extends StatelessWidget {
             final mainColor = context.colors.primary;
             if (states.contains(WidgetState.pressed)) {
               return Color.alphaBlend(
-                mainColor.withOpacity(0.8),
+                mainColor.withAlpha(204),
                 context.colors.backgroundTertiary,
               );
             } else if (states.contains(WidgetState.disabled)) {

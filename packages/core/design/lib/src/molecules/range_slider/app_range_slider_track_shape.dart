@@ -51,10 +51,10 @@ class AppRangeSliderTrackShape extends RangeSliderTrackShape
         Offset(trackRect.left, 0),
         Offset(trackRect.right, 0),
         <Color>[
-          rating1.withOpacity(0.6),
-          rating2.withOpacity(0.6),
-          rating3.withOpacity(0.6),
-          rating4.withOpacity(0.6),
+          rating1.withAlpha(153),
+          rating2.withAlpha(153),
+          rating3.withAlpha(153),
+          rating4.withAlpha(153),
         ],
         <double>[
           0.0,

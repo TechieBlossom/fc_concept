@@ -20,6 +20,7 @@ class AboutUsPage extends StatelessWidget {
           'All game assets, player faces, club badges and league logos are property of EA Sports.',
           style: context.typography.body1.copyWith(
             color: context.colors.contentPrimary,
+            height: 1.5,
           ),
         ),
       ),

@@ -40,7 +40,7 @@ class BottomButtonLayout extends StatelessWidget {
           top: AppSpacing.space3,
           bottom: MediaQuery.of(context).viewPadding.bottom,
         ),
-        color: context.colors.backgroundSecondary.withOpacity(0.1),
+        color: context.colors.backgroundSecondary.withAlpha(25),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

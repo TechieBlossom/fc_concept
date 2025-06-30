@@ -41,7 +41,7 @@ class SbcPriceCard extends StatelessWidget {
                 bottomLeft: Radius.circular(AppCornerRadius.radius2),
                 bottomRight: Radius.circular(AppCornerRadius.radius2),
               ),
-              color: Color(bg).withOpacity(0.8),
+              color: Color(bg).withAlpha(204),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -131,7 +131,7 @@ class _SearchFieldState extends State<SearchField> {
               opacity: widget.isLoading ? 1 : 0,
               duration: const Duration(milliseconds: 300),
               child: Shimmer.fromColors(
-                baseColor: context.colors.contentPrimary.withOpacity(0.5),
+                baseColor: context.colors.contentPrimary.withAlpha(127),
                 highlightColor: context.colors.contentPrimary,
                 child: SizedBox(
                   height: 8,

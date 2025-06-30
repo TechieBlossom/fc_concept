@@ -4,8 +4,8 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
-  flutter: "3.24.1"
+  sdk: ">=3.7.2 <4.0.0"
+  flutter: "3.29.2"
 
 dependencies:
   core_analytics:
@@ -14,7 +14,7 @@ dependencies:
     path: ../../../packages/core/design
   core_domain:
     path: ../../../packages/core/domain
-  dart_mappable: ^4.2.2
+  dart_mappable: 4.5.0
   feature_auth:
     path: ../../../packages/features/auth
   feature_compare:
@@ -23,16 +23,16 @@ dependencies:
     path: ../../../packages/features/player
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.5
-  flutter_markdown: ^0.7.4+2
-  injectable: ^2.3.2
+  flutter_bloc: 9.1.0
+  flutter_markdown: 0.7.6+2
+  injectable: 2.5.0
   utility_di:
     path: ../../../packages/utility/di
 
 dev_dependencies:
-  build_runner: ^2.4.9
-  dart_mappable_builder: ^4.2.3
-  injectable_generator: ^2.4.2
+  build_runner: 2.4.15
+  dart_mappable_builder: 4.5.0
+  injectable_generator: 2.7.0
   utility_analysis:
     path: ../../../packages/utility/analysis
 
