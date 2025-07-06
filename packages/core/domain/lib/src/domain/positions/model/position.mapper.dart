@@ -76,7 +76,8 @@ mixin PositionMappable {
   }
 
   PositionCopyWith<Position, Position, Position> get copyWith =>
-      _PositionCopyWithImpl(this as Position, $identity, $identity);
+      _PositionCopyWithImpl<Position, Position>(
+          this as Position, $identity, $identity);
   @override
   String toString() {
     return PositionMapper.ensureInitialized().stringifyValue(this as Position);
@@ -96,7 +97,7 @@ mixin PositionMappable {
 
 extension PositionValueCopy<$R, $Out> on ObjectCopyWith<$R, Position, $Out> {
   PositionCopyWith<$R, Position, $Out> get $asPosition =>
-      $base.as((v, t, t2) => _PositionCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PositionCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PositionCopyWith<$R, $In extends Position, $Out>
@@ -144,5 +145,5 @@ class _PositionCopyWithImpl<$R, $Out>
   @override
   PositionCopyWith<$R2, Position, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PositionCopyWithImpl($value, $cast, t);
+      _PositionCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

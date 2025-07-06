@@ -88,7 +88,7 @@ mixin RoleMappable {
   }
 
   RoleCopyWith<Role, Role, Role> get copyWith =>
-      _RoleCopyWithImpl(this as Role, $identity, $identity);
+      _RoleCopyWithImpl<Role, Role>(this as Role, $identity, $identity);
   @override
   String toString() {
     return RoleMapper.ensureInitialized().stringifyValue(this as Role);
@@ -107,7 +107,7 @@ mixin RoleMappable {
 
 extension RoleValueCopy<$R, $Out> on ObjectCopyWith<$R, Role, $Out> {
   RoleCopyWith<$R, Role, $Out> get $asRole =>
-      $base.as((v, t, t2) => _RoleCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _RoleCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RoleCopyWith<$R, $In extends Role, $Out>
@@ -164,5 +164,5 @@ class _RoleCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Role, $Out>
 
   @override
   RoleCopyWith<$R2, Role, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _RoleCopyWithImpl($value, $cast, t);
+      _RoleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

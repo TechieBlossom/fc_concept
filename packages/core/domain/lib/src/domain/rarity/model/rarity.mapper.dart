@@ -105,7 +105,7 @@ mixin RarityMappable {
   }
 
   RarityCopyWith<Rarity, Rarity, Rarity> get copyWith =>
-      _RarityCopyWithImpl(this as Rarity, $identity, $identity);
+      _RarityCopyWithImpl<Rarity, Rarity>(this as Rarity, $identity, $identity);
   @override
   String toString() {
     return RarityMapper.ensureInitialized().stringifyValue(this as Rarity);
@@ -124,7 +124,7 @@ mixin RarityMappable {
 
 extension RarityValueCopy<$R, $Out> on ObjectCopyWith<$R, Rarity, $Out> {
   RarityCopyWith<$R, Rarity, $Out> get $asRarity =>
-      $base.as((v, t, t2) => _RarityCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _RarityCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RarityCopyWith<$R, $In extends Rarity, $Out>
@@ -222,5 +222,5 @@ class _RarityCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Rarity, $Out>
 
   @override
   RarityCopyWith<$R2, Rarity, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _RarityCopyWithImpl($value, $cast, t);
+      _RarityCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

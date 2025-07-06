@@ -5,6 +5,11 @@ packages:
   - packages/**
 
 scripts:
+  setup:
+    description: Run Setup project script
+    run: |
+      sh scripts/setup.sh
+
   install:
     description: Run install script
     run: |

@@ -105,7 +105,7 @@ mixin InitMappable {
   }
 
   InitCopyWith<Init, Init, Init> get copyWith =>
-      _InitCopyWithImpl(this as Init, $identity, $identity);
+      _InitCopyWithImpl<Init, Init>(this as Init, $identity, $identity);
   @override
   String toString() {
     return InitMapper.ensureInitialized().stringifyValue(this as Init);
@@ -124,7 +124,7 @@ mixin InitMappable {
 
 extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
   InitCopyWith<$R, Init, $Out> get $asInit =>
-      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _InitCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
@@ -147,7 +147,7 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
 
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _InitCopyWithImpl($value, $cast, t);
+      _InitCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class ChartHoveredMapper extends SubClassMapperBase<ChartHovered> {
@@ -215,7 +215,8 @@ mixin ChartHoveredMappable {
   }
 
   ChartHoveredCopyWith<ChartHovered, ChartHovered, ChartHovered> get copyWith =>
-      _ChartHoveredCopyWithImpl(this as ChartHovered, $identity, $identity);
+      _ChartHoveredCopyWithImpl<ChartHovered, ChartHovered>(
+          this as ChartHovered, $identity, $identity);
   @override
   String toString() {
     return ChartHoveredMapper.ensureInitialized()
@@ -238,7 +239,7 @@ mixin ChartHoveredMappable {
 extension ChartHoveredValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ChartHovered, $Out> {
   ChartHoveredCopyWith<$R, ChartHovered, $Out> get $asChartHovered =>
-      $base.as((v, t, t2) => _ChartHoveredCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ChartHoveredCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ChartHoveredCopyWith<$R, $In extends ChartHovered, $Out>
@@ -274,7 +275,7 @@ class _ChartHoveredCopyWithImpl<$R, $Out>
   @override
   ChartHoveredCopyWith<$R2, ChartHovered, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _ChartHoveredCopyWithImpl($value, $cast, t);
+      _ChartHoveredCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class IndexStateMapper extends ClassMapperBase<IndexState> {
@@ -367,7 +368,8 @@ mixin IndexStateMappable {
   }
 
   IndexStateCopyWith<IndexState, IndexState, IndexState> get copyWith =>
-      _IndexStateCopyWithImpl(this as IndexState, $identity, $identity);
+      _IndexStateCopyWithImpl<IndexState, IndexState>(
+          this as IndexState, $identity, $identity);
   @override
   String toString() {
     return IndexStateMapper.ensureInitialized()
@@ -389,7 +391,7 @@ mixin IndexStateMappable {
 extension IndexStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, IndexState, $Out> {
   IndexStateCopyWith<$R, IndexState, $Out> get $asIndexState =>
-      $base.as((v, t, t2) => _IndexStateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _IndexStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class IndexStateCopyWith<$R, $In extends IndexState, $Out>
@@ -457,5 +459,5 @@ class _IndexStateCopyWithImpl<$R, $Out>
   @override
   IndexStateCopyWith<$R2, IndexState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _IndexStateCopyWithImpl($value, $cast, t);
+      _IndexStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

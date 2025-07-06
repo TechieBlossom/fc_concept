@@ -25,11 +25,11 @@ class CardColorMapper extends EnumMapper<CardColor> {
   @override
   CardColor decode(dynamic value) {
     switch (value) {
-      case 'gold':
+      case r'gold':
         return CardColor.gold;
-      case 'silver':
+      case r'silver':
         return CardColor.silver;
-      case 'bronze':
+      case r'bronze':
         return CardColor.bronze;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -40,11 +40,11 @@ class CardColorMapper extends EnumMapper<CardColor> {
   dynamic encode(CardColor self) {
     switch (self) {
       case CardColor.gold:
-        return 'gold';
+        return r'gold';
       case CardColor.silver:
-        return 'silver';
+        return r'silver';
       case CardColor.bronze:
-        return 'bronze';
+        return r'bronze';
     }
   }
 }

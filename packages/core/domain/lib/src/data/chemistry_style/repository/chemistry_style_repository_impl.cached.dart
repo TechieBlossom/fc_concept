@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _ChemistryStyleRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getAllChemistryStylesCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getAllChemistryStylesCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -32,8 +34,9 @@ class _ChemistryStyleRepositoryImpl
     }
 
     try {
-      __getAllChemistryStylesTtl =
-          await PersistentStorageHolder.read('__getAllChemistryStylesTtl');
+      __getAllChemistryStylesTtl = await PersistentStorageHolder.read(
+        '__getAllChemistryStylesTtl',
+      );
     } catch (e) {
       __getAllChemistryStylesTtl = <String, dynamic>{};
     }
@@ -75,13 +78,18 @@ class _ChemistryStyleRepositoryImpl
       __getAllChemistryStylesCached[""] = toReturn;
 
       const duration = Duration(seconds: 31536000);
-      __getAllChemistryStylesTtl[""] =
-          DateTime.now().add(duration).toIso8601String();
+      __getAllChemistryStylesTtl[""] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getAllChemistryStylesCached', __getAllChemistryStylesCached);
+        '__getAllChemistryStylesCached',
+        __getAllChemistryStylesCached,
+      );
       await PersistentStorageHolder.write(
-          '__getAllChemistryStylesTtl', __getAllChemistryStylesTtl);
+        '__getAllChemistryStylesTtl',
+        __getAllChemistryStylesTtl,
+      );
 
       return toReturn;
     } else {

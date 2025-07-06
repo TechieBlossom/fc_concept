@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _RoleRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getAllRolesCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getAllRolesCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -77,7 +79,9 @@ class _RoleRepositoryImpl
       __getAllRolesTtl[""] = DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getAllRolesCached', __getAllRolesCached);
+        '__getAllRolesCached',
+        __getAllRolesCached,
+      );
       await PersistentStorageHolder.write('__getAllRolesTtl', __getAllRolesTtl);
 
       return toReturn;

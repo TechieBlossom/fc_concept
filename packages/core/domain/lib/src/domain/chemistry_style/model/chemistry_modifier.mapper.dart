@@ -240,8 +240,9 @@ mixin ChemistryModifierMappable {
 
   ChemistryModifierCopyWith<ChemistryModifier, ChemistryModifier,
           ChemistryModifier>
-      get copyWith => _ChemistryModifierCopyWithImpl(
-          this as ChemistryModifier, $identity, $identity);
+      get copyWith =>
+          _ChemistryModifierCopyWithImpl<ChemistryModifier, ChemistryModifier>(
+              this as ChemistryModifier, $identity, $identity);
   @override
   String toString() {
     return ChemistryModifierMapper.ensureInitialized()
@@ -264,8 +265,8 @@ mixin ChemistryModifierMappable {
 extension ChemistryModifierValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ChemistryModifier, $Out> {
   ChemistryModifierCopyWith<$R, ChemistryModifier, $Out>
-      get $asChemistryModifier =>
-          $base.as((v, t, t2) => _ChemistryModifierCopyWithImpl(v, t, t2));
+      get $asChemistryModifier => $base
+          .as((v, t, t2) => _ChemistryModifierCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ChemistryModifierCopyWith<$R, $In extends ChemistryModifier,
@@ -474,5 +475,5 @@ class _ChemistryModifierCopyWithImpl<$R, $Out>
   @override
   ChemistryModifierCopyWith<$R2, ChemistryModifier, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _ChemistryModifierCopyWithImpl($value, $cast, t);
+      _ChemistryModifierCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

@@ -25,13 +25,13 @@ class ProcessStateMapper extends EnumMapper<ProcessState> {
   @override
   ProcessState decode(dynamic value) {
     switch (value) {
-      case 'loading':
+      case r'loading':
         return ProcessState.loading;
-      case 'success':
+      case r'success':
         return ProcessState.success;
-      case 'failure':
+      case r'failure':
         return ProcessState.failure;
-      case 'empty':
+      case r'empty':
         return ProcessState.empty;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -42,13 +42,13 @@ class ProcessStateMapper extends EnumMapper<ProcessState> {
   dynamic encode(ProcessState self) {
     switch (self) {
       case ProcessState.loading:
-        return 'loading';
+        return r'loading';
       case ProcessState.success:
-        return 'success';
+        return r'success';
       case ProcessState.failure:
-        return 'failure';
+        return r'failure';
       case ProcessState.empty:
-        return 'empty';
+        return r'empty';
     }
   }
 }

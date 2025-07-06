@@ -80,7 +80,8 @@ mixin RaritySquadMappable {
   }
 
   RaritySquadCopyWith<RaritySquad, RaritySquad, RaritySquad> get copyWith =>
-      _RaritySquadCopyWithImpl(this as RaritySquad, $identity, $identity);
+      _RaritySquadCopyWithImpl<RaritySquad, RaritySquad>(
+          this as RaritySquad, $identity, $identity);
   @override
   String toString() {
     return RaritySquadMapper.ensureInitialized()
@@ -102,7 +103,7 @@ mixin RaritySquadMappable {
 extension RaritySquadValueCopy<$R, $Out>
     on ObjectCopyWith<$R, RaritySquad, $Out> {
   RaritySquadCopyWith<$R, RaritySquad, $Out> get $asRaritySquad =>
-      $base.as((v, t, t2) => _RaritySquadCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _RaritySquadCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RaritySquadCopyWith<$R, $In extends RaritySquad, $Out>
@@ -153,5 +154,5 @@ class _RaritySquadCopyWithImpl<$R, $Out>
   @override
   RaritySquadCopyWith<$R2, RaritySquad, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _RaritySquadCopyWithImpl($value, $cast, t);
+      _RaritySquadCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

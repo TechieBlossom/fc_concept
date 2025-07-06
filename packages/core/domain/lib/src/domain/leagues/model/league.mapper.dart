@@ -78,7 +78,7 @@ mixin LeagueMappable {
   }
 
   LeagueCopyWith<League, League, League> get copyWith =>
-      _LeagueCopyWithImpl(this as League, $identity, $identity);
+      _LeagueCopyWithImpl<League, League>(this as League, $identity, $identity);
   @override
   String toString() {
     return LeagueMapper.ensureInitialized().stringifyValue(this as League);
@@ -97,7 +97,7 @@ mixin LeagueMappable {
 
 extension LeagueValueCopy<$R, $Out> on ObjectCopyWith<$R, League, $Out> {
   LeagueCopyWith<$R, League, $Out> get $asLeague =>
-      $base.as((v, t, t2) => _LeagueCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _LeagueCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LeagueCopyWith<$R, $In extends League, $Out>
@@ -134,5 +134,5 @@ class _LeagueCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, League, $Out>
 
   @override
   LeagueCopyWith<$R2, League, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _LeagueCopyWithImpl($value, $cast, t);
+      _LeagueCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

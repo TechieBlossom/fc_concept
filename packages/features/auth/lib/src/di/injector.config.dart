@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -25,25 +26,28 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   gh.lazySingleton<_i91.AuthRoutesConfig>(() => _i91.AuthRoutesConfig());
   gh.lazySingleton<_i944.AuthNavigator>(
-      () => _i944.AuthNavigator(gh<_i177.GoRouter>()));
-  gh.factory<_i481.LoginBloc>(() => _i481.LoginBloc(
-        gh<_i944.AuthNavigator>(),
-        gh<_i643.LoginUserUseCase>(),
-      ));
-  gh.factory<_i248.RegisterBloc>(() => _i248.RegisterBloc(
-        gh<_i944.AuthNavigator>(),
-        gh<_i643.RegisterUserUseCase>(),
-      ));
-  gh.factory<_i1073.AuthStateBloc>(() => _i1073.AuthStateBloc(
-        gh<_i643.ObserveAuthStateUseCase>(),
-        gh<_i944.AuthNavigator>(),
-      ));
+    () => _i944.AuthNavigator(gh<_i177.GoRouter>()),
+  );
+  gh.factory<_i481.LoginBloc>(
+    () => _i481.LoginBloc(
+      gh<_i944.AuthNavigator>(),
+      gh<_i643.LoginUserUseCase>(),
+    ),
+  );
+  gh.factory<_i248.RegisterBloc>(
+    () => _i248.RegisterBloc(
+      gh<_i944.AuthNavigator>(),
+      gh<_i643.RegisterUserUseCase>(),
+    ),
+  );
+  gh.factory<_i1073.AuthStateBloc>(
+    () => _i1073.AuthStateBloc(
+      gh<_i643.ObserveAuthStateUseCase>(),
+      gh<_i944.AuthNavigator>(),
+    ),
+  );
   return getIt;
 }

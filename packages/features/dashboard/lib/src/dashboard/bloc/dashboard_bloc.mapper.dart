@@ -115,7 +115,7 @@ mixin InitMappable {
   }
 
   InitCopyWith<Init, Init, Init> get copyWith =>
-      _InitCopyWithImpl(this as Init, $identity, $identity);
+      _InitCopyWithImpl<Init, Init>(this as Init, $identity, $identity);
   @override
   String toString() {
     return InitMapper.ensureInitialized().stringifyValue(this as Init);
@@ -134,7 +134,7 @@ mixin InitMappable {
 
 extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
   InitCopyWith<$R, Init, $Out> get $asInit =>
-      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _InitCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
@@ -157,7 +157,7 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
 
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _InitCopyWithImpl($value, $cast, t);
+      _InitCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class UpdatePlayerPricesMapper extends SubClassMapperBase<UpdatePlayerPrices> {
@@ -221,8 +221,8 @@ mixin UpdatePlayerPricesMappable {
 
   UpdatePlayerPricesCopyWith<UpdatePlayerPrices, UpdatePlayerPrices,
           UpdatePlayerPrices>
-      get copyWith => _UpdatePlayerPricesCopyWithImpl(
-          this as UpdatePlayerPrices, $identity, $identity);
+      get copyWith => _UpdatePlayerPricesCopyWithImpl<UpdatePlayerPrices,
+          UpdatePlayerPrices>(this as UpdatePlayerPrices, $identity, $identity);
   @override
   String toString() {
     return UpdatePlayerPricesMapper.ensureInitialized()
@@ -245,8 +245,8 @@ mixin UpdatePlayerPricesMappable {
 extension UpdatePlayerPricesValueCopy<$R, $Out>
     on ObjectCopyWith<$R, UpdatePlayerPrices, $Out> {
   UpdatePlayerPricesCopyWith<$R, UpdatePlayerPrices, $Out>
-      get $asUpdatePlayerPrices =>
-          $base.as((v, t, t2) => _UpdatePlayerPricesCopyWithImpl(v, t, t2));
+      get $asUpdatePlayerPrices => $base.as(
+          (v, t, t2) => _UpdatePlayerPricesCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class UpdatePlayerPricesCopyWith<$R, $In extends UpdatePlayerPrices,
@@ -275,7 +275,7 @@ class _UpdatePlayerPricesCopyWithImpl<$R, $Out>
   @override
   UpdatePlayerPricesCopyWith<$R2, UpdatePlayerPrices, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _UpdatePlayerPricesCopyWithImpl($value, $cast, t);
+      _UpdatePlayerPricesCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class SwitchHighRatedPositionGroupMapper
@@ -345,7 +345,8 @@ mixin SwitchHighRatedPositionGroupMappable {
 
   SwitchHighRatedPositionGroupCopyWith<SwitchHighRatedPositionGroup,
           SwitchHighRatedPositionGroup, SwitchHighRatedPositionGroup>
-      get copyWith => _SwitchHighRatedPositionGroupCopyWithImpl(
+      get copyWith => _SwitchHighRatedPositionGroupCopyWithImpl<
+              SwitchHighRatedPositionGroup, SwitchHighRatedPositionGroup>(
           this as SwitchHighRatedPositionGroup, $identity, $identity);
   @override
   String toString() {
@@ -369,8 +370,8 @@ mixin SwitchHighRatedPositionGroupMappable {
 extension SwitchHighRatedPositionGroupValueCopy<$R, $Out>
     on ObjectCopyWith<$R, SwitchHighRatedPositionGroup, $Out> {
   SwitchHighRatedPositionGroupCopyWith<$R, SwitchHighRatedPositionGroup, $Out>
-      get $asSwitchHighRatedPositionGroup => $base.as(
-          (v, t, t2) => _SwitchHighRatedPositionGroupCopyWithImpl(v, t, t2));
+      get $asSwitchHighRatedPositionGroup => $base.as((v, t, t2) =>
+          _SwitchHighRatedPositionGroupCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SwitchHighRatedPositionGroupCopyWith<
@@ -405,7 +406,8 @@ class _SwitchHighRatedPositionGroupCopyWithImpl<$R, $Out>
   @override
   SwitchHighRatedPositionGroupCopyWith<$R2, SwitchHighRatedPositionGroup, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _SwitchHighRatedPositionGroupCopyWithImpl($value, $cast, t);
+          _SwitchHighRatedPositionGroupCopyWithImpl<$R2, $Out2>(
+              $value, $cast, t);
 }
 
 class SwitchRaritySquadMapper extends SubClassMapperBase<SwitchRaritySquad> {
@@ -470,8 +472,9 @@ mixin SwitchRaritySquadMappable {
 
   SwitchRaritySquadCopyWith<SwitchRaritySquad, SwitchRaritySquad,
           SwitchRaritySquad>
-      get copyWith => _SwitchRaritySquadCopyWithImpl(
-          this as SwitchRaritySquad, $identity, $identity);
+      get copyWith =>
+          _SwitchRaritySquadCopyWithImpl<SwitchRaritySquad, SwitchRaritySquad>(
+              this as SwitchRaritySquad, $identity, $identity);
   @override
   String toString() {
     return SwitchRaritySquadMapper.ensureInitialized()
@@ -494,8 +497,8 @@ mixin SwitchRaritySquadMappable {
 extension SwitchRaritySquadValueCopy<$R, $Out>
     on ObjectCopyWith<$R, SwitchRaritySquad, $Out> {
   SwitchRaritySquadCopyWith<$R, SwitchRaritySquad, $Out>
-      get $asSwitchRaritySquad =>
-          $base.as((v, t, t2) => _SwitchRaritySquadCopyWithImpl(v, t, t2));
+      get $asSwitchRaritySquad => $base
+          .as((v, t, t2) => _SwitchRaritySquadCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SwitchRaritySquadCopyWith<$R, $In extends SwitchRaritySquad,
@@ -528,7 +531,7 @@ class _SwitchRaritySquadCopyWithImpl<$R, $Out>
   @override
   SwitchRaritySquadCopyWith<$R2, SwitchRaritySquad, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _SwitchRaritySquadCopyWithImpl($value, $cast, t);
+      _SwitchRaritySquadCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class PlayerTapMapper extends SubClassMapperBase<PlayerTap> {
@@ -596,7 +599,8 @@ mixin PlayerTapMappable {
   }
 
   PlayerTapCopyWith<PlayerTap, PlayerTap, PlayerTap> get copyWith =>
-      _PlayerTapCopyWithImpl(this as PlayerTap, $identity, $identity);
+      _PlayerTapCopyWithImpl<PlayerTap, PlayerTap>(
+          this as PlayerTap, $identity, $identity);
   @override
   String toString() {
     return PlayerTapMapper.ensureInitialized()
@@ -617,7 +621,7 @@ mixin PlayerTapMappable {
 
 extension PlayerTapValueCopy<$R, $Out> on ObjectCopyWith<$R, PlayerTap, $Out> {
   PlayerTapCopyWith<$R, PlayerTap, $Out> get $asPlayerTap =>
-      $base.as((v, t, t2) => _PlayerTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PlayerTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PlayerTapCopyWith<$R, $In extends PlayerTap, $Out>
@@ -652,7 +656,7 @@ class _PlayerTapCopyWithImpl<$R, $Out>
   @override
   PlayerTapCopyWith<$R2, PlayerTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PlayerTapCopyWithImpl($value, $cast, t);
+      _PlayerTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class SearchTapMapper extends SubClassMapperBase<SearchTap> {
@@ -709,7 +713,8 @@ mixin SearchTapMappable {
   }
 
   SearchTapCopyWith<SearchTap, SearchTap, SearchTap> get copyWith =>
-      _SearchTapCopyWithImpl(this as SearchTap, $identity, $identity);
+      _SearchTapCopyWithImpl<SearchTap, SearchTap>(
+          this as SearchTap, $identity, $identity);
   @override
   String toString() {
     return SearchTapMapper.ensureInitialized()
@@ -730,7 +735,7 @@ mixin SearchTapMappable {
 
 extension SearchTapValueCopy<$R, $Out> on ObjectCopyWith<$R, SearchTap, $Out> {
   SearchTapCopyWith<$R, SearchTap, $Out> get $asSearchTap =>
-      $base.as((v, t, t2) => _SearchTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _SearchTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SearchTapCopyWith<$R, $In extends SearchTap, $Out>
@@ -756,7 +761,7 @@ class _SearchTapCopyWithImpl<$R, $Out>
   @override
   SearchTapCopyWith<$R2, SearchTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _SearchTapCopyWithImpl($value, $cast, t);
+      _SearchTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class CheapestByPlayerRatingTapMapper
@@ -818,7 +823,8 @@ mixin CheapestByPlayerRatingTapMappable {
 
   CheapestByPlayerRatingTapCopyWith<CheapestByPlayerRatingTap,
           CheapestByPlayerRatingTap, CheapestByPlayerRatingTap>
-      get copyWith => _CheapestByPlayerRatingTapCopyWithImpl(
+      get copyWith => _CheapestByPlayerRatingTapCopyWithImpl<
+              CheapestByPlayerRatingTap, CheapestByPlayerRatingTap>(
           this as CheapestByPlayerRatingTap, $identity, $identity);
   @override
   String toString() {
@@ -842,8 +848,8 @@ mixin CheapestByPlayerRatingTapMappable {
 extension CheapestByPlayerRatingTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, CheapestByPlayerRatingTap, $Out> {
   CheapestByPlayerRatingTapCopyWith<$R, CheapestByPlayerRatingTap, $Out>
-      get $asCheapestByPlayerRatingTap => $base
-          .as((v, t, t2) => _CheapestByPlayerRatingTapCopyWithImpl(v, t, t2));
+      get $asCheapestByPlayerRatingTap => $base.as((v, t, t2) =>
+          _CheapestByPlayerRatingTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class CheapestByPlayerRatingTapCopyWith<
@@ -874,7 +880,7 @@ class _CheapestByPlayerRatingTapCopyWithImpl<$R, $Out>
   @override
   CheapestByPlayerRatingTapCopyWith<$R2, CheapestByPlayerRatingTap, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _CheapestByPlayerRatingTapCopyWithImpl($value, $cast, t);
+          _CheapestByPlayerRatingTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class IndexTapMapper extends SubClassMapperBase<IndexTap> {
@@ -937,7 +943,8 @@ mixin IndexTapMappable {
   }
 
   IndexTapCopyWith<IndexTap, IndexTap, IndexTap> get copyWith =>
-      _IndexTapCopyWithImpl(this as IndexTap, $identity, $identity);
+      _IndexTapCopyWithImpl<IndexTap, IndexTap>(
+          this as IndexTap, $identity, $identity);
   @override
   String toString() {
     return IndexTapMapper.ensureInitialized().stringifyValue(this as IndexTap);
@@ -957,7 +964,7 @@ mixin IndexTapMappable {
 
 extension IndexTapValueCopy<$R, $Out> on ObjectCopyWith<$R, IndexTap, $Out> {
   IndexTapCopyWith<$R, IndexTap, $Out> get $asIndexTap =>
-      $base.as((v, t, t2) => _IndexTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _IndexTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class IndexTapCopyWith<$R, $In extends IndexTap, $Out>
@@ -985,7 +992,7 @@ class _IndexTapCopyWithImpl<$R, $Out>
   @override
   IndexTapCopyWith<$R2, IndexTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _IndexTapCopyWithImpl($value, $cast, t);
+      _IndexTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class ToggleIconsMapper extends SubClassMapperBase<ToggleIcons> {
@@ -1042,7 +1049,8 @@ mixin ToggleIconsMappable {
   }
 
   ToggleIconsCopyWith<ToggleIcons, ToggleIcons, ToggleIcons> get copyWith =>
-      _ToggleIconsCopyWithImpl(this as ToggleIcons, $identity, $identity);
+      _ToggleIconsCopyWithImpl<ToggleIcons, ToggleIcons>(
+          this as ToggleIcons, $identity, $identity);
   @override
   String toString() {
     return ToggleIconsMapper.ensureInitialized()
@@ -1064,7 +1072,7 @@ mixin ToggleIconsMappable {
 extension ToggleIconsValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ToggleIcons, $Out> {
   ToggleIconsCopyWith<$R, ToggleIcons, $Out> get $asToggleIcons =>
-      $base.as((v, t, t2) => _ToggleIconsCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ToggleIconsCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ToggleIconsCopyWith<$R, $In extends ToggleIcons, $Out>
@@ -1090,7 +1098,7 @@ class _ToggleIconsCopyWithImpl<$R, $Out>
   @override
   ToggleIconsCopyWith<$R2, ToggleIcons, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _ToggleIconsCopyWithImpl($value, $cast, t);
+      _ToggleIconsCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class DashboardStateMapper extends ClassMapperBase<DashboardState> {
@@ -1214,8 +1222,9 @@ mixin DashboardStateMappable {
   }
 
   DashboardStateCopyWith<DashboardState, DashboardState, DashboardState>
-      get copyWith => _DashboardStateCopyWithImpl(
-          this as DashboardState, $identity, $identity);
+      get copyWith =>
+          _DashboardStateCopyWithImpl<DashboardState, DashboardState>(
+              this as DashboardState, $identity, $identity);
   @override
   String toString() {
     return DashboardStateMapper.ensureInitialized()
@@ -1238,7 +1247,7 @@ mixin DashboardStateMappable {
 extension DashboardStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, DashboardState, $Out> {
   DashboardStateCopyWith<$R, DashboardState, $Out> get $asDashboardState =>
-      $base.as((v, t, t2) => _DashboardStateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _DashboardStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class DashboardStateCopyWith<$R, $In extends DashboardState, $Out>
@@ -1369,5 +1378,5 @@ class _DashboardStateCopyWithImpl<$R, $Out>
   @override
   DashboardStateCopyWith<$R2, DashboardState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _DashboardStateCopyWithImpl($value, $cast, t);
+      _DashboardStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

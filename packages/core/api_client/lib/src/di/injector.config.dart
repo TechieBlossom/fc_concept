@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -22,16 +23,13 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   final dioModule = _$DioModule();
   gh.lazySingletonAsync<_i361.Dio>(() => dioModule.dio);
   gh.lazySingleton<_i158.ApiKeyInterceptor>(() => _i158.ApiKeyInterceptor());
   gh.factoryAsync<_i955.ApiClient>(
-      () async => _i955.ApiClient(await gh.getAsync<_i361.Dio>()));
+    () async => _i955.ApiClient(await gh.getAsync<_i361.Dio>()),
+  );
   return getIt;
 }
 

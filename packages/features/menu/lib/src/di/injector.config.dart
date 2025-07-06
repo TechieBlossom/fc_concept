@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -26,22 +27,22 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   gh.lazySingleton<_i838.DashboardRoutesConfig>(
-      () => _i838.DashboardRoutesConfig());
+    () => _i838.DashboardRoutesConfig(),
+  );
   gh.lazySingleton<_i725.MenuNavigator>(
-      () => _i725.MenuNavigator(gh<_i177.GoRouter>()));
-  gh.factory<_i929.MenuBloc>(() => _i929.MenuBloc(
-        gh<_i495.AuthNavigator>(),
-        gh<_i534.CompareNavigator>(),
-        gh<_i460.PlayerNavigator>(),
-        gh<_i913.GetPlayerCountUseCase>(),
-        gh<_i643.SignOutUserUseCase>(),
-        gh<_i725.MenuNavigator>(),
-      ));
+    () => _i725.MenuNavigator(gh<_i177.GoRouter>()),
+  );
+  gh.factory<_i929.MenuBloc>(
+    () => _i929.MenuBloc(
+      gh<_i495.AuthNavigator>(),
+      gh<_i534.CompareNavigator>(),
+      gh<_i460.PlayerNavigator>(),
+      gh<_i913.GetPlayerCountUseCase>(),
+      gh<_i643.SignOutUserUseCase>(),
+      gh<_i725.MenuNavigator>(),
+    ),
+  );
   return getIt;
 }

@@ -25,23 +25,23 @@ class PlayerCollectionTypeMapper extends EnumMapper<PlayerCollectionType> {
   @override
   PlayerCollectionType decode(dynamic value) {
     switch (value) {
-      case 'rarity':
+      case r'rarity':
         return PlayerCollectionType.rarity;
-      case 'role':
+      case r'role':
         return PlayerCollectionType.role;
-      case 'rolePlus':
+      case r'rolePlus':
         return PlayerCollectionType.rolePlus;
-      case 'playStyle':
+      case r'playStyle':
         return PlayerCollectionType.playStyle;
-      case 'playStylePlus':
+      case r'playStylePlus':
         return PlayerCollectionType.playStylePlus;
-      case 'league':
+      case r'league':
         return PlayerCollectionType.league;
-      case 'club':
+      case r'club':
         return PlayerCollectionType.club;
-      case 'nation':
+      case r'nation':
         return PlayerCollectionType.nation;
-      case 'position':
+      case r'position':
         return PlayerCollectionType.position;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -52,23 +52,23 @@ class PlayerCollectionTypeMapper extends EnumMapper<PlayerCollectionType> {
   dynamic encode(PlayerCollectionType self) {
     switch (self) {
       case PlayerCollectionType.rarity:
-        return 'rarity';
+        return r'rarity';
       case PlayerCollectionType.role:
-        return 'role';
+        return r'role';
       case PlayerCollectionType.rolePlus:
-        return 'rolePlus';
+        return r'rolePlus';
       case PlayerCollectionType.playStyle:
-        return 'playStyle';
+        return r'playStyle';
       case PlayerCollectionType.playStylePlus:
-        return 'playStylePlus';
+        return r'playStylePlus';
       case PlayerCollectionType.league:
-        return 'league';
+        return r'league';
       case PlayerCollectionType.club:
-        return 'club';
+        return r'club';
       case PlayerCollectionType.nation:
-        return 'nation';
+        return r'nation';
       case PlayerCollectionType.position:
-        return 'position';
+        return r'position';
     }
   }
 }

@@ -25,11 +25,11 @@ class WorkRateMapper extends EnumMapper<WorkRate> {
   @override
   WorkRate decode(dynamic value) {
     switch (value) {
-      case 'low':
+      case r'low':
         return WorkRate.low;
-      case 'medium':
+      case r'medium':
         return WorkRate.medium;
-      case 'high':
+      case r'high':
         return WorkRate.high;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -40,11 +40,11 @@ class WorkRateMapper extends EnumMapper<WorkRate> {
   dynamic encode(WorkRate self) {
     switch (self) {
       case WorkRate.low:
-        return 'low';
+        return r'low';
       case WorkRate.medium:
-        return 'medium';
+        return r'medium';
       case WorkRate.high:
-        return 'high';
+        return r'high';
     }
   }
 }

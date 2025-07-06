@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -149,120 +150,163 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   gh.factory<_i642.NormalizeChemistryBoostUseCase>(
-      () => const _i642.NormalizeChemistryBoostUseCase());
+    () => const _i642.NormalizeChemistryBoostUseCase(),
+  );
   gh.factory<_i322.GetChemistryBoostFaceValuesUseCase>(
-      () => const _i322.GetChemistryBoostFaceValuesUseCase());
+    () => const _i322.GetChemistryBoostFaceValuesUseCase(),
+  );
   gh.factory<_i1014.GetChemistryBoostFaceValuesGkUseCase>(
-      () => const _i1014.GetChemistryBoostFaceValuesGkUseCase());
+    () => const _i1014.GetChemistryBoostFaceValuesGkUseCase(),
+  );
   gh.factory<_i1000.GetRolesByIdsUseCase>(
-      () => const _i1000.GetRolesByIdsUseCase());
+    () => const _i1000.GetRolesByIdsUseCase(),
+  );
   gh.factory<_i406.GetPositionsByIdsUseCase>(
-      () => const _i406.GetPositionsByIdsUseCase());
+    () => const _i406.GetPositionsByIdsUseCase(),
+  );
   gh.factory<_i1017.GetPlayStylesByIdsUseCase>(
-      () => const _i1017.GetPlayStylesByIdsUseCase());
+    () => const _i1017.GetPlayStylesByIdsUseCase(),
+  );
   gh.lazySingleton<_i129.GetPositionGroupFromPositions>(
-      () => _i129.GetPositionGroupFromPositions());
+    () => _i129.GetPositionGroupFromPositions(),
+  );
   gh.lazySingleton<_i264.GetPositionsFromPositionGroup>(
-      () => _i264.GetPositionsFromPositionGroup());
+    () => _i264.GetPositionsFromPositionGroup(),
+  );
   gh.factory<_i191.LeagueRepository>(() => _i274.LeagueRepositoryImpl());
   gh.factory<_i177.ClubRepository>(() => _i767.ClubRepositoryImpl());
   gh.lazySingleton<_i526.PriceRepository>(() => _i463.PriceRepositoryImpl());
   gh.factory<_i73.PlayStyleRepository>(() => _i926.PlayStyleRepositoryImpl());
   gh.factory<_i451.RaritySquadRepository>(
-      () => _i433.RaritySquadRepositoryImpl());
+    () => _i433.RaritySquadRepositoryImpl(),
+  );
   gh.factory<_i1070.PositionRepository>(() => _i684.PositionRepositoryImpl());
   gh.factory<_i437.GetAllPositionsUseCase>(
-      () => _i437.GetAllPositionsUseCase(gh<_i1070.PositionRepository>()));
+    () => _i437.GetAllPositionsUseCase(gh<_i1070.PositionRepository>()),
+  );
   gh.factory<_i753.ChemistryStyleRepository>(
-      () => _i354.ChemistryStyleRepositoryImpl());
+    () => _i354.ChemistryStyleRepositoryImpl(),
+  );
   gh.factory<_i140.IndexRepository>(() => _i1034.IndexRepositoryImpl());
   gh.factory<_i781.GetAllPlayStylesUseCase>(
-      () => _i781.GetAllPlayStylesUseCase(gh<_i73.PlayStyleRepository>()));
+    () => _i781.GetAllPlayStylesUseCase(gh<_i73.PlayStyleRepository>()),
+  );
   gh.factory<_i52.RarityRepository>(() => _i176.RarityRepositoryImpl());
   gh.factory<_i172.AuthRepository>(() => _i937.AuthRepositoryImpl());
   gh.factory<_i907.RoleRepository>(() => _i33.RoleRepositoryImpl());
   gh.factory<_i696.GetUniqueRaritySquads>(
-      () => _i696.GetUniqueRaritySquads(gh<_i451.RaritySquadRepository>()));
+    () => _i696.GetUniqueRaritySquads(gh<_i451.RaritySquadRepository>()),
+  );
   gh.factory<_i429.RegisterUserUseCase>(
-      () => _i429.RegisterUserUseCase(gh<_i172.AuthRepository>()));
+    () => _i429.RegisterUserUseCase(gh<_i172.AuthRepository>()),
+  );
   gh.factory<_i1060.LoginUserUseCase>(
-      () => _i1060.LoginUserUseCase(gh<_i172.AuthRepository>()));
+    () => _i1060.LoginUserUseCase(gh<_i172.AuthRepository>()),
+  );
   gh.factory<_i347.ObserveAuthStateUseCase>(
-      () => _i347.ObserveAuthStateUseCase(gh<_i172.AuthRepository>()));
+    () => _i347.ObserveAuthStateUseCase(gh<_i172.AuthRepository>()),
+  );
   gh.factory<_i829.NationRepository>(() => _i245.NationRepositoryImpl());
   gh.factory<_i294.PlayerRepository>(() => _i281.PlayerRepositoryImpl());
   gh.factory<_i669.GetAllChemistryStyles>(
-      () => _i669.GetAllChemistryStyles(gh<_i753.ChemistryStyleRepository>()));
+    () => _i669.GetAllChemistryStyles(gh<_i753.ChemistryStyleRepository>()),
+  );
   gh.factory<_i282.GetPlayerPriceUseCase>(
-      () => _i282.GetPlayerPriceUseCase(gh<_i526.PriceRepository>()));
+    () => _i282.GetPlayerPriceUseCase(gh<_i526.PriceRepository>()),
+  );
   gh.factory<_i47.GetPlayerOldPricesUseCase>(
-      () => _i47.GetPlayerOldPricesUseCase(gh<_i526.PriceRepository>()));
-  gh.factory<_i529.GetCheapestPricesByRatingUseCase>(() =>
-      _i529.GetCheapestPricesByRatingUseCase(gh<_i526.PriceRepository>()));
+    () => _i47.GetPlayerOldPricesUseCase(gh<_i526.PriceRepository>()),
+  );
+  gh.factory<_i529.GetCheapestPricesByRatingUseCase>(
+    () => _i529.GetCheapestPricesByRatingUseCase(gh<_i526.PriceRepository>()),
+  );
   gh.factory<_i739.GetOtherLeaguesUseCase>(
-      () => _i739.GetOtherLeaguesUseCase(gh<_i191.LeagueRepository>()));
+    () => _i739.GetOtherLeaguesUseCase(gh<_i191.LeagueRepository>()),
+  );
   gh.factory<_i439.GetTopLeaguesUseCase>(
-      () => _i439.GetTopLeaguesUseCase(gh<_i191.LeagueRepository>()));
+    () => _i439.GetTopLeaguesUseCase(gh<_i191.LeagueRepository>()),
+  );
   gh.factory<_i94.GetPlayersByEaIdsUseCase>(
-      () => _i94.GetPlayersByEaIdsUseCase(gh<_i294.PlayerRepository>()));
+    () => _i94.GetPlayersByEaIdsUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i651.GetAllRolesUseCase>(
-      () => _i651.GetAllRolesUseCase(gh<_i907.RoleRepository>()));
+    () => _i651.GetAllRolesUseCase(gh<_i907.RoleRepository>()),
+  );
   gh.factory<_i1022.GetClubsByLeagueUseCase>(
-      () => _i1022.GetClubsByLeagueUseCase(gh<_i177.ClubRepository>()));
+    () => _i1022.GetClubsByLeagueUseCase(gh<_i177.ClubRepository>()),
+  );
   gh.factory<_i906.GetAllIndexDataUseCase>(
-      () => _i906.GetAllIndexDataUseCase(gh<_i140.IndexRepository>()));
+    () => _i906.GetAllIndexDataUseCase(gh<_i140.IndexRepository>()),
+  );
   gh.factory<_i883.GetIndexDataUseCase>(
-      () => _i883.GetIndexDataUseCase(gh<_i140.IndexRepository>()));
+    () => _i883.GetIndexDataUseCase(gh<_i140.IndexRepository>()),
+  );
   gh.factory<_i491.GetTopNationsUseCase>(
-      () => _i491.GetTopNationsUseCase(gh<_i829.NationRepository>()));
+    () => _i491.GetTopNationsUseCase(gh<_i829.NationRepository>()),
+  );
   gh.factory<_i847.GetOtherNationsUseCase>(
-      () => _i847.GetOtherNationsUseCase(gh<_i829.NationRepository>()));
+    () => _i847.GetOtherNationsUseCase(gh<_i829.NationRepository>()),
+  );
   gh.factory<_i1054.GetAllRarities>(
-      () => _i1054.GetAllRarities(gh<_i52.RarityRepository>()));
+    () => _i1054.GetAllRarities(gh<_i52.RarityRepository>()),
+  );
   gh.factory<_i646.GetSessionUseCase>(
-      () => _i646.GetSessionUseCase(gh<_i172.AuthRepository>()));
+    () => _i646.GetSessionUseCase(gh<_i172.AuthRepository>()),
+  );
   gh.factory<_i728.SetSessionUseCase>(
-      () => _i728.SetSessionUseCase(gh<_i172.AuthRepository>()));
+    () => _i728.SetSessionUseCase(gh<_i172.AuthRepository>()),
+  );
   gh.factory<_i929.SignOutUserUseCase>(
-      () => _i929.SignOutUserUseCase(gh<_i172.AuthRepository>()));
+    () => _i929.SignOutUserUseCase(gh<_i172.AuthRepository>()),
+  );
   gh.factory<_i288.GetCheapestPlayersByRatingUseCase>(
-      () => _i288.GetCheapestPlayersByRatingUseCase(
-            gh<_i529.GetCheapestPricesByRatingUseCase>(),
-            gh<_i94.GetPlayersByEaIdsUseCase>(),
-          ));
+    () => _i288.GetCheapestPlayersByRatingUseCase(
+      gh<_i529.GetCheapestPricesByRatingUseCase>(),
+      gh<_i94.GetPlayersByEaIdsUseCase>(),
+    ),
+  );
   gh.factory<_i394.GetPlayerCountUseCase>(
-      () => _i394.GetPlayerCountUseCase(gh<_i294.PlayerRepository>()));
+    () => _i394.GetPlayerCountUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i354.SearchPlayersUseCase>(
-      () => _i354.SearchPlayersUseCase(gh<_i294.PlayerRepository>()));
+    () => _i354.SearchPlayersUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i120.FilterPlayersUseCase>(
-      () => _i120.FilterPlayersUseCase(gh<_i294.PlayerRepository>()));
+    () => _i120.FilterPlayersUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i274.GetPositionalPlayersUseCase>(
-      () => _i274.GetPositionalPlayersUseCase(gh<_i294.PlayerRepository>()));
+    () => _i274.GetPositionalPlayersUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i75.GetPlayerDetailsUseCase>(
-      () => _i75.GetPlayerDetailsUseCase(gh<_i294.PlayerRepository>()));
+    () => _i75.GetPlayerDetailsUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i77.GetPlayerVersionsUseCase>(
-      () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()));
+    () => _i77.GetPlayerVersionsUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i988.GetPlayerCollectionUseCase>(
-      () => _i988.GetPlayerCollectionUseCase(gh<_i294.PlayerRepository>()));
+    () => _i988.GetPlayerCollectionUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i171.GetRecentPlayersUseCase>(
-      () => _i171.GetRecentPlayersUseCase(gh<_i294.PlayerRepository>()));
+    () => _i171.GetRecentPlayersUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i380.GetTopPlayerUseCase>(
-      () => _i380.GetTopPlayerUseCase(gh<_i294.PlayerRepository>()));
+    () => _i380.GetTopPlayerUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i1.GetSbcPlayersUseCase>(
-      () => _i1.GetSbcPlayersUseCase(gh<_i294.PlayerRepository>()));
+    () => _i1.GetSbcPlayersUseCase(gh<_i294.PlayerRepository>()),
+  );
   gh.factory<_i530.GetTrendingPlayersUseCase>(
-      () => _i530.GetTrendingPlayersUseCase(gh<_i294.PlayerRepository>()));
-  gh.lazySingleton<_i809.MetadataBloc>(() => _i809.MetadataBloc(
-        gh<_i913.GetAllRolesUseCase>(),
-        gh<_i913.GetAllPlayStylesUseCase>(),
-        gh<_i437.GetAllPositionsUseCase>(),
-        gh<_i913.GetAllChemistryStyles>(),
-      ));
+    () => _i530.GetTrendingPlayersUseCase(gh<_i294.PlayerRepository>()),
+  );
+  gh.lazySingleton<_i809.MetadataBloc>(
+    () => _i809.MetadataBloc(
+      gh<_i913.GetAllRolesUseCase>(),
+      gh<_i913.GetAllPlayStylesUseCase>(),
+      gh<_i437.GetAllPositionsUseCase>(),
+      gh<_i913.GetAllChemistryStyles>(),
+    ),
+  );
   return getIt;
 }

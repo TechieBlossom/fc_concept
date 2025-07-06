@@ -46,19 +46,19 @@ class PlayerMapper extends ClassMapperBase<Player> {
   static const Field<Player, int> _f$overall = Field('overall', _$overall);
   static Rarity _$rarity(Player v) => v.rarity;
   static const Field<Player, Rarity> _f$rarity =
-      Field('rarity', _$rarity, key: 'table_core_rarity');
+      Field('rarity', _$rarity, key: r'table_core_rarity');
   static String _$imagePath(Player v) => v.imagePath;
   static const Field<Player, String> _f$imagePath =
       Field('imagePath', _$imagePath);
   static Club? _$club(Player v) => v.club;
   static const Field<Player, Club> _f$club =
-      Field('club', _$club, key: 'table_core_club', opt: true);
+      Field('club', _$club, key: r'table_core_club', opt: true);
   static Nation? _$nation(Player v) => v.nation;
   static const Field<Player, Nation> _f$nation =
-      Field('nation', _$nation, key: 'table_core_nation', opt: true);
+      Field('nation', _$nation, key: r'table_core_nation', opt: true);
   static League? _$league(Player v) => v.league;
   static const Field<Player, League> _f$league =
-      Field('league', _$league, key: 'table_core_league', opt: true);
+      Field('league', _$league, key: r'table_core_league', opt: true);
   static PlayerOldPrice? _$price(Player v) => v.price;
   static const Field<Player, PlayerOldPrice> _f$price =
       Field('price', _$price, opt: true);
@@ -73,7 +73,7 @@ class PlayerMapper extends ClassMapperBase<Player> {
       Field('dateOfBirth', _$dateOfBirth, opt: true);
   static Position? _$position(Player v) => v.position;
   static const Field<Player, Position> _f$position =
-      Field('position', _$position, key: 'table_core_position', opt: true);
+      Field('position', _$position, key: r'table_core_position', opt: true);
   static List<int>? _$alternativePositionIds(Player v) =>
       v.alternativePositionIds;
   static const Field<Player, List<int>> _f$alternativePositionIds =
@@ -91,11 +91,11 @@ class PlayerMapper extends ClassMapperBase<Player> {
       Field('gender', _$gender, opt: true);
   static List<int>? _$playStyles(Player v) => v.playStyles;
   static const Field<Player, List<int>> _f$playStyles =
-      Field('playStyles', _$playStyles, key: 'playstyles', opt: true);
+      Field('playStyles', _$playStyles, key: r'playstyles', opt: true);
   static List<int>? _$playStylesPlus(Player v) => v.playStylesPlus;
   static const Field<Player, List<int>> _f$playStylesPlus = Field(
       'playStylesPlus', _$playStylesPlus,
-      key: 'playstylesPlus', opt: true);
+      key: r'playstylesPlus', opt: true);
   static List<int>? _$rolesPlus(Player v) => v.rolesPlus;
   static const Field<Player, List<int>> _f$rolesPlus =
       Field('rolesPlus', _$rolesPlus, opt: true);
@@ -441,7 +441,7 @@ mixin PlayerMappable {
   }
 
   PlayerCopyWith<Player, Player, Player> get copyWith =>
-      _PlayerCopyWithImpl(this as Player, $identity, $identity);
+      _PlayerCopyWithImpl<Player, Player>(this as Player, $identity, $identity);
   @override
   String toString() {
     return PlayerMapper.ensureInitialized().stringifyValue(this as Player);
@@ -460,7 +460,7 @@ mixin PlayerMappable {
 
 extension PlayerValueCopy<$R, $Out> on ObjectCopyWith<$R, Player, $Out> {
   PlayerCopyWith<$R, Player, $Out> get $asPlayer =>
-      $base.as((v, t, t2) => _PlayerCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PlayerCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PlayerCopyWith<$R, $In extends Player, $Out>
@@ -916,5 +916,5 @@ class _PlayerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Player, $Out>
 
   @override
   PlayerCopyWith<$R2, Player, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _PlayerCopyWithImpl($value, $cast, t);
+      _PlayerCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

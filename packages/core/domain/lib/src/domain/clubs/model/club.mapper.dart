@@ -93,7 +93,7 @@ mixin ClubMappable {
   }
 
   ClubCopyWith<Club, Club, Club> get copyWith =>
-      _ClubCopyWithImpl(this as Club, $identity, $identity);
+      _ClubCopyWithImpl<Club, Club>(this as Club, $identity, $identity);
   @override
   String toString() {
     return ClubMapper.ensureInitialized().stringifyValue(this as Club);
@@ -112,7 +112,7 @@ mixin ClubMappable {
 
 extension ClubValueCopy<$R, $Out> on ObjectCopyWith<$R, Club, $Out> {
   ClubCopyWith<$R, Club, $Out> get $asClub =>
-      $base.as((v, t, t2) => _ClubCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ClubCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ClubCopyWith<$R, $In extends Club, $Out>
@@ -183,5 +183,5 @@ class _ClubCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Club, $Out>
 
   @override
   ClubCopyWith<$R2, Club, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _ClubCopyWithImpl($value, $cast, t);
+      _ClubCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

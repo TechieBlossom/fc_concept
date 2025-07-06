@@ -113,7 +113,8 @@ mixin RegisterMappable {
   }
 
   RegisterCopyWith<Register, Register, Register> get copyWith =>
-      _RegisterCopyWithImpl(this as Register, $identity, $identity);
+      _RegisterCopyWithImpl<Register, Register>(
+          this as Register, $identity, $identity);
   @override
   String toString() {
     return RegisterMapper.ensureInitialized().stringifyValue(this as Register);
@@ -133,7 +134,7 @@ mixin RegisterMappable {
 
 extension RegisterValueCopy<$R, $Out> on ObjectCopyWith<$R, Register, $Out> {
   RegisterCopyWith<$R, Register, $Out> get $asRegister =>
-      $base.as((v, t, t2) => _RegisterCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _RegisterCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RegisterCopyWith<$R, $In extends Register, $Out>
@@ -159,7 +160,7 @@ class _RegisterCopyWithImpl<$R, $Out>
   @override
   RegisterCopyWith<$R2, Register, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _RegisterCopyWithImpl($value, $cast, t);
+      _RegisterCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class AlreadyAUserTapMapper extends SubClassMapperBase<AlreadyAUserTap> {
@@ -216,8 +217,9 @@ mixin AlreadyAUserTapMappable {
   }
 
   AlreadyAUserTapCopyWith<AlreadyAUserTap, AlreadyAUserTap, AlreadyAUserTap>
-      get copyWith => _AlreadyAUserTapCopyWithImpl(
-          this as AlreadyAUserTap, $identity, $identity);
+      get copyWith =>
+          _AlreadyAUserTapCopyWithImpl<AlreadyAUserTap, AlreadyAUserTap>(
+              this as AlreadyAUserTap, $identity, $identity);
   @override
   String toString() {
     return AlreadyAUserTapMapper.ensureInitialized()
@@ -240,7 +242,7 @@ mixin AlreadyAUserTapMappable {
 extension AlreadyAUserTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, AlreadyAUserTap, $Out> {
   AlreadyAUserTapCopyWith<$R, AlreadyAUserTap, $Out> get $asAlreadyAUserTap =>
-      $base.as((v, t, t2) => _AlreadyAUserTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _AlreadyAUserTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class AlreadyAUserTapCopyWith<$R, $In extends AlreadyAUserTap, $Out>
@@ -267,7 +269,7 @@ class _AlreadyAUserTapCopyWithImpl<$R, $Out>
   @override
   AlreadyAUserTapCopyWith<$R2, AlreadyAUserTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _AlreadyAUserTapCopyWithImpl($value, $cast, t);
+      _AlreadyAUserTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class NameUpdateMapper extends SubClassMapperBase<NameUpdate> {
@@ -329,7 +331,8 @@ mixin NameUpdateMappable {
   }
 
   NameUpdateCopyWith<NameUpdate, NameUpdate, NameUpdate> get copyWith =>
-      _NameUpdateCopyWithImpl(this as NameUpdate, $identity, $identity);
+      _NameUpdateCopyWithImpl<NameUpdate, NameUpdate>(
+          this as NameUpdate, $identity, $identity);
   @override
   String toString() {
     return NameUpdateMapper.ensureInitialized()
@@ -351,7 +354,7 @@ mixin NameUpdateMappable {
 extension NameUpdateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, NameUpdate, $Out> {
   NameUpdateCopyWith<$R, NameUpdate, $Out> get $asNameUpdate =>
-      $base.as((v, t, t2) => _NameUpdateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _NameUpdateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class NameUpdateCopyWith<$R, $In extends NameUpdate, $Out>
@@ -379,7 +382,7 @@ class _NameUpdateCopyWithImpl<$R, $Out>
   @override
   NameUpdateCopyWith<$R2, NameUpdate, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _NameUpdateCopyWithImpl($value, $cast, t);
+      _NameUpdateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class EmailUpdateMapper extends SubClassMapperBase<EmailUpdate> {
@@ -441,7 +444,8 @@ mixin EmailUpdateMappable {
   }
 
   EmailUpdateCopyWith<EmailUpdate, EmailUpdate, EmailUpdate> get copyWith =>
-      _EmailUpdateCopyWithImpl(this as EmailUpdate, $identity, $identity);
+      _EmailUpdateCopyWithImpl<EmailUpdate, EmailUpdate>(
+          this as EmailUpdate, $identity, $identity);
   @override
   String toString() {
     return EmailUpdateMapper.ensureInitialized()
@@ -463,7 +467,7 @@ mixin EmailUpdateMappable {
 extension EmailUpdateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, EmailUpdate, $Out> {
   EmailUpdateCopyWith<$R, EmailUpdate, $Out> get $asEmailUpdate =>
-      $base.as((v, t, t2) => _EmailUpdateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _EmailUpdateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class EmailUpdateCopyWith<$R, $In extends EmailUpdate, $Out>
@@ -491,7 +495,7 @@ class _EmailUpdateCopyWithImpl<$R, $Out>
   @override
   EmailUpdateCopyWith<$R2, EmailUpdate, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _EmailUpdateCopyWithImpl($value, $cast, t);
+      _EmailUpdateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class PasswordUpdateMapper extends SubClassMapperBase<PasswordUpdate> {
@@ -554,8 +558,9 @@ mixin PasswordUpdateMappable {
   }
 
   PasswordUpdateCopyWith<PasswordUpdate, PasswordUpdate, PasswordUpdate>
-      get copyWith => _PasswordUpdateCopyWithImpl(
-          this as PasswordUpdate, $identity, $identity);
+      get copyWith =>
+          _PasswordUpdateCopyWithImpl<PasswordUpdate, PasswordUpdate>(
+              this as PasswordUpdate, $identity, $identity);
   @override
   String toString() {
     return PasswordUpdateMapper.ensureInitialized()
@@ -578,7 +583,7 @@ mixin PasswordUpdateMappable {
 extension PasswordUpdateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, PasswordUpdate, $Out> {
   PasswordUpdateCopyWith<$R, PasswordUpdate, $Out> get $asPasswordUpdate =>
-      $base.as((v, t, t2) => _PasswordUpdateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PasswordUpdateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PasswordUpdateCopyWith<$R, $In extends PasswordUpdate, $Out>
@@ -607,7 +612,7 @@ class _PasswordUpdateCopyWithImpl<$R, $Out>
   @override
   PasswordUpdateCopyWith<$R2, PasswordUpdate, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PasswordUpdateCopyWithImpl($value, $cast, t);
+      _PasswordUpdateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class TermsConditionTapMapper extends SubClassMapperBase<TermsConditionTap> {
@@ -671,8 +676,9 @@ mixin TermsConditionTapMappable {
 
   TermsConditionTapCopyWith<TermsConditionTap, TermsConditionTap,
           TermsConditionTap>
-      get copyWith => _TermsConditionTapCopyWithImpl(
-          this as TermsConditionTap, $identity, $identity);
+      get copyWith =>
+          _TermsConditionTapCopyWithImpl<TermsConditionTap, TermsConditionTap>(
+              this as TermsConditionTap, $identity, $identity);
   @override
   String toString() {
     return TermsConditionTapMapper.ensureInitialized()
@@ -695,8 +701,8 @@ mixin TermsConditionTapMappable {
 extension TermsConditionTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, TermsConditionTap, $Out> {
   TermsConditionTapCopyWith<$R, TermsConditionTap, $Out>
-      get $asTermsConditionTap =>
-          $base.as((v, t, t2) => _TermsConditionTapCopyWithImpl(v, t, t2));
+      get $asTermsConditionTap => $base
+          .as((v, t, t2) => _TermsConditionTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class TermsConditionTapCopyWith<$R, $In extends TermsConditionTap,
@@ -725,7 +731,7 @@ class _TermsConditionTapCopyWithImpl<$R, $Out>
   @override
   TermsConditionTapCopyWith<$R2, TermsConditionTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _TermsConditionTapCopyWithImpl($value, $cast, t);
+      _TermsConditionTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class RegisterStateMapper extends ClassMapperBase<RegisterState> {
@@ -797,7 +803,7 @@ mixin RegisterStateMappable {
   }
 
   RegisterStateCopyWith<RegisterState, RegisterState, RegisterState>
-      get copyWith => _RegisterStateCopyWithImpl(
+      get copyWith => _RegisterStateCopyWithImpl<RegisterState, RegisterState>(
           this as RegisterState, $identity, $identity);
   @override
   String toString() {
@@ -821,7 +827,7 @@ mixin RegisterStateMappable {
 extension RegisterStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, RegisterState, $Out> {
   RegisterStateCopyWith<$R, RegisterState, $Out> get $asRegisterState =>
-      $base.as((v, t, t2) => _RegisterStateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _RegisterStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RegisterStateCopyWith<$R, $In extends RegisterState, $Out>
@@ -866,5 +872,5 @@ class _RegisterStateCopyWithImpl<$R, $Out>
   @override
   RegisterStateCopyWith<$R2, RegisterState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _RegisterStateCopyWithImpl($value, $cast, t);
+      _RegisterStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -39,72 +40,68 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   gh.lazySingleton<_i730.FilterRoutesConfig>(() => _i730.FilterRoutesConfig());
   gh.lazySingleton<_i176.FilterNavigator>(
-      () => _i176.FilterNavigator(gh<_i177.GoRouter>()));
-  gh.factoryParam<_i841.FilterBloc, _i913.FilterConfiguration?, dynamic>((
-    existingFilters,
-    _,
-  ) =>
-      _i841.FilterBloc(
-        existingFilters,
-        gh<_i176.FilterNavigator>(),
-        gh<_i913.GetPositionsFromPositionGroup>(),
-        gh<_i913.GetPositionGroupFromPositions>(),
-        gh<_i863.LogEventUseCase>(),
-      ));
-  gh.factoryParam<_i543.RoleNestedFilterBloc, _i792.RoleNestedFilterPageParams,
-      List<_i913.Role>>((
-    roleNestedFilterPageParams,
-    allRoles,
-  ) =>
-      _i543.RoleNestedFilterBloc(
-        roleNestedFilterPageParams,
-        allRoles,
-        gh<_i863.LogEventUseCase>(),
-        gh<_i176.FilterNavigator>(),
-      ));
+    () => _i176.FilterNavigator(gh<_i177.GoRouter>()),
+  );
+  gh.factoryParam<_i841.FilterBloc, _i913.FilterConfiguration?, dynamic>(
+    (existingFilters, _) => _i841.FilterBloc(
+      existingFilters,
+      gh<_i176.FilterNavigator>(),
+      gh<_i913.GetPositionsFromPositionGroup>(),
+      gh<_i913.GetPositionGroupFromPositions>(),
+      gh<_i863.LogEventUseCase>(),
+    ),
+  );
+  gh.factoryParam<
+    _i543.RoleNestedFilterBloc,
+    _i792.RoleNestedFilterPageParams,
+    List<_i913.Role>
+  >(
+    (roleNestedFilterPageParams, allRoles) => _i543.RoleNestedFilterBloc(
+      roleNestedFilterPageParams,
+      allRoles,
+      gh<_i863.LogEventUseCase>(),
+      gh<_i176.FilterNavigator>(),
+    ),
+  );
   gh.factoryParam<_i195.NestedFilterBloc, _i18.NestedFilterPageParams, dynamic>(
-      (
-    nestedFilterPageParams,
-    _,
-  ) =>
-          _i195.NestedFilterBloc(
-            nestedFilterPageParams,
-            gh<_i913.GetTopLeaguesUseCase>(),
-            gh<_i913.GetOtherLeaguesUseCase>(),
-            gh<_i913.GetClubsByLeagueUseCase>(),
-            gh<_i913.GetTopNationsUseCase>(),
-            gh<_i913.GetOtherNationsUseCase>(),
-            gh<_i863.LogEventUseCase>(),
-            gh<_i176.FilterNavigator>(),
-          ));
-  gh.factoryParam<_i716.RarityNestedFilterBloc,
-      _i465.RarityNestedFilterPageParams, dynamic>((
-    rarityNestedFilterPageParams,
-    _,
-  ) =>
-      _i716.RarityNestedFilterBloc(
-        rarityNestedFilterPageParams,
-        gh<_i913.GetAllRarities>(),
-        gh<_i863.LogEventUseCase>(),
-        gh<_i176.FilterNavigator>(),
-      ));
-  gh.factoryParam<_i949.PlayStyleNestedFilterBloc,
-      _i137.PlayStyleNestedFilterPageParams, List<_i913.PlayStyle>>((
-    playStyleNestedFilterPageParams,
-    allPlayStyles,
-  ) =>
-      _i949.PlayStyleNestedFilterBloc(
-        playStyleNestedFilterPageParams,
-        allPlayStyles,
-        gh<_i863.LogEventUseCase>(),
-        gh<_i176.FilterNavigator>(),
-      ));
+    (nestedFilterPageParams, _) => _i195.NestedFilterBloc(
+      nestedFilterPageParams,
+      gh<_i913.GetTopLeaguesUseCase>(),
+      gh<_i913.GetOtherLeaguesUseCase>(),
+      gh<_i913.GetClubsByLeagueUseCase>(),
+      gh<_i913.GetTopNationsUseCase>(),
+      gh<_i913.GetOtherNationsUseCase>(),
+      gh<_i863.LogEventUseCase>(),
+      gh<_i176.FilterNavigator>(),
+    ),
+  );
+  gh.factoryParam<
+    _i716.RarityNestedFilterBloc,
+    _i465.RarityNestedFilterPageParams,
+    dynamic
+  >(
+    (rarityNestedFilterPageParams, _) => _i716.RarityNestedFilterBloc(
+      rarityNestedFilterPageParams,
+      gh<_i913.GetAllRarities>(),
+      gh<_i863.LogEventUseCase>(),
+      gh<_i176.FilterNavigator>(),
+    ),
+  );
+  gh.factoryParam<
+    _i949.PlayStyleNestedFilterBloc,
+    _i137.PlayStyleNestedFilterPageParams,
+    List<_i913.PlayStyle>
+  >(
+    (playStyleNestedFilterPageParams, allPlayStyles) =>
+        _i949.PlayStyleNestedFilterBloc(
+          playStyleNestedFilterPageParams,
+          allPlayStyles,
+          gh<_i863.LogEventUseCase>(),
+          gh<_i176.FilterNavigator>(),
+        ),
+  );
   return getIt;
 }

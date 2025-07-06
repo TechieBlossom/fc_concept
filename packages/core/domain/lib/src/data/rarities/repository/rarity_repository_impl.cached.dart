@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _RarityRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getRaritiesCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getRaritiesCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -77,7 +79,9 @@ class _RarityRepositoryImpl
       __getRaritiesTtl[""] = DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getRaritiesCached', __getRaritiesCached);
+        '__getRaritiesCached',
+        __getRaritiesCached,
+      );
       await PersistentStorageHolder.write('__getRaritiesTtl', __getRaritiesTtl);
 
       return toReturn;

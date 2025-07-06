@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _NationRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getNationsCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getNationsCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -74,11 +76,14 @@ class _NationRepositoryImpl
       __getNationsCached["${isTop.hashCode}"] = toReturn;
 
       const duration = Duration(seconds: 2592000);
-      __getNationsTtl["${isTop.hashCode}"] =
-          DateTime.now().add(duration).toIso8601String();
+      __getNationsTtl["${isTop.hashCode}"] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getNationsCached', __getNationsCached);
+        '__getNationsCached',
+        __getNationsCached,
+      );
       await PersistentStorageHolder.write('__getNationsTtl', __getNationsTtl);
 
       return toReturn;

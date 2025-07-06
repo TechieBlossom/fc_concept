@@ -109,8 +109,9 @@ mixin CreateAccountTapMappable {
   }
 
   CreateAccountTapCopyWith<CreateAccountTap, CreateAccountTap, CreateAccountTap>
-      get copyWith => _CreateAccountTapCopyWithImpl(
-          this as CreateAccountTap, $identity, $identity);
+      get copyWith =>
+          _CreateAccountTapCopyWithImpl<CreateAccountTap, CreateAccountTap>(
+              this as CreateAccountTap, $identity, $identity);
   @override
   String toString() {
     return CreateAccountTapMapper.ensureInitialized()
@@ -133,8 +134,8 @@ mixin CreateAccountTapMappable {
 extension CreateAccountTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, CreateAccountTap, $Out> {
   CreateAccountTapCopyWith<$R, CreateAccountTap, $Out>
-      get $asCreateAccountTap =>
-          $base.as((v, t, t2) => _CreateAccountTapCopyWithImpl(v, t, t2));
+      get $asCreateAccountTap => $base
+          .as((v, t, t2) => _CreateAccountTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class CreateAccountTapCopyWith<$R, $In extends CreateAccountTap, $Out>
@@ -161,7 +162,7 @@ class _CreateAccountTapCopyWithImpl<$R, $Out>
   @override
   CreateAccountTapCopyWith<$R2, CreateAccountTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _CreateAccountTapCopyWithImpl($value, $cast, t);
+      _CreateAccountTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class SignInTapMapper extends SubClassMapperBase<SignInTap> {
@@ -217,7 +218,8 @@ mixin SignInTapMappable {
   }
 
   SignInTapCopyWith<SignInTap, SignInTap, SignInTap> get copyWith =>
-      _SignInTapCopyWithImpl(this as SignInTap, $identity, $identity);
+      _SignInTapCopyWithImpl<SignInTap, SignInTap>(
+          this as SignInTap, $identity, $identity);
   @override
   String toString() {
     return SignInTapMapper.ensureInitialized()
@@ -238,7 +240,7 @@ mixin SignInTapMappable {
 
 extension SignInTapValueCopy<$R, $Out> on ObjectCopyWith<$R, SignInTap, $Out> {
   SignInTapCopyWith<$R, SignInTap, $Out> get $asSignInTap =>
-      $base.as((v, t, t2) => _SignInTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _SignInTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SignInTapCopyWith<$R, $In extends SignInTap, $Out>
@@ -264,7 +266,7 @@ class _SignInTapCopyWithImpl<$R, $Out>
   @override
   SignInTapCopyWith<$R2, SignInTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _SignInTapCopyWithImpl($value, $cast, t);
+      _SignInTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class EmailUpdateMapper extends SubClassMapperBase<EmailUpdate> {
@@ -325,7 +327,8 @@ mixin EmailUpdateMappable {
   }
 
   EmailUpdateCopyWith<EmailUpdate, EmailUpdate, EmailUpdate> get copyWith =>
-      _EmailUpdateCopyWithImpl(this as EmailUpdate, $identity, $identity);
+      _EmailUpdateCopyWithImpl<EmailUpdate, EmailUpdate>(
+          this as EmailUpdate, $identity, $identity);
   @override
   String toString() {
     return EmailUpdateMapper.ensureInitialized()
@@ -347,7 +350,7 @@ mixin EmailUpdateMappable {
 extension EmailUpdateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, EmailUpdate, $Out> {
   EmailUpdateCopyWith<$R, EmailUpdate, $Out> get $asEmailUpdate =>
-      $base.as((v, t, t2) => _EmailUpdateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _EmailUpdateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class EmailUpdateCopyWith<$R, $In extends EmailUpdate, $Out>
@@ -375,7 +378,7 @@ class _EmailUpdateCopyWithImpl<$R, $Out>
   @override
   EmailUpdateCopyWith<$R2, EmailUpdate, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _EmailUpdateCopyWithImpl($value, $cast, t);
+      _EmailUpdateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class PasswordUpdateMapper extends SubClassMapperBase<PasswordUpdate> {
@@ -437,8 +440,9 @@ mixin PasswordUpdateMappable {
   }
 
   PasswordUpdateCopyWith<PasswordUpdate, PasswordUpdate, PasswordUpdate>
-      get copyWith => _PasswordUpdateCopyWithImpl(
-          this as PasswordUpdate, $identity, $identity);
+      get copyWith =>
+          _PasswordUpdateCopyWithImpl<PasswordUpdate, PasswordUpdate>(
+              this as PasswordUpdate, $identity, $identity);
   @override
   String toString() {
     return PasswordUpdateMapper.ensureInitialized()
@@ -461,7 +465,7 @@ mixin PasswordUpdateMappable {
 extension PasswordUpdateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, PasswordUpdate, $Out> {
   PasswordUpdateCopyWith<$R, PasswordUpdate, $Out> get $asPasswordUpdate =>
-      $base.as((v, t, t2) => _PasswordUpdateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PasswordUpdateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PasswordUpdateCopyWith<$R, $In extends PasswordUpdate, $Out>
@@ -490,7 +494,7 @@ class _PasswordUpdateCopyWithImpl<$R, $Out>
   @override
   PasswordUpdateCopyWith<$R2, PasswordUpdate, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PasswordUpdateCopyWithImpl($value, $cast, t);
+      _PasswordUpdateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class LoginStateMapper extends ClassMapperBase<LoginState> {
@@ -555,7 +559,8 @@ mixin LoginStateMappable {
   }
 
   LoginStateCopyWith<LoginState, LoginState, LoginState> get copyWith =>
-      _LoginStateCopyWithImpl(this as LoginState, $identity, $identity);
+      _LoginStateCopyWithImpl<LoginState, LoginState>(
+          this as LoginState, $identity, $identity);
   @override
   String toString() {
     return LoginStateMapper.ensureInitialized()
@@ -577,7 +582,7 @@ mixin LoginStateMappable {
 extension LoginStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, LoginState, $Out> {
   LoginStateCopyWith<$R, LoginState, $Out> get $asLoginState =>
-      $base.as((v, t, t2) => _LoginStateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _LoginStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoginStateCopyWith<$R, $In extends LoginState, $Out>
@@ -615,5 +620,5 @@ class _LoginStateCopyWithImpl<$R, $Out>
   @override
   LoginStateCopyWith<$R2, LoginState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _LoginStateCopyWithImpl($value, $cast, t);
+      _LoginStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

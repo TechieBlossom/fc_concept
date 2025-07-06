@@ -73,7 +73,7 @@ mixin NationMappable {
   }
 
   NationCopyWith<Nation, Nation, Nation> get copyWith =>
-      _NationCopyWithImpl(this as Nation, $identity, $identity);
+      _NationCopyWithImpl<Nation, Nation>(this as Nation, $identity, $identity);
   @override
   String toString() {
     return NationMapper.ensureInitialized().stringifyValue(this as Nation);
@@ -92,7 +92,7 @@ mixin NationMappable {
 
 extension NationValueCopy<$R, $Out> on ObjectCopyWith<$R, Nation, $Out> {
   NationCopyWith<$R, Nation, $Out> get $asNation =>
-      $base.as((v, t, t2) => _NationCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _NationCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class NationCopyWith<$R, $In extends Nation, $Out>
@@ -123,5 +123,5 @@ class _NationCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Nation, $Out>
 
   @override
   NationCopyWith<$R2, Nation, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _NationCopyWithImpl($value, $cast, t);
+      _NationCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

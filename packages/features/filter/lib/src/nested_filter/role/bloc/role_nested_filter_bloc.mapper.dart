@@ -113,7 +113,7 @@ mixin InitMappable {
   }
 
   InitCopyWith<Init, Init, Init> get copyWith =>
-      _InitCopyWithImpl(this as Init, $identity, $identity);
+      _InitCopyWithImpl<Init, Init>(this as Init, $identity, $identity);
   @override
   String toString() {
     return InitMapper.ensureInitialized().stringifyValue(this as Init);
@@ -132,7 +132,7 @@ mixin InitMappable {
 
 extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
   InitCopyWith<$R, Init, $Out> get $asInit =>
-      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _InitCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
@@ -155,7 +155,7 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
 
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _InitCopyWithImpl($value, $cast, t);
+      _InitCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class SelectRoleMapper extends SubClassMapperBase<SelectRole> {
@@ -218,7 +218,8 @@ mixin SelectRoleMappable {
   }
 
   SelectRoleCopyWith<SelectRole, SelectRole, SelectRole> get copyWith =>
-      _SelectRoleCopyWithImpl(this as SelectRole, $identity, $identity);
+      _SelectRoleCopyWithImpl<SelectRole, SelectRole>(
+          this as SelectRole, $identity, $identity);
   @override
   String toString() {
     return SelectRoleMapper.ensureInitialized()
@@ -240,7 +241,7 @@ mixin SelectRoleMappable {
 extension SelectRoleValueCopy<$R, $Out>
     on ObjectCopyWith<$R, SelectRole, $Out> {
   SelectRoleCopyWith<$R, SelectRole, $Out> get $asSelectRole =>
-      $base.as((v, t, t2) => _SelectRoleCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _SelectRoleCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SelectRoleCopyWith<$R, $In extends SelectRole, $Out>
@@ -272,7 +273,7 @@ class _SelectRoleCopyWithImpl<$R, $Out>
   @override
   SelectRoleCopyWith<$R2, SelectRole, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _SelectRoleCopyWithImpl($value, $cast, t);
+      _SelectRoleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class DoneMapper extends SubClassMapperBase<Done> {
@@ -327,7 +328,7 @@ mixin DoneMappable {
   }
 
   DoneCopyWith<Done, Done, Done> get copyWith =>
-      _DoneCopyWithImpl(this as Done, $identity, $identity);
+      _DoneCopyWithImpl<Done, Done>(this as Done, $identity, $identity);
   @override
   String toString() {
     return DoneMapper.ensureInitialized().stringifyValue(this as Done);
@@ -346,7 +347,7 @@ mixin DoneMappable {
 
 extension DoneValueCopy<$R, $Out> on ObjectCopyWith<$R, Done, $Out> {
   DoneCopyWith<$R, Done, $Out> get $asDone =>
-      $base.as((v, t, t2) => _DoneCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _DoneCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class DoneCopyWith<$R, $In extends Done, $Out>
@@ -369,7 +370,7 @@ class _DoneCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Done, $Out>
 
   @override
   DoneCopyWith<$R2, Done, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _DoneCopyWithImpl($value, $cast, t);
+      _DoneCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class ClearMapper extends SubClassMapperBase<Clear> {
@@ -424,7 +425,7 @@ mixin ClearMappable {
   }
 
   ClearCopyWith<Clear, Clear, Clear> get copyWith =>
-      _ClearCopyWithImpl(this as Clear, $identity, $identity);
+      _ClearCopyWithImpl<Clear, Clear>(this as Clear, $identity, $identity);
   @override
   String toString() {
     return ClearMapper.ensureInitialized().stringifyValue(this as Clear);
@@ -443,7 +444,7 @@ mixin ClearMappable {
 
 extension ClearValueCopy<$R, $Out> on ObjectCopyWith<$R, Clear, $Out> {
   ClearCopyWith<$R, Clear, $Out> get $asClear =>
-      $base.as((v, t, t2) => _ClearCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ClearCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ClearCopyWith<$R, $In extends Clear, $Out>
@@ -466,7 +467,7 @@ class _ClearCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Clear, $Out>
 
   @override
   ClearCopyWith<$R2, Clear, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _ClearCopyWithImpl($value, $cast, t);
+      _ClearCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class RoleNestedFilterStateMapper
@@ -545,9 +546,9 @@ mixin RoleNestedFilterStateMappable {
   }
 
   RoleNestedFilterStateCopyWith<RoleNestedFilterState, RoleNestedFilterState,
-          RoleNestedFilterState>
-      get copyWith => _RoleNestedFilterStateCopyWithImpl(
-          this as RoleNestedFilterState, $identity, $identity);
+      RoleNestedFilterState> get copyWith => _RoleNestedFilterStateCopyWithImpl<
+          RoleNestedFilterState, RoleNestedFilterState>(
+      this as RoleNestedFilterState, $identity, $identity);
   @override
   String toString() {
     return RoleNestedFilterStateMapper.ensureInitialized()
@@ -570,8 +571,8 @@ mixin RoleNestedFilterStateMappable {
 extension RoleNestedFilterStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, RoleNestedFilterState, $Out> {
   RoleNestedFilterStateCopyWith<$R, RoleNestedFilterState, $Out>
-      get $asRoleNestedFilterState =>
-          $base.as((v, t, t2) => _RoleNestedFilterStateCopyWithImpl(v, t, t2));
+      get $asRoleNestedFilterState => $base.as(
+          (v, t, t2) => _RoleNestedFilterStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RoleNestedFilterStateCopyWith<
@@ -631,5 +632,5 @@ class _RoleNestedFilterStateCopyWithImpl<$R, $Out>
   @override
   RoleNestedFilterStateCopyWith<$R2, RoleNestedFilterState, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _RoleNestedFilterStateCopyWithImpl($value, $cast, t);
+          _RoleNestedFilterStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

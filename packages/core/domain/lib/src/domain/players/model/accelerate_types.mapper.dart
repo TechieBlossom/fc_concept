@@ -90,8 +90,9 @@ mixin AccelerateTypesMappable {
   }
 
   AccelerateTypesCopyWith<AccelerateTypes, AccelerateTypes, AccelerateTypes>
-      get copyWith => _AccelerateTypesCopyWithImpl(
-          this as AccelerateTypes, $identity, $identity);
+      get copyWith =>
+          _AccelerateTypesCopyWithImpl<AccelerateTypes, AccelerateTypes>(
+              this as AccelerateTypes, $identity, $identity);
   @override
   String toString() {
     return AccelerateTypesMapper.ensureInitialized()
@@ -114,7 +115,7 @@ mixin AccelerateTypesMappable {
 extension AccelerateTypesValueCopy<$R, $Out>
     on ObjectCopyWith<$R, AccelerateTypes, $Out> {
   AccelerateTypesCopyWith<$R, AccelerateTypes, $Out> get $asAccelerateTypes =>
-      $base.as((v, t, t2) => _AccelerateTypesCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _AccelerateTypesCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class AccelerateTypesCopyWith<$R, $In extends AccelerateTypes, $Out>
@@ -220,5 +221,5 @@ class _AccelerateTypesCopyWithImpl<$R, $Out>
   @override
   AccelerateTypesCopyWith<$R2, AccelerateTypes, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _AccelerateTypesCopyWithImpl($value, $cast, t);
+      _AccelerateTypesCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

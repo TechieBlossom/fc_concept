@@ -98,8 +98,9 @@ mixin ChemistryStyleMappable {
   }
 
   ChemistryStyleCopyWith<ChemistryStyle, ChemistryStyle, ChemistryStyle>
-      get copyWith => _ChemistryStyleCopyWithImpl(
-          this as ChemistryStyle, $identity, $identity);
+      get copyWith =>
+          _ChemistryStyleCopyWithImpl<ChemistryStyle, ChemistryStyle>(
+              this as ChemistryStyle, $identity, $identity);
   @override
   String toString() {
     return ChemistryStyleMapper.ensureInitialized()
@@ -122,7 +123,7 @@ mixin ChemistryStyleMappable {
 extension ChemistryStyleValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ChemistryStyle, $Out> {
   ChemistryStyleCopyWith<$R, ChemistryStyle, $Out> get $asChemistryStyle =>
-      $base.as((v, t, t2) => _ChemistryStyleCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ChemistryStyleCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ChemistryStyleCopyWith<$R, $In extends ChemistryStyle, $Out>
@@ -206,5 +207,5 @@ class _ChemistryStyleCopyWithImpl<$R, $Out>
   @override
   ChemistryStyleCopyWith<$R2, ChemistryStyle, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _ChemistryStyleCopyWithImpl($value, $cast, t);
+      _ChemistryStyleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

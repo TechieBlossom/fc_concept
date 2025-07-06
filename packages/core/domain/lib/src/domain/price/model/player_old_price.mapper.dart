@@ -70,8 +70,9 @@ mixin PlayerOldPriceMappable {
   }
 
   PlayerOldPriceCopyWith<PlayerOldPrice, PlayerOldPrice, PlayerOldPrice>
-      get copyWith => _PlayerOldPriceCopyWithImpl(
-          this as PlayerOldPrice, $identity, $identity);
+      get copyWith =>
+          _PlayerOldPriceCopyWithImpl<PlayerOldPrice, PlayerOldPrice>(
+              this as PlayerOldPrice, $identity, $identity);
   @override
   String toString() {
     return PlayerOldPriceMapper.ensureInitialized()
@@ -94,7 +95,7 @@ mixin PlayerOldPriceMappable {
 extension PlayerOldPriceValueCopy<$R, $Out>
     on ObjectCopyWith<$R, PlayerOldPrice, $Out> {
   PlayerOldPriceCopyWith<$R, PlayerOldPrice, $Out> get $asPlayerOldPrice =>
-      $base.as((v, t, t2) => _PlayerOldPriceCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PlayerOldPriceCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PlayerOldPriceCopyWith<$R, $In extends PlayerOldPrice, $Out>
@@ -130,5 +131,5 @@ class _PlayerOldPriceCopyWithImpl<$R, $Out>
   @override
   PlayerOldPriceCopyWith<$R2, PlayerOldPrice, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PlayerOldPriceCopyWithImpl($value, $cast, t);
+      _PlayerOldPriceCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

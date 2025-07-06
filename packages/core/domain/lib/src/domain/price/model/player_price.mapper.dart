@@ -71,7 +71,8 @@ mixin PlayerPriceMappable {
   }
 
   PlayerPriceCopyWith<PlayerPrice, PlayerPrice, PlayerPrice> get copyWith =>
-      _PlayerPriceCopyWithImpl(this as PlayerPrice, $identity, $identity);
+      _PlayerPriceCopyWithImpl<PlayerPrice, PlayerPrice>(
+          this as PlayerPrice, $identity, $identity);
   @override
   String toString() {
     return PlayerPriceMapper.ensureInitialized()
@@ -93,7 +94,7 @@ mixin PlayerPriceMappable {
 extension PlayerPriceValueCopy<$R, $Out>
     on ObjectCopyWith<$R, PlayerPrice, $Out> {
   PlayerPriceCopyWith<$R, PlayerPrice, $Out> get $asPlayerPrice =>
-      $base.as((v, t, t2) => _PlayerPriceCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PlayerPriceCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PlayerPriceCopyWith<$R, $In extends PlayerPrice, $Out>
@@ -141,7 +142,7 @@ class _PlayerPriceCopyWithImpl<$R, $Out>
   @override
   PlayerPriceCopyWith<$R2, PlayerPrice, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PlayerPriceCopyWithImpl($value, $cast, t);
+      _PlayerPriceCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class CurrentPriceMapper extends ClassMapperBase<CurrentPrice> {
@@ -209,7 +210,8 @@ mixin CurrentPriceMappable {
   }
 
   CurrentPriceCopyWith<CurrentPrice, CurrentPrice, CurrentPrice> get copyWith =>
-      _CurrentPriceCopyWithImpl(this as CurrentPrice, $identity, $identity);
+      _CurrentPriceCopyWithImpl<CurrentPrice, CurrentPrice>(
+          this as CurrentPrice, $identity, $identity);
   @override
   String toString() {
     return CurrentPriceMapper.ensureInitialized()
@@ -232,7 +234,7 @@ mixin CurrentPriceMappable {
 extension CurrentPriceValueCopy<$R, $Out>
     on ObjectCopyWith<$R, CurrentPrice, $Out> {
   CurrentPriceCopyWith<$R, CurrentPrice, $Out> get $asCurrentPrice =>
-      $base.as((v, t, t2) => _CurrentPriceCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _CurrentPriceCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class CurrentPriceCopyWith<$R, $In extends CurrentPrice, $Out>
@@ -271,7 +273,7 @@ class _CurrentPriceCopyWithImpl<$R, $Out>
   @override
   CurrentPriceCopyWith<$R2, CurrentPrice, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _CurrentPriceCopyWithImpl($value, $cast, t);
+      _CurrentPriceCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class MomentumMapper extends ClassMapperBase<Momentum> {
@@ -330,7 +332,8 @@ mixin MomentumMappable {
   }
 
   MomentumCopyWith<Momentum, Momentum, Momentum> get copyWith =>
-      _MomentumCopyWithImpl(this as Momentum, $identity, $identity);
+      _MomentumCopyWithImpl<Momentum, Momentum>(
+          this as Momentum, $identity, $identity);
   @override
   String toString() {
     return MomentumMapper.ensureInitialized().stringifyValue(this as Momentum);
@@ -350,7 +353,7 @@ mixin MomentumMappable {
 
 extension MomentumValueCopy<$R, $Out> on ObjectCopyWith<$R, Momentum, $Out> {
   MomentumCopyWith<$R, Momentum, $Out> get $asMomentum =>
-      $base.as((v, t, t2) => _MomentumCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _MomentumCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class MomentumCopyWith<$R, $In extends Momentum, $Out>
@@ -380,7 +383,7 @@ class _MomentumCopyWithImpl<$R, $Out>
   @override
   MomentumCopyWith<$R2, Momentum, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _MomentumCopyWithImpl($value, $cast, t);
+      _MomentumCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class OverviewMapper extends ClassMapperBase<Overview> {
@@ -434,7 +437,8 @@ mixin OverviewMappable {
   }
 
   OverviewCopyWith<Overview, Overview, Overview> get copyWith =>
-      _OverviewCopyWithImpl(this as Overview, $identity, $identity);
+      _OverviewCopyWithImpl<Overview, Overview>(
+          this as Overview, $identity, $identity);
   @override
   String toString() {
     return OverviewMapper.ensureInitialized().stringifyValue(this as Overview);
@@ -454,7 +458,7 @@ mixin OverviewMappable {
 
 extension OverviewValueCopy<$R, $Out> on ObjectCopyWith<$R, Overview, $Out> {
   OverviewCopyWith<$R, Overview, $Out> get $asOverview =>
-      $base.as((v, t, t2) => _OverviewCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _OverviewCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class OverviewCopyWith<$R, $In extends Overview, $Out>
@@ -481,5 +485,5 @@ class _OverviewCopyWithImpl<$R, $Out>
   @override
   OverviewCopyWith<$R2, Overview, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _OverviewCopyWithImpl($value, $cast, t);
+      _OverviewCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

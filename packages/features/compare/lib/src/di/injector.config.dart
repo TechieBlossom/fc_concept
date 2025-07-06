@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -23,23 +24,19 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   gh.lazySingleton<_i231.CompareRoutesConfig>(
-      () => _i231.CompareRoutesConfig());
+    () => _i231.CompareRoutesConfig(),
+  );
   gh.lazySingleton<_i603.CompareNavigator>(
-      () => _i603.CompareNavigator(gh<_i177.GoRouter>()));
-  gh.factoryParam<_i921.CompareBloc, _i913.Player?, dynamic>((
-    player,
-    _,
-  ) =>
-      _i921.CompareBloc(
-        player,
-        gh<_i534.CompareNavigator>(),
-        gh<_i913.GetPlayerDetailsUseCase>(),
-      ));
+    () => _i603.CompareNavigator(gh<_i177.GoRouter>()),
+  );
+  gh.factoryParam<_i921.CompareBloc, _i913.Player?, dynamic>(
+    (player, _) => _i921.CompareBloc(
+      player,
+      gh<_i534.CompareNavigator>(),
+      gh<_i913.GetPlayerDetailsUseCase>(),
+    ),
+  );
   return getIt;
 }

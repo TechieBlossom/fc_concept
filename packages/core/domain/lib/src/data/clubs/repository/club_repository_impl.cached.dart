@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -73,8 +74,9 @@ class _ClubRepositoryImpl
       __getClubsCached["${filters.hashCode}"] = toReturn;
 
       const duration = Duration(seconds: 2592000);
-      __getClubsTtl["${filters.hashCode}"] =
-          DateTime.now().add(duration).toIso8601String();
+      __getClubsTtl["${filters.hashCode}"] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write('__getClubsCached', __getClubsCached);
       await PersistentStorageHolder.write('__getClubsTtl', __getClubsTtl);

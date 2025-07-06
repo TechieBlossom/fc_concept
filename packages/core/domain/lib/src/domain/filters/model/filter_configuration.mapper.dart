@@ -133,9 +133,9 @@ mixin FilterConfigurationMappable {
   }
 
   FilterConfigurationCopyWith<FilterConfiguration, FilterConfiguration,
-          FilterConfiguration>
-      get copyWith => _FilterConfigurationCopyWithImpl(
-          this as FilterConfiguration, $identity, $identity);
+      FilterConfiguration> get copyWith => _FilterConfigurationCopyWithImpl<
+          FilterConfiguration, FilterConfiguration>(
+      this as FilterConfiguration, $identity, $identity);
   @override
   String toString() {
     return FilterConfigurationMapper.ensureInitialized()
@@ -158,8 +158,8 @@ mixin FilterConfigurationMappable {
 extension FilterConfigurationValueCopy<$R, $Out>
     on ObjectCopyWith<$R, FilterConfiguration, $Out> {
   FilterConfigurationCopyWith<$R, FilterConfiguration, $Out>
-      get $asFilterConfiguration =>
-          $base.as((v, t, t2) => _FilterConfigurationCopyWithImpl(v, t, t2));
+      get $asFilterConfiguration => $base.as(
+          (v, t, t2) => _FilterConfigurationCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class FilterConfigurationCopyWith<$R, $In extends FilterConfiguration,
@@ -326,5 +326,5 @@ class _FilterConfigurationCopyWithImpl<$R, $Out>
   @override
   FilterConfigurationCopyWith<$R2, FilterConfiguration, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _FilterConfigurationCopyWithImpl($value, $cast, t);
+          _FilterConfigurationCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

@@ -22,7 +22,7 @@ class IndexDataMapper extends ClassMapperBase<IndexData> {
 
   static DateTime _$dateTime(IndexData v) => v.dateTime;
   static const Field<IndexData, DateTime> _f$dateTime =
-      Field('dateTime', _$dateTime, key: 'created_at');
+      Field('dateTime', _$dateTime, key: r'created_at');
   static double _$forwards(IndexData v) => v.forwards;
   static const Field<IndexData, double> _f$forwards =
       Field('forwards', _$forwards);
@@ -78,7 +78,8 @@ mixin IndexDataMappable {
   }
 
   IndexDataCopyWith<IndexData, IndexData, IndexData> get copyWith =>
-      _IndexDataCopyWithImpl(this as IndexData, $identity, $identity);
+      _IndexDataCopyWithImpl<IndexData, IndexData>(
+          this as IndexData, $identity, $identity);
   @override
   String toString() {
     return IndexDataMapper.ensureInitialized()
@@ -99,7 +100,7 @@ mixin IndexDataMappable {
 
 extension IndexDataValueCopy<$R, $Out> on ObjectCopyWith<$R, IndexData, $Out> {
   IndexDataCopyWith<$R, IndexData, $Out> get $asIndexData =>
-      $base.as((v, t, t2) => _IndexDataCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _IndexDataCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class IndexDataCopyWith<$R, $In extends IndexData, $Out>
@@ -146,5 +147,5 @@ class _IndexDataCopyWithImpl<$R, $Out>
   @override
   IndexDataCopyWith<$R2, IndexData, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _IndexDataCopyWithImpl($value, $cast, t);
+      _IndexDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

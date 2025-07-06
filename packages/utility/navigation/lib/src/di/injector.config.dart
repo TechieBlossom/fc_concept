@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -19,14 +20,11 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   final navigationModule = _$NavigationModule();
   gh.lazySingleton<_i718.GlobalKey<_i718.NavigatorState>>(
-      () => navigationModule.navigatorKey);
+    () => navigationModule.navigatorKey,
+  );
   return getIt;
 }
 

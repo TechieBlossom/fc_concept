@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -27,31 +28,26 @@ _i174.GetIt init(
   String? environment,
   _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i526.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
+  final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   gh.lazySingleton<_i323.MenuRoutesConfig>(() => _i323.MenuRoutesConfig());
   gh.lazySingleton<_i577.DashboardNavigator>(
-      () => _i577.DashboardNavigator(gh<_i177.GoRouter>()));
-  gh.factoryParam<_i283.IndexBloc, _i102.IndexType, dynamic>((
-    indexType,
-    _,
-  ) =>
-      _i283.IndexBloc(
-        indexType,
-        gh<_i913.GetAllIndexDataUseCase>(),
-      ));
-  gh.factory<_i432.DashboardBloc>(() => _i432.DashboardBloc(
-        gh<_i913.GetIndexDataUseCase>(),
-        gh<_i913.GetPlayerOldPricesUseCase>(),
-        gh<_i913.GetSbcPlayersUseCase>(),
-        gh<_i913.GetPositionalPlayersUseCase>(),
-        gh<_i913.GetTrendingPlayersUseCase>(),
-        gh<_i913.GetUniqueRaritySquads>(),
-        gh<_i863.LogEventUseCase>(),
-        gh<_i657.DashboardNavigator>(),
-      ));
+    () => _i577.DashboardNavigator(gh<_i177.GoRouter>()),
+  );
+  gh.factoryParam<_i283.IndexBloc, _i102.IndexType, dynamic>(
+    (indexType, _) =>
+        _i283.IndexBloc(indexType, gh<_i913.GetAllIndexDataUseCase>()),
+  );
+  gh.factory<_i432.DashboardBloc>(
+    () => _i432.DashboardBloc(
+      gh<_i913.GetIndexDataUseCase>(),
+      gh<_i913.GetPlayerOldPricesUseCase>(),
+      gh<_i913.GetSbcPlayersUseCase>(),
+      gh<_i913.GetPositionalPlayersUseCase>(),
+      gh<_i913.GetTrendingPlayersUseCase>(),
+      gh<_i913.GetUniqueRaritySquads>(),
+      gh<_i863.LogEventUseCase>(),
+      gh<_i657.DashboardNavigator>(),
+    ),
+  );
   return getIt;
 }

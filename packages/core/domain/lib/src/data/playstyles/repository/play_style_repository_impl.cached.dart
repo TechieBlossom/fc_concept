@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _PlayStyleRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getAllPlayStylesCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getAllPlayStylesCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -32,8 +34,9 @@ class _PlayStyleRepositoryImpl
     }
 
     try {
-      __getAllPlayStylesTtl =
-          await PersistentStorageHolder.read('__getAllPlayStylesTtl');
+      __getAllPlayStylesTtl = await PersistentStorageHolder.read(
+        '__getAllPlayStylesTtl',
+      );
     } catch (e) {
       __getAllPlayStylesTtl = <String, dynamic>{};
     }
@@ -75,13 +78,18 @@ class _PlayStyleRepositoryImpl
       __getAllPlayStylesCached[""] = toReturn;
 
       const duration = Duration(seconds: 2592000);
-      __getAllPlayStylesTtl[""] =
-          DateTime.now().add(duration).toIso8601String();
+      __getAllPlayStylesTtl[""] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getAllPlayStylesCached', __getAllPlayStylesCached);
+        '__getAllPlayStylesCached',
+        __getAllPlayStylesCached,
+      );
       await PersistentStorageHolder.write(
-          '__getAllPlayStylesTtl', __getAllPlayStylesTtl);
+        '__getAllPlayStylesTtl',
+        __getAllPlayStylesTtl,
+      );
 
       return toReturn;
     } else {

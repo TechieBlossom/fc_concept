@@ -115,7 +115,7 @@ mixin InitMappable {
   }
 
   InitCopyWith<Init, Init, Init> get copyWith =>
-      _InitCopyWithImpl(this as Init, $identity, $identity);
+      _InitCopyWithImpl<Init, Init>(this as Init, $identity, $identity);
   @override
   String toString() {
     return InitMapper.ensureInitialized().stringifyValue(this as Init);
@@ -134,7 +134,7 @@ mixin InitMappable {
 
 extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
   InitCopyWith<$R, Init, $Out> get $asInit =>
-      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _InitCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
@@ -157,7 +157,7 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
 
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _InitCopyWithImpl($value, $cast, t);
+      _InitCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class SelectRarityMapper extends SubClassMapperBase<SelectRarity> {
@@ -221,7 +221,8 @@ mixin SelectRarityMappable {
   }
 
   SelectRarityCopyWith<SelectRarity, SelectRarity, SelectRarity> get copyWith =>
-      _SelectRarityCopyWithImpl(this as SelectRarity, $identity, $identity);
+      _SelectRarityCopyWithImpl<SelectRarity, SelectRarity>(
+          this as SelectRarity, $identity, $identity);
   @override
   String toString() {
     return SelectRarityMapper.ensureInitialized()
@@ -244,7 +245,7 @@ mixin SelectRarityMappable {
 extension SelectRarityValueCopy<$R, $Out>
     on ObjectCopyWith<$R, SelectRarity, $Out> {
   SelectRarityCopyWith<$R, SelectRarity, $Out> get $asSelectRarity =>
-      $base.as((v, t, t2) => _SelectRarityCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _SelectRarityCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SelectRarityCopyWith<$R, $In extends SelectRarity, $Out>
@@ -276,7 +277,7 @@ class _SelectRarityCopyWithImpl<$R, $Out>
   @override
   SelectRarityCopyWith<$R2, SelectRarity, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _SelectRarityCopyWithImpl($value, $cast, t);
+      _SelectRarityCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class DoneMapper extends SubClassMapperBase<Done> {
@@ -332,7 +333,7 @@ mixin DoneMappable {
   }
 
   DoneCopyWith<Done, Done, Done> get copyWith =>
-      _DoneCopyWithImpl(this as Done, $identity, $identity);
+      _DoneCopyWithImpl<Done, Done>(this as Done, $identity, $identity);
   @override
   String toString() {
     return DoneMapper.ensureInitialized().stringifyValue(this as Done);
@@ -351,7 +352,7 @@ mixin DoneMappable {
 
 extension DoneValueCopy<$R, $Out> on ObjectCopyWith<$R, Done, $Out> {
   DoneCopyWith<$R, Done, $Out> get $asDone =>
-      $base.as((v, t, t2) => _DoneCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _DoneCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class DoneCopyWith<$R, $In extends Done, $Out>
@@ -374,7 +375,7 @@ class _DoneCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Done, $Out>
 
   @override
   DoneCopyWith<$R2, Done, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _DoneCopyWithImpl($value, $cast, t);
+      _DoneCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class ClearMapper extends SubClassMapperBase<Clear> {
@@ -430,7 +431,7 @@ mixin ClearMappable {
   }
 
   ClearCopyWith<Clear, Clear, Clear> get copyWith =>
-      _ClearCopyWithImpl(this as Clear, $identity, $identity);
+      _ClearCopyWithImpl<Clear, Clear>(this as Clear, $identity, $identity);
   @override
   String toString() {
     return ClearMapper.ensureInitialized().stringifyValue(this as Clear);
@@ -449,7 +450,7 @@ mixin ClearMappable {
 
 extension ClearValueCopy<$R, $Out> on ObjectCopyWith<$R, Clear, $Out> {
   ClearCopyWith<$R, Clear, $Out> get $asClear =>
-      $base.as((v, t, t2) => _ClearCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ClearCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ClearCopyWith<$R, $In extends Clear, $Out>
@@ -472,7 +473,7 @@ class _ClearCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Clear, $Out>
 
   @override
   ClearCopyWith<$R2, Clear, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _ClearCopyWithImpl($value, $cast, t);
+      _ClearCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class RarityNestedFilterStateMapper
@@ -555,7 +556,8 @@ mixin RarityNestedFilterStateMappable {
 
   RarityNestedFilterStateCopyWith<RarityNestedFilterState,
           RarityNestedFilterState, RarityNestedFilterState>
-      get copyWith => _RarityNestedFilterStateCopyWithImpl(
+      get copyWith => _RarityNestedFilterStateCopyWithImpl<
+              RarityNestedFilterState, RarityNestedFilterState>(
           this as RarityNestedFilterState, $identity, $identity);
   @override
   String toString() {
@@ -579,8 +581,8 @@ mixin RarityNestedFilterStateMappable {
 extension RarityNestedFilterStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, RarityNestedFilterState, $Out> {
   RarityNestedFilterStateCopyWith<$R, RarityNestedFilterState, $Out>
-      get $asRarityNestedFilterState => $base
-          .as((v, t, t2) => _RarityNestedFilterStateCopyWithImpl(v, t, t2));
+      get $asRarityNestedFilterState => $base.as((v, t, t2) =>
+          _RarityNestedFilterStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RarityNestedFilterStateCopyWith<
@@ -643,5 +645,5 @@ class _RarityNestedFilterStateCopyWithImpl<$R, $Out>
   @override
   RarityNestedFilterStateCopyWith<$R2, RarityNestedFilterState, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _RarityNestedFilterStateCopyWithImpl($value, $cast, t);
+          _RarityNestedFilterStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

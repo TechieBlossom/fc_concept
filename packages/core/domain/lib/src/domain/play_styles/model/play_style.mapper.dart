@@ -87,7 +87,8 @@ mixin PlayStyleMappable {
   }
 
   PlayStyleCopyWith<PlayStyle, PlayStyle, PlayStyle> get copyWith =>
-      _PlayStyleCopyWithImpl(this as PlayStyle, $identity, $identity);
+      _PlayStyleCopyWithImpl<PlayStyle, PlayStyle>(
+          this as PlayStyle, $identity, $identity);
   @override
   String toString() {
     return PlayStyleMapper.ensureInitialized()
@@ -108,7 +109,7 @@ mixin PlayStyleMappable {
 
 extension PlayStyleValueCopy<$R, $Out> on ObjectCopyWith<$R, PlayStyle, $Out> {
   PlayStyleCopyWith<$R, PlayStyle, $Out> get $asPlayStyle =>
-      $base.as((v, t, t2) => _PlayStyleCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PlayStyleCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PlayStyleCopyWith<$R, $In extends PlayStyle, $Out>
@@ -167,5 +168,5 @@ class _PlayStyleCopyWithImpl<$R, $Out>
   @override
   PlayStyleCopyWith<$R2, PlayStyle, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PlayStyleCopyWithImpl($value, $cast, t);
+      _PlayStyleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

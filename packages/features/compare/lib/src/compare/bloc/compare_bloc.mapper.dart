@@ -113,7 +113,7 @@ mixin InitMappable {
   }
 
   InitCopyWith<Init, Init, Init> get copyWith =>
-      _InitCopyWithImpl(this as Init, $identity, $identity);
+      _InitCopyWithImpl<Init, Init>(this as Init, $identity, $identity);
   @override
   String toString() {
     return InitMapper.ensureInitialized().stringifyValue(this as Init);
@@ -132,7 +132,7 @@ mixin InitMappable {
 
 extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
   InitCopyWith<$R, Init, $Out> get $asInit =>
-      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _InitCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
@@ -161,7 +161,7 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
 
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _InitCopyWithImpl($value, $cast, t);
+      _InitCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class SelectPlayerMapper extends SubClassMapperBase<SelectPlayer> {
@@ -223,7 +223,8 @@ mixin SelectPlayerMappable {
   }
 
   SelectPlayerCopyWith<SelectPlayer, SelectPlayer, SelectPlayer> get copyWith =>
-      _SelectPlayerCopyWithImpl(this as SelectPlayer, $identity, $identity);
+      _SelectPlayerCopyWithImpl<SelectPlayer, SelectPlayer>(
+          this as SelectPlayer, $identity, $identity);
   @override
   String toString() {
     return SelectPlayerMapper.ensureInitialized()
@@ -246,7 +247,7 @@ mixin SelectPlayerMappable {
 extension SelectPlayerValueCopy<$R, $Out>
     on ObjectCopyWith<$R, SelectPlayer, $Out> {
   SelectPlayerCopyWith<$R, SelectPlayer, $Out> get $asSelectPlayer =>
-      $base.as((v, t, t2) => _SelectPlayerCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _SelectPlayerCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SelectPlayerCopyWith<$R, $In extends SelectPlayer, $Out>
@@ -274,7 +275,7 @@ class _SelectPlayerCopyWithImpl<$R, $Out>
   @override
   SelectPlayerCopyWith<$R2, SelectPlayer, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _SelectPlayerCopyWithImpl($value, $cast, t);
+      _SelectPlayerCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class SelectVersionMapper extends SubClassMapperBase<SelectVersion> {
@@ -352,7 +353,7 @@ mixin SelectVersionMappable {
   }
 
   SelectVersionCopyWith<SelectVersion, SelectVersion, SelectVersion>
-      get copyWith => _SelectVersionCopyWithImpl(
+      get copyWith => _SelectVersionCopyWithImpl<SelectVersion, SelectVersion>(
           this as SelectVersion, $identity, $identity);
   @override
   String toString() {
@@ -376,7 +377,7 @@ mixin SelectVersionMappable {
 extension SelectVersionValueCopy<$R, $Out>
     on ObjectCopyWith<$R, SelectVersion, $Out> {
   SelectVersionCopyWith<$R, SelectVersion, $Out> get $asSelectVersion =>
-      $base.as((v, t, t2) => _SelectVersionCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _SelectVersionCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class SelectVersionCopyWith<$R, $In extends SelectVersion, $Out>
@@ -412,7 +413,7 @@ class _SelectVersionCopyWithImpl<$R, $Out>
   @override
   SelectVersionCopyWith<$R2, SelectVersion, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _SelectVersionCopyWithImpl($value, $cast, t);
+      _SelectVersionCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class CompareStateMapper extends ClassMapperBase<CompareState> {
@@ -503,7 +504,8 @@ mixin CompareStateMappable {
   }
 
   CompareStateCopyWith<CompareState, CompareState, CompareState> get copyWith =>
-      _CompareStateCopyWithImpl(this as CompareState, $identity, $identity);
+      _CompareStateCopyWithImpl<CompareState, CompareState>(
+          this as CompareState, $identity, $identity);
   @override
   String toString() {
     return CompareStateMapper.ensureInitialized()
@@ -526,7 +528,7 @@ mixin CompareStateMappable {
 extension CompareStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, CompareState, $Out> {
   CompareStateCopyWith<$R, CompareState, $Out> get $asCompareState =>
-      $base.as((v, t, t2) => _CompareStateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _CompareStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class CompareStateCopyWith<$R, $In extends CompareState, $Out>
@@ -623,7 +625,7 @@ class _CompareStateCopyWithImpl<$R, $Out>
   @override
   CompareStateCopyWith<$R2, CompareState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _CompareStateCopyWithImpl($value, $cast, t);
+      _CompareStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 typedef _t$_R1<A, B> = (A, B);

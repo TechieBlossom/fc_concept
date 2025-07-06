@@ -4,8 +4,8 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ">=3.7.2 <4.0.0"
-  flutter: "3.29.2"
+  sdk: ">=3.8.1 <4.0.0"
+  flutter: "3.32.1"
 
 dependencies:
   bloc_concurrency: 0.3.0
@@ -34,7 +34,7 @@ dev_dependencies:
   build_runner: 2.4.15
   dart_mappable_builder: 4.5.0
   injectable_generator: 2.7.0
-  json_serializable: 6.9.4
+  json_serializable: 6.9.5
   utility_analysis:
     path: ../../../packages/utility/analysis
 

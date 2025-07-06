@@ -106,7 +106,7 @@ mixin InitMappable {
   }
 
   InitCopyWith<Init, Init, Init> get copyWith =>
-      _InitCopyWithImpl(this as Init, $identity, $identity);
+      _InitCopyWithImpl<Init, Init>(this as Init, $identity, $identity);
   @override
   String toString() {
     return InitMapper.ensureInitialized().stringifyValue(this as Init);
@@ -125,7 +125,7 @@ mixin InitMappable {
 
 extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
   InitCopyWith<$R, Init, $Out> get $asInit =>
-      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _InitCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
@@ -148,7 +148,7 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
 
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _InitCopyWithImpl($value, $cast, t);
+      _InitCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class MetadataStateMapper extends ClassMapperBase<MetadataState> {
@@ -223,7 +223,7 @@ mixin MetadataStateMappable {
   }
 
   MetadataStateCopyWith<MetadataState, MetadataState, MetadataState>
-      get copyWith => _MetadataStateCopyWithImpl(
+      get copyWith => _MetadataStateCopyWithImpl<MetadataState, MetadataState>(
           this as MetadataState, $identity, $identity);
   @override
   String toString() {
@@ -247,7 +247,7 @@ mixin MetadataStateMappable {
 extension MetadataStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, MetadataState, $Out> {
   MetadataStateCopyWith<$R, MetadataState, $Out> get $asMetadataState =>
-      $base.as((v, t, t2) => _MetadataStateCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _MetadataStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class MetadataStateCopyWith<$R, $In extends MetadataState, $Out>
@@ -315,5 +315,5 @@ class _MetadataStateCopyWithImpl<$R, $Out>
   @override
   MetadataStateCopyWith<$R2, MetadataState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _MetadataStateCopyWithImpl($value, $cast, t);
+      _MetadataStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

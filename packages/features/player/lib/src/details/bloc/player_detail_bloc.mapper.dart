@@ -131,7 +131,7 @@ mixin InitMappable {
   }
 
   InitCopyWith<Init, Init, Init> get copyWith =>
-      _InitCopyWithImpl(this as Init, $identity, $identity);
+      _InitCopyWithImpl<Init, Init>(this as Init, $identity, $identity);
   @override
   String toString() {
     return InitMapper.ensureInitialized().stringifyValue(this as Init);
@@ -150,7 +150,7 @@ mixin InitMappable {
 
 extension InitValueCopy<$R, $Out> on ObjectCopyWith<$R, Init, $Out> {
   InitCopyWith<$R, Init, $Out> get $asInit =>
-      $base.as((v, t, t2) => _InitCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _InitCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class InitCopyWith<$R, $In extends Init, $Out>
@@ -179,7 +179,7 @@ class _InitCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Init, $Out>
 
   @override
   InitCopyWith<$R2, Init, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _InitCopyWithImpl($value, $cast, t);
+      _InitCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class VersionTapMapper extends SubClassMapperBase<VersionTap> {
@@ -242,7 +242,8 @@ mixin VersionTapMappable {
   }
 
   VersionTapCopyWith<VersionTap, VersionTap, VersionTap> get copyWith =>
-      _VersionTapCopyWithImpl(this as VersionTap, $identity, $identity);
+      _VersionTapCopyWithImpl<VersionTap, VersionTap>(
+          this as VersionTap, $identity, $identity);
   @override
   String toString() {
     return VersionTapMapper.ensureInitialized()
@@ -264,7 +265,7 @@ mixin VersionTapMappable {
 extension VersionTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, VersionTap, $Out> {
   VersionTapCopyWith<$R, VersionTap, $Out> get $asVersionTap =>
-      $base.as((v, t, t2) => _VersionTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _VersionTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class VersionTapCopyWith<$R, $In extends VersionTap, $Out>
@@ -292,7 +293,7 @@ class _VersionTapCopyWithImpl<$R, $Out>
   @override
   VersionTapCopyWith<$R2, VersionTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _VersionTapCopyWithImpl($value, $cast, t);
+      _VersionTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class UpdateChemistryStyleMapper
@@ -365,9 +366,9 @@ mixin UpdateChemistryStyleMappable {
   }
 
   UpdateChemistryStyleCopyWith<UpdateChemistryStyle, UpdateChemistryStyle,
-          UpdateChemistryStyle>
-      get copyWith => _UpdateChemistryStyleCopyWithImpl(
-          this as UpdateChemistryStyle, $identity, $identity);
+      UpdateChemistryStyle> get copyWith => _UpdateChemistryStyleCopyWithImpl<
+          UpdateChemistryStyle, UpdateChemistryStyle>(
+      this as UpdateChemistryStyle, $identity, $identity);
   @override
   String toString() {
     return UpdateChemistryStyleMapper.ensureInitialized()
@@ -390,8 +391,8 @@ mixin UpdateChemistryStyleMappable {
 extension UpdateChemistryStyleValueCopy<$R, $Out>
     on ObjectCopyWith<$R, UpdateChemistryStyle, $Out> {
   UpdateChemistryStyleCopyWith<$R, UpdateChemistryStyle, $Out>
-      get $asUpdateChemistryStyle =>
-          $base.as((v, t, t2) => _UpdateChemistryStyleCopyWithImpl(v, t, t2));
+      get $asUpdateChemistryStyle => $base.as(
+          (v, t, t2) => _UpdateChemistryStyleCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class UpdateChemistryStyleCopyWith<
@@ -435,7 +436,7 @@ class _UpdateChemistryStyleCopyWithImpl<$R, $Out>
   @override
   UpdateChemistryStyleCopyWith<$R2, UpdateChemistryStyle, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _UpdateChemistryStyleCopyWithImpl($value, $cast, t);
+          _UpdateChemistryStyleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class ClearChemistryStyleMapper
@@ -493,9 +494,9 @@ mixin ClearChemistryStyleMappable {
   }
 
   ClearChemistryStyleCopyWith<ClearChemistryStyle, ClearChemistryStyle,
-          ClearChemistryStyle>
-      get copyWith => _ClearChemistryStyleCopyWithImpl(
-          this as ClearChemistryStyle, $identity, $identity);
+      ClearChemistryStyle> get copyWith => _ClearChemistryStyleCopyWithImpl<
+          ClearChemistryStyle, ClearChemistryStyle>(
+      this as ClearChemistryStyle, $identity, $identity);
   @override
   String toString() {
     return ClearChemistryStyleMapper.ensureInitialized()
@@ -518,8 +519,8 @@ mixin ClearChemistryStyleMappable {
 extension ClearChemistryStyleValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ClearChemistryStyle, $Out> {
   ClearChemistryStyleCopyWith<$R, ClearChemistryStyle, $Out>
-      get $asClearChemistryStyle =>
-          $base.as((v, t, t2) => _ClearChemistryStyleCopyWithImpl(v, t, t2));
+      get $asClearChemistryStyle => $base.as(
+          (v, t, t2) => _ClearChemistryStyleCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ClearChemistryStyleCopyWith<$R, $In extends ClearChemistryStyle,
@@ -546,7 +547,7 @@ class _ClearChemistryStyleCopyWithImpl<$R, $Out>
   @override
   ClearChemistryStyleCopyWith<$R2, ClearChemistryStyle, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _ClearChemistryStyleCopyWithImpl($value, $cast, t);
+          _ClearChemistryStyleCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class LoadRolesMapper extends SubClassMapperBase<LoadRoles> {
@@ -603,7 +604,8 @@ mixin LoadRolesMappable {
   }
 
   LoadRolesCopyWith<LoadRoles, LoadRoles, LoadRoles> get copyWith =>
-      _LoadRolesCopyWithImpl(this as LoadRoles, $identity, $identity);
+      _LoadRolesCopyWithImpl<LoadRoles, LoadRoles>(
+          this as LoadRoles, $identity, $identity);
   @override
   String toString() {
     return LoadRolesMapper.ensureInitialized()
@@ -624,7 +626,7 @@ mixin LoadRolesMappable {
 
 extension LoadRolesValueCopy<$R, $Out> on ObjectCopyWith<$R, LoadRoles, $Out> {
   LoadRolesCopyWith<$R, LoadRoles, $Out> get $asLoadRoles =>
-      $base.as((v, t, t2) => _LoadRolesCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _LoadRolesCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoadRolesCopyWith<$R, $In extends LoadRoles, $Out>
@@ -650,7 +652,7 @@ class _LoadRolesCopyWithImpl<$R, $Out>
   @override
   LoadRolesCopyWith<$R2, LoadRoles, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _LoadRolesCopyWithImpl($value, $cast, t);
+      _LoadRolesCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class LoadPlayStylesMapper extends SubClassMapperBase<LoadPlayStyles> {
@@ -707,8 +709,9 @@ mixin LoadPlayStylesMappable {
   }
 
   LoadPlayStylesCopyWith<LoadPlayStyles, LoadPlayStyles, LoadPlayStyles>
-      get copyWith => _LoadPlayStylesCopyWithImpl(
-          this as LoadPlayStyles, $identity, $identity);
+      get copyWith =>
+          _LoadPlayStylesCopyWithImpl<LoadPlayStyles, LoadPlayStyles>(
+              this as LoadPlayStyles, $identity, $identity);
   @override
   String toString() {
     return LoadPlayStylesMapper.ensureInitialized()
@@ -731,7 +734,7 @@ mixin LoadPlayStylesMappable {
 extension LoadPlayStylesValueCopy<$R, $Out>
     on ObjectCopyWith<$R, LoadPlayStyles, $Out> {
   LoadPlayStylesCopyWith<$R, LoadPlayStyles, $Out> get $asLoadPlayStyles =>
-      $base.as((v, t, t2) => _LoadPlayStylesCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _LoadPlayStylesCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoadPlayStylesCopyWith<$R, $In extends LoadPlayStyles, $Out>
@@ -758,7 +761,7 @@ class _LoadPlayStylesCopyWithImpl<$R, $Out>
   @override
   LoadPlayStylesCopyWith<$R2, LoadPlayStyles, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _LoadPlayStylesCopyWithImpl($value, $cast, t);
+      _LoadPlayStylesCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class LoadVersionsMapper extends SubClassMapperBase<LoadVersions> {
@@ -815,7 +818,8 @@ mixin LoadVersionsMappable {
   }
 
   LoadVersionsCopyWith<LoadVersions, LoadVersions, LoadVersions> get copyWith =>
-      _LoadVersionsCopyWithImpl(this as LoadVersions, $identity, $identity);
+      _LoadVersionsCopyWithImpl<LoadVersions, LoadVersions>(
+          this as LoadVersions, $identity, $identity);
   @override
   String toString() {
     return LoadVersionsMapper.ensureInitialized()
@@ -838,7 +842,7 @@ mixin LoadVersionsMappable {
 extension LoadVersionsValueCopy<$R, $Out>
     on ObjectCopyWith<$R, LoadVersions, $Out> {
   LoadVersionsCopyWith<$R, LoadVersions, $Out> get $asLoadVersions =>
-      $base.as((v, t, t2) => _LoadVersionsCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _LoadVersionsCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoadVersionsCopyWith<$R, $In extends LoadVersions, $Out>
@@ -864,7 +868,7 @@ class _LoadVersionsCopyWithImpl<$R, $Out>
   @override
   LoadVersionsCopyWith<$R2, LoadVersions, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _LoadVersionsCopyWithImpl($value, $cast, t);
+      _LoadVersionsCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class LoadPriceMapper extends SubClassMapperBase<LoadPrice> {
@@ -921,7 +925,8 @@ mixin LoadPriceMappable {
   }
 
   LoadPriceCopyWith<LoadPrice, LoadPrice, LoadPrice> get copyWith =>
-      _LoadPriceCopyWithImpl(this as LoadPrice, $identity, $identity);
+      _LoadPriceCopyWithImpl<LoadPrice, LoadPrice>(
+          this as LoadPrice, $identity, $identity);
   @override
   String toString() {
     return LoadPriceMapper.ensureInitialized()
@@ -942,7 +947,7 @@ mixin LoadPriceMappable {
 
 extension LoadPriceValueCopy<$R, $Out> on ObjectCopyWith<$R, LoadPrice, $Out> {
   LoadPriceCopyWith<$R, LoadPrice, $Out> get $asLoadPrice =>
-      $base.as((v, t, t2) => _LoadPriceCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _LoadPriceCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoadPriceCopyWith<$R, $In extends LoadPrice, $Out>
@@ -968,7 +973,7 @@ class _LoadPriceCopyWithImpl<$R, $Out>
   @override
   LoadPriceCopyWith<$R2, LoadPrice, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _LoadPriceCopyWithImpl($value, $cast, t);
+      _LoadPriceCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class LoadAlternativePositionsMapper
@@ -1028,7 +1033,8 @@ mixin LoadAlternativePositionsMappable {
 
   LoadAlternativePositionsCopyWith<LoadAlternativePositions,
           LoadAlternativePositions, LoadAlternativePositions>
-      get copyWith => _LoadAlternativePositionsCopyWithImpl(
+      get copyWith => _LoadAlternativePositionsCopyWithImpl<
+              LoadAlternativePositions, LoadAlternativePositions>(
           this as LoadAlternativePositions, $identity, $identity);
   @override
   String toString() {
@@ -1052,8 +1058,8 @@ mixin LoadAlternativePositionsMappable {
 extension LoadAlternativePositionsValueCopy<$R, $Out>
     on ObjectCopyWith<$R, LoadAlternativePositions, $Out> {
   LoadAlternativePositionsCopyWith<$R, LoadAlternativePositions, $Out>
-      get $asLoadAlternativePositions => $base
-          .as((v, t, t2) => _LoadAlternativePositionsCopyWithImpl(v, t, t2));
+      get $asLoadAlternativePositions => $base.as((v, t, t2) =>
+          _LoadAlternativePositionsCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoadAlternativePositionsCopyWith<
@@ -1084,7 +1090,7 @@ class _LoadAlternativePositionsCopyWithImpl<$R, $Out>
   @override
   LoadAlternativePositionsCopyWith<$R2, LoadAlternativePositions, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _LoadAlternativePositionsCopyWithImpl($value, $cast, t);
+          _LoadAlternativePositionsCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class LoadChemistryBoostFaceValuesMapper
@@ -1146,7 +1152,8 @@ mixin LoadChemistryBoostFaceValuesMappable {
 
   LoadChemistryBoostFaceValuesCopyWith<LoadChemistryBoostFaceValues,
           LoadChemistryBoostFaceValues, LoadChemistryBoostFaceValues>
-      get copyWith => _LoadChemistryBoostFaceValuesCopyWithImpl(
+      get copyWith => _LoadChemistryBoostFaceValuesCopyWithImpl<
+              LoadChemistryBoostFaceValues, LoadChemistryBoostFaceValues>(
           this as LoadChemistryBoostFaceValues, $identity, $identity);
   @override
   String toString() {
@@ -1170,8 +1177,8 @@ mixin LoadChemistryBoostFaceValuesMappable {
 extension LoadChemistryBoostFaceValuesValueCopy<$R, $Out>
     on ObjectCopyWith<$R, LoadChemistryBoostFaceValues, $Out> {
   LoadChemistryBoostFaceValuesCopyWith<$R, LoadChemistryBoostFaceValues, $Out>
-      get $asLoadChemistryBoostFaceValues => $base.as(
-          (v, t, t2) => _LoadChemistryBoostFaceValuesCopyWithImpl(v, t, t2));
+      get $asLoadChemistryBoostFaceValues => $base.as((v, t, t2) =>
+          _LoadChemistryBoostFaceValuesCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoadChemistryBoostFaceValuesCopyWith<
@@ -1204,7 +1211,8 @@ class _LoadChemistryBoostFaceValuesCopyWithImpl<$R, $Out>
   @override
   LoadChemistryBoostFaceValuesCopyWith<$R2, LoadChemistryBoostFaceValues, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _LoadChemistryBoostFaceValuesCopyWithImpl($value, $cast, t);
+          _LoadChemistryBoostFaceValuesCopyWithImpl<$R2, $Out2>(
+              $value, $cast, t);
 }
 
 class NormalizeChemistryBoostMapper
@@ -1264,7 +1272,8 @@ mixin NormalizeChemistryBoostMappable {
 
   NormalizeChemistryBoostCopyWith<NormalizeChemistryBoost,
           NormalizeChemistryBoost, NormalizeChemistryBoost>
-      get copyWith => _NormalizeChemistryBoostCopyWithImpl(
+      get copyWith => _NormalizeChemistryBoostCopyWithImpl<
+              NormalizeChemistryBoost, NormalizeChemistryBoost>(
           this as NormalizeChemistryBoost, $identity, $identity);
   @override
   String toString() {
@@ -1288,8 +1297,8 @@ mixin NormalizeChemistryBoostMappable {
 extension NormalizeChemistryBoostValueCopy<$R, $Out>
     on ObjectCopyWith<$R, NormalizeChemistryBoost, $Out> {
   NormalizeChemistryBoostCopyWith<$R, NormalizeChemistryBoost, $Out>
-      get $asNormalizeChemistryBoost => $base
-          .as((v, t, t2) => _NormalizeChemistryBoostCopyWithImpl(v, t, t2));
+      get $asNormalizeChemistryBoost => $base.as((v, t, t2) =>
+          _NormalizeChemistryBoostCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class NormalizeChemistryBoostCopyWith<
@@ -1319,7 +1328,7 @@ class _NormalizeChemistryBoostCopyWithImpl<$R, $Out>
   @override
   NormalizeChemistryBoostCopyWith<$R2, NormalizeChemistryBoost, $Out2>
       $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _NormalizeChemistryBoostCopyWithImpl($value, $cast, t);
+          _NormalizeChemistryBoostCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class CompareTapMapper extends SubClassMapperBase<CompareTap> {
@@ -1376,7 +1385,8 @@ mixin CompareTapMappable {
   }
 
   CompareTapCopyWith<CompareTap, CompareTap, CompareTap> get copyWith =>
-      _CompareTapCopyWithImpl(this as CompareTap, $identity, $identity);
+      _CompareTapCopyWithImpl<CompareTap, CompareTap>(
+          this as CompareTap, $identity, $identity);
   @override
   String toString() {
     return CompareTapMapper.ensureInitialized()
@@ -1398,7 +1408,7 @@ mixin CompareTapMappable {
 extension CompareTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, CompareTap, $Out> {
   CompareTapCopyWith<$R, CompareTap, $Out> get $asCompareTap =>
-      $base.as((v, t, t2) => _CompareTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _CompareTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class CompareTapCopyWith<$R, $In extends CompareTap, $Out>
@@ -1424,7 +1434,7 @@ class _CompareTapCopyWithImpl<$R, $Out>
   @override
   CompareTapCopyWith<$R2, CompareTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _CompareTapCopyWithImpl($value, $cast, t);
+      _CompareTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class RoleTapMapper extends SubClassMapperBase<RoleTap> {
@@ -1487,7 +1497,8 @@ mixin RoleTapMappable {
   }
 
   RoleTapCopyWith<RoleTap, RoleTap, RoleTap> get copyWith =>
-      _RoleTapCopyWithImpl(this as RoleTap, $identity, $identity);
+      _RoleTapCopyWithImpl<RoleTap, RoleTap>(
+          this as RoleTap, $identity, $identity);
   @override
   String toString() {
     return RoleTapMapper.ensureInitialized().stringifyValue(this as RoleTap);
@@ -1507,7 +1518,7 @@ mixin RoleTapMappable {
 
 extension RoleTapValueCopy<$R, $Out> on ObjectCopyWith<$R, RoleTap, $Out> {
   RoleTapCopyWith<$R, RoleTap, $Out> get $asRoleTap =>
-      $base.as((v, t, t2) => _RoleTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _RoleTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RoleTapCopyWith<$R, $In extends RoleTap, $Out>
@@ -1538,7 +1549,7 @@ class _RoleTapCopyWithImpl<$R, $Out>
 
   @override
   RoleTapCopyWith<$R2, RoleTap, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _RoleTapCopyWithImpl($value, $cast, t);
+      _RoleTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class PlayStyleTapMapper extends SubClassMapperBase<PlayStyleTap> {
@@ -1602,7 +1613,8 @@ mixin PlayStyleTapMappable {
   }
 
   PlayStyleTapCopyWith<PlayStyleTap, PlayStyleTap, PlayStyleTap> get copyWith =>
-      _PlayStyleTapCopyWithImpl(this as PlayStyleTap, $identity, $identity);
+      _PlayStyleTapCopyWithImpl<PlayStyleTap, PlayStyleTap>(
+          this as PlayStyleTap, $identity, $identity);
   @override
   String toString() {
     return PlayStyleTapMapper.ensureInitialized()
@@ -1625,7 +1637,7 @@ mixin PlayStyleTapMappable {
 extension PlayStyleTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, PlayStyleTap, $Out> {
   PlayStyleTapCopyWith<$R, PlayStyleTap, $Out> get $asPlayStyleTap =>
-      $base.as((v, t, t2) => _PlayStyleTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PlayStyleTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PlayStyleTapCopyWith<$R, $In extends PlayStyleTap, $Out>
@@ -1657,7 +1669,7 @@ class _PlayStyleTapCopyWithImpl<$R, $Out>
   @override
   PlayStyleTapCopyWith<$R2, PlayStyleTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PlayStyleTapCopyWithImpl($value, $cast, t);
+      _PlayStyleTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class AccelerateTapMapper extends SubClassMapperBase<AccelerateTap> {
@@ -1721,7 +1733,7 @@ mixin AccelerateTapMappable {
   }
 
   AccelerateTapCopyWith<AccelerateTap, AccelerateTap, AccelerateTap>
-      get copyWith => _AccelerateTapCopyWithImpl(
+      get copyWith => _AccelerateTapCopyWithImpl<AccelerateTap, AccelerateTap>(
           this as AccelerateTap, $identity, $identity);
   @override
   String toString() {
@@ -1745,7 +1757,7 @@ mixin AccelerateTapMappable {
 extension AccelerateTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, AccelerateTap, $Out> {
   AccelerateTapCopyWith<$R, AccelerateTap, $Out> get $asAccelerateTap =>
-      $base.as((v, t, t2) => _AccelerateTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _AccelerateTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class AccelerateTapCopyWith<$R, $In extends AccelerateTap, $Out>
@@ -1773,7 +1785,7 @@ class _AccelerateTapCopyWithImpl<$R, $Out>
   @override
   AccelerateTapCopyWith<$R2, AccelerateTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _AccelerateTapCopyWithImpl($value, $cast, t);
+      _AccelerateTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class ChemistryTapMapper extends SubClassMapperBase<ChemistryTap> {
@@ -1830,7 +1842,8 @@ mixin ChemistryTapMappable {
   }
 
   ChemistryTapCopyWith<ChemistryTap, ChemistryTap, ChemistryTap> get copyWith =>
-      _ChemistryTapCopyWithImpl(this as ChemistryTap, $identity, $identity);
+      _ChemistryTapCopyWithImpl<ChemistryTap, ChemistryTap>(
+          this as ChemistryTap, $identity, $identity);
   @override
   String toString() {
     return ChemistryTapMapper.ensureInitialized()
@@ -1853,7 +1866,7 @@ mixin ChemistryTapMappable {
 extension ChemistryTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ChemistryTap, $Out> {
   ChemistryTapCopyWith<$R, ChemistryTap, $Out> get $asChemistryTap =>
-      $base.as((v, t, t2) => _ChemistryTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ChemistryTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ChemistryTapCopyWith<$R, $In extends ChemistryTap, $Out>
@@ -1879,7 +1892,7 @@ class _ChemistryTapCopyWithImpl<$R, $Out>
   @override
   ChemistryTapCopyWith<$R2, ChemistryTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _ChemistryTapCopyWithImpl($value, $cast, t);
+      _ChemistryTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class ChemistryApplyMapper extends SubClassMapperBase<ChemistryApply> {
@@ -1949,8 +1962,9 @@ mixin ChemistryApplyMappable {
   }
 
   ChemistryApplyCopyWith<ChemistryApply, ChemistryApply, ChemistryApply>
-      get copyWith => _ChemistryApplyCopyWithImpl(
-          this as ChemistryApply, $identity, $identity);
+      get copyWith =>
+          _ChemistryApplyCopyWithImpl<ChemistryApply, ChemistryApply>(
+              this as ChemistryApply, $identity, $identity);
   @override
   String toString() {
     return ChemistryApplyMapper.ensureInitialized()
@@ -1973,7 +1987,7 @@ mixin ChemistryApplyMappable {
 extension ChemistryApplyValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ChemistryApply, $Out> {
   ChemistryApplyCopyWith<$R, ChemistryApply, $Out> get $asChemistryApply =>
-      $base.as((v, t, t2) => _ChemistryApplyCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _ChemistryApplyCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class ChemistryApplyCopyWith<$R, $In extends ChemistryApply, $Out>
@@ -2012,7 +2026,7 @@ class _ChemistryApplyCopyWithImpl<$R, $Out>
   @override
   ChemistryApplyCopyWith<$R2, ChemistryApply, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _ChemistryApplyCopyWithImpl($value, $cast, t);
+      _ChemistryApplyCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class RarityTapMapper extends SubClassMapperBase<RarityTap> {
@@ -2075,7 +2089,8 @@ mixin RarityTapMappable {
   }
 
   RarityTapCopyWith<RarityTap, RarityTap, RarityTap> get copyWith =>
-      _RarityTapCopyWithImpl(this as RarityTap, $identity, $identity);
+      _RarityTapCopyWithImpl<RarityTap, RarityTap>(
+          this as RarityTap, $identity, $identity);
   @override
   String toString() {
     return RarityTapMapper.ensureInitialized()
@@ -2096,7 +2111,7 @@ mixin RarityTapMappable {
 
 extension RarityTapValueCopy<$R, $Out> on ObjectCopyWith<$R, RarityTap, $Out> {
   RarityTapCopyWith<$R, RarityTap, $Out> get $asRarityTap =>
-      $base.as((v, t, t2) => _RarityTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _RarityTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class RarityTapCopyWith<$R, $In extends RarityTap, $Out>
@@ -2124,7 +2139,7 @@ class _RarityTapCopyWithImpl<$R, $Out>
   @override
   RarityTapCopyWith<$R2, RarityTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _RarityTapCopyWithImpl($value, $cast, t);
+      _RarityTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class AllPlayersTapMapper extends SubClassMapperBase<AllPlayersTap> {
@@ -2187,7 +2202,7 @@ mixin AllPlayersTapMappable {
   }
 
   AllPlayersTapCopyWith<AllPlayersTap, AllPlayersTap, AllPlayersTap>
-      get copyWith => _AllPlayersTapCopyWithImpl(
+      get copyWith => _AllPlayersTapCopyWithImpl<AllPlayersTap, AllPlayersTap>(
           this as AllPlayersTap, $identity, $identity);
   @override
   String toString() {
@@ -2211,7 +2226,7 @@ mixin AllPlayersTapMappable {
 extension AllPlayersTapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, AllPlayersTap, $Out> {
   AllPlayersTapCopyWith<$R, AllPlayersTap, $Out> get $asAllPlayersTap =>
-      $base.as((v, t, t2) => _AllPlayersTapCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _AllPlayersTapCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class AllPlayersTapCopyWith<$R, $In extends AllPlayersTap, $Out>
@@ -2239,7 +2254,7 @@ class _AllPlayersTapCopyWithImpl<$R, $Out>
   @override
   AllPlayersTapCopyWith<$R2, AllPlayersTap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _AllPlayersTapCopyWithImpl($value, $cast, t);
+      _AllPlayersTapCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 class PlayerDetailStateMapper extends ClassMapperBase<PlayerDetailState> {
@@ -2376,8 +2391,9 @@ mixin PlayerDetailStateMappable {
 
   PlayerDetailStateCopyWith<PlayerDetailState, PlayerDetailState,
           PlayerDetailState>
-      get copyWith => _PlayerDetailStateCopyWithImpl(
-          this as PlayerDetailState, $identity, $identity);
+      get copyWith =>
+          _PlayerDetailStateCopyWithImpl<PlayerDetailState, PlayerDetailState>(
+              this as PlayerDetailState, $identity, $identity);
   @override
   String toString() {
     return PlayerDetailStateMapper.ensureInitialized()
@@ -2400,8 +2416,8 @@ mixin PlayerDetailStateMappable {
 extension PlayerDetailStateValueCopy<$R, $Out>
     on ObjectCopyWith<$R, PlayerDetailState, $Out> {
   PlayerDetailStateCopyWith<$R, PlayerDetailState, $Out>
-      get $asPlayerDetailState =>
-          $base.as((v, t, t2) => _PlayerDetailStateCopyWithImpl(v, t, t2));
+      get $asPlayerDetailState => $base
+          .as((v, t, t2) => _PlayerDetailStateCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PlayerDetailStateCopyWith<$R, $In extends PlayerDetailState,
@@ -2554,7 +2570,7 @@ class _PlayerDetailStateCopyWithImpl<$R, $Out>
   @override
   PlayerDetailStateCopyWith<$R2, PlayerDetailState, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PlayerDetailStateCopyWithImpl($value, $cast, t);
+      _PlayerDetailStateCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
 typedef _t$_R0<A, B, C, D, E, F> = ({

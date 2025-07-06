@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _LeagueRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getLeaguesCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getLeaguesCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -74,11 +76,14 @@ class _LeagueRepositoryImpl
       __getLeaguesCached["${isTop.hashCode}"] = toReturn;
 
       const duration = Duration(seconds: 2592000);
-      __getLeaguesTtl["${isTop.hashCode}"] =
-          DateTime.now().add(duration).toIso8601String();
+      __getLeaguesTtl["${isTop.hashCode}"] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getLeaguesCached', __getLeaguesCached);
+        '__getLeaguesCached',
+        __getLeaguesCached,
+      );
       await PersistentStorageHolder.write('__getLeaguesTtl', __getLeaguesTtl);
 
       return toReturn;

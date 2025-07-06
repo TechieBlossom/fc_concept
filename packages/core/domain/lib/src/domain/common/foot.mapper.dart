@@ -25,9 +25,9 @@ class FootMapper extends EnumMapper<Foot> {
   @override
   Foot decode(dynamic value) {
     switch (value) {
-      case 'Right':
+      case r'Right':
         return Foot.right;
-      case 'Left':
+      case r'Left':
         return Foot.left;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -38,9 +38,9 @@ class FootMapper extends EnumMapper<Foot> {
   dynamic encode(Foot self) {
     switch (self) {
       case Foot.right:
-        return 'Right';
+        return r'Right';
       case Foot.left:
-        return 'Left';
+        return r'Left';
     }
   }
 }

@@ -25,19 +25,19 @@ class AccelerateTypeMapper extends EnumMapper<AccelerateType> {
   @override
   AccelerateType decode(dynamic value) {
     switch (value) {
-      case 'EXPLOSIVE':
+      case r'EXPLOSIVE':
         return AccelerateType.explosive;
-      case 'MOSTLY_EXPLOSIVE':
+      case r'MOSTLY_EXPLOSIVE':
         return AccelerateType.mostlyExplosive;
-      case 'CONTROLLED_EXPLOSIVE':
+      case r'CONTROLLED_EXPLOSIVE':
         return AccelerateType.controlledExplosive;
-      case 'CONTROLLED':
+      case r'CONTROLLED':
         return AccelerateType.controlled;
-      case 'CONTROLLED_LENGTHY':
+      case r'CONTROLLED_LENGTHY':
         return AccelerateType.controlledLengthy;
-      case 'MOSTLY_LENGTHY':
+      case r'MOSTLY_LENGTHY':
         return AccelerateType.mostlyLengthy;
-      case 'LENGTHY':
+      case r'LENGTHY':
         return AccelerateType.lengthy;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -48,19 +48,19 @@ class AccelerateTypeMapper extends EnumMapper<AccelerateType> {
   dynamic encode(AccelerateType self) {
     switch (self) {
       case AccelerateType.explosive:
-        return 'EXPLOSIVE';
+        return r'EXPLOSIVE';
       case AccelerateType.mostlyExplosive:
-        return 'MOSTLY_EXPLOSIVE';
+        return r'MOSTLY_EXPLOSIVE';
       case AccelerateType.controlledExplosive:
-        return 'CONTROLLED_EXPLOSIVE';
+        return r'CONTROLLED_EXPLOSIVE';
       case AccelerateType.controlled:
-        return 'CONTROLLED';
+        return r'CONTROLLED';
       case AccelerateType.controlledLengthy:
-        return 'CONTROLLED_LENGTHY';
+        return r'CONTROLLED_LENGTHY';
       case AccelerateType.mostlyLengthy:
-        return 'MOSTLY_LENGTHY';
+        return r'MOSTLY_LENGTHY';
       case AccelerateType.lengthy:
-        return 'LENGTHY';
+        return r'LENGTHY';
     }
   }
 }

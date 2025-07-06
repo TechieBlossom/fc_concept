@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _PositionRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getPositionsCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getPositionsCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -32,8 +34,9 @@ class _PositionRepositoryImpl
     }
 
     try {
-      __getPositionsTtl =
-          await PersistentStorageHolder.read('__getPositionsTtl');
+      __getPositionsTtl = await PersistentStorageHolder.read(
+        '__getPositionsTtl',
+      );
     } catch (e) {
       __getPositionsTtl = <String, dynamic>{};
     }
@@ -78,9 +81,13 @@ class _PositionRepositoryImpl
       __getPositionsTtl[""] = DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getPositionsCached', __getPositionsCached);
+        '__getPositionsCached',
+        __getPositionsCached,
+      );
       await PersistentStorageHolder.write(
-          '__getPositionsTtl', __getPositionsTtl);
+        '__getPositionsTtl',
+        __getPositionsTtl,
+      );
 
       return toReturn;
     } else {

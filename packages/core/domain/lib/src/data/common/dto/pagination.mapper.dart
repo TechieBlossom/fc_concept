@@ -78,7 +78,8 @@ mixin PaginationMappable {
   }
 
   PaginationCopyWith<Pagination, Pagination, Pagination> get copyWith =>
-      _PaginationCopyWithImpl(this as Pagination, $identity, $identity);
+      _PaginationCopyWithImpl<Pagination, Pagination>(
+          this as Pagination, $identity, $identity);
   @override
   String toString() {
     return PaginationMapper.ensureInitialized()
@@ -100,7 +101,7 @@ mixin PaginationMappable {
 extension PaginationValueCopy<$R, $Out>
     on ObjectCopyWith<$R, Pagination, $Out> {
   PaginationCopyWith<$R, Pagination, $Out> get $asPagination =>
-      $base.as((v, t, t2) => _PaginationCopyWithImpl(v, t, t2));
+      $base.as((v, t, t2) => _PaginationCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class PaginationCopyWith<$R, $In extends Pagination, $Out>
@@ -147,5 +148,5 @@ class _PaginationCopyWithImpl<$R, $Out>
   @override
   PaginationCopyWith<$R2, Pagination, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _PaginationCopyWithImpl($value, $cast, t);
+      _PaginationCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

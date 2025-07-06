@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -19,8 +20,9 @@ class _PlayerRepositoryImpl
 
   Future<void> _init() async {
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__topPlayersCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__topPlayersCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -38,8 +40,9 @@ class _PlayerRepositoryImpl
     }
 
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__recentPlayersCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__recentPlayersCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -51,15 +54,17 @@ class _PlayerRepositoryImpl
     }
 
     try {
-      __recentPlayersTtl =
-          await PersistentStorageHolder.read('__recentPlayersTtl');
+      __recentPlayersTtl = await PersistentStorageHolder.read(
+        '__recentPlayersTtl',
+      );
     } catch (e) {
       __recentPlayersTtl = <String, dynamic>{};
     }
 
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__sbcPlayersCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__sbcPlayersCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -77,8 +82,9 @@ class _PlayerRepositoryImpl
     }
 
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getPositionalPlayersCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getPositionalPlayersCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -90,15 +96,17 @@ class _PlayerRepositoryImpl
     }
 
     try {
-      __getPositionalPlayersTtl =
-          await PersistentStorageHolder.read('__getPositionalPlayersTtl');
+      __getPositionalPlayersTtl = await PersistentStorageHolder.read(
+        '__getPositionalPlayersTtl',
+      );
     } catch (e) {
       __getPositionalPlayersTtl = <String, dynamic>{};
     }
 
     try {
-      final cachedMap =
-          await PersistentStorageHolder.read('__getPlayersByRaritySquadCached');
+      final cachedMap = await PersistentStorageHolder.read(
+        '__getPlayersByRaritySquadCached',
+      );
 
       cachedMap.forEach((_, value) {
         if (value is! List<dynamic>) throw TypeError();
@@ -110,8 +118,9 @@ class _PlayerRepositoryImpl
     }
 
     try {
-      __getPlayersByRaritySquadTtl =
-          await PersistentStorageHolder.read('__getPlayersByRaritySquadTtl');
+      __getPlayersByRaritySquadTtl = await PersistentStorageHolder.read(
+        '__getPlayersByRaritySquadTtl',
+      );
     } catch (e) {
       __getPlayersByRaritySquadTtl = <String, dynamic>{};
     }
@@ -181,11 +190,14 @@ class _PlayerRepositoryImpl
       __topPlayersCached["${page.hashCode}"] = toReturn;
 
       const duration = Duration(seconds: 3600);
-      __topPlayersTtl["${page.hashCode}"] =
-          DateTime.now().add(duration).toIso8601String();
+      __topPlayersTtl["${page.hashCode}"] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__topPlayersCached', __topPlayersCached);
+        '__topPlayersCached',
+        __topPlayersCached,
+      );
       await PersistentStorageHolder.write('__topPlayersTtl', __topPlayersTtl);
 
       return toReturn;
@@ -241,9 +253,13 @@ class _PlayerRepositoryImpl
       __recentPlayersTtl[""] = DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__recentPlayersCached', __recentPlayersCached);
+        '__recentPlayersCached',
+        __recentPlayersCached,
+      );
       await PersistentStorageHolder.write(
-          '__recentPlayersTtl', __recentPlayersTtl);
+        '__recentPlayersTtl',
+        __recentPlayersTtl,
+      );
 
       return toReturn;
     } else {
@@ -298,7 +314,9 @@ class _PlayerRepositoryImpl
       __sbcPlayersTtl[""] = DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__sbcPlayersCached', __sbcPlayersCached);
+        '__sbcPlayersCached',
+        __sbcPlayersCached,
+      );
       await PersistentStorageHolder.write('__sbcPlayersTtl', __sbcPlayersTtl);
 
       return toReturn;
@@ -326,23 +344,27 @@ class _PlayerRepositoryImpl
 
   @override
   Future<List<dynamic>> _getPositionalPlayers(
-      PositionGroup positionGroup, bool fetchIcons) async {
+    PositionGroup positionGroup,
+    bool fetchIcons,
+  ) async {
     await _completerFuture;
 
     final now = DateTime.now();
-    final cachedTtl = __getPositionalPlayersTtl[
-        "${positionGroup.hashCode}${fetchIcons.hashCode}"];
+    final cachedTtl =
+        __getPositionalPlayersTtl["${positionGroup.hashCode}${fetchIcons.hashCode}"];
     final currentTtl = cachedTtl != null ? DateTime.parse(cachedTtl) : null;
 
     if (currentTtl != null && currentTtl.isBefore(now)) {
-      __getPositionalPlayersTtl
-          .remove("${positionGroup.hashCode}${fetchIcons.hashCode}");
-      __getPositionalPlayersCached
-          .remove("${positionGroup.hashCode}${fetchIcons.hashCode}");
+      __getPositionalPlayersTtl.remove(
+        "${positionGroup.hashCode}${fetchIcons.hashCode}",
+      );
+      __getPositionalPlayersCached.remove(
+        "${positionGroup.hashCode}${fetchIcons.hashCode}",
+      );
     }
 
-    final cachedValue = __getPositionalPlayersCached[
-        "${positionGroup.hashCode}${fetchIcons.hashCode}"];
+    final cachedValue =
+        __getPositionalPlayersCached["${positionGroup.hashCode}${fetchIcons.hashCode}"];
     if (cachedValue == null) {
       final List<dynamic> toReturn;
       try {
@@ -353,18 +375,21 @@ class _PlayerRepositoryImpl
         rethrow;
       } finally {}
 
-      __getPositionalPlayersCached[
-          "${positionGroup.hashCode}${fetchIcons.hashCode}"] = toReturn;
+      __getPositionalPlayersCached["${positionGroup.hashCode}${fetchIcons.hashCode}"] =
+          toReturn;
 
       const duration = Duration(seconds: 3600);
-      __getPositionalPlayersTtl[
-              "${positionGroup.hashCode}${fetchIcons.hashCode}"] =
+      __getPositionalPlayersTtl["${positionGroup.hashCode}${fetchIcons.hashCode}"] =
           DateTime.now().add(duration).toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getPositionalPlayersCached', __getPositionalPlayersCached);
+        '__getPositionalPlayersCached',
+        __getPositionalPlayersCached,
+      );
       await PersistentStorageHolder.write(
-          '__getPositionalPlayersTtl', __getPositionalPlayersTtl);
+        '__getPositionalPlayersTtl',
+        __getPositionalPlayersTtl,
+      );
 
       return toReturn;
     } else {
@@ -390,8 +415,9 @@ class _PlayerRepositoryImpl
   }
 
   @override
-  Future<List<dynamic>> _getPlayersByRaritySquad(
-      {required int raritySquadId}) async {
+  Future<List<dynamic>> _getPlayersByRaritySquad({
+    required int raritySquadId,
+  }) async {
     await _completerFuture;
 
     final now = DateTime.now();
@@ -408,8 +434,9 @@ class _PlayerRepositoryImpl
     if (cachedValue == null) {
       final List<dynamic> toReturn;
       try {
-        final result =
-            super._getPlayersByRaritySquad(raritySquadId: raritySquadId);
+        final result = super._getPlayersByRaritySquad(
+          raritySquadId: raritySquadId,
+        );
 
         toReturn = await result;
       } catch (_) {
@@ -419,13 +446,18 @@ class _PlayerRepositoryImpl
       __getPlayersByRaritySquadCached["${raritySquadId.hashCode}"] = toReturn;
 
       const duration = Duration(seconds: 3600);
-      __getPlayersByRaritySquadTtl["${raritySquadId.hashCode}"] =
-          DateTime.now().add(duration).toIso8601String();
+      __getPlayersByRaritySquadTtl["${raritySquadId.hashCode}"] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getPlayersByRaritySquadCached', __getPlayersByRaritySquadCached);
+        '__getPlayersByRaritySquadCached',
+        __getPlayersByRaritySquadCached,
+      );
       await PersistentStorageHolder.write(
-          '__getPlayersByRaritySquadTtl', __getPlayersByRaritySquadTtl);
+        '__getPlayersByRaritySquadTtl',
+        __getPlayersByRaritySquadTtl,
+      );
 
       return toReturn;
     } else {
@@ -477,11 +509,14 @@ class _PlayerRepositoryImpl
       __getPlayerCached["${playerId.hashCode}"] = toReturn;
 
       const duration = Duration(seconds: 2592000);
-      __getPlayerTtl["${playerId.hashCode}"] =
-          DateTime.now().add(duration).toIso8601String();
+      __getPlayerTtl["${playerId.hashCode}"] = DateTime.now()
+          .add(duration)
+          .toIso8601String();
 
       await PersistentStorageHolder.write(
-          '__getPlayerCached', __getPlayerCached);
+        '__getPlayerCached',
+        __getPlayerCached,
+      );
       await PersistentStorageHolder.write('__getPlayerTtl', __getPlayerTtl);
 
       return toReturn;
