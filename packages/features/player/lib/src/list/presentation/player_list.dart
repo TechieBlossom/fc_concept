@@ -1,3 +1,4 @@
+import 'package:core_ads/ads.dart';
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
 import 'package:feature_player/src/list/presentation/bloc/player_list_bloc.dart';
@@ -107,9 +108,9 @@ class _PlayerListState extends State<PlayerList> {
             return const SizedBox.shrink();
           },
           separatorBuilder: (context, index) {
-            // if (index != 0 && index % 12 == 0) {
-            //   return const AppBannerAd();
-            // }
+            if (index != 0 && index % 12 == 0) {
+              return const AppBannerAd();
+            }
             return const SizedBox(height: 0);
           },
         );

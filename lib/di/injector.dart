@@ -1,8 +1,7 @@
 import 'package:core_analytics/analytics.dart';
 import 'package:core_api_client/api_client.dart';
 import 'package:core_domain/domain.dart';
-import 'package:fc_concept/di/injection.dart';
-import 'package:feature_auth/auth.dart';
+import 'package:fut_maidaan/di/injection.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_dashboard/dashboard.dart';
 import 'package:feature_filter/filter.dart';
@@ -17,7 +16,6 @@ Future<void> initializeDi(String environment) async {
       environment: environment,
       const [
         appDi,
-        authDi,
         apiClientDi,
         domainDi,
         navigationDi,

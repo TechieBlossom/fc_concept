@@ -1,5 +1,0 @@
-import 'package:feature_auth/src/di/injector.config.dart';
-import 'package:injectable/injectable.dart';
-
-@InjectableInit(asExtension: false)
-const authDi = init;

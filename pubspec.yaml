@@ -1,11 +1,11 @@
-name: fc_concept
+name: fut_maidaan
 description: "A new Flutter project."
 publish_to: 'none'
-version: 1.0.8+9
+version: 1.0.9+10
 
 environment:
   sdk: ">=3.8.1 <4.0.0"
-  flutter: "3.32.1"
+  flutter: "3.32.6"
 
 dependencies:
   cached_network_image: 3.4.1
@@ -20,8 +20,6 @@ dependencies:
   core_domain:
     path: packages/core/domain
   cupertino_icons: 1.0.8
-  feature_auth:
-    path: packages/features/auth
   feature_compare:
     path: packages/features/compare
   feature_dashboard:

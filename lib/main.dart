@@ -3,9 +3,8 @@ import 'package:core_analytics/analytics.dart';
 import 'package:core_api_client/api_client.dart';
 import 'package:core_design/design.dart';
 import 'package:core_domain/domain.dart';
-import 'package:fc_concept/di/injector.dart';
-import 'package:fc_concept/firebase_options.dart';
-import 'package:feature_auth/auth.dart';
+import 'package:fut_maidaan/di/injector.dart';
+import 'package:fut_maidaan/firebase_options.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_di/di.dart';
@@ -27,49 +26,42 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthStateBloc>(
-      create: (_) => di<AuthStateBloc>(),
-      child: BlocBuilder<AuthStateBloc, void>(
-        builder: (context, state) {
-          return MaterialApp.router(
-            title: 'FUT Maidaan',
-            theme: AppTheme.themeData(context, Brightness.light),
-            darkTheme: AppTheme.themeData(context, Brightness.dark),
-            debugShowCheckedModeBanner: false,
-            routerConfig: di<GoRouter>(),
-            builder: (context, child) {
-              return Wiredash(
-                projectId: wiredashProjectId,
-                secret: wiredashSecret,
-                environment: kDebugMode ? 'dev' : 'prod',
-                feedbackOptions: const WiredashFeedbackOptions(
-                  email: EmailPrompt.hidden,
-                  labels: [
-                    Label(id: 'label-k7o0yp2gmz', title: 'Issue'),
-                    Label(id: 'label-n7m3f8ezks', title: 'Praise'),
-                    Label(id: 'label-gjdxoj0pfw', title: 'Improvement'),
-                  ],
-                ),
-                psOptions: const PsOptions(
-                  frequency: Duration(days: 7),
-                  initialDelay: Duration(days: 1),
-                  minimumAppStarts: 2,
-                ),
-                theme: WiredashTheme.wiredashThemeData(context),
-                child: BlocProvider<MetadataBloc>(
-                  create: (_) => di<MetadataBloc>(),
-                  child: BlocBuilder<MetadataBloc, MetadataState>(
-                    builder: (context, state) {
-                      // showWiredashPromoterSurvey(context);
-                      return child!;
-                    },
-                  ),
-                ),
-              );
-            },
-          );
-        },
-      ),
+    return MaterialApp.router(
+      title: 'FUT Maidaan',
+      theme: AppTheme.themeData(context, Brightness.light),
+      darkTheme: AppTheme.themeData(context, Brightness.dark),
+      debugShowCheckedModeBanner: false,
+      routerConfig: di<GoRouter>(),
+      builder: (context, child) {
+        return Wiredash(
+          projectId: wiredashProjectId,
+          secret: wiredashSecret,
+          environment: kDebugMode ? 'dev' : 'prod',
+          feedbackOptions: const WiredashFeedbackOptions(
+            email: EmailPrompt.hidden,
+            labels: [
+              Label(id: 'label-k7o0yp2gmz', title: 'Issue'),
+              Label(id: 'label-n7m3f8ezks', title: 'Praise'),
+              Label(id: 'label-gjdxoj0pfw', title: 'Improvement'),
+            ],
+          ),
+          psOptions: const PsOptions(
+            frequency: Duration(days: 7),
+            initialDelay: Duration(days: 1),
+            minimumAppStarts: 2,
+          ),
+          theme: WiredashTheme.wiredashThemeData(context),
+          child: BlocProvider<MetadataBloc>(
+            create: (_) => di<MetadataBloc>(),
+            child: BlocBuilder<MetadataBloc, MetadataState>(
+              builder: (context, state) {
+                // showWiredashPromoterSurvey(context);
+                return child!;
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

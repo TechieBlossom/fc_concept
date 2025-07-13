@@ -1,7 +1,6 @@
 import 'package:core_domain/auth.dart';
 import 'package:core_domain/domain.dart';
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:feature_auth/auth.dart';
 import 'package:feature_compare/compare.dart';
 import 'package:feature_menu/src/navigator/navigator.dart';
 import 'package:feature_player/player.dart';
@@ -16,11 +15,9 @@ part 'menu_state.dart';
 @injectable
 class MenuBloc extends Bloc<MenuEvent, MenuState> {
   MenuBloc(
-    this._authNavigator,
     this._compareNavigator,
     this._playerNavigator,
     this._getPlayerCountUseCase,
-    this._signOutUserUseCase,
     this._menuNavigator,
   ) : super(MenuState()) {
     on<Init>((event, emit) => _init(emit));
@@ -43,11 +40,9 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   }
 
   final MenuNavigator _menuNavigator;
-  final AuthNavigator _authNavigator;
   final CompareNavigator _compareNavigator;
   final PlayerNavigator _playerNavigator;
   final GetPlayerCountUseCase _getPlayerCountUseCase;
-  final SignOutUserUseCase _signOutUserUseCase;
 
   Future<void> _init(Emitter<MenuState> emit) async {
     final playerCount = await _getPlayerCountUseCase();
@@ -55,7 +50,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   }
 
   Future<void> _signInTap() async {
-    await _authNavigator.goToLogin();
+
   }
 
   Future<void> _compareTap() async {
@@ -70,7 +65,5 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     await _playerNavigator.goToPopularPlayers();
   }
 
-  Future<void> _signOutTap() async {
-    await _signOutUserUseCase();
-  }
+  Future<void> _signOutTap() async {}
 }

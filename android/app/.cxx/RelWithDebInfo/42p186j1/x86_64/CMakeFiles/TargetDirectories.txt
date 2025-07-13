@@ -1,2 +1,0 @@
-/Users/prateeksharma/Documents/techieblossom/fc_concept/android/app/.cxx/RelWithDebInfo/42p186j1/x86_64/CMakeFiles/edit_cache.dir
-/Users/prateeksharma/Documents/techieblossom/fc_concept/android/app/.cxx/RelWithDebInfo/42p186j1/x86_64/CMakeFiles/rebuild_cache.dir

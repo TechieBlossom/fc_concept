@@ -5,7 +5,7 @@ publish_to: none
 
 environment:
   sdk: ">=3.8.1 <4.0.0"
-  flutter: "3.32.1"
+  flutter: "3.32.6"
 
 dependencies:
   cached_annotation: 1.7.1
@@ -32,7 +32,7 @@ dependencies:
   wiredash: 2.5.0
 
 dev_dependencies:
-  build_runner: 2.4.15
+  build_runner: ^2.5.4
   cached: 1.7.1
   dart_mappable_builder: 4.5.0
   injectable_generator: 2.7.0

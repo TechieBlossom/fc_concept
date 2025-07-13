@@ -53,4 +53,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=3.8.1 <4.0.0"
-  flutter: ">=3.32.1"
+  flutter: ">=3.32.6"

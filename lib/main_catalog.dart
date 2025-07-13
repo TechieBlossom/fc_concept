@@ -1,5 +1,5 @@
 import 'package:core_design/design.dart';
-import 'package:fc_concept/di/injector.dart';
+import 'package:fut_maidaan/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_catalog/catalog.dart';
 

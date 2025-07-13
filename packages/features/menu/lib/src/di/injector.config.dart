@@ -9,9 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:core_domain/auth.dart' as _i643;
 import 'package:core_domain/domain.dart' as _i913;
-import 'package:feature_auth/auth.dart' as _i495;
 import 'package:feature_compare/compare.dart' as _i534;
 import 'package:feature_menu/src/menu/bloc/menu_bloc.dart' as _i929;
 import 'package:feature_menu/src/navigator/navigator.dart' as _i725;
@@ -36,11 +34,9 @@ _i174.GetIt init(
   );
   gh.factory<_i929.MenuBloc>(
     () => _i929.MenuBloc(
-      gh<_i495.AuthNavigator>(),
       gh<_i534.CompareNavigator>(),
       gh<_i460.PlayerNavigator>(),
       gh<_i913.GetPlayerCountUseCase>(),
-      gh<_i643.SignOutUserUseCase>(),
       gh<_i725.MenuNavigator>(),
     ),
   );
