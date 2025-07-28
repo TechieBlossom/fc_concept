@@ -1,5 +1,4 @@
 import 'package:core_design/src/atoms/atoms.dart';
-import 'package:core_design/src/molecules/button/link_button.dart';
 import 'package:core_design/src/molecules/button/primary_button.dart';
 import 'package:core_design/src/molecules/play_style/play_style_widget.dart';
 import 'package:core_domain/domain.dart';

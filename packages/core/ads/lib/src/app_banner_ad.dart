@@ -7,10 +7,7 @@ const _androidAdUnitId = 'ca-app-pub-3120340324769292/8582363603';
 const _iOSAdUnitId = 'ca-app-pub-3120340324769292/2408794698';
 
 class AppBannerAd extends StatefulWidget {
-  const AppBannerAd({
-    super.key,
-    this.adSize = AdSize.banner,
-  });
+  const AppBannerAd({super.key, this.adSize = AdSize.banner});
 
   final AdSize adSize;
 
@@ -64,12 +61,15 @@ class _AppBannerAdState extends State<AppBannerAd> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SizedBox(
-        width: widget.adSize.width.toDouble(),
-        height: widget.adSize.height.toDouble(),
-        child: _bannerAd == null
-            ? const SizedBox.shrink()
-            : AdWidget(ad: _bannerAd!),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: SizedBox(
+          width: widget.adSize.width.toDouble(),
+          height: widget.adSize.height.toDouble(),
+          child: _bannerAd == null
+              ? const SizedBox.shrink()
+              : AdWidget(ad: _bannerAd!),
+        ),
       ),
     );
   }

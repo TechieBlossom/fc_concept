@@ -11,7 +11,7 @@ const String markdownPrivacyPolicy = '''
 
   
 
-This Privacy Notice for \_\_\_\_\_\_\_\_\_\_ ("**we**," "**us**," or "**our**"), describes how and why we might access, collect, store, use, and/or share ("**process**") your personal information when you use our services ("**Services**"), including when you:
+This Privacy Notice for __________ ("**we**," "**us**," or "**our**"), describes how and why we might access, collect, store, use, and/or share ("**process**") your personal information when you use our services ("**Services**"), including when you:
 
 * Download and use our mobile application (FUT Maidaan), or any other application of ours that links to this Privacy Notice
     
@@ -96,43 +96,43 @@ Want to learn more about what we do with any information we collect? [Review th
 
   
 
-[1\. WHAT INFORMATION DO WE COLLECT?](#infocollect)
+[1. WHAT INFORMATION DO WE COLLECT?](#infocollect)
 
-[2\. HOW DO WE PROCESS YOUR INFORMATION?](#infouse)
+[2. HOW DO WE PROCESS YOUR INFORMATION?](#infouse)
 
-[3\. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR PERSONAL INFORMATION?](#legalbases)
+[3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR PERSONAL INFORMATION?](#legalbases)
 
-[4\. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?](#whoshare)
+[4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?](#whoshare)
 
-[5\. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?](#3pwebsites)
+[5. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?](#3pwebsites)
 
-[6\. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?](#cookies)
+[6. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?](#cookies)
 
-[7\. HOW DO WE HANDLE YOUR SOCIAL LOGINS?](#sociallogins)
+[7. HOW DO WE HANDLE YOUR SOCIAL LOGINS?](#sociallogins)
 
-[8\. HOW LONG DO WE KEEP YOUR INFORMATION?](#inforetain)
+[8. HOW LONG DO WE KEEP YOUR INFORMATION?](#inforetain)
 
-[9\. HOW DO WE KEEP YOUR INFORMATION SAFE?](#infosafe)
+[9. HOW DO WE KEEP YOUR INFORMATION SAFE?](#infosafe)
 
-[10\. WHAT ARE YOUR PRIVACY RIGHTS?](#privacyrights)
+[10. WHAT ARE YOUR PRIVACY RIGHTS?](#privacyrights)
 
-[11\. CONTROLS FOR DO-NOT-TRACK FEATURES](#DNT)
+[11. CONTROLS FOR DO-NOT-TRACK FEATURES](#DNT)
 
-[12\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?](#uslaws)
+[12. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?](#uslaws)
 
-[13\. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?](#otherlaws)
+[13. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?](#otherlaws)
 
-[14\. DO WE MAKE UPDATES TO THIS NOTICE?](#policyupdates)
+[14. DO WE MAKE UPDATES TO THIS NOTICE?](#policyupdates)
 
-[15\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)
+[15. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)
 
-[16\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?](#request)
-
-  
+[16. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?](#request)
 
   
 
-**1\. WHAT INFORMATION DO WE COLLECT?**
+  
+
+**1. WHAT INFORMATION DO WE COLLECT?**
 
   
 
@@ -219,7 +219,7 @@ Our use of information received from Google APIs will adhere to [Google API Ser
 
   
 
-**2\. HOW DO WE PROCESS YOUR INFORMATION?**
+**2. HOW DO WE PROCESS YOUR INFORMATION?**
 
   
 
@@ -237,7 +237,7 @@ Our use of information received from Google APIs will adhere to [Google API Ser
 
   
 
-**3\. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?**
+**3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?**
 
   
 
@@ -305,7 +305,7 @@ In some exceptional cases, we may be legally permitted under applicable law to p
 
   
 
-**4\. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?**
+**4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?**
 
   
 
@@ -320,7 +320,7 @@ We may need to share your personal information in the following situations:
 
   
 
-**5\. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?**
+**5. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?**
 
   
 
@@ -332,7 +332,7 @@ The Services may link to third-party websites, online services, or mobile applic
 
   
 
-**6\. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?**
+**6. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?**
 
   
 
@@ -364,7 +364,7 @@ We may share your information with Google Analytics to track and analyze the use
 
   
 
-**7\. HOW DO WE HANDLE YOUR SOCIAL LOGINS?**
+**7. HOW DO WE HANDLE YOUR SOCIAL LOGINS?**
 
   
 
@@ -380,7 +380,7 @@ We will use the information we receive only for the purposes that are described 
 
   
 
-**8\. HOW LONG DO WE KEEP YOUR INFORMATION?**
+**8. HOW LONG DO WE KEEP YOUR INFORMATION?**
 
   
 
@@ -396,7 +396,7 @@ When we have no ongoing legitimate business need to process your personal inform
 
   
 
-**9\. HOW DO WE KEEP YOUR INFORMATION SAFE?**
+**9. HOW DO WE KEEP YOUR INFORMATION SAFE?**
 
   
 
@@ -408,7 +408,7 @@ We have implemented appropriate and reasonable technical and organizational secu
 
   
 
-**10\. WHAT ARE YOUR PRIVACY RIGHTS?**
+**10. WHAT ARE YOUR PRIVACY RIGHTS?**
 
   
 
@@ -455,7 +455,7 @@ If you have questions or comments about your privacy rights, you may email us at
 
   
 
-**11\. CONTROLS FOR DO-NOT-TRACK FEATURES**
+**11. CONTROLS FOR DO-NOT-TRACK FEATURES**
 
   
 
@@ -467,7 +467,7 @@ California law requires us to let you know how we respond to web browser DNT sig
 
   
 
-**12\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?**
+**12. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?**
 
   
 
@@ -629,7 +629,7 @@ California Civil Code Section 1798.83, also known as the "Shine The Light" law, 
 
   
 
-**13\. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?**
+**13. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?**
 
   
 
@@ -691,7 +691,7 @@ Complaints (complete POPIA/PAIA form 5): [PAIAComplaints@inforegulator.org.za](
 
   
 
-**14\. DO WE MAKE UPDATES TO THIS NOTICE?**
+**14. DO WE MAKE UPDATES TO THIS NOTICE?**
 
   
 
@@ -703,7 +703,7 @@ We may update this Privacy Notice from time to time. The updated version will be
 
   
 
-**15\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?**
+**15. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?**
 
   
 
@@ -711,11 +711,11 @@ If you have questions or comments about this notice, you may email us at [pratee
 
   
 
-\_\_\_\_\_\_\_\_\_\_
+__________
 
   
 
-**16\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?**
+**16. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?**
 
   
 

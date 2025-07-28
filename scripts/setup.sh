@@ -8,6 +8,9 @@ flutter clean && echo "------------------ Flutter cleaned project --------------
 sudo rm -rf ~/.pub-cache && echo "------------------ .pub-cache deleted ------------------" || exit 1
 find . -name "pubspec.lock" -type f -exec rm -f {} \; && echo "------------------ pubspec.lock files deleted ------------------" || exit 1
 find . -name "injector.config.dart" -type f -exec rm -f {} \; && echo "------------------ injector.config.dart files deleted ------------------" || exit 1
+find . -name "*.g.dart" -type f -exec rm -f {} \; && echo "------------------ *.g.dart files deleted ------------------" || exit 1
+find . -name "*.cached.dart" -type f -exec rm -f {} \; && echo "------------------ *.cached.dart files deleted ------------------" || exit 1
+find . -name "*.mapper.dart" -type f -exec rm -f {} \; && echo "------------------ *.mapper.dart files deleted ------------------" || exit 1
 flutter pub get && echo "------------------ Flutter dependencies loaded ------------------" || exit 1
 dart pub global activate melos && echo "------------------ melos activated ------------------" || exit 1
 dart pub global activate flutterfire_cli && echo "------------------ flutterfire_cli activated ------------------" || exit 1

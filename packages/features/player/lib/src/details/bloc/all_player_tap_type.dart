@@ -1,5 +1,3 @@
-import 'package:core_domain/domain.dart';
-
 sealed class AllPlayerTapType {
   const AllPlayerTapType({
     required this.data,

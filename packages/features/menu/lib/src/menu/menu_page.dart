@@ -267,7 +267,7 @@ class _DrawerItem extends StatelessWidget {
     required this.text,
     required this.leading,
     required this.onTap,
-    this.trailing,
+    this.trailing
   });
 
   final String text;
