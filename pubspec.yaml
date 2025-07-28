@@ -1,7 +1,7 @@
 name: fut_maidaan
 description: "A new Flutter project."
 publish_to: 'none'
-version: 1.0.9+10
+version: 1.0.10+11
 
 environment:
   sdk: ">=3.8.1 <4.0.0"
