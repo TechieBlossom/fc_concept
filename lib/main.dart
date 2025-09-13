@@ -7,12 +7,14 @@ import 'package:fut_maidaan/di/injector.dart';
 import 'package:fut_maidaan/firebase_options.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fut_maidaan/network_overrides.dart';
 import 'package:utility_di/di.dart';
 import 'package:utility_navigation/navigation.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   unawaited(MobileAds.instance.initialize());
+  setupHttpOverrides();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(!kDebugMode);
   await initializeDi('dev');

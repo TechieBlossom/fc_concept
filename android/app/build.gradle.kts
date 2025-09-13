@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.techieblossom.fut_maidan"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -27,10 +27,10 @@ android {
         applicationId = "com.techieblossom.fut_maidan"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        minSdk = 23
+        targetSdk = 35
+        versionCode = 11
+        versionName = "1.0.10"
     }
 
     buildTypes {

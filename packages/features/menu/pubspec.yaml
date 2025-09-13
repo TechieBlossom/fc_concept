@@ -4,8 +4,8 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ">=3.8.1 <4.0.0"
-  flutter: "3.32.8"
+  sdk: ">=3.9.0 <4.0.0"
+  flutter: "3.35.1"
 
 dependencies:
   core_analytics:
@@ -23,12 +23,12 @@ dependencies:
     sdk: flutter
   flutter_bloc: 9.1.0
   flutter_markdown: ^0.7.7+1
-  injectable: 2.5.0
+  injectable: 2.5.1
   utility_di:
     path: ../../../packages/utility/di
 
 dev_dependencies:
-  build_runner: ^2.5.4
+  build_runner: 2.5.4
   dart_mappable_builder: 4.5.0
   injectable_generator: 2.7.0
   utility_analysis:

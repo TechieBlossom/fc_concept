@@ -36,13 +36,13 @@ class DashboardPage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Indices(state: state),
-                    const SizedBox(height: AppSpacing.space4),
-                    CheapestPlayerByRatingCard(
-                      onTap: () => context.read<DashboardBloc>().add(
-                            CheapestByPlayerRatingTap(),
-                          ),
-                    ),
+                    // Indices(state: state),
+                    // const SizedBox(height: AppSpacing.space4),
+                    // CheapestPlayerByRatingCard(
+                    //   onTap: () => context.read<DashboardBloc>().add(
+                    //         CheapestByPlayerRatingTap(),
+                    //       ),
+                    // ),
                     const SizedBox(height: AppSpacing.space4),
                     PlayersGrid(
                       isLoading: state.processState == ProcessState.loading,
@@ -54,15 +54,15 @@ class DashboardPage extends StatelessWidget {
                           ),
                     ),
                     const SizedBox(height: AppSpacing.space6),
-                    PlayersGrid(
-                      isLoading: state.processState == ProcessState.loading,
-                      players: state.sbcPlayers,
-                      heading: 'SBCs',
-                      onTap: (player) => context.read<DashboardBloc>().add(
-                            PlayerTap(player: player, fromSbc: true),
-                          ),
-                    ),
-                    const SizedBox(height: AppSpacing.space6),
+                    // PlayersGrid(
+                    //   isLoading: state.processState == ProcessState.loading,
+                    //   players: state.sbcPlayers,
+                    //   heading: 'SBCs',
+                    //   onTap: (player) => context.read<DashboardBloc>().add(
+                    //         PlayerTap(player: player, fromSbc: true),
+                    //       ),
+                    // ),
+                    // const SizedBox(height: AppSpacing.space6),
                     PlayersGrid(
                       isLoading: state.processState == ProcessState.loading ||
                           state.positionalPlayersProcessState ==

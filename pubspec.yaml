@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 1.0.10+11
 
 environment:
-  sdk: ">=3.8.1 <4.0.0"
-  flutter: "3.32.8"
+  sdk: ">=3.9.0 <4.0.0"
+  flutter: "3.35.1"
 
 dependencies:
   cached_network_image: 3.4.1
@@ -32,7 +32,7 @@ dependencies:
     path: packages/features/player
   flutter:
     sdk: flutter
-  injectable: 2.5.0
+  injectable: 2.5.1
   utility_catalog:
     path: packages/utility/catalog
   utility_di:
@@ -41,12 +41,12 @@ dependencies:
     path: packages/utility/navigation
 
 dev_dependencies:
-  build_runner: 2.4.15
-  flutter_launcher_icons: ^0.14.3
+  build_runner: 2.5.4
+  flutter_launcher_icons: 0.14.4
   flutter_test:
     sdk: flutter
-  injectable_generator: ^2.7.0
-  melos: ^6.3.2
+  injectable_generator: 2.7.0
+  melos: 7.0.0
   utility_analysis:
     path: packages/utility/analysis
 

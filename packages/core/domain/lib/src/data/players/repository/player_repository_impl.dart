@@ -8,6 +8,7 @@ import 'package:core_domain/src/data/positions/table_position.dart';
 import 'package:core_domain/src/data/rarities/table_rarity.dart';
 import 'package:core_domain/src/domain/players/player_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -26,13 +27,16 @@ const _rarityTable =
     '${TableRarity.dominantColor}, ${TableRarity.textColor}, '
     '${TableRarity.isSpecial}, ${TableRarity.imagePath}, '
     '${TableRarity.compactImagePath})';
-const _clubTable = '${TableClub.tableClub}!inner(${TableClub.eaId}, '
+const _clubTable =
+    '${TableClub.tableClub}!inner(${TableClub.eaId}, '
     '${TableClub.name}, ${TableClub.leagueEaId}, ${TableClub.isWomen},'
     '${TableClub.isIconClub}, ${TableClub.pastAndPresentHighlightedPlayerItemEaIds},'
     '${TableClub.imagePath}, ${TableClub.lightImagePath})';
-const _leagueTable = '${TableLeague.tableLeague}!inner(${TableLeague.eaId}, '
+const _leagueTable =
+    '${TableLeague.tableLeague}!inner(${TableLeague.eaId}, '
     '${TableLeague.name}, ${TableLeague.imagePath}, ${TableLeague.imageLightPath})';
-const _nationTable = '${TableNation.tableNation}!inner(${TableNation.eaId}, '
+const _nationTable =
+    '${TableNation.tableNation}!inner(${TableNation.eaId}, '
     '${TableNation.name}, ${TableNation.imagePath})';
 const _positionTable =
     '${TablePosition.tablePosition}!inner(${TablePosition.eaId}, '
@@ -67,9 +71,7 @@ abstract mixin class PlayerRepositoryImpl
   factory PlayerRepositoryImpl() = _PlayerRepositoryImpl;
 
   @override
-  Future<Result<List<Player>?>> topPlayers({
-    int page = 0,
-  }) async {
+  Future<Result<List<Player>?>> topPlayers({int page = 0}) async {
     try {
       final rawResponse = await _topPlayers(page: page);
       final players = mapPlayers(rawResponse);
@@ -80,9 +82,7 @@ abstract mixin class PlayerRepositoryImpl
   }
 
   @PersistentCached(ttl: _cacheTTL)
-  Future<List<dynamic>> _topPlayers({
-    int page = 0,
-  }) async {
+  Future<List<dynamic>> _topPlayers({int page = 0}) async {
     final start = page * _itemsPerPage;
     final end = ((page + 1) * _itemsPerPage) - 1;
 
@@ -187,13 +187,15 @@ abstract mixin class PlayerRepositoryImpl
       Goalkeepers() => 87,
     };
     try {
-      PostgrestFilterBuilder postgresFilterBuilder =
-          supabase.from(TablePlayer.tablePlayer)
-              .select(_columnsToFetchForList);
+      PostgrestFilterBuilder postgresFilterBuilder = supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList);
 
       if (fetchIcons == false) {
-        postgresFilterBuilder = postgresFilterBuilder
-          .neq(TablePlayer.league, 2118);
+        postgresFilterBuilder = postgresFilterBuilder.neq(
+          TablePlayer.league,
+          2118,
+        );
       }
 
       final playersResponse = await postgresFilterBuilder
@@ -293,15 +295,18 @@ abstract mixin class PlayerRepositoryImpl
     final rarityIds = rarities?.map((rarity) => rarity.eaId);
     final footIds = foots?.map((foot) => foot.value);
     final positionIds = positions?.map((position) => position.eaId);
-    final rolePlusIds =
-        roles?.where((role) => role.isPlus).map((role) => role.eaId);
-    final rolePlusPlusIds =
-        roles?.where((role) => role.isPlusPlus).map((role) => role.eaId);
+    final rolePlusIds = roles
+        ?.where((role) => role.isPlus)
+        .map((role) => role.eaId);
+    final rolePlusPlusIds = roles
+        ?.where((role) => role.isPlusPlus)
+        .map((role) => role.eaId);
     final playStyleIds = playStyles?.map((playStyle) => playStyle.eaId);
 
     try {
-      PostgrestFilterBuilder postgresFilterBuilder =
-          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+      PostgrestFilterBuilder postgresFilterBuilder = supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList);
 
       if (searchQuery?.isNotEmpty ?? false) {
         postgresFilterBuilder = postgresFilterBuilder.ilike(
@@ -317,8 +322,10 @@ abstract mixin class PlayerRepositoryImpl
         );
       }
       if (clubIds != null && clubIds.isNotEmpty) {
-        postgresFilterBuilder =
-            postgresFilterBuilder.inFilter(TablePlayer.club, clubIds.toList());
+        postgresFilterBuilder = postgresFilterBuilder.inFilter(
+          TablePlayer.club,
+          clubIds.toList(),
+        );
       }
       if (nationIds != null && nationIds.isNotEmpty) {
         postgresFilterBuilder = postgresFilterBuilder.inFilter(
@@ -360,9 +367,10 @@ abstract mixin class PlayerRepositoryImpl
       }
 
       if (playStyleIds != null && playStyleIds.isNotEmpty) {
-        postgresFilterBuilder = postgresFilterBuilder
-            .or('${TablePlayer.playStylesPlus}.ov.{${playStyleIds.join(',')}},'
-                '${TablePlayer.playStyles}.ov.{${playStyleIds.join(',')}}');
+        postgresFilterBuilder = postgresFilterBuilder.or(
+          '${TablePlayer.playStylesPlus}.ov.{${playStyleIds.join(',')}},'
+          '${TablePlayer.playStyles}.ov.{${playStyleIds.join(',')}}',
+        );
       }
 
       if (overallRatingRange != null) {
@@ -375,14 +383,8 @@ abstract mixin class PlayerRepositoryImpl
           );
         } else {
           postgresFilterBuilder = postgresFilterBuilder
-              .gte(
-                TablePlayer.overall,
-                overallRatingRange.start.round(),
-              )
-              .lte(
-                TablePlayer.overall,
-                overallRatingRange.end.round(),
-              );
+              .gte(TablePlayer.overall, overallRatingRange.start.round())
+              .lte(TablePlayer.overall, overallRatingRange.end.round());
         }
       }
 
@@ -432,8 +434,10 @@ abstract mixin class PlayerRepositoryImpl
     try {
       final playerResponse = await supabase
           .from(TablePlayer.tablePlayer)
-          .select('*, $_rarityTable, $_clubTable, $_leagueTable, '
-              '$_nationTable, $_positionTable')
+          .select(
+            '*, $_rarityTable, $_clubTable, $_leagueTable, '
+            '$_nationTable, $_positionTable',
+          )
           .eq(TablePlayer.eaId, playerId)
           .limit(1)
           .single();
@@ -501,8 +505,9 @@ abstract mixin class PlayerRepositoryImpl
       final start = page * _itemsPerPage;
       final end = (page + 1) * _itemsPerPage - 1;
 
-      PostgrestFilterBuilder postgresFilterBuilder =
-          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+      PostgrestFilterBuilder postgresFilterBuilder = supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList);
 
       if (query?.isNotEmpty ?? false) {
         postgresFilterBuilder = postgresFilterBuilder.ilike(
@@ -540,8 +545,9 @@ abstract mixin class PlayerRepositoryImpl
       final start = page * _itemsPerPage;
       final end = (page + 1) * _itemsPerPage - 1;
 
-      PostgrestFilterBuilder postgresFilterBuilder =
-          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+      PostgrestFilterBuilder postgresFilterBuilder = supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList);
 
       if (query?.isNotEmpty ?? false) {
         postgresFilterBuilder = postgresFilterBuilder.ilike(
@@ -579,8 +585,9 @@ abstract mixin class PlayerRepositoryImpl
       final start = page * _itemsPerPage;
       final end = (page + 1) * _itemsPerPage - 1;
 
-      PostgrestFilterBuilder postgresFilterBuilder =
-          supabase.from(TablePlayer.tablePlayer).select(_columnsToFetchForList);
+      PostgrestFilterBuilder postgresFilterBuilder = supabase
+          .from(TablePlayer.tablePlayer)
+          .select(_columnsToFetchForList);
 
       if (query?.isNotEmpty ?? false) {
         postgresFilterBuilder = postgresFilterBuilder.ilike(

@@ -198,9 +198,8 @@ class Player with PlayerMappable, AnalyticsEventParameters {
     if (height == null) {
       return null;
     }
-    final feet = height! ~/ 12;
-    final inches = height! % 12;
-    return '$height cm ($feet\' $inches")';
+    final feet = (height! / 30.48).toStringAsFixed(2);
+    return '$height cm ($feet ft)';
   }
 
   String? weightInString() {
